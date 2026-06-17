@@ -1,0 +1,66 @@
+{
+  "name": "journeys",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Biblically, geographically, historically and archaeologically accurate interactive atlas of the missionary journeys of Jesus and the apostles.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "build:content": "tsx scripts/build-content.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "cap:sync": "cap sync"
+  },
+  "dependencies": {
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/preferences": "^6.0.3",
+    "@turf/along": "^7.1.0",
+    "@turf/helpers": "^7.1.0",
+    "@turf/length": "^7.1.0",
+    "i18next": "^23.16.8",
+    "maplibre-gl": "^4.7.1",
+    "pmtiles": "^3.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.1.4",
+    "react-router-dom": "^6.28.1",
+    "sql.js": "^1.12.0",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "@eslint/js": "^9.17.0",
+    "@playwright/test": "^1.49.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
+    "@types/sql.js": "^1.4.9",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "zod-to-json-schema": "^3.24.1",
+    "typescript-eslint": "^8.18.1",
+    "vite": "^6.0.5",
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "vite": "$vite"
+  }
+}

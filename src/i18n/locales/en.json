@@ -1,0 +1,41 @@
+{
+  "app": {
+    "title": "Journeys",
+    "tagline": "An accurate, cited atlas of the journeys of Jesus and the apostles"
+  },
+  "nav": {
+    "home": "Home",
+    "trace": "Trace a journey",
+    "atlas": "Atlas",
+    "lessons": "Lessons",
+    "quiz": "Quiz"
+  },
+  "modes": {
+    "trace": { "title": "Route tracing", "placeholder": "Animated journey routes arrive in milestone M3." },
+    "atlas": { "title": "Sandbox atlas", "placeholder": "Toggleable map layers arrive in milestone M4." },
+    "lessons": { "title": "Guided lessons", "placeholder": "Narrated, paced lessons arrive in milestone M5." },
+    "quiz": { "title": "Quizzes", "placeholder": "Quizzes and challenges arrive in milestone M6." }
+  },
+  "home": {
+    "intro": "Follow the missionary journeys across the ancient Mediterranean — every place, date and claim is cited, and contested points are shown as such.",
+    "sourcing": "How we source",
+    "pickMode": "Choose a way to explore"
+  },
+  "sourcing": {
+    "title": "How we source",
+    "body": "Dates are shown as scholarly ranges, not single years. Each claim carries citations and a confidence level. Where scholars or traditions disagree, we say so. Bible text is public domain (World English Bible, King James Version). This atlas is carefully cited and reviewed — it does not claim to be definitive.",
+    "confidence": {
+      "high": "Securely identified / physically attested",
+      "medium": "Traditional or topographically apt, not proven",
+      "legendary": "Church tradition only",
+      "disputed": "Scholars actively disagree"
+    }
+  },
+  "common": {
+    "loading": "Loading…",
+    "offline": "Offline",
+    "citations": "Citations",
+    "disputes": "Why scholars differ",
+    "skipToContent": "Skip to main content"
+  }
+}

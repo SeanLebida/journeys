@@ -1,0 +1,73 @@
+/* Design tokens — "ancient cartography meets night sky".
+   Deliberately not a default template: warm parchment surfaces, deep indigo
+   night, terracotta/gold/sea-teal accents drawn from old Mediterranean maps.
+   Confidence colors are paired with text labels everywhere (never color-alone)
+   to satisfy WCAG 1.4.1. */
+:root {
+  /* Core palette */
+  --ink-900: #0b1020;
+  --ink-800: #141a2e;
+  --ink-700: #1e2640;
+  --parchment-50: #faf5e9;
+  --parchment-100: #f4ecd8;
+  --parchment-200: #e8dcc0;
+  --parchment-300: #d8c9a4;
+
+  --terracotta: #c75b39;
+  --terracotta-ink: #8f3a20;
+  --gold: #c9a227;
+  --gold-ink: #8a6d10;
+  --sea: #2f6f6b;
+  --sea-ink: #1c4b48;
+  --violet: #6b4a8f;
+
+  /* Semantic surfaces (light default) */
+  --bg: var(--parchment-100);
+  --surface: var(--parchment-50);
+  --surface-raised: #ffffff;
+  --text: #221a10;
+  --text-muted: #5b5040;
+  --border: var(--parchment-300);
+  --accent: var(--terracotta);
+  --accent-contrast: #ffffff;
+  --link: var(--sea-ink);
+  --focus: #1d6fe0;
+
+  /* Confidence */
+  --c-high: var(--sea-ink);
+  --c-medium: var(--gold-ink);
+  --c-legendary: var(--violet);
+  --c-disputed: var(--terracotta-ink);
+
+  /* Type */
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing / shape */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --shadow-1: 0 1px 2px rgba(11, 16, 32, 0.12), 0 4px 16px rgba(11, 16, 32, 0.1);
+  --shadow-2: 0 8px 40px rgba(11, 16, 32, 0.28);
+  --maxw: 720px;
+
+  /* Safe areas (notches / home indicators on native) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--ink-900);
+    --surface: var(--ink-800);
+    --surface-raised: var(--ink-700);
+    --text: #f3ecd9;
+    --text-muted: #b8ad95;
+    --border: #2c3552;
+    --link: #7fc8c2;
+    --c-high: #6fb7b0;
+    --c-medium: #d9b94b;
+    --c-legendary: #b394d6;
+    --c-disputed: #e08562;
+  }
+}

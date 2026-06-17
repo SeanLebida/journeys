@@ -1,0 +1,294 @@
+[
+  {
+    "id": "journey-ministry",
+    "title": {
+      "en": "The Ministry of Jesus"
+    },
+    "kind": "ministry",
+    "dateRange": {
+      "startYear": 27,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 27–30 (or to AD 33)"
+      },
+      "approximate": true
+    },
+    "summary": {
+      "en": "The travels of Jesus from Galilee to Jerusalem — his baptism, Galilean ministry around the Sea of Galilee, northern excursions, and the final journey to Jerusalem, crucifixion and resurrection. The crucifixion year (AD 30 vs AD 33) is genuinely disputed; this atlas uses AD 30 as the mainstream default and flags the dispute."
+    },
+    "color": "#c75b39",
+    "stops": [
+      "stop-ministry-bethlehem-0",
+      "stop-ministry-nazareth-1",
+      "stop-ministry-baptism-at-the-jordan-2",
+      "stop-ministry-capernaum-3",
+      "stop-ministry-cana-of-galilee-4",
+      "stop-ministry-sea-of-galilee-5",
+      "stop-ministry-bethsaida-6",
+      "stop-ministry-chorazin-7",
+      "stop-ministry-decapolis-8",
+      "stop-ministry-tyre-and-sidon-9",
+      "stop-ministry-caesarea-philippi-10",
+      "stop-ministry-samaria-11",
+      "stop-ministry-final-journey-jericho-12",
+      "stop-ministry-bethany-and-bethphage-13",
+      "stop-ministry-jerusalem-14",
+      "stop-ministry-last-supper-15",
+      "stop-ministry-gethsemane-16",
+      "stop-ministry-trial-before-pilate-17",
+      "stop-ministry-golgotha-and-the-tomb-18"
+    ],
+    "citations": [
+      "cit-www-britannica-com-topic-when-was-jesus-born",
+      "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
+      "cit-www-holylandsite-com-bethlehem-nativity-church",
+      "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+      "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
+      "cit-whc-unesco-org-en-list-1446",
+      "cit-en-wikipedia-org-wiki-capernaum",
+      "cit-www-bibleplaces-com-capernaum",
+      "cit-dannythedigger-com-capernaum-synagogue",
+      "cit-en-wikipedia-org-wiki-cana",
+      "cit-www-biblicalarchaeology-org-daily-people-culture",
+      "cit-en-wikipedia-org-wiki-sea-of-galilee",
+      "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+      "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+      "cit-biblearchaeologyreport-com-2019-09-11-biblical-s",
+      "cit-en-wikipedia-org-wiki-chorazin",
+      "cit-www-biblicalarchaeology-org-daily-biblical-sites-2",
+      "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+      "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+      "cit-en-wikipedia-org-wiki-tyre-lebanon",
+      "cit-en-wikipedia-org-wiki-sidon",
+      "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+      "cit-en-wikipedia-org-wiki-caesarea-philippi",
+      "cit-www-bibleplaces-com-caesarea-philippi-banias",
+      "cit-www-seetheholyland-net-jacobs-well",
+      "cit-www-holylandsite-com-shechem-jacobs-well",
+      "cit-en-wikipedia-org-wiki-jericho",
+      "cit-www-jerusalemperspective-com-1402",
+      "cit-www-seetheholyland-net-bethany",
+      "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
+      "cit-en-wikipedia-org-wiki-temple-mount",
+      "cit-en-wikipedia-org-wiki-second-temple",
+      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+      "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
+      "cit-en-wikipedia-org-wiki-mount-of-olives",
+      "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+      "cit-en-wikipedia-org-wiki-pilate-stone",
+      "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+      "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+      "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
+    ]
+  },
+  {
+    "id": "journey-paul-1",
+    "title": {
+      "en": "Paul's First Missionary Journey"
+    },
+    "kind": "apostolic",
+    "dateRange": {
+      "startYear": 46,
+      "endYear": 48,
+      "display": {
+        "en": "c. AD 46–48"
+      },
+      "approximate": true
+    },
+    "summary": {
+      "en": "Barnabas and Saul (Paul), commissioned at Syrian Antioch, sail to Cyprus and then into the highlands of southern Asia Minor (Galatia), preaching in synagogues, founding churches, and returning the way they came (Acts 13–14)."
+    },
+    "color": "#2f6f6b",
+    "stops": [
+      "stop-paul-1-antioch-0",
+      "stop-paul-1-seleucia-pieria-1",
+      "stop-paul-1-salamis-2",
+      "stop-paul-1-paphos-3",
+      "stop-paul-1-perga-4",
+      "stop-paul-1-pisidian-antioch-5",
+      "stop-paul-1-iconium-6",
+      "stop-paul-1-lystra-7",
+      "stop-paul-1-derbe-8",
+      "stop-paul-1-attalia-9"
+    ],
+    "citations": [
+      "cit-www-livius-org-articles-place-antioch-antakya",
+      "cit-topostext-org-place-362362pant",
+      "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+      "cit-en-wikipedia-org-wiki-seleucia-pieria",
+      "cit-www-britannica-com-place-seleucia-pieria",
+      "cit-www-bibleplaces-com-seleucia",
+      "cit-en-wikipedia-org-wiki-salamis-cyprus",
+      "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+      "cit-biblearchaeology-org-research-chronological-cate",
+      "cit-www-britannica-com-place-paphos",
+      "cit-en-wikipedia-org-wiki-perga",
+      "cit-www-britannica-com-place-perga",
+      "cit-topostext-org-place-370309pper",
+      "cit-vici-org-vici-2325-lang-en",
+      "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+      "cit-www-thegospelcoalition-org-themelios-article-act",
+      "cit-en-wikipedia-org-wiki-konya",
+      "cit-www-bibleref-com-acts-14-acts-14-6-html",
+      "cit-en-wikipedia-org-wiki-lystra",
+      "cit-www-bibleplaces-com-derbelystra",
+      "cit-en-wikipedia-org-wiki-derbe",
+      "cit-vici-org-vici-24065",
+      "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+    ]
+  },
+  {
+    "id": "journey-paul-2",
+    "title": {
+      "en": "Paul's Second Missionary Journey"
+    },
+    "kind": "apostolic",
+    "dateRange": {
+      "startYear": 49,
+      "endYear": 52,
+      "display": {
+        "en": "c. AD 49–52"
+      },
+      "approximate": true
+    },
+    "summary": {
+      "en": "After the Jerusalem Council, Paul (with Silas, then Timothy and Luke) revisits the Galatian churches, crosses into Europe after the Macedonian vision, and ministers in Philippi, Thessalonica, Berea, Athens and Corinth — the Corinth stay anchored by the Gallio inscription (Acts 15:36–18:22)."
+    },
+    "color": "#c9a227",
+    "stops": [
+      "stop-paul-2-antioch-0",
+      "stop-paul-2-syria-1",
+      "stop-paul-2-lystra-2",
+      "stop-paul-2-alexandria-troas-3",
+      "stop-paul-2-samothrace-4",
+      "stop-paul-2-neapolis-5",
+      "stop-paul-2-philippi-6",
+      "stop-paul-2-thessalonica-7",
+      "stop-paul-2-berea-8",
+      "stop-paul-2-athens-9",
+      "stop-paul-2-corinth-10",
+      "stop-paul-2-cenchreae-11",
+      "stop-paul-2-ephesus-12",
+      "stop-paul-2-caesarea-maritima-13"
+    ],
+    "citations": [
+      "cit-www-livius-org-articles-place-antioch-antakya",
+      "cit-topostext-org-place-362362pant",
+      "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+      "cit-www-esv-org-resources-esv-global-study-bible-map",
+      "cit-en-wikipedia-org-wiki-lystra",
+      "cit-www-bibleplaces-com-derbelystra",
+      "cit-en-wikipedia-org-wiki-alexandria-troas",
+      "cit-www-bibleplaces-com-acts16",
+      "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas",
+      "cit-www-padfield-com-2002-neapolis-kavala-greece-htm",
+      "cit-en-wikipedia-org-wiki-philippi",
+      "cit-www-padfield-com-2005-philippi-html",
+      "cit-en-wikipedia-org-wiki-thessaloniki",
+      "cit-catholic-resources-org-bible-geography-roman-pro",
+      "cit-en-wikipedia-org-wiki-veria",
+      "cit-www-casualenglishbible-com-resource-location-ber",
+      "cit-latitude-to-articles-by-country-gr-greece-853-ac",
+      "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+      "cit-holylandphotos-org-photos-gctcdlar14",
+      "cit-latitude-to-map-gr-greece-cities-corinth",
+      "cit-en-wikipedia-org-wiki-kechries",
+      "cit-www-bibleplaces-com-corintharea",
+      "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+      "cit-catholic-resources-org-bible-nt-geography-htm"
+    ]
+  },
+  {
+    "id": "journey-paul-3",
+    "title": {
+      "en": "Paul's Third Missionary Journey"
+    },
+    "kind": "apostolic",
+    "dateRange": {
+      "startYear": 52,
+      "endYear": 57,
+      "display": {
+        "en": "c. AD 52–57"
+      },
+      "approximate": true
+    },
+    "summary": {
+      "en": "Paul settles at Ephesus for about three years, then travels through Macedonia and Greece before sailing back toward Jerusalem, meeting the Ephesian elders at Miletus on the way (Acts 18:23–21:16)."
+    },
+    "color": "#6b4a8f",
+    "stops": [
+      "stop-paul-3-antioch-on-the-orontes-0",
+      "stop-paul-3-galatia-and-phrygia-1",
+      "stop-paul-3-ephesus-2",
+      "stop-paul-3-macedonia-3",
+      "stop-paul-3-troas-4",
+      "stop-paul-3-miletus-5",
+      "stop-paul-3-caesarea-6",
+      "stop-paul-3-jerusalem-7"
+    ],
+    "citations": [
+      "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+      "cit-www-gotquestions-org-paul-third-missionary-journ",
+      "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+      "cit-pleiades-stoa-org-places-599612",
+      "cit-www-jesuswalk-com-paul-07-ephesus-htm",
+      "cit-denverjournal-denverseminary-edu-the-denver-jour",
+      "cit-enduringword-com-bible-commentary-acts-20",
+      "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm",
+      "cit-www-preceptaustin-org-acts-20-commentary",
+      "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+      "cit-pleiades-stoa-org-places-678401",
+      "cit-missionbibleclass-org-new-testament-part2-acts-f",
+      "cit-brentwoodbaptist-com-acts-204-2335",
+      "cit-www-ccel-org-bible-phillips-cn341actspaularrest-"
+    ]
+  },
+  {
+    "id": "journey-rome",
+    "title": {
+      "en": "Paul's Voyage to Rome"
+    },
+    "kind": "apostolic",
+    "dateRange": {
+      "startYear": 57,
+      "endYear": 62,
+      "display": {
+        "en": "c. AD 59–62 (or 57–60)"
+      },
+      "approximate": true
+    },
+    "summary": {
+      "en": "After two years' imprisonment at Caesarea and his appeal to Caesar, Paul is shipped to Rome as a prisoner, survives the Euraquilo storm and shipwreck on Malta, and reaches Rome for two years of house arrest (Acts 27–28)."
+    },
+    "color": "#8f3a20",
+    "stops": [
+      "stop-rome-caesarea-imprisonment-0",
+      "stop-rome-sidon-1",
+      "stop-rome-myra-of-lycia-2",
+      "stop-rome-cnidus-and-fair-havens-3",
+      "stop-rome-phoenix-4",
+      "stop-rome-malta-shipwreck-5",
+      "stop-rome-syracuse-rhegium-puteoli-6",
+      "stop-rome-rome-7"
+    ],
+    "citations": [
+      "cit-executableoutlines-com-topical-series-harmony-li",
+      "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+      "cit-enduringword-com-bible-commentary-acts-25",
+      "cit-pleiades-stoa-org-places-678393",
+      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+      "cit-pleiades-stoa-org-places-639005",
+      "cit-www-bibleplaces-com-fair-havens",
+      "cit-en-wikipedia-org-wiki-kaloi-limenes",
+      "cit-en-wikipedia-org-wiki-knidos",
+      "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+      "cit-www-bibleplaces-com-st-pauls-bay-malta",
+      "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+      "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
+      "cit-topostext-org-place-408141pdik",
+      "cit-pleiades-stoa-org-places-432815",
+      "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+      "cit-enduringword-com-bible-commentary-acts-27"
+    ]
+  }
+]

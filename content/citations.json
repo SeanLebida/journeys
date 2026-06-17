@@ -1,0 +1,906 @@
+[
+  {
+    "id": "cit-www-britannica-com-topic-when-was-jesus-born",
+    "source": {
+      "en": "Britannica, 'When Was Jesus Born?'"
+    },
+    "url": "https://www.britannica.com/topic/When-Was-Jesus-Born",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
+    "source": {
+      "en": "BYU Studies, 'Dating the Birth of Christ'"
+    },
+    "url": "https://byustudies.byu.edu/article/dating-the-birth-of-christ",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-holylandsite-com-bethlehem-nativity-church",
+    "source": {
+      "en": "HolyLandSite.com, 'Bethlehem: Church of the Nativity'"
+    },
+    "url": "https://www.holylandsite.com/bethlehem-nativity-church",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+    "source": {
+      "en": "Bible Interp (Univ. of Arizona), Ken Dark, 'The Archaeology of Nazareth in the Early First Century'"
+    },
+    "url": "https://bibleinterp.arizona.edu/articles/archaeology-nazareth-early-first-century",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
+    "source": {
+      "en": "Bible Archaeology Report, 'Did First-Century Nazareth Exist?'"
+    },
+    "url": "https://biblearchaeologyreport.com/2018/08/09/did-first-century-nazareth-exist/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-whc-unesco-org-en-list-1446",
+    "source": {
+      "en": "UNESCO World Heritage List, 'Baptism Site Bethany Beyond the Jordan (Al-Maghtas)'"
+    },
+    "url": "https://whc.unesco.org/en/list/1446/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-capernaum",
+    "source": {
+      "en": "Wikipedia, 'Capernaum'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Capernaum",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-capernaum",
+    "source": {
+      "en": "BiblePlaces.com, 'Capernaum'"
+    },
+    "url": "https://www.bibleplaces.com/capernaum/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-dannythedigger-com-capernaum-synagogue",
+    "source": {
+      "en": "Danny the Digger, 'Tracking the Synagogue from the Time of Jesus in Capernaum'"
+    },
+    "url": "https://dannythedigger.com/capernaum-synagogue/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-cana",
+    "source": {
+      "en": "Wikipedia, 'Cana' and 'Khirbet Qana'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Cana",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-people-culture",
+    "source": {
+      "en": "Biblical Archaeology Society, 'Mark and John: A Wedding at Cana - Whose and Where?'"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/people-cultures-in-the-bible/jesus-historical-jesus/mark-and-john-a-wedding-at-cana-whose-and-where/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-sea-of-galilee",
+    "source": {
+      "en": "Wikipedia, 'Sea of Galilee'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sea_of_Galilee",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+    "source": {
+      "en": "Wikipedia, 'Sea of Galilee Boat' (Ginosar/Jesus Boat)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sea_of_Galilee_Boat",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+    "source": {
+      "en": "Biblical Archaeology Society, 'The Great Bethsaida Debate'"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/biblical-sites-places/biblical-archaeology-places/the-great-bethsaida-debate/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-biblearchaeologyreport-com-2019-09-11-biblical-s",
+    "source": {
+      "en": "Bible Archaeology Report, 'Is el-Araj Bethsaida?'"
+    },
+    "url": "https://biblearchaeologyreport.com/2019/09/11/biblical-sites-is-el-araj-bethsaida/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-chorazin",
+    "source": {
+      "en": "Wikipedia, 'Chorazin'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Chorazin",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-biblical-sites-2",
+    "source": {
+      "en": "Biblical Archaeology Society, 'Digging Through Time at Chorazin'"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/biblical-sites-places/biblical-archaeology-sites/digging-through-time-at-chorazin/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+    "source": {
+      "en": "Wikipedia, 'Kursi, Sea of Galilee' and 'Gergesa'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Kursi,_Sea_of_Galilee",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+    "source": {
+      "en": "Wikipedia, 'Exorcism of the Gerasene demoniac'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Exorcism_of_the_Gerasene_demoniac",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-tyre-lebanon",
+    "source": {
+      "en": "Wikipedia, 'Tyre, Lebanon'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tyre,_Lebanon",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-sidon",
+    "source": {
+      "en": "Wikipedia, 'Sidon'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sidon",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+    "source": {
+      "en": "Wikipedia, 'Exorcism of the Syrophoenician woman's daughter'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Exorcism_of_the_Syrophoenician_woman%27s_daughter",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-caesarea-philippi",
+    "source": {
+      "en": "Wikipedia, 'Caesarea Philippi' (Banias)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Caesarea_Philippi",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-caesarea-philippi-banias",
+    "source": {
+      "en": "BiblePlaces.com, 'Caesarea Philippi (Banias)'"
+    },
+    "url": "https://www.bibleplaces.com/caesarea-philippi-banias/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-www-seetheholyland-net-jacobs-well",
+    "source": {
+      "en": "See The Holy Land, 'Jacob's Well'"
+    },
+    "url": "https://www.seetheholyland.net/jacobs-well/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-holylandsite-com-shechem-jacobs-well",
+    "source": {
+      "en": "HolyLandSite.com, 'Shechem / Jacob's Well / Mt. Gerizim'"
+    },
+    "url": "https://www.holylandsite.com/shechem-jacobs-well",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-jericho",
+    "source": {
+      "en": "Wikipedia, 'Jericho'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Jericho",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-jerusalemperspective-com-1402",
+    "source": {
+      "en": "Jerusalem Perspective, 'Jesus' Final Journey to Jerusalem'"
+    },
+    "url": "https://www.jerusalemperspective.com/1402/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-seetheholyland-net-bethany",
+    "source": {
+      "en": "See The Holy Land, 'Bethany'"
+    },
+    "url": "https://www.seetheholyland.net/bethany/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
+    "source": {
+      "en": "Wikipedia, 'Tomb of Lazarus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tomb_of_Lazarus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-temple-mount",
+    "source": {
+      "en": "Wikipedia, 'Temple Mount'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Temple_Mount",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-second-temple",
+    "source": {
+      "en": "Wikipedia, 'Second Temple'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Second_Temple",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+    "source": {
+      "en": "Biola Univ. Good Book Blog, 'Chronology of Easter in John and the Synoptic Gospels'"
+    },
+    "url": "https://www.biola.edu/blogs/good-book-blog/2015/chronology-of-easter-in-john-and-the-synoptic-gospels",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
+    "source": {
+      "en": "Taylor Marshall, 'Did Jesus die on Passover? Was the Last Supper a Passover?'"
+    },
+    "url": "https://taylormarshall.com/2025/03/did-jesus-die-on-passover-was-last-supper-a-passover.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-mount-of-olives",
+    "source": {
+      "en": "Wikipedia, 'Mount of Olives' / 'Gethsemane'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mount_of_Olives",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+    "source": {
+      "en": "Bible Archaeology Report, 'Behold the Man: Where Did Pilate Sentence Jesus?'"
+    },
+    "url": "https://biblearchaeologyreport.com/2022/04/14/behold-the-man-where-did-pilate-sentence-jesus/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-pilate-stone",
+    "source": {
+      "en": "Wikipedia, 'Pilate Stone'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pilate_Stone",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+    "source": {
+      "en": "Biblical Archaeology Society, 'Where Is Golgotha, Where Jesus Was Crucified?'"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/biblical-sites-places/jerusalem/where-is-golgotha-where-jesus-was-crucified/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+    "source": {
+      "en": "Archaeology Magazine, 'Ancient garden found at Jesus' burial site' (2025)"
+    },
+    "url": "https://archaeologymag.com/2025/04/ancient-garden-found-at-jesus-burial-site/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+    "source": {
+      "en": "Wikipedia, 'Crucifixion of Jesus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Crucifixion_of_Jesus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-livius-org-articles-place-antioch-antakya",
+    "source": {
+      "en": "Livius.org: Antioch (Antakya)"
+    },
+    "url": "https://www.livius.org/articles/place/antioch-antakya/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-topostext-org-place-362362pant",
+    "source": {
+      "en": "ToposText: Antioch on the Orontes (place 362362PAnt)"
+    },
+    "url": "https://topostext.org/place/362362PAnt",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+    "source": {
+      "en": "ASOR, 'Antioch on the Orontes 2.0'"
+    },
+    "url": "https://www.asor.org/anetoday/2016/12/antioch-orontes-ancient-city/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-seleucia-pieria",
+    "source": {
+      "en": "Wikipedia: Seleucia Pieria (coordinates 36.1239N 35.9219E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Seleucia_Pieria",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-britannica-com-place-seleucia-pieria",
+    "source": {
+      "en": "Britannica: Seleucia Pieria"
+    },
+    "url": "https://www.britannica.com/place/Seleucia-Pieria",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-seleucia",
+    "source": {
+      "en": "BiblePlaces.com: Seleucia"
+    },
+    "url": "https://www.bibleplaces.com/seleucia/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-salamis-cyprus",
+    "source": {
+      "en": "Wikipedia: Salamis, Cyprus (35.18N 33.9E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Salamis,_Cyprus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+    "source": {
+      "en": "Bible Archaeology Report: Sergius Paulus archaeological biography"
+    },
+    "url": "https://biblearchaeologyreport.com/2019/11/15/sergius-paulus-an-archaeological-biography/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-biblearchaeology-org-research-chronological-cate",
+    "source": {
+      "en": "Associates for Biblical Research: Cypriots, Sorcerers, and Sergius"
+    },
+    "url": "https://biblearchaeology.org/research/chronological-categories/new-testament-era/4899-cypriots-sorcerers-and-sergius",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-britannica-com-place-paphos",
+    "source": {
+      "en": "Britannica: Paphos"
+    },
+    "url": "https://www.britannica.com/place/Paphos",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-perga",
+    "source": {
+      "en": "Wikipedia: Perga"
+    },
+    "url": "https://en.wikipedia.org/wiki/Perga",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-britannica-com-place-perga",
+    "source": {
+      "en": "Britannica: Perga"
+    },
+    "url": "https://www.britannica.com/place/Perga",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-topostext-org-place-370309pper",
+    "source": {
+      "en": "ToposText: Perge (370309PPer)"
+    },
+    "url": "https://topostext.org/place/370309PPer",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-vici-org-vici-2325-lang-en",
+    "source": {
+      "en": "Vici.org: Antiochia Pisidiae (coords 38.306N 31.190E; Pleiades 609307)"
+    },
+    "url": "https://vici.org/vici/2325/?lang=en",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+    "source": {
+      "en": "Biblical Archaeology Society: Who Were the Galatians?"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/biblical-topics/new-testament/who-were-the-galatians-in-the-bible/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-www-thegospelcoalition-org-themelios-article-act",
+    "source": {
+      "en": "The Gospel Coalition (Themelios): Acts and Galatians reconsidered"
+    },
+    "url": "https://www.thegospelcoalition.org/themelios/article/acts-and-galatians-reconsidered/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-konya",
+    "source": {
+      "en": "Wikipedia: Konya (Iconium) coords 37.8714N 32.4846E"
+    },
+    "url": "https://en.wikipedia.org/wiki/Konya",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleref-com-acts-14-acts-14-6-html",
+    "source": {
+      "en": "BibleRef: Acts 14:6 (Lycaonia geography)"
+    },
+    "url": "https://www.bibleref.com/Acts/14/Acts-14-6.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-lystra",
+    "source": {
+      "en": "Wikipedia: Lystra (coords 37°36'07\"N 32°20'18\"E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Lystra",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-derbelystra",
+    "source": {
+      "en": "BiblePlaces.com: Derbe and Lystra"
+    },
+    "url": "https://www.bibleplaces.com/derbelystra/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-derbe",
+    "source": {
+      "en": "Wikipedia: Derbe (Kerti Höyük, 37.349273N 33.361715E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Derbe",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-vici-org-vici-24065",
+    "source": {
+      "en": "Vici.org: Derbe in Lycaonia [Kerti Hüyük]"
+    },
+    "url": "https://vici.org/vici/24065/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-ephesustoursguide-com-must-see-places-in-tur",
+    "source": {
+      "en": "Ephesus Tours Guide: Attalia (Antalya)"
+    },
+    "url": "http://www.ephesustoursguide.com/must-see-places-in-turkey/attalia-antalya.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-esv-org-resources-esv-global-study-bible-map",
+    "source": {
+      "en": "ESV Global Study Bible: Paul's Second Journey"
+    },
+    "url": "https://www.esv.org/resources/esv-global-study-bible/map-44-08/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-alexandria-troas",
+    "source": {
+      "en": "Wikipedia: Alexandria Troas (39°45'06\"N 26°09'31\"E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Alexandria_Troas",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-acts16",
+    "source": {
+      "en": "BiblePlaces.com: Acts 16"
+    },
+    "url": "https://www.bibleplaces.com/acts16/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas",
+    "source": {
+      "en": "Magdala: Pilgrimage of Paul, Troas & Port to Macedonia"
+    },
+    "url": "https://www.magdala.org/pilgrimage-of-paul/ancient-troas-port-to-macedonia",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-padfield-com-2002-neapolis-kavala-greece-htm",
+    "source": {
+      "en": "Padfield: Port of Neapolis (Kavala)"
+    },
+    "url": "https://www.padfield.com/2002/neapolis-kavala-greece.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-philippi",
+    "source": {
+      "en": "Wikipedia: Philippi (41°00'47\"N 24°17'11\"E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Philippi",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-padfield-com-2005-philippi-html",
+    "source": {
+      "en": "Padfield: Philippi and the Via Egnatia"
+    },
+    "url": "https://www.padfield.com/2005/philippi.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-thessaloniki",
+    "source": {
+      "en": "Wikipedia: Thessaloniki (40°38'25\"N 22°56'08\"E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Thessaloniki",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-catholic-resources-org-bible-geography-roman-pro",
+    "source": {
+      "en": "Catholic Resources: Roman Provinces around the Aegean"
+    },
+    "url": "https://catholic-resources.org/Bible/Geography-Roman-Provinces-Aegean.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-veria",
+    "source": {
+      "en": "Wikipedia: Veria (Beroea) 40.5244N 22.2024E"
+    },
+    "url": "https://en.wikipedia.org/wiki/Veria",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-casualenglishbible-com-resource-location-ber",
+    "source": {
+      "en": "Casual English Bible: Berea"
+    },
+    "url": "https://www.casualenglishbible.com/resource_location/berea",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-latitude-to-articles-by-country-gr-greece-853-ac",
+    "source": {
+      "en": "Latitude.to: Acropolis of Athens (37.9714N 23.7262E)"
+    },
+    "url": "https://latitude.to/articles-by-country/gr/greece/853/acropolis-of-athens",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+    "source": {
+      "en": "Bible Archaeology Report: Gallio archaeological biography (Delphi inscription, IMP XXVI = AD 52)"
+    },
+    "url": "https://biblearchaeologyreport.com/2019/10/31/gallio-an-archaeological-biography/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-holylandphotos-org-photos-gctcdlar14",
+    "source": {
+      "en": "Holy Land Photos: Gallio Inscription, Delphi"
+    },
+    "url": "https://holylandphotos.org/photos/GCTCDLAR14",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-latitude-to-map-gr-greece-cities-corinth",
+    "source": {
+      "en": "Latitude.to: Corinth (37.9401N 22.9513E)"
+    },
+    "url": "https://latitude.to/map/gr/greece/cities/corinth",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-kechries",
+    "source": {
+      "en": "Wikipedia: Kechries (Cenchreae)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Kechries",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-corintharea",
+    "source": {
+      "en": "BiblePlaces.com: Corinth Area with Cenchrea"
+    },
+    "url": "https://www.bibleplaces.com/corintharea/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+    "source": {
+      "en": "Wikipedia: Selçuk / Ephesus (37.95N 27.367E)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sel%C3%A7uk",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-catholic-resources-org-bible-nt-geography-htm",
+    "source": {
+      "en": "Catholic Resources: NT Geography overview"
+    },
+    "url": "https://catholic-resources.org/Bible/NT_Geography.htm",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+    "source": {
+      "en": "ESV Global Study Bible, Map: Paul's Third Missionary Journey (Acts 18:22-21:17)"
+    },
+    "url": "https://www.esv.org/resources/esv-global-study-bible/map-44-09/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-gotquestions-org-paul-third-missionary-journ",
+    "source": {
+      "en": "GotQuestions: Paul's third missionary journey"
+    },
+    "url": "https://www.gotquestions.org/Paul-third-missionary-journey.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+    "source": {
+      "en": "BibleStudy.org: Apostle Paul's Third Missionary Journey Map"
+    },
+    "url": "https://www.biblestudy.org/maps/apostle-paul-third-missionary-journey-map.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pleiades-stoa-org-places-599612",
+    "source": {
+      "en": "Pleiades: Ephesus (place 599612), reprPoint via JSON API"
+    },
+    "url": "https://pleiades.stoa.org/places/599612",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-www-jesuswalk-com-paul-07-ephesus-htm",
+    "source": {
+      "en": "JesusWalk: Paul in Ephesus (Acts 18:23-19:41)"
+    },
+    "url": "https://www.jesuswalk.com/paul/07_ephesus.htm",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-denverjournal-denverseminary-edu-the-denver-jour",
+    "source": {
+      "en": "Riesner, Paul's Early Period (summary), Denver Journal"
+    },
+    "url": "https://denverjournal.denverseminary.edu/the-denver-journal-article/pauls-early-period-chronology-mission-strategy-theology/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-enduringword-com-bible-commentary-acts-20",
+    "source": {
+      "en": "Enduring Word commentary, Acts 20"
+    },
+    "url": "https://enduringword.com/bible-commentary/acts-20/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm",
+    "source": {
+      "en": "CCEL: Paul's Return (Acts), Macedonia to Caesarea"
+    },
+    "url": "https://ccel.org/bible/phillips/CN245ACTSPaulsReturn.htm",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-preceptaustin-org-acts-20-commentary",
+    "source": {
+      "en": "Precept Austin, Acts 20 commentary"
+    },
+    "url": "https://www.preceptaustin.org/acts-20-commentary",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+    "source": {
+      "en": "Bible.org: Paul's Parting Words (Acts 20:1-38)"
+    },
+    "url": "https://bible.org/seriespage/pauls-parting-words-acts-201-38",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pleiades-stoa-org-places-678401",
+    "source": {
+      "en": "Pleiades: Stratonos Pyrgos/Caesarea (place 678401)"
+    },
+    "url": "https://pleiades.stoa.org/places/678401",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-missionbibleclass-org-new-testament-part2-acts-f",
+    "source": {
+      "en": "Mission Bible Class: Paul Goes to Jerusalem (Acts 21)"
+    },
+    "url": "https://missionbibleclass.org/new-testament/part2/acts-from-jerusalem-to-rome/paul-goes-to-jerusalem/?print=print",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-brentwoodbaptist-com-acts-204-2335",
+    "source": {
+      "en": "Brentwood Baptist study, Acts 20:4-23:35"
+    },
+    "url": "https://brentwoodbaptist.com/acts-204-2335/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-ccel-org-bible-phillips-cn341actspaularrest-",
+    "source": {
+      "en": "CCEL: Paul's Arrest (Acts) - Jerusalem, Felix, Caesarea"
+    },
+    "url": "https://www.ccel.org/bible/phillips/CN341ACTSPaulArrest.htm",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-executableoutlines-com-topical-series-harmony-li",
+    "source": {
+      "en": "Executable Outlines: Harmony of the Life of Paul - Imprisonment in Caesarea"
+    },
+    "url": "https://executableoutlines.com/topical_series/harmony-life-of-paul/paul_09.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+    "source": {
+      "en": "Thirdmill: King Agrippa - Acts 25:13-26:32"
+    },
+    "url": "https://thirdmill.org/articles/der_thomas/der_thomas.Acts.25_26.32.html",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-enduringword-com-bible-commentary-acts-25",
+    "source": {
+      "en": "Enduring Word commentary, Acts 25"
+    },
+    "url": "https://enduringword.com/bible-commentary/acts-25/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pleiades-stoa-org-places-678393",
+    "source": {
+      "en": "Pleiades: Sidon (place 678393)"
+    },
+    "url": "https://pleiades.stoa.org/places/678393",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+    "source": {
+      "en": "Tyndale House: Paul's Voyage to Malta - Part 1"
+    },
+    "url": "https://tyndalehouse.com/2026/04/16/pauls-voyage-to-malta-part-1/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pleiades-stoa-org-places-639005",
+    "source": {
+      "en": "Pleiades: Myra (Lycia), place 639005"
+    },
+    "url": "https://pleiades.stoa.org/places/639005",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-fair-havens",
+    "source": {
+      "en": "BiblePlaces: Fair Havens, Crete"
+    },
+    "url": "https://www.bibleplaces.com/fair-havens/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-kaloi-limenes",
+    "source": {
+      "en": "Wikipedia: Kaloi Limenes (coordinates)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Kaloi_Limenes",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-knidos",
+    "source": {
+      "en": "Wikipedia: Knidos"
+    },
+    "url": "https://en.wikipedia.org/wiki/Knidos",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+    "source": {
+      "en": "Biblical Archaeology Society: Ancient Phoenix - The Harbor That Might Have Been"
+    },
+    "url": "https://www.biblicalarchaeology.org/daily/biblical-topics/new-testament/ancient-phoenix-the-harbor-that-might-have-been/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-www-bibleplaces-com-st-pauls-bay-malta",
+    "source": {
+      "en": "BiblePlaces: St. Paul's Bay, Malta"
+    },
+    "url": "https://www.bibleplaces.com/st-pauls-bay-malta/",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+    "source": {
+      "en": "Wikipedia: St. Paul's Bay (coordinates; Salina Bay anchors)"
+    },
+    "url": "https://en.wikipedia.org/wiki/St._Paul%27s_Bay",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
+    "source": {
+      "en": "HolyLandPhotos: Saint Paul's Islands - Shipwreck on Malta Part 2"
+    },
+    "url": "https://holylandphotos.wordpress.com/2021/12/20/saint-pauls-islands-shipwreck-on-malta-part-2/",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-topostext-org-place-408141pdik",
+    "source": {
+      "en": "ToposText: Dikaiarcheia/Puteoli (coordinates, modern Pozzuoli)"
+    },
+    "url": "https://topostext.org/place/408141PDik",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pleiades-stoa-org-places-432815",
+    "source": {
+      "en": "Pleiades: Puteoli (place 432815)"
+    },
+    "url": "https://pleiades.stoa.org/places/432815",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+    "source": {
+      "en": "CCEL: Paul to Rome (Acts 27-28)"
+    },
+    "url": "https://www.ccel.org/bible/phillips/CN250ACTSPaultoRome.htm",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-enduringword-com-bible-commentary-acts-27",
+    "source": {
+      "en": "Enduring Word commentary, Acts 27 (and series)"
+    },
+    "url": "https://enduringword.com/bible-commentary/acts-27/",
+    "kind": "secondary-scholarly"
+  }
+]

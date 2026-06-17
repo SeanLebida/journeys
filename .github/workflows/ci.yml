@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [development, main]
+  pull_request:
+    branches: [development]
+
+jobs:
+  web:
+    name: typecheck · lint · test · build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build:content # validates content/ + compiles Bible DB (the accuracy gate)
+      - run: npm run build
+
+  # Native (iOS/Android) build + Appium offline E2E are added in M7/M9.
+  # iOS requires macOS runners + signing secrets; tracked as a release gate.

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "person-jesus",
+    "name": { "en": "Jesus of Nazareth" },
+    "role": { "en": "Teacher; central figure of the Gospels" },
+    "summary": { "en": "Itinerant Jewish teacher and healer of Galilee whose ministry, death and resurrection are the subject of the four Gospels. Crucified under Pontius Pilate at Passover (AD 30 in this atlas's default chronology; AD 33 is also defended)." },
+    "scriptureRefs": ["Luke 3:23", "Mark 1:14", "John 1:14"],
+    "citations": ["cit-jesus", "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"]
+  },
+  {
+    "id": "person-paul",
+    "name": { "en": "Paul the Apostle (Saul of Tarsus)" },
+    "role": { "en": "Apostle to the Gentiles; missionary" },
+    "summary": { "en": "A Pharisee and Roman citizen from Tarsus in Cilicia who, after a transformative encounter on the Damascus road, became the foremost early Christian missionary, undertaking the journeys mapped here and writing much of the New Testament." },
+    "scriptureRefs": ["Acts 9:1", "Acts 13:9", "Galatians 1:1"],
+    "citations": ["cit-apostle-paul"]
+  },
+  {
+    "id": "person-barnabas",
+    "name": { "en": "Barnabas" },
+    "role": { "en": "Companion of Paul on the first journey" },
+    "summary": { "en": "A Cypriot Levite and early leader of the church who introduced Saul to the apostles and was his senior partner on the first missionary journey, until they parted over John Mark." },
+    "scriptureRefs": ["Acts 4:36", "Acts 13:2", "Acts 15:36"],
+    "citations": ["cit-barnabas"]
+  },
+  {
+    "id": "person-john-mark",
+    "name": { "en": "John Mark" },
+    "role": { "en": "Assistant on the first journey; traditionally the evangelist Mark" },
+    "summary": { "en": "Travelled with Paul and Barnabas from Antioch but left them at Perga (Acts 13:13); the later disagreement over him split Paul and Barnabas. Traditionally identified with Mark the evangelist." },
+    "scriptureRefs": ["Acts 13:13", "Acts 15:37"],
+    "citations": ["cit-john-mark"]
+  },
+  {
+    "id": "person-silas",
+    "name": { "en": "Silas (Silvanus)" },
+    "role": { "en": "Companion of Paul on the second journey" },
+    "summary": { "en": "A leading member of the Jerusalem church and a Roman citizen who accompanied Paul on the second journey, sharing the Philippian imprisonment." },
+    "scriptureRefs": ["Acts 15:40", "Acts 16:25"],
+    "citations": ["cit-silas"]
+  },
+  {
+    "id": "person-timothy",
+    "name": { "en": "Timothy" },
+    "role": { "en": "Disciple and co-worker of Paul" },
+    "summary": { "en": "A young disciple from Lystra, son of a Jewish mother and Greek father, who joined Paul on the second journey and became a trusted delegate and the recipient of two letters." },
+    "scriptureRefs": ["Acts 16:1", "1 Corinthians 4:17"],
+    "citations": ["cit-timothy"]
+  },
+  {
+    "id": "person-luke",
+    "name": { "en": "Luke the Evangelist" },
+    "role": { "en": "Physician; author of Luke–Acts" },
+    "summary": { "en": "Companion of Paul and author of the Gospel of Luke and Acts; the 'we' passages of Acts (beginning at Troas, Acts 16:10) suggest he joined the journeys as an eyewitness." },
+    "scriptureRefs": ["Colossians 4:14", "Acts 16:10"],
+    "citations": ["cit-luke-evangelist"]
+  },
+  {
+    "id": "person-peter",
+    "name": { "en": "Simon Peter" },
+    "role": { "en": "Leading apostle" },
+    "summary": { "en": "Fisherman of Bethsaida/Capernaum and foremost of the Twelve; spokesman at Pentecost and the Jerusalem Council. Strong early tradition places his later ministry and martyrdom at Rome (not directly narrated in Acts)." },
+    "scriptureRefs": ["Matthew 16:16", "Acts 2:14", "Acts 15:7"],
+    "citations": ["cit-simon-peter"]
+  },
+  {
+    "id": "person-sergius-paulus",
+    "name": { "en": "Sergius Paulus" },
+    "role": { "en": "Roman proconsul of Cyprus" },
+    "summary": { "en": "The proconsul at Paphos who summoned Barnabas and Saul (Acts 13:7). Inscriptions attest the senatorial gens Sergia and a 'Paulus [proconsul]' on Cyprus, corroborating the office and family, though none can be tied to the exact official of Acts 13." },
+    "scriptureRefs": ["Acts 13:7"],
+    "citations": ["cit-sergius-paulus", "cit-biblearchaeology-org-research-chronological-cate"]
+  },
+  {
+    "id": "person-gallio",
+    "name": { "en": "Gallio (L. Junius Gallio Annaeanus)" },
+    "role": { "en": "Roman proconsul of Achaia" },
+    "summary": { "en": "Proconsul of Achaia who dismissed the case against Paul at Corinth (Acts 18:12–17). The Delphi (Gallio) inscription dates his proconsulship to c. AD 51–52, the single firmest anchor for Pauline chronology." },
+    "scriptureRefs": ["Acts 18:12"],
+    "citations": ["cit-gallio-person", "cit-gallio-inscription"]
+  },
+  {
+    "id": "person-pontius-pilate",
+    "name": { "en": "Pontius Pilate" },
+    "role": { "en": "Roman prefect of Judea (AD 26–36)" },
+    "summary": { "en": "The Roman governor who sentenced Jesus to crucifixion. His historicity and title ('prefect') are confirmed by the Pilate Stone found at Caesarea Maritima in 1961." },
+    "scriptureRefs": ["Mark 15:15", "John 19:16"],
+    "citations": ["cit-pontius-pilate", "cit-pilate-stone"]
+  }
+]

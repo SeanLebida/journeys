@@ -1,0 +1,44 @@
+[
+  {
+    "id": "site-patmos",
+    "ancientName": { "en": "Patmos" },
+    "modernName": { "en": "Patmos" },
+    "modernLocation": { "en": "Patmos island, Dodecanese, Greece" },
+    "coordinates": {
+      "value": { "lat": 37.3089, "lon": 26.5489 },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": ["cit-patmos"]
+    },
+    "summary": { "en": "Small Aegean island where, by his own account, John was exiled 'for the word of God' and received the visions of Revelation (Revelation 1:9). The traditional Cave of the Apocalypse is a major pilgrimage site." },
+    "citations": ["cit-patmos"]
+  },
+  {
+    "id": "site-hierapolis",
+    "ancientName": { "en": "Hierapolis" },
+    "modernName": { "en": "Pamukkale" },
+    "modernLocation": { "en": "Pamukkale, Denizli Province, Turkey" },
+    "coordinates": {
+      "value": { "lat": 37.9244, "lon": 29.1289 },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": ["cit-philip-hierapolis"]
+    },
+    "summary": { "en": "Phrygian city near Laodicea and Colossae where strong tradition (and an excavated martyrium) places the ministry and death of the apostle Philip." },
+    "citations": ["cit-philip-hierapolis"]
+  },
+  {
+    "id": "site-alexandria",
+    "ancientName": { "en": "Alexandria" },
+    "modernName": { "en": "Alexandria" },
+    "modernLocation": { "en": "Alexandria, Egypt" },
+    "coordinates": {
+      "value": { "lat": 31.2001, "lon": 29.9187 },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": ["cit-mark-alexandria"]
+    },
+    "summary": { "en": "Great Hellenistic city of Egypt; church tradition credits Mark the Evangelist with founding its Christian community and serving as its first bishop." },
+    "citations": ["cit-mark-alexandria"]
+  }
+]

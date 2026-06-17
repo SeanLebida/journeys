@@ -1,0 +1,105 @@
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { ModePanel } from '../ModePanel';
+import { useBundle, type BundleIndex } from '../../content/useBundle';
+import { useMap } from '../../map/MapProvider';
+import { Citations, ScripturePassage } from '../../content/citations';
+
+function reducedMotion(): boolean {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+export default function LessonMode() {
+  const { lessonId } = useParams();
+  const { bundle, loading, error } = useBundle();
+  const { t } = useTranslation();
+  if (loading) return <ModePanel title={t('modes.lessons.title')}>{t('common.loading')}</ModePanel>;
+  if (error || !bundle) return <ModePanel title={t('modes.lessons.title')}>Could not load content.</ModePanel>;
+  if (!lessonId) return <LessonPicker bundle={bundle} />;
+  return <LessonPlayer bundle={bundle} lessonId={lessonId} />;
+}
+
+function LessonPicker({ bundle }: { bundle: BundleIndex }) {
+  const { t } = useTranslation();
+  return (
+    <ModePanel title={t('modes.lessons.title')}>
+      <p>Narrated walkthroughs that move across the map as you read.</p>
+      <ul className="journey-list">
+        {bundle.lessons.map((l) => (
+          <li key={l.id}>
+            <Link to={`/lessons/${l.id}`} className="journey-list__item">
+              <strong>{l.title.en}</strong>
+              <span className="journey-list__summary">{l.steps.length} steps</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </ModePanel>
+  );
+}
+
+function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: string }) {
+  const { t } = useTranslation();
+  const { mapRef, ready } = useMap();
+  const lesson = bundle.lesson(lessonId);
+  const [i, setI] = useState(0);
+  const step = lesson?.steps[i];
+
+  // Move the camera to the current step.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !step) return;
+    const focus =
+      step.mapFocus ??
+      (step.siteId ? siteCenter(bundle, step.siteId) : undefined) ??
+      (step.stopId ? stopCenter(bundle, step.stopId) : undefined);
+    if (!focus) return;
+    const opts = { center: [focus.lon, focus.lat] as [number, number], zoom: focus.zoom ?? 8 };
+    if (reducedMotion()) map.jumpTo(opts);
+    else map.flyTo({ ...opts, duration: 900 });
+  }, [mapRef, ready, step, bundle]);
+
+  if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
+
+  return (
+    <ModePanel title={lesson.title.en}>
+      <Link to="/lessons" className="backlink">
+        ← {t('nav.lessons')}
+      </Link>
+      <div className="lesson-progress">
+        <button type="button" onClick={() => setI((n) => Math.max(0, n - 1))} disabled={i === 0}>
+          ← Prev
+        </button>
+        <span>
+          Step {i + 1} / {lesson.steps.length}
+        </span>
+        <button
+          type="button"
+          onClick={() => setI((n) => Math.min(lesson.steps.length - 1, n + 1))}
+          disabled={i === lesson.steps.length - 1}
+        >
+          Next →
+        </button>
+      </div>
+
+      <div className="lesson-step" aria-live="polite">
+        <p className="lesson-step__body">{step.body.en}</p>
+        {step.scriptureRefs?.map((r) => (
+          <ScripturePassage key={r} raw={r} />
+        ))}
+      </div>
+
+      <Citations ids={lesson.citations} bundle={bundle} />
+    </ModePanel>
+  );
+}
+
+function siteCenter(bundle: BundleIndex, id: string): { lat: number; lon: number; zoom?: number } | undefined {
+  const s = bundle.site(id);
+  return s ? { ...s.coordinates.value, zoom: 8 } : undefined;
+}
+function stopCenter(bundle: BundleIndex, id: string): { lat: number; lon: number; zoom?: number } | undefined {
+  const stop = bundle.stop(id);
+  return stop ? siteCenter(bundle, stop.siteId) : undefined;
+}

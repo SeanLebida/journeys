@@ -1,0 +1,19 @@
+[
+  {
+    "id": "journey-apostolic-traditions",
+    "title": { "en": "Traditions of the Other Apostles" },
+    "kind": "apostolic",
+    "dateRange": { "startYear": 44, "endYear": 100, "display": { "en": "c. AD 44–100 (traditions)" }, "approximate": true },
+    "summary": { "en": "Where the other apostles are said to have gone after Acts. Most of this rests on later church tradition rather than the New Testament, so these stops are marked 'legendary' and dated only loosely. Routes outside the Mediterranean (e.g. Thomas in India) are noted in the sources but not mapped here." },
+    "color": "#6b4a8f",
+    "stops": [
+      "stop-apostolic-antioch-peter-0",
+      "stop-apostolic-rome-peter-1",
+      "stop-apostolic-ephesus-john-2",
+      "stop-apostolic-patmos-john-3",
+      "stop-apostolic-hierapolis-philip-4",
+      "stop-apostolic-alexandria-mark-5"
+    ],
+    "citations": ["cit-simon-peter", "cit-john-ephesus", "cit-patmos", "cit-philip-hierapolis", "cit-mark-alexandria"]
+  }
+]

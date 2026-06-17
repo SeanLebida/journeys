@@ -1,0 +1,60 @@
+[
+  {
+    "id": "lesson-galilean-ministry",
+    "title": { "en": "The Galilean Ministry" },
+    "journeyId": "journey-ministry",
+    "steps": [
+      {
+        "siteId": "site-capernaum",
+        "body": { "en": "Jesus made Capernaum, a fishing town on the north shore of the Sea of Galilee, the base of his Galilean ministry — Matthew calls it 'his own city'. Here he taught in the synagogue, healed Peter's mother-in-law, and called fishermen and a tax-collector to follow him." },
+        "scriptureRefs": ["Matthew 4:13", "Mark 2:1"],
+        "mapFocus": { "lat": 32.88111, "lon": 35.575, "zoom": 9 }
+      },
+      {
+        "siteId": "site-sea-of-galilee",
+        "body": { "en": "The lake itself is the stage for much of the ministry: the calling of the first disciples, teaching from a boat, the calming of the storm, and the walking on the water. Its sudden squalls, dropping from the surrounding hills, frame several Gospel scenes." },
+        "scriptureRefs": ["Mark 1:16", "Mark 4:35"],
+        "mapFocus": { "lat": 32.8167, "lon": 35.5833, "zoom": 10 }
+      },
+      {
+        "siteId": "site-caesarea-philippi",
+        "body": { "en": "Far to the north, at the pagan sanctuary of Caesarea Philippi by the springs of the Jordan, Peter confessed Jesus as the Messiah — the turning point after which Jesus began to teach plainly about his coming death in Jerusalem." },
+        "scriptureRefs": ["Matthew 16:13"],
+        "mapFocus": { "lat": 33.24861, "lon": 35.69444, "zoom": 9 }
+      }
+    ],
+    "citations": ["cit-en-wikipedia-org-wiki-capernaum", "cit-en-wikipedia-org-wiki-sea-of-galilee", "cit-en-wikipedia-org-wiki-caesarea-philippi"]
+  },
+  {
+    "id": "lesson-paul-first-journey",
+    "title": { "en": "Paul's First Journey: Antioch to Galatia" },
+    "journeyId": "journey-paul-1",
+    "steps": [
+      {
+        "siteId": "site-antioch",
+        "body": { "en": "The church at Syrian Antioch — where believers were first called 'Christians' — set apart Barnabas and Saul and sent them out. Antioch, not Jerusalem, becomes the launch-point of the Gentile mission." },
+        "scriptureRefs": ["Acts 13:1"],
+        "mapFocus": { "lat": 36.2, "lon": 36.16, "zoom": 6 }
+      },
+      {
+        "siteId": "site-paphos",
+        "body": { "en": "At Paphos, the Roman capital of Cyprus, the pair confronted the magician Elymas before the proconsul Sergius Paulus. From this point Luke calls the apostle 'Paul' and treats him as the leader." },
+        "scriptureRefs": ["Acts 13:6"],
+        "mapFocus": { "lat": 34.7571, "lon": 32.4065, "zoom": 7 }
+      },
+      {
+        "siteId": "site-pisidian-antioch",
+        "body": { "en": "In the synagogue of Pisidian Antioch Paul preached his first recorded sermon, tracing Israel's history to Jesus. Welcomed, then opposed, he turned to the Gentiles — a pattern repeated across the journeys." },
+        "scriptureRefs": ["Acts 13:14"],
+        "mapFocus": { "lat": 38.3062, "lon": 31.1899, "zoom": 7 }
+      },
+      {
+        "siteId": "site-lystra",
+        "body": { "en": "At Lystra a healing led the crowd to hail Paul and Barnabas as the gods Hermes and Zeus; soon after, hostile agitators stoned Paul and left him for dead. He recovered and pressed on to Derbe before retracing the route home." },
+        "scriptureRefs": ["Acts 14:8", "Acts 14:19"],
+        "mapFocus": { "lat": 37.6019, "lon": 32.3383, "zoom": 7 }
+      }
+    ],
+    "citations": ["cit-biblearchaeology-org-research-chronological-cate"]
+  }
+]

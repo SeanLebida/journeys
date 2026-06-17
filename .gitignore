@@ -1,0 +1,34 @@
+node_modules/
+dist/
+dist-content/
+dist-ssr/
+*.local
+.DS_Store
+
+# Vite / build
+.vite/
+coverage/
+playwright-report/
+test-results/
+
+# Capacitor native projects (generated; regenerated via `cap add`)
+/ios/App/Pods/
+/android/.gradle/
+/android/app/build/
+/android/build/
+/ios/App/Podfile.lock
+
+# Generated content artifacts (produced by `npm run build:content`)
+public/dist-content/
+
+# Large raw source data (compiled into dist-content/)
+content/bible-src/
+content/bible-src/*.zip
+content/bible-src/*.usfm
+content/bible-src/raw/
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
