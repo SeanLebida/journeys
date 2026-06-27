@@ -57,6 +57,7 @@
       "Matthew 13:54",
       "John 1:46"
     ],
+    "artifacts": ["artifact-nazareth-house"],
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
@@ -460,6 +461,7 @@
       "Mark 13:1",
       "John 7:1"
     ],
+    "artifacts": ["artifact-pool-of-siloam"],
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
@@ -550,6 +552,7 @@
       "Luke 23:1",
       "John 18:28"
     ],
+    "artifacts": ["artifact-pilate-stone", "artifact-caiaphas-ossuary"],
     "confidence": "medium",
     "reviewStatus": "self-reviewed",
     "citations": [
@@ -1101,6 +1104,7 @@
       "2 Thessalonians 1:1",
       "Philippians 4:16"
     ],
+    "artifacts": ["artifact-politarch-inscription"],
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
@@ -1186,6 +1190,7 @@
       "2 Corinthians 1:1",
       "Romans 16:1"
     ],
+    "artifacts": ["artifact-gallio-inscription", "artifact-erastus-inscription"],
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [

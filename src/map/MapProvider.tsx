@@ -53,12 +53,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
       ],
       fitBoundsOptions: { padding: 24, animate: false },
       attributionControl: false,
-      dragRotate: false,
-      pitchWithRotate: false,
+      dragRotate: true,
+      pitchWithRotate: true,
+      maxPitch: 60,
       fadeDuration: reduce ? 0 : 300,
     });
-
-    map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.addControl(
       new maplibregl.AttributionControl({
