@@ -61,8 +61,9 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     else map.flyTo({ ...opts, duration: 900 });
   }, [mapRef, ready, step, bundle]);
 
-  // Drop an interactive marker at each step's location; clicking one jumps
-  // straight to that step (a visual, clickable table of contents on the map).
+  // Drop an interactive numbered marker + name label at each step's location;
+  // clicking either jumps straight to that step (a clickable, named table of
+  // contents on the map).
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !lesson) return;
@@ -71,15 +72,26 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
         const focus =
           s.mapFocus ?? (s.siteId ? siteCenter(bundle, s.siteId) : undefined) ?? (s.stopId ? stopCenter(bundle, s.stopId) : undefined);
         if (!focus) return null;
-        const el = document.createElement('button');
-        el.type = 'button';
-        el.className = `lesson-step-marker${idx === i ? ' lesson-step-marker--active' : ''}`;
-        el.textContent = String(idx + 1);
-        el.setAttribute('aria-label', `Jump to step ${idx + 1} of ${lesson.steps.length}`);
-        el.addEventListener('click', () => setI(idx));
-        return new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat([focus.lon, focus.lat]).addTo(map);
+        const pin = document.createElement('button');
+        pin.type = 'button';
+        pin.className = `lesson-step-marker${idx === i ? ' lesson-step-marker--active' : ''}`;
+        pin.textContent = String(idx + 1);
+        const name = stepSiteName(bundle, s);
+        pin.setAttribute('aria-label', name ? `Jump to step ${idx + 1}: ${name}` : `Jump to step ${idx + 1} of ${lesson.steps.length}`);
+        pin.addEventListener('click', () => setI(idx));
+        const pinMarker = new maplibregl.Marker({ element: pin, anchor: 'center' }).setLngLat([focus.lon, focus.lat]).addTo(map);
+        if (!name) return [pinMarker];
+        const label = document.createElement('button');
+        label.type = 'button';
+        label.className = 'site-label';
+        label.textContent = name;
+        label.setAttribute('aria-label', `Jump to step ${idx + 1}: ${name}`);
+        label.addEventListener('click', () => setI(idx));
+        const labelMarker = new maplibregl.Marker({ element: label, anchor: 'left', offset: [14, 0] }).setLngLat([focus.lon, focus.lat]).addTo(map);
+        return [pinMarker, labelMarker];
       })
-      .filter((m): m is maplibregl.Marker => m !== null);
+      .filter((m): m is maplibregl.Marker[] => m !== null)
+      .flat();
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, lesson, i, bundle]);
 
@@ -125,4 +137,12 @@ function siteCenter(bundle: BundleIndex, id: string): { lat: number; lon: number
 function stopCenter(bundle: BundleIndex, id: string): { lat: number; lon: number; zoom?: number } | undefined {
   const stop = bundle.stop(id);
   return stop ? siteCenter(bundle, stop.siteId) : undefined;
+}
+function stepSiteName(bundle: BundleIndex, step: { siteId?: string; stopId?: string }): string | undefined {
+  if (step.siteId) return bundle.site(step.siteId)?.ancientName.en;
+  if (step.stopId) {
+    const stop = bundle.stop(step.stopId);
+    return stop ? bundle.site(stop.siteId)?.ancientName.en : undefined;
+  }
+  return undefined;
 }

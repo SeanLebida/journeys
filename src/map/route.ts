@@ -57,6 +57,16 @@ export function lineProgress(coords: LngLat[], t: number): RouteProgress {
   return { line, point: coords[coords.length - 1] };
 }
 
+/** Progress fraction (0..1) at which `coords[index]` is reached — the inverse of `activeStopIndex`. */
+export function progressAtIndex(coords: LngLat[], index: number): number {
+  if (coords.length <= 1 || index <= 0) return 0;
+  const total = lineLength(coords);
+  if (total === 0) return 0;
+  let acc = 0;
+  for (let i = 1; i <= index && i < coords.length; i++) acc += haversine(coords[i - 1], coords[i]);
+  return Math.min(1, acc / total);
+}
+
 /** Index of the stop most recently reached at fraction `t`. */
 export function activeStopIndex(coords: LngLat[], t: number): number {
   if (coords.length <= 1) return 0;

@@ -29,6 +29,13 @@ function isDark(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 
+// Below this zoom, name labels overlap into unreadable noise (a full-atlas
+// or full-journey view can have 20-60 sites on screen at once) — hide them
+// and let the dots/pins carry the view; zooming in past it is the "click in
+// further" step that declutters. Toggled via a class instead of touching
+// each label's own layout so it stays cheap on every 'zoom' tick.
+const LABEL_ZOOM_THRESHOLD = 6;
+
 /**
  * Holds ONE MapLibre map for the whole app, created once by the layout route so
  * the WebGL context survives navigation between modes. Accessibility: keyboard
@@ -71,6 +78,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
       'bottom-right',
     );
 
+    const updateLabelVisibility = () => {
+      map.getContainer().classList.toggle('map-labels-visible', map.getZoom() >= LABEL_ZOOM_THRESHOLD);
+    };
+    map.on('zoom', updateLabelVisibility);
+
     const markers = REFERENCE_CITIES.map((city) => {
       const el = document.createElement('div');
       el.className = 'reference-city';
@@ -86,11 +98,13 @@ export function MapProvider({ children }: { children: ReactNode }) {
 
     map.on('load', () => {
       setReady(true);
+      updateLabelVisibility();
       markers.forEach((m) => m.addTo(map));
     });
     mapRef.current = map;
 
     return () => {
+      map.off('zoom', updateLabelVisibility);
       markers.forEach((m) => m.remove());
       map.remove();
       mapRef.current = null;

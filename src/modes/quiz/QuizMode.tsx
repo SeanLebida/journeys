@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import type { MapMouseEvent } from 'maplibre-gl';
+import maplibregl, { type MapMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
@@ -180,16 +180,17 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
 function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
   const { mapRef } = useMap();
   const [arming, setArming] = useState(false);
-  const [result, setResult] = useState<{ distance: number; correct: boolean } | null>(null);
+  const [result, setResult] = useState<{ distance: number; correct: boolean; guess: [number, number] } | null>(null);
   const target = q.answerSiteId ? bundle.site(q.answerSiteId) : undefined;
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !arming || !target) return;
     const onClick = (e: MapMouseEvent) => {
-      const d = haversine([e.lngLat.lng, e.lngLat.lat], [target.coordinates.value.lon, target.coordinates.value.lat]);
+      const guess: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+      const d = haversine(guess, [target.coordinates.value.lon, target.coordinates.value.lat]);
       const correct = d <= (q.toleranceKm ?? 50);
-      setResult({ distance: d, correct });
+      setResult({ distance: d, correct, guess });
       setArming(false);
       onAnswered(q.id, correct);
     };
@@ -200,6 +201,31 @@ function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
       map.getCanvas().style.cursor = '';
     };
   }, [mapRef, arming, target, q, onAnswered]);
+
+  // Reveal both pins by name once answered — never before, so the target
+  // location isn't given away while the question is still live.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !result || !target) return;
+    const guessEl = document.createElement('div');
+    guessEl.className = `site-label quiz-pin-label${result.correct ? ' quiz-pin-label--correct' : ' quiz-pin-label--wrong'}`;
+    guessEl.textContent = 'Your guess';
+    const guessMarker = new maplibregl.Marker({ element: guessEl, anchor: 'left', offset: [7, 0] })
+      .setLngLat(result.guess)
+      .addTo(map);
+
+    const targetEl = document.createElement('div');
+    targetEl.className = 'site-label quiz-pin-label quiz-pin-label--target';
+    targetEl.textContent = target.ancientName.en;
+    const targetMarker = new maplibregl.Marker({ element: targetEl, anchor: 'left', offset: [7, 0] })
+      .setLngLat([target.coordinates.value.lon, target.coordinates.value.lat])
+      .addTo(map);
+
+    return () => {
+      guessMarker.remove();
+      targetMarker.remove();
+    };
+  }, [mapRef, result, target]);
 
   if (!target) return <p>Map question unavailable.</p>;
   return (

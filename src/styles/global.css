@@ -187,10 +187,36 @@ a {
     -1px 0 0 var(--surface-raised);
   white-space: nowrap;
   cursor: pointer;
+  /* Hidden until zoomed in past MapProvider's LABEL_ZOOM_THRESHOLD — a
+     full-atlas or full-journey view has too many sites for labels to be
+     readable at once. Dots stay visible/clickable throughout; zooming in is
+     the "see more detail" step. The quiz answer reveal is exempt (only ever
+     2 labels, never congested, and needs to stay visible at any zoom). */
+  display: none;
+}
+.map-labels-visible .site-label,
+.site-label.quiz-pin-label {
+  display: inline-block;
 }
 .site-label:hover,
 .site-label:focus-visible {
   color: var(--accent);
+}
+
+/* Quiz map-pin answer reveal: decorative once shown, not clickable. */
+.quiz-pin-label {
+  cursor: default;
+  pointer-events: none;
+  font-weight: 700;
+}
+.quiz-pin-label--correct {
+  color: var(--c-high);
+}
+.quiz-pin-label--wrong {
+  color: var(--c-disputed);
+}
+.quiz-pin-label--target {
+  color: var(--c-medium);
 }
 
 /* ---- Mode panel (overlay card above the map) ---- */

@@ -1,11 +1,13 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle } from '../../content/useBundle';
+import { useMap } from '../../map/MapProvider';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import type { LngLat } from '../../map/route';
+import { progressAtIndex, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import type { BundleIndex } from '../../content/useBundle';
@@ -48,10 +50,11 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
 
   const stops = useMemo(() => (journey ? bundle.stopsFor(journey.id) : []), [bundle, journey]);
-  const { coords, stopIds, traceStops } = useMemo(() => {
+  const { coords, stopIds, traceStops, names } = useMemo(() => {
     const c: LngLat[] = [];
     const ids: string[] = [];
     const ts: TraceStop[] = [];
+    const n: string[] = [];
     stops.forEach((s, i) => {
       const site = bundle.site(s.siteId);
       if (!site) return;
@@ -59,8 +62,9 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       c.push([lon, lat]);
       ids.push(s.id);
       ts.push({ lng: lon, lat, confidence: s.confidence, reached: i === 0, order: s.order });
+      n.push(site.ancientName.en);
     });
-    return { coords: c, stopIds: ids, traceStops: ts };
+    return { coords: c, stopIds: ids, traceStops: ts, names: n };
   }, [bundle, stops]);
 
   useEffect(() => {
@@ -68,6 +72,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   }, [journeyId, setActiveJourney]);
 
   useRouteAnimation(coords, journey?.color ?? '#c75b39', traceStops, stopIds);
+  useStopLabels(coords, names);
 
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
@@ -83,6 +88,31 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       <ActiveStopPanel bundle={bundle} />
     </ModePanel>
   );
+}
+
+/** Name label at every stop on the traced route; clicking one scrubs straight to it. */
+function useStopLabels(coords: LngLat[], names: string[]): void {
+  const { mapRef, ready } = useMap();
+  const setProgress = useJourneyStore((s) => s.setProgress);
+  const pause = useJourneyStore((s) => s.pause);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const markers = coords.map(([lon, lat], i) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'site-label';
+      el.textContent = names[i] ?? '';
+      el.setAttribute('aria-label', `Jump to ${names[i]}`);
+      el.addEventListener('click', () => {
+        pause();
+        setProgress(progressAtIndex(coords, i));
+      });
+      return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
+    });
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, coords, names, setProgress, pause]);
 }
 
 function TraceControls({ stopCount }: { stopCount: number }) {
