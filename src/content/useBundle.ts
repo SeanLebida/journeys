@@ -14,6 +14,7 @@ export interface BundleIndex extends TBundle {
   lesson: (id: string) => TLesson | undefined;
   quiz: (id: string) => TQuiz | undefined;
   stopsFor: (journeyId: string) => TStop[];
+  stopsForSite: (siteId: string) => TStop[];
 }
 
 function index(b: TBundle): BundleIndex {
@@ -40,6 +41,7 @@ function index(b: TBundle): BundleIndex {
     quiz: (id) => quizzes.get(id),
     stopsFor: (journeyId) =>
       b.stops.filter((s) => s.journeyId === journeyId).sort((a, c) => a.order - c.order),
+    stopsForSite: (siteId) => b.stops.filter((s) => s.siteId === siteId),
   };
 }
 

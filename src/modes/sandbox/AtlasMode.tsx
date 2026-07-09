@@ -12,7 +12,7 @@ import {
   setLayerVisible,
   siteIdFromFeature,
 } from '../../map/layers/atlas';
-import { Citations, ConfidenceBadge } from '../../content/citations';
+import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 const YEAR_MIN = -10;
@@ -70,6 +70,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   }, [mapRef, ready, showSites, showRoutes, conf, maxYear]);
 
   const site = selected ? bundle.site(selected) : undefined;
+  const stopsHere = selected ? bundle.stopsForSite(selected) : [];
   const toggleConf = (c: string) =>
     setConf((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
 
@@ -108,6 +109,77 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           <p className="stop-panel__modern">{site.modernLocation.en}</p>
           <p>{site.summary.en}</p>
           <Citations ids={site.citations} bundle={bundle} />
+
+          {stopsHere.map((stop) => {
+            const journey = bundle.journey(stop.journeyId);
+            return (
+              <section key={stop.id} className="stop-visit">
+                <header className="stop-visit__head">
+                  <h4>
+                    {journey?.title.en ?? stop.journeyId} — {stop.dateRange.display.en}
+                  </h4>
+                  <ConfidenceBadge confidence={stop.confidence} />
+                </header>
+                <p>{stop.eventSummary.en}</p>
+
+                {stop.scriptureRefs.map((r) => (
+                  <ScripturePassage key={r} raw={r} />
+                ))}
+
+                {stop.persons && stop.persons.length > 0 && (
+                  <ul className="stop-visit__people">
+                    {stop.persons.map((pid) => {
+                      const person = bundle.person(pid);
+                      if (!person) return null;
+                      return (
+                        <li key={pid}>
+                          <strong>{person.name.en}</strong> — {person.role.en}
+                          <p>{person.summary.en}</p>
+                          <Citations ids={person.citations} bundle={bundle} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+
+                {stop.artifacts && stop.artifacts.length > 0 && (
+                  <ul className="stop-visit__artifacts">
+                    {stop.artifacts.map((aid) => {
+                      const artifact = bundle.artifact(aid);
+                      if (!artifact) return null;
+                      return (
+                        <li key={aid}>
+                          <strong>{artifact.name.en}</strong>
+                          <ConfidenceBadge confidence={artifact.confidence} />
+                          <p>{artifact.corroborates.en}</p>
+                          <DisputeNote text={artifact.disputes?.en} />
+                          <Citations ids={artifact.citations} bundle={bundle} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+
+                {stop.terms && stop.terms.length > 0 && (
+                  <dl className="stop-visit__terms">
+                    {stop.terms.map((tid) => {
+                      const term = bundle.term(tid);
+                      if (!term) return null;
+                      return (
+                        <div key={tid}>
+                          <dt>{term.term.en}</dt>
+                          <dd>{term.definition.en}</dd>
+                        </div>
+                      );
+                    })}
+                  </dl>
+                )}
+
+                <DisputeNote text={stop.disputes?.en} />
+                <Citations ids={stop.citations} bundle={bundle} />
+              </section>
+            );
+          })}
         </article>
       )}
     </ModePanel>

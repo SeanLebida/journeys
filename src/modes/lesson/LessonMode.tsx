@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
@@ -59,6 +60,28 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 900 });
   }, [mapRef, ready, step, bundle]);
+
+  // Drop an interactive marker at each step's location; clicking one jumps
+  // straight to that step (a visual, clickable table of contents on the map).
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !lesson) return;
+    const markers = lesson.steps
+      .map((s, idx) => {
+        const focus =
+          s.mapFocus ?? (s.siteId ? siteCenter(bundle, s.siteId) : undefined) ?? (s.stopId ? stopCenter(bundle, s.stopId) : undefined);
+        if (!focus) return null;
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = `lesson-step-marker${idx === i ? ' lesson-step-marker--active' : ''}`;
+        el.textContent = String(idx + 1);
+        el.setAttribute('aria-label', `Jump to step ${idx + 1} of ${lesson.steps.length}`);
+        el.addEventListener('click', () => setI(idx));
+        return new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat([focus.lon, focus.lat]).addTo(map);
+      })
+      .filter((m): m is maplibregl.Marker => m !== null);
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, lesson, i, bundle]);
 
   if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
 

@@ -81,6 +81,12 @@ a {
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
+  /* This div's own box otherwise blocks every click from reaching the map
+     underneath (a plain positioned element hit-tests across its full box
+     even where nothing is painted) — pan/zoom drag and every map click
+     handler (Atlas site dots, the quiz's map-pin question) were dead.
+     Re-enabled on .mode-panel, the only interactive content it renders. */
+  pointer-events: none;
 }
 
 /* ---- Persistent map surface (fills the main area, behind mode panels) ---- */
@@ -137,10 +143,38 @@ a {
   text-shadow: 0 1px 2px var(--bg);
 }
 
+/* Lesson step markers: clickable, numbered pins on the persistent map — a
+   visual table of contents for the current lesson's stops. */
+.lesson-step-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-raised);
+  background: var(--text-muted);
+  color: var(--surface-raised);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  padding: 0;
+}
+.lesson-step-marker--active {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+}
+
 /* ---- Mode panel (overlay card above the map) ---- */
 .mode-panel {
   position: relative;
   z-index: 2;
+  pointer-events: auto;
   margin: clamp(0.75rem, 2vw, 1.5rem) auto;
   margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
   max-width: var(--maxw);
@@ -433,6 +467,51 @@ a {
   font-size: 0.82rem;
   color: var(--text-muted);
   text-transform: capitalize;
+}
+.stop-visit {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--border);
+}
+.stop-visit__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+.stop-visit__head h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.stop-visit__people,
+.stop-visit__artifacts {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.stop-visit__people li,
+.stop-visit__artifacts li {
+  border-left: 2px solid var(--border);
+  padding-left: 0.6rem;
+}
+.stop-visit__people p,
+.stop-visit__artifacts p {
+  margin: 0.2rem 0;
+  font-size: 0.88rem;
+}
+.stop-visit__terms {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+.stop-visit__terms dt {
+  font-weight: 600;
+}
+.stop-visit__terms dd {
+  margin: 0 0 0.4rem;
+  color: var(--text-muted);
 }
 
 /* ---- Atlas controls ---- */
