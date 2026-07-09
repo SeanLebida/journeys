@@ -53,7 +53,8 @@ const ATTRIBUTIONS = [
   { id: 'ASV', name: 'American Standard Version (1901)', license: 'Public Domain', url: 'https://en.wikipedia.org/wiki/American_Standard_Version' },
   { id: 'bibleapi', name: 'bibleapi-bibles-json (text source)', license: 'Public Domain texts', url: 'https://github.com/bibleapi/bibleapi-bibles-json' },
   { id: 'MapLibre', name: 'MapLibre GL JS', license: 'BSD-3-Clause', url: 'https://maplibre.org/' },
-  { id: 'OpenStreetMap', name: 'OpenStreetMap contributors (planned basemap)', license: 'ODbL', url: 'https://www.openstreetmap.org/copyright' },
+  { id: 'NaturalEarth', name: 'Natural Earth (coastlines, land, country boundaries)', license: 'Public Domain', url: 'https://www.naturalearthdata.com/' },
+  { id: 'OpenStreetMap', name: 'OpenStreetMap contributors (planned detailed basemap)', license: 'ODbL', url: 'https://www.openstreetmap.org/copyright' },
 ];
 const REQUIRED_CREDITS = ['KJV', 'ASV', 'MapLibre'];
 

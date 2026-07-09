@@ -4,6 +4,7 @@ import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { buildBaseStyle } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
+import { REFERENCE_CITIES } from './reference-cities';
 
 interface MapContextValue {
   /** The single persistent MapLibre instance (null until first mount). */
@@ -65,15 +66,32 @@ export function MapProvider({ children }: { children: ReactNode }) {
         compact: true,
         // Full source credits live on the M9 attribution screen; this keeps the
         // on-map notice honest about the basemap.
-        customAttribution: 'Journeys · graticule basemap (M1)',
+        customAttribution: 'Journeys · basemap © Natural Earth (M1)',
       }),
       'bottom-right',
     );
 
-    map.on('load', () => setReady(true));
+    const markers = REFERENCE_CITIES.map((city) => {
+      const el = document.createElement('div');
+      el.className = 'reference-city';
+      el.setAttribute('aria-hidden', 'true');
+      const dot = document.createElement('span');
+      dot.className = 'reference-city__dot';
+      const label = document.createElement('span');
+      label.className = 'reference-city__label';
+      label.textContent = city.name;
+      el.append(dot, label);
+      return new maplibregl.Marker({ element: el, anchor: 'left' }).setLngLat([city.lon, city.lat]);
+    });
+
+    map.on('load', () => {
+      setReady(true);
+      markers.forEach((m) => m.addTo(map));
+    });
     mapRef.current = map;
 
     return () => {
+      markers.forEach((m) => m.remove());
       map.remove();
       mapRef.current = null;
       setReady(false);
@@ -83,13 +101,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
   return (
     <MapContext.Provider value={{ mapRef, ready }}>
       <div className="map-surface">
-        <div
-          ref={containerRef}
-          className="map-canvas"
-          data-testid="map-canvas"
-          role="img"
-          aria-label="Map of the ancient Mediterranean world"
-        />
+        <div className="map-canvas" data-testid="map-canvas" role="img" aria-label="Map of the ancient Mediterranean world">
+          {/* MapLibre sets inline position:relative on this container itself, so it
+              must be a plain, unstyled div nested inside the one CSS positions. */}
+          <div ref={containerRef} style={{ position: 'absolute', inset: 0 }} />
+        </div>
       </div>
       {children}
     </MapContext.Provider>
