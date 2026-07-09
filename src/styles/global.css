@@ -170,6 +170,29 @@ a {
   font-size: 0.8rem;
 }
 
+/* Atlas site name labels: a clickable text tag next to each dot (no glyph
+   source is shipped, so this can't be a MapLibre symbol layer). */
+.site-label {
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text);
+  text-shadow:
+    0 1px 0 var(--surface-raised),
+    0 -1px 0 var(--surface-raised),
+    1px 0 0 var(--surface-raised),
+    -1px 0 0 var(--surface-raised);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.site-label:hover,
+.site-label:focus-visible {
+  color: var(--accent);
+}
+
 /* ---- Mode panel (overlay card above the map) ---- */
 .mode-panel {
   position: relative;

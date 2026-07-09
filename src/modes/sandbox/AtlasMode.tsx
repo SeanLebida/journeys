@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { MapLayerMouseEvent } from 'maplibre-gl';
+import maplibregl, { type MapLayerMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import {
   ATLAS_LAYERS,
+  atlasSiteLabels,
   ensureAtlasLayers,
   removeAtlasLayers,
   setAtlasFilter,
@@ -68,6 +69,25 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     setLayerVisible(map, ATLAS_LAYERS.routes, showRoutes);
     setAtlasFilter(map, YEAR_MIN, maxYear, conf);
   }, [mapRef, ready, showSites, showRoutes, conf, maxYear]);
+
+  // Name label next to every visible dot — no glyph/font source is shipped,
+  // so labels are DOM markers (mirrors the circle layer's own filter).
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !showSites) return;
+    const markers = atlasSiteLabels(bundle)
+      .filter((s) => s.ymax >= YEAR_MIN && s.ymin <= maxYear && conf.includes(s.confidence))
+      .map((s) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'site-label';
+        el.textContent = s.name;
+        el.setAttribute('aria-label', `Show details for ${s.name}`);
+        el.addEventListener('click', () => setSelected(s.id));
+        return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([s.lon, s.lat]).addTo(map);
+      });
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, bundle, showSites, conf, maxYear]);
 
   const site = selected ? bundle.site(selected) : undefined;
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];

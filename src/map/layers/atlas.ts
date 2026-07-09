@@ -7,8 +7,8 @@ const SRC = { sites: 'atlas-sites', routes: 'atlas-routes' };
 
 const CONF_COLOR = ['match', ['get', 'confidence'], 'high', '#2f6f6b', 'medium', '#c9a227', 'legendary', '#6b4a8f', 'disputed', '#c75b39', '#888888'];
 
-/** Build a points FeatureCollection of all sites, with date span from stops. */
-export function atlasSitesFC(bundle: BundleIndex): FeatureCollection {
+/** Each site's date span, widened to cover every stop that visits it. */
+function computeSiteSpans(bundle: BundleIndex): Map<string, [number, number]> {
   const span = new Map<string, [number, number]>();
   for (const st of bundle.stops) {
     const cur = span.get(st.siteId);
@@ -16,6 +16,12 @@ export function atlasSitesFC(bundle: BundleIndex): FeatureCollection {
     const hi = Math.max(cur?.[1] ?? st.dateRange.endYear, st.dateRange.endYear);
     span.set(st.siteId, [lo, hi]);
   }
+  return span;
+}
+
+/** Build a points FeatureCollection of all sites, with date span from stops. */
+export function atlasSitesFC(bundle: BundleIndex): FeatureCollection {
+  const span = computeSiteSpans(bundle);
   const features: Feature[] = bundle.sites.map((s) => {
     const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
     return {
@@ -25,6 +31,34 @@ export function atlasSitesFC(bundle: BundleIndex): FeatureCollection {
     };
   });
   return { type: 'FeatureCollection', features };
+}
+
+export interface AtlasSiteLabel {
+  id: string;
+  name: string;
+  lon: number;
+  lat: number;
+  confidence: string;
+  ymin: number;
+  ymax: number;
+}
+
+/** Same sites as `atlasSitesFC`, as plain records — for the DOM name-label
+ * markers (no glyph/font source is shipped, so labels can't be a symbol layer). */
+export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
+  const span = computeSiteSpans(bundle);
+  return bundle.sites.map((s) => {
+    const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
+    return {
+      id: s.id,
+      name: s.ancientName.en,
+      lon: s.coordinates.value.lon,
+      lat: s.coordinates.value.lat,
+      confidence: s.coordinates.confidence,
+      ymin,
+      ymax,
+    };
+  });
 }
 
 /** One LineString per journey, carrying its route color. */
