@@ -9,6 +9,7 @@
         "prompt": { "en": "The Pilate Stone, found at Caesarea Maritima, confirms Pontius Pilate held which title?" },
         "choices": [{ "en": "Procurator" }, { "en": "Prefect" }, { "en": "Proconsul" }, { "en": "Tetrarch" }],
         "answerIndex": 1,
+        "answerSiteId": "site-caesarea",
         "explanation": { "en": "The inscription reads '[Praef]ectus Iuda[ea]e' — 'prefect of Judea' — the correct title for governors of Judea in Pilate's era." },
         "citations": ["cit-pilate-stone"]
       },
@@ -18,6 +19,7 @@
         "prompt": { "en": "The Delphi (Gallio) Inscription gives the single firmest fixed date for Paul's chronology, placing Gallio's proconsulship around AD 51–52." },
         "answerIndex": 0,
         "choices": [{ "en": "True" }, { "en": "False" }],
+        "answerSiteId": "site-corinth",
         "explanation": { "en": "True. Acts 18:12 places Paul before Gallio at Corinth; the inscription dates Gallio to c. AD 51–52, anchoring the surrounding journeys." },
         "citations": ["cit-gallio-inscription"]
       },
@@ -32,6 +34,7 @@
           { "en": "Unknown to within a century" }
         ],
         "answerIndex": 2,
+        "answerSiteId": "site-jerusalem",
         "explanation": { "en": "A Friday near Passover under Pilate yields two candidate years; AD 30 is the mainstream default and AD 33 a serious minority. This atlas uses AD 30 by default and flags the dispute." },
         "citations": ["cit-en-wikipedia-org-wiki-crucifixion-of-jesus"]
       },
