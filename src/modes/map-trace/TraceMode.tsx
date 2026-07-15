@@ -5,6 +5,7 @@ import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
+import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { progressAtIndex, type LngLat } from '../../map/route';
@@ -84,6 +85,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       <p className="journey-trace__date">{journey.dateRange.display.en}</p>
       <p>{journey.summary.en}</p>
       {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+      <LayerPanel />
       <TraceControls stopCount={stops.length} />
       <ActiveStopPanel bundle={bundle} />
     </ModePanel>

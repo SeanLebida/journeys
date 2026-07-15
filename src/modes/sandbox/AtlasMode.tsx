@@ -4,6 +4,7 @@ import maplibregl, { type MapLayerMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
+import { LayerPanel } from '../../map/LayerPanel';
 import {
   ATLAS_LAYERS,
   atlasSiteLabels,
@@ -98,8 +99,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     <ModePanel title={t('modes.atlas.title')}>
       <p>Toggle layers and filter by period. Tap a site for its details and sources.</p>
 
+      <LayerPanel />
+
       <fieldset className="atlas-toggles">
-        <legend>Layers</legend>
+        <legend>Atlas content</legend>
         <label><input type="checkbox" checked={showSites} onChange={(e) => setShowSites(e.target.checked)} /> Sites</label>
         <label><input type="checkbox" checked={showRoutes} onChange={(e) => setShowRoutes(e.target.checked)} /> Journey routes</label>
       </fieldset>

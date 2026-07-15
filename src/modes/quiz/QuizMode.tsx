@@ -5,6 +5,7 @@ import maplibregl, { type MapMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
+import { LayerPanel } from '../../map/LayerPanel';
 import { haversine } from '../../map/route';
 import { Citations } from '../../content/citations';
 import { useQuizStore } from '../../state/useQuizStore';
@@ -71,6 +72,7 @@ function QuizRunner({ bundle, quiz }: { bundle: BundleIndex; quiz: TQuiz }) {
         Score: {score} / {quiz.questions.length}
         {done && ' — complete!'}
       </p>
+      <LayerPanel />
       {quiz.questions.map((q) => (
         <Question key={q.id} bundle={bundle} q={q} onAnswered={onAnswered} />
       ))}
