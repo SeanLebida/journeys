@@ -979,3 +979,6 @@ a {
 .site-view-links__label {
   color: var(--text-muted);
 }
+.site-view-links__group {
+  white-space: nowrap;
+}

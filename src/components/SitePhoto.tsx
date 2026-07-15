@@ -56,21 +56,44 @@ export function SitePhoto({ siteId }: { siteId: string }) {
 /**
  * Deep links into external map services for a live look at the place today —
  * aerial/satellite and street-side views without bundling any API keys.
- * Opens in the browser; purely optional extras on top of the offline app.
+ * Opens in the browser (Apple Maps opens the native app on iOS, where this
+ * app also ships via Capacitor); purely optional extras on the offline app.
+ *
+ * Source choices are coverage-driven for this atlas's regions (Levant,
+ * Anatolia, Greece, Italy): Apple's Look Around and Bing Streetside have no
+ * coverage there and Look Around has no keyless deep link, so street-level
+ * is Google Street View + Mapillary (open, crowdsourced, real coverage at
+ * many of these ruins); aerial is Google + Apple satellite.
  */
 export function SiteViewLinks({ lat, lon, name }: { lat: number; lon: number; name: string }) {
-  const satellite = `https://www.google.com/maps/@?api=1&map_action=map&center=${lat},${lon}&zoom=15&basemap=satellite`;
-  const streetView = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lon}`;
+  const aerial = [
+    { label: 'Google', url: `https://www.google.com/maps/@?api=1&map_action=map&center=${lat},${lon}&zoom=15&basemap=satellite` },
+    { label: 'Apple', url: `https://maps.apple.com/?ll=${lat},${lon}&t=k&z=15` },
+  ];
+  const street = [
+    { label: 'Street View', url: `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lon}` },
+    { label: 'Mapillary', url: `https://www.mapillary.com/app/?lat=${lat}&lng=${lon}&z=15` },
+  ];
+  const linkRow = (kind: string, links: { label: string; url: string }[]) =>
+    links.map((l, i) => (
+      <span key={l.label}>
+        {i > 0 && ' · '}
+        <a
+          href={l.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${kind} of ${name} on ${l.label} (opens external map)`}
+        >
+          {l.label}
+        </a>
+      </span>
+    ));
   return (
     <p className="site-view-links">
-      <span className="site-view-links__label">See it today:</span>{' '}
-      <a href={satellite} target="_blank" rel="noopener noreferrer" aria-label={`Aerial view of ${name} (opens external map)`}>
-        Aerial view
-      </a>
+      <span className="site-view-links__label">See it today —</span>{' '}
+      <span className="site-view-links__group">Aerial: {linkRow('Aerial view', aerial)}</span>
       {' · '}
-      <a href={streetView} target="_blank" rel="noopener noreferrer" aria-label={`Street-side view of ${name} (opens external map)`}>
-        Street-side view
-      </a>
+      <span className="site-view-links__group">Street-side: {linkRow('Street-side view', street)}</span>
     </p>
   );
 }
