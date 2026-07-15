@@ -90,6 +90,20 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showSites, conf, maxYear]);
 
+  // Center map on selected site in Atlas mode
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !selected) return;
+    const site = bundle.site(selected);
+    if (site) {
+      map.easeTo({
+        center: [site.coordinates.value.lon, site.coordinates.value.lat],
+        zoom: Math.max(map.getZoom(), 7),
+        duration: 800,
+      });
+    }
+  }, [mapRef, ready, selected, bundle]);
+
   const site = selected ? bundle.site(selected) : undefined;
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];
   const toggleConf = (c: string) =>

@@ -103,13 +103,47 @@ function Explanation({ q, bundle }: { q: TQuizQuestion; bundle: BundleIndex }) {
 }
 
 function ChoiceQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
+  const { mapRef, ready } = useMap();
   const [picked, setPicked] = useState<number | null>(null);
+  const [correctAnswered, setCorrectAnswered] = useState(false);
   const answered = picked !== null;
+
   const choose = (i: number) => {
     if (answered) return;
     setPicked(i);
-    onAnswered(q.id, i === q.answerIndex);
+    const correct = i === q.answerIndex;
+    onAnswered(q.id, correct);
+    if (correct) {
+      setCorrectAnswered(true);
+    }
   };
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !correctAnswered || !q.answerSiteId) return;
+    const site = bundle.site(q.answerSiteId);
+    if (!site) return;
+
+    // Center map on the site
+    map.easeTo({
+      center: [site.coordinates.value.lon, site.coordinates.value.lat],
+      zoom: Math.max(map.getZoom(), 7),
+      duration: 800,
+    });
+
+    // Create marker
+    const el = document.createElement('div');
+    el.className = 'site-label quiz-pin-label quiz-pin-label--correct';
+    el.textContent = `✔ ${site.ancientName.en}`;
+    const marker = new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] })
+      .setLngLat([site.coordinates.value.lon, site.coordinates.value.lat])
+      .addTo(map);
+
+    return () => {
+      marker.remove();
+    };
+  }, [mapRef, ready, correctAnswered, q.answerSiteId, bundle]);
+
   return (
     <>
       <ul className="quiz-choices">
@@ -130,10 +164,13 @@ function ChoiceQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
 }
 
 function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
+  const { mapRef, ready } = useMap();
   const answer = q.answerOrder ?? [];
   // Start in a deliberately-wrong order (reversed) so there's something to do.
   const [order, setOrder] = useState<string[]>(() => [...answer].reverse());
   const [checked, setChecked] = useState(false);
+  const [correctAnswered, setCorrectAnswered] = useState(false);
+
   const label = (stopId: string) => {
     const stop = bundle.stop(stopId);
     return (stop && bundle.site(stop.siteId)?.ancientName.en) ?? stopId;
@@ -148,9 +185,62 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
   };
   const check = () => {
     setChecked(true);
-    onAnswered(q.id, order.every((id, i) => id === answer[i]));
+    const correct = order.every((id, i) => id === answer[i]);
+    onAnswered(q.id, correct);
+    if (correct) {
+      setCorrectAnswered(true);
+    }
   };
   const correct = checked && order.every((id, i) => id === answer[i]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !correctAnswered || !q.answerOrder) return;
+
+    const markers: maplibregl.Marker[] = [];
+    const coordinates: [number, number][] = [];
+
+    q.answerOrder.forEach((stopId, idx) => {
+      const stop = bundle.stop(stopId);
+      if (!stop) return;
+      const site = bundle.site(stop.siteId);
+      if (!site) return;
+
+      const lon = site.coordinates.value.lon;
+      const lat = site.coordinates.value.lat;
+      coordinates.push([lon, lat]);
+
+      const el = document.createElement('div');
+      el.className = 'site-label quiz-pin-label quiz-pin-label--correct';
+      el.textContent = `${idx + 1}. ${site.ancientName.en}`;
+      const marker = new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] })
+        .setLngLat([lon, lat])
+        .addTo(map);
+      markers.push(marker);
+    });
+
+    if (coordinates.length >= 2) {
+      const lons = coordinates.map((c) => c[0]);
+      const lats = coordinates.map((c) => c[1]);
+      map.fitBounds(
+        [
+          [Math.min(...lons), Math.min(...lats)],
+          [Math.max(...lons), Math.max(...lats)],
+        ],
+        { padding: 80, duration: 800 }
+      );
+    } else if (coordinates.length === 1) {
+      map.easeTo({
+        center: coordinates[0],
+        zoom: Math.max(map.getZoom(), 7),
+        duration: 800,
+      });
+    }
+
+    return () => {
+      markers.forEach((m) => m.remove());
+    };
+  }, [mapRef, ready, correctAnswered, q.answerOrder, bundle]);
   return (
     <>
       <ol style={{ listStyle: 'none', padding: 0 }}>
@@ -180,7 +270,7 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
 }
 
 function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
-  const { mapRef } = useMap();
+  const { mapRef, ready } = useMap();
   const [arming, setArming] = useState(false);
   const [result, setResult] = useState<{ distance: number; correct: boolean; guess: [number, number] } | null>(null);
   const target = q.answerSiteId ? bundle.site(q.answerSiteId) : undefined;
@@ -228,6 +318,17 @@ function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
       targetMarker.remove();
     };
   }, [mapRef, result, target]);
+
+  // Center map on the correct target when answered correctly
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !result || !result.correct || !target) return;
+    map.easeTo({
+      center: [target.coordinates.value.lon, target.coordinates.value.lat],
+      zoom: Math.max(map.getZoom(), 7),
+      duration: 800,
+    });
+  }, [mapRef, ready, result, target]);
 
   if (!target) return <p>Map question unavailable.</p>;
   return (
