@@ -941,3 +941,41 @@ a {
   font-size: 1.2rem;
   line-height: 1;
 }
+
+/* ── Site photos (present-day imagery, bundled from Wikimedia Commons) ───── */
+.site-photo {
+  margin: 0.6rem 0 0.4rem;
+}
+.site-photo img {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.site-photo figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+.site-photo__credit {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.85;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.site-photo__credit a {
+  color: inherit;
+}
+.site-view-links {
+  margin: 0.2rem 0 0.6rem;
+  font-size: 0.8rem;
+}
+.site-view-links__label {
+  color: var(--text-muted);
+}

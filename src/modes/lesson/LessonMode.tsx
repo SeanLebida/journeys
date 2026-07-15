@@ -7,6 +7,7 @@ import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { Citations, ScripturePassage } from '../../content/citations';
+import { SitePhoto } from '../../components/SitePhoto';
 
 function reducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -125,6 +126,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
       <div className="lesson-step" aria-live="polite">
         <p className="lesson-step__body">{step.body.en}</p>
+        {stepSiteId(bundle, step) && <SitePhoto siteId={stepSiteId(bundle, step)!} />}
         {step.scriptureRefs?.map((r) => (
           <ScripturePassage key={r} raw={r} />
         ))}
@@ -142,6 +144,11 @@ function siteCenter(bundle: BundleIndex, id: string): { lat: number; lon: number
 function stopCenter(bundle: BundleIndex, id: string): { lat: number; lon: number; zoom?: number } | undefined {
   const stop = bundle.stop(id);
   return stop ? siteCenter(bundle, stop.siteId) : undefined;
+}
+function stepSiteId(bundle: BundleIndex, step: { siteId?: string; stopId?: string }): string | undefined {
+  if (step.siteId) return step.siteId;
+  if (step.stopId) return bundle.stop(step.stopId)?.siteId;
+  return undefined;
 }
 function stepSiteName(bundle: BundleIndex, step: { siteId?: string; stopId?: string }): string | undefined {
   if (step.siteId) return bundle.site(step.siteId)?.ancientName.en;

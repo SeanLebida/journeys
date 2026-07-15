@@ -23,6 +23,19 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // Site photos (~14 MB total) are cached as they're viewed rather than
+        // precached, keeping first install lean while photos the user has seen
+        // keep working offline. Native builds bundle them on disk regardless.
+        runtimeCaching: [
+          {
+            urlPattern: /\/images\/sites\/.*\.(?:jpg|png|webp)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'site-photos',
+              expiration: { maxEntries: 100 },
+            },
+          },
+        ],
       },
       includeAssets: ['dist-content/content.sqlite', 'dist-content/bundle.json', 'icon.svg'],
       manifest: {

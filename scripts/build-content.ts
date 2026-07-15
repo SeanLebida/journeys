@@ -55,6 +55,9 @@ const ATTRIBUTIONS = [
   { id: 'MapLibre', name: 'MapLibre GL JS', license: 'BSD-3-Clause', url: 'https://maplibre.org/' },
   { id: 'NaturalEarth', name: 'Natural Earth (coastlines, land, country boundaries, lakes, rivers)', license: 'Public Domain', url: 'https://www.naturalearthdata.com/' },
   { id: 'OpenStreetMap', name: 'OpenStreetMap contributors (planned detailed basemap)', license: 'ODbL', url: 'https://www.openstreetmap.org/copyright' },
+  { id: 'Esri', name: 'Esri basemap tiles (shaded relief, World Imagery satellite, World Street Map — optional online layers)', license: '© Esri and its data suppliers; used per Esri basemap terms', url: 'https://www.esri.com/en-us/legal/terms/data-attributions' },
+  { id: 'DARE', name: 'Digital Atlas of the Roman Empire — Johan Åhlfeldt, University of Gothenburg (optional online historical basemap)', license: 'CC BY 4.0', url: 'https://dh.gu.se/dare/' },
+  { id: 'WikimediaCommons', name: 'Wikimedia Commons photographers (site photos; per-image author and license shown beside each photo)', license: 'Public Domain / CC0 / CC BY / CC BY-SA (per image)', url: 'https://commons.wikimedia.org/' },
 ];
 const REQUIRED_CREDITS = ['KJV', 'ASV', 'MapLibre'];
 

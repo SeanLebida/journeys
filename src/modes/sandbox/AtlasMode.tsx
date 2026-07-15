@@ -15,6 +15,7 @@ import {
   siteIdFromFeature,
 } from '../../map/layers/atlas';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
+import { SitePhoto, SiteViewLinks } from '../../components/SitePhoto';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 const YEAR_MIN = -10;
@@ -144,6 +145,12 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           </header>
           {site.modernName && <p className="stop-panel__modern">{site.modernName.en}</p>}
           <p className="stop-panel__modern">{site.modernLocation.en}</p>
+          <SitePhoto siteId={site.id} />
+          <SiteViewLinks
+            lat={site.coordinates.value.lat}
+            lon={site.coordinates.value.lon}
+            name={site.ancientName.en}
+          />
           <p>{site.summary.en}</p>
           <Citations ids={site.citations} bundle={bundle} />
 

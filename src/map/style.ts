@@ -13,12 +13,21 @@ export type Basemap = 'ancient' | 'modern';
 export const BASEMAP_LAYERS = {
   land: 'land-fill',
   topography: 'topography-raster',
+  satellite: 'satellite-raster',
+  streets: 'streets-raster',
+  ancientMap: 'ancient-map-raster',
   lakes: 'lakes-fill',
   rivers: 'rivers-line',
   coastline: 'coastline',
   borders: 'country-borders',
   graticule: 'graticule',
 } as const;
+
+/** Online-only imagery overlays: opaque full basemaps that sit ABOVE the
+ * stylized land/water layers (covering them while enabled) but BELOW borders,
+ * the graticule, and all content layers. Default OFF — the offline stylized
+ * basemap stays the no-network baseline. */
+export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
 
 // M1 ships a self-contained, offline, no-API-key style: real coastlines/land +
 // country borders (Natural Earth, public domain) + a computed graticule. The
@@ -55,6 +64,29 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         tileSize: 256,
         attribution: 'Tiles © Esri — Source: USGS',
         maxzoom: 13,
+      },
+      satellite: {
+        type: 'raster',
+        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        attribution: 'Imagery © Esri — Source: Esri, Maxar, Earthstar Geographics, GIS User Community',
+        maxzoom: 19,
+      },
+      streets: {
+        type: 'raster',
+        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        attribution: 'Streets © Esri — Source: Esri, HERE, Garmin, OpenStreetMap contributors',
+        maxzoom: 19,
+      },
+      // Digital Atlas of the Roman Empire (Johan Åhlfeldt, Univ. of Gothenburg),
+      // CC BY 4.0 — a period-accurate historical basemap of the 2nd-c. empire.
+      ancientMap: {
+        type: 'raster',
+        tiles: ['https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        attribution: 'Ancient map © DARE, Johan Åhlfeldt (CC BY 4.0)',
+        maxzoom: 11,
       },
     },
     layers: [
@@ -97,6 +129,27 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         type: 'line',
         source: 'land',
         paint: { 'line-color': COASTLINE[tone], 'line-width': 1 },
+      },
+      // Imagery basemaps ship hidden; useMapLayersStore/LayerPanel toggles them.
+      // They sit here — above the stylized land/water, below borders/graticule —
+      // so enabling one swaps the whole basemap while overlays stay readable.
+      {
+        id: BASEMAP_LAYERS.satellite,
+        type: 'raster',
+        source: 'satellite',
+        layout: { visibility: 'none' },
+      },
+      {
+        id: BASEMAP_LAYERS.streets,
+        type: 'raster',
+        source: 'streets',
+        layout: { visibility: 'none' },
+      },
+      {
+        id: BASEMAP_LAYERS.ancientMap,
+        type: 'raster',
+        source: 'ancientMap',
+        layout: { visibility: 'none' },
       },
       {
         id: 'country-borders',
