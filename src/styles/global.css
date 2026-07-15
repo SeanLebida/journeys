@@ -575,12 +575,9 @@ a {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
-  max-height: 420px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  scrollbar-width: thin;
 }
 .stop-timeline__title {
   font-size: 0.82rem;
