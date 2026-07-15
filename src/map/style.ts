@@ -54,6 +54,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
         tileSize: 256,
         attribution: 'Tiles © Esri — Source: USGS',
+        maxzoom: 13,
       },
     },
     layers: [
