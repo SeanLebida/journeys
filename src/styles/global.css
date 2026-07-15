@@ -203,6 +203,29 @@ a {
   color: var(--accent);
 }
 
+/* Trace stop labels styling: rendered as high-quality clickable badges */
+.site-label.trace-stop-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.15rem 0.35rem;
+  box-shadow: var(--shadow-1);
+  text-shadow: none; /* remove default text shadow to keep it clean */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.site-label.trace-stop-label:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+.site-label.trace-stop-label.active {
+  font-weight: 700;
+  transform: scale(1.08) translateY(-1px);
+}
+
 /* Quiz map-pin answer reveal: decorative once shown, not clickable. */
 .quiz-pin-label {
   cursor: default;

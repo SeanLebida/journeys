@@ -73,7 +73,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   }, [journeyId, setActiveJourney]);
 
   useRouteAnimation(coords, journey?.color ?? '#c75b39', traceStops, stopIds);
-  useStopLabels(coords, names);
+  useStopLabels(coords, names, stopIds, journey?.color ?? '#c75b39');
 
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
@@ -93,28 +93,77 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
 }
 
 /** Name label at every stop on the traced route; clicking one scrubs straight to it. */
-function useStopLabels(coords: LngLat[], names: string[]): void {
+function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], color: string): void {
   const { mapRef, ready } = useMap();
   const setProgress = useJourneyStore((s) => s.setProgress);
   const pause = useJourneyStore((s) => s.pause);
+  const activeStopId = useJourneyStore((s) => s.activeStopId);
+
+  // Keep references to all label button elements.
+  const elementsRef = useMemo(() => ({ current: [] as HTMLButtonElement[] }), []);
 
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
+
+    elementsRef.current = [];
     const markers = coords.map(([lon, lat], i) => {
       const el = document.createElement('button');
       el.type = 'button';
-      el.className = 'site-label';
-      el.textContent = names[i] ?? '';
-      el.setAttribute('aria-label', `Jump to ${names[i]}`);
+      el.className = 'site-label trace-stop-label';
+      el.textContent = `${i + 1}. ${names[i] ?? ''}`;
+      el.setAttribute('aria-label', `Jump to stop ${i + 1}: ${names[i]}`);
       el.addEventListener('click', () => {
         pause();
         setProgress(progressAtIndex(coords, i));
       });
+      elementsRef.current.push(el);
       return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
     });
-    return () => markers.forEach((m) => m.remove());
-  }, [mapRef, ready, coords, names, setProgress, pause]);
+
+    // Initial active class and style application
+    const activeIdx = stopIds.indexOf(activeStopId || '');
+    elementsRef.current.forEach((el, idx) => {
+      const isActive = idx === activeIdx;
+      el.classList.toggle('active', isActive);
+      if (isActive) {
+        el.style.backgroundColor = color;
+        el.style.borderColor = color;
+        el.style.color = '#ffffff';
+        el.style.boxShadow = `0 0 8px ${color}80`;
+      } else {
+        el.style.backgroundColor = '';
+        el.style.borderColor = '';
+        el.style.color = '';
+        el.style.boxShadow = '';
+      }
+    });
+
+    return () => {
+      markers.forEach((m) => m.remove());
+      elementsRef.current = [];
+    };
+  }, [mapRef, ready, coords, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
+
+  // Update active class and styles when activeStopId changes
+  useEffect(() => {
+    const activeIdx = stopIds.indexOf(activeStopId || '');
+    elementsRef.current.forEach((el, idx) => {
+      const isActive = idx === activeIdx;
+      el.classList.toggle('active', isActive);
+      if (isActive) {
+        el.style.backgroundColor = color;
+        el.style.borderColor = color;
+        el.style.color = '#ffffff';
+        el.style.boxShadow = `0 0 8px ${color}80`;
+      } else {
+        el.style.backgroundColor = '';
+        el.style.borderColor = '';
+        el.style.color = '';
+        el.style.boxShadow = '';
+      }
+    });
+  }, [activeStopId, stopIds, color, elementsRef]);
 }
 
 function TraceControls({ stopCount }: { stopCount: number }) {
