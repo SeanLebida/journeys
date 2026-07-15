@@ -57,7 +57,13 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
       (step.siteId ? siteCenter(bundle, step.siteId) : undefined) ??
       (step.stopId ? stopCenter(bundle, step.stopId) : undefined);
     if (!focus) return;
-    const opts = { center: [focus.lon, focus.lat] as [number, number], zoom: focus.zoom ?? 8 };
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+    const paddingLeft = isDesktop ? 450 : 0;
+    const opts = { 
+      center: [focus.lon, focus.lat] as [number, number], 
+      zoom: focus.zoom ?? 8,
+      padding: { left: paddingLeft, right: 0, top: 0, bottom: 0 },
+    };
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 900 });
   }, [mapRef, ready, step, bundle]);

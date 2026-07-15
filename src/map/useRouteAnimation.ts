@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from './MapProvider';
 import { activeStopIndex, lineProgress, type LngLat } from './route';
 import { ensureTraceLayers, removeTraceLayers, updateTrace, type TraceStop } from './layers/trace';
@@ -30,12 +30,18 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       ensureTraceLayers(map, color);
       const lons = coords.map((c) => c[0]);
       const lats = coords.map((c) => c[1]);
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+      const paddingLeft = isDesktop ? 450 : 60;
       map.fitBounds(
         [
           [Math.min(...lons), Math.min(...lats)],
           [Math.max(...lons), Math.max(...lats)],
         ],
-        { padding: 60, animate: !reducedMotion(), duration: 600 },
+        { 
+          padding: { left: paddingLeft, right: 60, top: 60, bottom: 60 }, 
+          animate: !reducedMotion(), 
+          duration: 600 
+        },
       );
     };
     if (map.isStyleLoaded()) add();
@@ -45,7 +51,14 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
     };
   }, [mapRef, ready, coords, color]);
 
-  // Mirror progress to the map + active stop.
+  const lastIdxRef = useRef<number>(-1);
+
+  // Reset lastIdxRef when coordinates/journey changes
+  useEffect(() => {
+    lastIdxRef.current = -1;
+  }, [coords]);
+
+  // Mirror progress to the map + active stop + auto-center on active stop.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2 || !map.getLayer('trace-progress-line')) return;
@@ -57,7 +70,23 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       prog,
       stops.map((s, i) => ({ ...s, reached: i <= idx })),
     );
-    if (stopIds[idx]) setActiveStop(stopIds[idx]);
+    if (stopIds[idx]) {
+      setActiveStop(stopIds[idx]);
+      if (idx !== lastIdxRef.current) {
+        lastIdxRef.current = idx;
+        const activeCoords = coords[idx];
+        if (activeCoords) {
+          const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+          const paddingLeft = isDesktop ? 450 : 0;
+          map.easeTo({
+            center: activeCoords,
+            zoom: Math.max(map.getZoom(), 6),
+            duration: 800,
+            padding: { left: paddingLeft, right: 0, top: 0, bottom: 0 },
+          });
+        }
+      }
+    }
   }, [mapRef, ready, coords, progress, stops, stopIds, setActiveStop]);
 
   // rAF playback.
