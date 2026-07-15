@@ -5,6 +5,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { buildBaseStyle, BASEMAP_LAYERS } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
 import { REFERENCE_CITIES } from './reference-cities';
+import { WATER_BODIES } from './water-bodies';
 import { setLayerVisible } from './layers/atlas';
 import { useMapLayersStore } from '../state/useMapLayersStore';
 
@@ -43,6 +44,23 @@ function applyLabelVisibility(map: MapLibreMap, labelsAlwaysOn: boolean): void {
   map.getContainer().classList.toggle('map-labels-visible', labelsAlwaysOn || map.getZoom() >= LABEL_ZOOM_THRESHOLD);
 }
 
+interface WaterLabelRef {
+  element: HTMLDivElement;
+  minZoom: number;
+}
+
+function updateWaterLabelVisibility(
+  map: MapLibreMap,
+  labelsAlwaysOn: boolean,
+  markers: WaterLabelRef[]
+): void {
+  const zoom = map.getZoom();
+  markers.forEach(({ element, minZoom }) => {
+    const visible = labelsAlwaysOn || zoom >= minZoom;
+    element.style.display = visible ? 'block' : 'none';
+  });
+}
+
 /**
  * Holds ONE MapLibre map for the whole app, created once by the layout route so
  * the WebGL context survives navigation between modes. Accessibility: keyboard
@@ -54,6 +72,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
   const mapRef = useRef<MapLibreMap | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
+  const waterMarkersRef = useRef<WaterLabelRef[]>([]);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -80,12 +99,16 @@ export function MapProvider({ children }: { children: ReactNode }) {
         compact: true,
         // Full source credits live on the M9 attribution screen; this keeps the
         // on-map notice honest about the basemap.
-        customAttribution: 'Journeys · basemap © Natural Earth (M1)',
+        customAttribution: 'Journeys · basemap © Natural Earth, Esri (M1)',
       }),
       'bottom-right',
     );
 
-    const updateLabelVisibility = () => applyLabelVisibility(map, useMapLayersStore.getState().labelsAlwaysOn);
+    const updateLabelVisibility = () => {
+      const labelsAlwaysOn = useMapLayersStore.getState().labelsAlwaysOn;
+      applyLabelVisibility(map, labelsAlwaysOn);
+      updateWaterLabelVisibility(map, labelsAlwaysOn, waterMarkersRef.current);
+    };
     map.on('zoom', updateLabelVisibility);
 
     const markers = REFERENCE_CITIES.map((city) => {
@@ -101,16 +124,29 @@ export function MapProvider({ children }: { children: ReactNode }) {
       return new maplibregl.Marker({ element: el, anchor: 'left' }).setLngLat([city.lon, city.lat]);
     });
 
+    const waterMarkers = WATER_BODIES.map((body) => {
+      const el = document.createElement('div');
+      el.className = 'water-body-label';
+      el.setAttribute('aria-hidden', 'true');
+      el.textContent = body.name;
+      const marker = new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat([body.lon, body.lat]);
+      return { marker, minZoom: body.minZoom, element: el };
+    });
+    waterMarkersRef.current = waterMarkers.map(({ element, minZoom }) => ({ element, minZoom }));
+
     map.on('load', () => {
       setReady(true);
       updateLabelVisibility();
       markers.forEach((m) => m.addTo(map));
+      waterMarkers.forEach(({ marker }) => marker.addTo(map));
     });
     mapRef.current = map;
 
     return () => {
       map.off('zoom', updateLabelVisibility);
       markers.forEach((m) => m.remove());
+      waterMarkers.forEach(({ marker }) => marker.remove());
+      waterMarkersRef.current = [];
       map.remove();
       mapRef.current = null;
       setReady(false);
@@ -128,6 +164,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
       setLayerVisible(map, layerId, layers[key as keyof typeof BASEMAP_LAYERS]);
     }
     applyLabelVisibility(map, layers.labelsAlwaysOn);
+    updateWaterLabelVisibility(map, layers.labelsAlwaysOn, waterMarkersRef.current);
   }, [ready, layers]);
 
   return (

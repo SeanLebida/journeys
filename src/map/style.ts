@@ -12,6 +12,7 @@ export type Basemap = 'ancient' | 'modern';
  * independently toggle via `useMapLayersStore` / `LayerPanel`. */
 export const BASEMAP_LAYERS = {
   land: 'land-fill',
+  topography: 'topography-raster',
   lakes: 'lakes-fill',
   rivers: 'rivers-line',
   coastline: 'coastline',
@@ -48,6 +49,12 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
       lakes: { type: 'geojson', data: lakes as FeatureCollection },
       rivers: { type: 'geojson', data: rivers as FeatureCollection },
       graticule: { type: 'geojson', data: generateGraticule() },
+      topography: {
+        type: 'raster',
+        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        attribution: 'Tiles © Esri — Source: USGS',
+      },
     },
     layers: [
       { id: 'background', type: 'background', paint: { 'background-color': SEA[tone] } },
@@ -56,6 +63,14 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         type: 'fill',
         source: 'land',
         paint: { 'fill-color': LAND[tone] },
+      },
+      {
+        id: BASEMAP_LAYERS.topography,
+        type: 'raster',
+        source: 'topography',
+        paint: {
+          'raster-opacity': dark ? 0.22 : 0.35,
+        },
       },
       {
         id: BASEMAP_LAYERS.lakes,

@@ -3,6 +3,7 @@ import { useMapLayersStore, type BasemapLayerKey } from '../state/useMapLayersSt
 
 const LAYER_LABELS: Record<BasemapLayerKey, string> = {
   land: 'Land',
+  topography: 'Topography (terrain)',
   lakes: 'Lakes',
   rivers: 'Rivers',
   coastline: 'Coastline',
