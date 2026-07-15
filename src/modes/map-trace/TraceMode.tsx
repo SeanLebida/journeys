@@ -11,6 +11,7 @@ import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { progressAtIndex, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
+import { SitePhoto, SiteViewLinks } from '../../components/SitePhoto';
 import type { BundleIndex } from '../../content/useBundle';
 import type { TStop } from '../../content/schema';
 
@@ -264,6 +265,14 @@ function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[
                 </p>
                 {isActive ? (
                   <>
+                    <SitePhoto siteId={stop.siteId} />
+                    {site && (
+                      <SiteViewLinks
+                        lat={site.coordinates.value.lat}
+                        lon={site.coordinates.value.lon}
+                        name={site.ancientName.en}
+                      />
+                    )}
                     <p className="stop-panel__summary">{stop.eventSummary.en}</p>
                     {stop.disputes && <DisputeNote text={stop.disputes.en} />}
                     {stop.scriptureRefs.length > 0 && (

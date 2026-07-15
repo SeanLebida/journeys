@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { platformStorage } from './persistAdapter';
-import { BASEMAP_LAYERS } from '../map/style';
+import { BASEMAP_LAYERS, IMAGERY_LAYERS } from '../map/style';
 
 export type BasemapLayerKey = keyof typeof BASEMAP_LAYERS;
 
@@ -14,8 +14,11 @@ interface MapLayersState extends LayerVisibility {
   setLabelsAlwaysOn: (on: boolean) => void;
 }
 
+// Offline stylized layers default ON; online imagery basemaps (satellite,
+// streets, ancient map) default OFF so the app stays offline-first out of
+// the box — users opt in per layer, and the choice persists.
 const DEFAULT_VISIBILITY: LayerVisibility = Object.keys(BASEMAP_LAYERS).reduce(
-  (acc, key) => ({ ...acc, [key]: true }),
+  (acc, key) => ({ ...acc, [key]: !(IMAGERY_LAYERS as readonly string[]).includes(key) }),
   {} as LayerVisibility,
 );
 
