@@ -174,7 +174,7 @@ function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], col
 }
 
 function TraceControls({ stopCount }: { stopCount: number }) {
-  const { progress, playing, play, pause, setProgress, reset } = useJourneyStore();
+  const { progress, playing, play, pause, setProgress, reset, playbackSpeed, setPlaybackSpeed, pauseAtStops, setPauseAtStops } = useJourneyStore();
   return (
     <div className="trace-controls">
       <button type="button" onClick={() => (playing ? pause() : play())} aria-pressed={playing}>
@@ -183,6 +183,26 @@ function TraceControls({ stopCount }: { stopCount: number }) {
       <button type="button" onClick={reset}>
         ↺ Reset
       </button>
+      <select
+        value={playbackSpeed}
+        onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
+        className="trace-controls__speed"
+        aria-label="Playback speed"
+      >
+        <option value={0.25}>0.25x</option>
+        <option value={0.5}>0.5x</option>
+        <option value={1}>1.0x (Default)</option>
+        <option value={1.5}>1.5x</option>
+        <option value={2}>2.0x</option>
+      </select>
+      <label className="trace-controls__pause-stops">
+        <input
+          type="checkbox"
+          checked={pauseAtStops}
+          onChange={(e) => setPauseAtStops(e.target.checked)}
+        />
+        <span>Pause at stops</span>
+      </label>
       <label className="trace-controls__scrub">
         <span className="visually-hidden">Journey progress</span>
         <input

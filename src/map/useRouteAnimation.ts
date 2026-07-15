@@ -21,6 +21,8 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
   const setProgress = useJourneyStore((s) => s.setProgress);
   const pause = useJourneyStore((s) => s.pause);
   const setActiveStop = useJourneyStore((s) => s.setActiveStop);
+  const playbackSpeed = useJourneyStore((s) => s.playbackSpeed);
+  const pauseAtStops = useJourneyStore((s) => s.pauseAtStops);
 
   const isUserInteractingRef = useRef(false);
 
@@ -99,6 +101,7 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
     if (stopIds[idx]) {
       setActiveStop(stopIds[idx]);
       if (idx !== lastIdxRef.current) {
+        const isInitial = lastIdxRef.current === -1;
         lastIdxRef.current = idx;
         const activeCoords = coords[idx];
         if (activeCoords) {
@@ -108,9 +111,14 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
             duration: 800,
           });
         }
+        
+        // Auto-pause at stops if option is enabled (skip if it's the very first stop on load)
+        if (playing && pauseAtStops && !isInitial) {
+          pause();
+        }
       }
     }
-  }, [mapRef, ready, coords, progress, stops, stopIds, setActiveStop]);
+  }, [mapRef, ready, coords, progress, stops, stopIds, setActiveStop, playing, pauseAtStops, pause]);
 
   // rAF playback.
   useEffect(() => {
@@ -120,7 +128,7 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       pause();
       return;
     }
-    const duration = Math.max(6000, (coords.length - 1) * 1500);
+    const duration = Math.max(12000, (coords.length - 1) * 3000) / playbackSpeed;
     let raf = 0;
     let last = performance.now();
     const tick = (now: number) => {
@@ -152,5 +160,5 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, coords, setProgress, pause, mapRef, ready]);
+  }, [playing, coords, setProgress, pause, mapRef, ready, playbackSpeed]);
 }

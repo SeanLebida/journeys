@@ -558,6 +558,31 @@ a {
 .trace-controls button:hover {
   border-color: var(--accent);
 }
+.trace-controls__speed {
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+.trace-controls__speed:hover {
+  border-color: var(--accent);
+}
+.trace-controls__pause-stops {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+.trace-controls__pause-stops input {
+  margin: 0;
+  cursor: pointer;
+}
 .trace-controls__scrub {
   flex: 1 1 120px;
   display: flex;
