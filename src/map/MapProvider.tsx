@@ -2,9 +2,11 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl';
 import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { buildBaseStyle } from './style';
+import { buildBaseStyle, BASEMAP_LAYERS } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
 import { REFERENCE_CITIES } from './reference-cities';
+import { setLayerVisible } from './layers/atlas';
+import { useMapLayersStore } from '../state/useMapLayersStore';
 
 interface MapContextValue {
   /** The single persistent MapLibre instance (null until first mount). */
@@ -35,6 +37,11 @@ function isDark(): boolean {
 // further" step that declutters. Toggled via a class instead of touching
 // each label's own layout so it stays cheap on every 'zoom' tick.
 const LABEL_ZOOM_THRESHOLD = 6;
+
+/** `labelsAlwaysOn` (user override, see LayerPanel) bypasses the zoom gate entirely. */
+function applyLabelVisibility(map: MapLibreMap, labelsAlwaysOn: boolean): void {
+  map.getContainer().classList.toggle('map-labels-visible', labelsAlwaysOn || map.getZoom() >= LABEL_ZOOM_THRESHOLD);
+}
 
 /**
  * Holds ONE MapLibre map for the whole app, created once by the layout route so
@@ -78,9 +85,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
       'bottom-right',
     );
 
-    const updateLabelVisibility = () => {
-      map.getContainer().classList.toggle('map-labels-visible', map.getZoom() >= LABEL_ZOOM_THRESHOLD);
-    };
+    const updateLabelVisibility = () => applyLabelVisibility(map, useMapLayersStore.getState().labelsAlwaysOn);
     map.on('zoom', updateLabelVisibility);
 
     const markers = REFERENCE_CITIES.map((city) => {
@@ -111,6 +116,19 @@ export function MapProvider({ children }: { children: ReactNode }) {
       setReady(false);
     };
   }, []);
+
+  // Apply basemap layer visibility + label override from the shared, persisted
+  // store whenever it changes — this is the one place that talks to the map
+  // for basemap toggles, so no mode component needs its own map-effect wiring.
+  const layers = useMapLayersStore();
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    for (const [key, layerId] of Object.entries(BASEMAP_LAYERS)) {
+      setLayerVisible(map, layerId, layers[key as keyof typeof BASEMAP_LAYERS]);
+    }
+    applyLabelVisibility(map, layers.labelsAlwaysOn);
+  }, [ready, layers]);
 
   return (
     <MapContext.Provider value={{ mapRef, ready }}>

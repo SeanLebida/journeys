@@ -5,6 +5,7 @@ import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
+import { LayerPanel } from '../../map/LayerPanel';
 import { Citations, ScripturePassage } from '../../content/citations';
 
 function reducedMotion(): boolean {
@@ -102,6 +103,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
       <Link to="/lessons" className="backlink">
         ← {t('nav.lessons')}
       </Link>
+      <LayerPanel />
       <div className="lesson-progress">
         <button type="button" onClick={() => setI((n) => Math.max(0, n - 1))} disabled={i === 0}>
           ← Prev
