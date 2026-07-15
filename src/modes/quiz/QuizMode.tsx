@@ -8,6 +8,7 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { haversine } from '../../map/route';
 import { Citations } from '../../content/citations';
+import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { useQuizStore } from '../../state/useQuizStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
 
@@ -32,12 +33,19 @@ function QuizPicker({ bundle }: { bundle: BundleIndex }) {
       <ul className="journey-list">
         {bundle.quizzes.map((q) => {
           const r = results[q.id];
+          const journey = q.relatedJourneyId ? bundle.journey(q.relatedJourneyId) : undefined;
+          const firstSiteId =
+            (journey ? bundle.stop(journey.stops[0])?.siteId : undefined) ??
+            q.questions.find((qq) => qq.answerSiteId)?.answerSiteId;
           return (
             <li key={q.id}>
-              <Link to={`/quiz/${q.id}`} className="journey-list__item">
-                <strong>{q.title.en}</strong>
-                <span className="journey-list__summary">
-                  {q.questions.length} questions{r ? ` · best ${r.score}/${r.total}` : ''}
+              <Link to={`/quiz/${q.id}`} className="journey-list__item journey-list__item--thumbed">
+                {firstSiteId && <SiteThumb siteId={firstSiteId} />}
+                <span className="journey-list__body">
+                  <strong>{q.title.en}</strong>
+                  <span className="journey-list__summary">
+                    {q.questions.length} questions{r ? ` · best ${r.score}/${r.total}` : ''}
+                  </span>
                 </span>
               </Link>
             </li>
@@ -94,9 +102,12 @@ function Question({ bundle, q, onAnswered }: { bundle: BundleIndex; q: TQuizQues
 }
 
 function Explanation({ q, bundle }: { q: TQuizQuestion; bundle: BundleIndex }) {
+  // Photo of the answer site — only ever rendered post-answer (Explanation
+  // mounts after the question is resolved), so it never gives anything away.
   return (
     <div className="quiz-explanation">
       <p>{q.explanation.en}</p>
+      {q.answerSiteId && <SitePhoto siteId={q.answerSiteId} />}
       <Citations ids={q.citations} bundle={bundle} />
     </div>
   );
