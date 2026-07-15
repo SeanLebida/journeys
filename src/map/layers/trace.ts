@@ -79,11 +79,13 @@ export function updateTrace(map: MapLibreMap, full: LngLat[], progress: RoutePro
     type: 'FeatureCollection',
     features: [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: progress.point } }],
   });
-  const stopFeatures: Feature[] = stops.map((s) => ({
-    type: 'Feature',
-    properties: { confidence: s.confidence, reached: s.reached, order: s.order },
-    geometry: { type: 'Point', coordinates: [s.lng, s.lat] },
-  }));
+  const stopFeatures: Feature[] = stops
+    .filter((s) => s.reached)
+    .map((s) => ({
+      type: 'Feature',
+      properties: { confidence: s.confidence, reached: s.reached, order: s.order },
+      geometry: { type: 'Point', coordinates: [s.lng, s.lat] },
+    }));
   src(map, SRC.stops)?.setData({ type: 'FeatureCollection', features: stopFeatures });
 }
 

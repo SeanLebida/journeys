@@ -122,10 +122,13 @@ function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], col
       return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
     });
 
-    // Initial active class and style application
+    // Initial active class, style, and visibility application
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
+      const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
+      
+      el.style.display = isReached ? 'inline-block' : 'none';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
@@ -146,11 +149,14 @@ function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], col
     };
   }, [mapRef, ready, coords, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
 
-  // Update active class and styles when activeStopId changes
+  // Update active class, styles, and visibility when activeStopId changes
   useEffect(() => {
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
+      const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
+      
+      el.style.display = isReached ? 'inline-block' : 'none';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
