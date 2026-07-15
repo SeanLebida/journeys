@@ -982,3 +982,77 @@ a {
 .site-view-links__group {
   white-space: nowrap;
 }
+
+/* ── In-app site views: gallery nav, aerial button, street-level viewer ──── */
+.site-photo__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.site-photo__nav button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 6px;
+  width: 2rem;
+  height: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.site-views {
+  margin: 0.5rem 0 0.7rem;
+}
+.site-views__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.site-views__btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.site-views__btn[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+.street-viewer {
+  margin-top: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.street-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 280px;
+  border: 0;
+}
+.street-viewer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+.street-viewer__bar button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  cursor: pointer;
+}

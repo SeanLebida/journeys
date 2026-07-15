@@ -115,6 +115,64 @@ async function politeFetch(url) {
   }
 }
 
+/**
+ * Gallery extras for the major sites: 1–2 additional ground-level / interior
+ * shots each (explicit Commons files, curated like the SITE_SOURCES file
+ * overrides). Sites not listed here keep a single photo.
+ */
+const SITE_EXTRAS = {
+  'site-jerusalem': [
+    { file: 'Prayers at the Western Wall 2.jpg', caption: "The Western Wall, surviving retaining wall of Herod's Temple Mount" },
+  ],
+  'site-golgotha-and-the-tomb': [
+    { file: 'Holy Land 2016 P0929 Church of the Holy Sepulchre Aedicule interior.jpg', caption: 'Inside the Aedicule, the shrine over the traditional tomb' },
+  ],
+  'site-ephesus': [
+    { file: 'Great Theatre of Ephesus 2024.jpg', caption: 'The Great Theatre of Ephesus, scene of the riot of Acts 19' },
+    { file: 'Curetes Street in Ephesus (1).jpg', caption: 'Curetes Street, a main thoroughfare of Roman Ephesus' },
+  ],
+  'site-athens': [
+    { file: 'Attica 06-13 Athens 50 View from Philopappos - Acropolis Hill.jpg', caption: 'The Acropolis of Athens seen from Philopappos Hill' },
+  ],
+  'site-corinth': [
+    { file: 'Acrocorinth Gateway.jpg', caption: 'Acrocorinth, the fortress mountain above ancient Corinth' },
+  ],
+  'site-capernaum': [
+    { file: 'Kafarnaum BW 20.jpg', caption: 'Inside the limestone synagogue at Capernaum' },
+  ],
+  'site-sea-of-galilee': [
+    { file: '2,000 year-old Galilee Boat (25891250505).jpg', caption: "The 1st-century 'Galilee Boat' recovered from the lakebed" },
+  ],
+  'site-bethlehem': [
+    { file: 'Altar in the Grotto of the Nativity 2010.jpg', caption: 'The Grotto of the Nativity beneath the church' },
+  ],
+  'site-philippi': [
+    { file: 'Ancient theatre - Philippi.jpg', caption: 'The ancient theatre of Philippi' },
+  ],
+  'site-rome': [
+    { file: 'Roman Forum looking East panorama.jpg', caption: 'The Roman Forum today' },
+    { file: 'Mamertine Prison.jpg', caption: "The Mamertine Prison, traditional site of Paul's final imprisonment" },
+  ],
+  'site-paphos': [
+    { file: 'Birth of Dionysos - House of Aion - Paphos Archaeological Park.jpg', caption: 'Roman mosaics in the House of Aion, Paphos' },
+  ],
+  'site-caesarea-maritima': [
+    { file: 'Caesarea Maritima Hippodrome 02.jpg', caption: 'The hippodrome of Caesarea Maritima beside the sea' },
+  ],
+  'site-hierapolis': [
+    { file: 'Pamukkale Hierapolis Travertine pools.JPG', caption: 'The travertine terrace pools of Pamukkale below Hierapolis' },
+  ],
+  'site-patmos': [
+    { file: 'Cave of the Apocalypse.jpg', caption: "The Cave of the Apocalypse, traditional site of John's vision" },
+  ],
+  'site-myra-of-lycia': [
+    { file: 'The rock tombs of ancient Myra, carved into the cliffs of Demre, Turkey.jpg', caption: 'Lycian rock tombs above Myra' },
+  ],
+  'site-thessalonica': [
+    { file: 'Thessaloniki Saint George Rotunda from the Arch of Galerius.jpg', caption: 'The Rotunda and Arch of Galerius in Thessaloniki' },
+  ],
+};
+
 async function getJson(url) {
   return (await politeFetch(url)).json();
 }
@@ -166,38 +224,52 @@ mkdirSync(OUT_DIR, { recursive: true });
 const out = {};
 const failures = [];
 
+/** Resolve, license-gate, and download one image; returns its metadata entry. */
+async function fetchOne(siteId, file, caption, index) {
+  const info = await imageInfo(file);
+  if (!licenseIsFree(info.license)) throw new Error(`non-free license '${info.license}' on ${file} — pick another image`);
+  // Files are keyed by site id (+ position for gallery extras); extension
+  // normalized to the thumb's real one.
+  const ext = (info.thumbUrl.match(/\.(jpe?g|png|webp)(?:$|\?)/i)?.[1] ?? 'jpg').toLowerCase().replace('jpeg', 'jpg');
+  const filename = index === 0 ? `${siteId}.${ext}` : `${siteId}-${index + 1}.${ext}`;
+  const dest = join(OUT_DIR, filename);
+  let bytes = 0;
+  if (!DRY && (FORCE || !existsSync(dest))) bytes = await download(info.thumbUrl, dest);
+  console.log(`ok  ${siteId}${index > 0 ? ` [${index + 1}]` : ''}  ${file}  [${info.license}]${bytes ? `  ${(bytes / 1024).toFixed(0)} KB` : ''}`);
+  return {
+    src: `images/sites/${filename}`,
+    caption,
+    commonsFile: file,
+    author: info.author,
+    license: info.license,
+    sourceUrl: info.descriptionUrl,
+  };
+}
+
 for (const [siteId, src] of Object.entries(SITE_SOURCES)) {
   await sleep(500); // stay well inside Wikimedia API etiquette
+  const images = [];
   try {
     const file = src.file ?? (await pageImageFile(src.article));
-    const info = await imageInfo(file);
-    if (!licenseIsFree(info.license)) {
-      failures.push(`${siteId}: non-free license '${info.license}' on ${file} — pick another image`);
-      continue;
-    }
-    // Images are keyed by site id; extension normalized to the thumb's real one.
-    const ext = (info.thumbUrl.match(/\.(jpe?g|png|webp)(?:$|\?)/i)?.[1] ?? 'jpg').toLowerCase().replace('jpeg', 'jpg');
-    const filename = `${siteId}.${ext}`;
-    const dest = join(OUT_DIR, filename);
-    let bytes = 0;
-    if (!DRY && (FORCE || !existsSync(dest))) bytes = await download(info.thumbUrl, dest);
-    out[siteId] = {
-      src: `images/sites/${filename}`,
-      caption: src.caption ?? src.article,
-      commonsFile: file,
-      author: info.author,
-      license: info.license,
-      sourceUrl: info.descriptionUrl,
-    };
-    console.log(`ok  ${siteId}  ${file}  [${info.license}]${bytes ? `  ${(bytes / 1024).toFixed(0)} KB` : ''}`);
+    images.push(await fetchOne(siteId, file, src.caption ?? src.article, 0));
   } catch (e) {
     failures.push(`${siteId}: ${e.message}`);
-    if (existing[siteId]) out[siteId] = existing[siteId]; // keep last good entry
   }
+  for (const [i, extra] of (SITE_EXTRAS[siteId] ?? []).entries()) {
+    await sleep(500);
+    try {
+      images.push(await fetchOne(siteId, extra.file, extra.caption, i + 1));
+    } catch (e) {
+      failures.push(`${siteId} extra ${extra.file}: ${e.message}`);
+    }
+  }
+  if (images.length > 0) out[siteId] = { images };
+  else if (existing[siteId]?.images) out[siteId] = existing[siteId]; // keep last good entry
 }
 
 if (!DRY) writeFileSync(OUT_JSON, JSON.stringify(out, null, 2) + '\n');
-console.log(`\n${Object.keys(out).length}/${Object.keys(SITE_SOURCES).length} sites have images.`);
+const galleryCount = Object.values(out).filter((v) => v.images.length > 1).length;
+console.log(`\n${Object.keys(out).length}/${Object.keys(SITE_SOURCES).length} sites have images (${galleryCount} with galleries).`);
 if (failures.length) {
   console.error('\nNeeds attention:');
   failures.forEach((f) => console.error(`  - ${f}`));
