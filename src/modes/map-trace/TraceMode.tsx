@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl from 'maplibre-gl';
@@ -12,6 +12,7 @@ import { progressAtIndex, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import type { BundleIndex } from '../../content/useBundle';
+import type { TStop } from '../../content/schema';
 
 export default function TraceMode() {
   const { journeyId } = useParams();
@@ -87,7 +88,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
       <LayerPanel />
       <TraceControls stopCount={stops.length} />
-      <ActiveStopPanel bundle={bundle} />
+      <ActiveStopPanel bundle={bundle} stops={stops} />
     </ModePanel>
   );
 }
@@ -192,31 +193,82 @@ function TraceControls({ stopCount }: { stopCount: number }) {
   );
 }
 
-function ActiveStopPanel({ bundle }: { bundle: BundleIndex }) {
+function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[] }) {
   const activeStopId = useJourneyStore((s) => s.activeStopId);
-  const stop = activeStopId ? bundle.stop(activeStopId) : undefined;
-  if (!stop) return null;
-  const site = bundle.site(stop.siteId);
+  const activeIdx = activeStopId ? stops.findIndex((s) => s.id === activeStopId) : -1;
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Scroll the active (latest) stop into view when it changes
+  useEffect(() => {
+    const activeEl = listRef.current?.querySelector('.stop-timeline__item--active');
+    if (activeEl) {
+      activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeStopId]);
+
+  if (activeIdx === -1) return null;
+
+  // Get all reached stops up to activeIdx
+  const reachedStops = stops.slice(0, activeIdx + 1);
+
   return (
-    <article className="stop-panel" aria-live="polite">
-      <header className="stop-panel__head">
-        <h3>{site?.ancientName.en ?? stop.siteId}</h3>
-        <ConfidenceBadge confidence={stop.confidence} />
-      </header>
-      {site?.modernLocation && <p className="stop-panel__modern">{site.modernLocation.en}</p>}
-      <p className="stop-panel__date">
-        {stop.dateRange.display.en} · {stop.legMode}
-      </p>
-      <p>{stop.eventSummary.en}</p>
-      {stop.disputes && <DisputeNote text={stop.disputes.en} />}
-      {stop.scriptureRefs.length > 0 && (
-        <div className="stop-panel__scripture">
-          {stop.scriptureRefs.map((r) => (
-            <ScripturePassage key={r} raw={r} />
-          ))}
-        </div>
-      )}
-      <Citations ids={stop.citations} bundle={bundle} />
-    </article>
+    <div className="stop-timeline" ref={listRef} aria-live="polite">
+      <h3 className="stop-timeline__title">Stops Reached ({reachedStops.length} of {stops.length})</h3>
+      <div className="stop-timeline__list">
+        {reachedStops.map((stop, index) => {
+          const site = bundle.site(stop.siteId);
+          const isActive = index === activeIdx;
+          return (
+            <article
+              key={stop.id}
+              className={`stop-timeline__item ${isActive ? 'stop-timeline__item--active' : 'stop-timeline__item--completed'}`}
+            >
+              <div className="stop-timeline__indicator">
+                <span className="stop-timeline__number">{index + 1}</span>
+                {index < reachedStops.length - 1 && <div className="stop-timeline__connector" />}
+              </div>
+              <div className="stop-timeline__content">
+                <header className="stop-panel__head">
+                  <h4>{site?.ancientName.en ?? stop.siteId}</h4>
+                  <ConfidenceBadge confidence={stop.confidence} />
+                </header>
+                {site?.modernLocation && <p className="stop-panel__modern">{site.modernLocation.en}</p>}
+                <p className="stop-panel__date">
+                  {stop.dateRange.display.en} · {stop.legMode}
+                </p>
+                {isActive ? (
+                  <>
+                    <p className="stop-panel__summary">{stop.eventSummary.en}</p>
+                    {stop.disputes && <DisputeNote text={stop.disputes.en} />}
+                    {stop.scriptureRefs.length > 0 && (
+                      <div className="stop-panel__scripture">
+                        {stop.scriptureRefs.map((r) => (
+                          <ScripturePassage key={r} raw={r} />
+                        ))}
+                      </div>
+                    )}
+                    <Citations ids={stop.citations} bundle={bundle} />
+                  </>
+                ) : (
+                  <details className="stop-timeline__details">
+                    <summary>View details</summary>
+                    <p className="stop-panel__summary">{stop.eventSummary.en}</p>
+                    {stop.disputes && <DisputeNote text={stop.disputes.en} />}
+                    {stop.scriptureRefs.length > 0 && (
+                      <div className="stop-panel__scripture">
+                        {stop.scriptureRefs.map((r) => (
+                          <ScripturePassage key={r} raw={r} />
+                        ))}
+                      </div>
+                    )}
+                    <Citations ids={stop.citations} bundle={bundle} />
+                  </details>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
   );
 }
