@@ -1,466 +1,842 @@
 {
   "site-bethlehem": {
-    "src": "images/sites/site-bethlehem.jpg",
-    "caption": "The Church of the Nativity, Bethlehem, today",
-    "commonsFile": "Church_of_the_Nativity_(7703592746).jpg",
-    "author": "Neil Ward",
-    "license": "CC BY 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Church_of_the_Nativity_(7703592746).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-bethlehem.jpg",
+        "caption": "The Church of the Nativity, Bethlehem, today",
+        "commonsFile": "Church_of_the_Nativity_(7703592746).jpg",
+        "author": "Neil Ward",
+        "license": "CC BY 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Church_of_the_Nativity_(7703592746).jpg"
+      },
+      {
+        "src": "images/sites/site-bethlehem-2.jpg",
+        "caption": "The Grotto of the Nativity beneath the church",
+        "commonsFile": "Altar in the Grotto of the Nativity 2010.jpg",
+        "author": "Wknight94 talk",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altar_in_the_Grotto_of_the_Nativity_2010.jpg"
+      }
+    ]
   },
   "site-nazareth": {
-    "src": "images/sites/site-nazareth.jpg",
-    "caption": "The Basilica of the Annunciation in modern Nazareth",
-    "commonsFile": "Nazareth_Verkündigungbasilika_Church_of_Annunciation_(34257296024).jpg",
-    "author": "FLASHPACKER TRAVELGUIDE",
-    "license": "CC BY-SA 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-nazareth.jpg",
+        "caption": "The Basilica of the Annunciation in modern Nazareth",
+        "commonsFile": "Nazareth_Verkündigungbasilika_Church_of_Annunciation_(34257296024).jpg",
+        "author": "FLASHPACKER TRAVELGUIDE",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg"
+      }
+    ]
   },
   "site-baptism-at-the-jordan": {
-    "src": "images/sites/site-baptism-at-the-jordan.jpg",
-    "caption": "Al-Maghtas (Bethany beyond the Jordan) on the Jordan River today",
-    "commonsFile": "Bethany_(5).JPG",
-    "author": "Producer (talk)",
-    "license": "CC BY 2.5",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bethany_(5).JPG"
+    "images": [
+      {
+        "src": "images/sites/site-baptism-at-the-jordan.jpg",
+        "caption": "Al-Maghtas (Bethany beyond the Jordan) on the Jordan River today",
+        "commonsFile": "Bethany_(5).JPG",
+        "author": "Producer (talk)",
+        "license": "CC BY 2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bethany_(5).JPG"
+      }
+    ]
   },
   "site-capernaum": {
-    "src": "images/sites/site-capernaum.jpg",
-    "caption": "The excavated ruins of Capernaum on the Sea of Galilee",
-    "commonsFile": "Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg",
-    "author": "Eddie Gerald",
-    "license": "CC BY-SA 3.0 igo",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-capernaum.jpg",
+        "caption": "The excavated ruins of Capernaum on the Sea of Galilee",
+        "commonsFile": "Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg",
+        "author": "Eddie Gerald",
+        "license": "CC BY-SA 3.0 igo",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg"
+      },
+      {
+        "src": "images/sites/site-capernaum-2.jpg",
+        "caption": "Inside the limestone synagogue at Capernaum",
+        "commonsFile": "Kafarnaum BW 20.jpg",
+        "author": "Berthold Werner",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kafarnaum_BW_20.jpg"
+      }
+    ]
   },
   "site-cana-of-galilee": {
-    "src": "images/sites/site-cana-of-galilee.jpg",
-    "caption": "The Wedding Church at Kafr Kanna, traditional Cana, today",
-    "commonsFile": "Wedding Church (Orthodox) Kafr Kanna (1).jpg",
-    "author": "Chris06",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wedding_Church_(Orthodox)_Kafr_Kanna_(1).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-cana-of-galilee.jpg",
+        "caption": "The Wedding Church at Kafr Kanna, traditional Cana, today",
+        "commonsFile": "Wedding Church (Orthodox) Kafr Kanna (1).jpg",
+        "author": "Chris06",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wedding_Church_(Orthodox)_Kafr_Kanna_(1).jpg"
+      }
+    ]
   },
   "site-sea-of-galilee": {
-    "src": "images/sites/site-sea-of-galilee.jpg",
-    "caption": "The Sea of Galilee (Lake Kinneret) today",
-    "commonsFile": "Kinneret_cropped.jpg",
-    "author": "Zachi Evenor and User:MathKnight",
-    "license": "CC BY 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kinneret_cropped.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-sea-of-galilee.jpg",
+        "caption": "The Sea of Galilee (Lake Kinneret) today",
+        "commonsFile": "Kinneret_cropped.jpg",
+        "author": "Zachi Evenor and User:MathKnight",
+        "license": "CC BY 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kinneret_cropped.jpg"
+      },
+      {
+        "src": "images/sites/site-sea-of-galilee-2.jpg",
+        "caption": "The 1st-century 'Galilee Boat' recovered from the lakebed",
+        "commonsFile": "2,000 year-old Galilee Boat (25891250505).jpg",
+        "author": "Konrad Summers from Santa Clarita (Valencia) , California, USA",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2,000_year-old_Galilee_Boat_(25891250505).jpg"
+      }
+    ]
   },
   "site-bethsaida": {
-    "src": "images/sites/site-bethsaida.jpg",
-    "caption": "The mound of et-Tell, a leading candidate for Bethsaida",
-    "commonsFile": "Tel Bethsaida (2).jpg",
-    "author": "Hanay",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tel_Bethsaida_(2).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-bethsaida.jpg",
+        "caption": "The mound of et-Tell, a leading candidate for Bethsaida",
+        "commonsFile": "Tel Bethsaida (2).jpg",
+        "author": "Hanay",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tel_Bethsaida_(2).jpg"
+      }
+    ]
   },
   "site-chorazin": {
-    "src": "images/sites/site-chorazin.jpg",
-    "caption": "Basalt synagogue ruins at Chorazin (Korazim National Park)",
-    "commonsFile": "Korazim-view.jpg",
-    "author": "Lev.Tsimbler",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korazim-view.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-chorazin.jpg",
+        "caption": "Basalt synagogue ruins at Chorazin (Korazim National Park)",
+        "commonsFile": "Korazim-view.jpg",
+        "author": "Lev.Tsimbler",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korazim-view.jpg"
+      }
+    ]
   },
   "site-decapolis": {
-    "src": "images/sites/site-decapolis.jpg",
-    "caption": "Kursi on the eastern shore of the Sea of Galilee, in the Decapolis region",
-    "commonsFile": "Kursi0036.JPG",
-    "author": "Talmoryair",
-    "license": "CC BY 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kursi0036.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-decapolis.jpg",
+        "caption": "Kursi on the eastern shore of the Sea of Galilee, in the Decapolis region",
+        "commonsFile": "Kursi0036.JPG",
+        "author": "Talmoryair",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kursi0036.JPG"
+      }
+    ]
   },
   "site-tyre-and-sidon": {
-    "src": "images/sites/site-tyre-and-sidon.jpg",
-    "caption": "Tyre (Sur), Lebanon, in the modern day",
-    "commonsFile": "SubmergedEgyptianHarbour_TyreSour_Lebanon_RomanDeckert04112019.jpg",
-    "author": "RomanDeckert",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:SubmergedEgyptianHarbour_TyreSour_Lebanon_RomanDeckert04112019.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-tyre-and-sidon.jpg",
+        "caption": "Tyre (Sur), Lebanon, in the modern day",
+        "commonsFile": "SubmergedEgyptianHarbour_TyreSour_Lebanon_RomanDeckert04112019.jpg",
+        "author": "RomanDeckert",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:SubmergedEgyptianHarbour_TyreSour_Lebanon_RomanDeckert04112019.jpg"
+      }
+    ]
   },
   "site-caesarea-philippi": {
-    "src": "images/sites/site-caesarea-philippi.jpg",
-    "caption": "The springs and grotto of Banias (Caesarea Philippi) today",
-    "commonsFile": "Banias_Spring_Cliff_Pan's_Cave.JPG",
-    "author": "gugganij",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banias_Spring_Cliff_Pan%27s_Cave.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-caesarea-philippi.jpg",
+        "caption": "The springs and grotto of Banias (Caesarea Philippi) today",
+        "commonsFile": "Banias_Spring_Cliff_Pan's_Cave.JPG",
+        "author": "gugganij",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Banias_Spring_Cliff_Pan%27s_Cave.JPG"
+      }
+    ]
   },
   "site-samaria": {
-    "src": "images/sites/site-samaria.jpg",
-    "caption": "Jacob's Well near modern Nablus",
-    "commonsFile": "Jacob's_Well_in_2013.jpg",
-    "author": "Jeremiah K Garrett",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jacob%27s_Well_in_2013.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-samaria.jpg",
+        "caption": "Jacob's Well near modern Nablus",
+        "commonsFile": "Jacob's_Well_in_2013.jpg",
+        "author": "Jeremiah K Garrett",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jacob%27s_Well_in_2013.jpg"
+      }
+    ]
   },
   "site-final-journey-jericho": {
-    "src": "images/sites/site-final-journey-jericho.jpg",
-    "caption": "Modern Jericho in the Jordan Valley",
-    "commonsFile": "Tell_es-sultan.jpg",
-    "author": "Fullo88 at Italian Wikipedia",
-    "license": "Public domain",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tell_es-sultan.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-final-journey-jericho.jpg",
+        "caption": "Modern Jericho in the Jordan Valley",
+        "commonsFile": "Tell_es-sultan.jpg",
+        "author": "Fullo88 at Italian Wikipedia",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tell_es-sultan.jpg"
+      }
+    ]
   },
   "site-bethany-and-bethphage": {
-    "src": "images/sites/site-bethany-and-bethphage.jpg",
-    "caption": "Al-Eizariya (Bethany) on the Mount of Olives today",
-    "commonsFile": "Greek Orthodox Church al-Eizariya.jpg",
-    "author": "See The Holy Land",
-    "license": "CC BY-SA 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greek_Orthodox_Church_al-Eizariya.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-bethany-and-bethphage.jpg",
+        "caption": "Al-Eizariya (Bethany) on the Mount of Olives today",
+        "commonsFile": "Greek Orthodox Church al-Eizariya.jpg",
+        "author": "See The Holy Land",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greek_Orthodox_Church_al-Eizariya.jpg"
+      }
+    ]
   },
   "site-jerusalem": {
-    "src": "images/sites/site-jerusalem.jpg",
-    "caption": "The Temple Mount / Haram al-Sharif, Jerusalem, today",
-    "commonsFile": "Jerusalem-2013(2)-Aerial-Temple_Mount-(south_exposure).jpg",
-    "author": "Godot13",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jerusalem-2013(2)-Aerial-Temple_Mount-(south_exposure).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-jerusalem.jpg",
+        "caption": "The Temple Mount / Haram al-Sharif, Jerusalem, today",
+        "commonsFile": "Jerusalem-2013(2)-Aerial-Temple_Mount-(south_exposure).jpg",
+        "author": "Godot13",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jerusalem-2013(2)-Aerial-Temple_Mount-(south_exposure).jpg"
+      },
+      {
+        "src": "images/sites/site-jerusalem-2.jpg",
+        "caption": "The Western Wall, surviving retaining wall of Herod's Temple Mount",
+        "commonsFile": "Prayers at the Western Wall 2.jpg",
+        "author": "Askii",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prayers_at_the_Western_Wall_2.jpg"
+      }
+    ]
   },
   "site-last-supper": {
-    "src": "images/sites/site-last-supper.jpg",
-    "caption": "The Cenacle on Mount Zion, traditional Upper Room",
-    "commonsFile": "Cenacle_on_Mount_Zion.jpg",
-    "author": "See The Holy Land",
-    "license": "CC BY-SA 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cenacle_on_Mount_Zion.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-last-supper.jpg",
+        "caption": "The Cenacle on Mount Zion, traditional Upper Room",
+        "commonsFile": "Cenacle_on_Mount_Zion.jpg",
+        "author": "See The Holy Land",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cenacle_on_Mount_Zion.jpg"
+      }
+    ]
   },
   "site-gethsemane": {
-    "src": "images/sites/site-gethsemane.jpg",
-    "caption": "Ancient olive trees in the Garden of Gethsemane today",
-    "commonsFile": "Jerusalem_Gethsemane_tango7174.jpg",
-    "author": "Tango7174",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jerusalem_Gethsemane_tango7174.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-gethsemane.jpg",
+        "caption": "Ancient olive trees in the Garden of Gethsemane today",
+        "commonsFile": "Jerusalem_Gethsemane_tango7174.jpg",
+        "author": "Tango7174",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jerusalem_Gethsemane_tango7174.jpg"
+      }
+    ]
   },
   "site-trial-before-pilate": {
-    "src": "images/sites/site-trial-before-pilate.jpg",
-    "caption": "The Tower of David citadel, near the site of Herod’s palace",
-    "commonsFile": "מגדל_-דוד.jpg",
-    "author": "אורי אלוני",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%92%D7%93%D7%9C_-%D7%93%D7%95%D7%93.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-trial-before-pilate.jpg",
+        "caption": "The Tower of David citadel, near the site of Herod’s palace",
+        "commonsFile": "מגדל_-דוד.jpg",
+        "author": "אורי אלוני",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%92%D7%93%D7%9C_-%D7%93%D7%95%D7%93.jpg"
+      }
+    ]
   },
   "site-golgotha-and-the-tomb": {
-    "src": "images/sites/site-golgotha-and-the-tomb.jpg",
-    "caption": "The Church of the Holy Sepulchre, Jerusalem, today",
-    "commonsFile": "Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg",
-    "author": "Gerd Eichmann",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-golgotha-and-the-tomb.jpg",
+        "caption": "The Church of the Holy Sepulchre, Jerusalem, today",
+        "commonsFile": "Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg",
+        "author": "Gerd Eichmann",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg"
+      },
+      {
+        "src": "images/sites/site-golgotha-and-the-tomb-2.jpg",
+        "caption": "Inside the Aedicule, the shrine over the traditional tomb",
+        "commonsFile": "Holy Land 2016 P0929 Church of the Holy Sepulchre Aedicule interior.jpg",
+        "author": "Fallaner",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Holy_Land_2016_P0929_Church_of_the_Holy_Sepulchre_Aedicule_interior.jpg"
+      }
+    ]
   },
   "site-antioch": {
-    "src": "images/sites/site-antioch.jpg",
-    "caption": "Antakya (ancient Antioch), Turkey, in the modern day",
-    "commonsFile": "Antakya_Views_from_hill_at_SE_in_1990's_05.jpg",
-    "author": "Dosseman",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antakya_Views_from_hill_at_SE_in_1990%27s_05.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-antioch.jpg",
+        "caption": "Antakya (ancient Antioch), Turkey, in the modern day",
+        "commonsFile": "Antakya_Views_from_hill_at_SE_in_1990's_05.jpg",
+        "author": "Dosseman",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antakya_Views_from_hill_at_SE_in_1990%27s_05.jpg"
+      }
+    ]
   },
   "site-seleucia-pieria": {
-    "src": "images/sites/site-seleucia-pieria.jpg",
-    "caption": "The Titus Tunnel at Seleucia Pieria (Çevlik, Turkey) today",
-    "commonsFile": "Samandag4.JPG",
-    "author": "Vikiçizer",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samandag4.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-seleucia-pieria.jpg",
+        "caption": "The Titus Tunnel at Seleucia Pieria (Çevlik, Turkey) today",
+        "commonsFile": "Samandag4.JPG",
+        "author": "Vikiçizer",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samandag4.JPG"
+      }
+    ]
   },
   "site-salamis": {
-    "src": "images/sites/site-salamis.jpg",
-    "caption": "The ruins of Salamis, Cyprus, today",
-    "commonsFile": "Gymnasion_und_Therme_aus_Südwest.jpg",
-    "author": "Gerhard Haubold",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gymnasion_und_Therme_aus_S%C3%BCdwest.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-salamis.jpg",
+        "caption": "The ruins of Salamis, Cyprus, today",
+        "commonsFile": "Gymnasion_und_Therme_aus_Südwest.jpg",
+        "author": "Gerhard Haubold",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gymnasion_und_Therme_aus_S%C3%BCdwest.jpg"
+      }
+    ]
   },
   "site-paphos": {
-    "src": "images/sites/site-paphos.jpg",
-    "caption": "Paphos Archaeological Park, Cyprus, today",
-    "commonsFile": "Paphos_panorama_-_Cyprus_-_3_May_2015.jpg",
-    "author": "Sergey Galyonkin from Kyiv, Ukraine",
-    "license": "CC BY-SA 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paphos_panorama_-_Cyprus_-_3_May_2015.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-paphos.jpg",
+        "caption": "Paphos Archaeological Park, Cyprus, today",
+        "commonsFile": "Paphos_panorama_-_Cyprus_-_3_May_2015.jpg",
+        "author": "Sergey Galyonkin from Kyiv, Ukraine",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paphos_panorama_-_Cyprus_-_3_May_2015.jpg"
+      },
+      {
+        "src": "images/sites/site-paphos-2.jpg",
+        "caption": "Roman mosaics in the House of Aion, Paphos",
+        "commonsFile": "Birth of Dionysos - House of Aion - Paphos Archaeological Park.jpg",
+        "author": "George M. Groutas from Dali, Nicosia, Cyprus",
+        "license": "CC BY 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Birth_of_Dionysos_-_House_of_Aion_-_Paphos_Archaeological_Park.jpg"
+      }
+    ]
   },
   "site-perga": {
-    "src": "images/sites/site-perga.jpg",
-    "caption": "The colonnaded ruins of Perga, near Antalya, today",
-    "commonsFile": "Perge_city_overview.jpg",
-    "author": "Saffron Blaze",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perge_city_overview.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-perga.jpg",
+        "caption": "The colonnaded ruins of Perga, near Antalya, today",
+        "commonsFile": "Perge_city_overview.jpg",
+        "author": "Saffron Blaze",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perge_city_overview.jpg"
+      }
+    ]
   },
   "site-pisidian-antioch": {
-    "src": "images/sites/site-pisidian-antioch.jpg",
-    "caption": "Ruins of Pisidian Antioch near Yalvaç, Turkey",
-    "commonsFile": "Antiocheia_in_Psidia.jpg",
-    "author": "Maderibeyza at Turkish Wikipedia",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antiocheia_in_Psidia.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-pisidian-antioch.jpg",
+        "caption": "Ruins of Pisidian Antioch near Yalvaç, Turkey",
+        "commonsFile": "Antiocheia_in_Psidia.jpg",
+        "author": "Maderibeyza at Turkish Wikipedia",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antiocheia_in_Psidia.jpg"
+      }
+    ]
   },
   "site-iconium": {
-    "src": "images/sites/site-iconium.jpg",
-    "caption": "Konya (ancient Iconium), Turkey, today",
-    "commonsFile": "Maulana_Jelaledin_Muhammad_Rumi_in_konya.jpg",
-    "author": "Emad Nemati",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maulana_Jelaledin_Muhammad_Rumi_in_konya.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-iconium.jpg",
+        "caption": "Konya (ancient Iconium), Turkey, today",
+        "commonsFile": "Maulana_Jelaledin_Muhammad_Rumi_in_konya.jpg",
+        "author": "Emad Nemati",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maulana_Jelaledin_Muhammad_Rumi_in_konya.jpg"
+      }
+    ]
   },
   "site-lystra": {
-    "src": "images/sites/site-lystra.jpg",
-    "caption": "Rock-cut Kilistra (Gökyurt) in the countryside of ancient Lystra",
-    "commonsFile": "Kilistra lystra38.JPG",
-    "author": "Dursunbal",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kilistra_lystra38.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-lystra.jpg",
+        "caption": "Rock-cut Kilistra (Gökyurt) in the countryside of ancient Lystra",
+        "commonsFile": "Kilistra lystra38.JPG",
+        "author": "Dursunbal",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kilistra_lystra38.JPG"
+      }
+    ]
   },
   "site-derbe": {
-    "src": "images/sites/site-derbe.jpg",
-    "caption": "Karaman, Turkey — the mound of Kerti Höyük (ancient Derbe) lies ~24 km northeast",
-    "commonsFile": "Karaman_castle_4868.jpg",
-    "author": "Dosseman",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karaman_castle_4868.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-derbe.jpg",
+        "caption": "Karaman, Turkey — the mound of Kerti Höyük (ancient Derbe) lies ~24 km northeast",
+        "commonsFile": "Karaman_castle_4868.jpg",
+        "author": "Dosseman",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karaman_castle_4868.jpg"
+      }
+    ]
   },
   "site-attalia": {
-    "src": "images/sites/site-attalia.jpg",
-    "caption": "The old harbor quarter (Kaleiçi) of Antalya, ancient Attalia",
-    "commonsFile": "Antalya kaleiçi 2.jpg",
-    "author": "REHBER0770",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antalya_kalei%C3%A7i_2.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-attalia.jpg",
+        "caption": "The old harbor quarter (Kaleiçi) of Antalya, ancient Attalia",
+        "commonsFile": "Antalya kaleiçi 2.jpg",
+        "author": "REHBER0770",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antalya_kalei%C3%A7i_2.jpg"
+      }
+    ]
   },
   "site-syria": {
-    "src": "images/sites/site-syria.jpg",
-    "caption": "Tarsus, Turkey — chief city of the Syria–Cilicia region",
-    "commonsFile": "Old_Town_of_Tarsus,_Mersin.jpg",
-    "author": "The Mersinli",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_of_Tarsus,_Mersin.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-syria.jpg",
+        "caption": "Tarsus, Turkey — chief city of the Syria–Cilicia region",
+        "commonsFile": "Old_Town_of_Tarsus,_Mersin.jpg",
+        "author": "The Mersinli",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_of_Tarsus,_Mersin.jpg"
+      }
+    ]
   },
   "site-alexandria-troas": {
-    "src": "images/sites/site-alexandria-troas.jpg",
-    "caption": "Ruins of Alexandria Troas near Dalyan, Turkey",
-    "commonsFile": "Troas_Therme_2.JPG",
-    "author": "Horacio36",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Troas_Therme_2.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-alexandria-troas.jpg",
+        "caption": "Ruins of Alexandria Troas near Dalyan, Turkey",
+        "commonsFile": "Troas_Therme_2.JPG",
+        "author": "Horacio36",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Troas_Therme_2.JPG"
+      }
+    ]
   },
   "site-samothrace": {
-    "src": "images/sites/site-samothrace.jpg",
-    "caption": "The island of Samothrace today",
-    "commonsFile": "Chora,_Samothraki.jpg",
-    "author": "Juggertrout",
-    "license": "CC BY 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chora,_Samothraki.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-samothrace.jpg",
+        "caption": "The island of Samothrace today",
+        "commonsFile": "Chora,_Samothraki.jpg",
+        "author": "Juggertrout",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chora,_Samothraki.jpg"
+      }
+    ]
   },
   "site-neapolis": {
-    "src": "images/sites/site-neapolis.jpg",
-    "caption": "Kavala (ancient Neapolis), Greece, today",
-    "commonsFile": "Kavala_(2).JPG",
-    "author": "CeeGee",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kavala_(2).JPG"
+    "images": [
+      {
+        "src": "images/sites/site-neapolis.jpg",
+        "caption": "Kavala (ancient Neapolis), Greece, today",
+        "commonsFile": "Kavala_(2).JPG",
+        "author": "CeeGee",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kavala_(2).JPG"
+      }
+    ]
   },
   "site-philippi": {
-    "src": "images/sites/site-philippi.jpg",
-    "caption": "The ruins of Philippi, Greece, today",
-    "commonsFile": "Philippi_city_center.jpg",
-    "author": "No machine-readable author provided. Marsyas assumed (based on copyright claims).",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Philippi_city_center.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-philippi.jpg",
+        "caption": "The ruins of Philippi, Greece, today",
+        "commonsFile": "Philippi_city_center.jpg",
+        "author": "No machine-readable author provided. Marsyas assumed (based on copyright claims).",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Philippi_city_center.jpg"
+      },
+      {
+        "src": "images/sites/site-philippi-2.jpg",
+        "caption": "The ancient theatre of Philippi",
+        "commonsFile": "Ancient theatre - Philippi.jpg",
+        "author": "MrPanyGoff",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ancient_theatre_-_Philippi.jpg"
+      }
+    ]
   },
   "site-thessalonica": {
-    "src": "images/sites/site-thessalonica.jpg",
-    "caption": "Modern Thessaloniki (ancient Thessalonica)",
-    "commonsFile": "Tessaloniki_BW_2017-10-05_18-22-47.jpg",
-    "author": "Berthold Werner",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tessaloniki_BW_2017-10-05_18-22-47.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-thessalonica.jpg",
+        "caption": "Modern Thessaloniki (ancient Thessalonica)",
+        "commonsFile": "Tessaloniki_BW_2017-10-05_18-22-47.jpg",
+        "author": "Berthold Werner",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tessaloniki_BW_2017-10-05_18-22-47.jpg"
+      },
+      {
+        "src": "images/sites/site-thessalonica-2.jpg",
+        "caption": "The Rotunda and Arch of Galerius in Thessaloniki",
+        "commonsFile": "Thessaloniki Saint George Rotunda from the Arch of Galerius.jpg",
+        "author": "Ymblanter",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thessaloniki_Saint_George_Rotunda_from_the_Arch_of_Galerius.jpg"
+      }
+    ]
   },
   "site-berea": {
-    "src": "images/sites/site-berea.jpg",
-    "caption": "Veria (ancient Berea), Greece, today",
-    "commonsFile": "Panoramic_view_of_Veria_-_2014.JPG",
-    "author": "Zisis Tsampalis",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Veria_-_2014.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-berea.jpg",
+        "caption": "Veria (ancient Berea), Greece, today",
+        "commonsFile": "Panoramic_view_of_Veria_-_2014.JPG",
+        "author": "Zisis Tsampalis",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Veria_-_2014.JPG"
+      }
+    ]
   },
   "site-athens": {
-    "src": "images/sites/site-athens.jpg",
-    "caption": "The Areopagus rock below the Acropolis, Athens, today",
-    "commonsFile": "Areopagus_hill.jpg",
-    "author": "O.Mustafin",
-    "license": "CC0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Areopagus_hill.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-athens.jpg",
+        "caption": "The Areopagus rock below the Acropolis, Athens, today",
+        "commonsFile": "Areopagus_hill.jpg",
+        "author": "O.Mustafin",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Areopagus_hill.jpg"
+      },
+      {
+        "src": "images/sites/site-athens-2.jpg",
+        "caption": "The Acropolis of Athens seen from Philopappos Hill",
+        "commonsFile": "Attica 06-13 Athens 50 View from Philopappos - Acropolis Hill.jpg",
+        "author": "A.Savin",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg"
+      }
+    ]
   },
   "site-corinth": {
-    "src": "images/sites/site-corinth.jpg",
-    "caption": "The Temple of Apollo at Ancient Corinth today",
-    "commonsFile": "Korinth BW 2017-10-10 10-55-28.jpg",
-    "author": "Berthold Werner",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korinth_BW_2017-10-10_10-55-28.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-corinth.jpg",
+        "caption": "The Temple of Apollo at Ancient Corinth today",
+        "commonsFile": "Korinth BW 2017-10-10 10-55-28.jpg",
+        "author": "Berthold Werner",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korinth_BW_2017-10-10_10-55-28.jpg"
+      },
+      {
+        "src": "images/sites/site-corinth-2.jpg",
+        "caption": "Acrocorinth, the fortress mountain above ancient Corinth",
+        "commonsFile": "Acrocorinth Gateway.jpg",
+        "author": "Nicolas von Kospoth (Triggerhappy)",
+        "license": "CC BY-SA 2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Acrocorinth_Gateway.jpg"
+      }
+    ]
   },
   "site-cenchreae": {
-    "src": "images/sites/site-cenchreae.jpg",
-    "caption": "Kechries (ancient Cenchreae), the eastern port of Corinth, today",
-    "commonsFile": "Kenchreai.jpg",
-    "author": "Heinz Schmitz",
-    "license": "CC BY-SA 2.5",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kenchreai.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-cenchreae.jpg",
+        "caption": "Kechries (ancient Cenchreae), the eastern port of Corinth, today",
+        "commonsFile": "Kenchreai.jpg",
+        "author": "Heinz Schmitz",
+        "license": "CC BY-SA 2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kenchreai.jpg"
+      }
+    ]
   },
   "site-ephesus": {
-    "src": "images/sites/site-ephesus.jpg",
-    "caption": "The Library of Celsus at Ephesus today",
-    "commonsFile": "Ephesus_Celsus_Library_Façade.jpg",
-    "author": "Benh LIEU SONG",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ephesus_Celsus_Library_Fa%C3%A7ade.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-ephesus.jpg",
+        "caption": "The Library of Celsus at Ephesus today",
+        "commonsFile": "Ephesus_Celsus_Library_Façade.jpg",
+        "author": "Benh LIEU SONG",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ephesus_Celsus_Library_Fa%C3%A7ade.jpg"
+      },
+      {
+        "src": "images/sites/site-ephesus-2.jpg",
+        "caption": "The Great Theatre of Ephesus, scene of the riot of Acts 19",
+        "commonsFile": "Great Theatre of Ephesus 2024.jpg",
+        "author": "Furkan Akkurt",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Theatre_of_Ephesus_2024.jpg"
+      },
+      {
+        "src": "images/sites/site-ephesus-3.jpg",
+        "caption": "Curetes Street, a main thoroughfare of Roman Ephesus",
+        "commonsFile": "Curetes Street in Ephesus (1).jpg",
+        "author": "Radosław Botev",
+        "license": "CC BY 3.0 pl",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Curetes_Street_in_Ephesus_(1).jpg"
+      }
+    ]
   },
   "site-caesarea-maritima": {
-    "src": "images/sites/site-caesarea-maritima.jpg",
-    "caption": "The ruins of Caesarea Maritima today",
-    "commonsFile": "Caesarea.JPG",
-    "author": "The original uploader was אסף.צ at Hebrew Wikipedia.",
-    "license": "Public domain",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caesarea.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-caesarea-maritima.jpg",
+        "caption": "The ruins of Caesarea Maritima today",
+        "commonsFile": "Caesarea.JPG",
+        "author": "The original uploader was אסף.צ at Hebrew Wikipedia.",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caesarea.JPG"
+      },
+      {
+        "src": "images/sites/site-caesarea-maritima-2.jpg",
+        "caption": "The hippodrome of Caesarea Maritima beside the sea",
+        "commonsFile": "Caesarea Maritima Hippodrome 02.jpg",
+        "author": "Immanuel Giel",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caesarea_Maritima_Hippodrome_02.jpg"
+      }
+    ]
   },
   "site-antioch-on-the-orontes": {
-    "src": "images/sites/site-antioch-on-the-orontes.jpg",
-    "caption": "The cave Church of St Peter at Antakya (Antioch) today",
-    "commonsFile": "Antakya Church of St. Peter exterior ın 2025 05.jpg",
-    "author": "Dosseman",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antakya_Church_of_St._Peter_exterior_%C4%B1n_2025_05.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-antioch-on-the-orontes.jpg",
+        "caption": "The cave Church of St Peter at Antakya (Antioch) today",
+        "commonsFile": "Antakya Church of St. Peter exterior ın 2025 05.jpg",
+        "author": "Dosseman",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antakya_Church_of_St._Peter_exterior_%C4%B1n_2025_05.jpg"
+      }
+    ]
   },
   "site-galatia-and-phrygia": {
-    "src": "images/sites/site-galatia-and-phrygia.jpg",
-    "caption": "The Roman aqueduct near Yalvaç, on the Anatolian plateau of old Galatia–Phrygia",
-    "commonsFile": "Aquaduct pisidia antiochia - panoramio.jpg",
-    "author": "Gökceler",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aquaduct_pisidia_antiochia_-_panoramio.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-galatia-and-phrygia.jpg",
+        "caption": "The Roman aqueduct near Yalvaç, on the Anatolian plateau of old Galatia–Phrygia",
+        "commonsFile": "Aquaduct pisidia antiochia - panoramio.jpg",
+        "author": "Gökceler",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aquaduct_pisidia_antiochia_-_panoramio.jpg"
+      }
+    ]
   },
   "site-macedonia": {
-    "src": "images/sites/site-macedonia.jpg",
-    "caption": "Remains of the Via Egnatia, the Roman road across Macedonia, at Kavala",
-    "commonsFile": "Kavala egnatia 1.JPG",
-    "author": "Philipp Pilhofer",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kavala_egnatia_1.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-macedonia.jpg",
+        "caption": "Remains of the Via Egnatia, the Roman road across Macedonia, at Kavala",
+        "commonsFile": "Kavala egnatia 1.JPG",
+        "author": "Philipp Pilhofer",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kavala_egnatia_1.JPG"
+      }
+    ]
   },
   "site-troas": {
-    "src": "images/sites/site-troas.jpg",
-    "caption": "The harbor ruins of Alexandria Troas today",
-    "commonsFile": "Troas_Therme_2.JPG",
-    "author": "Horacio36",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Troas_Therme_2.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-troas.jpg",
+        "caption": "The harbor ruins of Alexandria Troas today",
+        "commonsFile": "Troas_Therme_2.JPG",
+        "author": "Horacio36",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Troas_Therme_2.JPG"
+      }
+    ]
   },
   "site-miletus": {
-    "src": "images/sites/site-miletus.jpg",
-    "caption": "The great theater of Miletus today",
-    "commonsFile": "Miletus_-_Ancient_Greek_theatre_02.jpg",
-    "author": "Bernard Gagnon",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miletus_-_Ancient_Greek_theatre_02.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-miletus.jpg",
+        "caption": "The great theater of Miletus today",
+        "commonsFile": "Miletus_-_Ancient_Greek_theatre_02.jpg",
+        "author": "Bernard Gagnon",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miletus_-_Ancient_Greek_theatre_02.jpg"
+      }
+    ]
   },
   "site-caesarea": {
-    "src": "images/sites/site-caesarea.jpg",
-    "caption": "The Roman theater at Caesarea Maritima today",
-    "commonsFile": "Caesarea Theatre.jpg",
-    "author": "pboyd04",
-    "license": "CC BY-SA 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caesarea_Theatre.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-caesarea.jpg",
+        "caption": "The Roman theater at Caesarea Maritima today",
+        "commonsFile": "Caesarea Theatre.jpg",
+        "author": "pboyd04",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caesarea_Theatre.jpg"
+      }
+    ]
   },
   "site-caesarea-imprisonment": {
-    "src": "images/sites/site-caesarea-imprisonment.jpg",
-    "caption": "The Roman aqueduct at Caesarea, where Paul was held two years",
-    "commonsFile": "Aqueduct, Caesarea, Israel.JPG",
-    "author": "Christianpentzold",
-    "license": "CC BY 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aqueduct,_Caesarea,_Israel.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-caesarea-imprisonment.jpg",
+        "caption": "The Roman aqueduct at Caesarea, where Paul was held two years",
+        "commonsFile": "Aqueduct, Caesarea, Israel.JPG",
+        "author": "Christianpentzold",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aqueduct,_Caesarea,_Israel.JPG"
+      }
+    ]
   },
   "site-sidon": {
-    "src": "images/sites/site-sidon.jpg",
-    "caption": "The Sea Castle at Sidon (Saida), Lebanon, today",
-    "commonsFile": "View_from_Sidon's_Sea_Castle,_Sidon,_Lebanon.jpg",
-    "author": "Vyacheslav Argenberg",
-    "license": "CC BY 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Sidon%27s_Sea_Castle,_Sidon,_Lebanon.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-sidon.jpg",
+        "caption": "The Sea Castle at Sidon (Saida), Lebanon, today",
+        "commonsFile": "View_from_Sidon's_Sea_Castle,_Sidon,_Lebanon.jpg",
+        "author": "Vyacheslav Argenberg",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:View_from_Sidon%27s_Sea_Castle,_Sidon,_Lebanon.jpg"
+      }
+    ]
   },
   "site-myra-of-lycia": {
-    "src": "images/sites/site-myra-of-lycia.jpg",
-    "caption": "Rock-cut tombs and theater at Myra (Demre), Turkey",
-    "commonsFile": "Myra_theatre.jpg",
-    "author": "Ingo Mehling",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Myra_theatre.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-myra-of-lycia.jpg",
+        "caption": "Rock-cut tombs and theater at Myra (Demre), Turkey",
+        "commonsFile": "Myra_theatre.jpg",
+        "author": "Ingo Mehling",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Myra_theatre.jpg"
+      },
+      {
+        "src": "images/sites/site-myra-of-lycia-2.jpg",
+        "caption": "Lycian rock tombs above Myra",
+        "commonsFile": "The rock tombs of ancient Myra, carved into the cliffs of Demre, Turkey.jpg",
+        "author": "Buğra Kaan Ersoy",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_rock_tombs_of_ancient_Myra,_carved_into_the_cliffs_of_Demre,_Turkey.jpg"
+      }
+    ]
   },
   "site-cnidus-and-fair-havens": {
-    "src": "images/sites/site-cnidus-and-fair-havens.jpg",
-    "caption": "The ruins and twin harbors of Knidos today",
-    "commonsFile": "Knidos-Häfen.jpg",
-    "author": "Tischbeinahe",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Knidos-H%C3%A4fen.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-cnidus-and-fair-havens.jpg",
+        "caption": "The ruins and twin harbors of Knidos today",
+        "commonsFile": "Knidos-Häfen.jpg",
+        "author": "Tischbeinahe",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Knidos-H%C3%A4fen.jpg"
+      }
+    ]
   },
   "site-phoenix": {
-    "src": "images/sites/site-phoenix.jpg",
-    "caption": "Loutro on the south coast of Crete, near ancient Phoenix",
-    "commonsFile": "Loutro (Chania)-01.jpg",
-    "author": "Maesi64",
-    "license": "CC0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loutro_(Chania)-01.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-phoenix.jpg",
+        "caption": "Loutro on the south coast of Crete, near ancient Phoenix",
+        "commonsFile": "Loutro (Chania)-01.jpg",
+        "author": "Maesi64",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loutro_(Chania)-01.jpg"
+      }
+    ]
   },
   "site-malta-shipwreck": {
-    "src": "images/sites/site-malta-shipwreck.jpg",
-    "caption": "Saint Paul's Bay, Malta, today",
-    "commonsFile": "St._Paul's_Bay_montage.jpg",
-    "author": "Xwejnusgozo (montage)Ies (original photos)",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._Paul%27s_Bay_montage.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-malta-shipwreck.jpg",
+        "caption": "Saint Paul's Bay, Malta, today",
+        "commonsFile": "St._Paul's_Bay_montage.jpg",
+        "author": "Xwejnusgozo (montage)Ies (original photos)",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:St._Paul%27s_Bay_montage.jpg"
+      }
+    ]
   },
   "site-syracuse-rhegium-puteoli": {
-    "src": "images/sites/site-syracuse-rhegium-puteoli.jpg",
-    "caption": "Syracuse, Sicily, in the modern day",
-    "commonsFile": "Veduta_aerea_di_Siracusa_e_con_l'Etna_sullo_sfondo_(Foto_di_Angelo_Bonomo).jpg",
-    "author": "I FRATELLI ANGELO e GIORGIO BONOMO from Pomezia, ROMA, ITALIA",
-    "license": "Attribution",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Veduta_aerea_di_Siracusa_e_con_l%27Etna_sullo_sfondo_(Foto_di_Angelo_Bonomo).jpg"
+    "images": [
+      {
+        "src": "images/sites/site-syracuse-rhegium-puteoli.jpg",
+        "caption": "Syracuse, Sicily, in the modern day",
+        "commonsFile": "Veduta_aerea_di_Siracusa_e_con_l'Etna_sullo_sfondo_(Foto_di_Angelo_Bonomo).jpg",
+        "author": "I FRATELLI ANGELO e GIORGIO BONOMO from Pomezia, ROMA, ITALIA",
+        "license": "Attribution",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Veduta_aerea_di_Siracusa_e_con_l%27Etna_sullo_sfondo_(Foto_di_Angelo_Bonomo).jpg"
+      }
+    ]
   },
   "site-rome": {
-    "src": "images/sites/site-rome.jpg",
-    "caption": "The Appian Way, the road by which Paul reached Rome",
-    "commonsFile": "Paesaggio_dell'Appia_antica.jpg",
-    "author": "LuisaV72",
-    "license": "CC BY-SA 4.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paesaggio_dell%27Appia_antica.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-rome.jpg",
+        "caption": "The Appian Way, the road by which Paul reached Rome",
+        "commonsFile": "Paesaggio_dell'Appia_antica.jpg",
+        "author": "LuisaV72",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paesaggio_dell%27Appia_antica.jpg"
+      },
+      {
+        "src": "images/sites/site-rome-2.jpg",
+        "caption": "The Roman Forum today",
+        "commonsFile": "Roman Forum looking East panorama.jpg",
+        "author": "Nicholas Hartmann",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roman_Forum_looking_East_panorama.jpg"
+      },
+      {
+        "src": "images/sites/site-rome-3.jpg",
+        "caption": "The Mamertine Prison, traditional site of Paul's final imprisonment",
+        "commonsFile": "Mamertine Prison.jpg",
+        "author": "Chris 73",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mamertine_Prison.jpg"
+      }
+    ]
   },
   "site-patmos": {
-    "src": "images/sites/site-patmos.jpg",
-    "caption": "The island of Patmos today",
-    "commonsFile": "Chora-of-Patmos.JPG",
-    "author": "Chris Vlachos",
-    "license": "CC BY 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chora-of-Patmos.JPG"
+    "images": [
+      {
+        "src": "images/sites/site-patmos.jpg",
+        "caption": "The island of Patmos today",
+        "commonsFile": "Chora-of-Patmos.JPG",
+        "author": "Chris Vlachos",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chora-of-Patmos.JPG"
+      },
+      {
+        "src": "images/sites/site-patmos-2.jpg",
+        "caption": "The Cave of the Apocalypse, traditional site of John's vision",
+        "commonsFile": "Cave of the Apocalypse.jpg",
+        "author": "Vladimir Boskovic at English Wikipedia",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cave_of_the_Apocalypse.jpg"
+      }
+    ]
   },
   "site-hierapolis": {
-    "src": "images/sites/site-hierapolis.jpg",
-    "caption": "The travertine terraces and ruins of Hierapolis (Pamukkale)",
-    "commonsFile": "Hierapolis_01.jpg",
-    "author": "Bernard Gagnon",
-    "license": "CC BY-SA 3.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hierapolis_01.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-hierapolis.jpg",
+        "caption": "The travertine terraces and ruins of Hierapolis (Pamukkale)",
+        "commonsFile": "Hierapolis_01.jpg",
+        "author": "Bernard Gagnon",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hierapolis_01.jpg"
+      },
+      {
+        "src": "images/sites/site-hierapolis-2.jpg",
+        "caption": "The travertine terrace pools of Pamukkale below Hierapolis",
+        "commonsFile": "Pamukkale Hierapolis Travertine pools.JPG",
+        "author": "Pvasiliadis",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pamukkale_Hierapolis_Travertine_pools.JPG"
+      }
+    ]
   },
   "site-alexandria": {
-    "src": "images/sites/site-alexandria.jpg",
-    "caption": "The Citadel of Qaitbay, Alexandria — site of the ancient Pharos lighthouse",
-    "commonsFile": "Citadel of Qaitbay, Alexandria, Egypt.jpg",
-    "author": "Argenberg",
-    "license": "CC BY 2.0",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Citadel_of_Qaitbay,_Alexandria,_Egypt.jpg"
+    "images": [
+      {
+        "src": "images/sites/site-alexandria.jpg",
+        "caption": "The Citadel of Qaitbay, Alexandria — site of the ancient Pharos lighthouse",
+        "commonsFile": "Citadel of Qaitbay, Alexandria, Egypt.jpg",
+        "author": "Argenberg",
+        "license": "CC BY 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Citadel_of_Qaitbay,_Alexandria,_Egypt.jpg"
+      }
+    ]
   }
 }
