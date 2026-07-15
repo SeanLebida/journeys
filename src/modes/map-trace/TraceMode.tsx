@@ -11,7 +11,8 @@ import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { progressAtIndex, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
-import { SitePhoto, SiteViews } from '../../components/SitePhoto';
+import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
+import { SiteViews } from '../../components/SiteViews';
 import type { BundleIndex } from '../../content/useBundle';
 import type { TStop } from '../../content/schema';
 
@@ -33,15 +34,25 @@ function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
     <ModePanel title={t('modes.trace.title')}>
       <p>Choose a journey to trace across the ancient Mediterranean.</p>
       <ul className="journey-list">
-        {bundle.journeys.map((j) => (
-          <li key={j.id}>
-            <Link to={`/trace/${j.id}`} className="journey-list__item" style={{ borderLeftColor: j.color }}>
-              <strong>{j.title.en}</strong>
-              <span className="journey-list__date">{j.dateRange.display.en}</span>
-              <span className="journey-list__summary">{j.summary.en}</span>
-            </Link>
-          </li>
-        ))}
+        {bundle.journeys.map((j) => {
+          const firstSiteId = bundle.stop(j.stops[0])?.siteId;
+          return (
+            <li key={j.id}>
+              <Link
+                to={`/trace/${j.id}`}
+                className="journey-list__item journey-list__item--thumbed"
+                style={{ borderLeftColor: j.color }}
+              >
+                {firstSiteId && <SiteThumb siteId={firstSiteId} />}
+                <span className="journey-list__body">
+                  <strong>{j.title.en}</strong>
+                  <span className="journey-list__date">{j.dateRange.display.en}</span>
+                  <span className="journey-list__summary">{j.summary.en}</span>
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </ModePanel>
   );
@@ -287,6 +298,7 @@ function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[
                 ) : (
                   <details className="stop-timeline__details">
                     <summary>View details</summary>
+                    <SitePhoto siteId={stop.siteId} />
                     <p className="stop-panel__summary">{stop.eventSummary.en}</p>
                     {stop.disputes && <DisputeNote text={stop.disputes.en} />}
                     {stop.scriptureRefs.length > 0 && (

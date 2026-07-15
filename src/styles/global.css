@@ -1056,3 +1056,30 @@ a {
   padding: 0.15rem 0.5rem;
   cursor: pointer;
 }
+
+/* ── Site thumbnails on list cards (pickers + home mode cards) ───────────── */
+.site-thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.journey-list__item--thumbed {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+}
+.journey-list__body {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.home__mode-card .site-thumb {
+  width: 100%;
+  height: 72px;
+  border: 0;
+  border-radius: 8px;
+}

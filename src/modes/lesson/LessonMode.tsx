@@ -7,7 +7,8 @@ import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { Citations, ScripturePassage } from '../../content/citations';
-import { SitePhoto } from '../../components/SitePhoto';
+import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
+import { SiteViews } from '../../components/SiteViews';
 
 function reducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -29,14 +30,21 @@ function LessonPicker({ bundle }: { bundle: BundleIndex }) {
     <ModePanel title={t('modes.lessons.title')}>
       <p>Narrated walkthroughs that move across the map as you read.</p>
       <ul className="journey-list">
-        {bundle.lessons.map((l) => (
-          <li key={l.id}>
-            <Link to={`/lessons/${l.id}`} className="journey-list__item">
-              <strong>{l.title.en}</strong>
-              <span className="journey-list__summary">{l.steps.length} steps</span>
-            </Link>
-          </li>
-        ))}
+        {bundle.lessons.map((l) => {
+          const firstStep = l.steps.find((s) => s.siteId || s.stopId);
+          const firstSiteId = firstStep ? stepSiteId(bundle, firstStep) : undefined;
+          return (
+            <li key={l.id}>
+              <Link to={`/lessons/${l.id}`} className="journey-list__item journey-list__item--thumbed">
+                {firstSiteId && <SiteThumb siteId={firstSiteId} />}
+                <span className="journey-list__body">
+                  <strong>{l.title.en}</strong>
+                  <span className="journey-list__summary">{l.steps.length} steps</span>
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </ModePanel>
   );
@@ -126,7 +134,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
       <div className="lesson-step" aria-live="polite">
         <p className="lesson-step__body">{step.body.en}</p>
-        {stepSiteId(bundle, step) && <SitePhoto siteId={stepSiteId(bundle, step)!} />}
+        <LessonStepViews bundle={bundle} step={step} />
         {step.scriptureRefs?.map((r) => (
           <ScripturePassage key={r} raw={r} />
         ))}
@@ -145,6 +153,25 @@ function stopCenter(bundle: BundleIndex, id: string): { lat: number; lon: number
   const stop = bundle.stop(id);
   return stop ? siteCenter(bundle, stop.siteId) : undefined;
 }
+/** Photo gallery + in-app aerial/street views for the step's site, if any. */
+function LessonStepViews({ bundle, step }: { bundle: BundleIndex; step: { siteId?: string; stopId?: string } }) {
+  const siteId = stepSiteId(bundle, step);
+  const site = siteId ? bundle.site(siteId) : undefined;
+  if (!siteId) return null;
+  return (
+    <>
+      <SitePhoto siteId={siteId} />
+      {site && (
+        <SiteViews
+          lat={site.coordinates.value.lat}
+          lon={site.coordinates.value.lon}
+          name={site.ancientName.en}
+        />
+      )}
+    </>
+  );
+}
+
 function stepSiteId(bundle: BundleIndex, step: { siteId?: string; stopId?: string }): string | undefined {
   if (step.siteId) return step.siteId;
   if (step.stopId) return bundle.stop(step.stopId)?.siteId;

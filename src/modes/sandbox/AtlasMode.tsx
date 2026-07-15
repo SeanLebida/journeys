@@ -15,7 +15,8 @@ import {
   siteIdFromFeature,
 } from '../../map/layers/atlas';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
-import { SitePhoto, SiteViews } from '../../components/SitePhoto';
+import { SitePhoto } from '../../components/SitePhoto';
+import { SiteViews } from '../../components/SiteViews';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 const YEAR_MIN = -10;

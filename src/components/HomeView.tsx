@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SourcingDisclosure } from './SourcingDisclosure';
+import { SiteThumb } from './SitePhoto';
 
+// Each mode card carries a representative bundled site photo (offline, credited
+// on the site's own detail panel): the Appian Way for route tracing, Ephesus
+// for the atlas, the Sea of Galilee for lessons, the Areopagus for quizzes.
 const MODES = [
-  { to: '/trace', key: 'trace', glyph: '⟿' },
-  { to: '/atlas', key: 'atlas', glyph: '◍' },
-  { to: '/lessons', key: 'lessons', glyph: '❖' },
-  { to: '/quiz', key: 'quiz', glyph: '?' },
+  { to: '/trace', key: 'trace', glyph: '⟿', thumbSite: 'site-rome' },
+  { to: '/atlas', key: 'atlas', glyph: '◍', thumbSite: 'site-ephesus' },
+  { to: '/lessons', key: 'lessons', glyph: '❖', thumbSite: 'site-sea-of-galilee' },
+  { to: '/quiz', key: 'quiz', glyph: '?', thumbSite: 'site-athens' },
 ] as const;
 
 export function HomeView() {
@@ -19,6 +23,7 @@ export function HomeView() {
       <nav className="home__modes" aria-label={t('home.pickMode')}>
         {MODES.map((m) => (
           <Link key={m.key} to={m.to} className="home__mode-card">
+            <SiteThumb siteId={m.thumbSite} />
             <span className="home__mode-glyph" aria-hidden="true">
               {m.glyph}
             </span>
