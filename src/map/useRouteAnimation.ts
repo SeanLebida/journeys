@@ -22,6 +22,38 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
   const pause = useJourneyStore((s) => s.pause);
   const setActiveStop = useJourneyStore((s) => s.setActiveStop);
 
+  const isUserInteractingRef = useRef(false);
+
+  // Monitor user pan/zoom/rotate gestures to avoid programmatic camera fights.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    const start = () => {
+      isUserInteractingRef.current = true;
+    };
+    const end = () => {
+      isUserInteractingRef.current = false;
+    };
+    map.on('dragstart', start);
+    map.on('dragend', end);
+    map.on('zoomstart', start);
+    map.on('zoomend', end);
+    map.on('pitchstart', start);
+    map.on('pitchend', end);
+    map.on('rotatestart', start);
+    map.on('rotateend', end);
+    return () => {
+      map.off('dragstart', start);
+      map.off('dragend', end);
+      map.off('zoomstart', start);
+      map.off('zoomend', end);
+      map.off('pitchstart', start);
+      map.off('pitchend', end);
+      map.off('rotatestart', start);
+      map.off('rotateend', end);
+    };
+  }, [mapRef, ready]);
+
   // Add layers + fit the map to this journey's extent.
   useEffect(() => {
     const map = mapRef.current;
@@ -30,18 +62,12 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       ensureTraceLayers(map, color);
       const lons = coords.map((c) => c[0]);
       const lats = coords.map((c) => c[1]);
-      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-      const paddingLeft = isDesktop ? 450 : 60;
       map.fitBounds(
         [
           [Math.min(...lons), Math.min(...lats)],
           [Math.max(...lons), Math.max(...lats)],
         ],
-        { 
-          padding: { left: paddingLeft, right: 60, top: 60, bottom: 60 }, 
-          animate: !reducedMotion(), 
-          duration: 600 
-        },
+        { padding: 60, animate: !reducedMotion(), duration: 600 },
       );
     };
     if (map.isStyleLoaded()) add();
@@ -76,13 +102,10 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
         lastIdxRef.current = idx;
         const activeCoords = coords[idx];
         if (activeCoords) {
-          const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-          const paddingLeft = isDesktop ? 450 : 0;
           map.easeTo({
             center: activeCoords,
             zoom: Math.max(map.getZoom(), 6),
             duration: 800,
-            padding: { left: paddingLeft, right: 0, top: 0, bottom: 0 },
           });
         }
       }
@@ -110,9 +133,24 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
         return;
       }
       setProgress(next);
+
+      // Smooth camera follow tracking
+      const map = mapRef.current;
+      if (map && ready && !isUserInteractingRef.current) {
+        const prog = lineProgress(coords, next);
+        const currentCenter = map.getCenter();
+        const targetCenter = prog.point;
+        
+        // Lerp factor of 0.04 (4% of distance per frame) provides a smooth camera lag.
+        // It is fast enough to keep the traveler visible, but slow and spring-like to avoid disorientation.
+        const nextLon = currentCenter.lng + (targetCenter[0] - currentCenter.lng) * 0.04;
+        const nextLat = currentCenter.lat + (targetCenter[1] - currentCenter.lat) * 0.04;
+        map.setCenter([nextLon, nextLat]);
+      }
+
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, coords.length, setProgress, pause]);
+  }, [playing, coords, setProgress, pause, mapRef, ready]);
 }

@@ -78,6 +78,8 @@ export function MapProvider({ children }: { children: ReactNode }) {
     if (!containerRef.current || mapRef.current) return;
 
     const reduce = prefersReducedMotion();
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+    const paddingLeft = isDesktop ? 450 : 0;
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: buildBaseStyle('ancient', isDark()),
@@ -91,6 +93,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
       pitchWithRotate: false,
       fadeDuration: reduce ? 0 : 300,
     });
+    map.setPadding({ left: paddingLeft, right: 0, top: 0, bottom: 0 });
 
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
@@ -134,6 +137,12 @@ export function MapProvider({ children }: { children: ReactNode }) {
     });
     waterMarkersRef.current = waterMarkers.map(({ element, minZoom }) => ({ element, minZoom }));
 
+    const handleResize = () => {
+      const isDesktop = window.innerWidth >= 1024;
+      map.setPadding({ left: isDesktop ? 450 : 0, right: 0, top: 0, bottom: 0 });
+    };
+    window.addEventListener('resize', handleResize);
+
     map.on('load', () => {
       setReady(true);
       updateLabelVisibility();
@@ -143,6 +152,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     mapRef.current = map;
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       map.off('zoom', updateLabelVisibility);
       markers.forEach((m) => m.remove());
       waterMarkers.forEach(({ marker }) => marker.remove());
