@@ -79,7 +79,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
   return (
-    <ModePanel title={journey.title.en}>
+    <ModePanel title={journey.title.en} style={{ '--accent': journey.color } as React.CSSProperties}>
       <Link to="/trace" className="backlink">
         ← {t('nav.trace')}
       </Link>

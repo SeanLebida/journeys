@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 
 /**
  * Shared shell for a mode screen: an overlay panel above the persistent map.
@@ -7,12 +7,14 @@ import type { ReactNode } from 'react';
 export function ModePanel({
   title,
   children,
+  style,
 }: {
   title: string;
   children: ReactNode;
+  style?: CSSProperties;
 }) {
   return (
-    <section className="mode-panel" aria-labelledby="mode-title">
+    <section className="mode-panel" aria-labelledby="mode-title" style={style}>
       <h2 id="mode-title" className="mode-panel__title">
         {title}
       </h2>
