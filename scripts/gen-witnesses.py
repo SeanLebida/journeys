@@ -157,7 +157,7 @@ witnesses = [
 # reference point for comparison — never a claim about content.
 QURAN_REF = {
     "source": en("The Quran"),
-    "range": dr(610, 650, "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"),
+    "range": dr(610, 650, "c. AD 610-650 (received c. 610-632; compiled c. 650)"),
     "note": en("The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."),
 }
 QURAN_WITNESSES = {
