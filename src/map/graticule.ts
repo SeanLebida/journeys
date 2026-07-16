@@ -3,15 +3,21 @@ import type { FeatureCollection, LineString } from 'geojson';
 /** Geographic bounding box [west, south, east, north]. */
 export type BBox = [number, number, number, number];
 
-// The biblical Mediterranean world — also the geo-sanity bbox the M2 content
-// validator checks coordinates against.
+// The NT Mediterranean — the app's default opening camera (MapProvider).
 export const MEDITERRANEAN_BBOX: BBox = [-12, 27, 46, 48];
+
+// The whole biblical stage: Mesopotamia (Ur, Babylon) → the Levant → Egypt and
+// Sinai. This is the geo-sanity bbox the content validator checks coordinates
+// against, the extent the offline basemap (scripts/clip-basemap.py) is clipped
+// to, and the graticule's span — widened from MEDITERRANEAN_BBOX so Old-Testament
+// sites (patriarchs, the Exodus) sit on real mapped land, not empty sea.
+export const WORLD_BBOX: BBox = [-12, 22, 50, 48];
 
 /**
  * Generate a graticule (meridians + parallels) as GeoJSON for the M1 basemap.
  * Computed geometry, not factual content — safe to live in src/.
  */
-export function generateGraticule(stepDeg = 5, bbox: BBox = MEDITERRANEAN_BBOX): FeatureCollection<LineString> {
+export function generateGraticule(stepDeg = 5, bbox: BBox = WORLD_BBOX): FeatureCollection<LineString> {
   const [west, south, east, north] = bbox;
   const features: FeatureCollection<LineString>['features'] = [];
 

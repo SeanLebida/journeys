@@ -34,7 +34,7 @@ import {
   type TStop,
 } from '../src/content/schema';
 import { parseScriptureRef } from '../src/content/scriptureRef';
-import { MEDITERRANEAN_BBOX } from '../src/map/graticule';
+import { WORLD_BBOX } from '../src/map/graticule';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
 const CONTENT = join(ROOT, 'content');
@@ -230,7 +230,7 @@ async function main(): Promise<void> {
   });
 
   // 7. Geo sanity + date discipline.
-  const [w, s, e, n] = MEDITERRANEAN_BBOX;
+  const [w, s, e, n] = WORLD_BBOX;
   vSites.forEach((site) => {
     const { lat, lon } = site.coordinates.value;
     if (lon < w || lon > e || lat < s || lat > n) err(`site ${site.id}: coordinates ${lat},${lon} outside Mediterranean bbox`);
