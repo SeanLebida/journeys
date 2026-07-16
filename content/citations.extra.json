@@ -614,5 +614,13 @@
     },
     "url": "https://en.wikipedia.org/wiki/John_the_Baptist",
     "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-nt-dating",
+    "source": {
+      "en": "Wikipedia, 'Dating the Bible' (composition of the New Testament)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Dating_the_Bible",
+    "kind": "secondary-scholarly"
   }
 ]

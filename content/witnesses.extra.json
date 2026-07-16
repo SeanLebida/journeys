@@ -13,14 +13,39 @@
     "era": {
       "en": "c. AD 93-94"
     },
+    "authoredRange": {
+      "startYear": 93,
+      "endYear": 94,
+      "display": {
+        "en": "c. AD 93-94"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "A passage in Josephus describing Jesus as a wise teacher, condemned to the cross by Pilate, whose followers persisted. It attests, from a Jewish historian, a 1st-century Jesus crucified under Pilate."
     },
     "confidence": "disputed",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-josephus-jesus"
+      "cit-wit-josephus-jesus",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "Paul's letters and the four Gospels"
+      },
+      "range": {
+        "startYear": 50,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "The earliest New Testament accounts of Jesus' death — Paul's letters (c. AD 50s) and the Gospels (c. AD 65-95) — precede Josephus (c. AD 93) by roughly a generation."
+      }
+    },
     "personIds": [
       "person-jesus",
       "person-pontius-pilate"
@@ -46,14 +71,39 @@
     "era": {
       "en": "c. AD 93-94"
     },
+    "authoredRange": {
+      "startYear": 93,
+      "endYear": 94,
+      "display": {
+        "en": "c. AD 93-94"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "Josephus reports the illegal execution of 'James, the brother of Jesus who was called Christ' under the high priest Ananus (AD 62). This passage is widely accepted as authentic and independently references Jesus."
     },
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-josephus-james"
+      "cit-wit-josephus-james",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "Paul's letter to the Galatians, and Acts"
+      },
+      "range": {
+        "startYear": 48,
+        "endYear": 90,
+        "display": {
+          "en": "c. AD 48-90 (Galatians, naming James, c. 48-55)"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "Paul names James, 'the Lord's brother', in Galatians (c. AD 48-55) — some four decades before Josephus wrote (c. AD 93)."
+      }
+    },
     "personIds": [
       "person-jesus"
     ],
@@ -75,14 +125,39 @@
     "era": {
       "en": "c. AD 93-94"
     },
+    "authoredRange": {
+      "startYear": 93,
+      "endYear": 94,
+      "display": {
+        "en": "c. AD 93-94"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "Josephus describes John, called the Baptist, as a good man who exhorted the Jews and was executed by Herod Antipas — an independent, generally-accepted attestation of John and Antipas paralleling the Gospels."
     },
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-josephus-baptist"
+      "cit-wit-josephus-baptist",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "the four Gospels"
+      },
+      "range": {
+        "startYear": 65,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 65-95"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "The Gospels (c. AD 65-95) record John the Baptist a generation before Josephus wrote (c. AD 93)."
+      }
+    },
     "siteIds": [
       "site-baptism-at-the-jordan"
     ]
@@ -101,14 +176,39 @@
     "era": {
       "en": "c. AD 116"
     },
+    "authoredRange": {
+      "startYear": 116,
+      "endYear": 116,
+      "display": {
+        "en": "c. AD 116"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "Reporting Nero's scapegoating of Christians after the fire of Rome (AD 64), Tacitus notes that 'Christus', from whom the name came, 'suffered the extreme penalty' under Pontius Pilate in the reign of Tiberius — a hostile Roman source confirming the execution under Pilate."
     },
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-tacitus"
+      "cit-wit-tacitus",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "Paul's letters and the four Gospels"
+      },
+      "range": {
+        "startYear": 50,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "The New Testament accounts (c. AD 50-95) predate Tacitus (c. AD 116) by a generation or more."
+      }
+    },
     "personIds": [
       "person-jesus",
       "person-pontius-pilate"
@@ -131,14 +231,39 @@
     "era": {
       "en": "c. AD 112"
     },
+    "authoredRange": {
+      "startYear": 112,
+      "endYear": 112,
+      "display": {
+        "en": "c. AD 112"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "Pliny asks Trajan how to try Christians, describing their practice of meeting before dawn to sing 'to Christ as to a god' and binding themselves by oath against wrongdoing — an outside snapshot of Christian worship within about 80 years of the crucifixion."
     },
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-pliny"
-    ]
+      "cit-wit-pliny",
+      "cit-nt-dating"
+    ],
+    "biblicalParallel": {
+      "source": {
+        "en": "the New Testament letters and Gospels"
+      },
+      "range": {
+        "startYear": 50,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 50-95"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "Christian worship is described in the New Testament (c. AD 50-95) decades before Pliny's report (c. AD 112)."
+      }
+    }
   },
   {
     "id": "witness-suetonius",
@@ -154,14 +279,39 @@
     "era": {
       "en": "c. AD 121"
     },
+    "authoredRange": {
+      "startYear": 121,
+      "endYear": 121,
+      "display": {
+        "en": "c. AD 121"
+      },
+      "approximate": true
+    },
     "attests": {
       "en": "Suetonius records Claudius expelling Jews from Rome over disturbances 'at the instigation of Chrestus' (cf. Acts 18:2) and Nero punishing Christians. The reports touch the same movement, though the 'Chrestus' reference is debated."
     },
     "confidence": "medium",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-suetonius"
+      "cit-wit-suetonius",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "Acts (the expulsion under Claudius) and Paul's letters"
+      },
+      "range": {
+        "startYear": 50,
+        "endYear": 90,
+        "display": {
+          "en": "c. AD 50-90 (Acts c. 80-90)"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "Acts records the Claudius-era expulsion (Acts 18:2, written c. AD 80-90) before Suetonius (c. AD 121)."
+      }
+    },
     "siteIds": [
       "site-rome"
     ]
@@ -178,7 +328,15 @@
       "en": "cited in Africanus, Chronography"
     },
     "era": {
-      "en": "1st c.? (quoted 3rd c.)"
+      "en": "1st c.? (surviving quotation c. AD 221)"
+    },
+    "authoredRange": {
+      "startYear": 221,
+      "endYear": 221,
+      "display": {
+        "en": "surviving quotation c. AD 221"
+      },
+      "approximate": true
     },
     "attests": {
       "en": "The 3rd-century Christian writer Julius Africanus claims Thallus explained the darkness at the crucifixion as a solar eclipse. The value of this as an independent witness is heavily disputed."
@@ -186,8 +344,25 @@
     "confidence": "disputed",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-thallus"
+      "cit-wit-thallus",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "the Gospel passion narratives"
+      },
+      "range": {
+        "startYear": 65,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 65-95"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "The Gospels (c. AD 65-95) record the crucifixion darkness; Thallus survives only second-hand in Julius Africanus (c. AD 221) — over a century later — the latest and weakest of these witnesses."
+      }
+    },
     "personIds": [
       "person-jesus"
     ],
@@ -207,7 +382,15 @@
       "en": "Letter to his son"
     },
     "era": {
-      "en": "after AD 73 (dating debated)"
+      "en": "after AD 73; date debated (possibly 2nd-3rd c.)"
+    },
+    "authoredRange": {
+      "startYear": 73,
+      "endYear": 260,
+      "display": {
+        "en": "after AD 73; possibly 2nd-3rd c."
+      },
+      "approximate": true
     },
     "attests": {
       "en": "A Syriac letter groups the executed 'wise king' of the Jews with Socrates and Pythagoras as sages killed unjustly. Many take this as a non-Christian allusion to Jesus, though it never names him."
@@ -215,8 +398,25 @@
     "confidence": "disputed",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-wit-mara"
+      "cit-wit-mara",
+      "cit-nt-dating"
     ],
+    "biblicalParallel": {
+      "source": {
+        "en": "the Gospel passion narratives"
+      },
+      "range": {
+        "startYear": 65,
+        "endYear": 95,
+        "display": {
+          "en": "c. AD 65-95"
+        },
+        "approximate": true
+      },
+      "gapNote": {
+        "en": "The Gospels (c. AD 65-95) precede Mara's letter, whose date is debated (possibly 2nd-3rd century) — potentially a century or more later."
+      }
+    },
     "personIds": [
       "person-jesus"
     ],

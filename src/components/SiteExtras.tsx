@@ -49,6 +49,58 @@ export function ArtifactCard({ artifact, bundle }: { artifact: TArtifact; bundle
   );
 }
 
+function fmtYear(y: number): string {
+  return y < 0 ? `${-y} BC` : `AD ${y}`;
+}
+
+/**
+ * "When it was written" — the biblical account of this subject vs. the
+ * extra-biblical source on one shared time axis, making plain that the biblical
+ * text is the earlier source (by a generation for the Roman/Jewish historians,
+ * by well over a century for the weakest witnesses). The bar is decorative
+ * (aria-hidden); the dated rows + note carry the information.
+ */
+function WitnessTimeline({ witness }: { witness: TWitness }) {
+  const bp = witness.biblicalParallel;
+  if (!bp) return null;
+  const w = witness.authoredRange;
+  const min = Math.min(bp.range.startYear, w.startYear);
+  const max = Math.max(bp.range.endYear, w.endYear);
+  const span = Math.max(1, max - min);
+  const seg = (a: number, b: number) => ({
+    left: `${((a - min) / span) * 100}%`,
+    width: `${Math.max(2.5, ((b - a) / span) * 100)}%`,
+  });
+  return (
+    <div className="witness-timeline">
+      <h6 className="witness-timeline__title">When it was written</h6>
+      <div className="witness-timeline__track" aria-hidden="true">
+        <div className="witness-timeline__row">
+          <span className="witness-timeline__seg witness-timeline__seg--bible" style={seg(bp.range.startYear, bp.range.endYear)} />
+        </div>
+        <div className="witness-timeline__row">
+          <span className="witness-timeline__seg witness-timeline__seg--witness" style={seg(w.startYear, w.endYear)} />
+        </div>
+        <div className="witness-timeline__axis">
+          <span>{fmtYear(min)}</span>
+          <span>{fmtYear(max)}</span>
+        </div>
+      </div>
+      <ul className="witness-timeline__legend">
+        <li>
+          <span className="witness-timeline__key witness-timeline__key--bible" /> Biblical account — {bp.source.en}:{' '}
+          {bp.range.display.en} <strong>(earlier)</strong>
+        </li>
+        <li>
+          <span className="witness-timeline__key witness-timeline__key--witness" /> This source — {witness.author.en}:{' '}
+          {witness.era.en}
+        </li>
+      </ul>
+      <p className="witness-timeline__gap">{bp.gapNote.en}</p>
+    </div>
+  );
+}
+
 /** An extra-biblical / secular witness — author, work, era, what it attests. */
 export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: BundleIndex }) {
   return (
@@ -61,6 +113,7 @@ export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: Bu
         {witness.author.en} · {witness.work.en} · {witness.era.en}
       </p>
       <p>{witness.attests.en}</p>
+      <WitnessTimeline witness={witness} />
       <DisputeNote text={witness.disputes?.en} />
       <Citations ids={witness.citations} bundle={bundle} />
     </article>
