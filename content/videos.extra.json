@@ -1,0 +1,57 @@
+[
+  {
+    "id": "video-genesis-overview",
+    "title": { "en": "Book of Genesis — Animated Overview (Part 1)" },
+    "provider": "youtube",
+    "videoId": "GQI72THyO5I",
+    "channel": "BibleProject",
+    "summary": { "en": "An animated walk through the literary design of Genesis — creation, human rebellion, and the call of Abraham's family through whom God promises to bless the nations." },
+    "topic": { "en": "The book that opens the patriarchal story" },
+    "journeyId": "journey-abraham",
+    "dateRange": { "startYear": -2000, "endYear": -1800, "display": { "en": "narrative set c. 2000-1800 BC" }, "approximate": true }
+  },
+  {
+    "id": "video-exodus-overview",
+    "title": { "en": "Book of Exodus — Animated Overview (Part 1)" },
+    "provider": "youtube",
+    "videoId": "jH_aojNJM3E",
+    "channel": "BibleProject",
+    "summary": { "en": "The literary design of Exodus 1-18: God's confrontation with Pharaoh, the deliverance of Israel, and the journey toward Sinai." },
+    "topic": { "en": "Deliverance from Egypt" },
+    "journeyId": "journey-exodus",
+    "dateRange": { "startYear": -1446, "endYear": -1250, "display": { "en": "c. 1446 or 1260 BC (debated)" }, "approximate": true }
+  },
+  {
+    "id": "video-nt-overview",
+    "title": { "en": "The New Testament — Animated Overview" },
+    "provider": "youtube",
+    "videoId": "Q0BrP8bqj0c",
+    "channel": "BibleProject",
+    "summary": { "en": "How the New Testament is designed as a single story that continues the Hebrew Bible and centers on Jesus of Nazareth." },
+    "topic": { "en": "Setting of the New Testament" },
+    "journeyId": "journey-ministry",
+    "dateRange": { "startYear": -6, "endYear": 30, "display": { "en": "1st c. AD" }, "approximate": true }
+  },
+  {
+    "id": "video-acts-1-overview",
+    "title": { "en": "Book of Acts — Animated Overview (Part 1)" },
+    "provider": "youtube",
+    "videoId": "CGbNw855ksw",
+    "channel": "BibleProject",
+    "summary": { "en": "Acts 1-12: the risen Jesus sends the Spirit, and the good news spreads from Jerusalem outward through Peter and the early church." },
+    "topic": { "en": "The birth of the church" },
+    "journeyId": "journey-paul-1",
+    "dateRange": { "startYear": 30, "endYear": 48, "display": { "en": "c. AD 30-48" }, "approximate": true }
+  },
+  {
+    "id": "video-acts-2-overview",
+    "title": { "en": "Book of Acts — Animated Overview (Part 2)" },
+    "provider": "youtube",
+    "videoId": "Z-17KxpjL0Q",
+    "channel": "BibleProject",
+    "summary": { "en": "Acts 13-28: the multiethnic church sends out missionaries — above all Paul — carrying the message across the empire toward Rome." },
+    "topic": { "en": "Paul's missionary journeys" },
+    "journeyId": "journey-paul-2",
+    "dateRange": { "startYear": 46, "endYear": 62, "display": { "en": "c. AD 46-62" }, "approximate": true }
+  }
+]
