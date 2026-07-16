@@ -28,7 +28,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-josephus-jesus",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -55,7 +56,25 @@
     ],
     "disputes": {
       "en": "The received text contains overtly Christian phrases most scholars judge to be later Christian interpolations. The mainstream view is that Josephus wrote an authentic core later embellished; a minority hold the whole passage is a Christian insertion. Treat the wording, not the existence of a reference, as contested."
-    }
+    },
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
+    ]
   },
   {
     "id": "witness-josephus-james",
@@ -86,7 +105,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-josephus-james",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -109,6 +129,24 @@
     ],
     "siteIds": [
       "site-jerusalem"
+    ],
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
     ]
   },
   {
@@ -140,7 +178,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-josephus-baptist",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -160,6 +199,24 @@
     },
     "siteIds": [
       "site-baptism-at-the-jordan"
+    ],
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
     ]
   },
   {
@@ -191,7 +248,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-tacitus",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -215,6 +273,24 @@
     ],
     "siteIds": [
       "site-rome"
+    ],
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
     ]
   },
   {
@@ -345,7 +421,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-thallus",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -368,7 +445,25 @@
     ],
     "disputes": {
       "en": "Thallus's work is lost; we have only Africanus's second-hand claim about what Thallus said, and even that Thallus mentioned the crucifixion darkness is inference. Its date and relevance are contested; it is at best weak, indirect testimony."
-    }
+    },
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
+    ]
   },
   {
     "id": "witness-mara",
@@ -399,7 +494,8 @@
     "reviewStatus": "self-reviewed",
     "citations": [
       "cit-wit-mara",
-      "cit-nt-dating"
+      "cit-nt-dating",
+      "cit-quran-dating"
     ],
     "biblicalParallel": {
       "source": {
@@ -422,6 +518,24 @@
     ],
     "disputes": {
       "en": "The letter never names Jesus, and both its date (anywhere from the 1st to 3rd century) and whether the 'wise king' is Jesus are debated. It is suggestive, not decisive."
-    }
+    },
+    "otherReferences": [
+      {
+        "source": {
+          "en": "The Quran"
+        },
+        "range": {
+          "startYear": 610,
+          "endYear": 650,
+          "display": {
+            "en": "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"
+          },
+          "approximate": true
+        },
+        "note": {
+          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+        }
+      }
+    ]
   }
 ]

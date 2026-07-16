@@ -19,7 +19,7 @@ body {
   font-weight: 400;
   color: var(--text);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -332,7 +332,7 @@ a {
 }
 .mode-panel__body {
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 /* ---- Home ---- */
@@ -351,7 +351,7 @@ a {
   font-style: italic;
 }
 .home__intro {
-  line-height: 1.65;
+  line-height: 1.8;
 }
 .home__heading {
   font-size: 1.05rem;
@@ -402,7 +402,7 @@ a {
 }
 .sourcing__body {
   margin-top: 0.75rem;
-  line-height: 1.6;
+  line-height: 1.8;
   color: var(--text-muted);
 }
 .sourcing__confidence {
@@ -1345,4 +1345,47 @@ a {
 .maplibregl-ctrl-attrib,
 .maplibregl-ctrl-attrib a {
   font-family: var(--font-heading);
+}
+
+/* Third+ comparison bar on the witness timeline (e.g. the Quran). */
+.witness-timeline__seg--other {
+  background: var(--c-legendary);
+}
+.witness-timeline__key--other {
+  background: var(--c-legendary);
+}
+
+/* ── Phone breakpoint ───────────────────────────────────────────────────────
+   The app targets phones (Capacitor iOS/Android) as well as the web. Below the
+   desktop side-panel layout, tune the floating panel and give interactive
+   controls comfortable tap targets. */
+@media (max-width: 560px) {
+  .mode-panel {
+    width: calc(100% - 1rem);
+    padding: 1rem;
+    border-radius: var(--r-md);
+  }
+  .mode-panel__title {
+    font-size: 1.3rem;
+  }
+  .home__heading {
+    font-size: 1rem;
+  }
+  /* Stack the confidence-key rows instead of a fixed 7rem column. */
+  .sourcing__row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+  /* Comfortable, thumb-sized tap targets (WCAG 2.5.5). */
+  .site-views__btn,
+  .video-card__play,
+  .street-viewer__bar button,
+  .trace-controls button,
+  .lesson-progress button {
+    min-height: 44px;
+  }
+  .site-photo img,
+  .extra-card__figure img {
+    max-height: 200px;
+  }
 }
