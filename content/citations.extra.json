@@ -542,5 +542,77 @@
     },
     "url": "https://en.wikipedia.org/wiki/Hezekiah",
     "kind": "archaeological"
+  },
+  {
+    "id": "cit-wit-josephus-jesus",
+    "source": {
+      "en": "Josephus, 'Antiquities of the Jews' 18.3.3 (Testimonium Flavianum)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Josephus_on_Jesus",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-josephus-james",
+    "source": {
+      "en": "Josephus, 'Antiquities of the Jews' 20.9.1"
+    },
+    "url": "https://en.wikipedia.org/wiki/Josephus_on_Jesus",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-josephus-jbaptist",
+    "source": {
+      "en": "Josephus, 'Antiquities of the Jews' 18.5.2"
+    },
+    "url": "https://en.wikipedia.org/wiki/John_the_Baptist",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-tacitus",
+    "source": {
+      "en": "Tacitus, 'Annals' 15.44"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tacitus_on_Christ",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-pliny",
+    "source": {
+      "en": "Pliny the Younger, 'Letters' 10.96"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pliny_the_Younger_on_Christians",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-suetonius",
+    "source": {
+      "en": "Suetonius, 'Lives of the Caesars' (Claudius 25; Nero 16)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Suetonius_on_Christians",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-thallus",
+    "source": {
+      "en": "Thallus, cited by Julius Africanus"
+    },
+    "url": "https://en.wikipedia.org/wiki/Thallus_(historian)",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-mara",
+    "source": {
+      "en": "Mara bar Serapion, 'Letter to his son'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mara_bar_Serapion",
+    "kind": "primary-ancient"
+  },
+  {
+    "id": "cit-wit-josephus-baptist",
+    "source": {
+      "en": "Josephus, 'Antiquities of the Jews' 18.5.2"
+    },
+    "url": "https://en.wikipedia.org/wiki/John_the_Baptist",
+    "kind": "primary-ancient"
   }
 ]

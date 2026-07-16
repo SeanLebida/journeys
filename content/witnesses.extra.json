@@ -1,0 +1,227 @@
+[
+  {
+    "id": "witness-josephus-jesus",
+    "title": {
+      "en": "Josephus on Jesus (the Testimonium Flavianum)"
+    },
+    "author": {
+      "en": "Flavius Josephus (Jewish historian)"
+    },
+    "work": {
+      "en": "Antiquities of the Jews 18.3.3"
+    },
+    "era": {
+      "en": "c. AD 93-94"
+    },
+    "attests": {
+      "en": "A passage in Josephus describing Jesus as a wise teacher, condemned to the cross by Pilate, whose followers persisted. It attests, from a Jewish historian, a 1st-century Jesus crucified under Pilate."
+    },
+    "confidence": "disputed",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-josephus-jesus"
+    ],
+    "personIds": [
+      "person-jesus",
+      "person-pontius-pilate"
+    ],
+    "siteIds": [
+      "site-jerusalem"
+    ],
+    "disputes": {
+      "en": "The received text contains overtly Christian phrases most scholars judge to be later Christian interpolations. The mainstream view is that Josephus wrote an authentic core later embellished; a minority hold the whole passage is a Christian insertion. Treat the wording, not the existence of a reference, as contested."
+    }
+  },
+  {
+    "id": "witness-josephus-james",
+    "title": {
+      "en": "Josephus on James, 'brother of Jesus who was called Christ'"
+    },
+    "author": {
+      "en": "Flavius Josephus"
+    },
+    "work": {
+      "en": "Antiquities of the Jews 20.9.1"
+    },
+    "era": {
+      "en": "c. AD 93-94"
+    },
+    "attests": {
+      "en": "Josephus reports the illegal execution of 'James, the brother of Jesus who was called Christ' under the high priest Ananus (AD 62). This passage is widely accepted as authentic and independently references Jesus."
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-josephus-james"
+    ],
+    "personIds": [
+      "person-jesus"
+    ],
+    "siteIds": [
+      "site-jerusalem"
+    ]
+  },
+  {
+    "id": "witness-josephus-baptist",
+    "title": {
+      "en": "Josephus on John the Baptist"
+    },
+    "author": {
+      "en": "Flavius Josephus"
+    },
+    "work": {
+      "en": "Antiquities of the Jews 18.5.2"
+    },
+    "era": {
+      "en": "c. AD 93-94"
+    },
+    "attests": {
+      "en": "Josephus describes John, called the Baptist, as a good man who exhorted the Jews and was executed by Herod Antipas — an independent, generally-accepted attestation of John and Antipas paralleling the Gospels."
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-josephus-baptist"
+    ],
+    "siteIds": [
+      "site-baptism-at-the-jordan"
+    ]
+  },
+  {
+    "id": "witness-tacitus",
+    "title": {
+      "en": "Tacitus on 'Christus' and the Christians of Rome"
+    },
+    "author": {
+      "en": "Cornelius Tacitus (Roman senator & historian)"
+    },
+    "work": {
+      "en": "Annals 15.44"
+    },
+    "era": {
+      "en": "c. AD 116"
+    },
+    "attests": {
+      "en": "Reporting Nero's scapegoating of Christians after the fire of Rome (AD 64), Tacitus notes that 'Christus', from whom the name came, 'suffered the extreme penalty' under Pontius Pilate in the reign of Tiberius — a hostile Roman source confirming the execution under Pilate."
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-tacitus"
+    ],
+    "personIds": [
+      "person-jesus",
+      "person-pontius-pilate"
+    ],
+    "siteIds": [
+      "site-rome"
+    ]
+  },
+  {
+    "id": "witness-pliny",
+    "title": {
+      "en": "Pliny the Younger on early Christian worship"
+    },
+    "author": {
+      "en": "Pliny the Younger (Roman governor of Bithynia)"
+    },
+    "work": {
+      "en": "Letters 10.96 (to Trajan)"
+    },
+    "era": {
+      "en": "c. AD 112"
+    },
+    "attests": {
+      "en": "Pliny asks Trajan how to try Christians, describing their practice of meeting before dawn to sing 'to Christ as to a god' and binding themselves by oath against wrongdoing — an outside snapshot of Christian worship within about 80 years of the crucifixion."
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-pliny"
+    ]
+  },
+  {
+    "id": "witness-suetonius",
+    "title": {
+      "en": "Suetonius on 'Chrestus' and the Christians"
+    },
+    "author": {
+      "en": "Suetonius (Roman biographer)"
+    },
+    "work": {
+      "en": "Lives of the Caesars: Claudius 25; Nero 16"
+    },
+    "era": {
+      "en": "c. AD 121"
+    },
+    "attests": {
+      "en": "Suetonius records Claudius expelling Jews from Rome over disturbances 'at the instigation of Chrestus' (cf. Acts 18:2) and Nero punishing Christians. The reports touch the same movement, though the 'Chrestus' reference is debated."
+    },
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-suetonius"
+    ],
+    "siteIds": [
+      "site-rome"
+    ]
+  },
+  {
+    "id": "witness-thallus",
+    "title": {
+      "en": "Thallus on the darkness (via Julius Africanus)"
+    },
+    "author": {
+      "en": "Thallus (as quoted by Julius Africanus)"
+    },
+    "work": {
+      "en": "cited in Africanus, Chronography"
+    },
+    "era": {
+      "en": "1st c.? (quoted 3rd c.)"
+    },
+    "attests": {
+      "en": "The 3rd-century Christian writer Julius Africanus claims Thallus explained the darkness at the crucifixion as a solar eclipse. The value of this as an independent witness is heavily disputed."
+    },
+    "confidence": "disputed",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-thallus"
+    ],
+    "personIds": [
+      "person-jesus"
+    ],
+    "disputes": {
+      "en": "Thallus's work is lost; we have only Africanus's second-hand claim about what Thallus said, and even that Thallus mentioned the crucifixion darkness is inference. Its date and relevance are contested; it is at best weak, indirect testimony."
+    }
+  },
+  {
+    "id": "witness-mara",
+    "title": {
+      "en": "Mara bar Serapion on the 'wise king' of the Jews"
+    },
+    "author": {
+      "en": "Mara bar Serapion (Syriac Stoic)"
+    },
+    "work": {
+      "en": "Letter to his son"
+    },
+    "era": {
+      "en": "after AD 73 (dating debated)"
+    },
+    "attests": {
+      "en": "A Syriac letter groups the executed 'wise king' of the Jews with Socrates and Pythagoras as sages killed unjustly. Many take this as a non-Christian allusion to Jesus, though it never names him."
+    },
+    "confidence": "disputed",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-wit-mara"
+    ],
+    "personIds": [
+      "person-jesus"
+    ],
+    "disputes": {
+      "en": "The letter never names Jesus, and both its date (anywhere from the 1st to 3rd century) and whether the 'wise king' is Jesus are debated. It is suggestive, not decisive."
+    }
+  }
+]
