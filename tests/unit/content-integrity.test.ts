@@ -11,9 +11,11 @@ import {
   Site,
   Stop,
   Term,
+  Video,
+  Witness,
 } from '../../src/content/schema';
 import { parseScriptureRef } from '../../src/content/scriptureRef';
-import { MEDITERRANEAN_BBOX } from '../../src/map/graticule';
+import { WORLD_BBOX } from '../../src/map/graticule';
 
 const CONTENT = join(process.cwd(), 'content');
 const read = (n: string): unknown[] =>
@@ -24,7 +26,9 @@ const sites = read('sites.json');
 const journeys = read('journeys.json');
 const stops = read('stops.json');
 const persons = read('persons.json');
-const artifacts = read('artifacts.json');
+const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
+const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
+const videos = [...read('videos.json'), ...read('videos.extra.json')];
 const terms = read('terms.json');
 const lessons = read('lessons.json');
 const quizzes = read('quizzes.json');
@@ -46,6 +50,8 @@ describe('content integrity (committed source)', () => {
     check('stops', Stop, stops);
     check('persons', Person, persons);
     check('artifacts', Artifact, artifacts);
+    check('witnesses', Witness, witnesses);
+    check('videos', Video, videos);
     check('terms', Term, terms);
     check('lessons', Lesson, lessons);
     check('quizzes', Quiz, quizzes);
@@ -81,8 +87,8 @@ describe('content integrity (committed source)', () => {
     expect(bad, bad.join('\n')).toHaveLength(0);
   });
 
-  it('all site coordinates are inside the Mediterranean bbox', () => {
-    const [w, s, e, n] = MEDITERRANEAN_BBOX;
+  it('all site coordinates are inside the world bbox', () => {
+    const [w, s, e, n] = WORLD_BBOX;
     const bad: string[] = [];
     (sites as { id: string; coordinates: { value: { lat: number; lon: number } } }[]).forEach((site) => {
       const { lat, lon } = site.coordinates.value;

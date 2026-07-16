@@ -22,7 +22,7 @@ export const CitationKind = z.enum([
   'gazetteer',
 ]);
 export const LegMode = z.enum(['land', 'sea', 'start', 'turnaround']);
-export const JourneyKind = z.enum(['ministry', 'apostolic']);
+export const JourneyKind = z.enum(['patriarchal', 'exodus', 'ministry', 'apostolic']);
 
 export const DateRange = z
   .object({
@@ -127,6 +127,7 @@ export const Person = z.object({
 export const Artifact = z.object({
   id: z.string().min(1),
   name: LocalizedText,
+  siteId: z.string().optional(), // where the find is surfaced on the map/site detail
   modernLocation: LocalizedText.optional(),
   corroborates: LocalizedText,
   dateRange: DateRange.optional(),
@@ -134,6 +135,47 @@ export const Artifact = z.object({
   reviewStatus: ReviewStatus,
   disputes: LocalizedText.optional(),
   citations: z.array(z.string()),
+});
+
+/**
+ * An extra-biblical / secular witness to a biblical person, place, or event —
+ * Josephus, Tacitus, Pliny, an inscription's testimony, etc. Presented
+ * neutrally and dispute-aware (a `disputed` confidence needs a `disputes`
+ * note, e.g. the Testimonium Flavianum interpolation debate): the app reports
+ * what the source attests and what scholars contest, never "proof".
+ */
+export const Witness = z.object({
+  id: z.string().min(1),
+  title: LocalizedText, // e.g. "Josephus on Jesus (Testimonium Flavianum)"
+  author: LocalizedText, // e.g. "Flavius Josephus"
+  work: LocalizedText, // e.g. "Antiquities of the Jews 18.63"
+  era: LocalizedText, // e.g. "c. AD 93-94"
+  attests: LocalizedText, // what it corroborates
+  personIds: z.array(z.string()).optional(),
+  siteIds: z.array(z.string()).optional(),
+  confidence: Confidence,
+  reviewStatus: ReviewStatus,
+  disputes: LocalizedText.optional(),
+  citations: z.array(z.string()),
+});
+
+/**
+ * A geographically- and chronologically-anchored supplementary video (public
+ * embed, e.g. YouTube). Videos are illustrative media, NOT cited factual
+ * claims — the channel is credited and the app labels them supplementary.
+ */
+export const Video = z.object({
+  id: z.string().min(1),
+  title: LocalizedText,
+  provider: z.enum(['youtube']),
+  videoId: z.string().min(1), // 11-char YouTube id
+  channel: z.string().min(1),
+  summary: LocalizedText,
+  topic: LocalizedText.optional(),
+  siteId: z.string().optional(),
+  journeyId: z.string().optional(),
+  personId: z.string().optional(),
+  dateRange: DateRange.optional(), // timeline anchor
 });
 
 export const Term = z.object({
@@ -190,6 +232,8 @@ export const Bundle = z.object({
   stops: z.array(Stop),
   persons: z.array(Person),
   artifacts: z.array(Artifact),
+  witnesses: z.array(Witness),
+  videos: z.array(Video),
   terms: z.array(Term),
   lessons: z.array(Lesson),
   quizzes: z.array(Quiz),
@@ -204,6 +248,8 @@ export type TJourney = z.infer<typeof Journey>;
 export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
 export type TArtifact = z.infer<typeof Artifact>;
+export type TWitness = z.infer<typeof Witness>;
+export type TVideo = z.infer<typeof Video>;
 export type TTerm = z.infer<typeof Term>;
 export type TLesson = z.infer<typeof Lesson>;
 export type TQuiz = z.infer<typeof Quiz>;

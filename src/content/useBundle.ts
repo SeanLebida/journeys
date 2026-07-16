@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { loadBundle } from '../platform/assets';
-import type { TArtifact, TBundle, TCitation, TJourney, TLesson, TPerson, TQuiz, TSite, TStop, TTerm } from './schema';
+import type { TArtifact, TBundle, TCitation, TJourney, TLesson, TPerson, TQuiz, TSite, TStop, TTerm, TVideo, TWitness } from './schema';
 
 export interface BundleIndex extends TBundle {
   attributions?: { id: string; name: string; license: string; url?: string }[];
@@ -15,6 +15,14 @@ export interface BundleIndex extends TBundle {
   quiz: (id: string) => TQuiz | undefined;
   stopsFor: (journeyId: string) => TStop[];
   stopsForSite: (siteId: string) => TStop[];
+  /** Archaeological finds surfaced at a site (Artifact.siteId). */
+  artifactsForSite: (siteId: string) => TArtifact[];
+  /** Extra-biblical / secular witnesses touching a site or person. */
+  witnessesForSite: (siteId: string) => TWitness[];
+  witnessesForPerson: (personId: string) => TWitness[];
+  /** Supplementary videos anchored to a site, journey, or person. */
+  videosForSite: (siteId: string) => TVideo[];
+  videosForJourney: (journeyId: string) => TVideo[];
 }
 
 function index(b: TBundle): BundleIndex {
@@ -42,6 +50,11 @@ function index(b: TBundle): BundleIndex {
     stopsFor: (journeyId) =>
       b.stops.filter((s) => s.journeyId === journeyId).sort((a, c) => a.order - c.order),
     stopsForSite: (siteId) => b.stops.filter((s) => s.siteId === siteId),
+    artifactsForSite: (siteId) => (b.artifacts ?? []).filter((a) => a.siteId === siteId),
+    witnessesForSite: (siteId) => (b.witnesses ?? []).filter((w) => w.siteIds?.includes(siteId)),
+    witnessesForPerson: (personId) => (b.witnesses ?? []).filter((w) => w.personIds?.includes(personId)),
+    videosForSite: (siteId) => (b.videos ?? []).filter((v) => v.siteId === siteId),
+    videosForJourney: (journeyId) => (b.videos ?? []).filter((v) => v.journeyId === journeyId),
   };
 }
 

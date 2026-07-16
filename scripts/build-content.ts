@@ -31,6 +31,8 @@ import {
   Site,
   Stop,
   Term,
+  Video,
+  Witness,
   type TStop,
 } from '../src/content/schema';
 import { parseScriptureRef } from '../src/content/scriptureRef';
@@ -138,6 +140,8 @@ async function main(): Promise<void> {
   const stops = merged('stops');
   const persons = merged('persons');
   const artifacts = merged('artifacts');
+  const witnesses = merged('witnesses');
+  const videos = merged('videos');
   const terms = merged('terms');
   const lessons = merged('lessons');
   const quizzes = merged('quizzes');
@@ -149,6 +153,8 @@ async function main(): Promise<void> {
   const vStops = validateArray('stops', Stop, stops);
   const vPersons = validateArray('persons', Person, persons);
   const vArtifacts = validateArray('artifacts', Artifact, artifacts);
+  const vWitnesses = validateArray('witnesses', Witness, witnesses);
+  const vVideos = validateArray('videos', Video, videos);
   const vTerms = validateArray('terms', Term, terms);
   const vLessons = validateArray('lessons', Lesson, lessons);
   const vQuizzes = validateArray('quizzes', Quiz, quizzes);
@@ -179,6 +185,7 @@ async function main(): Promise<void> {
   vStops.forEach((s) => checkCites(s.citations, `stop ${s.id}`));
   vPersons.forEach((p) => checkCites(p.citations, `person ${p.id}`));
   vArtifacts.forEach((a) => checkCites(a.citations, `artifact ${a.id}`));
+  vWitnesses.forEach((w) => checkCites(w.citations, `witness ${w.id}`));
   vTerms.forEach((t) => checkCites(t.citations, `term ${t.id}`));
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
@@ -190,6 +197,7 @@ async function main(): Promise<void> {
   };
   vStops.forEach((s) => neutralityCheck(s, 'stop'));
   vArtifacts.forEach((a) => neutralityCheck(a, 'artifact'));
+  vWitnesses.forEach((w) => neutralityCheck(w, 'witness'));
 
   // 6. Referential integrity.
   vStops.forEach((s) => {
@@ -210,6 +218,20 @@ async function main(): Promise<void> {
       if (st.siteId && !siteIds.has(st.siteId)) err(`lesson ${l.id}.steps[${i}]: unknown siteId '${st.siteId}'`);
       if (st.stopId && !stopIds.has(st.stopId)) err(`lesson ${l.id}.steps[${i}]: unknown stopId '${st.stopId}'`);
     });
+  });
+  vArtifacts.forEach((a) => {
+    if (a.siteId && !siteIds.has(a.siteId)) err(`artifact ${a.id}: unknown siteId '${a.siteId}'`);
+  });
+  vWitnesses.forEach((w) => {
+    w.personIds?.forEach((p) => !personIds.has(p) && err(`witness ${w.id}: unknown person '${p}'`));
+    w.siteIds?.forEach((s) => !siteIds.has(s) && err(`witness ${w.id}: unknown site '${s}'`));
+  });
+  vVideos.forEach((v) => {
+    if (v.siteId && !siteIds.has(v.siteId)) err(`video ${v.id}: unknown siteId '${v.siteId}'`);
+    if (v.journeyId && !journeyIds.has(v.journeyId)) err(`video ${v.id}: unknown journeyId '${v.journeyId}'`);
+    if (v.personId && !personIds.has(v.personId)) err(`video ${v.id}: unknown personId '${v.personId}'`);
+    if (v.provider === 'youtube' && !/^[A-Za-z0-9_-]{11}$/.test(v.videoId))
+      err(`video ${v.id}: '${v.videoId}' is not a valid 11-char YouTube id`);
   });
   vQuizzes.forEach((q) => {
     if (q.relatedJourneyId && !journeyIds.has(q.relatedJourneyId)) err(`quiz ${q.id}: unknown relatedJourneyId`);
@@ -273,6 +295,7 @@ async function main(): Promise<void> {
     ...vStops.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `stop ${x.id}`),
     ...vSites.filter((x) => x.coordinates.confidence === 'high' && x.coordinates.reviewStatus !== 'scholar-approved').map((x) => `site ${x.id}.coordinates`),
     ...vArtifacts.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `artifact ${x.id}`),
+    ...vWitnesses.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `witness ${x.id}`),
   ];
   if (unreviewed.length) {
     const msg = `${unreviewed.length} 'high'-confidence claim(s) not yet scholar-approved`;
@@ -292,6 +315,8 @@ async function main(): Promise<void> {
     stops: vStops,
     persons: vPersons,
     artifacts: vArtifacts,
+    witnesses: vWitnesses,
+    videos: vVideos,
     terms: vTerms,
     lessons: vLessons,
     quizzes: vQuizzes,
@@ -319,7 +344,7 @@ async function main(): Promise<void> {
 
   // 12. Report.
   console.log('\n— Content build —');
-  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
+  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
   console.log(`  citations ${vCitations.length} · Bible verses ${Object.entries(dbCounts).map(([k, v]) => `${k}:${v}`).join(' ') || 'none'}`);
   console.log(`  integrity ${integrity}`);
   warnings.forEach((wn) => console.warn(`  ⚠ ${wn}`));
