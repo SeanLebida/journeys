@@ -13,8 +13,9 @@
   --parchment-200: #e8dcc0;
   --parchment-300: #d8c9a4;
 
-  --terracotta: #c75b39;
-  --terracotta-ink: #8f3a20;
+  /* Burnt-orange accent aligned to the authentic.how brand (#b35400 / #8a4300). */
+  --terracotta: #b35400;
+  --terracotta-ink: #8a4300;
   --gold: #c9a227;
   --gold-ink: #8a6d10;
   --sea: #2f6f6b;
@@ -30,7 +31,7 @@
   --border: var(--parchment-300);
   --accent: var(--terracotta);
   --accent-contrast: #ffffff;
-  --link: var(--sea-ink);
+  --link: var(--terracotta-ink);
   --focus: #1d6fe0;
 
   /* Confidence */
@@ -39,9 +40,13 @@
   --c-legendary: var(--violet);
   --c-disputed: var(--terracotta-ink);
 
-  /* Type */
-  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Type — Ubuntu (headings) + Open Sans (body), self-hosted, matching
+     authentic.how so the app and website read as one brand. `--font-serif` is
+     retained as the heading alias so existing rules pick up Ubuntu unchanged. */
+  --font-heading: 'Ubuntu', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body);
 
   /* Spacing / shape */
   --r-sm: 6px;
@@ -64,7 +69,7 @@
     --text: #f3ecd9;
     --text-muted: #b8ad95;
     --border: #2c3552;
-    --link: #7fc8c2;
+    --link: #e39a5c;
     --c-high: #6fb7b0;
     --c-medium: #d9b94b;
     --c-legendary: #b394d6;

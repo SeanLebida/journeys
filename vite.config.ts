@@ -19,7 +19,7 @@ export default defineConfig({
       // Bible SQLite DB, and the sql.js wasm. The DB is ~10 MB so the workbox
       // file-size cap is raised accordingly.
       workbox: {
-        globPatterns: ['**/*.{js,css,html,wasm}', 'dist-content/**/*.{json,sqlite}'],
+        globPatterns: ['**/*.{js,css,html,wasm,woff2}', 'dist-content/**/*.{json,sqlite}'],
         maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
