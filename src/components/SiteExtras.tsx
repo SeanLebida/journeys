@@ -64,39 +64,47 @@ function WitnessTimeline({ witness }: { witness: TWitness }) {
   const bp = witness.biblicalParallel;
   if (!bp) return null;
   const w = witness.authoredRange;
-  const min = Math.min(bp.range.startYear, w.startYear);
-  const max = Math.max(bp.range.endYear, w.endYear);
+  const others = witness.otherReferences ?? [];
+
+  // Ordered bars, earliest subject first: the biblical account, this source,
+  // then any further comparison points (e.g. the Quran).
+  const rows = [
+    { kind: 'bible', label: `Biblical account — ${bp.source.en}`, detail: `${bp.range.display.en}`, tag: '(earliest)', range: bp.range },
+    { kind: 'witness', label: `This source — ${witness.author.en}`, detail: witness.era.en, tag: '', range: w },
+    ...others.map((r) => ({ kind: 'other', label: r.source.en, detail: r.range.display.en, tag: '', range: r.range })),
+  ];
+  const min = Math.min(...rows.map((r) => r.range.startYear));
+  const max = Math.max(...rows.map((r) => r.range.endYear));
   const span = Math.max(1, max - min);
   const seg = (a: number, b: number) => ({
     left: `${((a - min) / span) * 100}%`,
     width: `${Math.max(2.5, ((b - a) / span) * 100)}%`,
   });
+
   return (
     <div className="witness-timeline">
       <h6 className="witness-timeline__title">When it was written</h6>
       <div className="witness-timeline__track" aria-hidden="true">
-        <div className="witness-timeline__row">
-          <span className="witness-timeline__seg witness-timeline__seg--bible" style={seg(bp.range.startYear, bp.range.endYear)} />
-        </div>
-        <div className="witness-timeline__row">
-          <span className="witness-timeline__seg witness-timeline__seg--witness" style={seg(w.startYear, w.endYear)} />
-        </div>
+        {rows.map((r, i) => (
+          <div className="witness-timeline__row" key={i}>
+            <span className={`witness-timeline__seg witness-timeline__seg--${r.kind}`} style={seg(r.range.startYear, r.range.endYear)} />
+          </div>
+        ))}
         <div className="witness-timeline__axis">
           <span>{fmtYear(min)}</span>
           <span>{fmtYear(max)}</span>
         </div>
       </div>
       <ul className="witness-timeline__legend">
-        <li>
-          <span className="witness-timeline__key witness-timeline__key--bible" /> Biblical account — {bp.source.en}:{' '}
-          {bp.range.display.en} <strong>(earlier)</strong>
-        </li>
-        <li>
-          <span className="witness-timeline__key witness-timeline__key--witness" /> This source — {witness.author.en}:{' '}
-          {witness.era.en}
-        </li>
+        {rows.map((r, i) => (
+          <li key={i}>
+            <span className={`witness-timeline__key witness-timeline__key--${r.kind}`} /> {r.label}: {r.detail}
+            {r.tag && <strong> {r.tag}</strong>}
+          </li>
+        ))}
       </ul>
       <p className="witness-timeline__gap">{bp.gapNote.en}</p>
+      {others.map((r, i) => r.note && <p className="witness-timeline__gap" key={i}>{r.note.en}</p>)}
     </div>
   );
 }

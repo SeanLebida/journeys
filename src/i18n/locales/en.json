@@ -12,7 +12,7 @@
   },
   "modes": {
     "trace": { "title": "Route tracing", "placeholder": "Animated journey routes arrive in milestone M3." },
-    "atlas": { "title": "Sandbox atlas", "placeholder": "Toggleable map layers arrive in milestone M4." },
+    "atlas": { "title": "Interactive Atlas", "placeholder": "Toggleable map layers arrive in milestone M4." },
     "lessons": { "title": "Guided lessons", "placeholder": "Narrated, paced lessons arrive in milestone M5." },
     "quiz": { "title": "Quizzes", "placeholder": "Quizzes and challenges arrive in milestone M6." }
   },

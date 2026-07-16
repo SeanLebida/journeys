@@ -65,6 +65,7 @@ CITES = [
     ("cit-wit-thallus", "Thallus, cited by Julius Africanus", "https://en.wikipedia.org/wiki/Thallus_(historian)", "primary-ancient"),
     ("cit-wit-mara", "Mara bar Serapion, 'Letter to his son'", "https://en.wikipedia.org/wiki/Mara_bar_Serapion", "primary-ancient"),
     ("cit-nt-dating", "Wikipedia, 'Dating the Bible' (composition of the New Testament)", "https://en.wikipedia.org/wiki/Dating_the_Bible", "secondary-scholarly"),
+    ("cit-quran-dating", "Wikipedia, 'History of the Quran' (7th-century composition)", "https://en.wikipedia.org/wiki/History_of_the_Quran", "secondary-scholarly"),
 ]
 citations = [{"id": i, "source": en(s), "url": u, "kind": k} for i, s, u, k in CITES]
 
@@ -151,10 +152,30 @@ witnesses = [
 ]
 
 
+# The Quran is added to the timeline of the witnesses about figures it also
+# narrates (Jesus = Isa; John the Baptist = Yahya) purely as a later dated
+# reference point for comparison — never a claim about content.
+QURAN_REF = {
+    "source": en("The Quran"),
+    "range": dr(610, 650, "c. AD 610-650 (revelations c. 610-632; compiled c. 650)"),
+    "note": en("The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."),
+}
+QURAN_WITNESSES = {
+    "witness-josephus-jesus", "witness-josephus-james", "witness-josephus-baptist",
+    "witness-tacitus", "witness-thallus", "witness-mara",
+}
+for _w in witnesses:
+    if _w["id"] in QURAN_WITNESSES:
+        _w["otherReferences"] = [QURAN_REF]
+        if "cit-quran-dating" not in _w["citations"]:
+            _w["citations"] = _w["citations"] + ["cit-quran-dating"]
+
+
 def main():
     write("citations.extra.json", upsert(load("citations.extra.json"), citations))
     write("witnesses.extra.json", upsert(load("witnesses.extra.json"), witnesses))
-    print(f"witnesses: {len(witnesses)} · new citations: {len(citations)}")
+    quran = sum(1 for w in witnesses if w.get("otherReferences"))
+    print(f"witnesses: {len(witnesses)} ({quran} with Quran ref) · new citations: {len(citations)}")
 
 
 if __name__ == "__main__":

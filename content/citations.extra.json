@@ -622,5 +622,13 @@
     },
     "url": "https://en.wikipedia.org/wiki/Dating_the_Bible",
     "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-quran-dating",
+    "source": {
+      "en": "Wikipedia, 'History of the Quran' (7th-century composition)"
+    },
+    "url": "https://en.wikipedia.org/wiki/History_of_the_Quran",
+    "kind": "secondary-scholarly"
   }
 ]

@@ -163,6 +163,18 @@ export const Witness = z.object({
       gapNote: LocalizedText,
     })
     .optional(),
+  /** Further dated sources on the same subject, for chronological comparison
+   * on the timeline (e.g. the Quran, a much later reference to Jesus). Purely
+   * a date comparison — neutral, not a claim about content. */
+  otherReferences: z
+    .array(
+      z.object({
+        source: LocalizedText,
+        range: DateRange,
+        note: LocalizedText.optional(),
+      }),
+    )
+    .optional(),
   personIds: z.array(z.string()).optional(),
   siteIds: z.array(z.string()).optional(),
   confidence: Confidence,
