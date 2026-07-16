@@ -15,20 +15,29 @@ body,
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-weight: 400;
   color: var(--text);
   background: var(--bg);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+/* Single-typeface hierarchy: titles are heavy (700) and tightly tracked so
+   they read as distinct from the 400-weight body even though both are Ubuntu.
+   Section labels add color (accent) and letter-spacing on top of weight. */
 h1,
 h2,
-h3 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 a {
@@ -1326,4 +1335,14 @@ a {
   font-size: 0.8rem;
   color: var(--text);
   margin: 0.3rem 0 0;
+}
+
+/* Ubuntu on the MapLibre controls too (attribution, zoom buttons) so the one
+   typeface is truly used throughout — MapLibre ships its own Helvetica/Arial
+   stack in its stylesheet. */
+.maplibregl-ctrl,
+.maplibregl-ctrl button,
+.maplibregl-ctrl-attrib,
+.maplibregl-ctrl-attrib a {
+  font-family: var(--font-heading);
 }

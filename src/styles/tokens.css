@@ -40,13 +40,15 @@
   --c-legendary: var(--violet);
   --c-disputed: var(--terracotta-ink);
 
-  /* Type — Ubuntu (headings) + Open Sans (body), self-hosted, matching
-     authentic.how so the app and website read as one brand. `--font-serif` is
-     retained as the heading alias so existing rules pick up Ubuntu unchanged. */
+  /* Type — Ubuntu throughout, self-hosted, matching the authentic.how brand.
+     One typeface across the whole app; hierarchy comes from weight (400 body /
+     500 medium / 700 bold), size, and color, not a second family. The
+     --font-heading/body/serif/sans names are kept as aliases so every existing
+     rule resolves to Ubuntu. */
   --font-heading: 'Ubuntu', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
-  --font-body: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-heading);
   --font-serif: var(--font-heading);
-  --font-sans: var(--font-body);
+  --font-sans: var(--font-heading);
 
   /* Spacing / shape */
   --r-sm: 6px;
