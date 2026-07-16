@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { generateGraticule, MEDITERRANEAN_BBOX } from './graticule';
+import { generateGraticule, WORLD_BBOX } from './graticule';
 
 describe('generateGraticule', () => {
   it('produces meridians and parallels', () => {
@@ -9,8 +9,8 @@ describe('generateGraticule', () => {
     expect(fc.features.length).toBeGreaterThan(0);
   });
 
-  it('keeps every vertex inside the Mediterranean bbox', () => {
-    const [w, s, e, n] = MEDITERRANEAN_BBOX;
+  it('keeps every vertex inside the world bbox', () => {
+    const [w, s, e, n] = WORLD_BBOX;
     for (const f of generateGraticule(5).features) {
       for (const [lon, lat] of f.geometry.coordinates) {
         expect(lon).toBeGreaterThanOrEqual(w);
