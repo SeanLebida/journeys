@@ -1,0 +1,72 @@
+{
+  "artifact-pilate-stone": {
+    "src": "images/artifacts/artifact-pilate-stone.jpg",
+    "commonsFile": "Pontius_Pilate_Inscription.JPG",
+    "author": "BRBurton",
+    "license": "CC0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pontius_Pilate_Inscription.JPG"
+  },
+  "artifact-pool-of-siloam": {
+    "src": "images/artifacts/artifact-pool-of-siloam.png",
+    "commonsFile": "Pool_of_Siloam_and_Lower_(Old)_Pool_in_the_Ordnance_Survey_of_Jerusalem.png",
+    "author": "File:1865 Ordnance Survey of Jerusalem Old City full map.jpg",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pool_of_Siloam_and_Lower_(Old)_Pool_in_the_Ordnance_Survey_of_Jerusalem.png"
+  },
+  "artifact-caiaphas-ossuary": {
+    "src": "images/artifacts/artifact-caiaphas-ossuary.jpg",
+    "commonsFile": "Ossuary_of_the_high_priest_Joseph_Caiaphas_P1180839.JPG",
+    "author": "deror_avi",
+    "license": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ossuary_of_the_high_priest_Joseph_Caiaphas_P1180839.JPG"
+  },
+  "artifact-tel-dan-stele": {
+    "src": "images/artifacts/artifact-tel-dan-stele.jpg",
+    "commonsFile": "JRSLM_300116_Tel_Dan_Stele_01.jpg",
+    "author": "Oren Rozen",
+    "license": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:JRSLM_300116_Tel_Dan_Stele_01.jpg"
+  },
+  "artifact-mesha-stele": {
+    "src": "images/artifacts/artifact-mesha-stele.jpg",
+    "commonsFile": "P1120870_Louvre_stèle_de_Mésha_AO5066_rwk.JPG",
+    "author": "Unknown artistUnknown artist",
+    "license": "CC BY 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1120870_Louvre_st%C3%A8le_de_M%C3%A9sha_AO5066_rwk.JPG"
+  },
+  "artifact-merneptah-stele": {
+    "src": "images/artifacts/artifact-merneptah-stele.jpg",
+    "commonsFile": "Merneptah_Steli_(cropped).jpg",
+    "author": "𐰇𐱅𐰚𐰤",
+    "license": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Merneptah_Steli_(cropped).jpg"
+  },
+  "artifact-pool-of-bethesda": {
+    "src": "images/artifacts/artifact-pool-of-bethesda.jpg",
+    "commonsFile": "Jerusalem_Bethesda_BW_1.JPG",
+    "author": "Berthold Werner",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jerusalem_Bethesda_BW_1.JPG"
+  },
+  "artifact-hezekiah-siloam-tunnel": {
+    "src": "images/artifacts/artifact-hezekiah-siloam-tunnel.jpg",
+    "commonsFile": "Siloam_Inscription_2.jpg",
+    "author": "Wikikati",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siloam_Inscription_2.jpg"
+  },
+  "artifact-sennacherib-prism": {
+    "src": "images/artifacts/artifact-sennacherib-prism.jpg",
+    "commonsFile": "Taylor Prism-1.jpg",
+    "author": "This image was produced by me, David Castor (user:dcastor). The pictures I submit to the Wikipedia Project are released to the public domain. This gives you the right to use them in any way you like, without any kind of notification. This said, I would still appreciate to be mentioned as the originator whenever you think it complies well with your use of the picture. A message to me about how it has been used would also be welcome. You are obviously not required to respond to these wishes of mine, just in a friendly manner encouraged to. (All my photos are placed in Category:Images by David Castor or a subcategory thereof.)",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taylor_Prism-1.jpg"
+  },
+  "artifact-cyrus-cylinder": {
+    "src": "images/artifacts/artifact-cyrus-cylinder.jpg",
+    "commonsFile": "Cyrus_Cylinder_front.jpg",
+    "author": "Prioryman",
+    "license": "CC BY-SA 3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_front.jpg"
+  }
+}

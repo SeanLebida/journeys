@@ -28,11 +28,11 @@ export default defineConfig({
         // keep working offline. Native builds bundle them on disk regardless.
         runtimeCaching: [
           {
-            urlPattern: /\/images\/sites\/.*\.(?:jpg|png|webp)$/,
+            urlPattern: /\/images\/(?:sites|artifacts)\/.*\.(?:jpg|png|webp)$/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'site-photos',
-              expiration: { maxEntries: 100 },
+              expiration: { maxEntries: 200 },
             },
           },
         ],

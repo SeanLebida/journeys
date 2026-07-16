@@ -462,5 +462,85 @@
     },
     "url": "https://en.wikipedia.org/wiki/Stations_of_the_Exodus",
     "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-arch-tel-dan",
+    "source": {
+      "en": "Wikipedia, 'Tel Dan Stele' (House of David inscription)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tel_Dan_Stele",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-merneptah",
+    "source": {
+      "en": "Wikipedia, 'Merneptah Stele' (earliest mention of Israel)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Merneptah_Stele",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-mesha",
+    "source": {
+      "en": "Wikipedia, 'Mesha Stele' (Moabite Stone)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mesha_Stele",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-bethesda",
+    "source": {
+      "en": "Wikipedia, 'Pool of Bethesda'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pool_of_Bethesda",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-capernaum-house",
+    "source": {
+      "en": "Wikipedia, 'Capernaum' (House of St Peter / insula sacra)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Capernaum",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-siloam-tunnel",
+    "source": {
+      "en": "Wikipedia, 'Siloam inscription' (Hezekiah's Tunnel)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Siloam_inscription",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-cyrus-cylinder",
+    "source": {
+      "en": "Wikipedia, 'Cyrus Cylinder'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Cyrus_Cylinder",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-sergius-paulus",
+    "source": {
+      "en": "Wikipedia, 'Sergius Paulus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sergius_Paulus",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-sennacherib-prism",
+    "source": {
+      "en": "Wikipedia, 'Sennacherib's Annals' (Taylor / Sennacherib Prism)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sennacherib%27s_Annals",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-arch-hezekiah-bulla",
+    "source": {
+      "en": "Wikipedia, 'Hezekiah' (royal seal impression / bulla)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Hezekiah",
+    "kind": "archaeological"
   }
 ]
