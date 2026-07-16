@@ -1248,3 +1248,82 @@ a {
   border-color: var(--accent);
   color: var(--accent);
 }
+
+/* ── Witness "when it was written" timeline ─────────────────────────────── */
+.witness-timeline {
+  margin: 0.5rem 0 0.3rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+}
+.witness-timeline__title {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0 0 0.4rem;
+}
+.witness-timeline__track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.4rem;
+}
+.witness-timeline__row {
+  position: relative;
+  height: 0.5rem;
+  background: var(--border);
+  border-radius: 999px;
+}
+.witness-timeline__seg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 999px;
+  min-width: 3px;
+}
+.witness-timeline__seg--bible {
+  background: var(--c-high);
+}
+.witness-timeline__seg--witness {
+  background: var(--accent);
+}
+.witness-timeline__axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.15rem;
+}
+.witness-timeline__legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+}
+.witness-timeline__key {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 0.35rem;
+}
+.witness-timeline__key--bible {
+  background: var(--c-high);
+}
+.witness-timeline__key--witness {
+  background: var(--accent);
+}
+.witness-timeline__gap {
+  font-size: 0.8rem;
+  color: var(--text);
+  margin: 0.3rem 0 0;
+}

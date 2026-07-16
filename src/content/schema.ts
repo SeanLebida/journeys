@@ -150,7 +150,19 @@ export const Witness = z.object({
   author: LocalizedText, // e.g. "Flavius Josephus"
   work: LocalizedText, // e.g. "Antiquities of the Jews 18.63"
   era: LocalizedText, // e.g. "c. AD 93-94"
+  authoredRange: DateRange, // structured composition date (for the timeline)
   attests: LocalizedText, // what it corroborates
+  /** The earliest biblical text on the same subject, its authoring date, and a
+   * neutral note comparing the two — the point being that the biblical account
+   * is the earlier source, by a generation to (for the weakest witnesses) well
+   * over a century. Dates are scholarly ranges, never false precision. */
+  biblicalParallel: z
+    .object({
+      source: LocalizedText, // e.g. "Paul's letters and the four Gospels"
+      range: DateRange,
+      gapNote: LocalizedText,
+    })
+    .optional(),
   personIds: z.array(z.string()).optional(),
   siteIds: z.array(z.string()).optional(),
   confidence: Confidence,
