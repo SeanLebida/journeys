@@ -2,12 +2,13 @@ import { createContext, useContext, useEffect, useRef, useState, type ReactNode 
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl';
 import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { buildBaseStyle, BASEMAP_LAYERS } from './style';
+import { applyMapTone, buildBaseStyle, BASEMAP_LAYERS } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
 import { REFERENCE_CITIES } from './reference-cities';
 import { WATER_BODIES } from './water-bodies';
 import { setLayerVisible } from './layers/atlas';
 import { useMapLayersStore } from '../state/useMapLayersStore';
+import { useResolvedDark } from '../state/theme';
 
 interface MapContextValue {
   /** The single persistent MapLibre instance (null until first mount). */
@@ -28,9 +29,6 @@ function prefersReducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-function isDark(): boolean {
-  return typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
-}
 
 // Below this zoom, name labels overlap into unreadable noise (a full-atlas
 // or full-journey view can have 20-60 sites on screen at once) — hide them
@@ -73,6 +71,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const waterMarkersRef = useRef<WaterLabelRef[]>([]);
+  // Theme setting + OS preference, resolved. The map is created once (empty-dep
+  // effect), so it reads the value through a ref; later flips retone in place.
+  const dark = useResolvedDark();
+  const darkRef = useRef(dark);
+  darkRef.current = dark;
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -82,7 +85,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     const paddingLeft = isDesktop ? 450 : 0;
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: buildBaseStyle('ancient', isDark()),
+      style: buildBaseStyle('ancient', darkRef.current),
       bounds: [
         [MEDITERRANEAN_BBOX[0], MEDITERRANEAN_BBOX[1]],
         [MEDITERRANEAN_BBOX[2], MEDITERRANEAN_BBOX[3]],
@@ -162,6 +165,14 @@ export function MapProvider({ children }: { children: ReactNode }) {
       setReady(false);
     };
   }, []);
+
+  // Retone the live map when the theme flips (user toggle or OS change) —
+  // paint-property updates keep every mode's content layers intact.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    applyMapTone(map, dark);
+  }, [ready, dark]);
 
   // Apply basemap layer visibility + label override from the shared, persisted
   // store whenever it changes — this is the one place that talks to the map

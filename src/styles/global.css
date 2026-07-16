@@ -112,8 +112,14 @@ a {
     radial-gradient(ellipse at 70% 80%, rgba(47, 111, 107, 0.2), transparent 55%),
     linear-gradient(160deg, var(--parchment-200), var(--parchment-300));
 }
+:root[data-theme='dark'] .map-canvas {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.12), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(47, 111, 107, 0.16), transparent 55%),
+    linear-gradient(160deg, var(--ink-800), var(--ink-900));
+}
 @media (prefers-color-scheme: dark) {
-  .map-canvas {
+  :root:not([data-theme='light']) .map-canvas {
     background:
       radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.12), transparent 60%),
       radial-gradient(ellipse at 70% 80%, rgba(47, 111, 107, 0.16), transparent 55%),
@@ -165,8 +171,12 @@ a {
   letter-spacing: 0.05em;
   opacity: 0.85;
 }
+:root[data-theme='dark'] .water-body-label {
+  color: #8db5cd;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
 @media (prefers-color-scheme: dark) {
-  .water-body-label {
+  :root:not([data-theme='light']) .water-body-label {
     color: #8db5cd;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   }
@@ -930,6 +940,11 @@ a {
   padding: 0.4rem 0.5rem calc(0.4rem + var(--safe-bottom));
   background: var(--surface);
   border-top: 1px solid var(--border);
+  /* The map surface is an absolutely-positioned, viewport-covering layer; the
+     unpositioned tab bar painted BENEATH it (invisible + unclickable). Lift it
+     into its own stacking context above the map. */
+  position: relative;
+  z-index: 20;
 }
 .tabbar__item {
   display: flex;
@@ -1388,4 +1403,13 @@ a {
   .extra-card__figure img {
     max-height: 200px;
   }
+}
+
+/* Theme toggle in the tab bar: a button dressed as a tab. */
+.tabbar__theme {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: inherit;
 }

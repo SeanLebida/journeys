@@ -4,10 +4,11 @@
    Confidence colors are paired with text labels everywhere (never color-alone)
    to satisfy WCAG 1.4.1. */
 :root {
-  /* Core palette */
-  --ink-900: #0b1020;
-  --ink-800: #141a2e;
-  --ink-700: #1e2640;
+  /* Core palette — dark inks are the authentic.how neutral blacks
+     (#0a0a0a / #000000 dark sections), not an indigo night-sky. */
+  --ink-900: #0a0a0a;
+  --ink-800: #151515;
+  --ink-700: #1f1f1f;
   --parchment-50: #faf5e9;
   --parchment-100: #f4ecd8;
   --parchment-200: #e8dcc0;
@@ -63,14 +64,32 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* ── Dark theme ──────────────────────────────────────────────────────────
+   Two routes into the same values: an explicit user choice stamps
+   [data-theme='dark'] on <html> (src/state/theme.ts), while 'system' leaves
+   the attribute off and the media query decides — with [data-theme='light']
+   opting out. Keep both blocks identical. */
+:root[data-theme='dark'] {
+  --bg: var(--ink-900);
+  --surface: var(--ink-800);
+  --surface-raised: var(--ink-700);
+  --text: #f3ecd9;
+  --text-muted: #b3a992;
+  --border: #2e2c27;
+  --link: #e39a5c;
+  --c-high: #6fb7b0;
+  --c-medium: #d9b94b;
+  --c-legendary: #b394d6;
+  --c-disputed: #e08562;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: var(--ink-900);
     --surface: var(--ink-800);
     --surface-raised: var(--ink-700);
     --text: #f3ecd9;
-    --text-muted: #b8ad95;
-    --border: #2c3552;
+    --text-muted: #b3a992;
+    --border: #2e2c27;
     --link: #e39a5c;
     --c-high: #6fb7b0;
     --c-medium: #d9b94b;

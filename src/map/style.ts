@@ -36,13 +36,42 @@ export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const sa
 //   - modern:  Protomaps PMTiles vector (getPmtilesUrl)
 // Both sources are added in the asset-acquisition step; the pmtiles:// protocol
 // is already registered by MapProvider so the modern source is drop-in.
-const SEA = { light: '#dceaea', dark: '#0e1830' } as const;
-const LAND = { light: '#efe6cf', dark: '#16203a' } as const;
-const WATER = { light: '#a0d0d8', dark: '#1e5478' } as const;
-const WATER_EDGE = { light: '#7ab8c0', dark: '#2a6a94' } as const;
-const COASTLINE = { light: '#a3946e', dark: '#3c4e82' } as const;
-const BORDER = { light: '#b9ac8c', dark: '#33417a' } as const;
-const GRATICULE = { light: '#b9ac8c', dark: '#34406a' } as const;
+// Dark tones follow the authentic.how neutral-black theme (warm blacks, not
+// indigo); water keeps a desaturated blue so it still reads as water.
+const SEA = { light: '#dceaea', dark: '#0d0f12' } as const;
+const LAND = { light: '#efe6cf', dark: '#1a1815' } as const;
+const WATER = { light: '#a0d0d8', dark: '#1f4356' } as const;
+const WATER_EDGE = { light: '#7ab8c0', dark: '#2e5a72' } as const;
+const COASTLINE = { light: '#a3946e', dark: '#4a4334' } as const;
+const BORDER = { light: '#b9ac8c', dark: '#3a372e' } as const;
+const GRATICULE = { light: '#b9ac8c', dark: '#2e2b26' } as const;
+
+/**
+ * Retone the base layers of a LIVE map when the user flips the theme — paint
+ * updates in place, so content layers added by the modes (atlas dots, trace
+ * routes) survive, which a full setStyle() would destroy.
+ */
+export function applyMapTone(
+  map: {
+    getLayer: (id: string) => unknown;
+    setPaintProperty: (layer: string, prop: string, value: unknown) => unknown;
+  },
+  dark: boolean,
+): void {
+  const tone = dark ? 'dark' : 'light';
+  const set = (layer: string, prop: string, value: unknown) => {
+    if (map.getLayer(layer)) map.setPaintProperty(layer, prop, value);
+  };
+  set('background', 'background-color', SEA[tone]);
+  set(BASEMAP_LAYERS.land, 'fill-color', LAND[tone]);
+  set(BASEMAP_LAYERS.topography, 'raster-opacity', dark ? 0.22 : 0.35);
+  set(BASEMAP_LAYERS.lakes, 'fill-color', WATER[tone]);
+  set(BASEMAP_LAYERS.lakes, 'fill-outline-color', WATER_EDGE[tone]);
+  set(BASEMAP_LAYERS.rivers, 'line-color', WATER[tone]);
+  set(BASEMAP_LAYERS.coastline, 'line-color', COASTLINE[tone]);
+  set(BASEMAP_LAYERS.borders, 'line-color', BORDER[tone]);
+  set(BASEMAP_LAYERS.graticule, 'line-color', GRATICULE[tone]);
+}
 
 export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecification {
   const tone = dark ? 'dark' : 'light';
