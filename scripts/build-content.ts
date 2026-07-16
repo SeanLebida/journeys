@@ -61,6 +61,8 @@ const ATTRIBUTIONS = [
   { id: 'DARE', name: 'Digital Atlas of the Roman Empire — Johan Åhlfeldt, University of Gothenburg (optional online historical basemap)', license: 'CC BY 4.0', url: 'https://dh.gu.se/dare/' },
   { id: 'WikimediaCommons', name: 'Wikimedia Commons photographers (site photos; per-image author and license shown beside each photo)', license: 'Public Domain / CC0 / CC BY / CC BY-SA (per image)', url: 'https://commons.wikimedia.org/' },
   { id: 'Mapillary', name: 'Mapillary contributors (optional click-to-load street-level imagery)', license: 'CC BY-SA 4.0', url: 'https://www.mapillary.com/' },
+  { id: 'BibleProject', name: 'BibleProject (optional supplementary overview videos, embedded from YouTube on tap)', license: '© BibleProject; embedded via YouTube, not redistributed', url: 'https://bibleproject.com/' },
+  { id: 'Fonts', name: 'Ubuntu and Open Sans typefaces (self-hosted)', license: 'Ubuntu Font Licence 1.0 / SIL Open Font License 1.1', url: 'https://fonts.google.com/' },
 ];
 const REQUIRED_CREDITS = ['KJV', 'ASV', 'MapLibre'];
 

@@ -13,6 +13,8 @@ import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
+import type { TJourney } from '../../content/schema';
 import type { BundleIndex } from '../../content/useBundle';
 import type { TStop } from '../../content/schema';
 
@@ -28,32 +30,50 @@ export default function TraceMode() {
   return <JourneyTrace bundle={bundle} journeyId={journeyId} />;
 }
 
+// Journeys grouped into biblical eras, oldest first, so the picker reads as a
+// timeline from the patriarchs to the apostles.
+const ERA_ORDER: { kind: TJourney['kind']; label: string }[] = [
+  { kind: 'patriarchal', label: 'The Patriarchs' },
+  { kind: 'exodus', label: 'The Exodus' },
+  { kind: 'ministry', label: 'The Life of Jesus' },
+  { kind: 'apostolic', label: 'The Apostolic Age' },
+];
+
 function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   return (
     <ModePanel title={t('modes.trace.title')}>
-      <p>Choose a journey to trace across the ancient Mediterranean.</p>
-      <ul className="journey-list">
-        {bundle.journeys.map((j) => {
-          const firstSiteId = bundle.stop(j.stops[0])?.siteId;
-          return (
-            <li key={j.id}>
-              <Link
-                to={`/trace/${j.id}`}
-                className="journey-list__item journey-list__item--thumbed"
-                style={{ borderLeftColor: j.color }}
-              >
-                {firstSiteId && <SiteThumb siteId={firstSiteId} />}
-                <span className="journey-list__body">
-                  <strong>{j.title.en}</strong>
-                  <span className="journey-list__date">{j.dateRange.display.en}</span>
-                  <span className="journey-list__summary">{j.summary.en}</span>
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <p>Choose a journey to trace — from the patriarchs to the apostles.</p>
+      {ERA_ORDER.map(({ kind, label }) => {
+        const journeys = bundle.journeys.filter((j) => j.kind === kind);
+        if (journeys.length === 0) return null;
+        return (
+          <section key={kind} className="journey-era">
+            <h3 className="journey-era__title">{label}</h3>
+            <ul className="journey-list">
+              {journeys.map((j) => {
+                const firstSiteId = bundle.stop(j.stops[0])?.siteId;
+                return (
+                  <li key={j.id}>
+                    <Link
+                      to={`/trace/${j.id}`}
+                      className="journey-list__item journey-list__item--thumbed"
+                      style={{ borderLeftColor: j.color }}
+                    >
+                      {firstSiteId && <SiteThumb siteId={firstSiteId} />}
+                      <span className="journey-list__body">
+                        <strong>{j.title.en}</strong>
+                        <span className="journey-list__date">{j.dateRange.display.en}</span>
+                        <span className="journey-list__summary">{j.summary.en}</span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        );
+      })}
     </ModePanel>
   );
 }
@@ -98,6 +118,9 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       <p className="journey-trace__date">{journey.dateRange.display.en}</p>
       <p>{journey.summary.en}</p>
       {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+      {bundle.videosForJourney(journey.id).map((v) => (
+        <VideoEmbed key={v.id} video={v} />
+      ))}
       <LayerPanel />
       <TraceControls stopCount={stops.length} />
       <ActiveStopPanel bundle={bundle} stops={stops} />
@@ -294,6 +317,7 @@ function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[
                       </div>
                     )}
                     <Citations ids={stop.citations} bundle={bundle} />
+                    <SiteExtras siteId={stop.siteId} bundle={bundle} />
                   </>
                 ) : (
                   <details className="stop-timeline__details">

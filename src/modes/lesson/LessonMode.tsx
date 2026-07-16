@@ -9,6 +9,7 @@ import { LayerPanel } from '../../map/LayerPanel';
 import { Citations, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteExtras } from '../../components/SiteExtras';
 
 function reducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -168,6 +169,7 @@ function LessonStepViews({ bundle, step }: { bundle: BundleIndex; step: { siteId
           name={site.ancientName.en}
         />
       )}
+      <SiteExtras siteId={siteId} bundle={bundle} />
     </>
   );
 }
