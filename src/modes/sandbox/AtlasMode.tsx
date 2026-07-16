@@ -17,10 +17,21 @@ import {
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteExtras } from '../../components/SiteExtras';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
-const YEAR_MIN = -10;
-const YEAR_MAX = 70;
+// Span the whole biblical timeline: the patriarchs (c. 2000 BC) through the
+// apostolic age (late 1st c. AD), so Old-Testament sites appear on the atlas.
+const YEAR_MIN = -2100;
+const YEAR_MAX = 100;
+const ERA_TICKS = [
+  { year: -2000, label: 'Patriarchs' },
+  { year: -1300, label: 'Exodus' },
+  { year: -1000, label: 'Kingdom' },
+  { year: -540, label: 'Return' },
+  { year: 30, label: 'Jesus' },
+  { year: 60, label: 'Apostles' },
+];
 
 export default function AtlasMode() {
   const { bundle, loading, error } = useBundle();
@@ -135,7 +146,31 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
 
       <label className="atlas-period">
         Show up to year: <strong>{maxYear < 0 ? `${-maxYear} BC` : `AD ${maxYear}`}</strong>
-        <input type="range" min={YEAR_MIN} max={YEAR_MAX} value={maxYear} onChange={(e) => setMaxYear(Number(e.target.value))} />
+        <input
+          type="range"
+          min={YEAR_MIN}
+          max={YEAR_MAX}
+          value={maxYear}
+          list="atlas-era-ticks"
+          onChange={(e) => setMaxYear(Number(e.target.value))}
+        />
+        <datalist id="atlas-era-ticks">
+          {ERA_TICKS.map((t) => (
+            <option key={t.year} value={t.year} label={t.label} />
+          ))}
+        </datalist>
+        <span className="atlas-period__eras" aria-hidden="true">
+          {ERA_TICKS.map((t) => (
+            <button
+              key={t.year}
+              type="button"
+              className="atlas-period__era"
+              onClick={() => setMaxYear(t.year)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </span>
       </label>
 
       {site && (
@@ -154,6 +189,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           />
           <p>{site.summary.en}</p>
           <Citations ids={site.citations} bundle={bundle} />
+          <SiteExtras siteId={site.id} bundle={bundle} />
 
           {stopsHere.map((stop) => {
             const journey = bundle.journey(stop.journeyId);
