@@ -1,37 +1,466 @@
 [
-  { "id": "cit-pilate-stone", "source": { "en": "Wikipedia, 'Pilate Stone'" }, "url": "https://en.wikipedia.org/wiki/Pilate_Stone", "kind": "archaeological" },
-  { "id": "cit-erastus-inscription", "source": { "en": "Wikipedia, 'Erastus of Corinth' / Erastus Inscription" }, "url": "https://en.wikipedia.org/wiki/Erastus_of_Corinth", "kind": "archaeological" },
-  { "id": "cit-politarch-inscription", "source": { "en": "Wikipedia, 'Politarch' (Thessalonica inscriptions)" }, "url": "https://en.wikipedia.org/wiki/Politarch", "kind": "archaeological" },
-  { "id": "cit-gallio-inscription", "source": { "en": "Wikipedia, 'Delphi / Gallio Inscription'" }, "url": "https://en.wikipedia.org/wiki/Gallio_Inscription", "kind": "archaeological" },
-  { "id": "cit-pool-of-siloam", "source": { "en": "Wikipedia, 'Pool of Siloam'" }, "url": "https://en.wikipedia.org/wiki/Pool_of_Siloam", "kind": "archaeological" },
-  { "id": "cit-caiaphas-ossuary", "source": { "en": "Wikipedia, 'Caiaphas ossuary'" }, "url": "https://en.wikipedia.org/wiki/Caiaphas_ossuary", "kind": "archaeological" },
-  { "id": "cit-proconsul", "source": { "en": "Wikipedia, 'Proconsul'" }, "url": "https://en.wikipedia.org/wiki/Proconsul", "kind": "secondary-scholarly" },
-  { "id": "cit-tetrarch", "source": { "en": "Wikipedia, 'Tetrarch'" }, "url": "https://en.wikipedia.org/wiki/Tetrarch", "kind": "secondary-scholarly" },
-  { "id": "cit-sanhedrin", "source": { "en": "Wikipedia, 'Sanhedrin'" }, "url": "https://en.wikipedia.org/wiki/Sanhedrin", "kind": "secondary-scholarly" },
-  { "id": "cit-synagogue", "source": { "en": "Wikipedia, 'Synagogue'" }, "url": "https://en.wikipedia.org/wiki/Synagogue", "kind": "secondary-scholarly" },
-  { "id": "cit-godfearers", "source": { "en": "Wikipedia, 'God-fearers'" }, "url": "https://en.wikipedia.org/wiki/God-fearers", "kind": "secondary-scholarly" },
-  { "id": "cit-pax-romana", "source": { "en": "Wikipedia, 'Pax Romana'" }, "url": "https://en.wikipedia.org/wiki/Pax_Romana", "kind": "secondary-scholarly" },
-  { "id": "cit-via-egnatia", "source": { "en": "Wikipedia, 'Via Egnatia'" }, "url": "https://en.wikipedia.org/wiki/Via_Egnatia", "kind": "secondary-scholarly" },
-  { "id": "cit-septuagint", "source": { "en": "Wikipedia, 'Septuagint'" }, "url": "https://en.wikipedia.org/wiki/Septuagint", "kind": "secondary-scholarly" },
-  { "id": "cit-diaspora", "source": { "en": "Wikipedia, 'Jewish diaspora'" }, "url": "https://en.wikipedia.org/wiki/Jewish_diaspora", "kind": "secondary-scholarly" },
-  { "id": "cit-decapolis", "source": { "en": "Wikipedia, 'Decapolis'" }, "url": "https://en.wikipedia.org/wiki/Decapolis", "kind": "secondary-scholarly" },
-  { "id": "cit-areopagus", "source": { "en": "Wikipedia, 'Areopagus'" }, "url": "https://en.wikipedia.org/wiki/Areopagus", "kind": "secondary-scholarly" },
-  { "id": "cit-nisan", "source": { "en": "Wikipedia, 'Passover' (Nisan 14)" }, "url": "https://en.wikipedia.org/wiki/Passover", "kind": "secondary-scholarly" },
-  { "id": "cit-procurator", "source": { "en": "Wikipedia, 'Prefect / Procurator (Roman Judea)'" }, "url": "https://en.wikipedia.org/wiki/Prefect", "kind": "secondary-scholarly" },
-  { "id": "cit-sergius-paulus", "source": { "en": "Wikipedia, 'Sergius Paulus'" }, "url": "https://en.wikipedia.org/wiki/Sergius_Paulus", "kind": "secondary-scholarly" },
-  { "id": "cit-gallio-person", "source": { "en": "Wikipedia, 'Gallio (Lucius Junius Gallio Annaeanus)'" }, "url": "https://en.wikipedia.org/wiki/Gallio", "kind": "secondary-scholarly" },
-  { "id": "cit-pontius-pilate", "source": { "en": "Wikipedia, 'Pontius Pilate'" }, "url": "https://en.wikipedia.org/wiki/Pontius_Pilate", "kind": "secondary-scholarly" },
-  { "id": "cit-apostle-paul", "source": { "en": "Wikipedia, 'Paul the Apostle'" }, "url": "https://en.wikipedia.org/wiki/Paul_the_Apostle", "kind": "secondary-scholarly" },
-  { "id": "cit-barnabas", "source": { "en": "Wikipedia, 'Barnabas'" }, "url": "https://en.wikipedia.org/wiki/Barnabas", "kind": "secondary-scholarly" },
-  { "id": "cit-simon-peter", "source": { "en": "Wikipedia, 'Saint Peter'" }, "url": "https://en.wikipedia.org/wiki/Saint_Peter", "kind": "secondary-scholarly" },
-  { "id": "cit-john-mark", "source": { "en": "Wikipedia, 'Mark the Evangelist (John Mark)'" }, "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist", "kind": "secondary-scholarly" },
-  { "id": "cit-silas", "source": { "en": "Wikipedia, 'Silas'" }, "url": "https://en.wikipedia.org/wiki/Silas", "kind": "secondary-scholarly" },
-  { "id": "cit-timothy", "source": { "en": "Wikipedia, 'Timothy'" }, "url": "https://en.wikipedia.org/wiki/Timothy", "kind": "secondary-scholarly" },
-  { "id": "cit-luke-evangelist", "source": { "en": "Wikipedia, 'Luke the Evangelist'" }, "url": "https://en.wikipedia.org/wiki/Luke_the_Evangelist", "kind": "secondary-scholarly" },
-  { "id": "cit-jesus", "source": { "en": "Wikipedia, 'Jesus'" }, "url": "https://en.wikipedia.org/wiki/Jesus", "kind": "secondary-scholarly" },
-  { "id": "cit-nazareth-house", "source": { "en": "Ken Dark, 'The Archaeology of Nazareth in the Early First Century' (Bible Interp, Univ. of Arizona)" }, "url": "https://bibleinterp.arizona.edu/articles/archaeology-nazareth-early-first-century", "kind": "archaeological" },
-  { "id": "cit-patmos", "source": { "en": "Wikipedia, 'Patmos' / John of Patmos" }, "url": "https://en.wikipedia.org/wiki/Patmos", "kind": "secondary-scholarly" },
-  { "id": "cit-john-ephesus", "source": { "en": "Wikipedia, 'John the Apostle' (Ephesus tradition)" }, "url": "https://en.wikipedia.org/wiki/John_the_Apostle", "kind": "secondary-scholarly" },
-  { "id": "cit-philip-hierapolis", "source": { "en": "Wikipedia, 'Philip the Apostle' (Hierapolis martyrium)" }, "url": "https://en.wikipedia.org/wiki/Philip_the_Apostle", "kind": "secondary-scholarly" },
-  { "id": "cit-mark-alexandria", "source": { "en": "Wikipedia, 'Mark the Evangelist' (Church of Alexandria tradition)" }, "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist", "kind": "secondary-scholarly" }
+  {
+    "id": "cit-pilate-stone",
+    "source": {
+      "en": "Wikipedia, 'Pilate Stone'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pilate_Stone",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-erastus-inscription",
+    "source": {
+      "en": "Wikipedia, 'Erastus of Corinth' / Erastus Inscription"
+    },
+    "url": "https://en.wikipedia.org/wiki/Erastus_of_Corinth",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-politarch-inscription",
+    "source": {
+      "en": "Wikipedia, 'Politarch' (Thessalonica inscriptions)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Politarch",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-gallio-inscription",
+    "source": {
+      "en": "Wikipedia, 'Delphi / Gallio Inscription'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Gallio_Inscription",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-pool-of-siloam",
+    "source": {
+      "en": "Wikipedia, 'Pool of Siloam'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pool_of_Siloam",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-caiaphas-ossuary",
+    "source": {
+      "en": "Wikipedia, 'Caiaphas ossuary'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Caiaphas_ossuary",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-proconsul",
+    "source": {
+      "en": "Wikipedia, 'Proconsul'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Proconsul",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-tetrarch",
+    "source": {
+      "en": "Wikipedia, 'Tetrarch'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tetrarch",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-sanhedrin",
+    "source": {
+      "en": "Wikipedia, 'Sanhedrin'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sanhedrin",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-synagogue",
+    "source": {
+      "en": "Wikipedia, 'Synagogue'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Synagogue",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-godfearers",
+    "source": {
+      "en": "Wikipedia, 'God-fearers'"
+    },
+    "url": "https://en.wikipedia.org/wiki/God-fearers",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pax-romana",
+    "source": {
+      "en": "Wikipedia, 'Pax Romana'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pax_Romana",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-via-egnatia",
+    "source": {
+      "en": "Wikipedia, 'Via Egnatia'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Via_Egnatia",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-septuagint",
+    "source": {
+      "en": "Wikipedia, 'Septuagint'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Septuagint",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-diaspora",
+    "source": {
+      "en": "Wikipedia, 'Jewish diaspora'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Jewish_diaspora",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-decapolis",
+    "source": {
+      "en": "Wikipedia, 'Decapolis'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Decapolis",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-areopagus",
+    "source": {
+      "en": "Wikipedia, 'Areopagus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Areopagus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-nisan",
+    "source": {
+      "en": "Wikipedia, 'Passover' (Nisan 14)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Passover",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-procurator",
+    "source": {
+      "en": "Wikipedia, 'Prefect / Procurator (Roman Judea)'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Prefect",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-sergius-paulus",
+    "source": {
+      "en": "Wikipedia, 'Sergius Paulus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sergius_Paulus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-gallio-person",
+    "source": {
+      "en": "Wikipedia, 'Gallio (Lucius Junius Gallio Annaeanus)'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Gallio",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-pontius-pilate",
+    "source": {
+      "en": "Wikipedia, 'Pontius Pilate'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pontius_Pilate",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-apostle-paul",
+    "source": {
+      "en": "Wikipedia, 'Paul the Apostle'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Paul_the_Apostle",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-barnabas",
+    "source": {
+      "en": "Wikipedia, 'Barnabas'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Barnabas",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-simon-peter",
+    "source": {
+      "en": "Wikipedia, 'Saint Peter'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Saint_Peter",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-john-mark",
+    "source": {
+      "en": "Wikipedia, 'Mark the Evangelist (John Mark)'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-silas",
+    "source": {
+      "en": "Wikipedia, 'Silas'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Silas",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-timothy",
+    "source": {
+      "en": "Wikipedia, 'Timothy'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Timothy",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-luke-evangelist",
+    "source": {
+      "en": "Wikipedia, 'Luke the Evangelist'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Luke_the_Evangelist",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-jesus",
+    "source": {
+      "en": "Wikipedia, 'Jesus'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Jesus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-nazareth-house",
+    "source": {
+      "en": "Ken Dark, 'The Archaeology of Nazareth in the Early First Century' (Bible Interp, Univ. of Arizona)"
+    },
+    "url": "https://bibleinterp.arizona.edu/articles/archaeology-nazareth-early-first-century",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-patmos",
+    "source": {
+      "en": "Wikipedia, 'Patmos' / John of Patmos"
+    },
+    "url": "https://en.wikipedia.org/wiki/Patmos",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-john-ephesus",
+    "source": {
+      "en": "Wikipedia, 'John the Apostle' (Ephesus tradition)"
+    },
+    "url": "https://en.wikipedia.org/wiki/John_the_Apostle",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-philip-hierapolis",
+    "source": {
+      "en": "Wikipedia, 'Philip the Apostle' (Hierapolis martyrium)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Philip_the_Apostle",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-mark-alexandria",
+    "source": {
+      "en": "Wikipedia, 'Mark the Evangelist' (Church of Alexandria tradition)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-abraham",
+    "source": {
+      "en": "Britannica, 'Abraham'"
+    },
+    "url": "https://www.britannica.com/biography/Abraham",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-patriarchal-dating",
+    "source": {
+      "en": "Wikipedia, 'Historicity of the Bible' (patriarchal age & dating debate)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Historicity_of_the_Bible",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-ur",
+    "source": {
+      "en": "Wikipedia, 'Ur' (Tell el-Muqayyar)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Ur",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-ur-debate",
+    "source": {
+      "en": "Wikipedia, 'Ur Kaśdim' (location debate)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Ur_Kasdim",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-haran",
+    "source": {
+      "en": "Wikipedia, 'Harran'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Harran",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-shechem",
+    "source": {
+      "en": "Wikipedia, 'Shechem' (Tell Balata)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Shechem",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-ot-bethel",
+    "source": {
+      "en": "Wikipedia, 'Bethel'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Bethel",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-machpelah",
+    "source": {
+      "en": "Wikipedia, 'Cave of the Patriarchs' (Hebron)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Cave_of_the_Patriarchs",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-ot-beersheba",
+    "source": {
+      "en": "Wikipedia, 'Tel Be'er Sheva'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tel_Be%27er_Sheva",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-ot-isaac",
+    "source": {
+      "en": "Britannica, 'Isaac'"
+    },
+    "url": "https://www.britannica.com/topic/Isaac",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-jacob",
+    "source": {
+      "en": "Britannica, 'Jacob'"
+    },
+    "url": "https://www.britannica.com/topic/Jacob-Hebrew-patriarch",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-joseph",
+    "source": {
+      "en": "Britannica, 'Joseph' (patriarch)"
+    },
+    "url": "https://www.britannica.com/biography/Joseph-Hebrew-patriarch",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-sarah",
+    "source": {
+      "en": "Wikipedia, 'Sarah'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Sarah",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-moses",
+    "source": {
+      "en": "Britannica, 'Moses' (Hebrew prophet)"
+    },
+    "url": "https://www.britannica.com/biography/Moses-Hebrew-prophet",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-joshua",
+    "source": {
+      "en": "Britannica, 'Joshua' (Hebrew Bible figure)"
+    },
+    "url": "https://www.britannica.com/biography/Joshua-Hebrew-Bible-figure",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-exodus",
+    "source": {
+      "en": "Wikipedia, 'The Exodus' (scholarship, date & route)"
+    },
+    "url": "https://en.wikipedia.org/wiki/The_Exodus",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-pi-ramesses",
+    "source": {
+      "en": "Wikipedia, 'Pi-Ramesses' (Qantir)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Pi-Ramesses",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-ot-goshen",
+    "source": {
+      "en": "Wikipedia, 'Land of Goshen'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Land_of_Goshen",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-mount-sinai",
+    "source": {
+      "en": "Wikipedia, 'Mount Sinai' (candidate identifications)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mount_Sinai",
+    "kind": "secondary-scholarly"
+  },
+  {
+    "id": "cit-ot-kadesh-barnea",
+    "source": {
+      "en": "Wikipedia, 'Kadesh (biblical)' (Tell el-Qudeirat)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Kadesh_(biblical)",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-mount-nebo",
+    "source": {
+      "en": "Wikipedia, 'Mount Nebo'"
+    },
+    "url": "https://en.wikipedia.org/wiki/Mount_Nebo",
+    "kind": "gazetteer"
+  },
+  {
+    "id": "cit-ot-jericho",
+    "source": {
+      "en": "Wikipedia, 'Tell es-Sultan' (ancient Jericho)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Tell_es-Sultan",
+    "kind": "archaeological"
+  },
+  {
+    "id": "cit-ot-exodus-route",
+    "source": {
+      "en": "Wikipedia, 'Stations of the Exodus' (route reconstructions)"
+    },
+    "url": "https://en.wikipedia.org/wiki/Stations_of_the_Exodus",
+    "kind": "secondary-scholarly"
+  }
 ]

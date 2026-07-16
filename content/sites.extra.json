@@ -1,44 +1,386 @@
 [
   {
     "id": "site-patmos",
-    "ancientName": { "en": "Patmos" },
-    "modernName": { "en": "Patmos" },
-    "modernLocation": { "en": "Patmos island, Dodecanese, Greece" },
+    "ancientName": {
+      "en": "Patmos"
+    },
+    "modernName": {
+      "en": "Patmos"
+    },
+    "modernLocation": {
+      "en": "Patmos island, Dodecanese, Greece"
+    },
     "coordinates": {
-      "value": { "lat": 37.3089, "lon": 26.5489 },
+      "value": {
+        "lat": 37.3089,
+        "lon": 26.5489
+      },
       "confidence": "high",
       "reviewStatus": "self-reviewed",
-      "citations": ["cit-patmos"]
+      "citations": [
+        "cit-patmos"
+      ]
     },
-    "summary": { "en": "Small Aegean island where, by his own account, John was exiled 'for the word of God' and received the visions of Revelation (Revelation 1:9). The traditional Cave of the Apocalypse is a major pilgrimage site." },
-    "citations": ["cit-patmos"]
+    "summary": {
+      "en": "Small Aegean island where, by his own account, John was exiled 'for the word of God' and received the visions of Revelation (Revelation 1:9). The traditional Cave of the Apocalypse is a major pilgrimage site."
+    },
+    "citations": [
+      "cit-patmos"
+    ]
   },
   {
     "id": "site-hierapolis",
-    "ancientName": { "en": "Hierapolis" },
-    "modernName": { "en": "Pamukkale" },
-    "modernLocation": { "en": "Pamukkale, Denizli Province, Turkey" },
+    "ancientName": {
+      "en": "Hierapolis"
+    },
+    "modernName": {
+      "en": "Pamukkale"
+    },
+    "modernLocation": {
+      "en": "Pamukkale, Denizli Province, Turkey"
+    },
     "coordinates": {
-      "value": { "lat": 37.9244, "lon": 29.1289 },
+      "value": {
+        "lat": 37.9244,
+        "lon": 29.1289
+      },
       "confidence": "high",
       "reviewStatus": "self-reviewed",
-      "citations": ["cit-philip-hierapolis"]
+      "citations": [
+        "cit-philip-hierapolis"
+      ]
     },
-    "summary": { "en": "Phrygian city near Laodicea and Colossae where strong tradition (and an excavated martyrium) places the ministry and death of the apostle Philip." },
-    "citations": ["cit-philip-hierapolis"]
+    "summary": {
+      "en": "Phrygian city near Laodicea and Colossae where strong tradition (and an excavated martyrium) places the ministry and death of the apostle Philip."
+    },
+    "citations": [
+      "cit-philip-hierapolis"
+    ]
   },
   {
     "id": "site-alexandria",
-    "ancientName": { "en": "Alexandria" },
-    "modernName": { "en": "Alexandria" },
-    "modernLocation": { "en": "Alexandria, Egypt" },
+    "ancientName": {
+      "en": "Alexandria"
+    },
+    "modernName": {
+      "en": "Alexandria"
+    },
+    "modernLocation": {
+      "en": "Alexandria, Egypt"
+    },
     "coordinates": {
-      "value": { "lat": 31.2001, "lon": 29.9187 },
+      "value": {
+        "lat": 31.2001,
+        "lon": 29.9187
+      },
       "confidence": "high",
       "reviewStatus": "self-reviewed",
-      "citations": ["cit-mark-alexandria"]
+      "citations": [
+        "cit-mark-alexandria"
+      ]
     },
-    "summary": { "en": "Great Hellenistic city of Egypt; church tradition credits Mark the Evangelist with founding its Christian community and serving as its first bishop." },
-    "citations": ["cit-mark-alexandria"]
+    "summary": {
+      "en": "Great Hellenistic city of Egypt; church tradition credits Mark the Evangelist with founding its Christian community and serving as its first bishop."
+    },
+    "citations": [
+      "cit-mark-alexandria"
+    ]
+  },
+  {
+    "id": "site-ur",
+    "ancientName": {
+      "en": "Ur of the Chaldees (Ur Kaśdim)"
+    },
+    "modernName": {
+      "en": "Tell el-Muqayyar"
+    },
+    "modernLocation": {
+      "en": "Tell el-Muqayyar, Dhi Qar Governorate, southern Iraq"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 30.9626,
+        "lon": 46.1032
+      },
+      "confidence": "medium",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-ur",
+        "cit-ot-ur-debate"
+      ]
+    },
+    "summary": {
+      "en": "A major Sumerian city (excavated by Woolley, with its great ziggurat of Ur-Nammu) named as Abraham's birthplace in Genesis 11:31. A minority of scholars instead locate the biblical 'Ur of the Chaldeans' in the north near Haran; the southern Tell el-Muqayyar remains the traditional identification."
+    },
+    "citations": [
+      "cit-ot-ur",
+      "cit-ot-ur-debate"
+    ]
+  },
+  {
+    "id": "site-haran",
+    "ancientName": {
+      "en": "Haran (Harran)"
+    },
+    "modernName": {
+      "en": "Harran"
+    },
+    "modernLocation": {
+      "en": "Harran, Şanlıurfa Province, southeastern Turkey"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 36.8642,
+        "lon": 39.0308
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-haran"
+      ]
+    },
+    "summary": {
+      "en": "An ancient caravan city on the Balikh where, in Genesis, Terah's family settled and Abraham was later called on toward Canaan (Genesis 12:4). Long a cult center of the moon-god Sin."
+    },
+    "citations": [
+      "cit-ot-haran"
+    ]
+  },
+  {
+    "id": "site-shechem-ot",
+    "ancientName": {
+      "en": "Shechem"
+    },
+    "modernName": {
+      "en": "Tell Balata (Nablus)"
+    },
+    "modernLocation": {
+      "en": "Tell Balata, at the eastern edge of modern Nablus, West Bank"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 32.2136,
+        "lon": 35.2814
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-shechem"
+      ]
+    },
+    "summary": {
+      "en": "Abraham's first altar site in Canaan (Genesis 12:6-7) and a recurring covenant place through Jacob and Joshua. The excavated Middle-Bronze city at Tell Balata includes a massive fortress-temple."
+    },
+    "citations": [
+      "cit-ot-shechem"
+    ]
+  },
+  {
+    "id": "site-bethel",
+    "ancientName": {
+      "en": "Bethel ('house of God'; Luz)"
+    },
+    "modernName": {
+      "en": "Beitin (traditional)"
+    },
+    "modernLocation": {
+      "en": "Beitin, West Bank, ~17 km north of Jerusalem (traditional identification)"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 31.9308,
+        "lon": 35.2233
+      },
+      "confidence": "medium",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-bethel"
+      ]
+    },
+    "summary": {
+      "en": "Where Abraham built an altar and Jacob dreamed of the ladder to heaven and named the place 'house of God' (Genesis 28). The identification with Beitin is traditional and debated (some prefer el-Bireh)."
+    },
+    "citations": [
+      "cit-ot-bethel"
+    ]
+  },
+  {
+    "id": "site-hebron-machpelah",
+    "ancientName": {
+      "en": "Hebron; the Cave of Machpelah"
+    },
+    "modernName": {
+      "en": "Cave of the Patriarchs (al-Ḥaram al-Ibrahimi)"
+    },
+    "modernLocation": {
+      "en": "Old city of Hebron, West Bank"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 31.5247,
+        "lon": 35.1108
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-machpelah"
+      ]
+    },
+    "summary": {
+      "en": "Abraham bought the cave of Machpelah as a burial place for Sarah (Genesis 23); tradition holds Abraham, Isaac, Jacob and their wives are entombed there, beneath the Herodian-era enclosure still standing today."
+    },
+    "citations": [
+      "cit-ot-machpelah"
+    ]
+  },
+  {
+    "id": "site-beersheba-ot",
+    "ancientName": {
+      "en": "Beersheba ('well of the oath')"
+    },
+    "modernName": {
+      "en": "Tel Be'er Sheva"
+    },
+    "modernLocation": {
+      "en": "Tel Be'er Sheva, Negev, southern Israel (UNESCO World Heritage 'Biblical Tel')"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 31.2456,
+        "lon": 34.84
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-beersheba"
+      ]
+    },
+    "summary": {
+      "en": "The southern frontier of the patriarchs, associated with Abraham's and Isaac's wells and covenants (Genesis 21, 26); 'from Dan to Beersheba' marked Israel's extent. The Iron-Age town at Tel Be'er Sheva has a famous horned altar."
+    },
+    "citations": [
+      "cit-ot-beersheba"
+    ]
+  },
+  {
+    "id": "site-goshen-rameses",
+    "ancientName": {
+      "en": "Goshen; Pi-Rameses (Raamses)"
+    },
+    "modernName": {
+      "en": "Qantir / Tell el-Dab'a (Avaris)"
+    },
+    "modernLocation": {
+      "en": "Qantir, eastern Nile Delta, Egypt"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 30.8,
+        "lon": 31.8333
+      },
+      "confidence": "medium",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-pi-ramesses",
+        "cit-ot-goshen"
+      ]
+    },
+    "summary": {
+      "en": "The eastern-Delta region where Genesis settles Jacob's family and where Exodus 1:11 has the Israelites building the store-city of Raamses. The Ramesside capital Pi-Rameses is firmly located at Qantir, above the earlier Hyksos capital Avaris."
+    },
+    "citations": [
+      "cit-ot-pi-ramesses",
+      "cit-ot-goshen"
+    ]
+  },
+  {
+    "id": "site-mount-sinai",
+    "ancientName": {
+      "en": "Mount Sinai (Horeb)"
+    },
+    "modernName": {
+      "en": "Jebel Musa (traditional)"
+    },
+    "modernLocation": {
+      "en": "Jebel Musa, southern Sinai Peninsula, Egypt (traditional; other candidates proposed)"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 28.5395,
+        "lon": 33.9749
+      },
+      "confidence": "disputed",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-mount-sinai"
+      ],
+      "disputes": {
+        "en": "The mountain of the Law has no secure identification. The Byzantine tradition (St Catherine's Monastery) fixes it at Jebel Musa in the southern Sinai, but scholars have proposed Jebel Serbal, Har Karkom in the Negev, and sites in NW Arabia (e.g. Jebel al-Lawz); none is archaeologically confirmed."
+      }
+    },
+    "summary": {
+      "en": "The mountain where, in Exodus, Moses received the Law and Israel entered the covenant. Its location is genuinely uncertain; the traditional Jebel Musa is used here with alternatives noted."
+    },
+    "citations": [
+      "cit-ot-mount-sinai"
+    ]
+  },
+  {
+    "id": "site-kadesh-barnea",
+    "ancientName": {
+      "en": "Kadesh-barnea"
+    },
+    "modernName": {
+      "en": "Tell el-Qudeirat (Ein el-Qudeirat)"
+    },
+    "modernLocation": {
+      "en": "Tell el-Qudeirat, northeastern Sinai, near the Israel-Egypt border"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 30.6889,
+        "lon": 34.4167
+      },
+      "confidence": "medium",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-kadesh-barnea"
+      ]
+    },
+    "summary": {
+      "en": "The wilderness base from which Israel sent spies into Canaan and where they lingered many years (Numbers 13; 20). Widely, though not universally, identified with the spring at Tell el-Qudeirat."
+    },
+    "citations": [
+      "cit-ot-kadesh-barnea"
+    ]
+  },
+  {
+    "id": "site-mount-nebo",
+    "ancientName": {
+      "en": "Mount Nebo (Pisgah)"
+    },
+    "modernName": {
+      "en": "Mount Nebo (Siyagha)"
+    },
+    "modernLocation": {
+      "en": "Mount Nebo, Madaba Governorate, Jordan"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 31.7683,
+        "lon": 35.7256
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-ot-mount-nebo"
+      ]
+    },
+    "summary": {
+      "en": "The ridge east of the Jordan from which Moses viewed the promised land and where he died (Deuteronomy 34); a Byzantine memorial church with famous mosaics crowns the summit today."
+    },
+    "citations": [
+      "cit-ot-mount-nebo"
+    ]
   }
 ]
