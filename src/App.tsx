@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MapProvider } from './map/MapProvider';
 import { TabBar } from './components/TabBar';
+import { useThemeAttribute } from './state/theme';
 
 /**
  * Layout route. Mounts the persistent map once and renders the active mode in
@@ -11,6 +12,7 @@ import { TabBar } from './components/TabBar';
  */
 export default function App() {
   const { t } = useTranslation();
+  useThemeAttribute();
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main">

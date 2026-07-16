@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildBaseStyle, BASEMAP_LAYERS, IMAGERY_LAYERS } from './style';
+import { applyMapTone, buildBaseStyle, BASEMAP_LAYERS, IMAGERY_LAYERS } from './style';
 
 describe('buildBaseStyle', () => {
   it('includes every BASEMAP_LAYERS id as a real layer', () => {
@@ -33,6 +33,34 @@ describe('buildBaseStyle', () => {
       expect(source.type).toBe('raster');
       expect(source.tiles?.[0]).toMatch(/^https:\/\//);
       expect(source.attribution).toBeTruthy();
+    }
+  });
+
+  it('applyMapTone retones the base layers in place to match buildBaseStyle', () => {
+    // Whatever colors a freshly-built dark style would have, retoning a live
+    // light map to dark must produce the same values (and vice versa).
+    for (const dark of [true, false]) {
+      const expected = buildBaseStyle('ancient', dark);
+      const calls: Record<string, unknown> = {};
+      applyMapTone(
+        {
+          getLayer: (id) => expected.layers.find((l) => l.id === id),
+          setPaintProperty: (layer, prop, value) => {
+            calls[`${layer}.${prop}`] = value;
+          },
+        },
+        dark,
+      );
+      const paint = (id: string) =>
+        (expected.layers.find((l) => l.id === id) as { paint?: Record<string, unknown> }).paint ?? {};
+      expect(calls['background.background-color']).toEqual(paint('background')['background-color']);
+      expect(calls[`${BASEMAP_LAYERS.land}.fill-color`]).toEqual(paint(BASEMAP_LAYERS.land)['fill-color']);
+      expect(calls[`${BASEMAP_LAYERS.lakes}.fill-color`]).toEqual(paint(BASEMAP_LAYERS.lakes)['fill-color']);
+      expect(calls[`${BASEMAP_LAYERS.rivers}.line-color`]).toEqual(paint(BASEMAP_LAYERS.rivers)['line-color']);
+      expect(calls[`${BASEMAP_LAYERS.graticule}.line-color`]).toEqual(paint(BASEMAP_LAYERS.graticule)['line-color']);
+      expect(calls[`${BASEMAP_LAYERS.topography}.raster-opacity`]).toEqual(
+        paint(BASEMAP_LAYERS.topography)['raster-opacity'],
+      );
     }
   });
 
