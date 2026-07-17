@@ -7,6 +7,7 @@ import lakes from './basemap/lakes.json';
 import rivers from './basemap/rivers.json';
 import { COUNTRY_LABELS } from './country-labels';
 import countryPolygons from './basemap/country-polygons.json';
+import westBankBarrier from './basemap/west-bank-barrier.json';
 
 const COUNTRY_COLORS: Record<string, { light: string; dark: string }> = {
   'Italy': { light: '#a64f03', dark: '#f28e41' },       // Terracotta
@@ -111,6 +112,8 @@ const WATER_EDGE = { light: '#7ab8c0', dark: '#2e5a72' } as const;
 const COASTLINE = { light: '#a3946e', dark: '#4a4334' } as const;
 const BORDER_CASING = { light: '#faf5e9', dark: '#0a0a0a' } as const;
 const GRATICULE = { light: '#b9ac8c', dark: '#2e2b26' } as const;
+const BARRIER = { light: '#6b4226', dark: '#c49a6c' } as const;
+const BARRIER_CASING = { light: '#3a2010', dark: '#2a1a0e' } as const;
 
 /**
  * Retone the base layers of a LIVE map when the user flips the theme — paint
@@ -140,6 +143,8 @@ export function applyMapTone(
   set('country-shading', 'fill-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set('country-shading-outline', 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set(BASEMAP_LAYERS.borders, 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
+  set('wb-barrier-casing', 'line-color', BARRIER_CASING[tone]);
+  set('wb-barrier', 'line-color', BARRIER[tone]);
   set(BASEMAP_LAYERS.graticule, 'line-color', GRATICULE[tone]);
 }
 
@@ -232,6 +237,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
       lakes: { type: 'geojson', data: lakes as FeatureCollection },
       rivers: { type: 'geojson', data: rivers as FeatureCollection },
       graticule: { type: 'geojson', data: generateGraticule() },
+      'wb-barrier': { type: 'geojson', data: westBankBarrier as FeatureCollection },
       topography: {
         type: 'raster',
         tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
@@ -372,6 +378,31 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
           'line-color': tone === 'dark' ? ['get', 'colorDark'] : ['get', 'colorLight'],
           'line-width': 1.2,
           'line-opacity': 0.9,
+        },
+      },
+      // Israeli West Bank Barrier — OSM data, rendered as dashed brown line
+      // to distinguish from solid political borders.
+      {
+        id: 'wb-barrier-casing',
+        type: 'line',
+        source: 'wb-barrier',
+        minzoom: 6,
+        paint: {
+          'line-color': BARRIER_CASING[tone],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 6, 2.5, 12, 4],
+          'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.4, 10, 0.6],
+        },
+      },
+      {
+        id: 'wb-barrier',
+        type: 'line',
+        source: 'wb-barrier',
+        minzoom: 6,
+        paint: {
+          'line-color': BARRIER[tone],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 12, 2.4],
+          'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.6, 10, 0.85],
+          'line-dasharray': [4, 2],
         },
       },
       {

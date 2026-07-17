@@ -256,11 +256,13 @@ export function MapProvider({ children }: { children: ReactNode }) {
     for (const [key, layerId] of Object.entries(BASEMAP_LAYERS)) {
       setLayerVisible(map, layerId, layers[key as keyof typeof BASEMAP_LAYERS]);
     }
-    // Sync casing, shading rib, polygon shading, and outline visibility with borders
+    // Sync casing, shading rib, polygon shading, outline, and separation barrier visibility with borders
     setLayerVisible(map, 'country-borders-casing', layers.borders);
     setLayerVisible(map, 'country-borders-shading', layers.borders);
     setLayerVisible(map, 'country-shading', layers.borders);
     setLayerVisible(map, 'country-shading-outline', layers.borders);
+    setLayerVisible(map, 'wb-barrier', layers.borders);
+    setLayerVisible(map, 'wb-barrier-casing', layers.borders);
 
     let maxZoom = 20;
     if (layers.ancientMap) {
