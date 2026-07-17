@@ -1,141 +1,162 @@
 [
-  {
-    "id": "person-abraham",
-    "name": {
-      "en": "Abraham (Abram)"
-    },
-    "role": {
-      "en": "Patriarch; father of Israel and, in tradition, of many nations"
-    },
-    "summary": {
-      "en": "The first Hebrew patriarch. Called by God to leave Ur (or Haran) for Canaan under a covenant promise of land and descendants (Genesis 12). Scholars date the patriarchal setting loosely to the Middle Bronze Age (c. 2000-1800 BC) while debating the narratives' historicity and date of composition."
-    },
-    "scriptureRefs": [
-      "Genesis 12:1",
-      "Genesis 15:6",
-      "Genesis 17:5"
-    ],
-    "citations": [
-      "cit-ot-abraham",
-      "cit-ot-patriarchal-dating"
-    ]
+ {
+  "id": "person-abraham",
+  "name": {
+   "en": "Abraham (Abram)"
   },
-  {
-    "id": "person-sarah",
-    "name": {
-      "en": "Sarah (Sarai)"
-    },
-    "role": {
-      "en": "Matriarch; wife of Abraham, mother of Isaac"
-    },
-    "summary": {
-      "en": "Wife of Abraham and mother of Isaac, buried in the cave of Machpelah at Hebron (Genesis 23)."
-    },
-    "scriptureRefs": [
-      "Genesis 17:15",
-      "Genesis 23:2"
-    ],
-    "citations": [
-      "cit-ot-sarah"
-    ]
+  "role": {
+   "en": "Patriarch; father of Israel and, in tradition, of many nations"
   },
-  {
-    "id": "person-isaac",
-    "name": {
-      "en": "Isaac"
-    },
-    "role": {
-      "en": "Patriarch; son of Abraham, father of Jacob and Esau"
-    },
-    "summary": {
-      "en": "The promised son of Abraham and Sarah, through whom the covenant line continued; father of Jacob and Esau."
-    },
-    "scriptureRefs": [
-      "Genesis 21:3",
-      "Genesis 26:3"
-    ],
-    "citations": [
-      "cit-ot-isaac"
-    ]
+  "summary": {
+   "en": "The first Hebrew patriarch. Called by God to leave Ur (or Haran) for Canaan under a covenant promise of land and descendants (Genesis 12). Scholars date the patriarchal setting loosely to the Middle Bronze Age (c. 2000-1800 BC) while debating the narratives' historicity and date of composition."
   },
-  {
-    "id": "person-jacob",
-    "name": {
-      "en": "Jacob (Israel)"
-    },
-    "role": {
-      "en": "Patriarch; father of the twelve tribes"
-    },
-    "summary": {
-      "en": "Son of Isaac, renamed 'Israel' after wrestling at the Jabbok (Genesis 32). His twelve sons are the eponymous ancestors of the tribes of Israel; famine drove his family to Egypt."
-    },
-    "scriptureRefs": [
-      "Genesis 28:12",
-      "Genesis 32:28"
-    ],
-    "citations": [
-      "cit-ot-jacob"
-    ]
+  "scriptureRefs": [
+   "Genesis 12:1",
+   "Genesis 15:6",
+   "Genesis 17:5"
+  ],
+  "citations": [
+   "cit-ot-abraham",
+   "cit-ot-patriarchal-dating"
+  ]
+ },
+ {
+  "id": "person-sarah",
+  "name": {
+   "en": "Sarah (Sarai)"
   },
-  {
-    "id": "person-joseph",
-    "name": {
-      "en": "Joseph"
-    },
-    "role": {
-      "en": "Patriarch; vizier of Egypt"
-    },
-    "summary": {
-      "en": "Son of Jacob, sold into Egypt and rising to high office, according to Genesis; the narrative frames Israel's settlement in Goshen and sets up the later bondage and Exodus."
-    },
-    "scriptureRefs": [
-      "Genesis 37:28",
-      "Genesis 41:41",
-      "Genesis 50:20"
-    ],
-    "citations": [
-      "cit-ot-joseph"
-    ]
+  "role": {
+   "en": "Matriarch; wife of Abraham, mother of Isaac"
   },
-  {
-    "id": "person-moses",
-    "name": {
-      "en": "Moses"
-    },
-    "role": {
-      "en": "Prophet and lawgiver; leader of the Exodus"
-    },
-    "summary": {
-      "en": "Leader who, in the biblical account, brought Israel out of Egyptian bondage, mediated the covenant and Law at Sinai, and led the people through the wilderness to the edge of Canaan, dying on Mount Nebo. The Exodus's date and historicity are debated."
-    },
-    "scriptureRefs": [
-      "Exodus 3:10",
-      "Exodus 20:1",
-      "Deuteronomy 34:5"
-    ],
-    "citations": [
-      "cit-ot-moses",
-      "cit-ot-exodus"
-    ]
+  "summary": {
+   "en": "Wife of Abraham and mother of Isaac, buried in the cave of Machpelah at Hebron (Genesis 23)."
   },
-  {
-    "id": "person-joshua",
-    "name": {
-      "en": "Joshua"
-    },
-    "role": {
-      "en": "Successor of Moses; led Israel into Canaan"
-    },
-    "summary": {
-      "en": "Moses' successor who, in the book bearing his name, led Israel across the Jordan near Jericho into Canaan."
-    },
-    "scriptureRefs": [
-      "Numbers 27:18",
-      "Joshua 1:2",
-      "Joshua 3:17"
-    ],
-    "citations": [
-      "cit-ot-joshua"
-    ]
-  }
+  "scriptureRefs": [
+   "Genesis 17:15",
+   "Genesis 23:2"
+  ],
+  "citations": [
+   "cit-ot-sarah"
+  ]
+ },
+ {
+  "id": "person-isaac",
+  "name": {
+   "en": "Isaac"
+  },
+  "role": {
+   "en": "Patriarch; son of Abraham, father of Jacob and Esau"
+  },
+  "summary": {
+   "en": "The promised son of Abraham and Sarah, through whom the covenant line continued; father of Jacob and Esau."
+  },
+  "scriptureRefs": [
+   "Genesis 21:3",
+   "Genesis 26:3"
+  ],
+  "citations": [
+   "cit-ot-isaac"
+  ]
+ },
+ {
+  "id": "person-jacob",
+  "name": {
+   "en": "Jacob (Israel)"
+  },
+  "role": {
+   "en": "Patriarch; father of the twelve tribes"
+  },
+  "summary": {
+   "en": "Son of Isaac, renamed 'Israel' after wrestling at the Jabbok (Genesis 32). His twelve sons are the eponymous ancestors of the tribes of Israel; famine drove his family to Egypt."
+  },
+  "scriptureRefs": [
+   "Genesis 28:12",
+   "Genesis 32:28"
+  ],
+  "citations": [
+   "cit-ot-jacob"
+  ]
+ },
+ {
+  "id": "person-joseph",
+  "name": {
+   "en": "Joseph"
+  },
+  "role": {
+   "en": "Patriarch; vizier of Egypt"
+  },
+  "summary": {
+   "en": "Son of Jacob, sold into Egypt and rising to high office, according to Genesis; the narrative frames Israel's settlement in Goshen and sets up the later bondage and Exodus."
+  },
+  "scriptureRefs": [
+   "Genesis 37:28",
+   "Genesis 41:41",
+   "Genesis 50:20"
+  ],
+  "citations": [
+   "cit-ot-joseph"
+  ]
+ },
+ {
+  "id": "person-moses",
+  "name": {
+   "en": "Moses"
+  },
+  "role": {
+   "en": "Prophet and lawgiver; leader of the Exodus"
+  },
+  "summary": {
+   "en": "Leader who, in the biblical account, brought Israel out of Egyptian bondage, mediated the covenant and Law at Sinai, and led the people through the wilderness to the edge of Canaan, dying on Mount Nebo. The Exodus's date and historicity are debated."
+  },
+  "scriptureRefs": [
+   "Exodus 3:10",
+   "Exodus 20:1",
+   "Deuteronomy 34:5"
+  ],
+  "citations": [
+   "cit-ot-moses",
+   "cit-ot-exodus"
+  ]
+ },
+ {
+  "id": "person-joshua",
+  "name": {
+   "en": "Joshua"
+  },
+  "role": {
+   "en": "Successor of Moses; led Israel into Canaan"
+  },
+  "summary": {
+   "en": "Moses' successor who, in the book bearing his name, led Israel across the Jordan near Jericho into Canaan."
+  },
+  "scriptureRefs": [
+   "Numbers 27:18",
+   "Joshua 1:2",
+   "Joshua 3:17"
+  ],
+  "citations": [
+   "cit-ot-joshua"
+  ]
+ },
+ {
+  "id": "person-noah",
+  "name": {
+   "en": "Noah"
+  },
+  "role": {
+   "en": "Patriarch of the Flood; builder of the ark"
+  },
+  "summary": {
+   "en": "The righteous man of Genesis 6-9, warned of the coming Flood and commanded to build an ark of gopher wood, 300 cubits long (Genesis 6:14-15). He preserved his family and the animals through the deluge, landed on the mountains of Ararat, and received the rainbow covenant. The nations of Genesis 10 descend from his sons Shem, Ham and Japheth."
+  },
+  "scriptureRefs": [
+   "Genesis 6:9",
+   "Genesis 6:14-15",
+   "Genesis 8:4",
+   "Genesis 9:29"
+  ],
+  "citations": [
+   "cit-flood-narrative"
+  ]
+ }
 ]

@@ -77644,5 +77644,97 @@
    "cit-route-orbis",
    "cit-route-itinere"
   ]
+ },
+ {
+  "id": "route-journey-noah",
+  "journeyId": "journey-noah",
+  "legs": [
+   [
+    [
+     45.35,
+     31.7667
+    ],
+    [
+     44.9,
+     32.5
+    ],
+    [
+     44.4,
+     33.4
+    ],
+    [
+     43.9,
+     34.4
+    ],
+    [
+     43.5,
+     35.4
+    ],
+    [
+     43.3,
+     36.4
+    ],
+    [
+     43.6,
+     37.4
+    ],
+    [
+     44.0,
+     38.4
+    ],
+    [
+     44.2,
+     39.1
+    ],
+    [
+     44.2983,
+     39.7016
+    ]
+   ],
+   [
+    [
+     44.2983,
+     39.7016
+    ],
+    [
+     44.05,
+     38.9
+    ],
+    [
+     43.5,
+     37.9
+    ],
+    [
+     43.05,
+     36.9
+    ],
+    [
+     43.3,
+     35.9
+    ],
+    [
+     43.8,
+     34.9
+    ],
+    [
+     44.15,
+     33.9
+    ],
+    [
+     44.3,
+     33.2
+    ],
+    [
+     44.4209,
+     32.5364
+    ]
+   ]
+  ],
+  "note": {
+   "en": "Scripture records no path for a drifting ark — these legs are schematic connectors across the Mesopotamian basin between the traditional embarkation region, the mountains of Ararat, and the plain of Shinar, drawn for orientation only."
+  },
+  "citations": [
+   "cit-flood-narrative"
+  ]
  }
 ]

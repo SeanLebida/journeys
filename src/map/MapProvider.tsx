@@ -191,19 +191,20 @@ export function MapProvider({ children }: { children: ReactNode }) {
         className: 'country-border-popup',
       });
 
-      // Click handler on country shading and separation barrier to show info popup
+      // Click handler on country shading and separation barrier to show info popup.
+      // Hidden layers return no rendered features, so each toggle naturally
+      // gates its own popups — no store check needed.
       map.on('click', (e) => {
-        const { borders } = useMapLayersStore.getState();
-        if (!borders) return;
-
-        // 1. Check if the separation barrier was clicked
-        if (map.getLayer('wb-barrier')) {
-          const barrierFeatures = map.queryRenderedFeatures(e.point, { layers: ['wb-barrier'] });
-          if (barrierFeatures && barrierFeatures.length > 0) {
+        // 0. October 7, 2023 attack-site markers (small points — checked first)
+        if (map.getLayer('conflict-markers')) {
+          const conflictFeatures = map.queryRenderedFeatures(e.point, { layers: ['conflict-markers'] });
+          if (conflictFeatures && conflictFeatures.length > 0) {
+            const p = conflictFeatures[0].properties ?? {};
             const content = `
               <div class="country-popup-content">
-                <h3 style="color: #c49a6c">West Bank Separation Barrier</h3>
-                <p>Physical barrier (wall and security fence) constructed by Israel starting in 2002. It deviates from the 1949 Armistice Green Line to define modern-day de facto border lines.</p>
+                <h3 style="color: #e0565e">${p.name ?? ''}</h3>
+                <p><strong>${p.date ?? ''}</strong> — ${p.detail ?? ''}</p>
+                <p>Part of the Hamas-led attack on southern Israel of October 7, 2023, in which about 1,200 people were killed and some 250 taken hostage — the deadliest day in Israel's history and the start of the Israel–Hamas war.</p>
               </div>
             `;
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
@@ -211,7 +212,58 @@ export function MapProvider({ children }: { children: ReactNode }) {
           }
         }
 
-        // 2. Check if a country shading region was clicked
+        // 0b. Historical-boundary overlays
+        for (const [layerId, title, body] of [
+          ['israel-1949-borders', 'Israel, 1949–1967 (founding borders)',
+            'Approximate outline of Israel at its founding, per the 1949 armistice agreements, until the Six-Day War of June 1967. The Golan Heights and East Jerusalem — inside Israel as Israel defines its borders today — lay outside these lines.'],
+          ['mandate-borders', 'British Mandate Palestine, 1920–1948',
+            'Approximate outline of Mandatory Palestine, the territory administered by Britain under the League of Nations mandate, within which the State of Israel declared independence on May 14, 1948.'],
+        ] as const) {
+          if (!map.getLayer(layerId)) continue;
+          const feats = map.queryRenderedFeatures(e.point, { layers: [layerId] });
+          if (feats && feats.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: var(--accent)">${title}</h3>
+                <p>${body}</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
+        // 1. Check if the separation barrier was clicked
+        if (map.getLayer('wb-barrier')) {
+          const barrierFeatures = map.queryRenderedFeatures(e.point, { layers: ['wb-barrier'] });
+          if (barrierFeatures && barrierFeatures.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: #9d75c7">Israel's Security Barrier (2002)</h3>
+                <p>The barrier Israel began building in June 2002, during the Second Intifada. Its route — mapped here in full detail, including the Jerusalem envelope — departs from the dashed 1949 armistice line and is presented in this app as the operative boundary Israel defines on the ground toward the West Bank.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
+        // 2. Check if a dashed 1949 armistice (Green) line was clicked
+        if (map.getLayer('armistice-line')) {
+          const armisticeFeatures = map.queryRenderedFeatures(e.point, { layers: ['armistice-line'] });
+          if (armisticeFeatures && armisticeFeatures.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: var(--accent)">1949 Armistice Line (Green Line)</h3>
+                <p>Ceasefire line from the 1949 armistice agreements, shown dashed because Israel does not define it as an international border. Israel's defined territory continues across it into a united Jerusalem, while the West Bank (Judea &amp; Samaria) and Gaza lie beyond it.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
+        // 3. Check if a country shading region was clicked
         if (map.getLayer('country-shading')) {
           const countryFeatures = map.queryRenderedFeatures(e.point, { layers: ['country-shading'] });
           if (countryFeatures && countryFeatures.length > 0) {
@@ -223,10 +275,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
             let displayName = countryName;
 
             if (countryName === 'Israel') {
-              desc = 'Modern-day borders, defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
-            } else if (countryName === 'Palestine') {
-              displayName = 'Palestine (West Bank & Gaza)';
-              desc = 'Modern-day territory boundaries defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
+              desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. Toward the West Bank, the solid purple line of the 2002 security barrier marks the operative boundary Israel defines on the ground; the dashed 1949 armistice (Green) lines are not defined by Israel as international borders.';
+            } else if (countryName === 'West Bank & Gaza') {
+              desc = 'The West Bank (Judea & Samaria) and the Gaza Strip. Israel defines these as disputed territories rather than the territory of a foreign state; the solid purple 2002 security-barrier route marks the operative line on the ground, the dashed 1949 armistice (Green) lines the historical reference, and East Jerusalem is shown inside Israel per the 1980 Jerusalem Law.';
             }
 
             const content = `
@@ -240,17 +291,17 @@ export function MapProvider({ children }: { children: ReactNode }) {
         }
       });
 
-      // Hover handler to dynamically change the cursor to a pointer when hovering over interactive elements
+      // Hover handler to dynamically change the cursor to a pointer when
+      // hovering over interactive elements. Hidden layers yield no rendered
+      // features, so each layer's own toggle gates its hover affordance.
       map.on('mousemove', (e) => {
-        const { borders } = useMapLayersStore.getState();
-        if (!borders) {
-          map.getCanvas().style.cursor = '';
-          return;
-        }
-
         const activeLayers = [];
         if (map.getLayer('country-shading')) activeLayers.push('country-shading');
         if (map.getLayer('wb-barrier')) activeLayers.push('wb-barrier');
+        if (map.getLayer('armistice-line')) activeLayers.push('armistice-line');
+        if (map.getLayer('conflict-markers')) activeLayers.push('conflict-markers');
+        if (map.getLayer('israel-1949-borders')) activeLayers.push('israel-1949-borders');
+        if (map.getLayer('mandate-borders')) activeLayers.push('mandate-borders');
 
         if (activeLayers.length === 0) {
           map.getCanvas().style.cursor = '';
@@ -300,6 +351,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     setLayerVisible(map, 'country-borders-shading', layers.borders);
     setLayerVisible(map, 'country-shading', layers.borders);
     setLayerVisible(map, 'country-shading-outline', layers.borders);
+    setLayerVisible(map, 'armistice-line', layers.borders);
     setLayerVisible(map, 'wb-barrier', layers.borders);
     setLayerVisible(map, 'wb-barrier-casing', layers.borders);
 
