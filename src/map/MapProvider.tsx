@@ -191,10 +191,47 @@ export function MapProvider({ children }: { children: ReactNode }) {
         className: 'country-border-popup',
       });
 
-      // Click handler on country shading and separation barrier to show info popup
+      // Click handler on country shading and separation barrier to show info popup.
+      // Hidden layers return no rendered features, so each toggle naturally
+      // gates its own popups — no store check needed.
       map.on('click', (e) => {
-        const { borders } = useMapLayersStore.getState();
-        if (!borders) return;
+        // 0. October 7, 2023 attack-site markers (small points — checked first)
+        if (map.getLayer('conflict-markers')) {
+          const conflictFeatures = map.queryRenderedFeatures(e.point, { layers: ['conflict-markers'] });
+          if (conflictFeatures && conflictFeatures.length > 0) {
+            const p = conflictFeatures[0].properties ?? {};
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: #e0565e">${p.name ?? ''}</h3>
+                <p><strong>${p.date ?? ''}</strong> — ${p.detail ?? ''}</p>
+                <p>Part of the Hamas-led attack on southern Israel of October 7, 2023, in which about 1,200 people were killed and some 250 taken hostage — the deadliest day in Israel's history and the start of the Israel–Hamas war.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
+        // 0b. Historical-boundary overlays
+        for (const [layerId, title, body] of [
+          ['israel-1949-borders', 'Israel, 1949–1967 (founding borders)',
+            'Approximate outline of Israel at its founding, per the 1949 armistice agreements, until the Six-Day War of June 1967. The Golan Heights and East Jerusalem — inside Israel as Israel defines its borders today — lay outside these lines.'],
+          ['mandate-borders', 'British Mandate Palestine, 1920–1948',
+            'Approximate outline of Mandatory Palestine, the territory administered by Britain under the League of Nations mandate, within which the State of Israel declared independence on May 14, 1948.'],
+        ] as const) {
+          if (!map.getLayer(layerId)) continue;
+          const feats = map.queryRenderedFeatures(e.point, { layers: [layerId] });
+          if (feats && feats.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: var(--accent)">${title}</h3>
+                <p>${body}</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
 
         // 1. Check if the separation barrier was clicked
         if (map.getLayer('wb-barrier')) {
@@ -254,18 +291,17 @@ export function MapProvider({ children }: { children: ReactNode }) {
         }
       });
 
-      // Hover handler to dynamically change the cursor to a pointer when hovering over interactive elements
+      // Hover handler to dynamically change the cursor to a pointer when
+      // hovering over interactive elements. Hidden layers yield no rendered
+      // features, so each layer's own toggle gates its hover affordance.
       map.on('mousemove', (e) => {
-        const { borders } = useMapLayersStore.getState();
-        if (!borders) {
-          map.getCanvas().style.cursor = '';
-          return;
-        }
-
         const activeLayers = [];
         if (map.getLayer('country-shading')) activeLayers.push('country-shading');
         if (map.getLayer('wb-barrier')) activeLayers.push('wb-barrier');
         if (map.getLayer('armistice-line')) activeLayers.push('armistice-line');
+        if (map.getLayer('conflict-markers')) activeLayers.push('conflict-markers');
+        if (map.getLayer('israel-1949-borders')) activeLayers.push('israel-1949-borders');
+        if (map.getLayer('mandate-borders')) activeLayers.push('mandate-borders');
 
         if (activeLayers.length === 0) {
           map.getCanvas().style.cursor = '';
