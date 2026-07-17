@@ -1,509 +1,677 @@
 [
-  {
-    "id": "stop-apostolic-antioch-peter-0",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 0,
-    "siteId": "site-antioch",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": 44,
-      "endYear": 55,
-      "display": {
-        "en": "c. AD 44–55 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Early tradition (and Galatians 2:11) connects Peter with Antioch before his later association with Rome; he is counted as its first bishop in church tradition."
-    },
-    "scriptureRefs": [
-      "Galatians 2:11"
-    ],
-    "persons": [
-      "person-peter"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "Peter's presence at Antioch is supported by Galatians 2:11, but the 'first bishop' tradition is later church tradition, not Scripture."
-    },
-    "citations": [
-      "cit-simon-peter"
-    ]
+ {
+  "id": "stop-apostolic-antioch-peter-0",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 0,
+  "siteId": "site-antioch",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 44,
+   "endYear": 55,
+   "display": {
+    "en": "c. AD 44–55 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "stop-apostolic-rome-peter-1",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 1,
-    "siteId": "site-rome",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 60,
-      "endYear": 68,
-      "display": {
-        "en": "c. AD 60–68 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Strong and early tradition places Peter's later ministry and martyrdom at Rome under Nero. '1 Peter 5:13' greets from 'Babylon', widely read as a cryptonym for Rome. Acts does not narrate this."
-    },
-    "scriptureRefs": [
-      "1 Peter 5:13"
-    ],
-    "persons": [
-      "person-peter"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "Peter's Roman martyrdom is early and widely attested in tradition but not recorded in the New Testament; the 'Babylon=Rome' reading of 1 Peter 5:13 is the usual but not the only interpretation."
-    },
-    "citations": [
-      "cit-simon-peter"
-    ]
+  "eventSummary": {
+   "en": "Early tradition (and Galatians 2:11) connects Peter with Antioch before his later association with Rome; he is counted as its first bishop in church tradition."
   },
-  {
-    "id": "stop-apostolic-ephesus-john-2",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 2,
-    "siteId": "site-ephesus",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 70,
-      "endYear": 100,
-      "display": {
-        "en": "c. AD 70–100 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Tradition (Irenaeus, Eusebius) places the apostle John's later years at Ephesus, leading the churches of Asia."
-    },
-    "scriptureRefs": [
-      "Revelation 1:11"
-    ],
-    "persons": [],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "The Ephesian residence of John rests on second-century tradition; the identity of 'John' of Revelation, the Gospel and the elder is itself debated."
-    },
-    "citations": [
-      "cit-john-ephesus"
-    ]
+  "scriptureRefs": [
+   "Galatians 2:11"
+  ],
+  "persons": [
+   "person-peter"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Peter's presence at Antioch is supported by Galatians 2:11, but the 'first bishop' tradition is later church tradition, not Scripture."
   },
-  {
-    "id": "stop-apostolic-patmos-john-3",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 3,
-    "siteId": "site-patmos",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 81,
-      "endYear": 96,
-      "display": {
-        "en": "c. AD 81–96 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Revelation 1:9 says its author was on Patmos 'for the word of God and the testimony of Jesus'; tradition reads this as exile under Domitian."
-    },
-    "scriptureRefs": [
-      "Revelation 1:9"
-    ],
-    "persons": [],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "Patmos as a place of John's exile is stated in Revelation; the Domitianic dating and the exile interpretation are traditional."
-    },
-    "citations": [
-      "cit-patmos"
-    ]
+  "citations": [
+   "cit-simon-peter"
+  ]
+ },
+ {
+  "id": "stop-apostolic-rome-peter-1",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 1,
+  "siteId": "site-rome",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 60,
+   "endYear": 68,
+   "display": {
+    "en": "c. AD 60–68 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "stop-apostolic-hierapolis-philip-4",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 4,
-    "siteId": "site-hierapolis",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 60,
-      "endYear": 90,
-      "display": {
-        "en": "c. AD 60–90 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Tradition places the apostle (or evangelist) Philip's ministry and martyrdom at Hierapolis; an octagonal martyrium has been excavated there."
-    },
-    "scriptureRefs": [
-      "Acts 8:5"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "Sources conflate Philip the apostle and Philip the evangelist (Acts) at Hierapolis; the martyrium confirms veneration, not the historical events."
-    },
-    "citations": [
-      "cit-philip-hierapolis"
-    ]
+  "eventSummary": {
+   "en": "Strong and early tradition places Peter's later ministry and martyrdom at Rome under Nero. '1 Peter 5:13' greets from 'Babylon', widely read as a cryptonym for Rome. Acts does not narrate this."
   },
-  {
-    "id": "stop-apostolic-alexandria-mark-5",
-    "journeyId": "journey-apostolic-traditions",
-    "order": 5,
-    "siteId": "site-alexandria",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 68,
-      "display": {
-        "en": "c. AD 49–68 (tradition)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Coptic tradition credits Mark the Evangelist with founding the church of Alexandria and being martyred there."
-    },
-    "scriptureRefs": [
-      "Acts 12:25"
-    ],
-    "persons": [
-      "person-john-mark"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "Mark's founding of the Alexandrian church is firm Coptic tradition but is not recorded in the New Testament."
-    },
-    "citations": [
-      "cit-mark-alexandria"
-    ]
+  "scriptureRefs": [
+   "1 Peter 5:13"
+  ],
+  "persons": [
+   "person-peter"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Peter's Roman martyrdom is early and widely attested in tradition but not recorded in the New Testament; the 'Babylon=Rome' reading of 1 Peter 5:13 is the usual but not the only interpretation."
   },
-  {
-    "id": "journey-abraham-0",
-    "journeyId": "journey-abraham",
-    "order": 0,
-    "siteId": "site-ur",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC (patriarchal age, debated)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Genesis opens Abraham's story at Ur, from which Terah's family set out for Canaan (Genesis 11:31)."
-    },
-    "scriptureRefs": [
-      "Genesis 11:31"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-ur",
-      "cit-ot-abraham"
-    ]
+  "citations": [
+   "cit-simon-peter"
+  ]
+ },
+ {
+  "id": "stop-apostolic-ephesus-john-2",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 2,
+  "siteId": "site-ephesus",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 70,
+   "endYear": 100,
+   "display": {
+    "en": "c. AD 70–100 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "journey-abraham-1",
-    "journeyId": "journey-abraham",
-    "order": 1,
-    "siteId": "site-haran",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The family settles at Haran; there Abraham receives the call to go to a land God will show him, with the promise of blessing (Genesis 12:1-4)."
-    },
-    "scriptureRefs": [
-      "Genesis 12:1",
-      "Genesis 12:4"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-haran",
-      "cit-ot-abraham"
-    ]
+  "eventSummary": {
+   "en": "Tradition (Irenaeus, Eusebius) places the apostle John's later years at Ephesus, leading the churches of Asia."
   },
-  {
-    "id": "journey-abraham-2",
-    "journeyId": "journey-abraham",
-    "order": 2,
-    "siteId": "site-shechem-ot",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Entering Canaan, Abraham builds his first altar at the oak of Moreh near Shechem, where the land is promised to his offspring (Genesis 12:6-7)."
-    },
-    "scriptureRefs": [
-      "Genesis 12:6",
-      "Genesis 12:7"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-shechem",
-      "cit-ot-abraham"
-    ]
+  "scriptureRefs": [
+   "Revelation 1:11"
+  ],
+  "persons": [],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The Ephesian residence of John rests on second-century tradition; the identity of 'John' of Revelation, the Gospel and the elder is itself debated."
   },
-  {
-    "id": "journey-abraham-3",
-    "journeyId": "journey-abraham",
-    "order": 3,
-    "siteId": "site-bethel",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Abraham pitches between Bethel and Ai and builds an altar (Genesis 12:8); Jacob later dreams here of the ladder to heaven (Genesis 28)."
-    },
-    "scriptureRefs": [
-      "Genesis 12:8",
-      "Genesis 28:19"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-bethel",
-      "cit-ot-abraham"
-    ]
+  "citations": [
+   "cit-john-ephesus"
+  ]
+ },
+ {
+  "id": "stop-apostolic-patmos-john-3",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 3,
+  "siteId": "site-patmos",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 81,
+   "endYear": 96,
+   "display": {
+    "en": "c. AD 81–96 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "journey-abraham-4",
-    "journeyId": "journey-abraham",
-    "order": 4,
-    "siteId": "site-hebron-machpelah",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Abraham settles by the oaks of Mamre at Hebron and buys the cave of Machpelah to bury Sarah — the patriarchs' traditional tomb (Genesis 23)."
-    },
-    "scriptureRefs": [
-      "Genesis 13:18",
-      "Genesis 23:19"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-machpelah",
-      "cit-ot-abraham"
-    ]
+  "eventSummary": {
+   "en": "Revelation 1:9 says its author was on Patmos 'for the word of God and the testimony of Jesus'; tradition reads this as exile under Domitian."
   },
-  {
-    "id": "journey-abraham-5",
-    "journeyId": "journey-abraham",
-    "order": 5,
-    "siteId": "site-beersheba-ot",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "At Beersheba Abraham and Isaac dig wells and swear covenants; it becomes the patriarchs' southern frontier (Genesis 21:31; 26:23-33)."
-    },
-    "scriptureRefs": [
-      "Genesis 21:31",
-      "Genesis 26:33"
-    ],
-    "confidence": "legendary",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-beersheba",
-      "cit-ot-abraham"
-    ]
+  "scriptureRefs": [
+   "Revelation 1:9"
+  ],
+  "persons": [],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Patmos as a place of John's exile is stated in Revelation; the Domitianic dating and the exile interpretation are traditional."
   },
-  {
-    "id": "journey-exodus-0",
-    "journeyId": "journey-exodus",
-    "order": 0,
-    "siteId": "site-goshen-rameses",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Israel departs Egypt from the region of Rameses in Goshen after the plagues and the first Passover (Exodus 12:37)."
-    },
-    "scriptureRefs": [
-      "Exodus 1:11",
-      "Exodus 12:37"
-    ],
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-exodus",
-      "cit-ot-pi-ramesses"
-    ],
-    "disputes": {
-      "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
-    }
+  "citations": [
+   "cit-patmos"
+  ]
+ },
+ {
+  "id": "stop-apostolic-hierapolis-philip-4",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 4,
+  "siteId": "site-hierapolis",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 60,
+   "endYear": 90,
+   "display": {
+    "en": "c. AD 60–90 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "journey-exodus-1",
-    "journeyId": "journey-exodus",
-    "order": 1,
-    "siteId": "site-mount-sinai",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "At the mountain of God (Sinai/Horeb) Israel receives the Law and enters the covenant (Exodus 19-20). The mountain's location is uncertain."
-    },
-    "scriptureRefs": [
-      "Exodus 19:1",
-      "Exodus 20:1"
-    ],
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-mount-sinai",
-      "cit-ot-exodus"
-    ],
-    "disputes": {
-      "en": "Both the Exodus date and the identity of Mount Sinai are disputed; the traditional Jebel Musa is used with alternatives noted on the site."
-    }
+  "eventSummary": {
+   "en": "Tradition places the apostle (or evangelist) Philip's ministry and martyrdom at Hierapolis; an octagonal martyrium has been excavated there."
   },
-  {
-    "id": "journey-exodus-2",
-    "journeyId": "journey-exodus",
-    "order": 2,
-    "siteId": "site-kadesh-barnea",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "From Kadesh-barnea Israel sends spies into Canaan and, after the refusal to enter, spends its wilderness years (Numbers 13; 20)."
-    },
-    "scriptureRefs": [
-      "Numbers 13:26",
-      "Numbers 20:1"
-    ],
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-kadesh-barnea",
-      "cit-ot-exodus-route"
-    ],
-    "disputes": {
-      "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
-    }
+  "scriptureRefs": [
+   "Acts 8:5"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Sources conflate Philip the apostle and Philip the evangelist (Acts) at Hierapolis; the martyrium confirms veneration, not the historical events."
   },
-  {
-    "id": "journey-exodus-3",
-    "journeyId": "journey-exodus",
-    "order": 3,
-    "siteId": "site-mount-nebo",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "On Mount Nebo Moses views the promised land he will not enter, and dies (Deuteronomy 34)."
-    },
-    "scriptureRefs": [
-      "Deuteronomy 34:1",
-      "Deuteronomy 34:5"
-    ],
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-mount-nebo",
-      "cit-ot-exodus"
-    ],
-    "disputes": {
-      "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
-    }
+  "citations": [
+   "cit-philip-hierapolis"
+  ]
+ },
+ {
+  "id": "stop-apostolic-alexandria-mark-5",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 5,
+  "siteId": "site-alexandria",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 68,
+   "display": {
+    "en": "c. AD 49–68 (tradition)"
+   },
+   "approximate": true
   },
-  {
-    "id": "journey-exodus-4",
-    "journeyId": "journey-exodus",
-    "order": 4,
-    "siteId": "site-final-journey-jericho",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Under Joshua, Israel crosses the Jordan near Jericho into Canaan (Joshua 3-6). The Late-Bronze destruction of Jericho and its dating are debated."
-    },
-    "scriptureRefs": [
-      "Joshua 3:17",
-      "Joshua 6:20"
-    ],
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ot-joshua",
-      "cit-ot-jericho"
-    ],
-    "disputes": {
-      "en": "The archaeology of Jericho's fall (dating of the destruction at Tell es-Sultan) is much debated and does not cleanly fit either Exodus date."
-    }
+  "eventSummary": {
+   "en": "Coptic tradition credits Mark the Evangelist with founding the church of Alexandria and being martyred there."
+  },
+  "scriptureRefs": [
+   "Acts 12:25"
+  ],
+  "persons": [
+   "person-john-mark"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Mark's founding of the Alexandrian church is firm Coptic tradition but is not recorded in the New Testament."
+  },
+  "citations": [
+   "cit-mark-alexandria"
+  ]
+ },
+ {
+  "id": "journey-abraham-0",
+  "journeyId": "journey-abraham",
+  "order": 0,
+  "siteId": "site-ur",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC (patriarchal age, debated)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Genesis opens Abraham's story at Ur, from which Terah's family set out for Canaan (Genesis 11:31)."
+  },
+  "scriptureRefs": [
+   "Genesis 11:31"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-ur",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-abraham-1",
+  "journeyId": "journey-abraham",
+  "order": 1,
+  "siteId": "site-haran",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The family settles at Haran; there Abraham receives the call to go to a land God will show him, with the promise of blessing (Genesis 12:1-4)."
+  },
+  "scriptureRefs": [
+   "Genesis 12:1",
+   "Genesis 12:4"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-haran",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-abraham-2",
+  "journeyId": "journey-abraham",
+  "order": 2,
+  "siteId": "site-shechem-ot",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Entering Canaan, Abraham builds his first altar at the oak of Moreh near Shechem, where the land is promised to his offspring (Genesis 12:6-7)."
+  },
+  "scriptureRefs": [
+   "Genesis 12:6",
+   "Genesis 12:7"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-shechem",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-abraham-3",
+  "journeyId": "journey-abraham",
+  "order": 3,
+  "siteId": "site-bethel",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Abraham pitches between Bethel and Ai and builds an altar (Genesis 12:8); Jacob later dreams here of the ladder to heaven (Genesis 28)."
+  },
+  "scriptureRefs": [
+   "Genesis 12:8",
+   "Genesis 28:19"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-bethel",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-abraham-4",
+  "journeyId": "journey-abraham",
+  "order": 4,
+  "siteId": "site-hebron-machpelah",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Abraham settles by the oaks of Mamre at Hebron and buys the cave of Machpelah to bury Sarah — the patriarchs' traditional tomb (Genesis 23)."
+  },
+  "scriptureRefs": [
+   "Genesis 13:18",
+   "Genesis 23:19"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-machpelah",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-abraham-5",
+  "journeyId": "journey-abraham",
+  "order": 5,
+  "siteId": "site-beersheba-ot",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "At Beersheba Abraham and Isaac dig wells and swear covenants; it becomes the patriarchs' southern frontier (Genesis 21:31; 26:23-33)."
+  },
+  "scriptureRefs": [
+   "Genesis 21:31",
+   "Genesis 26:33"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-beersheba",
+   "cit-ot-abraham"
+  ]
+ },
+ {
+  "id": "journey-exodus-0",
+  "journeyId": "journey-exodus",
+  "order": 0,
+  "siteId": "site-goshen-rameses",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Israel departs Egypt from the region of Rameses in Goshen after the plagues and the first Passover (Exodus 12:37)."
+  },
+  "scriptureRefs": [
+   "Exodus 1:11",
+   "Exodus 12:37"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-exodus",
+   "cit-ot-pi-ramesses"
+  ],
+  "disputes": {
+   "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
   }
+ },
+ {
+  "id": "journey-exodus-1",
+  "journeyId": "journey-exodus",
+  "order": 1,
+  "siteId": "site-mount-sinai",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "At the mountain of God (Sinai/Horeb) Israel receives the Law and enters the covenant (Exodus 19-20). The mountain's location is uncertain."
+  },
+  "scriptureRefs": [
+   "Exodus 19:1",
+   "Exodus 20:1"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-mount-sinai",
+   "cit-ot-exodus"
+  ],
+  "disputes": {
+   "en": "Both the Exodus date and the identity of Mount Sinai are disputed; the traditional Jebel Musa is used with alternatives noted on the site."
+  }
+ },
+ {
+  "id": "journey-exodus-2",
+  "journeyId": "journey-exodus",
+  "order": 2,
+  "siteId": "site-kadesh-barnea",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "From Kadesh-barnea Israel sends spies into Canaan and, after the refusal to enter, spends its wilderness years (Numbers 13; 20)."
+  },
+  "scriptureRefs": [
+   "Numbers 13:26",
+   "Numbers 20:1"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-kadesh-barnea",
+   "cit-ot-exodus-route"
+  ],
+  "disputes": {
+   "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
+  }
+ },
+ {
+  "id": "journey-exodus-3",
+  "journeyId": "journey-exodus",
+  "order": 3,
+  "siteId": "site-mount-nebo",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On Mount Nebo Moses views the promised land he will not enter, and dies (Deuteronomy 34)."
+  },
+  "scriptureRefs": [
+   "Deuteronomy 34:1",
+   "Deuteronomy 34:5"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-mount-nebo",
+   "cit-ot-exodus"
+  ],
+  "disputes": {
+   "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
+  }
+ },
+ {
+  "id": "journey-exodus-4",
+  "journeyId": "journey-exodus",
+  "order": 4,
+  "siteId": "site-final-journey-jericho",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Under Joshua, Israel crosses the Jordan near Jericho into Canaan (Joshua 3-6). The Late-Bronze destruction of Jericho and its dating are debated."
+  },
+  "scriptureRefs": [
+   "Joshua 3:17",
+   "Joshua 6:20"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ot-joshua",
+   "cit-ot-jericho"
+  ],
+  "disputes": {
+   "en": "The archaeology of Jericho's fall (dating of the destruction at Tell es-Sultan) is much debated and does not cleanly fit either Exodus date."
+  }
+ },
+ {
+  "id": "stop-ministry-flight-to-egypt",
+  "journeyId": "journey-ministry",
+  "order": 1,
+  "siteId": "site-egypt-refuge",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -5,
+   "endYear": -4,
+   "display": {
+    "en": "infancy, c. 5-4 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Warned in a dream, Joseph took the child and his mother by night to Egypt to escape Herod's massacre of the infants of Bethlehem, and stayed until Herod's death — which Matthew reads as fulfilling 'Out of Egypt I called my son' (Hosea 11:1; Matthew 2:13-15). Only Matthew records the flight; the exact refuge is unknown, though Coptic tradition venerates a string of sites along the Nile (Old Cairo's Abu Serga, Wadi El Natrun, Asyut). The family then returned and settled in Nazareth (Matthew 2:19-23)."
+  },
+  "scriptureRefs": [
+   "Matthew 2:13",
+   "Matthew 2:14",
+   "Matthew 2:15",
+   "Hosea 11:1"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-flight-into-egypt"
+  ],
+  "disputes": {
+   "en": "The flight into Egypt is attested only in Matthew and its route and Egyptian location are traditional; the mapped point (Old Cairo) is one of several Coptic-tradition sites, not an archaeologically fixed spot."
+  }
+ },
+ {
+  "id": "stop-ministry-temple-boy",
+  "journeyId": "journey-ministry",
+  "order": 3,
+  "siteId": "site-jerusalem",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 7,
+   "endYear": 9,
+   "display": {
+    "en": "boyhood, age 12, c. AD 7-9"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "At Passover, when Jesus was twelve, the family made the pilgrimage to Jerusalem; on the way home his parents realised he was missing and, after three days, found him in the temple courts 'sitting among the teachers, both listening to them and asking them questions.' Asked why, he answered, 'Did you not know that I must be in my Father's house?' (Luke 2:41-49). It is the only canonical episode between the infancy and the baptism; Luke closes it noting he 'grew in wisdom and stature, and in favour with God and man' (Luke 2:52)."
+  },
+  "scriptureRefs": [
+   "Luke 2:41",
+   "Luke 2:46",
+   "Luke 2:49",
+   "Luke 2:52"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-finding-in-the-temple"
+  ]
+ },
+ {
+  "id": "journey-noah-0",
+  "journeyId": "journey-noah",
+  "order": 0,
+  "siteId": "site-shuruppak",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -2900,
+   "endYear": -2300,
+   "display": {
+    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Noah is commanded to build the ark — gopher wood, three decks, 300 cubits (~137 m) long (Genesis 6:14-16) — and enters it with his family and the animals as the fountains of the great deep break open (Genesis 7:11-12). Scripture does not name the building site; the Mesopotamian flood tradition centers on Shuruppak, whose excavated flood layer anchors the setting."
+  },
+  "scriptureRefs": [
+   "Genesis 6:14-16",
+   "Genesis 6:22",
+   "Genesis 7:11-12"
+  ],
+  "persons": [
+   "person-noah"
+  ],
+  "artifacts": [
+   "artifact-shuruppak-flood-layer"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-shuruppak",
+   "cit-ziusudra",
+   "cit-flood-narrative"
+  ]
+ },
+ {
+  "id": "journey-noah-1",
+  "journeyId": "journey-noah",
+  "order": 1,
+  "siteId": "site-ararat-landing",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": -2900,
+   "endYear": -2300,
+   "display": {
+    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "'And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat' (Genesis 8:4). Noah releases the raven and the dove, leaves the ark, builds an altar (Genesis 8:18-20), and receives the rainbow covenant (Genesis 9:12-17). Candidates for the landing carry precise GPS points — Greater Ararat 39.7016° N 44.2983° E, Durupınar 39.4406° N 44.2347° E, Mount Cudi 37.3639° N 42.4561° E."
+  },
+  "scriptureRefs": [
+   "Genesis 8:4",
+   "Genesis 8:18-20",
+   "Genesis 9:12-17"
+  ],
+  "persons": [
+   "person-noah"
+  ],
+  "artifacts": [
+   "artifact-durupinar-surveys"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Genesis names the Urartu mountain region, not a peak. The Durupınar GPR scans (2019) and soil analyses (2022-2024) reported by the Noah's Ark Scans team are not peer-reviewed, and mainstream geologists identify the formation as a natural syncline; medieval-and-later tradition favors Greater Ararat, while the oldest traditions name Mount Cudi."
+  },
+  "citations": [
+   "cit-ararat-region",
+   "cit-durupinar",
+   "cit-ark-scans",
+   "cit-durupinar-geology",
+   "cit-mount-judi"
+  ]
+ },
+ {
+  "id": "journey-noah-2",
+  "journeyId": "journey-noah",
+  "order": 2,
+  "siteId": "site-shinar-plain",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -2900,
+   "endYear": -2300,
+   "display": {
+    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After the Flood, Noah lives 350 more years (Genesis 9:28) and the table of nations spreads from his sons. Journeying from the east, the post-Flood generations find a plain in the land of Shinar and settle there, building the city and tower of Babel (Genesis 11:2-4) — returning the story to the Mesopotamian plain where it began."
+  },
+  "scriptureRefs": [
+   "Genesis 9:28",
+   "Genesis 11:2-4"
+  ],
+  "persons": [
+   "person-noah"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-flood-narrative"
+  ]
+ }
 ]

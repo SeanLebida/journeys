@@ -34,7 +34,7 @@
   {
     "id": "stop-ministry-nazareth-1",
     "journeyId": "journey-ministry",
-    "order": 1,
+    "order": 2,
     "siteId": "site-nazareth",
     "legMode": "land",
     "dateRange": {
@@ -67,7 +67,7 @@
   {
     "id": "stop-ministry-baptism-at-the-jordan-2",
     "journeyId": "journey-ministry",
-    "order": 2,
+    "order": 4,
     "siteId": "site-baptism-at-the-jordan",
     "legMode": "land",
     "dateRange": {
@@ -97,7 +97,7 @@
   {
     "id": "stop-ministry-capernaum-3",
     "journeyId": "journey-ministry",
-    "order": 3,
+    "order": 6,
     "siteId": "site-capernaum",
     "legMode": "land",
     "dateRange": {
@@ -132,7 +132,7 @@
   {
     "id": "stop-ministry-cana-of-galilee-4",
     "journeyId": "journey-ministry",
-    "order": 4,
+    "order": 7,
     "siteId": "site-cana-of-galilee",
     "legMode": "land",
     "dateRange": {
@@ -161,7 +161,7 @@
   {
     "id": "stop-ministry-sea-of-galilee-5",
     "journeyId": "journey-ministry",
-    "order": 5,
+    "order": 8,
     "siteId": "site-sea-of-galilee",
     "legMode": "sea",
     "dateRange": {
@@ -193,7 +193,7 @@
   {
     "id": "stop-ministry-bethsaida-6",
     "journeyId": "journey-ministry",
-    "order": 6,
+    "order": 9,
     "siteId": "site-bethsaida",
     "legMode": "land",
     "dateRange": {
@@ -225,7 +225,7 @@
   {
     "id": "stop-ministry-chorazin-7",
     "journeyId": "journey-ministry",
-    "order": 7,
+    "order": 10,
     "siteId": "site-chorazin",
     "legMode": "land",
     "dateRange": {
@@ -253,7 +253,7 @@
   {
     "id": "stop-ministry-decapolis-8",
     "journeyId": "journey-ministry",
-    "order": 8,
+    "order": 11,
     "siteId": "site-decapolis",
     "legMode": "sea",
     "dateRange": {
@@ -284,7 +284,7 @@
   {
     "id": "stop-ministry-tyre-and-sidon-9",
     "journeyId": "journey-ministry",
-    "order": 9,
+    "order": 12,
     "siteId": "site-tyre-and-sidon",
     "legMode": "land",
     "dateRange": {
@@ -316,7 +316,7 @@
   {
     "id": "stop-ministry-caesarea-philippi-10",
     "journeyId": "journey-ministry",
-    "order": 10,
+    "order": 13,
     "siteId": "site-caesarea-philippi",
     "legMode": "land",
     "dateRange": {
@@ -347,7 +347,7 @@
   {
     "id": "stop-ministry-samaria-11",
     "journeyId": "journey-ministry",
-    "order": 11,
+    "order": 5,
     "siteId": "site-samaria",
     "legMode": "land",
     "dateRange": {
@@ -376,7 +376,7 @@
   {
     "id": "stop-ministry-final-journey-jericho-12",
     "journeyId": "journey-ministry",
-    "order": 12,
+    "order": 14,
     "siteId": "site-final-journey-jericho",
     "legMode": "land",
     "dateRange": {
@@ -406,7 +406,7 @@
   {
     "id": "stop-ministry-bethany-and-bethphage-13",
     "journeyId": "journey-ministry",
-    "order": 13,
+    "order": 15,
     "siteId": "site-bethany-and-bethphage",
     "legMode": "land",
     "dateRange": {
@@ -438,7 +438,7 @@
   {
     "id": "stop-ministry-jerusalem-14",
     "journeyId": "journey-ministry",
-    "order": 14,
+    "order": 16,
     "siteId": "site-jerusalem",
     "legMode": "land",
     "dateRange": {
@@ -470,7 +470,7 @@
   {
     "id": "stop-ministry-last-supper-15",
     "journeyId": "journey-ministry",
-    "order": 15,
+    "order": 17,
     "siteId": "site-last-supper",
     "legMode": "land",
     "dateRange": {
@@ -501,7 +501,7 @@
   {
     "id": "stop-ministry-gethsemane-16",
     "journeyId": "journey-ministry",
-    "order": 16,
+    "order": 18,
     "siteId": "site-gethsemane",
     "legMode": "land",
     "dateRange": {
@@ -530,7 +530,7 @@
   {
     "id": "stop-ministry-trial-before-pilate-17",
     "journeyId": "journey-ministry",
-    "order": 17,
+    "order": 19,
     "siteId": "site-trial-before-pilate",
     "legMode": "land",
     "dateRange": {
@@ -560,11 +560,11 @@
   {
     "id": "stop-ministry-golgotha-and-the-tomb-18",
     "journeyId": "journey-ministry",
-    "order": 18,
+    "order": 20,
     "siteId": "site-golgotha-and-the-tomb",
     "legMode": "land",
     "dateRange": {
-      "startYear": 3,
+      "startYear": 30,
       "endYear": 33,
       "display": {
         "en": "crucifixion Friday 7 April AD 30 or Friday 3 April AD 33 (Nisan 14); resurrection proclaimed the following Sunday"
@@ -1720,6 +1720,358 @@
     "citations": [
       "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
       "cit-enduringword-com-bible-commentary-acts-27"
+    ]
+  },
+  {
+    "id": "stop-ministry-resurrection-appearances-19",
+    "journeyId": "journey-ministry",
+    "order": 21,
+    "siteId": "site-golgotha-and-the-tomb",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "Resurrection Sunday, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus — mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb')."
+    },
+    "scriptureRefs": [
+      "John 20:1",
+      "John 20:11",
+      "Matthew 28:1",
+      "Matthew 28:9",
+      "Mark 16:1",
+      "Luke 24:1",
+      "Luke 24:34",
+      "1 Corinthians 15:5"
+    ],
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+      "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+      "cit-edicule-restoration",
+      "cit-archaeology-crucifixion-tzaferis",
+      "cit-primary-josephus-antiquities",
+      "cit-primary-tacitus-annals"
+    ]
+  },
+  {
+    "id": "stop-ministry-road-to-emmaus-20",
+    "journeyId": "journey-ministry",
+    "order": 22,
+    "siteId": "site-emmaus",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "Easter Sunday afternoon, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Two disciples — one named Cleopas, the other unnamed — walked from Jerusalem to Emmaus (~60 stadia / ~11 km in most manuscripts; ~160 stadia / ~30 km in Codex Sinaiticus). A stranger joined them and, beginning with Moses and all the Prophets, explained 'the things concerning himself' in all the Scriptures. At supper in Emmaus, 'he took the bread and blessed and broke it and gave it to them. And their eyes were opened, and they recognized him. And he vanished from their sight' (Luke 24:30-31). They exclaimed, 'Did not our hearts burn within us while he talked to us on the road, while he opened to us the Scriptures?' and returned immediately to Jerusalem to tell the Eleven. The Emmaus-Nicopolis identification (Amwas/Latrun) has Byzantine basilica ruins and attestation by Eusebius (c. AD 330); el-Qubeibeh is the Franciscan traditional site since the 15th century."
+    },
+    "scriptureRefs": [
+      "Luke 24:13",
+      "Luke 24:30",
+      "Mark 16:12"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-emmaus-nicopolis",
+      "cit-emmaus-qubeibeh"
+    ]
+  },
+  {
+    "id": "stop-ministry-upper-room-easter-21",
+    "journeyId": "journey-ministry",
+    "order": 23,
+    "siteId": "site-last-supper",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "Easter Sunday evening, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "That evening the disciples gathered behind locked doors 'for fear of the Jews.' Jesus appeared in their midst and said, 'Peace be with you.' He showed them his hands and side, breathed on them and said, 'Receive the Holy Spirit' (John 20:19-23). He ate a piece of broiled fish to demonstrate his physical, bodily reality (Luke 24:36-43). Thomas was absent and later refused to believe: 'Unless I see in his hands the mark of the nails, and place my finger into the mark of the nails, and place my hand into his side, I will never believe' (John 20:25). Epiphanius (4th c.) mentions a 'Church of the Apostles' on Mount Zion that survived the AD 70 destruction; archaeologist Bargil Pixner argued for a Judeo-Christian synagogue or house church predating the current medieval Cenacle structure."
+    },
+    "scriptureRefs": [
+      "Luke 24:36",
+      "John 20:19",
+      "John 20:25",
+      "1 Corinthians 15:5"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
+    ]
+  },
+  {
+    "id": "stop-ministry-upper-room-thomas-22",
+    "journeyId": "journey-ministry",
+    "order": 24,
+    "siteId": "site-last-supper",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "one week after Easter, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Eight days later (the following Sunday), the disciples were again in the locked room, this time with Thomas present. Jesus appeared, stood among them, and said to Thomas, 'Put your finger here, and see my hands; and put out your hand, and place it in my side. Do not disbelieve, but believe.' Thomas exclaimed, 'My Lord and my God!' (Greek: ho kyrios mou kai ho theos mou) — the highest christological declaration in the Gospels. Jesus replied, 'Have you believed because you have seen me? Blessed are those who have not seen and yet have believed' (John 20:26-29). This bridges to all subsequent faith beyond the eyewitness generation."
+    },
+    "scriptureRefs": [
+      "John 20:26",
+      "John 20:28",
+      "John 20:29"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
+    ]
+  },
+  {
+    "id": "stop-ministry-sea-of-galilee-appearance-23",
+    "journeyId": "journey-ministry",
+    "order": 25,
+    "siteId": "site-tabgha",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "during the 40 days before Ascension, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples — Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed — fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia — the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' — one restoration for each denial — and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period."
+    },
+    "scriptureRefs": [
+      "John 21:1",
+      "John 21:6",
+      "John 21:11",
+      "John 21:15",
+      "John 21:18"
+    ],
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-tabgha-primacy",
+      "cit-jesus-boat"
+    ]
+  },
+  {
+    "id": "stop-ministry-galilee-mountain-commission-24",
+    "journeyId": "journey-ministry",
+    "order": 26,
+    "siteId": "site-galilee-mountain",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "during the 40 days before Ascension, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "The Eleven went to the mountain in Galilee 'to which Jesus had directed them' (Matthew 28:16). When they saw him, they worshiped, though 'some doubted.' Jesus declared: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age' (Matthew 28:18-20). Many scholars associate the appearance to 'more than 500 brothers at one time, most of whom are still alive' (1 Corinthians 15:6) with this Galilean mountain gathering, as it is the only large-scale outdoor post-resurrection event. Paul wrote c. AD 53-55; his note about surviving witnesses is an implicit invitation to verify. The 1 Corinthians 15:3-8 creed is dated by virtually all critical scholars — including skeptics Gerd Lüdemann and Bart Ehrman — to within 3-6 years of the crucifixion, making it the earliest datable testimony to the resurrection appearances."
+    },
+    "scriptureRefs": [
+      "Matthew 28:16",
+      "Matthew 28:18",
+      "Matthew 28:19",
+      "Matthew 28:20",
+      "1 Corinthians 15:6"
+    ],
+    "confidence": "disputed",
+    "disputes": {
+      "en": "The mountain in Galilee is not named in the Gospel accounts. Mount Tabor is the traditional site, while Mount Arbel is a popular alternative overlooking the Sea of Galilee."
+    },
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-galilee-mountain",
+      "cit-1cor15-creed",
+      "cit-history-early-creed-luedemann"
+    ]
+  },
+  {
+    "id": "stop-ministry-appearance-to-james-25",
+    "journeyId": "journey-ministry",
+    "order": 27,
+    "siteId": "site-jerusalem",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "during the 40 days before Ascension, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Paul's creedal summary records that Jesus 'appeared to James, then to all the apostles' (1 Corinthians 15:7). No narrative details are given in the New Testament. James — the brother of Jesus, not James son of Zebedee — was skeptical during the ministry ('not even his brothers believed in him', John 7:5) but became the leader of the Jerusalem church (Acts 15; Galatians 1:19; 2:9). This transformation from skeptic to martyr-leader is most naturally explained by a post-resurrection appearance. The lost Gospel of the Hebrews (quoted by Jerome) preserves a tradition that James had vowed not to eat until he saw the risen Lord. Josephus independently records the execution of 'James, the brother of Jesus who was called Christ' in AD 62 (Antiquities 20.9.1), confirming both James's existence and his identification as Jesus's brother. The location of this appearance is not specified; Jerusalem is assumed as the base of James's subsequent ministry."
+    },
+    "scriptureRefs": [
+      "1 Corinthians 15:7",
+      "John 7:5",
+      "Galatians 1:19",
+      "Acts 15:13"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-1cor15-creed",
+      "cit-wit-josephus-james",
+      "cit-history-early-creed-luedemann",
+      "cit-primary-josephus-antiquities"
+    ]
+  },
+  {
+    "id": "stop-ministry-ascension-26",
+    "journeyId": "journey-ministry",
+    "order": 28,
+    "siteId": "site-mount-of-olives-ascension",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "40 days after the resurrection, c. AD 30 or 33"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Forty days after the resurrection (Acts 1:3), Jesus led the apostles out to the Mount of Olives, near Bethany. Over those 40 days he had appeared to them repeatedly, 'speaking about the kingdom of God' and 'presenting himself alive after his suffering by many proofs' (Acts 1:3). He gave final instructions: 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth' (Acts 1:8). 'And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight' (Acts 1:9). Two men in white appeared and said, 'This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven' (Acts 1:11). The disciples returned to Jerusalem from Olivet, 'a Sabbath day's journey away' (~2,000 cubits, ~1 km). The Chapel of the Ascension has been venerated since the Bordeaux Pilgrim (AD 333); the original Imbomon rotunda was built c. AD 378-384 by Poimenia, destroyed in AD 614, rebuilt by Crusaders, and converted to a mosque by Saladin (1187)."
+    },
+    "scriptureRefs": [
+      "Luke 24:50",
+      "Luke 24:51",
+      "Acts 1:3",
+      "Acts 1:8",
+      "Acts 1:9",
+      "Acts 1:11",
+      "Acts 1:12",
+      "Mark 16:19"
+    ],
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-ascension-chapel",
+      "cit-mount-olives"
+    ]
+  },
+  {
+    "id": "stop-ministry-stephens-vision-27",
+    "journeyId": "journey-ministry",
+    "order": 29,
+    "siteId": "site-jerusalem",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 34,
+      "endYear": 35,
+      "display": {
+        "en": "c. AD 34-35"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "During his trial before the Sanhedrin, Stephen — the first Christian martyr — 'full of the Holy Spirit, gazed into heaven and saw the glory of God, and Jesus standing at the right hand of God' (Acts 7:55). Notably, Jesus is described as standing (not seated, as in other passages), possibly signifying welcome or advocacy. Stephen reported the vision aloud; the council rushed him, dragged him outside the city, and stoned him. As he died, he prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' Saul of Tarsus (later Paul) watched, approving the execution (Acts 7:58; 8:1). This is a vision rather than a bodily appearance. The traditional stoning site is near St. Stephen's Gate (Lions' Gate) on Jerusalem's eastern wall; the 5th-c. Basilica of St. Stephen (now Saint-Étienne, within the École Biblique grounds) commemorates the northern tradition."
+    },
+    "scriptureRefs": [
+      "Acts 7:55",
+      "Acts 7:56",
+      "Acts 7:58",
+      "Acts 7:59",
+      "Acts 7:60",
+      "Acts 8:1"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-en-wikipedia-org-wiki-temple-mount"
+    ]
+  },
+  {
+    "id": "stop-ministry-damascus-road-paul-28",
+    "journeyId": "journey-ministry",
+    "order": 30,
+    "siteId": "site-damascus",
+    "legMode": "land",
+    "dateRange": {
+      "startYear": 33,
+      "endYear": 36,
+      "display": {
+        "en": "c. AD 33-36"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "Saul of Tarsus, carrying letters from the high priest to arrest Christians in Damascus, encountered the risen Jesus near the city. 'Suddenly a light from heaven, brighter than the sun, flashed around him. He fell to the ground and heard a voice: Saul, Saul, why are you persecuting me?' (Acts 26:13-14). Blinded for three days, he was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Three separate accounts in Acts (chs. 9, 22, 26) plus Paul's own first-person testimony in 1 Corinthians 9:1 ('Have I not seen Jesus our Lord?'), 1 Corinthians 15:8 ('Last of all, as to one untimely born, he appeared also to me'), and Galatians 1:15-16 attest this encounter. Paul's testimony, written c. AD 53-55, is ~20-25 years after the event. The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus. The underground Chapel of Ananias near Bab Sharqi preserves 5th/6th-c. Byzantine church remains (excavated 1921). Paul's basket escape through the wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan. Even non-Christian scholars treat Paul's radical transformation from persecutor to apostle as historically certain."
+    },
+    "scriptureRefs": [
+      "Acts 9:1",
+      "Acts 9:3",
+      "Acts 9:11",
+      "Acts 9:25",
+      "Acts 22:6",
+      "Acts 26:12",
+      "1 Corinthians 9:1",
+      "1 Corinthians 15:8",
+      "Galatians 1:15",
+      "2 Corinthians 11:33"
+    ],
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-damascus-straight-street",
+      "cit-house-ananias"
+    ]
+  },
+  {
+    "id": "stop-ministry-patmos-john-29",
+    "journeyId": "journey-ministry",
+    "order": 31,
+    "siteId": "site-patmos",
+    "legMode": "sea",
+    "dateRange": {
+      "startYear": 81,
+      "endYear": 96,
+      "display": {
+        "en": "c. AD 81-96 (traditionally under Domitian)"
+      },
+      "approximate": true
+    },
+    "eventSummary": {
+      "en": "John, exiled to Patmos 'because of the word of God and the testimony of Jesus' (Revelation 1:9), was 'in the Spirit on the Lord's day' when he heard a loud voice and, turning, saw the risen Christ glorified among seven golden lampstands: 'one like a son of man, clothed with a long robe... his eyes were like a flame of fire, his feet were like burnished bronze... and his voice was like the roar of many waters' (Revelation 1:12-16). John fell at his feet 'as though dead,' but Jesus laid his right hand on him and said, 'Fear not, I am the first and the last, and the living one. I died, and behold I am alive forevermore, and I have the keys of Death and Hades' (Revelation 1:17-18). He commanded John to write the visions and dictated seven letters to the churches of Asia (Revelation 2-3). The Domitianic dating rests on Irenaeus (Against Heresies 5.30.3, c. AD 180). The Cave of the Apocalypse and the Monastery of St. John the Theologian (founded AD 1088) are UNESCO World Heritage Sites (inscribed 1999). The identity of 'John' — apostle, elder, or another figure — is itself debated."
+    },
+    "scriptureRefs": [
+      "Revelation 1:9",
+      "Revelation 1:12",
+      "Revelation 1:17",
+      "Revelation 1:18"
+    ],
+    "confidence": "medium",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-patmos"
     ]
   }
 ]

@@ -1,541 +1,592 @@
 [
-  {
-    "id": "witness-josephus-jesus",
-    "title": {
-      "en": "Josephus on Jesus (the Testimonium Flavianum)"
-    },
-    "author": {
-      "en": "Flavius Josephus (Jewish historian)"
-    },
-    "work": {
-      "en": "Antiquities of the Jews 18.3.3"
-    },
-    "era": {
-      "en": "c. AD 93-94"
-    },
-    "authoredRange": {
-      "startYear": 93,
-      "endYear": 94,
-      "display": {
-        "en": "c. AD 93-94"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "A passage in Josephus describing Jesus as a wise teacher, condemned to the cross by Pilate, whose followers persisted. It attests, from a Jewish historian, a 1st-century Jesus crucified under Pilate."
-    },
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-josephus-jesus",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "Paul's letters and the four Gospels"
-      },
-      "range": {
-        "startYear": 50,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "The earliest New Testament accounts of Jesus' death — Paul's letters (c. AD 50s) and the Gospels (c. AD 65-95) — precede Josephus (c. AD 93) by roughly a generation."
-      }
-    },
-    "personIds": [
-      "person-jesus",
-      "person-pontius-pilate"
-    ],
-    "siteIds": [
-      "site-jerusalem"
-    ],
-    "disputes": {
-      "en": "The received text contains overtly Christian phrases most scholars judge to be later Christian interpolations. The mainstream view is that Josephus wrote an authentic core later embellished; a minority hold the whole passage is a Christian insertion. Treat the wording, not the existence of a reference, as contested."
-    },
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+ {
+  "id": "witness-josephus-jesus",
+  "title": {
+   "en": "Josephus on Jesus (the Testimonium Flavianum)"
   },
-  {
-    "id": "witness-josephus-james",
-    "title": {
-      "en": "Josephus on James, 'brother of Jesus who was called Christ'"
-    },
-    "author": {
-      "en": "Flavius Josephus"
-    },
-    "work": {
-      "en": "Antiquities of the Jews 20.9.1"
-    },
-    "era": {
-      "en": "c. AD 93-94"
-    },
-    "authoredRange": {
-      "startYear": 93,
-      "endYear": 94,
-      "display": {
-        "en": "c. AD 93-94"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "Josephus reports the illegal execution of 'James, the brother of Jesus who was called Christ' under the high priest Ananus (AD 62). This passage is widely accepted as authentic and independently references Jesus."
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-josephus-james",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "Paul's letter to the Galatians, and Acts"
-      },
-      "range": {
-        "startYear": 48,
-        "endYear": 90,
-        "display": {
-          "en": "c. AD 48-90 (Galatians, naming James, c. 48-55)"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "Paul names James, 'the Lord's brother', in Galatians (c. AD 48-55) — some four decades before Josephus wrote (c. AD 93)."
-      }
-    },
-    "personIds": [
-      "person-jesus"
-    ],
-    "siteIds": [
-      "site-jerusalem"
-    ],
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+  "author": {
+   "en": "Flavius Josephus (Jewish historian)"
   },
-  {
-    "id": "witness-josephus-baptist",
-    "title": {
-      "en": "Josephus on John the Baptist"
-    },
-    "author": {
-      "en": "Flavius Josephus"
-    },
-    "work": {
-      "en": "Antiquities of the Jews 18.5.2"
-    },
-    "era": {
-      "en": "c. AD 93-94"
-    },
-    "authoredRange": {
-      "startYear": 93,
-      "endYear": 94,
-      "display": {
-        "en": "c. AD 93-94"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "Josephus describes John, called the Baptist, as a good man who exhorted the Jews and was executed by Herod Antipas — an independent, generally-accepted attestation of John and Antipas paralleling the Gospels."
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-josephus-baptist",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "the four Gospels"
-      },
-      "range": {
-        "startYear": 65,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 65-95"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "The Gospels (c. AD 65-95) record John the Baptist a generation before Josephus wrote (c. AD 93)."
-      }
-    },
-    "siteIds": [
-      "site-baptism-at-the-jordan"
-    ],
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+  "work": {
+   "en": "Antiquities of the Jews 18.3.3"
   },
-  {
-    "id": "witness-tacitus",
-    "title": {
-      "en": "Tacitus on 'Christus' and the Christians of Rome"
-    },
-    "author": {
-      "en": "Cornelius Tacitus (Roman senator & historian)"
-    },
-    "work": {
-      "en": "Annals 15.44"
-    },
-    "era": {
-      "en": "c. AD 116"
-    },
-    "authoredRange": {
-      "startYear": 116,
-      "endYear": 116,
-      "display": {
-        "en": "c. AD 116"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "Reporting Nero's scapegoating of Christians after the fire of Rome (AD 64), Tacitus notes that 'Christus', from whom the name came, 'suffered the extreme penalty' under Pontius Pilate in the reign of Tiberius — a hostile Roman source confirming the execution under Pilate."
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-tacitus",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "Paul's letters and the four Gospels"
-      },
-      "range": {
-        "startYear": 50,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "The New Testament accounts (c. AD 50-95) predate Tacitus (c. AD 116) by a generation or more."
-      }
-    },
-    "personIds": [
-      "person-jesus",
-      "person-pontius-pilate"
-    ],
-    "siteIds": [
-      "site-rome"
-    ],
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+  "era": {
+   "en": "c. AD 93-94"
   },
-  {
-    "id": "witness-pliny",
-    "title": {
-      "en": "Pliny the Younger on early Christian worship"
+  "authoredRange": {
+   "startYear": 93,
+   "endYear": 94,
+   "display": {
+    "en": "c. AD 93-94"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "A passage in Josephus describing Jesus as a wise teacher, condemned to the cross by Pilate, whose followers persisted. It attests, from a Jewish historian, a 1st-century Jesus crucified under Pilate."
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-josephus-jesus",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "Paul's letters and the four Gospels"
+   },
+   "range": {
+    "startYear": 50,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
     },
-    "author": {
-      "en": "Pliny the Younger (Roman governor of Bithynia)"
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "The earliest New Testament accounts of Jesus' death — Paul's letters (c. AD 50s) and the Gospels (c. AD 65-95) — precede Josephus (c. AD 93) by roughly a generation."
+   }
+  },
+  "personIds": [
+   "person-jesus",
+   "person-pontius-pilate"
+  ],
+  "siteIds": [
+   "site-jerusalem"
+  ],
+  "disputes": {
+   "en": "The received text contains overtly Christian phrases most scholars judge to be later Christian interpolations. The mainstream view is that Josephus wrote an authentic core later embellished; a minority hold the whole passage is a Christian insertion. Treat the wording, not the existence of a reference, as contested."
+  },
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
     },
-    "work": {
-      "en": "Letters 10.96 (to Trajan)"
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
     },
-    "era": {
-      "en": "c. AD 112"
-    },
-    "authoredRange": {
-      "startYear": 112,
-      "endYear": 112,
-      "display": {
-        "en": "c. AD 112"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "Pliny asks Trajan how to try Christians, describing their practice of meeting before dawn to sing 'to Christ as to a god' and binding themselves by oath against wrongdoing — an outside snapshot of Christian worship within about 80 years of the crucifixion."
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-pliny",
-      "cit-nt-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "the New Testament letters and Gospels"
-      },
-      "range": {
-        "startYear": 50,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 50-95"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "Christian worship is described in the New Testament (c. AD 50-95) decades before Pliny's report (c. AD 112)."
-      }
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
     }
+   }
+  ]
+ },
+ {
+  "id": "witness-josephus-james",
+  "title": {
+   "en": "Josephus on James, 'brother of Jesus who was called Christ'"
   },
-  {
-    "id": "witness-suetonius",
-    "title": {
-      "en": "Suetonius on 'Chrestus' and the Christians"
-    },
-    "author": {
-      "en": "Suetonius (Roman biographer)"
-    },
-    "work": {
-      "en": "Lives of the Caesars: Claudius 25; Nero 16"
-    },
-    "era": {
-      "en": "c. AD 121"
-    },
-    "authoredRange": {
-      "startYear": 121,
-      "endYear": 121,
-      "display": {
-        "en": "c. AD 121"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "Suetonius records Claudius expelling Jews from Rome over disturbances 'at the instigation of Chrestus' (cf. Acts 18:2) and Nero punishing Christians. The reports touch the same movement, though the 'Chrestus' reference is debated."
-    },
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-suetonius",
-      "cit-nt-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "Acts (the expulsion under Claudius) and Paul's letters"
-      },
-      "range": {
-        "startYear": 50,
-        "endYear": 90,
-        "display": {
-          "en": "c. AD 50-90 (Acts c. 80-90)"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "Acts records the Claudius-era expulsion (Acts 18:2, written c. AD 80-90) before Suetonius (c. AD 121)."
-      }
-    },
-    "siteIds": [
-      "site-rome"
-    ]
+  "author": {
+   "en": "Flavius Josephus"
   },
-  {
-    "id": "witness-thallus",
-    "title": {
-      "en": "Thallus on the darkness (via Julius Africanus)"
-    },
-    "author": {
-      "en": "Thallus (as quoted by Julius Africanus)"
-    },
-    "work": {
-      "en": "cited in Africanus, Chronography"
-    },
-    "era": {
-      "en": "1st c.? (surviving quotation c. AD 221)"
-    },
-    "authoredRange": {
-      "startYear": 221,
-      "endYear": 221,
-      "display": {
-        "en": "surviving quotation c. AD 221"
-      },
-      "approximate": true
-    },
-    "attests": {
-      "en": "The 3rd-century Christian writer Julius Africanus claims Thallus explained the darkness at the crucifixion as a solar eclipse. The value of this as an independent witness is heavily disputed."
-    },
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-thallus",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "the Gospel passion narratives"
-      },
-      "range": {
-        "startYear": 65,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 65-95"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "The Gospels (c. AD 65-95) record the crucifixion darkness; Thallus survives only second-hand in Julius Africanus (c. AD 221) — over a century later — the latest and weakest of these witnesses."
-      }
-    },
-    "personIds": [
-      "person-jesus"
-    ],
-    "disputes": {
-      "en": "Thallus's work is lost; we have only Africanus's second-hand claim about what Thallus said, and even that Thallus mentioned the crucifixion darkness is inference. Its date and relevance are contested; it is at best weak, indirect testimony."
-    },
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+  "work": {
+   "en": "Antiquities of the Jews 20.9.1"
   },
-  {
-    "id": "witness-mara",
-    "title": {
-      "en": "Mara bar Serapion on the 'wise king' of the Jews"
+  "era": {
+   "en": "c. AD 93-94"
+  },
+  "authoredRange": {
+   "startYear": 93,
+   "endYear": 94,
+   "display": {
+    "en": "c. AD 93-94"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "Josephus reports the illegal execution of 'James, the brother of Jesus who was called Christ' under the high priest Ananus (AD 62). This passage is widely accepted as authentic and independently references Jesus."
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-josephus-james",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "Paul's letter to the Galatians, and Acts"
+   },
+   "range": {
+    "startYear": 48,
+    "endYear": 90,
+    "display": {
+     "en": "c. AD 48-90 (Galatians, naming James, c. 48-55)"
     },
-    "author": {
-      "en": "Mara bar Serapion (Syriac Stoic)"
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "Paul names James, 'the Lord's brother', in Galatians (c. AD 48-55) — some four decades before Josephus wrote (c. AD 93)."
+   }
+  },
+  "personIds": [
+   "person-jesus"
+  ],
+  "siteIds": [
+   "site-jerusalem"
+  ],
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
     },
-    "work": {
-      "en": "Letter to his son"
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
     },
-    "era": {
-      "en": "after AD 73; date debated (possibly 2nd-3rd c.)"
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+    }
+   }
+  ]
+ },
+ {
+  "id": "witness-josephus-baptist",
+  "title": {
+   "en": "Josephus on John the Baptist"
+  },
+  "author": {
+   "en": "Flavius Josephus"
+  },
+  "work": {
+   "en": "Antiquities of the Jews 18.5.2"
+  },
+  "era": {
+   "en": "c. AD 93-94"
+  },
+  "authoredRange": {
+   "startYear": 93,
+   "endYear": 94,
+   "display": {
+    "en": "c. AD 93-94"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "Josephus describes John, called the Baptist, as a good man who exhorted the Jews and was executed by Herod Antipas — an independent, generally-accepted attestation of John and Antipas paralleling the Gospels."
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-josephus-baptist",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "the four Gospels"
+   },
+   "range": {
+    "startYear": 65,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 65-95"
     },
-    "authoredRange": {
-      "startYear": 73,
-      "endYear": 260,
-      "display": {
-        "en": "after AD 73; possibly 2nd-3rd c."
-      },
-      "approximate": true
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "The Gospels (c. AD 65-95) record John the Baptist a generation before Josephus wrote (c. AD 93)."
+   }
+  },
+  "siteIds": [
+   "site-baptism-at-the-jordan"
+  ],
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
     },
-    "attests": {
-      "en": "A Syriac letter groups the executed 'wise king' of the Jews with Socrates and Pythagoras as sages killed unjustly. Many take this as a non-Christian allusion to Jesus, though it never names him."
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
     },
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-wit-mara",
-      "cit-nt-dating",
-      "cit-quran-dating"
-    ],
-    "biblicalParallel": {
-      "source": {
-        "en": "the Gospel passion narratives"
-      },
-      "range": {
-        "startYear": 65,
-        "endYear": 95,
-        "display": {
-          "en": "c. AD 65-95"
-        },
-        "approximate": true
-      },
-      "gapNote": {
-        "en": "The Gospels (c. AD 65-95) precede Mara's letter, whose date is debated (possibly 2nd-3rd century) — potentially a century or more later."
-      }
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+    }
+   }
+  ]
+ },
+ {
+  "id": "witness-tacitus",
+  "title": {
+   "en": "Tacitus on 'Christus' and the Christians of Rome"
+  },
+  "author": {
+   "en": "Cornelius Tacitus (Roman senator & historian)"
+  },
+  "work": {
+   "en": "Annals 15.44"
+  },
+  "era": {
+   "en": "c. AD 116"
+  },
+  "authoredRange": {
+   "startYear": 116,
+   "endYear": 116,
+   "display": {
+    "en": "c. AD 116"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "Reporting Nero's scapegoating of Christians after the fire of Rome (AD 64), Tacitus notes that 'Christus', from whom the name came, 'suffered the extreme penalty' under Pontius Pilate in the reign of Tiberius — a hostile Roman source confirming the execution under Pilate."
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-tacitus",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "Paul's letters and the four Gospels"
+   },
+   "range": {
+    "startYear": 50,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 50-95 (Paul's letters from the 50s; the Gospels c. 65-95)"
     },
-    "personIds": [
-      "person-jesus"
-    ],
-    "disputes": {
-      "en": "The letter never names Jesus, and both its date (anywhere from the 1st to 3rd century) and whether the 'wise king' is Jesus are debated. It is suggestive, not decisive."
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "The New Testament accounts (c. AD 50-95) predate Tacitus (c. AD 116) by a generation or more."
+   }
+  },
+  "personIds": [
+   "person-jesus",
+   "person-pontius-pilate"
+  ],
+  "siteIds": [
+   "site-rome"
+  ],
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
     },
-    "otherReferences": [
-      {
-        "source": {
-          "en": "The Quran"
-        },
-        "range": {
-          "startYear": 610,
-          "endYear": 650,
-          "display": {
-            "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
-          },
-          "approximate": true
-        },
-        "note": {
-          "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
-        }
-      }
-    ]
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
+    },
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+    }
+   }
+  ]
+ },
+ {
+  "id": "witness-pliny",
+  "title": {
+   "en": "Pliny the Younger on early Christian worship"
+  },
+  "author": {
+   "en": "Pliny the Younger (Roman governor of Bithynia)"
+  },
+  "work": {
+   "en": "Letters 10.96 (to Trajan)"
+  },
+  "era": {
+   "en": "c. AD 112"
+  },
+  "authoredRange": {
+   "startYear": 112,
+   "endYear": 112,
+   "display": {
+    "en": "c. AD 112"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "Pliny asks Trajan how to try Christians, describing their practice of meeting before dawn to sing 'to Christ as to a god' and binding themselves by oath against wrongdoing — an outside snapshot of Christian worship within about 80 years of the crucifixion."
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-pliny",
+   "cit-nt-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "the New Testament letters and Gospels"
+   },
+   "range": {
+    "startYear": 50,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 50-95"
+    },
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "Christian worship is described in the New Testament (c. AD 50-95) decades before Pliny's report (c. AD 112)."
+   }
   }
+ },
+ {
+  "id": "witness-suetonius",
+  "title": {
+   "en": "Suetonius on 'Chrestus' and the Christians"
+  },
+  "author": {
+   "en": "Suetonius (Roman biographer)"
+  },
+  "work": {
+   "en": "Lives of the Caesars: Claudius 25; Nero 16"
+  },
+  "era": {
+   "en": "c. AD 121"
+  },
+  "authoredRange": {
+   "startYear": 121,
+   "endYear": 121,
+   "display": {
+    "en": "c. AD 121"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "Suetonius records Claudius expelling Jews from Rome over disturbances 'at the instigation of Chrestus' (cf. Acts 18:2) and Nero punishing Christians. The reports touch the same movement, though the 'Chrestus' reference is debated."
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-suetonius",
+   "cit-nt-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "Acts (the expulsion under Claudius) and Paul's letters"
+   },
+   "range": {
+    "startYear": 50,
+    "endYear": 90,
+    "display": {
+     "en": "c. AD 50-90 (Acts c. 80-90)"
+    },
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "Acts records the Claudius-era expulsion (Acts 18:2, written c. AD 80-90) before Suetonius (c. AD 121)."
+   }
+  },
+  "siteIds": [
+   "site-rome"
+  ]
+ },
+ {
+  "id": "witness-thallus",
+  "title": {
+   "en": "Thallus on the darkness (via Julius Africanus)"
+  },
+  "author": {
+   "en": "Thallus (as quoted by Julius Africanus)"
+  },
+  "work": {
+   "en": "cited in Africanus, Chronography"
+  },
+  "era": {
+   "en": "1st c.? (surviving quotation c. AD 221)"
+  },
+  "authoredRange": {
+   "startYear": 221,
+   "endYear": 221,
+   "display": {
+    "en": "surviving quotation c. AD 221"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "The 3rd-century Christian writer Julius Africanus claims Thallus explained the darkness at the crucifixion as a solar eclipse. The value of this as an independent witness is heavily disputed."
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-thallus",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "the Gospel passion narratives"
+   },
+   "range": {
+    "startYear": 65,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 65-95"
+    },
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "The Gospels (c. AD 65-95) record the crucifixion darkness; Thallus survives only second-hand in Julius Africanus (c. AD 221) — over a century later — the latest and weakest of these witnesses."
+   }
+  },
+  "personIds": [
+   "person-jesus"
+  ],
+  "disputes": {
+   "en": "Thallus's work is lost; we have only Africanus's second-hand claim about what Thallus said, and even that Thallus mentioned the crucifixion darkness is inference. Its date and relevance are contested; it is at best weak, indirect testimony."
+  },
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
+    },
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
+    },
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+    }
+   }
+  ]
+ },
+ {
+  "id": "witness-mara",
+  "title": {
+   "en": "Mara bar Serapion on the 'wise king' of the Jews"
+  },
+  "author": {
+   "en": "Mara bar Serapion (Syriac Stoic)"
+  },
+  "work": {
+   "en": "Letter to his son"
+  },
+  "era": {
+   "en": "after AD 73; date debated (possibly 2nd-3rd c.)"
+  },
+  "authoredRange": {
+   "startYear": 73,
+   "endYear": 260,
+   "display": {
+    "en": "after AD 73; possibly 2nd-3rd c."
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "A Syriac letter groups the executed 'wise king' of the Jews with Socrates and Pythagoras as sages killed unjustly. Many take this as a non-Christian allusion to Jesus, though it never names him."
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wit-mara",
+   "cit-nt-dating",
+   "cit-quran-dating"
+  ],
+  "biblicalParallel": {
+   "source": {
+    "en": "the Gospel passion narratives"
+   },
+   "range": {
+    "startYear": 65,
+    "endYear": 95,
+    "display": {
+     "en": "c. AD 65-95"
+    },
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "The Gospels (c. AD 65-95) precede Mara's letter, whose date is debated (possibly 2nd-3rd century) — potentially a century or more later."
+   }
+  },
+  "personIds": [
+   "person-jesus"
+  ],
+  "disputes": {
+   "en": "The letter never names Jesus, and both its date (anywhere from the 1st to 3rd century) and whether the 'wise king' is Jesus are debated. It is suggestive, not decisive."
+  },
+  "otherReferences": [
+   {
+    "source": {
+     "en": "The Quran"
+    },
+    "range": {
+     "startYear": 610,
+     "endYear": 650,
+     "display": {
+      "en": "c. AD 610-650 (received c. 610-632; compiled c. 650)"
+     },
+     "approximate": true
+    },
+    "note": {
+     "en": "The Quran refers to Jesus (Isa), and to John as Yahya, roughly six centuries after the New Testament and the early extra-biblical sources."
+    }
+   }
+  ]
+ },
+ {
+  "id": "witness-gilgamesh-flood",
+  "title": {
+   "en": "The Gilgamesh flood tablet (Tablet XI)"
+  },
+  "author": {
+   "en": "Sîn-lēqi-unninni (compiler of the standard Babylonian version)"
+  },
+  "work": {
+   "en": "Epic of Gilgamesh, Tablet XI (with the older Atrahasis and Sumerian Ziusudra flood stories)"
+  },
+  "era": {
+   "en": "Atrahasis c. 18th c. BC; standard version c. 13th–11th c. BC"
+  },
+  "authoredRange": {
+   "startYear": -1800,
+   "endYear": -1100,
+   "display": {
+    "en": "c. 1800–1100 BC"
+   },
+   "approximate": true
+  },
+  "attests": {
+   "en": "A Mesopotamian flood account closely paralleling Genesis: a divinely warned man builds a great vessel to precise dimensions, seals it with pitch, loads his family and animals, survives a world-drowning flood, releases birds to find land, grounds on a mountain and offers sacrifice. It attests how ancient and deeply rooted the Near-Eastern memory of the Flood is."
+  },
+  "biblicalParallel": {
+   "source": {
+    "en": "Genesis 6–9 (the Flood narrative)"
+   },
+   "range": {
+    "startYear": -1400,
+    "endYear": -500,
+    "display": {
+     "en": "composition debated, c. 15th–6th c. BC"
+    },
+    "approximate": true
+   },
+   "gapNote": {
+    "en": "Unusually among the app's witnesses, the cuneiform flood tablets are OLDER than the written form of the biblical text — both preserve a flood memory reaching deep into Mesopotamian antiquity. The tablet corroborates the antiquity of the tradition, not the details of the Genesis account."
+   }
+  },
+  "siteIds": [
+   "site-shuruppak",
+   "site-ararat-landing"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-gilgamesh-flood"
+  ]
+ }
 ]

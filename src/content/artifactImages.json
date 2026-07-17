@@ -68,5 +68,19 @@
     "author": "Prioryman",
     "license": "CC BY-SA 3.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyrus_Cylinder_front.jpg"
+  },
+  "artifact-jesus-boat": {
+    "src": "images/artifacts/artifact-jesus-boat.jpg",
+    "commonsFile": "Ancient Boat of Sea of Galilee.jpg",
+    "author": "Warfieldian",
+    "license": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ancient_Boat_of_Sea_of_Galilee.jpg"
+  },
+  "artifact-babylonian-chronicle": {
+    "src": "images/artifacts/artifact-babylonian-chronicle.jpg",
+    "commonsFile": "ABC 05 Early Years of Nebuchadnezzar chronicle.jpg",
+    "author": "Jona Lendering",
+    "license": "CC0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:ABC_05_Early_Years_of_Nebuchadnezzar_chronicle.jpg"
   }
 }

@@ -1,0 +1,28 @@
+Total features: 113
+Match Feature 0 points: 5
+  Start: [34.245,31.208] End: [34.477,31.585]
+Match Feature 1 points: 21
+  Start: [35.551,32.396] End: [35.451,31.479]
+Match Feature 2 points: 6
+  Start: [35.109,33.084] End: [35.603,33.241]
+Match Feature 3 points: 4
+  Start: [35.787,32.735] End: [35.841,33.416]
+Match Feature 6 points: 2
+  Start: [35.841,33.416] End: [35.603,33.241]
+Match Feature 7 points: 18
+  Start: [35.841,33.416] End: [35.976,34.629]
+Match Feature 72 points: 7
+  Start: [35.451,31.479] End: [34.973,29.555]
+Match Feature 73 points: 7
+  Start: [35.551,32.396] End: [35.451,31.479]
+Match Feature 74 points: 3
+  Start: [35.611,32.682] End: [35.551,32.396]
+Match Feature 76 points: 5
+  Start: [34.198,31.323] End: [34.904,29.477]
+Match Feature 92 points: 7
+  Start: [35.787,32.735] End: [38.774,33.372]
+Match Feature 93 points: 2
+  Start: [35.611,32.682] End: [35.787,32.735]
+Match Feature 95 points: 13
+  Start: [34.951,29.354] End: [39.145,32.124]
+Total matches: 13
