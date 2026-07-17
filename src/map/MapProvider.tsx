@@ -191,35 +191,74 @@ export function MapProvider({ children }: { children: ReactNode }) {
         className: 'country-border-popup',
       });
 
-      map.on('click', 'country-shading', (e) => {
+      // Click handler on country shading and separation barrier to show info popup
+      map.on('click', (e) => {
         const { borders } = useMapLayersStore.getState();
         if (!borders) return;
 
-        const features = map.queryRenderedFeatures(e.point, { layers: ['country-shading'] });
-        if (features && features.length > 0) {
-          const feature = features[0];
-          const countryName = feature.properties?.name || '';
-          const color = darkRef.current ? feature.properties?.colorDark : feature.properties?.colorLight;
+        // 1. Check if the separation barrier was clicked
+        if (map.getLayer('wb-barrier')) {
+          const barrierFeatures = map.queryRenderedFeatures(e.point, { layers: ['wb-barrier'] });
+          if (barrierFeatures && barrierFeatures.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: #c49a6c">West Bank Separation Barrier</h3>
+                <p>Physical barrier (wall and security fence) constructed by Israel starting in 2002. It deviates from the 1949 Armistice Green Line to define modern-day de facto border lines.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
 
-          const content = `
-            <div class="country-popup-content">
-              <h3 style="color: ${color || 'var(--accent)'}">${countryName}</h3>
-              <p>Modern-day international borders.</p>
-            </div>
-          `;
-          popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+        // 2. Check if a country shading region was clicked
+        if (map.getLayer('country-shading')) {
+          const countryFeatures = map.queryRenderedFeatures(e.point, { layers: ['country-shading'] });
+          if (countryFeatures && countryFeatures.length > 0) {
+            const feature = countryFeatures[0];
+            const countryName = feature.properties?.name || '';
+            const color = darkRef.current ? feature.properties?.colorDark : feature.properties?.colorLight;
+
+            let desc = 'Modern-day international borders.';
+            let displayName = countryName;
+
+            if (countryName === 'Israel') {
+              desc = 'Modern-day borders, defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
+            } else if (countryName === 'Palestine') {
+              displayName = 'Palestine (West Bank & Gaza)';
+              desc = 'Modern-day territory boundaries defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
+            }
+
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: ${color || 'var(--accent)'}">${displayName}</h3>
+                <p>${desc}</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+          }
         }
       });
 
-      map.on('mouseenter', 'country-shading', () => {
+      // Hover handler to dynamically change the cursor to a pointer when hovering over interactive elements
+      map.on('mousemove', (e) => {
         const { borders } = useMapLayersStore.getState();
-        if (borders) {
-          map.getCanvas().style.cursor = 'pointer';
+        if (!borders) {
+          map.getCanvas().style.cursor = '';
+          return;
         }
-      });
 
-      map.on('mouseleave', 'country-shading', () => {
-        map.getCanvas().style.cursor = '';
+        const activeLayers = [];
+        if (map.getLayer('country-shading')) activeLayers.push('country-shading');
+        if (map.getLayer('wb-barrier')) activeLayers.push('wb-barrier');
+
+        if (activeLayers.length === 0) {
+          map.getCanvas().style.cursor = '';
+          return;
+        }
+
+        const features = map.queryRenderedFeatures(e.point, { layers: activeLayers });
+        map.getCanvas().style.cursor = features && features.length > 0 ? 'pointer' : '';
       });
     });
     mapRef.current = map;
