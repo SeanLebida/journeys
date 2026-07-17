@@ -22,9 +22,12 @@ const read = (n: string): unknown[] =>
   existsSync(join(CONTENT, n)) ? (JSON.parse(readFileSync(join(CONTENT, n), 'utf8')) as unknown[]) : [];
 
 const citations = [...read('citations.json'), ...read('citations.extra.json')];
-const sites = read('sites.json');
-const journeys = read('journeys.json');
-const stops = read('stops.json');
+// Merge hand-authored `.extra.json` layers exactly as the build does, so the
+// test validates the same content set that ships (base-only reads missed sites
+// and stops authored in the extra files).
+const sites = [...read('sites.json'), ...read('sites.extra.json')];
+const journeys = [...read('journeys.json'), ...read('journeys.extra.json')];
+const stops = [...read('stops.json'), ...read('stops.extra.json')];
 const persons = read('persons.json');
 const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
 const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];

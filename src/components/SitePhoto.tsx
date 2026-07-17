@@ -57,9 +57,15 @@ export function SitePhoto({ siteId }: { siteId: string }) {
   const img = images[Math.min(i, images.length - 1)];
   return (
     <figure className="site-photo">
+      {/* Present-day marker: every bundled photo (and the aerial/street views)
+          shows the location as it looks today, not a historical reconstruction.
+          Concise, supplemental — an overlay tag, not the primary content. */}
+      <span className="site-photo__era" title="Shows the location as it looks today, not a historical reconstruction">
+        Present day
+      </span>
       <img
         src={`${import.meta.env.BASE_URL}${img.src}`}
-        alt={img.caption}
+        alt={`Present-day view: ${img.caption}`}
         loading="lazy"
         decoding="async"
         // If the asset is missing (e.g. a stripped-down build), drop the whole

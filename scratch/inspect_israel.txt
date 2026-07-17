@@ -1,0 +1,6 @@
+Israel Geometry Type: Polygon
+Is Coordinates Array: true
+Coordinates length: 1
+  Ring 0 has 471 points
+    First: [34.248351,31.211449]
+    Last: [34.248351,31.211449]

@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "trace": "Trace a journey",
+    "traceShort": "Trace",
     "atlas": "Atlas",
     "lessons": "Lessons",
     "quiz": "Quiz"

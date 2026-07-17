@@ -4,7 +4,7 @@ import { platformStorage } from './persistAdapter';
 import { DEFAULT_LOCALE, type AppLocale } from '../i18n';
 
 export type Theme = 'system' | 'light' | 'dark';
-export type Translation = 'WEB' | 'KJV';
+export type Translation = 'ASV' | 'KJV';
 
 interface UiState {
   theme: Theme;
@@ -22,7 +22,7 @@ export const useUiStore = create<UiState>()(
     (set) => ({
       theme: 'system',
       locale: DEFAULT_LOCALE,
-      translation: 'WEB',
+      translation: 'ASV',
       setTheme: (theme) => set({ theme }),
       setLocale: (locale) => set({ locale }),
       setTranslation: (translation) => set({ translation }),
