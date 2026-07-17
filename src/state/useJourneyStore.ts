@@ -27,7 +27,9 @@ export const useJourneyStore = create<JourneyState>((set) => ({
   progress: 0,
   playing: false,
   playbackSpeed: 1,
-  pauseAtStops: false,
+  // Default ON: the guided trace pauses at each stop so the reader can absorb it
+  // before moving on. Users can uncheck it for a continuous fly-through.
+  pauseAtStops: true,
   setActiveJourney: (activeJourneyId) => set({ activeJourneyId, progress: 0, playing: false }),
   setActiveStop: (activeStopId) => set({ activeStopId }),
   setProgress: (progress) => set({ progress: Math.min(1, Math.max(0, progress)) }),

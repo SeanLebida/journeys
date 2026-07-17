@@ -384,5 +384,37 @@
     "citations": [
       "cit-ot-mount-nebo"
     ]
+  },
+  {
+    "id": "site-egypt-refuge",
+    "ancientName": {
+      "en": "Egypt (place of refuge)"
+    },
+    "modernName": {
+      "en": "Old Cairo (traditional), Egypt"
+    },
+    "modernLocation": {
+      "en": "Egypt; Coptic tradition venerates sites along the Nile (Old Cairo / Abu Serga, Wadi El Natrun, Asyut)"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 30.0059,
+        "lon": 31.2306
+      },
+      "confidence": "disputed",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-flight-into-egypt"
+      ],
+      "disputes": {
+        "en": "The Egyptian refuge is nowhere located in the text; the mapped point marks Old Cairo (Abu Serga), one of several sites Coptic tradition associates with the Holy Family's stay, not an archaeologically fixed location."
+      }
+    },
+    "summary": {
+      "en": "Egypt was the Holy Family's refuge after Joseph, warned in a dream, fled Herod's massacre of the infants of Bethlehem (Matthew 2:13-15), staying until Herod's death — 'Out of Egypt I called my son' (Hosea 11:1). The exact place is unknown; the mapped point marks Old Cairo (Abu Serga), one of several Coptic-tradition refuge sites. LEG: land arrival and return."
+    },
+    "citations": [
+      "cit-flight-into-egypt"
+    ]
   }
 ]

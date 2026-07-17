@@ -1695,5 +1695,21 @@
   },
   "url": "https://en.wikipedia.org/wiki/Jerusalem_Chronicle",
   "kind": "archaeological"
+ },
+ {
+  "id": "cit-flight-into-egypt",
+  "source": {
+   "en": "Wikipedia, 'Flight into Egypt' (Matthew 2:13-23; Coptic tradition)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Flight_into_Egypt",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-finding-in-the-temple",
+  "source": {
+   "en": "Wikipedia, 'Finding in the Temple' (Luke 2:41-52)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Finding_in_the_Temple",
+  "kind": "secondary-scholarly"
  }
 ]
