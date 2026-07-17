@@ -146,10 +146,10 @@ export function VideoEmbed({ video }: { video: TVideo }) {
       {open ? (
         <div className="video-card__frame">
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0`}
+            src={`https://www.youtube.com/embed/${video.videoId}?rel=0`}
             title={video.title.en}
             loading="lazy"
-            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </div>

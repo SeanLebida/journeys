@@ -616,6 +616,134 @@
   "kind": "primary-ancient"
  },
  {
+  "id": "cit-arch-bethesda-academic",
+  "source": {
+   "en": "Joachim Jeremias, 'The Rediscovery of Bethesda (John 5:2)' (Southern Baptist Theological Seminary, 1966) & excavations database of the École Biblique et Archéologique Française de Jérusalem"
+  },
+  "url": "https://www.ebaf.edu/",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-capernaum-house-corbo",
+  "source": {
+   "en": "Virgilio C. Corbo, 'The House of St. Peter at Capharnaum: Historical and Archaeological Researches in the Light of the Recent Excavations' (Studium Biblicum Franciscanum, Collectio Minor 5, Franciscan Printing Press, Jerusalem, 1969)"
+  },
+  "url": "https://www.custodia.org/en/sanctuaries/capernaum",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-siloam-tunnel-sayce",
+  "source": {
+   "en": "A. H. Sayce, 'The Ancient Hebrew Inscription discovered at the Pool of Siloam', Palestine Exploration Fund Quarterly Statement (1881) & City of David Excavations Archive"
+  },
+  "url": "https://www.cityofdavid.org.il/",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-cyrus-cylinder-bm",
+  "source": {
+   "en": "British Museum Collection Online, 'The Cyrus Cylinder (Museum number 90920)'"
+  },
+  "url": "https://www.britishmuseum.org/collection/object/W_1880-0617-1941",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-sergius-paulus-met",
+  "source": {
+   "en": "The Sergius Paulus Inscription from Soloi, Cyprus (Inscriptiones Graecae XV; Cesnola Collection, Metropolitan Museum of Art)"
+  },
+  "url": "https://www.metmuseum.org/art/collection/search/241853",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-sennacherib-prism-bm",
+  "source": {
+   "en": "British Museum Collection Online, 'The Taylor Prism / Sennacherib's Annals (Museum number 91032)'"
+  },
+  "url": "https://www.britishmuseum.org/collection/object/W_1855-1003-1",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-hezekiah-bulla-mazar",
+  "source": {
+   "en": "Eilat Mazar, 'The Ophel Excavations 2009-2013: Final Reports Volume I', Hebrew University of Jerusalem (2015) — scientific publication of King Hezekiah's royal bulla"
+  },
+  "url": "https://scholars.huji.ac.il/eilatmazar",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wit-josephus-jesus-loeb",
+  "source": {
+   "en": "Flavius Josephus, 'Antiquities of the Jews' (Book 18, 3.3: Testimonium Flavianum), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/josephus-jewish_antiquities/1930/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-josephus-james-loeb",
+  "source": {
+   "en": "Flavius Josephus, 'Antiquities of the Jews' (Book 20, 9.1), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/josephus-jewish_antiquities/1930/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-josephus-jbaptist-loeb",
+  "source": {
+   "en": "Flavius Josephus, 'Antiquities of the Jews' (Book 18, 5.2), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/josephus-jewish_antiquities/1930/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-tacitus-loeb",
+  "source": {
+   "en": "Cornelius Tacitus, 'Annals' (Book 15, Chapter 44), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/tacitus-annals/1931/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-pliny-loeb",
+  "source": {
+   "en": "Pliny the Younger, 'Letters' (Book 10, Letter 96-97 to Emperor Trajan), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/pliny_younger-letters/1915/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-suetonius-loeb",
+  "source": {
+   "en": "C. Suetonius Tranquillus, 'Lives of the Caesars' (Divus Claudius 25 & Nero 16), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/suetonius-lives_caesars/1914/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-thallus-wallraff",
+  "source": {
+   "en": "Sextus Julius Africanus, 'Chronographiae' (Fragment 18, preserved by Georgius Syncellus), edited by Martin Wallraff, Walter de Gruyter (2007)"
+  },
+  "url": "https://doi.org/10.1515/9783110201109",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-mara-cureton",
+  "source": {
+   "en": "British Library Syriac Manuscript Add 14658, 'The Letter of Mara bar Serapion' (Cureton, Spicilegium Syriacum, 1855)"
+  },
+  "url": "https://archive.org/details/spicilegiumsyria00cure",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wit-josephus-baptist-loeb",
+  "source": {
+   "en": "Flavius Josephus, 'Antiquities of the Jews' (Book 18, 5.2), Loeb Classical Library, Harvard University Press"
+  },
+  "url": "https://www.loebclassics.com/view/josephus-jewish_antiquities/1930/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
   "id": "cit-nt-dating",
   "source": {
    "en": "Wikipedia, 'Dating the Bible' (composition of the New Testament)"
@@ -694,5 +822,878 @@
   },
   "url": "https://doi.org/10.5281/zenodo.17122148",
   "kind": "gazetteer"
+ },
+ {
+  "id": "cit-edicule-restoration",
+  "source": {
+   "en": "Antonia Moropoulou et al., 'Joint study of the Holy Aedicule of the Church of the Holy Sepulchre', Journal of Cultural Heritage Vol. 31 (2018) — peer-reviewed scientific and mortar dating analysis confirming Constantinian origins"
+  },
+  "url": "https://doi.org/10.1016/j.culher.2018.02.014",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-emmaus-nicopolis",
+  "source": {
+   "en": "Eusebius of Caesarea, 'Onomasticon: On the Place Names in Holy Scripture' (c. AD 330) & Jerome, 'Epistulae 108' — primary ancient identification of Emmaus with Nicopolis"
+  },
+  "url": "https://www.tertullian.org/fathers/eusebius_onomasticon_02_trans.htm",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-emmaus-qubeibeh",
+  "source": {
+   "en": "Bellarmino Bagatti, O.F.M., 'I Monumenti di Emmaus el-Qubeibeh e dei Dintorni' (Franciscan Archaeological Excavation Report, 1947)"
+  },
+  "url": "https://www.custodia.org/en/sanctuaries/emmaus-el-qubeibeh",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-tabgha-primacy",
+  "source": {
+   "en": "Egeria, 'Itinerarium Egeriae' (c. AD 381-384) & Peter Deacon, 'De Locis Sanctis' — primary ancient records of the Byzantine lakeside church and Mensa Christi at Tabgha"
+  },
+  "url": "https://www.ccel.org/m/mcclure/etheria/etheria.htm",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-jesus-boat",
+  "source": {
+   "en": "Shelley Wachsmann et al., 'The Excavations of an Ancient Boat in the Sea of Galilee (Kinneret)', Atiqot Vol. 19 (Israel Antiquities Authority, 1990) — primary scientific publication"
+  },
+  "url": "https://www.antiquities.org.il/",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-galilee-mountain",
+  "source": {
+   "en": "David Hill, 'The Gospel of Matthew' (New Century Bible Commentary, Marshall, Morgan & Scott, 1972) — academic commentary on the Great Commission and Galilee mountain"
+  },
+  "url": "https://archive.org/details/gospelofmatthew0000hill",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-1cor15-creed",
+  "source": {
+   "en": "Gary R. Habermas, 'The Resurrection Appearances of Jesus', Southeastern Theological Review 3.1 (2012) — peer-reviewed historical dating of the pre-Pauline 1 Corinthians 15 creed to within 2-5 years of the crucifixion"
+  },
+  "url": "https://www.garyhabermas.com/articles/southeastern_theological_review/minimal-facts-methodology_2012.htm",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ascension-chapel",
+  "source": {
+   "en": "L.-H. Vincent & F. M. Abel, 'Jérusalem: recherches de topographie, d'archéologie et d'histoire', Vol. II: Jérusalem nouvelle (Gabalda, 1925) — classic archaeological study of the Ascension rotunda"
+  },
+  "url": "https://archive.org/details/jerusalemrecherc02vinc",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-mount-olives",
+  "source": {
+   "en": "Itinerarium Burdigalense (Bordeaux Pilgrim, AD 333) — the earliest surviving eyewitness record of Christian pilgrimage to the Mount of Olives and Ascension site"
+  },
+  "url": "https://www.patristics.co/bordeaux-pilgrim/",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-damascus-straight-street",
+  "source": {
+   "en": "Karl Wulzinger & Carl Watzinger, 'Damaskus: die antike Stadt' (German Archaeological Institute Damascus Survey and Roman Street Grid, 1921)"
+  },
+  "url": "https://www.dainst.org/",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-house-ananias",
+  "source": {
+   "en": "Eustache de Lorey, 'La chapelle de Saint-Ananie à Damas', Syria: revue d'art oriental et d'archéologie, Vol. 3, Fasc. 1 (1922) — primary excavation report of the subterranean crypt"
+  },
+  "url": "https://doi.org/10.3406/syria.1922.8887",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-pleiades-gazetteer",
+  "source": {
+   "en": "Pleiades: A Gazetteer of Past Places (Institute for the Study of the Ancient World, NYU & Ancient World Mapping Center, UNC)"
+  },
+  "url": "https://pleiades.stoa.org/",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-archaeology-crucifixion-tzaferis",
+  "source": {
+   "en": "Vassilios Tzaferis, 'Crucifixion: The Archaeological Evidence', Biblical Archaeology Review 11.1 (1985) — on the Giv'at ha-Mivtar nail-pierced calcaneus (heel bone)"
+  },
+  "url": "https://www.biblicalarchaeology.org/daily/biblical-topics/crucifixion/a-tomb-in-jerusalem-reveals-the-only-physical-evidence-of-crucifixion/",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-history-early-creed-luedemann",
+  "source": {
+   "en": "Gerd Lüdemann, 'The Resurrection of Christ: A Historical Inquiry' (Prometheus Books, 2004) — peer-reviewed historical verification of the 1 Cor 15 creed dating to AD 30-33"
+  },
+  "url": "https://archive.org/details/resurrectionofch0000lude",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-primary-josephus-antiquities",
+  "source": {
+   "en": "Flavius Josephus, 'Antiquities of the Jews' (Book 18 & 20, c. AD 93-94) — primary ancient manuscript evidence for Pontius Pilate, Jesus, John the Baptist, and James"
+  },
+  "url": "https://www.loebclassics.com/view/josephus-jewish_antiquities/1930/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-primary-tacitus-annals",
+  "source": {
+   "en": "Cornelius Tacitus, 'Annals' (Book 15, Chapter 44, c. AD 116) — primary ancient Roman senator record of Christ's execution under Pontius Pilate"
+  },
+  "url": "https://www.loebclassics.com/view/tacitus-annals/1931/volume.xml",
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-dth-kidron-valley-and-mount-of-olives",
+  "source": {
+   "en": "Drive Thru History, “Kidron Valley and Mount of Olives”"
+  },
+  "url": "https://drivethruhistory.com/kidron-valley-and-mount-of-olives/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-house-of-peter",
+  "source": {
+   "en": "Drive Thru History, “The House of Peter…”"
+  },
+  "url": "https://drivethruhistory.com/the-house-of-peter/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-church-of-the-annunciation-in-nazareth",
+  "source": {
+   "en": "Drive Thru History, “Church of the Annunciation in Nazareth”"
+  },
+  "url": "https://drivethruhistory.com/church-of-the-annunciation-in-nazareth/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-birthplace-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “Birthplace of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/birthplace-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-golgotha",
+  "source": {
+   "en": "Drive Thru History, “Golgotha”"
+  },
+  "url": "https://drivethruhistory.com/golgotha/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-in-jericho",
+  "source": {
+   "en": "Drive Thru History, “Jesus in Jericho”"
+  },
+  "url": "https://drivethruhistory.com/jesus-in-jericho/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-history-of-the-traditions-and-locations-related-to-the-annunciation",
+  "source": {
+   "en": "Drive Thru History, “History of the Traditions and Locations related to the Annunciation”"
+  },
+  "url": "https://drivethruhistory.com/history-of-the-traditions-and-locations-related-to-the-annunciation/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-peters-confession",
+  "source": {
+   "en": "Drive Thru History, “Peter’s Confession at Caesarea Philippi”"
+  },
+  "url": "https://drivethruhistory.com/peters-confession/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-and-the-raising-of-lazarus",
+  "source": {
+   "en": "Drive Thru History, “Jesus and the Raising of Lazarus”"
+  },
+  "url": "https://drivethruhistory.com/jesus-and-the-raising-of-lazarus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jacob-well-in-samaria",
+  "source": {
+   "en": "Drive Thru History, “Jacob’s Well in Samaria”"
+  },
+  "url": "https://drivethruhistory.com/jacob-well-in-samaria/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-garden-of-gethsemane",
+  "source": {
+   "en": "Drive Thru History, “Garden of Gethsemane”"
+  },
+  "url": "https://drivethruhistory.com/garden-of-gethsemane/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-golgotha-location",
+  "source": {
+   "en": "Drive Thru History, “Golgotha Location”"
+  },
+  "url": "https://drivethruhistory.com/golgotha-location/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-sea-of-galilee",
+  "source": {
+   "en": "Drive Thru History, “Sea of Galilee”"
+  },
+  "url": "https://drivethruhistory.com/sea-of-galilee/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-pool-of-bethesda",
+  "source": {
+   "en": "Drive Thru History, “Pool of Bethesda”"
+  },
+  "url": "https://drivethruhistory.com/pool-of-bethesda/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-zacchaeus-the-tax-collector",
+  "source": {
+   "en": "Drive Thru History, “Zacchaeus the Tax Collector”"
+  },
+  "url": "https://drivethruhistory.com/zacchaeus-the-tax-collector/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-john-the-baptist",
+  "source": {
+   "en": "Drive Thru History, “John the Baptist”"
+  },
+  "url": "https://drivethruhistory.com/john-the-baptist/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-tomb-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “The Tomb of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/the-tomb-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-temple-in-jerusalem",
+  "source": {
+   "en": "Drive Thru History, “Temple in Jerusalem”"
+  },
+  "url": "https://drivethruhistory.com/the-temple-in-jerusalem/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-pool-of-siloam",
+  "source": {
+   "en": "Drive Thru History, “Pool of Siloam”"
+  },
+  "url": "https://drivethruhistory.com/pool-of-siloam/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-galilee-boat",
+  "source": {
+   "en": "Drive Thru History, “Galilee Boat”"
+  },
+  "url": "https://drivethruhistory.com/galilee-boat/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jericho-and-jesus",
+  "source": {
+   "en": "Drive Thru History, “Jericho and Jesus”"
+  },
+  "url": "https://drivethruhistory.com/jericho-and-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-caiaphas-the-high-priest",
+  "source": {
+   "en": "Drive Thru History, “Caiaphas the High Priest”"
+  },
+  "url": "https://drivethruhistory.com/caiaphas-the-high-priest/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-before-caiaphas",
+  "source": {
+   "en": "Drive Thru History, “Jesus before Caiaphas”"
+  },
+  "url": "https://drivethruhistory.com/jesus-before-caiaphas/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-empty-tomb-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “The Empty Tomb of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/the-empty-tomb-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-pisidian-antioch",
+  "source": {
+   "en": "Drive Thru History, “Pisidian Antioch”"
+  },
+  "url": "https://drivethruhistory.com/pisidian-antioch/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-legacy-of-barnabas-on-cyprus",
+  "source": {
+   "en": "Drive Thru History, “Legacy of Barnabas on Cyprus”"
+  },
+  "url": "https://drivethruhistory.com/legacy-of-barnabas-on-cyprus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-philippi-of-macedonia",
+  "source": {
+   "en": "Drive Thru History, “Philippi of Macedonia”"
+  },
+  "url": "https://drivethruhistory.com/philippi-of-macedonia/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-lydias-conversion-at-philippi",
+  "source": {
+   "en": "Drive Thru History, “Lydia’s Conversion at Philippi”"
+  },
+  "url": "https://drivethruhistory.com/lydias-conversion-at-philippi/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-paul-and-silas-in-prison-at-philippi",
+  "source": {
+   "en": "Drive Thru History, “Paul and Silas in Prison at Philippi”"
+  },
+  "url": "https://drivethruhistory.com/paul-and-silas-in-prison-at-philippi/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-thessalonica-thessalonike",
+  "source": {
+   "en": "Drive Thru History, “Thessalonica (Thessalonike)”"
+  },
+  "url": "https://drivethruhistory.com/thessalonica-thessalonike/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-isthmian-games",
+  "source": {
+   "en": "Drive Thru History, “The Isthmian Games”"
+  },
+  "url": "https://drivethruhistory.com/the-isthmian-games/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-melita-the-place-of-refuge",
+  "source": {
+   "en": "Drive Thru History, “Melita – The Place of Refuge”"
+  },
+  "url": "https://drivethruhistory.com/melita-the-place-of-refuge/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-paul-and-the-roman-christians",
+  "source": {
+   "en": "Drive Thru History, “Paul and the Roman Christians”"
+  },
+  "url": "https://drivethruhistory.com/paul-and-the-roman-christians/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-ancient-rome",
+  "source": {
+   "en": "Drive Thru History, “Ancient Rome”"
+  },
+  "url": "https://drivethruhistory.com/ancient-rome/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-john-exiled-to-patmos",
+  "source": {
+   "en": "Drive Thru History, “John Exiled to Patmos”"
+  },
+  "url": "https://drivethruhistory.com/john-exiled-to-patmos/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-shepherds-fields-near-bethlehem",
+  "source": {
+   "en": "Drive Thru History, “Shepherds in the Fields near Bethlehem”"
+  },
+  "url": "https://drivethruhistory.com/shepherds-fields-near-bethlehem/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-athens",
+  "source": {
+   "en": "Drive Thru History, “Athens”"
+  },
+  "url": "https://drivethruhistory.com/athens/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-paul-at-the-areopagus-of-athens",
+  "source": {
+   "en": "Drive Thru History, “Paul at the Areopagus of Athens”"
+  },
+  "url": "https://drivethruhistory.com/paul-at-the-areopagus-of-athens/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-corinth",
+  "source": {
+   "en": "Drive Thru History, “Corinth”"
+  },
+  "url": "https://drivethruhistory.com/corinth/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-paul-before-the-proconsul-at-corinth",
+  "source": {
+   "en": "Drive Thru History, “Paul Before the Proconsul at Corinth”"
+  },
+  "url": "https://drivethruhistory.com/paul-before-the-proconsul-at-corinth/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-ephesus",
+  "source": {
+   "en": "Drive Thru History, “Ephesus”"
+  },
+  "url": "https://drivethruhistory.com/ephesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-magic-in-the-marketplace-of-ephesus",
+  "source": {
+   "en": "Drive Thru History, “Magic in the Marketplace of Ephesus”"
+  },
+  "url": "https://drivethruhistory.com/magic-in-the-marketplace-of-ephesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-temple-of-artemis-at-ephesus",
+  "source": {
+   "en": "Drive Thru History, “The Temple of Artemis at Ephesus”"
+  },
+  "url": "https://drivethruhistory.com/the-temple-of-artemis-at-ephesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-caesarea-maritima",
+  "source": {
+   "en": "Drive Thru History, “Caesarea Maritima”"
+  },
+  "url": "https://drivethruhistory.com/caesarea-maritima/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-paul-at-caesarea-for-two-years",
+  "source": {
+   "en": "Drive Thru History, “Paul at Caesarea for Two Years”"
+  },
+  "url": "https://drivethruhistory.com/paul-at-caesarea-for-two-years/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-location-of-pauls-shipwreck-on-malta",
+  "source": {
+   "en": "Drive Thru History, “Location of Paul’s Shipwreck on Malta”"
+  },
+  "url": "https://drivethruhistory.com/location-of-pauls-shipwreck-on-malta/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-pauls-ministry-on-malta",
+  "source": {
+   "en": "Drive Thru History, “Paul’s Ministry on Malta”"
+  },
+  "url": "https://drivethruhistory.com/pauls-ministry-on-malta/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “The Church of the Nativity and the Location of the Birth of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-john-the-baptizer-prepares-the-way",
+  "source": {
+   "en": "Drive Thru History, “John the Baptizer Prepares the Way”"
+  },
+  "url": "https://drivethruhistory.com/john-the-baptizer-prepares-the-way/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-caesarea-philippi",
+  "source": {
+   "en": "Drive Thru History, “Caesarea Philippi”"
+  },
+  "url": "https://drivethruhistory.com/caesarea-philippi/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-village-of-cana-in-galilee",
+  "source": {
+   "en": "Drive Thru History, “The Village of Cana in Galilee”"
+  },
+  "url": "https://drivethruhistory.com/the-village-of-cana-in-galilee/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-ancient-capernaum-synagogue-house-peter",
+  "source": {
+   "en": "Drive Thru History, “Ancient Capernaum, the Synagogue, and the House of Peter”"
+  },
+  "url": "https://drivethruhistory.com/ancient-capernaum-synagogue-house-peter/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-nazareth-prophet-rejected-hometown",
+  "source": {
+   "en": "Drive Thru History, “Jesus of Nazareth: A Prophet Rejected in His Hometown”"
+  },
+  "url": "https://drivethruhistory.com/jesus-nazareth-prophet-rejected-hometown/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-stone-jars-ritual-washing-water-wine-miracle-cana",
+  "source": {
+   "en": "Drive Thru History, “Stone Jars, Ritual Washing, and the Water to Wine Miracle at Cana”"
+  },
+  "url": "https://drivethruhistory.com/stone-jars-ritual-washing-water-wine-miracle-cana/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-pool-of-bethesda",
+  "source": {
+   "en": "Drive Thru History, “The Pool of Bethesda”"
+  },
+  "url": "https://drivethruhistory.com/the-pool-of-bethesda/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-pool-siloam-rivers-living-water",
+  "source": {
+   "en": "Drive Thru History, “Jesus at the Pool of Siloam – “Rivers of Living Water””"
+  },
+  "url": "https://drivethruhistory.com/jesus-pool-siloam-rivers-living-water/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-discovery-jesus-boat",
+  "source": {
+   "en": "Drive Thru History, “Discovery of the Jesus Boat”"
+  },
+  "url": "https://drivethruhistory.com/discovery-jesus-boat/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-decapolis-region",
+  "source": {
+   "en": "Drive Thru History, “The Decapolis Region”"
+  },
+  "url": "https://drivethruhistory.com/the-decapolis-region/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-village-of-bethphage",
+  "source": {
+   "en": "Drive Thru History, “The Village of Bethphage”"
+  },
+  "url": "https://drivethruhistory.com/the-village-of-bethphage/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-golden-gate",
+  "source": {
+   "en": "Drive Thru History, “The Golden Gate”"
+  },
+  "url": "https://drivethruhistory.com/the-golden-gate/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-history-of-jerusalem",
+  "source": {
+   "en": "Drive Thru History, “History of Jerusalem since its Destruction in the First Century”"
+  },
+  "url": "https://drivethruhistory.com/history-of-jerusalem/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-upper-room",
+  "source": {
+   "en": "Drive Thru History, “The Upper Room”"
+  },
+  "url": "https://drivethruhistory.com/the-upper-room/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-jesus-prays-garden-gethsemane",
+  "source": {
+   "en": "Drive Thru History, “Jesus Prays in the Garden of Gethsemane”"
+  },
+  "url": "https://drivethruhistory.com/jesus-prays-garden-gethsemane/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-trial-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “The Trial of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/the-trial-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-roman-crucifixion-execution-jesus",
+  "source": {
+   "en": "Drive Thru History, “Roman Crucifixion and the Execution of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/roman-crucifixion-execution-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-road-to-emmaus",
+  "source": {
+   "en": "Drive Thru History, “The Road to Emmaus”"
+  },
+  "url": "https://drivethruhistory.com/the-road-to-emmaus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-ascension-of-jesus",
+  "source": {
+   "en": "Drive Thru History, “The Ascension of Jesus”"
+  },
+  "url": "https://drivethruhistory.com/the-ascension-of-jesus/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-miracle-at-lystra",
+  "source": {
+   "en": "Drive Thru History, “The Miracle at Lystra”"
+  },
+  "url": "https://drivethruhistory.com/the-miracle-at-lystra/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-ancient-paphos",
+  "source": {
+   "en": "Drive Thru History, “Ancient Paphos”"
+  },
+  "url": "https://drivethruhistory.com/ancient-paphos/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-ancient-salamis",
+  "source": {
+   "en": "Drive Thru History, “Ancient Salamis”"
+  },
+  "url": "https://drivethruhistory.com/ancient-salamis/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-nero-and-the-burning-of-rome",
+  "source": {
+   "en": "Drive Thru History, “Nero and the Burning of Rome”"
+  },
+  "url": "https://drivethruhistory.com/nero-and-the-burning-of-rome/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-destruction-of-jerusalem-and-the-temple",
+  "source": {
+   "en": "Drive Thru History, “Destruction of Jerusalem and the Temple”"
+  },
+  "url": "https://drivethruhistory.com/destruction-of-jerusalem-and-the-temple/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-patmos",
+  "source": {
+   "en": "Drive Thru History, “Patmos”"
+  },
+  "url": "https://drivethruhistory.com/patmos/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-biblical-figures-found-through-archaeology",
+  "source": {
+   "en": "Drive Thru History, “Biblical Figures Found Through Archaeology”"
+  },
+  "url": "https://drivethruhistory.com/biblical-figures-found-through-archaeology/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-mesha-stele",
+  "source": {
+   "en": "Drive Thru History, “The Mesha Stele”"
+  },
+  "url": "https://drivethruhistory.com/the-mesha-stele/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-neo-babylonian-jerusalem-chronicle",
+  "source": {
+   "en": "Drive Thru History, “Neo-Babylonian “Jerusalem” Chronicle”"
+  },
+  "url": "https://drivethruhistory.com/neo-babylonian-jerusalem-chronicle/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-cyrus-cylinder",
+  "source": {
+   "en": "Drive Thru History, “The Cyrus Cylinder”"
+  },
+  "url": "https://drivethruhistory.com/the-cyrus-cylinder/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-capernaum",
+  "source": {
+   "en": "Drive Thru History, “Capernaum”"
+  },
+  "url": "https://drivethruhistory.com/capernaum/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-praetorium-of-pilate",
+  "source": {
+   "en": "Drive Thru History, “The Praetorium of Pilate”"
+  },
+  "url": "https://drivethruhistory.com/the-praetorium-of-pilate/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-the-gallio-inscription",
+  "source": {
+   "en": "Drive Thru History, “The Gallio Inscription”"
+  },
+  "url": "https://drivethruhistory.com/the-gallio-inscription/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-dth-erastus-inscription",
+  "source": {
+   "en": "Drive Thru History, “Erastus Inscription”"
+  },
+  "url": "https://drivethruhistory.com/erastus-inscription/",
+  "kind": "secondary-scholarly",
+  "license": "© Drive Thru History — referenced with attribution"
+ },
+ {
+  "id": "cit-arch-jesus-boat",
+  "source": {
+   "en": "Wikipedia, 'Ancient Galilee Boat'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ancient_Galilee_Boat",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-arch-babylonian-chronicle",
+  "source": {
+   "en": "Wikipedia, 'Jerusalem Chronicle (Nebuchadnezzar Chronicle, ABC 5)'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Jerusalem_Chronicle",
+  "kind": "archaeological"
  }
 ]

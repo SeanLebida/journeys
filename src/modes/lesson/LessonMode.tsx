@@ -111,6 +111,15 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
   if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
 
+  const currentSiteId = stepSiteId(bundle, step);
+  const currentSite = currentSiteId ? bundle.site(currentSiteId) : undefined;
+  const stepArtifacts = currentSiteId ? bundle.artifactsForSite(currentSiteId) : [];
+  const consolidatedCitationIds = Array.from(new Set([
+    ...(lesson.citations || []),
+    ...(currentSite?.citations || []),
+    ...stepArtifacts.flatMap((a) => a.citations || [])
+  ]));
+
   return (
     <div className="lesson-player-layout">
       <ModePanel title={lesson.title.en}>
@@ -127,7 +136,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
           ))}
         </div>
 
-        <Citations ids={lesson.citations} bundle={bundle} />
+        <Citations ids={consolidatedCitationIds} bundle={bundle} />
       </ModePanel>
       <div className="lesson-progress-fixed">
         <div className="lesson-progress">
