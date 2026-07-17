@@ -1,4 +1,4 @@
-import type { StyleSpecification } from 'maplibre-gl';
+import type { FilterSpecification, StyleSpecification } from 'maplibre-gl';
 import type { FeatureCollection } from 'geojson';
 import { generateGraticule } from './graticule';
 import land from './basemap/land.json';
@@ -24,7 +24,7 @@ const COUNTRY_COLORS: Record<string, { light: string; dark: string }> = {
   'Bulgaria': { light: '#6e5a31', dark: '#bca26d' },    // Soft Bronze
   'Lebanon': { light: '#66365f', dark: '#ad6fa4' },     // Deep Plum
   'Israel': { light: '#553478', dark: '#9d75c7' },      // Purple
-  'Palestine': { light: '#553478', dark: '#9d75c7' },   // Purple (cohesive Levant shading)
+  'West Bank & Gaza': { light: '#553478', dark: '#9d75c7' }, // Purple (cohesive Levant shading)
   'Cyprus': { light: '#265c57', dark: '#4fb0a6' },      // Copper Teal
   'Malta': { light: '#a64f03', dark: '#f28e41' },       // Terracotta
 };
@@ -115,6 +115,13 @@ const GRATICULE = { light: '#b9ac8c', dark: '#2e2b26' } as const;
 const BARRIER = { light: '#6b4226', dark: '#c49a6c' } as const;
 const BARRIER_CASING = { light: '#3a2010', dark: '#2a1a0e' } as const;
 
+// The 1949 armistice (Green) lines and Jerusalem-area boundary segments are
+// tagged `class: "armistice"` in countries.json. Israel does not define these
+// as international borders, so they render dashed and lighter than the solid
+// border lines rather than in the same solid style.
+const NOT_ARMISTICE = ['!=', ['get', 'class'], 'armistice'] as FilterSpecification;
+const IS_ARMISTICE = ['==', ['get', 'class'], 'armistice'] as FilterSpecification;
+
 /**
  * Retone the base layers of a LIVE map when the user flips the theme — paint
  * updates in place, so content layers added by the modes (atlas dots, trace
@@ -143,6 +150,7 @@ export function applyMapTone(
   set('country-shading', 'fill-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set('country-shading-outline', 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set(BASEMAP_LAYERS.borders, 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
+  set('armistice-line', 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set('wb-barrier-casing', 'line-color', BARRIER_CASING[tone]);
   set('wb-barrier', 'line-color', BARRIER[tone]);
   set(BASEMAP_LAYERS.graticule, 'line-color', GRATICULE[tone]);
@@ -214,6 +222,7 @@ export function applyMapBorders(
   set('country-borders-casing', 'line-width', casingWidth);
   set('country-borders', 'line-color', borderColor);
   set('country-borders', 'line-width', borderWidth);
+  set('armistice-line', 'line-color', borderColor);
   set('country-borders-shading', 'line-color', shadingColor);
   set('country-borders-shading', 'line-opacity', shadingOpacity);
   set('country-shading', 'fill-color', fillColor);
@@ -354,6 +363,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         id: 'country-borders-shading',
         type: 'line',
         source: 'countries',
+        filter: NOT_ARMISTICE,
         paint: {
           'line-color': tone === 'dark' ? ['get', 'colorDark'] : ['get', 'colorLight'],
           'line-width': ['interpolate', ['linear'], ['zoom'], 3, 16, 7, 24, 10, 4],
@@ -364,6 +374,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         id: 'country-borders-casing',
         type: 'line',
         source: 'countries',
+        filter: NOT_ARMISTICE,
         paint: {
           'line-color': BORDER_CASING[tone],
           'line-width': 2.8,
@@ -374,10 +385,26 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         id: 'country-borders',
         type: 'line',
         source: 'countries',
+        filter: NOT_ARMISTICE,
         paint: {
           'line-color': tone === 'dark' ? ['get', 'colorDark'] : ['get', 'colorLight'],
           'line-width': 1.2,
           'line-opacity': 0.9,
+        },
+      },
+      // 1949 armistice (Green) lines — Israel does not define these as its
+      // international borders, so they render dashed and lighter than the
+      // solid border lines while staying visible for orientation.
+      {
+        id: 'armistice-line',
+        type: 'line',
+        source: 'countries',
+        filter: IS_ARMISTICE,
+        paint: {
+          'line-color': tone === 'dark' ? ['get', 'colorDark'] : ['get', 'colorLight'],
+          'line-width': 1,
+          'line-opacity': 0.55,
+          'line-dasharray': [3, 3],
         },
       },
       // Israeli West Bank Barrier — OSM data, rendered as dashed brown line

@@ -211,7 +211,22 @@ export function MapProvider({ children }: { children: ReactNode }) {
           }
         }
 
-        // 2. Check if a country shading region was clicked
+        // 2. Check if a dashed 1949 armistice (Green) line was clicked
+        if (map.getLayer('armistice-line')) {
+          const armisticeFeatures = map.queryRenderedFeatures(e.point, { layers: ['armistice-line'] });
+          if (armisticeFeatures && armisticeFeatures.length > 0) {
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: var(--accent)">1949 Armistice Line (Green Line)</h3>
+                <p>Ceasefire line from the 1949 armistice agreements, shown dashed because Israel does not define it as an international border. Israel's defined territory continues across it into a united Jerusalem, while the West Bank (Judea &amp; Samaria) and Gaza lie beyond it.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
+        // 3. Check if a country shading region was clicked
         if (map.getLayer('country-shading')) {
           const countryFeatures = map.queryRenderedFeatures(e.point, { layers: ['country-shading'] });
           if (countryFeatures && countryFeatures.length > 0) {
@@ -223,10 +238,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
             let displayName = countryName;
 
             if (countryName === 'Israel') {
-              desc = 'Modern-day borders, defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
-            } else if (countryName === 'Palestine') {
-              displayName = 'Palestine (West Bank & Gaza)';
-              desc = 'Modern-day territory boundaries defined by the 1949 Armistice Line (Green Line) and the modern Separation Barrier/Wall.';
+              desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. The dashed 1949 armistice (Green) lines toward the West Bank and Gaza are not defined by Israel as international borders.';
+            } else if (countryName === 'West Bank & Gaza') {
+              desc = 'The West Bank (Judea & Samaria) and the Gaza Strip, bounded by the dashed 1949 armistice (Green) lines. Israel defines these as disputed territories rather than the territory of a foreign state; East Jerusalem is shown inside Israel per the 1980 Jerusalem Law.';
             }
 
             const content = `
@@ -251,6 +265,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
         const activeLayers = [];
         if (map.getLayer('country-shading')) activeLayers.push('country-shading');
         if (map.getLayer('wb-barrier')) activeLayers.push('wb-barrier');
+        if (map.getLayer('armistice-line')) activeLayers.push('armistice-line');
 
         if (activeLayers.length === 0) {
           map.getCanvas().style.cursor = '';
@@ -300,6 +315,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     setLayerVisible(map, 'country-borders-shading', layers.borders);
     setLayerVisible(map, 'country-shading', layers.borders);
     setLayerVisible(map, 'country-shading-outline', layers.borders);
+    setLayerVisible(map, 'armistice-line', layers.borders);
     setLayerVisible(map, 'wb-barrier', layers.borders);
     setLayerVisible(map, 'wb-barrier-casing', layers.borders);
 
