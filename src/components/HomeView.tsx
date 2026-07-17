@@ -43,7 +43,7 @@ export function HomeView() {
 function ModeHomeShell({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   return (
-    <section className="mode-panel home" aria-labelledby="home-title">
+    <section className="mode-panel mode-panel--page home" aria-labelledby="home-title">
       <header className="home__header">
         <h1 id="home-title" className="home__title">
           {t('app.title')}

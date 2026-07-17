@@ -172,7 +172,9 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
       
-      el.style.display = isReached ? 'inline-block' : 'none';
+      // Match the display value CSS expects: the active label uses -webkit-box so
+      // its two-line clamp applies; others are a single inline-block badge.
+      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
@@ -200,7 +202,9 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
       
-      el.style.display = isReached ? 'inline-block' : 'none';
+      // Match the display value CSS expects: the active label uses -webkit-box so
+      // its two-line clamp applies; others are a single inline-block badge.
+      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
