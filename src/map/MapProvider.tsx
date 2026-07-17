@@ -184,6 +184,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
     for (const [key, layerId] of Object.entries(BASEMAP_LAYERS)) {
       setLayerVisible(map, layerId, layers[key as keyof typeof BASEMAP_LAYERS]);
     }
+    if (layers.ancientMap) {
+      map.setMaxZoom(11);
+    } else {
+      map.setMaxZoom(20);
+    }
     applyLabelVisibility(map, layers.labelsAlwaysOn);
     updateWaterLabelVisibility(map, layers.labelsAlwaysOn, waterMarkersRef.current);
   }, [ready, layers]);
