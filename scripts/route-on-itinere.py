@@ -16,8 +16,10 @@ A* the shortest path, and accept it when the network genuinely serves the leg
 great-circle). Accepted legs get [stopA] + road geometry + [stopB] — endpoints
 stay EXACT stop coordinates. Legs the network cannot serve (sea lanes,
 pre-Roman Mesopotamia, the Sinai wilderness) keep their curated corridor.
-Output geometry is Douglas-Peucker-simplified to ~50 m — GPS-scale display
-precision — and the whole run reports exactly which legs were upgraded.
+Output geometry keeps the dataset's full surveyed fidelity: only ~1 m
+Douglas-Peucker vertex dedup and 5-decimal (~1.1 m) coordinate rounding are
+applied, so quantization sits below the source's own digitization accuracy.
+The run reports exactly which legs were upgraded.
 """
 import heapq
 import json
@@ -25,12 +27,14 @@ import math
 import os
 import sys
 
+sys.setrecursionlimit(100000)  # dp() recurses; near-collinear runs go deep at ~1 m eps
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 C = os.path.join(ROOT, "content")
 BBOX = (-12.0, 22.0, 50.0, 48.0)  # keep in sync with WORLD_BBOX
 SNAP_KM = 20.0        # a stop must be this close to the network to route (tells sit off the line)
 NODE_GRID = 0.0015    # ~160 m endpoint-merge grid: closes digitization gaps at junctions
-SIMPLIFY_EPS = 0.0005  # ~55 m output simplification
+SIMPLIFY_EPS = 0.00001  # ~1 m: dedup only — keeps full surveyed fidelity
 MAX_DETOUR = 2.8      # reject paths longer than this × great-circle (+ slack)
 
 
@@ -104,7 +108,7 @@ def build_graph(geojson_path):
             pts = [merc_inv(p[0], p[1]) for p in part]
             if not any(W <= p[0] <= E and S <= p[1] <= N for p in pts):
                 continue
-            pts = dp(pts, 0.0002)  # trim redundant vertices, keep ~20 m fidelity
+            pts = dp(pts, 0.00001)  # drop only sub-meter-redundant vertices (~1 m fidelity)
             if len(pts) < 2:
                 continue
             a, b = node(pts[0]), node(pts[-1])
@@ -191,7 +195,7 @@ def main():
                 continue
             leg = [pa] + geom + [pb]
             leg = dp(leg, SIMPLIFY_EPS)
-            r["legs"][k] = [[round(x, 4), round(y, 4)] for x, y in leg]
+            r["legs"][k] = [[round(x, 5), round(y, 5)] for x, y in leg]
             upgraded += 1
         # Mark the upgrade in the route's note + citations.
         if "cit-route-itinere" not in r["citations"]:

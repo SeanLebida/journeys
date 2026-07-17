@@ -104,6 +104,37 @@ a {
   position: absolute;
   inset: 0;
 }
+/* Present-day marker while the in-app aerial view is active. Top-centered so it
+   clears the nav control (top-right) and attribution (bottom-right); pinned
+   above the desktop side panel's 450px gutter isn't needed since it centers on
+   the whole surface. Non-interactive — purely informational. */
+.aerial-marker {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+.aerial-marker__badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.66);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+@media (min-width: 1024px) {
+  /* Center over the map area to the right of the desktop side panel. */
+  .aerial-marker {
+    left: 450px;
+  }
+}
 .map-canvas {
   position: absolute;
   inset: 0;
@@ -135,6 +166,43 @@ a {
   opacity: 0.7;
 }
 
+/* Custom country border details popup */
+.country-border-popup {
+  z-index: 1000;
+}
+.country-border-popup .maplibregl-popup-content {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-2);
+  font-family: var(--font-body);
+  padding: 0.6rem 0.9rem;
+}
+.country-border-popup.maplibregl-popup-anchor-top .maplibregl-popup-tip {
+  border-bottom-color: var(--surface);
+}
+.country-border-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: var(--surface);
+}
+.country-border-popup.maplibregl-popup-anchor-left .maplibregl-popup-tip {
+  border-right-color: var(--surface);
+}
+.country-border-popup.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-left-color: var(--surface);
+}
+.country-popup-content h3 {
+  margin: 0 0 0.15rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.country-popup-content p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 /* Reference-city labels: decorative geographic anchors (modern-day Rome,
    Athens, etc.) drawn as DOM markers since the map ships no glyph/font
    source for MapLibre symbol layers. */
@@ -146,40 +214,83 @@ a {
   white-space: nowrap;
 }
 .reference-city__dot {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--text-muted);
-  opacity: 0.8;
+  background: var(--map-label-color);
+  box-shadow: 0 0 0 1.5px var(--map-label-halo);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 .reference-city__label {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  opacity: 0.85;
-  text-shadow: 0 1px 2px var(--bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--map-label-color);
+  -webkit-text-stroke: 3px var(--map-label-halo);
+  paint-order: stroke fill;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15);
+  transition: color 0.2s ease;
 }
 
 /* Water body labels: italicized serif text centered on major bodies of water */
 .water-body-label {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.72rem;
-  color: #4b7890;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--map-water-color);
   pointer-events: none;
   white-space: nowrap;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
-  letter-spacing: 0.05em;
-  opacity: 0.85;
+  -webkit-text-stroke: 4px var(--map-water-halo);
+  paint-order: stroke fill;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+  transition: color 0.2s ease;
 }
-:root[data-theme='dark'] .water-body-label {
-  color: #8db5cd;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+
+/* Modern country name labels: political/administrative, so uppercase + tracked
+   to read distinct from the italic-serif water labels and the small city dots.
+   Visibility (per-zoom, tied to the borders layer) is driven from MapProvider —
+   display is toggled inline, so this only styles them. */
+.country-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--map-label-color);
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0.9;
+  -webkit-text-stroke: 4px var(--map-label-halo);
+  paint-order: stroke fill;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15);
+  transition: color 0.2s ease;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .water-body-label {
-    color: #8db5cd;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  }
+
+/* Basemap-specific overrides for place name contrast */
+.map-layer-satellite {
+  --map-label-color: #ffffff;
+  --map-label-halo: rgba(10, 10, 10, 0.95);
+  --map-water-color: #9fd4f5;
+  --map-water-halo: rgba(10, 10, 10, 0.95);
+  --map-site-color: #ffffff;
+  --map-site-halo: rgba(10, 10, 10, 0.95);
+}
+.map-layer-ancient-map {
+  --map-label-color: #382c1e;
+  --map-label-halo: rgba(244, 236, 216, 0.95);
+  --map-water-color: #1f4356;
+  --map-water-halo: rgba(244, 236, 216, 0.95);
+  --map-site-color: #221a10;
+  --map-site-halo: rgba(244, 236, 216, 0.95);
+}
+.map-layer-streets {
+  --map-label-color: #222222;
+  --map-label-halo: rgba(255, 255, 255, 0.95);
+  --map-water-color: #1f4356;
+  --map-water-halo: rgba(255, 255, 255, 0.95);
+  --map-site-color: #111111;
+  --map-site-halo: rgba(255, 255, 255, 0.95);
 }
 
 /* Lesson step markers: clickable, numbered pins on the persistent map — a
@@ -216,14 +327,12 @@ a {
   background: none;
   padding: 0;
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text);
-  text-shadow:
-    0 1px 0 var(--surface-raised),
-    0 -1px 0 var(--surface-raised),
-    1px 0 0 var(--surface-raised),
-    -1px 0 0 var(--surface-raised);
+  color: var(--map-site-color);
+  -webkit-text-stroke: 3.5px var(--map-site-halo);
+  paint-order: stroke fill;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   cursor: pointer;
   /* Hidden until zoomed in past MapProvider's LABEL_ZOOM_THRESHOLD — a
@@ -232,6 +341,7 @@ a {
      the "see more detail" step. The quiz answer reveal is exempt (only ever
      2 labels, never congested, and needs to stay visible at any zoom). */
   display: none;
+  transition: color 0.2s ease;
 }
 .map-labels-visible .site-label,
 .site-label.quiz-pin-label {
@@ -247,12 +357,22 @@ a {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 600;
+  color: var(--text); /* ensure standard text color */
+  -webkit-text-stroke: 0; /* remove map label outline */
   background: color-mix(in srgb, var(--surface) 90%, transparent);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   padding: 0.15rem 0.35rem;
   box-shadow: var(--shadow-1);
   text-shadow: none; /* remove default text shadow to keep it clean */
+  /* Cap width so a long ancient name can't run off the right edge of the map
+     or sprawl across the fixed playback controls — collapse to one ellipsised
+     line. The full name always lives in the left panel's "Stops Reached" list. */
+  max-width: min(180px, 34vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
   transition:
     color 0.2s ease,
     background-color 0.2s ease,
@@ -267,6 +387,16 @@ a {
 .site-label.trace-stop-label.active {
   font-weight: 700;
   transform: scale(1.08) translateY(-1px);
+  z-index: 2; /* keep the current stop above neighbouring labels */
+  /* The active stop gets more room and may wrap to two lines so its name stays
+     readable, still bounded to the viewport so it never overflows. */
+  max-width: min(260px, 46vw);
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
 }
 
 /* Quiz map-pin answer reveal: decorative once shown, not clickable. */
@@ -285,25 +415,65 @@ a {
   color: var(--c-medium);
 }
 
-/* ---- Mode panel (overlay card above the map) ---- */
+/* ---- Mode panel ----
+   Mobile-first: a draggable bottom sheet anchored to the bottom of the map area
+   so the map + animation stay visible above it (see useSheetDrag). The live
+   height is set inline as a px value; `height` here is only the pre-JS fallback.
+   At `lg` it becomes the fixed left sidebar (overrides below). */
 .mode-panel {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
   pointer-events: auto;
-  margin: clamp(0.75rem, 2vw, 1.5rem) auto;
-  margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
-  max-width: var(--maxw);
-  width: calc(100% - 2rem);
-  max-height: calc(100% - 2rem);
-  overflow: auto;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  max-height: 100%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
   box-shadow: var(--shadow-2);
-  padding: clamp(1rem, 3vw, 1.75rem);
+  padding: 0 clamp(1rem, 4vw, 1.5rem) calc(var(--safe-bottom) + 1rem);
+  transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mode-panel.is-dragging {
+  transition: none; /* follow the finger 1:1 while dragging */
+}
+/* Grab handle — the drag/tap target that resizes the sheet. */
+.mode-panel__handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0 0.4rem;
+  margin: 0 -1rem; /* widen the hit area to the sheet edges */
+  cursor: grab;
+  touch-action: none;
+}
+.mode-panel__handle:active {
+  cursor: grabbing;
+}
+.mode-panel__grip {
+  width: 2.5rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background-color 0.2s ease;
+}
+.mode-panel__handle:hover .mode-panel__grip,
+.mode-panel__handle:focus-visible .mode-panel__grip {
+  background: var(--accent);
 }
 @media (min-width: 1024px) {
+  .mode-panel__handle {
+    display: none; /* sidebar isn't draggable */
+  }
   .app-main {
     display: flex;
     flex-direction: row;
@@ -314,16 +484,19 @@ a {
   .mode-panel {
     position: absolute;
     left: 1.5rem;
-    top: 1.5rem;
+    top: calc(var(--safe-top) + 1.5rem);
     bottom: 1.5rem;
+    right: auto;
     margin: 0;
     width: 420px;
     max-width: 420px;
-    height: calc(100% - 3rem);
-    max-height: calc(100% - 3rem);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    /* Reset the mobile sheet chrome back to a full floating card. */
+    height: auto;
+    max-height: none;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: clamp(1rem, 1.5vw, 1.75rem);
+    transition: none;
     z-index: 10;
   }
   .mode-panel__body {
@@ -331,6 +504,42 @@ a {
     overflow-y: auto;
     scrollbar-width: thin;
     padding-right: 0.25rem;
+  }
+}
+/* Sheet body scrolls; the panel clips so peek/half hide the overflow. */
+.mode-panel__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden; /* nothing should ever scroll the panel sideways */
+  -webkit-overflow-scrolling: touch;
+}
+/* On tablets the sheet spans a wide viewport — cap the reading measure so lines
+   stay comfortable, centered within the full-width sheet. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .mode-panel__body {
+    max-width: 44rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+/* Content screens (Home, Credits) opt out of the bottom sheet — the map is only
+   a backdrop there, so they render as a normal scrolling card on mobile. Desktop
+   keeps the shared sidebar layout. */
+@media (max-width: 1023px) {
+  .mode-panel--page {
+    position: relative;
+    height: auto;
+    max-height: calc(100% - 1.5rem);
+    width: calc(100% - 2rem);
+    max-width: var(--maxw);
+    margin: clamp(0.75rem, 2vw, 1.5rem) auto;
+    margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: clamp(1rem, 4vw, 1.5rem);
+    overflow: auto;
+    transition: none;
   }
 }
 .mode-panel--loading {
@@ -557,14 +766,43 @@ a {
 }
 .trace-controls {
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+.trace-controls__main {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
   flex-wrap: wrap;
-  margin: 1rem 0;
-  padding: 0.6rem;
-  background: var(--surface-raised);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  gap: 0.5rem;
+}
+.trace-controls__scrub-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+/* Inline single-row layout only kicks in at the desktop breakpoint, where the
+   fixed bar gets a real width. Below this the bar stays stacked (main controls
+   wrap, scrub slider on its own full-width line) so nothing overflows the pill. */
+@media (min-width: 1024px) {
+  .trace-controls {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap; /* let the scrub drop to a second line if space is tight */
+    gap: 0.8rem;
+  }
+  .trace-controls__main {
+    /* Shrink + wrap instead of forcing one rigid line — at borderline widths a
+       nowrap row is a hair wider than the available map space and spills past the
+       pill's right edge. Wrapping keeps every control inside the background. */
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .trace-controls__scrub-group {
+    flex: 1 1 220px; /* real basis so the slider has width and the bar sizes to fit */
+  }
 }
 .trace-controls button {
   font: inherit;
@@ -577,6 +815,16 @@ a {
 }
 .trace-controls button:hover {
   border-color: var(--accent);
+}
+.trace-controls button.trace-controls__play {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+  font-weight: 500;
+}
+.trace-controls button.trace-controls__play:hover {
+  background: color-mix(in srgb, var(--accent) 85%, black);
+  border-color: color-mix(in srgb, var(--accent) 85%, black);
 }
 .trace-controls__speed {
   font: inherit;
@@ -604,16 +852,124 @@ a {
   cursor: pointer;
 }
 .trace-controls__scrub {
-  flex: 1 1 120px;
+  flex: 1 1 auto;
+  min-width: 140px; /* never collapse the slider track to just its thumb */
   display: flex;
+  align-items: center;
+  padding-right: 0.35rem; /* keep the end thumb clear of the count */
 }
-.trace-controls__scrub input {
+/* Custom premium range slider */
+.trace-controls input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
+}
+.trace-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface-raised);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+.trace-controls input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: color-mix(in srgb, var(--accent) 85%, black);
+}
+.trace-controls input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface-raised);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+  cursor: pointer;
+}
+.trace-controls input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: color-mix(in srgb, var(--accent) 85%, black);
 }
 .trace-controls__count {
   font-variant-numeric: tabular-nums;
   color: var(--text-muted);
   font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Fixed overlay controls layouts */
+.journey-trace-layout,
+.lesson-player-layout {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.trace-controls-fixed,
+.lesson-progress-fixed {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  pointer-events: auto;
+  width: calc(100% - 2rem);
+  max-width: 500px;
+}
+.trace-controls-fixed .trace-controls,
+.lesson-progress-fixed .lesson-progress {
+  margin: 0;
+  /* Near-opaque so a stop label passing behind the bar doesn't bleed through. */
+  background: color-mix(in srgb, var(--surface-raised) 97%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 0.6rem 0.8rem;
+}
+.lesson-progress-fixed .lesson-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1024px) {
+  .trace-controls-fixed,
+  .lesson-progress-fixed {
+    bottom: 2rem;
+    left: calc(50% + 210px + 0.75rem); /* Centered in map space to the right of the 420px sidebar */
+    transform: translateX(-50%);
+    /* Shrink-to-fit the content (scrub has a fixed basis, so it can't collapse),
+       capped to the available map space; the pill background always wraps its
+       content instead of the row spilling outside it. */
+    width: auto;
+    max-width: calc(100% - 420px - 6rem);
+  }
+}
+@media (max-width: 1023px) {
+  /* The playback pill rides just above the bottom sheet's current top edge
+     (--sheet-h is the live sheet height published by useSheetDrag), so it stays
+     reachable as the sheet grows and never collides with the description. */
+  .trace-controls-fixed,
+  .lesson-progress-fixed {
+    bottom: calc(var(--sheet-h, 50%) + 0.6rem);
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+  }
+  /* At the full snap the reader is focused on text — retire the pill so it
+     doesn't cover the map up near the top of the screen. */
+  .journey-trace-layout[data-sheet-snap='full'] .trace-controls-fixed,
+  .lesson-player-layout[data-sheet-snap='full'] .lesson-progress-fixed {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 .stop-panel {
   margin-top: 1rem;
@@ -799,7 +1155,9 @@ a {
   margin: 0.75rem 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem 0.9rem;
+  min-width: 0; /* a <fieldset> defaults to min-content — let it shrink to the panel */
+  max-width: 100%;
 }
 .atlas-toggles legend {
   font-weight: 600;
@@ -950,13 +1308,22 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.15rem;
-  flex: 1;
-  padding: 0.4rem 0.25rem;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px; /* comfortable tap target (WCAG 2.5.5) */
+  padding: 0.35rem 0.15rem;
   text-decoration: none;
   color: var(--text-muted);
   border-radius: var(--r-sm);
-  font-size: 0.72rem;
+  font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+}
+.tabbar__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .tabbar__item--active {
   color: var(--accent);
@@ -969,7 +1336,26 @@ a {
 
 /* ── Site photos (present-day imagery, bundled from Wikimedia Commons) ───── */
 .site-photo {
+  position: relative;
   margin: 0.6rem 0 0.4rem;
+}
+/* Small "Present day" tag overlaid on the photo's top-left. Supplemental: it
+   signals the imagery is modern-day without competing with the photo itself. */
+.site-photo__era {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  z-index: 1;
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 .site-photo img {
   display: block;
@@ -1031,6 +1417,12 @@ a {
 }
 .site-views {
   margin: 0.5rem 0 0.7rem;
+}
+.site-views__note {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--text-muted);
 }
 .site-views__actions {
   display: flex;

@@ -111,38 +111,51 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
   if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
 
+  const currentSiteId = stepSiteId(bundle, step);
+  const currentSite = currentSiteId ? bundle.site(currentSiteId) : undefined;
+  const stepArtifacts = currentSiteId ? bundle.artifactsForSite(currentSiteId) : [];
+  const consolidatedCitationIds = Array.from(new Set([
+    ...(lesson.citations || []),
+    ...(currentSite?.citations || []),
+    ...stepArtifacts.flatMap((a) => a.citations || [])
+  ]));
+
   return (
-    <ModePanel title={lesson.title.en}>
-      <Link to="/lessons" className="backlink">
-        ← {t('nav.lessons')}
-      </Link>
-      <LayerPanel />
-      <div className="lesson-progress">
-        <button type="button" onClick={() => setI((n) => Math.max(0, n - 1))} disabled={i === 0}>
-          ← Prev
-        </button>
-        <span>
-          Step {i + 1} / {lesson.steps.length}
-        </span>
-        <button
-          type="button"
-          onClick={() => setI((n) => Math.min(lesson.steps.length - 1, n + 1))}
-          disabled={i === lesson.steps.length - 1}
-        >
-          Next →
-        </button>
-      </div>
+    <div className="lesson-player-layout">
+      <ModePanel title={lesson.title.en}>
+        <Link to="/lessons" className="backlink">
+          ← {t('nav.lessons')}
+        </Link>
+        <LayerPanel />
 
-      <div className="lesson-step" aria-live="polite">
-        <p className="lesson-step__body">{step.body.en}</p>
-        <LessonStepViews bundle={bundle} step={step} />
-        {step.scriptureRefs?.map((r) => (
-          <ScripturePassage key={r} raw={r} />
-        ))}
-      </div>
+        <div className="lesson-step" aria-live="polite">
+          <p className="lesson-step__body">{step.body.en}</p>
+          <LessonStepViews bundle={bundle} step={step} />
+          {step.scriptureRefs?.map((r) => (
+            <ScripturePassage key={r} raw={r} />
+          ))}
+        </div>
 
-      <Citations ids={lesson.citations} bundle={bundle} />
-    </ModePanel>
+        <Citations ids={consolidatedCitationIds} bundle={bundle} />
+      </ModePanel>
+      <div className="lesson-progress-fixed">
+        <div className="lesson-progress">
+          <button type="button" onClick={() => setI((n) => Math.max(0, n - 1))} disabled={i === 0}>
+            ← Prev
+          </button>
+          <span>
+            Step {i + 1} / {lesson.steps.length}
+          </span>
+          <button
+            type="button"
+            onClick={() => setI((n) => Math.min(lesson.steps.length - 1, n + 1))}
+            disabled={i === lesson.steps.length - 1}
+          >
+            Next →
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

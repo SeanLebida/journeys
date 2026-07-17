@@ -21,7 +21,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-pilate-stone"
+      "cit-pilate-stone",
+      "cit-dth-the-praetorium-of-pilate"
     ],
     "siteId": "site-trial-before-pilate"
   },
@@ -47,7 +48,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-gallio-inscription"
+      "cit-gallio-inscription",
+      "cit-dth-the-gallio-inscription"
     ],
     "siteId": "site-corinth"
   },
@@ -76,7 +78,8 @@
       "en": "The link between the pavement's Erastus (an aedile) and the Erastus of Romans 16:23 (Greek 'oikonomos', city steward/treasurer) rests on the name and city; some scholars accept it, others note the office titles differ."
     },
     "citations": [
-      "cit-erastus-inscription"
+      "cit-erastus-inscription",
+      "cit-dth-erastus-inscription"
     ],
     "siteId": "site-corinth"
   },
@@ -128,7 +131,9 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-pool-of-siloam"
+      "cit-pool-of-siloam",
+      "cit-dth-pool-of-siloam",
+      "cit-dth-jesus-pool-siloam-rivers-living-water"
     ],
     "siteId": "site-jerusalem"
   },
@@ -157,7 +162,8 @@
       "en": "The identification with the high priest Caiaphas is widely held but not certain; the name was common and the family link is inferred from the form 'bar Qayafa'."
     },
     "citations": [
-      "cit-caiaphas-ossuary"
+      "cit-caiaphas-ossuary",
+      "cit-dth-caiaphas-the-high-priest"
     ],
     "siteId": "site-jerusalem"
   },

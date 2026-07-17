@@ -202,7 +202,7 @@ def main():
             if vias:
                 curated += 1
                 pts = chaikin(pts)
-            legs.append([[round(lon, 3), round(lat, 3)] for lat, lon in pts])
+            legs.append([[round(lon, 5), round(lat, 5)] for lat, lon in pts])
         note, cites = ROUTE_META[j["id"]]
         routes.append({
             "id": f"route-{j['id']}",
