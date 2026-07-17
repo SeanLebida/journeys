@@ -7,11 +7,13 @@ interface Tab {
   key: string;
   glyph: string;
   end?: boolean;
+  /** Optional shorter i18n key for the cramped tab-bar label. */
+  labelKey?: string;
 }
 
 const TABS: Tab[] = [
   { to: '/', key: 'home', end: true, glyph: '⌂' },
-  { to: '/trace', key: 'trace', glyph: '⟿' },
+  { to: '/trace', key: 'trace', glyph: '⟿', labelKey: 'nav.traceShort' },
   { to: '/atlas', key: 'atlas', glyph: '◍' },
   { to: '/lessons', key: 'lessons', glyph: '❖' },
   { to: '/quiz', key: 'quiz', glyph: '?' },
@@ -57,7 +59,7 @@ export function TabBar() {
           <span className="tabbar__glyph" aria-hidden="true">
             {tab.glyph}
           </span>
-          <span className="tabbar__label">{t(`nav.${tab.key}`)}</span>
+          <span className="tabbar__label">{t(tab.labelKey ?? `nav.${tab.key}`)}</span>
         </NavLink>
       ))}
       <ThemeToggle />

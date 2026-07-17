@@ -8,7 +8,7 @@ export function CreditsView() {
   const { bundle } = useBundle();
   const attributions = bundle?.attributions ?? [];
   return (
-    <section className="mode-panel" aria-labelledby="credits-title">
+    <section className="mode-panel mode-panel--page" aria-labelledby="credits-title">
       <Link to="/" className="backlink">
         ← {t('nav.home')}
       </Link>
