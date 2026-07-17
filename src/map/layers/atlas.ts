@@ -94,7 +94,7 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
     type: 'line',
     source: SRC.routes,
     layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': ['get', 'color'], 'line-width': 2.5, 'line-opacity': 0.6 },
+    paint: { 'line-color': ['get', 'color'], 'line-width': 5.0, 'line-opacity': 0.6 },
   });
   map.addLayer({
     id: ATLAS_LAYERS.sites,

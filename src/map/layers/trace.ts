@@ -31,14 +31,14 @@ export function ensureTraceLayers(map: MapLibreMap, color: string): void {
     type: 'line',
     source: SRC.full,
     layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': color, 'line-width': 2, 'line-opacity': 0.35, 'line-dasharray': [2, 2] },
+    paint: { 'line-color': color, 'line-width': 4, 'line-opacity': 0.35, 'line-dasharray': [2, 2] },
   });
   map.addLayer({
     id: LYR.progress,
     type: 'line',
     source: SRC.progress,
     layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': color, 'line-width': 4, 'line-opacity': 0.95 },
+    paint: { 'line-color': color, 'line-width': 8, 'line-opacity': 0.95 },
   });
   map.addLayer({
     id: LYR.stops,
