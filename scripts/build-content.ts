@@ -59,6 +59,7 @@ const ATTRIBUTIONS = [
   { id: 'NaturalEarth', name: 'Natural Earth (coastlines, land, country boundaries, lakes, rivers)', license: 'Public Domain', url: 'https://www.naturalearthdata.com/' },
   { id: 'OpenStreetMap', name: 'OpenStreetMap contributors (planned detailed basemap)', license: 'ODbL', url: 'https://www.openstreetmap.org/copyright' },
   { id: 'Esri', name: 'Esri basemap tiles (shaded relief, World Imagery satellite, World Street Map — optional online layers)', license: '© Esri and its data suppliers; used per Esri basemap terms', url: 'https://www.esri.com/en-us/legal/terms/data-attributions' },
+  { id: 'Itinere', name: 'Itiner-e: high-resolution dataset of Roman-empire roads — de Soto, Pažout, Brughmans et al. 2025 (journey route geometry)', license: 'CC BY 4.0', url: 'https://doi.org/10.5281/zenodo.17122148' },
   { id: 'DARE', name: 'Digital Atlas of the Roman Empire — Johan Åhlfeldt, University of Gothenburg (optional online historical basemap)', license: 'CC BY 4.0', url: 'https://dh.gu.se/dare/' },
   { id: 'WikimediaCommons', name: 'Wikimedia Commons photographers (site photos; per-image author and license shown beside each photo)', license: 'Public Domain / CC0 / CC BY / CC BY-SA (per image)', url: 'https://commons.wikimedia.org/' },
   { id: 'Mapillary', name: 'Mapillary contributors (optional click-to-load street-level imagery)', license: 'CC BY-SA 4.0', url: 'https://www.mapillary.com/' },
@@ -280,8 +281,10 @@ async function main(): Promise<void> {
       if (!sa || !sb) return;
       const a: [number, number] = [sa.coordinates.value.lon, sa.coordinates.value.lat];
       const b: [number, number] = [sb.coordinates.value.lon, sb.coordinates.value.lat];
-      if (distKm(leg[0] as [number, number], a) > 25) err(`route ${r.id}.legs[${k}]: start is ${Math.round(distKm(leg[0] as [number, number], a))} km from stop ${j.stops[k]}`);
-      if (distKm(leg[leg.length - 1] as [number, number], b) > 25) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
+      // Generators emit EXACT stop coordinates as leg endpoints; 5 km guards
+      // against hand-edit drift without blocking legitimate coordinate updates.
+      if (distKm(leg[0] as [number, number], a) > 5) err(`route ${r.id}.legs[${k}]: start is ${Math.round(distKm(leg[0] as [number, number], a))} km from stop ${j.stops[k]}`);
+      if (distKm(leg[leg.length - 1] as [number, number], b) > 5) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
     });
   });
 

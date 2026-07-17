@@ -686,5 +686,13 @@
   },
   "url": "https://en.wikipedia.org/wiki/Acts_27",
   "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-route-itinere",
+  "source": {
+   "en": "Itiner-e: A high-resolution dataset of roads of the Roman Empire (de Soto, Pažout, Brughmans et al., Scientific Data 2025; CC BY 4.0)"
+  },
+  "url": "https://doi.org/10.5281/zenodo.17122148",
+  "kind": "gazetteer"
  }
 ]
