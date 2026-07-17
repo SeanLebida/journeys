@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMap } from '../map/MapProvider';
 import { useMapLayersStore } from '../state/useMapLayersStore';
+import { useAerialViewStore } from '../state/useAerialViewStore';
 
 // Map-dependent site views live in their own module so that photo/thumbnail
 // components (and anything that renders them, like HomeView) never pull
@@ -19,7 +20,12 @@ export function AerialViewButton({ lat, lon, name }: { lat: number; lon: number;
   const { mapRef, ready } = useMap();
   const satellite = useMapLayersStore((s) => s.satellite);
   const setLayerVisible = useMapLayersStore((s) => s.setLayerVisible);
+  const setAerialSite = useAerialViewStore((s) => s.setActiveSite);
   const [restore, setRestore] = useState<{ center: [number, number]; zoom: number; satellite: boolean } | null>(null);
+
+  // If this button unmounts while active (navigating away mid-aerial), clear the
+  // shared marker so it doesn't linger on the map surface.
+  useEffect(() => () => setAerialSite(null), [setAerialSite]);
 
   if (!ready) return null;
   const active = restore !== null;
@@ -30,6 +36,7 @@ export function AerialViewButton({ lat, lon, name }: { lat: number; lon: number;
     const c = map.getCenter();
     setRestore({ center: [c.lng, c.lat], zoom: map.getZoom(), satellite });
     setLayerVisible('satellite', true);
+    setAerialSite(name);
     const opts = { center: [lon, lat] as [number, number], zoom: 16 };
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 2200 });
@@ -38,6 +45,7 @@ export function AerialViewButton({ lat, lon, name }: { lat: number; lon: number;
     const map = mapRef.current;
     if (!map || !restore) return;
     setLayerVisible('satellite', restore.satellite);
+    setAerialSite(null);
     const opts = { center: restore.center, zoom: restore.zoom };
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 1600 });
@@ -98,6 +106,12 @@ export function StreetLevelViewer({ lat, lon, name }: { lat: number; lon: number
 export function SiteViews({ lat, lon, name }: { lat: number; lon: number; name: string }) {
   return (
     <div className="site-views">
+      {/* Supplemental note: the aerial (satellite) and street-level imagery show
+          the region as it currently looks — modern satellite/photo data, not a
+          historical rendering. Kept small and secondary to the actions. */}
+      <p className="site-views__note">
+        Aerial &amp; street views show these places as they look today.
+      </p>
       <div className="site-views__actions">
         <AerialViewButton lat={lat} lon={lon} name={name} />
         <StreetLevelViewer lat={lat} lon={lon} name={name} />

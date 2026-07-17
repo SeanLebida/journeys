@@ -16,11 +16,17 @@
     "summary": {
       "en": "The travels of Jesus from Galilee to Jerusalem — his baptism, Galilean ministry around the Sea of Galilee, northern excursions, the final journey to Jerusalem, crucifixion, resurrection, and the post-resurrection appearances: at the empty tomb, on the road to Emmaus, in the upper room (twice), at the Sea of Galilee, on a mountain in Galilee (the Great Commission), the appearance to James, and the Ascension from the Mount of Olives. Also includes the post-ascension visions of Stephen, Paul's encounter on the Damascus road, and John's vision on Patmos. The crucifixion year (AD 30 vs AD 33) is genuinely disputed; this atlas uses AD 30 as the mainstream default and flags the dispute."
     },
+    "chronologyNotes": {
+      "en": "Stops are ordered chronologically, from the birth through the infancy (flight to Egypt, return to Nazareth), the boyhood visit to the Temple at age 12, the baptism and Galilean ministry, the final journey to Jerusalem, and on to the resurrection appearances, Ascension, and the later visions of Stephen, Paul and John. Dates use the standard BC/AD reckoning — a calendar the Western world reorganised around the birth of Christ, years counted from the Incarnation per Dionysius Exiguus (AD 525). His count ran a few years short: Jesus was almost certainly born c. 6-4 BC, before Herod the Great died in 4 BC — so the very era named for Christ places his birth 'Before Christ.' Ministry dates (baptism c. AD 27-29; crucifixion AD 30, or AD 33 on the minority view) are approximate and debated."
+    },
     "color": "#c75b39",
     "stops": [
       "stop-ministry-bethlehem-0",
+      "stop-ministry-flight-to-egypt",
       "stop-ministry-nazareth-1",
+      "stop-ministry-temple-boy",
       "stop-ministry-baptism-at-the-jordan-2",
+      "stop-ministry-samaria-11",
       "stop-ministry-capernaum-3",
       "stop-ministry-cana-of-galilee-4",
       "stop-ministry-sea-of-galilee-5",
@@ -29,7 +35,6 @@
       "stop-ministry-decapolis-8",
       "stop-ministry-tyre-and-sidon-9",
       "stop-ministry-caesarea-philippi-10",
-      "stop-ministry-samaria-11",
       "stop-ministry-final-journey-jericho-12",
       "stop-ministry-bethany-and-bethphage-13",
       "stop-ministry-jerusalem-14",

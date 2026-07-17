@@ -10,7 +10,7 @@ const LAYER_LABELS: Record<BasemapLayerKey, string> = {
   lakes: 'Lakes',
   rivers: 'Rivers',
   coastline: 'Coastline',
-  borders: 'Country borders',
+  borders: 'Country borders & names',
   graticule: 'Coordinate grid',
 };
 

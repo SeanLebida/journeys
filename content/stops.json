@@ -34,7 +34,7 @@
   {
     "id": "stop-ministry-nazareth-1",
     "journeyId": "journey-ministry",
-    "order": 1,
+    "order": 2,
     "siteId": "site-nazareth",
     "legMode": "land",
     "dateRange": {
@@ -67,7 +67,7 @@
   {
     "id": "stop-ministry-baptism-at-the-jordan-2",
     "journeyId": "journey-ministry",
-    "order": 2,
+    "order": 4,
     "siteId": "site-baptism-at-the-jordan",
     "legMode": "land",
     "dateRange": {
@@ -97,7 +97,7 @@
   {
     "id": "stop-ministry-capernaum-3",
     "journeyId": "journey-ministry",
-    "order": 3,
+    "order": 6,
     "siteId": "site-capernaum",
     "legMode": "land",
     "dateRange": {
@@ -132,7 +132,7 @@
   {
     "id": "stop-ministry-cana-of-galilee-4",
     "journeyId": "journey-ministry",
-    "order": 4,
+    "order": 7,
     "siteId": "site-cana-of-galilee",
     "legMode": "land",
     "dateRange": {
@@ -161,7 +161,7 @@
   {
     "id": "stop-ministry-sea-of-galilee-5",
     "journeyId": "journey-ministry",
-    "order": 5,
+    "order": 8,
     "siteId": "site-sea-of-galilee",
     "legMode": "sea",
     "dateRange": {
@@ -193,7 +193,7 @@
   {
     "id": "stop-ministry-bethsaida-6",
     "journeyId": "journey-ministry",
-    "order": 6,
+    "order": 9,
     "siteId": "site-bethsaida",
     "legMode": "land",
     "dateRange": {
@@ -225,7 +225,7 @@
   {
     "id": "stop-ministry-chorazin-7",
     "journeyId": "journey-ministry",
-    "order": 7,
+    "order": 10,
     "siteId": "site-chorazin",
     "legMode": "land",
     "dateRange": {
@@ -253,7 +253,7 @@
   {
     "id": "stop-ministry-decapolis-8",
     "journeyId": "journey-ministry",
-    "order": 8,
+    "order": 11,
     "siteId": "site-decapolis",
     "legMode": "sea",
     "dateRange": {
@@ -284,7 +284,7 @@
   {
     "id": "stop-ministry-tyre-and-sidon-9",
     "journeyId": "journey-ministry",
-    "order": 9,
+    "order": 12,
     "siteId": "site-tyre-and-sidon",
     "legMode": "land",
     "dateRange": {
@@ -316,7 +316,7 @@
   {
     "id": "stop-ministry-caesarea-philippi-10",
     "journeyId": "journey-ministry",
-    "order": 10,
+    "order": 13,
     "siteId": "site-caesarea-philippi",
     "legMode": "land",
     "dateRange": {
@@ -347,7 +347,7 @@
   {
     "id": "stop-ministry-samaria-11",
     "journeyId": "journey-ministry",
-    "order": 11,
+    "order": 5,
     "siteId": "site-samaria",
     "legMode": "land",
     "dateRange": {
@@ -376,7 +376,7 @@
   {
     "id": "stop-ministry-final-journey-jericho-12",
     "journeyId": "journey-ministry",
-    "order": 12,
+    "order": 14,
     "siteId": "site-final-journey-jericho",
     "legMode": "land",
     "dateRange": {
@@ -406,7 +406,7 @@
   {
     "id": "stop-ministry-bethany-and-bethphage-13",
     "journeyId": "journey-ministry",
-    "order": 13,
+    "order": 15,
     "siteId": "site-bethany-and-bethphage",
     "legMode": "land",
     "dateRange": {
@@ -438,7 +438,7 @@
   {
     "id": "stop-ministry-jerusalem-14",
     "journeyId": "journey-ministry",
-    "order": 14,
+    "order": 16,
     "siteId": "site-jerusalem",
     "legMode": "land",
     "dateRange": {
@@ -470,7 +470,7 @@
   {
     "id": "stop-ministry-last-supper-15",
     "journeyId": "journey-ministry",
-    "order": 15,
+    "order": 17,
     "siteId": "site-last-supper",
     "legMode": "land",
     "dateRange": {
@@ -501,7 +501,7 @@
   {
     "id": "stop-ministry-gethsemane-16",
     "journeyId": "journey-ministry",
-    "order": 16,
+    "order": 18,
     "siteId": "site-gethsemane",
     "legMode": "land",
     "dateRange": {
@@ -530,7 +530,7 @@
   {
     "id": "stop-ministry-trial-before-pilate-17",
     "journeyId": "journey-ministry",
-    "order": 17,
+    "order": 19,
     "siteId": "site-trial-before-pilate",
     "legMode": "land",
     "dateRange": {
@@ -560,11 +560,11 @@
   {
     "id": "stop-ministry-golgotha-and-the-tomb-18",
     "journeyId": "journey-ministry",
-    "order": 18,
+    "order": 20,
     "siteId": "site-golgotha-and-the-tomb",
     "legMode": "land",
     "dateRange": {
-      "startYear": 3,
+      "startYear": 30,
       "endYear": 33,
       "display": {
         "en": "crucifixion Friday 7 April AD 30 or Friday 3 April AD 33 (Nisan 14); resurrection proclaimed the following Sunday"
@@ -1725,7 +1725,7 @@
   {
     "id": "stop-ministry-resurrection-appearances-19",
     "journeyId": "journey-ministry",
-    "order": 19,
+    "order": 21,
     "siteId": "site-golgotha-and-the-tomb",
     "legMode": "land",
     "dateRange": {
@@ -1763,7 +1763,7 @@
   {
     "id": "stop-ministry-road-to-emmaus-20",
     "journeyId": "journey-ministry",
-    "order": 20,
+    "order": 22,
     "siteId": "site-emmaus",
     "legMode": "land",
     "dateRange": {
@@ -1792,7 +1792,7 @@
   {
     "id": "stop-ministry-upper-room-easter-21",
     "journeyId": "journey-ministry",
-    "order": 21,
+    "order": 23,
     "siteId": "site-last-supper",
     "legMode": "land",
     "dateRange": {
@@ -1821,7 +1821,7 @@
   {
     "id": "stop-ministry-upper-room-thomas-22",
     "journeyId": "journey-ministry",
-    "order": 22,
+    "order": 24,
     "siteId": "site-last-supper",
     "legMode": "land",
     "dateRange": {
@@ -1849,7 +1849,7 @@
   {
     "id": "stop-ministry-sea-of-galilee-appearance-23",
     "journeyId": "journey-ministry",
-    "order": 23,
+    "order": 25,
     "siteId": "site-tabgha",
     "legMode": "land",
     "dateRange": {
@@ -1880,7 +1880,7 @@
   {
     "id": "stop-ministry-galilee-mountain-commission-24",
     "journeyId": "journey-ministry",
-    "order": 24,
+    "order": 26,
     "siteId": "site-galilee-mountain",
     "legMode": "land",
     "dateRange": {
@@ -1915,7 +1915,7 @@
   {
     "id": "stop-ministry-appearance-to-james-25",
     "journeyId": "journey-ministry",
-    "order": 25,
+    "order": 27,
     "siteId": "site-jerusalem",
     "legMode": "land",
     "dateRange": {
@@ -1947,7 +1947,7 @@
   {
     "id": "stop-ministry-ascension-26",
     "journeyId": "journey-ministry",
-    "order": 26,
+    "order": 28,
     "siteId": "site-mount-of-olives-ascension",
     "legMode": "land",
     "dateRange": {
@@ -1981,7 +1981,7 @@
   {
     "id": "stop-ministry-stephens-vision-27",
     "journeyId": "journey-ministry",
-    "order": 27,
+    "order": 29,
     "siteId": "site-jerusalem",
     "legMode": "land",
     "dateRange": {
@@ -2012,7 +2012,7 @@
   {
     "id": "stop-ministry-damascus-road-paul-28",
     "journeyId": "journey-ministry",
-    "order": 28,
+    "order": 30,
     "siteId": "site-damascus",
     "legMode": "land",
     "dateRange": {
@@ -2048,7 +2048,7 @@
   {
     "id": "stop-ministry-patmos-john-29",
     "journeyId": "journey-ministry",
-    "order": 29,
+    "order": 31,
     "siteId": "site-patmos",
     "legMode": "sea",
     "dateRange": {
