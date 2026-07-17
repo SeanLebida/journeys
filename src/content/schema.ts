@@ -85,6 +85,23 @@ export const Site = z.object({
   citations: z.array(z.string()),
 });
 
+/**
+ * The travelled path of a journey: one polyline per leg (stop k → stop k+1),
+ * following the documented historical route — Roman roads (Via Egnaria/Appia/
+ * Sebaste, the Cilician Gates), caravan arcs (the Fertile Crescent, the King's
+ * Highway), and coast-hugging sail lanes — instead of straight lines. Route
+ * reconstructions are citable claims; the `note` carries the confidence
+ * caveat (illustrative between attested waypoints).
+ */
+export const RoutePath = z.object({
+  id: z.string().min(1),
+  journeyId: z.string().min(1),
+  /** legs[k] joins stop k to stop k+1; each an array of [lon, lat] incl. both endpoints. */
+  legs: z.array(z.array(z.tuple([z.number(), z.number()])).min(2)).min(1),
+  note: LocalizedText.optional(),
+  citations: z.array(z.string()),
+});
+
 export const Journey = z.object({
   id: z.string().min(1),
   title: LocalizedText,
@@ -253,6 +270,7 @@ export const Bundle = z.object({
   citations: z.array(Citation),
   sites: z.array(Site),
   journeys: z.array(Journey),
+  routes: z.array(RoutePath),
   stops: z.array(Stop),
   persons: z.array(Person),
   artifacts: z.array(Artifact),
@@ -269,6 +287,7 @@ export type TDateRange = z.infer<typeof DateRange>;
 export type TCitation = z.infer<typeof Citation>;
 export type TSite = z.infer<typeof Site>;
 export type TJourney = z.infer<typeof Journey>;
+export type TRoutePath = z.infer<typeof RoutePath>;
 export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
 export type TArtifact = z.infer<typeof Artifact>;

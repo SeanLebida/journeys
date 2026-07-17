@@ -8,7 +8,7 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import { progressAtIndex, type LngLat } from '../../map/route';
+import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
@@ -84,7 +84,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
 
   const stops = useMemo(() => (journey ? bundle.stopsFor(journey.id) : []), [bundle, journey]);
-  const { coords, stopIds, traceStops, names } = useMemo(() => {
+  const { path, fractions, stopCoords, stopIds, traceStops, names } = useMemo(() => {
     const c: LngLat[] = [];
     const ids: string[] = [];
     const ts: TraceStop[] = [];
@@ -98,15 +98,19 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
       ts.push({ lng: lon, lat, confidence: s.confidence, reached: i === 0, order: s.order });
       n.push(site.ancientName.en);
     });
-    return { coords: c, stopIds: ids, traceStops: ts, names: n };
-  }, [bundle, stops]);
+    // Expand along the authored historical route (Roman roads, caravan arcs,
+    // sail lanes); journeys without route data keep straight segments.
+    const route = journey ? bundle.routeForJourney(journey.id) : undefined;
+    const p = expandJourneyPath(c, route?.legs as LngLat[][] | undefined);
+    return { path: p, fractions: stopFractions(p), stopCoords: c, stopIds: ids, traceStops: ts, names: n };
+  }, [bundle, stops, journey]);
 
   useEffect(() => {
     setActiveJourney(journeyId);
   }, [journeyId, setActiveJourney]);
 
-  useRouteAnimation(coords, journey?.color ?? '#c75b39', traceStops, stopIds);
-  useStopLabels(coords, names, stopIds, journey?.color ?? '#c75b39');
+  useRouteAnimation(path, journey?.color ?? '#c75b39', traceStops, stopIds);
+  useStopLabels(stopCoords, fractions, names, stopIds, journey?.color ?? '#c75b39');
 
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
@@ -129,7 +133,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
 }
 
 /** Name label at every stop on the traced route; clicking one scrubs straight to it. */
-function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], color: string): void {
+function useStopLabels(coords: LngLat[], fractions: number[], names: string[], stopIds: string[], color: string): void {
   const { mapRef, ready } = useMap();
   const setProgress = useJourneyStore((s) => s.setProgress);
   const pause = useJourneyStore((s) => s.pause);
@@ -151,7 +155,8 @@ function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], col
       el.setAttribute('aria-label', `Jump to stop ${i + 1}: ${names[i]}`);
       el.addEventListener('click', () => {
         pause();
-        setProgress(progressAtIndex(coords, i));
+        // Scrub to this stop's fraction along the detailed historical path.
+        setProgress(fractions[i] ?? 0);
       });
       elementsRef.current.push(el);
       return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
@@ -182,7 +187,7 @@ function useStopLabels(coords: LngLat[], names: string[], stopIds: string[], col
       markers.forEach((m) => m.remove());
       elementsRef.current = [];
     };
-  }, [mapRef, ready, coords, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
+  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
 
   // Update active class, styles, and visibility when activeStopId changes
   useEffect(() => {

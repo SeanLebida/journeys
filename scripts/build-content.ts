@@ -28,6 +28,7 @@ import {
   Lesson,
   Person,
   Quiz,
+  RoutePath,
   Site,
   Stop,
   Term,
@@ -139,6 +140,7 @@ async function main(): Promise<void> {
   const citations = merged('citations');
   const sites = merged('sites');
   const journeys = merged('journeys');
+  const routes = merged('routes');
   const stops = merged('stops');
   const persons = merged('persons');
   const artifacts = merged('artifacts');
@@ -152,6 +154,7 @@ async function main(): Promise<void> {
   const vCitations = validateArray('citations', Citation, citations);
   const vSites = validateArray('sites', Site, sites);
   const vJourneys = validateArray('journeys', Journey, journeys);
+  const vRoutes = validateArray('routes', RoutePath, routes);
   const vStops = validateArray('stops', Stop, stops);
   const vPersons = validateArray('persons', Person, persons);
   const vArtifacts = validateArray('artifacts', Artifact, artifacts);
@@ -184,6 +187,7 @@ async function main(): Promise<void> {
     s.candidates?.forEach((c, i) => checkCites(c.citations, `site ${s.id}.candidates[${i}]`));
   });
   vJourneys.forEach((j) => checkCites(j.citations, `journey ${j.id}`));
+  vRoutes.forEach((r) => checkCites(r.citations, `route ${r.id}`));
   vStops.forEach((s) => checkCites(s.citations, `stop ${s.id}`));
   vPersons.forEach((p) => checkCites(p.citations, `person ${p.id}`));
   vArtifacts.forEach((a) => checkCites(a.citations, `artifact ${a.id}`));
@@ -253,6 +257,34 @@ async function main(): Promise<void> {
     });
   });
 
+  // 6b. Route-path integrity: each journey's path must have exactly one leg
+  // per stop pair, and every leg must begin/end at (near) its stops — this is
+  // what guarantees the animated trace's stop mapping stays truthful.
+  const distKm = (a: [number, number], b: [number, number]) => {
+    const toRad = (d: number) => (d * Math.PI) / 180;
+    const dLat = toRad(b[1] - a[1]);
+    const dLon = toRad(b[0] - a[0]);
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a[1])) * Math.cos(toRad(b[1])) * Math.sin(dLon / 2) ** 2;
+    return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+  };
+  const siteById = new Map(vSites.map((x) => [x.id, x]));
+  const stopById = new Map(vStops.map((x) => [x.id, x]));
+  vRoutes.forEach((r) => {
+    const j = vJourneys.find((x) => x.id === r.journeyId);
+    if (!j) return err(`route ${r.id}: unknown journeyId '${r.journeyId}'`);
+    if (r.legs.length !== j.stops.length - 1)
+      return err(`route ${r.id}: ${r.legs.length} legs for ${j.stops.length} stops (need ${j.stops.length - 1})`);
+    r.legs.forEach((leg, k) => {
+      const sa = siteById.get(stopById.get(j.stops[k])?.siteId ?? '');
+      const sb = siteById.get(stopById.get(j.stops[k + 1])?.siteId ?? '');
+      if (!sa || !sb) return;
+      const a: [number, number] = [sa.coordinates.value.lon, sa.coordinates.value.lat];
+      const b: [number, number] = [sb.coordinates.value.lon, sb.coordinates.value.lat];
+      if (distKm(leg[0] as [number, number], a) > 25) err(`route ${r.id}.legs[${k}]: start is ${Math.round(distKm(leg[0] as [number, number], a))} km from stop ${j.stops[k]}`);
+      if (distKm(leg[leg.length - 1] as [number, number], b) > 25) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
+    });
+  });
+
   // 7. Geo sanity + date discipline.
   const [w, s, e, n] = WORLD_BBOX;
   vSites.forEach((site) => {
@@ -263,6 +295,13 @@ async function main(): Promise<void> {
     if (!d.display.en) err(`${where}: dateRange missing display.en`);
     if (d.startYear === d.endYear && !d.approximate) warn(`${where}: single-year date not marked approximate (confirm precision)`);
   };
+  vRoutes.forEach((r) =>
+    r.legs.forEach((leg, k) =>
+      leg.forEach(([lon, lat]) => {
+        if (lon < w || lon > e || lat < s || lat > n) err(`route ${r.id}.legs[${k}]: point ${lat},${lon} outside world bbox`);
+      }),
+    ),
+  );
   vJourneys.forEach((j) => dateCheck(j.dateRange, `journey ${j.id}`));
   vStops.forEach((st) => dateCheck(st.dateRange, `stop ${st.id}`));
 
@@ -314,6 +353,7 @@ async function main(): Promise<void> {
     citations: vCitations,
     sites: vSites,
     journeys: vJourneys,
+    routes: vRoutes,
     stops: vStops,
     persons: vPersons,
     artifacts: vArtifacts,
@@ -346,7 +386,7 @@ async function main(): Promise<void> {
 
   // 12. Report.
   console.log('\n— Content build —');
-  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
+  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · routes ${vRoutes.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
   console.log(`  citations ${vCitations.length} · Bible verses ${Object.entries(dbCounts).map(([k, v]) => `${k}:${v}`).join(' ') || 'none'}`);
   console.log(`  integrity ${integrity}`);
   warnings.forEach((wn) => console.warn(`  ⚠ ${wn}`));

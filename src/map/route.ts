@@ -81,3 +81,48 @@ export function activeStopIndex(coords: LngLat[], t: number): number {
   }
   return coords.length - 1;
 }
+
+// ── Historical route paths (per-leg polylines from content/routes) ──────────
+
+export interface JourneyPath {
+  /** The full detailed polyline the traveler follows. */
+  coords: LngLat[];
+  /** Vertex index of each stop within `coords` (stopVertex[0] === 0). */
+  stopVertex: number[];
+}
+
+/**
+ * Expand a journey's stop coordinates into the detailed travelled polyline by
+ * splicing in the authored per-leg paths (which include both endpoints). Legs
+ * that are missing or mismatched fall back to the straight segment, and a
+ * journey with no route data degrades to exactly the old straight-line
+ * behavior — coords === stopCoords with an identity stop mapping.
+ */
+export function expandJourneyPath(stopCoords: LngLat[], legs?: LngLat[][]): JourneyPath {
+  if (stopCoords.length === 0) return { coords: [], stopVertex: [] };
+  const coords: LngLat[] = [stopCoords[0]];
+  const stopVertex: number[] = [0];
+  for (let k = 1; k < stopCoords.length; k++) {
+    const leg = legs && legs.length === stopCoords.length - 1 ? legs[k - 1] : undefined;
+    if (leg && leg.length >= 2) {
+      // Drop the leg's first point — it duplicates the previous stop.
+      for (let i = 1; i < leg.length; i++) coords.push(leg[i]);
+    } else {
+      coords.push(stopCoords[k]);
+    }
+    stopVertex.push(coords.length - 1);
+  }
+  return { coords, stopVertex };
+}
+
+/** Progress fraction (0..1) at which each stop is reached along the path. */
+export function stopFractions(path: JourneyPath): number[] {
+  return path.stopVertex.map((v) => progressAtIndex(path.coords, v));
+}
+
+/** Index of the stop most recently reached at fraction `t` (fractions from stopFractions). */
+export function activeStopFromFractions(fractions: number[], t: number): number {
+  let idx = 0;
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) idx = i;
+  return idx;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { loadBundle } from '../platform/assets';
-import type { TArtifact, TBundle, TCitation, TJourney, TLesson, TPerson, TQuiz, TSite, TStop, TTerm, TVideo, TWitness } from './schema';
+import type { TArtifact, TBundle, TCitation, TJourney, TLesson, TPerson, TQuiz, TRoutePath, TSite, TStop, TTerm, TVideo, TWitness } from './schema';
 
 export interface BundleIndex extends TBundle {
   attributions?: { id: string; name: string; license: string; url?: string }[];
@@ -23,6 +23,8 @@ export interface BundleIndex extends TBundle {
   /** Supplementary videos anchored to a site, journey, or person. */
   videosForSite: (siteId: string) => TVideo[];
   videosForJourney: (journeyId: string) => TVideo[];
+  /** Historical route geometry (per-leg polylines) for a journey, if authored. */
+  routeForJourney: (journeyId: string) => TRoutePath | undefined;
 }
 
 function index(b: TBundle): BundleIndex {
@@ -55,6 +57,7 @@ function index(b: TBundle): BundleIndex {
     witnessesForPerson: (personId) => (b.witnesses ?? []).filter((w) => w.personIds?.includes(personId)),
     videosForSite: (siteId) => (b.videos ?? []).filter((v) => v.siteId === siteId),
     videosForJourney: (journeyId) => (b.videos ?? []).filter((v) => v.journeyId === journeyId),
+    routeForJourney: (journeyId) => (b.routes ?? []).find((r) => r.journeyId === journeyId),
   };
 }
 
