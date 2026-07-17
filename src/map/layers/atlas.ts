@@ -64,11 +64,18 @@ export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
 /** One LineString per journey, carrying its route color. */
 export function atlasRoutesFC(bundle: BundleIndex): FeatureCollection {
   const features: Feature[] = bundle.journeys.map((j) => {
-    const coords = bundle
+    const stopCoords = bundle
       .stopsFor(j.id)
       .map((s) => bundle.site(s.siteId))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
-      .map((s) => [s.coordinates.value.lon, s.coordinates.value.lat]);
+      .map((s) => [s.coordinates.value.lon, s.coordinates.value.lat] as [number, number]);
+    // Draw the authored historical path (roads / caravan arcs / sail lanes)
+    // when one exists; otherwise the straight stop-to-stop fallback.
+    const route = bundle.routeForJourney(j.id);
+    const coords =
+      route && route.legs.length === stopCoords.length - 1
+        ? [stopCoords[0], ...route.legs.flatMap((leg) => leg.slice(1))]
+        : stopCoords;
     return {
       type: 'Feature',
       properties: { journeyId: j.id, color: j.color ?? '#c75b39', title: j.title.en },

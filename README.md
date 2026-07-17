@@ -68,7 +68,7 @@ All milestones delivered and verified:
 - **M7** offline PWA (precaches app + 10 MB Bible DB) · **M8** OTA content manifest + apostolic traditions
 - **M9** credits/attribution screen, privacy policy, store docs, app icon, release review-gate
 
-**Content:** 58 sites · 6 journeys · 65 stops · 148 citations, every claim carrying confidence + sources.
+**Content:** 68 sites · 8 journeys (patriarchs → apostles) · 76 stops · 8 historical route paths · 17 archaeological finds · 8 extra-biblical witnesses · 190+ citations, every claim carrying confidence + sources.
 
 **Verified:** `typecheck` · `lint` · 28 unit tests · production build · 6 Playwright E2E (incl. scripture
 from the bundled DB, quiz scoring, WebGL map, and **offline reload**).

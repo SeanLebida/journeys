@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useMap } from './MapProvider';
-import { activeStopIndex, lineProgress, type LngLat } from './route';
+import { activeStopFromFractions, lineProgress, stopFractions, type JourneyPath } from './route';
 import { ensureTraceLayers, removeTraceLayers, updateTrace, type TraceStop } from './layers/trace';
 import { useJourneyStore } from '../state/useJourneyStore';
 
@@ -14,8 +14,12 @@ function reducedMotion(): boolean {
  * map every frame, and keeps `activeStopId` in sync. Honors prefers-reduced-
  * motion by jumping straight to the full path instead of animating.
  */
-export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceStop[], stopIds: string[]): void {
+export function useRouteAnimation(path: JourneyPath, color: string, stops: TraceStop[], stopIds: string[]): void {
   const { mapRef, ready } = useMap();
+  const coords = path.coords;
+  // Fraction of the total path length at which each stop sits — the detailed
+  // polyline has many vertices between stops, so `coords[i]` is no longer stop i.
+  const fractions = useMemo(() => stopFractions(path), [path]);
   const progress = useJourneyStore((s) => s.progress);
   const playing = useJourneyStore((s) => s.playing);
   const setProgress = useJourneyStore((s) => s.setProgress);
@@ -91,7 +95,7 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2 || !map.getLayer('trace-progress-line')) return;
     const prog = lineProgress(coords, progress);
-    const idx = activeStopIndex(coords, progress);
+    const idx = activeStopFromFractions(fractions, progress);
     updateTrace(
       map,
       coords,
@@ -103,7 +107,7 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       if (idx !== lastIdxRef.current) {
         const isInitial = lastIdxRef.current === -1;
         lastIdxRef.current = idx;
-        const activeCoords = coords[idx];
+        const activeCoords = coords[path.stopVertex[idx]];
         if (activeCoords) {
           map.easeTo({
             center: activeCoords,
@@ -118,7 +122,7 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
         }
       }
     }
-  }, [mapRef, ready, coords, progress, stops, stopIds, setActiveStop, playing, pauseAtStops, pause]);
+  }, [mapRef, ready, coords, path, fractions, progress, stops, stopIds, setActiveStop, playing, pauseAtStops, pause]);
 
   // rAF playback.
   useEffect(() => {
@@ -128,7 +132,9 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
       pause();
       return;
     }
-    const duration = Math.max(12000, (coords.length - 1) * 3000) / playbackSpeed;
+    // Scale playback by the number of STOPS, not path vertices — the detailed
+    // historical polyline has ~10x the vertices of the old straight lines.
+    const duration = Math.max(12000, (stopIds.length - 1) * 3000) / playbackSpeed;
     let raf = 0;
     let last = performance.now();
     const tick = (now: number) => {
@@ -160,5 +166,5 @@ export function useRouteAnimation(coords: LngLat[], color: string, stops: TraceS
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, coords, setProgress, pause, mapRef, ready, playbackSpeed]);
+  }, [playing, coords, stopIds, setProgress, pause, mapRef, ready, playbackSpeed]);
 }
