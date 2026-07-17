@@ -184,11 +184,17 @@ export function MapProvider({ children }: { children: ReactNode }) {
     for (const [key, layerId] of Object.entries(BASEMAP_LAYERS)) {
       setLayerVisible(map, layerId, layers[key as keyof typeof BASEMAP_LAYERS]);
     }
+    let maxZoom = 20;
     if (layers.ancientMap) {
-      map.setMaxZoom(11);
+      maxZoom = 11;
+    } else if (layers.satellite || layers.streets) {
+      maxZoom = 19;
+    } else if (layers.topography) {
+      maxZoom = 13;
     } else {
-      map.setMaxZoom(20);
+      maxZoom = 19;
     }
+    map.setMaxZoom(maxZoom);
     applyLabelVisibility(map, layers.labelsAlwaysOn);
     updateWaterLabelVisibility(map, layers.labelsAlwaysOn, waterMarkersRef.current);
   }, [ready, layers]);

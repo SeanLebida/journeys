@@ -60,6 +60,29 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     };
   }, [mapRef, ready]);
 
+  const coordsRef = useRef(coords);
+  useEffect(() => {
+    coordsRef.current = coords;
+  }, [coords]);
+
+  // Zoom out if the user is zoomed in too far when play starts
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !playing) return;
+
+    const currentZoom = map.getZoom();
+    const MAX_PLAYBACK_ZOOM = 7.0; // Visually understandable regional zoom level
+    if (currentZoom > MAX_PLAYBACK_ZOOM) {
+      const currentProgress = useJourneyStore.getState().progress;
+      const prog = lineProgress(coordsRef.current, currentProgress);
+      map.easeTo({
+        center: prog.point,
+        zoom: MAX_PLAYBACK_ZOOM,
+        duration: 800,
+      });
+    }
+  }, [playing, mapRef, ready]);
+
   // Add layers + fit the map to this journey's extent.
   useEffect(() => {
     const map = mapRef.current;
