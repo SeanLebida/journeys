@@ -8,7 +8,7 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
+import { activeStopFromFractions, expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
@@ -130,7 +130,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
         <ActiveStopPanel bundle={bundle} stops={stops} />
       </ModePanel>
       <div className="trace-controls-fixed" style={{ '--accent': journey.color } as React.CSSProperties}>
-        <TraceControls stopCount={stops.length} />
+        <TraceControls stopCount={stops.length} fractions={fractions} />
       </div>
     </div>
   );
@@ -221,8 +221,12 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
   }, [activeStopId, stopIds, color, elementsRef]);
 }
 
-function TraceControls({ stopCount }: { stopCount: number }) {
+function TraceControls({ stopCount, fractions }: { stopCount: number; fractions: number[] }) {
   const { progress, playing, play, pause, setProgress, reset, playbackSpeed, setPlaybackSpeed, pauseAtStops, setPauseAtStops } = useJourneyStore();
+  // Match the on-map active-stop label exactly: derive the index from the same
+  // path-length fractions, not a linear `progress * (stopCount-1)` guess (stops
+  // aren't evenly spaced along the route, so the linear version drifts).
+  const currentStop = activeStopFromFractions(fractions, progress) + 1;
   return (
     <div className="trace-controls">
       <div className="trace-controls__main">
@@ -270,7 +274,7 @@ function TraceControls({ stopCount }: { stopCount: number }) {
             onChange={(e) => setProgress(Number(e.target.value))}
           />
         </label>
-        <span className="trace-controls__count">{Math.round(progress * Math.max(0, stopCount - 1)) + 1}/{stopCount}</span>
+        <span className="trace-controls__count">{currentStop}/{stopCount}</span>
       </div>
     </div>
   );
