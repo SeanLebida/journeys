@@ -1,0 +1,8 @@
+Features: 16
+Names: Cyprus, Israel, Lebanon, Syria, Albania, Türkiye, Libya, Tunisia, Greece, Iraq, Italy, Saudi Arabia, Bulgaria, Jordan, Egypt, Malta
+Israel type: MultiPolygon
+Israel polygons: 3
+  Polygon 0: 471 vertices
+  Polygon 1: 27 vertices
+  Polygon 2: 207 vertices
+Palestine feature exists: false

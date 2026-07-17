@@ -1,57 +1,672 @@
 [
   {
     "id": "video-genesis-overview",
-    "title": { "en": "Book of Genesis — Animated Overview (Part 1)" },
+    "title": {
+      "en": "Book of Genesis — Animated Overview (Part 1)"
+    },
     "provider": "youtube",
     "videoId": "GQI72THyO5I",
     "channel": "BibleProject",
-    "summary": { "en": "An animated walk through the literary design of Genesis — creation, human rebellion, and the call of Abraham's family through whom God promises to bless the nations." },
-    "topic": { "en": "The book that opens the patriarchal story" },
+    "summary": {
+      "en": "An animated walk through the literary design of Genesis — creation, human rebellion, and the call of Abraham's family through whom God promises to bless the nations."
+    },
+    "topic": {
+      "en": "The book that opens the patriarchal story"
+    },
     "journeyId": "journey-abraham",
-    "dateRange": { "startYear": -2000, "endYear": -1800, "display": { "en": "narrative set c. 2000-1800 BC" }, "approximate": true }
+    "dateRange": {
+      "startYear": -2000,
+      "endYear": -1800,
+      "display": {
+        "en": "narrative set c. 2000-1800 BC"
+      },
+      "approximate": true
+    }
   },
   {
     "id": "video-exodus-overview",
-    "title": { "en": "Book of Exodus — Animated Overview (Part 1)" },
+    "title": {
+      "en": "Book of Exodus — Animated Overview (Part 1)"
+    },
     "provider": "youtube",
     "videoId": "jH_aojNJM3E",
     "channel": "BibleProject",
-    "summary": { "en": "The literary design of Exodus 1-18: God's confrontation with Pharaoh, the deliverance of Israel, and the journey toward Sinai." },
-    "topic": { "en": "Deliverance from Egypt" },
+    "summary": {
+      "en": "The literary design of Exodus 1-18: God's confrontation with Pharaoh, the deliverance of Israel, and the journey toward Sinai."
+    },
+    "topic": {
+      "en": "Deliverance from Egypt"
+    },
     "journeyId": "journey-exodus",
-    "dateRange": { "startYear": -1446, "endYear": -1250, "display": { "en": "c. 1446 or 1260 BC (debated)" }, "approximate": true }
+    "dateRange": {
+      "startYear": -1446,
+      "endYear": -1250,
+      "display": {
+        "en": "c. 1446 or 1260 BC (debated)"
+      },
+      "approximate": true
+    }
   },
   {
     "id": "video-nt-overview",
-    "title": { "en": "The New Testament — Animated Overview" },
+    "title": {
+      "en": "The New Testament — Animated Overview"
+    },
     "provider": "youtube",
     "videoId": "Q0BrP8bqj0c",
     "channel": "BibleProject",
-    "summary": { "en": "How the New Testament is designed as a single story that continues the Hebrew Bible and centers on Jesus of Nazareth." },
-    "topic": { "en": "Setting of the New Testament" },
+    "summary": {
+      "en": "How the New Testament is designed as a single story that continues the Hebrew Bible and centers on Jesus of Nazareth."
+    },
+    "topic": {
+      "en": "Setting of the New Testament"
+    },
     "journeyId": "journey-ministry",
-    "dateRange": { "startYear": -6, "endYear": 30, "display": { "en": "1st c. AD" }, "approximate": true }
+    "dateRange": {
+      "startYear": -6,
+      "endYear": 30,
+      "display": {
+        "en": "1st c. AD"
+      },
+      "approximate": true
+    }
   },
   {
     "id": "video-acts-1-overview",
-    "title": { "en": "Book of Acts — Animated Overview (Part 1)" },
+    "title": {
+      "en": "Book of Acts — Animated Overview (Part 1)"
+    },
     "provider": "youtube",
     "videoId": "CGbNw855ksw",
     "channel": "BibleProject",
-    "summary": { "en": "Acts 1-12: the risen Jesus sends the Spirit, and the good news spreads from Jerusalem outward through Peter and the early church." },
-    "topic": { "en": "The birth of the church" },
+    "summary": {
+      "en": "Acts 1-12: the risen Jesus sends the Spirit, and the good news spreads from Jerusalem outward through Peter and the early church."
+    },
+    "topic": {
+      "en": "The birth of the church"
+    },
     "journeyId": "journey-paul-1",
-    "dateRange": { "startYear": 30, "endYear": 48, "display": { "en": "c. AD 30-48" }, "approximate": true }
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 48,
+      "display": {
+        "en": "c. AD 30-48"
+      },
+      "approximate": true
+    }
   },
   {
     "id": "video-acts-2-overview",
-    "title": { "en": "Book of Acts — Animated Overview (Part 2)" },
+    "title": {
+      "en": "Book of Acts — Animated Overview (Part 2)"
+    },
     "provider": "youtube",
     "videoId": "Z-17KxpjL0Q",
     "channel": "BibleProject",
-    "summary": { "en": "Acts 13-28: the multiethnic church sends out missionaries — above all Paul — carrying the message across the empire toward Rome." },
-    "topic": { "en": "Paul's missionary journeys" },
+    "summary": {
+      "en": "Acts 13-28: the multiethnic church sends out missionaries — above all Paul — carrying the message across the empire toward Rome."
+    },
+    "topic": {
+      "en": "Paul's missionary journeys"
+    },
     "journeyId": "journey-paul-2",
-    "dateRange": { "startYear": 46, "endYear": 62, "display": { "en": "c. AD 46-62" }, "approximate": true }
+    "dateRange": {
+      "startYear": 46,
+      "endYear": 62,
+      "display": {
+        "en": "c. AD 46-62"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-capernaum",
+    "title": {
+      "en": "What Early Church Buildings were in Capernaum?"
+    },
+    "provider": "youtube",
+    "videoId": "-06PMk-3h-s",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts explores the archaeological ruins of Capernaum, detailing the history of early Christian worship spaces, the octagonal church, and the house of Peter."
+    },
+    "topic": {
+      "en": "Archaeology of Peter's House"
+    },
+    "siteId": "site-capernaum",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 28,
+      "endYear": 30,
+      "display": {
+        "en": "c. AD 28-30"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-jerusalem-trial",
+    "title": {
+      "en": "The Trial of Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "KTZfHmrmpAU",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts traces the physical route of Jesus' trial and suffering in Jerusalem, from the Upper Room and Gethsemane to the House of Caiaphas and Pilate's Judgment Seat."
+    },
+    "topic": {
+      "en": "The trial and condemnation of Jesus"
+    },
+    "siteId": "site-jerusalem",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-bethlehem-birth",
+    "title": {
+      "en": "The Actual Birthplace of Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "6eC-mFhfZJI",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts takes a tour of the Church of the Nativity in Bethlehem, exploring the cave traditionally identified as the birthplace of Jesus."
+    },
+    "topic": {
+      "en": "The birthplace of Jesus"
+    },
+    "siteId": "site-bethlehem",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": -6,
+      "endYear": -4,
+      "display": {
+        "en": "c. 5-4 BC"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-nazareth",
+    "title": {
+      "en": "Why was Jesus run out of Nazareth?"
+    },
+    "provider": "youtube",
+    "videoId": "_gJrCyelcGU",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts visits the hometown of Jesus, Nazareth, and explains the historical context of his rejection in the synagogue after reading from Isaiah."
+    },
+    "topic": {
+      "en": "Rejection in Nazareth"
+    },
+    "siteId": "site-nazareth",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": -4,
+      "endYear": 28,
+      "display": {
+        "en": "c. 4 BC - AD 28"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-cana",
+    "title": {
+      "en": "First Miracle of Jesus at Cana"
+    },
+    "provider": "youtube",
+    "videoId": "pWxbEy1r3ac",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts visits Cana of Galilee, examining the wedding feast account in John 2, the stone water jars, and the historical candidates for the location of the wedding."
+    },
+    "topic": {
+      "en": "Miracle at the Wedding Feast"
+    },
+    "siteId": "site-cana-of-galilee",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 28,
+      "endYear": 30,
+      "display": {
+        "en": "c. AD 28-30"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-sea-of-galilee",
+    "title": {
+      "en": "Galilee Boat"
+    },
+    "provider": "youtube",
+    "videoId": "3N-Xcyst9po",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts examines the ancient 1st-century fishing vessel — the \"Jesus Boat\" — discovered in the mud of the Sea of Galilee near Ginosar and now housed at the Yigal Allon Museum, a hull carbon-dated to the time of Jesus."
+    },
+    "topic": {
+      "en": "The 1st-Century Fishing Boat"
+    },
+    "siteId": "site-sea-of-galilee",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 28,
+      "endYear": 30,
+      "display": {
+        "en": "c. AD 28-30"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-crucifixion",
+    "title": {
+      "en": "The Crucifixion of Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "MY0JARqa_gk",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts visits Golgotha and the Garden Tomb area in Jerusalem, investigating the Roman methods of crucifixion and the archaeological evidence for the execution of Christ."
+    },
+    "topic": {
+      "en": "Crucifixion and Execution"
+    },
+    "siteId": "site-golgotha-and-the-tomb",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-resurrection",
+    "title": {
+      "en": "The Resurrection of Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "cQU8UQM4_XI",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts explores the historical and archaeological evidence for the resurrection of Jesus Christ, investigating the tomb structures and early eyewitness accounts in Jerusalem and Galilee."
+    },
+    "topic": {
+      "en": "The Resurrection Accounts"
+    },
+    "siteId": "site-golgotha-and-the-tomb",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-bethlehem-birthplace",
+    "title": {
+      "en": "Birthplace of Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "1NZ5ZEO8t8E",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts explores Bethlehem and the traditions surrounding Jesus' birth — the Church of the Nativity and the town singled out by the prophet Micah (Micah 5:2; Luke 2:1-7)."
+    },
+    "topic": {
+      "en": "Bethlehem and the Nativity"
+    },
+    "siteId": "site-bethlehem",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": -6,
+      "endYear": -4,
+      "display": {
+        "en": "c. 5-4 BC"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-bethlehem-shepherds",
+    "title": {
+      "en": "Shepherds in the Fields near Bethlehem"
+    },
+    "provider": "youtube",
+    "videoId": "dsIzobZDl_8",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "The fields outside Bethlehem where, according to Luke 2, shepherds keeping watch by night received the angelic announcement of the Messiah's birth."
+    },
+    "topic": {
+      "en": "The Shepherds' Fields"
+    },
+    "siteId": "site-bethlehem",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": -6,
+      "endYear": -4,
+      "display": {
+        "en": "c. 5-4 BC"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-nazareth-annunciation",
+    "title": {
+      "en": "Church of the Annunciation in Nazareth"
+    },
+    "provider": "youtube",
+    "videoId": "HmO1aAN94Oc",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts visits Nazareth and the Church of the Annunciation, marking the tradition of Gabriel's announcement to Mary that she would bear Jesus (Luke 1:26-38)."
+    },
+    "topic": {
+      "en": "The Annunciation"
+    },
+    "siteId": "site-nazareth",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": -6,
+      "endYear": -5,
+      "display": {
+        "en": "c. 6-5 BC"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-baptism-john",
+    "title": {
+      "en": "John the Baptist"
+    },
+    "provider": "youtube",
+    "videoId": "cELMUqwMV0U",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "The wilderness ministry of John the Baptist at the Jordan River and the baptism of Jesus, which opens his public ministry (Matthew 3; Mark 1:1-11)."
+    },
+    "topic": {
+      "en": "John the Baptist and Jesus' baptism"
+    },
+    "siteId": "site-baptism-at-the-jordan",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 26,
+      "endYear": 28,
+      "display": {
+        "en": "c. AD 26-28"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-sea-of-galilee-overview",
+    "title": {
+      "en": "The Sea of Galilee"
+    },
+    "provider": "youtube",
+    "videoId": "xQ3hBAxWebI",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "An overview of the Sea of Galilee — the freshwater lake that was the setting for much of Jesus' Galilean ministry: calling the fishermen, calming the storm, and walking on the water."
+    },
+    "topic": {
+      "en": "The Sea of Galilee"
+    },
+    "siteId": "site-sea-of-galilee",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 28,
+      "endYear": 30,
+      "display": {
+        "en": "c. AD 28-30"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-caesarea-philippi-confession",
+    "title": {
+      "en": "Peter's Confession at Caesarea Philippi"
+    },
+    "provider": "youtube",
+    "videoId": "TPqdTJgZSYY",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "At Caesarea Philippi, in the shadow of the pagan shrines at the foot of Mount Hermon, Peter confesses Jesus as \"the Messiah, the Son of the living God\" (Matthew 16:13-20)."
+    },
+    "topic": {
+      "en": "Peter's Confession"
+    },
+    "siteId": "site-caesarea-philippi",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 29,
+      "endYear": 29,
+      "display": {
+        "en": "c. AD 29"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-jerusalem-temple",
+    "title": {
+      "en": "The Temple in Jerusalem"
+    },
+    "provider": "youtube",
+    "videoId": "eI5OHnRUqyQ",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts reconstructs Herod's Temple Mount in Jerusalem — its courts, the sanctuary, and its central role in Jewish worship and in Jesus' final week."
+    },
+    "topic": {
+      "en": "The Second Temple"
+    },
+    "siteId": "site-jerusalem",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30-33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-gethsemane",
+    "title": {
+      "en": "Jesus in the Garden of Gethsemane"
+    },
+    "provider": "youtube",
+    "videoId": "38h4G9WOlsc",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "The Garden of Gethsemane on the Mount of Olives, where Jesus prayed in anguish and was betrayed and arrested on the night before his crucifixion (Matthew 26:36-56)."
+    },
+    "topic": {
+      "en": "Agony in Gethsemane"
+    },
+    "siteId": "site-gethsemane",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-golgotha-location",
+    "title": {
+      "en": "Golgotha Location – The Place of the Skull"
+    },
+    "provider": "youtube",
+    "videoId": "NxtQNgjePzw",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Dave Stotts weighs the candidate locations for Golgotha, \"the place of the skull\" — the Church of the Holy Sepulchre and the Garden Tomb — where Jesus was crucified (John 19:17-18)."
+    },
+    "topic": {
+      "en": "Locating Golgotha"
+    },
+    "siteId": "site-golgotha-and-the-tomb",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-caiaphas-trial",
+    "title": {
+      "en": "Jesus before Caiaphas"
+    },
+    "provider": "youtube",
+    "videoId": "oJlgTNgi_y0",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "The night trial of Jesus before the high priest Caiaphas and the Sanhedrin, which preceded his handover to the Roman governor Pilate (Matthew 26:57-68)."
+    },
+    "topic": {
+      "en": "Trial before Caiaphas"
+    },
+    "siteId": "site-trial-before-pilate",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-bethany-lazarus",
+    "title": {
+      "en": "Jesus and Lazarus"
+    },
+    "provider": "youtube",
+    "videoId": "RLso51foGmk",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "In Bethany, near Jerusalem, Jesus raises Lazarus from the dead — a sign recorded in John 11 that sharpens the authorities' resolve against him just before the triumphal entry."
+    },
+    "topic": {
+      "en": "The raising of Lazarus"
+    },
+    "siteId": "site-bethany-and-bethphage",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-jericho",
+    "title": {
+      "en": "Jericho and Jesus"
+    },
+    "provider": "youtube",
+    "videoId": "AQpFeiL5PYM",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "Jesus passes through Jericho on his final ascent to Jerusalem, healing blind Bartimaeus at the roadside (Mark 10:46-52; Luke 18:35-43)."
+    },
+    "topic": {
+      "en": "Jesus in Jericho"
+    },
+    "siteId": "site-final-journey-jericho",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-jericho-zacchaeus",
+    "title": {
+      "en": "Zacchaeus the Tax Collector"
+    },
+    "provider": "youtube",
+    "videoId": "27cmvBKJShw",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "The chief tax collector Zacchaeus climbs a sycamore tree in Jericho to glimpse Jesus, who calls him down and dines at his house — \"the Son of Man came to seek and save the lost\" (Luke 19:1-10)."
+    },
+    "topic": {
+      "en": "Zacchaeus"
+    },
+    "siteId": "site-final-journey-jericho",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 30,
+      "endYear": 33,
+      "display": {
+        "en": "c. AD 30 or 33"
+      },
+      "approximate": true
+    }
+  },
+  {
+    "id": "video-dth-samaria-well",
+    "title": {
+      "en": "Jacob's Well in Samaria"
+    },
+    "provider": "youtube",
+    "videoId": "e9lgNI2Olf0",
+    "channel": "Drive Thru History with Dave Stotts",
+    "summary": {
+      "en": "At Jacob's Well near Sychar in Samaria, Jesus speaks with a Samaritan woman about \"living water,\" crossing a sharp ethnic and religious divide (John 4:1-42)."
+    },
+    "topic": {
+      "en": "The Samaritan woman at the well"
+    },
+    "siteId": "site-samaria",
+    "journeyId": "journey-ministry",
+    "dateRange": {
+      "startYear": 27,
+      "endYear": 28,
+      "display": {
+        "en": "c. AD 27-28"
+      },
+      "approximate": true
+    }
   }
 ]

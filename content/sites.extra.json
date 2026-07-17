@@ -1,386 +1,554 @@
 [
-  {
-    "id": "site-patmos",
-    "ancientName": {
-      "en": "Patmos"
-    },
-    "modernName": {
-      "en": "Patmos"
-    },
-    "modernLocation": {
-      "en": "Patmos island, Dodecanese, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.3089,
-        "lon": 26.5489
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-patmos"
-      ]
-    },
-    "summary": {
-      "en": "Small Aegean island where, by his own account, John was exiled 'for the word of God' and received the visions of Revelation (Revelation 1:9). The traditional Cave of the Apocalypse is a major pilgrimage site."
-    },
-    "citations": [
-      "cit-patmos"
-    ]
+ {
+  "id": "site-patmos",
+  "ancientName": {
+   "en": "Patmos"
   },
-  {
-    "id": "site-hierapolis",
-    "ancientName": {
-      "en": "Hierapolis"
-    },
-    "modernName": {
-      "en": "Pamukkale"
-    },
-    "modernLocation": {
-      "en": "Pamukkale, Denizli Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.9244,
-        "lon": 29.1289
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-philip-hierapolis"
-      ]
-    },
-    "summary": {
-      "en": "Phrygian city near Laodicea and Colossae where strong tradition (and an excavated martyrium) places the ministry and death of the apostle Philip."
-    },
-    "citations": [
-      "cit-philip-hierapolis"
-    ]
+  "modernName": {
+   "en": "Patmos"
   },
-  {
-    "id": "site-alexandria",
-    "ancientName": {
-      "en": "Alexandria"
-    },
-    "modernName": {
-      "en": "Alexandria"
-    },
-    "modernLocation": {
-      "en": "Alexandria, Egypt"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.2001,
-        "lon": 29.9187
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-mark-alexandria"
-      ]
-    },
-    "summary": {
-      "en": "Great Hellenistic city of Egypt; church tradition credits Mark the Evangelist with founding its Christian community and serving as its first bishop."
-    },
-    "citations": [
-      "cit-mark-alexandria"
-    ]
+  "modernLocation": {
+   "en": "Patmos island, Dodecanese, Greece"
   },
-  {
-    "id": "site-ur",
-    "ancientName": {
-      "en": "Ur of the Chaldees (Ur Kaśdim)"
-    },
-    "modernName": {
-      "en": "Tell el-Muqayyar"
-    },
-    "modernLocation": {
-      "en": "Tell el-Muqayyar, Dhi Qar Governorate, southern Iraq"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 30.9626,
-        "lon": 46.1032
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-ur",
-        "cit-ot-ur-debate"
-      ]
-    },
-    "summary": {
-      "en": "A major Sumerian city (excavated by Woolley, with its great ziggurat of Ur-Nammu) named as Abraham's birthplace in Genesis 11:31. A minority of scholars instead locate the biblical 'Ur of the Chaldeans' in the north near Haran; the southern Tell el-Muqayyar remains the traditional identification."
-    },
-    "citations": [
-      "cit-ot-ur",
-      "cit-ot-ur-debate"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 37.3089,
+    "lon": 26.5489
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-patmos"
+   ]
   },
-  {
-    "id": "site-haran",
-    "ancientName": {
-      "en": "Haran (Harran)"
-    },
-    "modernName": {
-      "en": "Harran"
-    },
-    "modernLocation": {
-      "en": "Harran, Şanlıurfa Province, southeastern Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.8642,
-        "lon": 39.0308
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-haran"
-      ]
-    },
-    "summary": {
-      "en": "An ancient caravan city on the Balikh where, in Genesis, Terah's family settled and Abraham was later called on toward Canaan (Genesis 12:4). Long a cult center of the moon-god Sin."
-    },
-    "citations": [
-      "cit-ot-haran"
-    ]
+  "summary": {
+   "en": "Small Aegean island where, by his own account, John was exiled 'for the word of God' and received the visions of Revelation (Revelation 1:9). The traditional Cave of the Apocalypse is a major pilgrimage site."
   },
-  {
-    "id": "site-shechem-ot",
-    "ancientName": {
-      "en": "Shechem"
-    },
-    "modernName": {
-      "en": "Tell Balata (Nablus)"
-    },
-    "modernLocation": {
-      "en": "Tell Balata, at the eastern edge of modern Nablus, West Bank"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.2136,
-        "lon": 35.2814
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-shechem"
-      ]
-    },
-    "summary": {
-      "en": "Abraham's first altar site in Canaan (Genesis 12:6-7) and a recurring covenant place through Jacob and Joshua. The excavated Middle-Bronze city at Tell Balata includes a massive fortress-temple."
-    },
-    "citations": [
-      "cit-ot-shechem"
-    ]
+  "citations": [
+   "cit-patmos",
+   "cit-dth-patmos",
+   "cit-dth-john-exiled-to-patmos"
+  ]
+ },
+ {
+  "id": "site-hierapolis",
+  "ancientName": {
+   "en": "Hierapolis"
   },
-  {
-    "id": "site-bethel",
-    "ancientName": {
-      "en": "Bethel ('house of God'; Luz)"
-    },
-    "modernName": {
-      "en": "Beitin (traditional)"
-    },
-    "modernLocation": {
-      "en": "Beitin, West Bank, ~17 km north of Jerusalem (traditional identification)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.9308,
-        "lon": 35.2233
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-bethel"
-      ]
-    },
-    "summary": {
-      "en": "Where Abraham built an altar and Jacob dreamed of the ladder to heaven and named the place 'house of God' (Genesis 28). The identification with Beitin is traditional and debated (some prefer el-Bireh)."
-    },
-    "citations": [
-      "cit-ot-bethel"
-    ]
+  "modernName": {
+   "en": "Pamukkale"
   },
-  {
-    "id": "site-hebron-machpelah",
-    "ancientName": {
-      "en": "Hebron; the Cave of Machpelah"
-    },
-    "modernName": {
-      "en": "Cave of the Patriarchs (al-Ḥaram al-Ibrahimi)"
-    },
-    "modernLocation": {
-      "en": "Old city of Hebron, West Bank"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.5247,
-        "lon": 35.1108
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-machpelah"
-      ]
-    },
-    "summary": {
-      "en": "Abraham bought the cave of Machpelah as a burial place for Sarah (Genesis 23); tradition holds Abraham, Isaac, Jacob and their wives are entombed there, beneath the Herodian-era enclosure still standing today."
-    },
-    "citations": [
-      "cit-ot-machpelah"
-    ]
+  "modernLocation": {
+   "en": "Pamukkale, Denizli Province, Turkey"
   },
-  {
-    "id": "site-beersheba-ot",
-    "ancientName": {
-      "en": "Beersheba ('well of the oath')"
-    },
-    "modernName": {
-      "en": "Tel Be'er Sheva"
-    },
-    "modernLocation": {
-      "en": "Tel Be'er Sheva, Negev, southern Israel (UNESCO World Heritage 'Biblical Tel')"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.2456,
-        "lon": 34.84
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-beersheba"
-      ]
-    },
-    "summary": {
-      "en": "The southern frontier of the patriarchs, associated with Abraham's and Isaac's wells and covenants (Genesis 21, 26); 'from Dan to Beersheba' marked Israel's extent. The Iron-Age town at Tel Be'er Sheva has a famous horned altar."
-    },
-    "citations": [
-      "cit-ot-beersheba"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 37.9244,
+    "lon": 29.1289
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-philip-hierapolis"
+   ]
   },
-  {
-    "id": "site-goshen-rameses",
-    "ancientName": {
-      "en": "Goshen; Pi-Rameses (Raamses)"
-    },
-    "modernName": {
-      "en": "Qantir / Tell el-Dab'a (Avaris)"
-    },
-    "modernLocation": {
-      "en": "Qantir, eastern Nile Delta, Egypt"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 30.8,
-        "lon": 31.8333
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-pi-ramesses",
-        "cit-ot-goshen"
-      ]
-    },
-    "summary": {
-      "en": "The eastern-Delta region where Genesis settles Jacob's family and where Exodus 1:11 has the Israelites building the store-city of Raamses. The Ramesside capital Pi-Rameses is firmly located at Qantir, above the earlier Hyksos capital Avaris."
-    },
-    "citations": [
-      "cit-ot-pi-ramesses",
-      "cit-ot-goshen"
-    ]
+  "summary": {
+   "en": "Phrygian city near Laodicea and Colossae where strong tradition (and an excavated martyrium) places the ministry and death of the apostle Philip."
   },
-  {
-    "id": "site-mount-sinai",
-    "ancientName": {
-      "en": "Mount Sinai (Horeb)"
-    },
-    "modernName": {
-      "en": "Jebel Musa (traditional)"
-    },
-    "modernLocation": {
-      "en": "Jebel Musa, southern Sinai Peninsula, Egypt (traditional; other candidates proposed)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 28.5395,
-        "lon": 33.9749
-      },
-      "confidence": "disputed",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-mount-sinai"
-      ],
-      "disputes": {
-        "en": "The mountain of the Law has no secure identification. The Byzantine tradition (St Catherine's Monastery) fixes it at Jebel Musa in the southern Sinai, but scholars have proposed Jebel Serbal, Har Karkom in the Negev, and sites in NW Arabia (e.g. Jebel al-Lawz); none is archaeologically confirmed."
-      }
-    },
-    "summary": {
-      "en": "The mountain where, in Exodus, Moses received the Law and Israel entered the covenant. Its location is genuinely uncertain; the traditional Jebel Musa is used here with alternatives noted."
-    },
-    "citations": [
-      "cit-ot-mount-sinai"
-    ]
+  "citations": [
+   "cit-philip-hierapolis"
+  ]
+ },
+ {
+  "id": "site-alexandria",
+  "ancientName": {
+   "en": "Alexandria"
   },
-  {
-    "id": "site-kadesh-barnea",
-    "ancientName": {
-      "en": "Kadesh-barnea"
-    },
-    "modernName": {
-      "en": "Tell el-Qudeirat (Ein el-Qudeirat)"
-    },
-    "modernLocation": {
-      "en": "Tell el-Qudeirat, northeastern Sinai, near the Israel-Egypt border"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 30.6889,
-        "lon": 34.4167
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-kadesh-barnea"
-      ]
-    },
-    "summary": {
-      "en": "The wilderness base from which Israel sent spies into Canaan and where they lingered many years (Numbers 13; 20). Widely, though not universally, identified with the spring at Tell el-Qudeirat."
-    },
-    "citations": [
-      "cit-ot-kadesh-barnea"
-    ]
+  "modernName": {
+   "en": "Alexandria"
   },
-  {
-    "id": "site-mount-nebo",
-    "ancientName": {
-      "en": "Mount Nebo (Pisgah)"
+  "modernLocation": {
+   "en": "Alexandria, Egypt"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.2001,
+    "lon": 29.9187
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-mark-alexandria"
+   ]
+  },
+  "summary": {
+   "en": "Great Hellenistic city of Egypt; church tradition credits Mark the Evangelist with founding its Christian community and serving as its first bishop."
+  },
+  "citations": [
+   "cit-mark-alexandria"
+  ]
+ },
+ {
+  "id": "site-ur",
+  "ancientName": {
+   "en": "Ur of the Chaldees (Ur Kaśdim)"
+  },
+  "modernName": {
+   "en": "Tell el-Muqayyar"
+  },
+  "modernLocation": {
+   "en": "Tell el-Muqayyar, Dhi Qar Governorate, southern Iraq"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.9626,
+    "lon": 46.1032
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-ur",
+    "cit-ot-ur-debate"
+   ]
+  },
+  "summary": {
+   "en": "A major Sumerian city (excavated by Woolley, with its great ziggurat of Ur-Nammu) named as Abraham's birthplace in Genesis 11:31. A minority of scholars instead locate the biblical 'Ur of the Chaldeans' in the north near Haran; the southern Tell el-Muqayyar remains the traditional identification."
+  },
+  "citations": [
+   "cit-ot-ur",
+   "cit-ot-ur-debate"
+  ]
+ },
+ {
+  "id": "site-haran",
+  "ancientName": {
+   "en": "Haran (Harran)"
+  },
+  "modernName": {
+   "en": "Harran"
+  },
+  "modernLocation": {
+   "en": "Harran, Şanlıurfa Province, southeastern Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.8642,
+    "lon": 39.0308
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-haran"
+   ]
+  },
+  "summary": {
+   "en": "An ancient caravan city on the Balikh where, in Genesis, Terah's family settled and Abraham was later called on toward Canaan (Genesis 12:4). Long a cult center of the moon-god Sin."
+  },
+  "citations": [
+   "cit-ot-haran"
+  ]
+ },
+ {
+  "id": "site-shechem-ot",
+  "ancientName": {
+   "en": "Shechem"
+  },
+  "modernName": {
+   "en": "Tell Balata (Nablus)"
+  },
+  "modernLocation": {
+   "en": "Tell Balata, at the eastern edge of modern Nablus, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.2136,
+    "lon": 35.2814
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-shechem"
+   ]
+  },
+  "summary": {
+   "en": "Abraham's first altar site in Canaan (Genesis 12:6-7) and a recurring covenant place through Jacob and Joshua. The excavated Middle-Bronze city at Tell Balata includes a massive fortress-temple."
+  },
+  "citations": [
+   "cit-ot-shechem"
+  ]
+ },
+ {
+  "id": "site-bethel",
+  "ancientName": {
+   "en": "Bethel ('house of God'; Luz)"
+  },
+  "modernName": {
+   "en": "Beitin (traditional)"
+  },
+  "modernLocation": {
+   "en": "Beitin, West Bank, ~17 km north of Jerusalem (traditional identification)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.9308,
+    "lon": 35.2233
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-bethel"
+   ]
+  },
+  "summary": {
+   "en": "Where Abraham built an altar and Jacob dreamed of the ladder to heaven and named the place 'house of God' (Genesis 28). The identification with Beitin is traditional and debated (some prefer el-Bireh)."
+  },
+  "citations": [
+   "cit-ot-bethel"
+  ]
+ },
+ {
+  "id": "site-hebron-machpelah",
+  "ancientName": {
+   "en": "Hebron; the Cave of Machpelah"
+  },
+  "modernName": {
+   "en": "Cave of the Patriarchs (al-Ḥaram al-Ibrahimi)"
+  },
+  "modernLocation": {
+   "en": "Old city of Hebron, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.5247,
+    "lon": 35.1108
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-machpelah"
+   ]
+  },
+  "summary": {
+   "en": "Abraham bought the cave of Machpelah as a burial place for Sarah (Genesis 23); tradition holds Abraham, Isaac, Jacob and their wives are entombed there, beneath the Herodian-era enclosure still standing today."
+  },
+  "citations": [
+   "cit-ot-machpelah"
+  ]
+ },
+ {
+  "id": "site-beersheba-ot",
+  "ancientName": {
+   "en": "Beersheba ('well of the oath')"
+  },
+  "modernName": {
+   "en": "Tel Be'er Sheva"
+  },
+  "modernLocation": {
+   "en": "Tel Be'er Sheva, Negev, southern Israel (UNESCO World Heritage 'Biblical Tel')"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.2456,
+    "lon": 34.84
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-beersheba"
+   ]
+  },
+  "summary": {
+   "en": "The southern frontier of the patriarchs, associated with Abraham's and Isaac's wells and covenants (Genesis 21, 26); 'from Dan to Beersheba' marked Israel's extent. The Iron-Age town at Tel Be'er Sheva has a famous horned altar."
+  },
+  "citations": [
+   "cit-ot-beersheba"
+  ]
+ },
+ {
+  "id": "site-goshen-rameses",
+  "ancientName": {
+   "en": "Goshen; Pi-Rameses (Raamses)"
+  },
+  "modernName": {
+   "en": "Qantir / Tell el-Dab'a (Avaris)"
+  },
+  "modernLocation": {
+   "en": "Qantir, eastern Nile Delta, Egypt"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.8,
+    "lon": 31.8333
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-pi-ramesses",
+    "cit-ot-goshen"
+   ]
+  },
+  "summary": {
+   "en": "The eastern-Delta region where Genesis settles Jacob's family and where Exodus 1:11 has the Israelites building the store-city of Raamses. The Ramesside capital Pi-Rameses is firmly located at Qantir, above the earlier Hyksos capital Avaris."
+  },
+  "citations": [
+   "cit-ot-pi-ramesses",
+   "cit-ot-goshen"
+  ]
+ },
+ {
+  "id": "site-mount-sinai",
+  "ancientName": {
+   "en": "Mount Sinai (Horeb)"
+  },
+  "modernName": {
+   "en": "Jebel Musa (traditional)"
+  },
+  "modernLocation": {
+   "en": "Jebel Musa, southern Sinai Peninsula, Egypt (traditional; other candidates proposed)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 28.5395,
+    "lon": 33.9749
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-mount-sinai"
+   ],
+   "disputes": {
+    "en": "The mountain of the Law has no secure identification. The Byzantine tradition (St Catherine's Monastery) fixes it at Jebel Musa in the southern Sinai, but scholars have proposed Jebel Serbal, Har Karkom in the Negev, and sites in NW Arabia (e.g. Jebel al-Lawz); none is archaeologically confirmed."
+   }
+  },
+  "summary": {
+   "en": "The mountain where, in Exodus, Moses received the Law and Israel entered the covenant. Its location is genuinely uncertain; the traditional Jebel Musa is used here with alternatives noted."
+  },
+  "citations": [
+   "cit-ot-mount-sinai"
+  ]
+ },
+ {
+  "id": "site-kadesh-barnea",
+  "ancientName": {
+   "en": "Kadesh-barnea"
+  },
+  "modernName": {
+   "en": "Tell el-Qudeirat (Ein el-Qudeirat)"
+  },
+  "modernLocation": {
+   "en": "Tell el-Qudeirat, northeastern Sinai, near the Israel-Egypt border"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.6889,
+    "lon": 34.4167
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-kadesh-barnea"
+   ]
+  },
+  "summary": {
+   "en": "The wilderness base from which Israel sent spies into Canaan and where they lingered many years (Numbers 13; 20). Widely, though not universally, identified with the spring at Tell el-Qudeirat."
+  },
+  "citations": [
+   "cit-ot-kadesh-barnea"
+  ]
+ },
+ {
+  "id": "site-mount-nebo",
+  "ancientName": {
+   "en": "Mount Nebo (Pisgah)"
+  },
+  "modernName": {
+   "en": "Mount Nebo (Siyagha)"
+  },
+  "modernLocation": {
+   "en": "Mount Nebo, Madaba Governorate, Jordan"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7683,
+    "lon": 35.7256
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-mount-nebo"
+   ]
+  },
+  "summary": {
+   "en": "The ridge east of the Jordan from which Moses viewed the promised land and where he died (Deuteronomy 34); a Byzantine memorial church with famous mosaics crowns the summit today."
+  },
+  "citations": [
+   "cit-ot-mount-nebo"
+  ]
+ },
+ {
+  "id": "site-egypt-refuge",
+  "ancientName": {
+   "en": "Egypt (place of refuge)"
+  },
+  "modernName": {
+   "en": "Old Cairo (traditional), Egypt"
+  },
+  "modernLocation": {
+   "en": "Egypt; Coptic tradition venerates sites along the Nile (Old Cairo / Abu Serga, Wadi El Natrun, Asyut)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.0059,
+    "lon": 31.2306
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-flight-into-egypt"
+   ],
+   "disputes": {
+    "en": "The Egyptian refuge is nowhere located in the text; the mapped point marks Old Cairo (Abu Serga), one of several sites Coptic tradition associates with the Holy Family's stay, not an archaeologically fixed location."
+   }
+  },
+  "summary": {
+   "en": "Egypt was the Holy Family's refuge after Joseph, warned in a dream, fled Herod's massacre of the infants of Bethlehem (Matthew 2:13-15), staying until Herod's death — 'Out of Egypt I called my son' (Hosea 11:1). The exact place is unknown; the mapped point marks Old Cairo (Abu Serga), one of several Coptic-tradition refuge sites. LEG: land arrival and return."
+  },
+  "citations": [
+   "cit-flight-into-egypt"
+  ]
+ },
+ {
+  "id": "site-shuruppak",
+  "ancientName": {
+   "en": "Shuruppak"
+  },
+  "modernName": {
+   "en": "Tell Fara"
+  },
+  "modernLocation": {
+   "en": "Tell Fara, Al-Qādisiyyah Governorate, southern Iraq"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7667,
+    "lon": 45.35
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-shuruppak"
+   ]
+  },
+  "summary": {
+   "en": "Sumerian city on the Euphrates flood plain, home of Ziusudra — the flood hero of the oldest Mesopotamian deluge tradition, paralleled by Utnapishtim in Gilgamesh and by the Genesis narrative. Excavations found a river-flood silt layer here (c. 2900 BC). Scripture does not name where Noah built the ark; this site anchors the Mesopotamian setting of the tradition."
+  },
+  "citations": [
+   "cit-shuruppak",
+   "cit-ziusudra"
+  ]
+ },
+ {
+  "id": "site-ararat-landing",
+  "ancientName": {
+   "en": "Mountains of Ararat (Urartu)"
+  },
+  "modernName": {
+   "en": "Ağrı Dağı (Mount Ararat), eastern Türkiye"
+  },
+  "modernLocation": {
+   "en": "Mount Ararat massif, Iğdır/Ağrı Provinces, Türkiye — with candidate sites at Durupınar and Mount Cudi"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 39.7016,
+    "lon": 44.2983
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ararat-region",
+    "cit-mount-ararat",
+    "cit-durupinar",
+    "cit-mount-judi"
+   ],
+   "disputes": {
+    "en": "Genesis 8:4 names a region — 'the mountains of Ararat' (Urartu) — not a peak. Later tradition fixed on Greater Mount Ararat (5,137 m, mapped here); the boat-shaped Durupınar formation 30 km south is urged by recent survey teams; older Syriac and Islamic tradition points to Mount Cudi far to the southwest. No candidate is archaeologically confirmed."
+   }
+  },
+  "candidates": [
+   {
+    "label": {
+     "en": "Greater Mount Ararat (traditional peak, 5,137 m)"
     },
-    "modernName": {
-      "en": "Mount Nebo (Siyagha)"
-    },
-    "modernLocation": {
-      "en": "Mount Nebo, Madaba Governorate, Jordan"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7683,
-        "lon": 35.7256
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ot-mount-nebo"
-      ]
-    },
-    "summary": {
-      "en": "The ridge east of the Jordan from which Moses viewed the promised land and where he died (Deuteronomy 34); a Byzantine memorial church with famous mosaics crowns the summit today."
-    },
+    "lat": 39.7016,
+    "lon": 44.2983,
+    "confidence": "legendary",
     "citations": [
-      "cit-ot-mount-nebo"
+     "cit-mount-ararat"
     ]
-  }
+   },
+   {
+    "label": {
+     "en": "Durupınar formation, near Üzengili (GPS 39.4406° N, 44.2347° E) — GPR scans 2019, soil analyses 2022–2024"
+    },
+    "lat": 39.4406,
+    "lon": 44.2347,
+    "confidence": "disputed",
+    "citations": [
+     "cit-durupinar",
+     "cit-ark-scans",
+     "cit-durupinar-geology"
+    ]
+   },
+   {
+    "label": {
+     "en": "Mount Cudi (Cudi Dağı) — Syriac, Quranic and early tradition"
+    },
+    "lat": 37.3639,
+    "lon": 42.4561,
+    "confidence": "legendary",
+    "citations": [
+     "cit-mount-judi"
+    ]
+   }
+  ],
+  "summary": {
+   "en": "Where 'the ark rested … upon the mountains of Ararat' (Genesis 8:4). Ararat is biblical Urartu, the mountain country around Lake Van. Tradition since the Middle Ages favors Greater Mount Ararat; the Durupınar formation nearby has drawn recent ground-penetrating-radar and soil studies whose ark claims geologists dispute as a natural syncline; Mount Cudi carries the oldest extra-biblical landing tradition."
+  },
+  "citations": [
+   "cit-ararat-region",
+   "cit-mount-ararat",
+   "cit-durupinar",
+   "cit-mount-judi"
+  ]
+ },
+ {
+  "id": "site-shinar-plain",
+  "ancientName": {
+   "en": "Plain of Shinar (Babel)"
+  },
+  "modernName": {
+   "en": "Babylon region"
+  },
+  "modernLocation": {
+   "en": "Near Hillah, Babil Governorate, Iraq (site of Babylon)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5364,
+    "lon": 44.4209
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-flood-narrative"
+   ]
+  },
+  "summary": {
+   "en": "The plain in southern Mesopotamia where, after the Flood, the nations descended from Noah's sons settled and built the tower of Babel (Genesis 11:2-4). Mapped at Babylon, the city Genesis links to the name Babel."
+  },
+  "citations": [
+   "cit-flood-narrative"
+  ]
+ }
 ]

@@ -8,7 +8,7 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
+import { activeStopFromFractions, expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
@@ -115,20 +115,24 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
   return (
-    <ModePanel title={journey.title.en} style={{ '--accent': journey.color } as React.CSSProperties}>
-      <Link to="/trace" className="backlink">
-        ← {t('nav.trace')}
-      </Link>
-      <p className="journey-trace__date">{journey.dateRange.display.en}</p>
-      <p>{journey.summary.en}</p>
-      {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
-      {bundle.videosForJourney(journey.id).map((v) => (
-        <VideoEmbed key={v.id} video={v} />
-      ))}
-      <LayerPanel />
-      <TraceControls stopCount={stops.length} />
-      <ActiveStopPanel bundle={bundle} stops={stops} />
-    </ModePanel>
+    <div className="journey-trace-layout">
+      <ModePanel title={journey.title.en} style={{ '--accent': journey.color } as React.CSSProperties}>
+        <Link to="/trace" className="backlink">
+          ← {t('nav.trace')}
+        </Link>
+        <p className="journey-trace__date">{journey.dateRange.display.en}</p>
+        <p>{journey.summary.en}</p>
+        {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+        {bundle.videosForJourney(journey.id).map((v) => (
+          <VideoEmbed key={v.id} video={v} />
+        ))}
+        <LayerPanel />
+        <ActiveStopPanel bundle={bundle} stops={stops} />
+      </ModePanel>
+      <div className="trace-controls-fixed" style={{ '--accent': journey.color } as React.CSSProperties}>
+        <TraceControls stopCount={stops.length} fractions={fractions} />
+      </div>
+    </div>
   );
 }
 
@@ -168,7 +172,9 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
       
-      el.style.display = isReached ? 'inline-block' : 'none';
+      // Match the display value CSS expects: the active label uses -webkit-box so
+      // its two-line clamp applies; others are a single inline-block badge.
+      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
@@ -196,7 +202,9 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
       
-      el.style.display = isReached ? 'inline-block' : 'none';
+      // Match the display value CSS expects: the active label uses -webkit-box so
+      // its two-line clamp applies; others are a single inline-block badge.
+      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
       if (isActive) {
         el.style.backgroundColor = color;
@@ -213,48 +221,61 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
   }, [activeStopId, stopIds, color, elementsRef]);
 }
 
-function TraceControls({ stopCount }: { stopCount: number }) {
+function TraceControls({ stopCount, fractions }: { stopCount: number; fractions: number[] }) {
   const { progress, playing, play, pause, setProgress, reset, playbackSpeed, setPlaybackSpeed, pauseAtStops, setPauseAtStops } = useJourneyStore();
+  // Match the on-map active-stop label exactly: derive the index from the same
+  // path-length fractions, not a linear `progress * (stopCount-1)` guess (stops
+  // aren't evenly spaced along the route, so the linear version drifts).
+  const currentStop = activeStopFromFractions(fractions, progress) + 1;
   return (
     <div className="trace-controls">
-      <button type="button" onClick={() => (playing ? pause() : play())} aria-pressed={playing}>
-        {playing ? '⏸ Pause' : '▶ Play'}
-      </button>
-      <button type="button" onClick={reset}>
-        ↺ Reset
-      </button>
-      <select
-        value={playbackSpeed}
-        onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
-        className="trace-controls__speed"
-        aria-label="Playback speed"
-      >
-        <option value={0.25}>0.25x</option>
-        <option value={0.5}>0.5x</option>
-        <option value={1}>1.0x (Default)</option>
-        <option value={1.5}>1.5x</option>
-        <option value={2}>2.0x</option>
-      </select>
-      <label className="trace-controls__pause-stops">
-        <input
-          type="checkbox"
-          checked={pauseAtStops}
-          onChange={(e) => setPauseAtStops(e.target.checked)}
-        />
-        <span>Pause at stops</span>
-      </label>
-      <label className="trace-controls__scrub">
-        <span className="visually-hidden">Journey progress</span>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step={0.001}
-          value={progress}
-          onChange={(e) => setProgress(Number(e.target.value))}
-        />
-      </label>
-      <span className="trace-controls__count">{Math.round(progress * Math.max(0, stopCount - 1)) + 1}/{stopCount}</span>
+      <div className="trace-controls__main">
+        <button
+          type="button"
+          onClick={() => (playing ? pause() : play())}
+          aria-pressed={playing}
+          className="trace-controls__play"
+        >
+          {playing ? '⏸ Pause' : '▶ Play'}
+        </button>
+        <button type="button" onClick={reset}>
+          ↺ Reset
+        </button>
+        <select
+          value={playbackSpeed}
+          onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
+          className="trace-controls__speed"
+          aria-label="Playback speed"
+        >
+          <option value={0.25}>0.25x</option>
+          <option value={0.5}>0.5x</option>
+          <option value={1}>1.0x (Default)</option>
+          <option value={1.5}>1.5x</option>
+          <option value={2}>2.0x</option>
+        </select>
+        <label className="trace-controls__pause-stops">
+          <input
+            type="checkbox"
+            checked={pauseAtStops}
+            onChange={(e) => setPauseAtStops(e.target.checked)}
+          />
+          <span>Pause at stops</span>
+        </label>
+      </div>
+      <div className="trace-controls__scrub-group">
+        <label className="trace-controls__scrub">
+          <span className="visually-hidden">Journey progress</span>
+          <input
+            type="range"
+            min={0}
+            max={1}
+            step={0.001}
+            value={progress}
+            onChange={(e) => setProgress(Number(e.target.value))}
+          />
+        </label>
+        <span className="trace-controls__count">{currentStop}/{stopCount}</span>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,68 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nova music festival (near Re'im)",
+        "date": "October 7, 2023",
+        "detail": "Open-air music festival attacked at dawn; about 364 people were killed here and dozens abducted — the deadliest single site of the attack."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.4739, 31.376] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kibbutz Be'eri",
+        "date": "October 7, 2023",
+        "detail": "About 100 residents were killed and roughly 30 taken hostage when the kibbutz was overrun."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.4922, 31.4247] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kibbutz Kfar Aza",
+        "date": "October 7, 2023",
+        "detail": "About 60 residents were killed and around 19 abducted in the assault on the kibbutz."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.5343, 31.4837] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kibbutz Nir Oz",
+        "date": "October 7, 2023",
+        "detail": "Roughly one in four residents was killed or abducted — about 47 killed and more than 70 taken hostage."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.3986, 31.3125] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sderot",
+        "date": "October 7, 2023",
+        "detail": "Gunmen seized the city's police station; about 70 people were killed in Sderot, including some 20 police officers."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.5953, 31.524] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nahal Oz base and kibbutz",
+        "date": "October 7, 2023",
+        "detail": "The IDF border post was overrun — more than 50 soldiers were killed, including many of the base's young female surveillance soldiers, and others captured."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.498, 31.4716] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Netiv HaAsara",
+        "date": "October 7, 2023",
+        "detail": "The moshav closest to the Gaza fence; about 20 residents were killed by infiltrators who crossed with paragliders and breached the barrier."
+      },
+      "geometry": { "type": "Point", "coordinates": [34.531, 31.5623] }
+    }
+  ]
+}

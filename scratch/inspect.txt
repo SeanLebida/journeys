@@ -1,0 +1,11 @@
+Palestine Geometry Type: MultiPolygon
+Is Coordinates Array: true
+Coordinates length: 2
+Polygon 0 has 1 rings
+  Ring 0 has 27 points
+    First: [34.481204,31.583141]
+    Last: [34.481204,31.583141]
+Polygon 1 has 1 rings
+  Ring 0 has 207 points
+    First: [34.986695,31.967228]
+    Last: [34.986695,31.967228]
