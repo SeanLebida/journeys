@@ -73,3 +73,22 @@
 - Coordinate-set check: all 6 armistice-tagged lines lie exactly on the shared
   Israel ↔ West Bank/Gaza polygon edges; the removed UNDOF line lay on neither.
 - `npm test`: 36/36 unit tests pass. `npm run build`: production build OK.
+
+## Addendum: the 2002 barrier promoted to the operative boundary
+- The user's editorial stance for the app: the 2002 security-barrier route is
+  the line Israel defines long-term toward the West Bank. Verified the data
+  first — `west-bank-barrier.json` is OSM relation 1410327 at full fidelity
+  (84 segments, 10,458 points, bbox 34.88–35.55 E / 31.34–32.55 N, covering
+  the northern sections, Tulkarm/Qalqilya, the whole Jerusalem envelope incl.
+  Abu Dis, and the southern Hebron hills).
+- `style.ts`: `BARRIER` recolored from brown to Israel's border purple,
+  `BARRIER_CASING` to the standard border casing; the dash removed (now
+  solid); `applyMapBorders` keeps casing + purple in sync across
+  satellite/streets/ancient basemap switches via a `barrierColor` variable
+  (the barrier source has no per-feature color properties, so it cannot use
+  the data-driven `['get','color…']` expressions the country borders use).
+- `MapProvider.tsx`: barrier popup retitled "Israel's Security Barrier
+  (2002)" and describes it as the operative boundary; Israel and
+  West Bank & Gaza popups updated to the three-line reading: solid purple
+  barrier = operative line, dashed Green Line = historical reference,
+  East Jerusalem inside Israel.

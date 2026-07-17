@@ -123,8 +123,11 @@ const WATER_EDGE = { light: '#7ab8c0', dark: '#2e5a72' } as const;
 const COASTLINE = { light: '#a3946e', dark: '#4a4334' } as const;
 const BORDER_CASING = { light: '#faf5e9', dark: '#0a0a0a' } as const;
 const GRATICULE = { light: '#b9ac8c', dark: '#2e2b26' } as const;
-const BARRIER = { light: '#6b4226', dark: '#c49a6c' } as const;
-const BARRIER_CASING = { light: '#3a2010', dark: '#2a1a0e' } as const;
+// The 2002 security barrier route is presented as the operative boundary line
+// Israel defines on the ground toward the West Bank, so it carries the same
+// treatment as the primary borders: Israel's purple over the standard casing.
+const BARRIER = { light: '#553478', dark: '#9d75c7' } as const;
+const BARRIER_CASING = { light: '#faf5e9', dark: '#0a0a0a' } as const;
 // Historical-boundary overlays: distinct hues so they read as "different era"
 // against the purple modern borders when drawn over them.
 const BORDERS_1949 = { light: '#1d5fa8', dark: '#7db1ec' } as const;
@@ -195,6 +198,7 @@ export function applyMapBorders(
   };
 
   let casingColor = dark ? '#0a0a0a' : '#faf5e9';
+  let barrierColor = dark ? BARRIER.dark : BARRIER.light;
   let borderColor: unknown = dark ? ['get', 'colorDark'] : ['get', 'colorLight'];
   let borderWidth = 1.2;
   let casingWidth = 2.8;
@@ -207,6 +211,7 @@ export function applyMapBorders(
 
   if (layers.satellite) {
     casingColor = 'rgba(0, 0, 0, 0.85)';
+    barrierColor = BARRIER.dark;
     borderColor = dark ? ['get', 'colorDark'] : ['get', 'colorLight']; // Solid line reflecting country color
     borderWidth = 1.4;
     casingWidth = 3.2;
@@ -218,6 +223,7 @@ export function applyMapBorders(
     outlineOpacity = ['interpolate', ['linear'], ['zoom'], 3, 0.15, 6, 0.10, 12, 0.05];
   } else if (layers.ancientMap) {
     casingColor = 'rgba(244, 236, 216, 0.85)'; // matching Roman map parchment
+    barrierColor = BARRIER.light;
     borderColor = ['get', 'colorLight'];
     borderWidth = 1.2;
     casingWidth = 2.8;
@@ -229,6 +235,7 @@ export function applyMapBorders(
     outlineOpacity = ['interpolate', ['linear'], ['zoom'], 3, 0.12, 6, 0.08, 12, 0.04];
   } else if (layers.streets) {
     casingColor = 'rgba(255, 255, 255, 0.85)';
+    barrierColor = BARRIER.light;
     borderColor = ['get', 'colorLight'];
     borderWidth = 1.2;
     casingWidth = 2.8;
@@ -245,6 +252,8 @@ export function applyMapBorders(
   set('country-borders', 'line-color', borderColor);
   set('country-borders', 'line-width', borderWidth);
   set('armistice-line', 'line-color', borderColor);
+  set('wb-barrier-casing', 'line-color', casingColor);
+  set('wb-barrier', 'line-color', barrierColor);
   set('country-borders-shading', 'line-color', shadingColor);
   set('country-borders-shading', 'line-opacity', shadingOpacity);
   set('country-shading', 'fill-color', fillColor);
@@ -432,8 +441,9 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
           'line-dasharray': [3, 3],
         },
       },
-      // Israeli West Bank Barrier — OSM data, rendered as dashed brown line
-      // to distinguish from solid political borders.
+      // Israel's security barrier (begun 2002) — OSM relation 1410327,
+      // rendered SOLID with the standard border casing: the app presents this
+      // route as the operative boundary Israel defines toward the West Bank.
       {
         id: 'wb-barrier-casing',
         type: 'line',
@@ -441,8 +451,8 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         minzoom: 6,
         paint: {
           'line-color': BARRIER_CASING[tone],
-          'line-width': ['interpolate', ['linear'], ['zoom'], 6, 2.5, 12, 4],
-          'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.4, 10, 0.6],
+          'line-width': ['interpolate', ['linear'], ['zoom'], 6, 2.8, 12, 4],
+          'line-opacity': 0.8,
         },
       },
       {
@@ -453,8 +463,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         paint: {
           'line-color': BARRIER[tone],
           'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 12, 2.4],
-          'line-opacity': ['interpolate', ['linear'], ['zoom'], 6, 0.6, 10, 0.85],
-          'line-dasharray': [4, 2],
+          'line-opacity': 0.9,
         },
       },
       // Historical-boundary overlays (default OFF; see DEFAULT_OFF_LAYERS).

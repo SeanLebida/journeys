@@ -239,8 +239,8 @@ export function MapProvider({ children }: { children: ReactNode }) {
           if (barrierFeatures && barrierFeatures.length > 0) {
             const content = `
               <div class="country-popup-content">
-                <h3 style="color: #c49a6c">West Bank Separation Barrier</h3>
-                <p>Physical barrier (wall and security fence) constructed by Israel starting in 2002. It deviates from the 1949 Armistice Green Line to define modern-day de facto border lines.</p>
+                <h3 style="color: #9d75c7">Israel's Security Barrier (2002)</h3>
+                <p>The barrier Israel began building in June 2002, during the Second Intifada. Its route — mapped here in full detail, including the Jerusalem envelope — departs from the dashed 1949 armistice line and is presented in this app as the operative boundary Israel defines on the ground toward the West Bank.</p>
               </div>
             `;
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
@@ -275,9 +275,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
             let displayName = countryName;
 
             if (countryName === 'Israel') {
-              desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. The dashed 1949 armistice (Green) lines toward the West Bank and Gaza are not defined by Israel as international borders.';
+              desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. Toward the West Bank, the solid purple line of the 2002 security barrier marks the operative boundary Israel defines on the ground; the dashed 1949 armistice (Green) lines are not defined by Israel as international borders.';
             } else if (countryName === 'West Bank & Gaza') {
-              desc = 'The West Bank (Judea & Samaria) and the Gaza Strip, bounded by the dashed 1949 armistice (Green) lines. Israel defines these as disputed territories rather than the territory of a foreign state; East Jerusalem is shown inside Israel per the 1980 Jerusalem Law.';
+              desc = 'The West Bank (Judea & Samaria) and the Gaza Strip. Israel defines these as disputed territories rather than the territory of a foreign state; the solid purple 2002 security-barrier route marks the operative line on the ground, the dashed 1949 armistice (Green) lines the historical reference, and East Jerusalem is shown inside Israel per the 1980 Jerusalem Law.';
             }
 
             const content = `
