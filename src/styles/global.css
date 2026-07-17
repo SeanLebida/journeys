@@ -253,6 +253,14 @@ a {
   padding: 0.15rem 0.35rem;
   box-shadow: var(--shadow-1);
   text-shadow: none; /* remove default text shadow to keep it clean */
+  /* Cap width so a long ancient name can't run off the right edge of the map
+     or sprawl across the fixed playback controls — collapse to one ellipsised
+     line. The full name always lives in the left panel's "Stops Reached" list. */
+  max-width: min(180px, 34vw);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
   transition:
     color 0.2s ease,
     background-color 0.2s ease,
@@ -267,6 +275,16 @@ a {
 .site-label.trace-stop-label.active {
   font-weight: 700;
   transform: scale(1.08) translateY(-1px);
+  z-index: 2; /* keep the current stop above neighbouring labels */
+  /* The active stop gets more room and may wrap to two lines so its name stays
+     readable, still bounded to the viewport so it never overflows. */
+  max-width: min(260px, 46vw);
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
 }
 
 /* Quiz map-pin answer reveal: decorative once shown, not clickable. */
@@ -285,25 +303,65 @@ a {
   color: var(--c-medium);
 }
 
-/* ---- Mode panel (overlay card above the map) ---- */
+/* ---- Mode panel ----
+   Mobile-first: a draggable bottom sheet anchored to the bottom of the map area
+   so the map + animation stay visible above it (see useSheetDrag). The live
+   height is set inline as a px value; `height` here is only the pre-JS fallback.
+   At `lg` it becomes the fixed left sidebar (overrides below). */
 .mode-panel {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
   pointer-events: auto;
-  margin: clamp(0.75rem, 2vw, 1.5rem) auto;
-  margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
-  max-width: var(--maxw);
-  width: calc(100% - 2rem);
-  max-height: calc(100% - 2rem);
-  overflow: auto;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  max-height: 100%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
   box-shadow: var(--shadow-2);
-  padding: clamp(1rem, 3vw, 1.75rem);
+  padding: 0 clamp(1rem, 4vw, 1.5rem) calc(var(--safe-bottom) + 1rem);
+  transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mode-panel.is-dragging {
+  transition: none; /* follow the finger 1:1 while dragging */
+}
+/* Grab handle — the drag/tap target that resizes the sheet. */
+.mode-panel__handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0 0.4rem;
+  margin: 0 -1rem; /* widen the hit area to the sheet edges */
+  cursor: grab;
+  touch-action: none;
+}
+.mode-panel__handle:active {
+  cursor: grabbing;
+}
+.mode-panel__grip {
+  width: 2.5rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background-color 0.2s ease;
+}
+.mode-panel__handle:hover .mode-panel__grip,
+.mode-panel__handle:focus-visible .mode-panel__grip {
+  background: var(--accent);
 }
 @media (min-width: 1024px) {
+  .mode-panel__handle {
+    display: none; /* sidebar isn't draggable */
+  }
   .app-main {
     display: flex;
     flex-direction: row;
@@ -314,16 +372,19 @@ a {
   .mode-panel {
     position: absolute;
     left: 1.5rem;
-    top: 1.5rem;
+    top: calc(var(--safe-top) + 1.5rem);
     bottom: 1.5rem;
+    right: auto;
     margin: 0;
     width: 420px;
     max-width: 420px;
-    height: calc(100% - 3rem);
-    max-height: calc(100% - 3rem);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    /* Reset the mobile sheet chrome back to a full floating card. */
+    height: auto;
+    max-height: none;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: clamp(1rem, 1.5vw, 1.75rem);
+    transition: none;
     z-index: 10;
   }
   .mode-panel__body {
@@ -331,6 +392,42 @@ a {
     overflow-y: auto;
     scrollbar-width: thin;
     padding-right: 0.25rem;
+  }
+}
+/* Sheet body scrolls; the panel clips so peek/half hide the overflow. */
+.mode-panel__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden; /* nothing should ever scroll the panel sideways */
+  -webkit-overflow-scrolling: touch;
+}
+/* On tablets the sheet spans a wide viewport — cap the reading measure so lines
+   stay comfortable, centered within the full-width sheet. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .mode-panel__body {
+    max-width: 44rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+/* Content screens (Home, Credits) opt out of the bottom sheet — the map is only
+   a backdrop there, so they render as a normal scrolling card on mobile. Desktop
+   keeps the shared sidebar layout. */
+@media (max-width: 1023px) {
+  .mode-panel--page {
+    position: relative;
+    height: auto;
+    max-height: calc(100% - 1.5rem);
+    width: calc(100% - 2rem);
+    max-width: var(--maxw);
+    margin: clamp(0.75rem, 2vw, 1.5rem) auto;
+    margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: clamp(1rem, 4vw, 1.5rem);
+    overflow: auto;
+    transition: none;
   }
 }
 .mode-panel--loading {
@@ -573,18 +670,26 @@ a {
   gap: 0.6rem;
   width: 100%;
 }
-@media (min-width: 640px) {
+/* Inline single-row layout only kicks in at the desktop breakpoint, where the
+   fixed bar gets a real width. Below this the bar stays stacked (main controls
+   wrap, scrub slider on its own full-width line) so nothing overflows the pill. */
+@media (min-width: 1024px) {
   .trace-controls {
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap; /* let the scrub drop to a second line if space is tight */
     gap: 0.8rem;
   }
   .trace-controls__main {
-    flex-wrap: nowrap;
-    flex: 0 0 auto;
+    /* Shrink + wrap instead of forcing one rigid line — at borderline widths a
+       nowrap row is a hair wider than the available map space and spills past the
+       pill's right edge. Wrapping keeps every control inside the background. */
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    min-width: 0;
   }
   .trace-controls__scrub-group {
-    flex: 1 1 auto;
+    flex: 1 1 220px; /* real basis so the slider has width and the bar sizes to fit */
   }
 }
 .trace-controls button {
@@ -636,7 +741,10 @@ a {
 }
 .trace-controls__scrub {
   flex: 1 1 auto;
+  min-width: 140px; /* never collapse the slider track to just its thumb */
   display: flex;
+  align-items: center;
+  padding-right: 0.35rem; /* keep the end thumb clear of the count */
 }
 /* Custom premium range slider */
 .trace-controls input[type="range"] {
@@ -707,7 +815,8 @@ a {
 .trace-controls-fixed .trace-controls,
 .lesson-progress-fixed .lesson-progress {
   margin: 0;
-  background: color-mix(in srgb, var(--surface-raised) 90%, transparent);
+  /* Near-opaque so a stop label passing behind the bar doesn't bleed through. */
+  background: color-mix(in srgb, var(--surface-raised) 97%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-2);
@@ -726,15 +835,28 @@ a {
     bottom: 2rem;
     left: calc(50% + 210px + 0.75rem); /* Centered in map space to the right of the 420px sidebar */
     transform: translateX(-50%);
+    /* Shrink-to-fit the content (scrub has a fixed basis, so it can't collapse),
+       capped to the available map space; the pill background always wraps its
+       content instead of the row spilling outside it. */
     width: auto;
     max-width: calc(100% - 420px - 6rem);
   }
 }
 @media (max-width: 1023px) {
-  .journey-trace-layout .mode-panel,
-  .lesson-player-layout .mode-panel {
-    max-height: calc(100% - 7.5rem);
-    margin-bottom: 0.5rem;
+  /* The playback pill rides just above the bottom sheet's current top edge
+     (--sheet-h is the live sheet height published by useSheetDrag), so it stays
+     reachable as the sheet grows and never collides with the description. */
+  .trace-controls-fixed,
+  .lesson-progress-fixed {
+    bottom: calc(var(--sheet-h, 50%) + 0.6rem);
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+  }
+  /* At the full snap the reader is focused on text — retire the pill so it
+     doesn't cover the map up near the top of the screen. */
+  .journey-trace-layout[data-sheet-snap='full'] .trace-controls-fixed,
+  .lesson-player-layout[data-sheet-snap='full'] .lesson-progress-fixed {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 .stop-panel {
@@ -921,7 +1043,9 @@ a {
   margin: 0.75rem 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem 0.9rem;
+  min-width: 0; /* a <fieldset> defaults to min-content — let it shrink to the panel */
+  max-width: 100%;
 }
 .atlas-toggles legend {
   font-weight: 600;
@@ -1072,13 +1196,22 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.15rem;
-  flex: 1;
-  padding: 0.4rem 0.25rem;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px; /* comfortable tap target (WCAG 2.5.5) */
+  padding: 0.35rem 0.15rem;
   text-decoration: none;
   color: var(--text-muted);
   border-radius: var(--r-sm);
-  font-size: 0.72rem;
+  font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+}
+.tabbar__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .tabbar__item--active {
   color: var(--accent);
