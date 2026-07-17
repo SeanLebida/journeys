@@ -1180,6 +1180,34 @@
     ]
   },
   {
+    "id": "site-patmos",
+    "ancientName": {
+      "en": "Patmos"
+    },
+    "modernLocation": {
+      "en": "Patmos, Dodecanese, Greece"
+    },
+    "coordinates": {
+      "value": {
+        "lat": 37.3086,
+        "lon": 26.5476
+      },
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "citations": [
+        "cit-patmos"
+      ]
+    },
+    "summary": {
+      "en": "Small Aegean island of the Dodecanese where, by tradition, John was exiled 'because of the word of God and the testimony of Jesus' (Revelation 1:9) and received the visions of Revelation. The Cave of the Apocalypse and the Monastery of St. John the Theologian are UNESCO World Heritage Sites. LEG: SEA arrival."
+    },
+    "citations": [
+      "cit-patmos",
+      "cit-dth-patmos",
+      "cit-dth-john-exiled-to-patmos"
+    ]
+  },
+  {
     "id": "site-caesarea-maritima",
     "ancientName": {
       "en": "Caesarea Maritima; Hierosolyma (Jerusalem)"
