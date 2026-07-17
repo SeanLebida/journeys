@@ -8,6 +8,9 @@ import rivers from './basemap/rivers.json';
 import { COUNTRY_LABELS } from './country-labels';
 import countryPolygons from './basemap/country-polygons.json';
 import westBankBarrier from './basemap/west-bank-barrier.json';
+import israel1949 from './basemap/israel-1949.json';
+import mandatePalestine from './basemap/mandate-palestine.json';
+import oct7Sites from './basemap/oct7-attack-sites.json';
 
 const COUNTRY_COLORS: Record<string, { light: string; dark: string }> = {
   'Italy': { light: '#a64f03', dark: '#f28e41' },       // Terracotta
@@ -88,6 +91,9 @@ export const BASEMAP_LAYERS = {
   coastline: 'coastline',
   borders: 'country-borders',
   graticule: 'graticule',
+  borders1949: 'israel-1949-borders',
+  mandate: 'mandate-borders',
+  conflict: 'conflict-markers',
 } as const;
 
 /** Online-only imagery overlays: opaque full basemaps that sit ABOVE the
@@ -95,6 +101,11 @@ export const BASEMAP_LAYERS = {
  * the graticule, and all content layers. Default OFF — the offline stylized
  * basemap stays the no-network baseline. */
 export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
+
+/** Layers that ship OFF by default: the online imagery basemaps plus the
+ * historical-boundary overlays (users opt in to see Israel's founding-era
+ * outlines drawn over the present-day borders). */
+export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
 
 // M1 ships a self-contained, offline, no-API-key style: real coastlines/land +
 // country borders (Natural Earth, public domain) + a computed graticule. The
@@ -114,6 +125,13 @@ const BORDER_CASING = { light: '#faf5e9', dark: '#0a0a0a' } as const;
 const GRATICULE = { light: '#b9ac8c', dark: '#2e2b26' } as const;
 const BARRIER = { light: '#6b4226', dark: '#c49a6c' } as const;
 const BARRIER_CASING = { light: '#3a2010', dark: '#2a1a0e' } as const;
+// Historical-boundary overlays: distinct hues so they read as "different era"
+// against the purple modern borders when drawn over them.
+const BORDERS_1949 = { light: '#1d5fa8', dark: '#7db1ec' } as const;
+const MANDATE = { light: '#1f6b4a', dark: '#5fbf92' } as const;
+// October 7, 2023 attack-site markers.
+const CONFLICT = { light: '#a11f2a', dark: '#e0565e' } as const;
+const CONFLICT_STROKE = { light: '#faf5e9', dark: '#0d0f12' } as const;
 
 // The 1949 armistice (Green) lines and Jerusalem-area boundary segments are
 // tagged `class: "armistice"` in countries.json. Israel does not define these
@@ -153,6 +171,10 @@ export function applyMapTone(
   set('armistice-line', 'line-color', dark ? ['get', 'colorDark'] : ['get', 'colorLight']);
   set('wb-barrier-casing', 'line-color', BARRIER_CASING[tone]);
   set('wb-barrier', 'line-color', BARRIER[tone]);
+  set(BASEMAP_LAYERS.borders1949, 'line-color', BORDERS_1949[tone]);
+  set(BASEMAP_LAYERS.mandate, 'line-color', MANDATE[tone]);
+  set(BASEMAP_LAYERS.conflict, 'circle-color', CONFLICT[tone]);
+  set(BASEMAP_LAYERS.conflict, 'circle-stroke-color', CONFLICT_STROKE[tone]);
   set(BASEMAP_LAYERS.graticule, 'line-color', GRATICULE[tone]);
 }
 
@@ -247,6 +269,9 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
       rivers: { type: 'geojson', data: rivers as FeatureCollection },
       graticule: { type: 'geojson', data: generateGraticule() },
       'wb-barrier': { type: 'geojson', data: westBankBarrier as FeatureCollection },
+      'israel-1949': { type: 'geojson', data: israel1949 as FeatureCollection },
+      'mandate-palestine': { type: 'geojson', data: mandatePalestine as FeatureCollection },
+      'oct7-sites': { type: 'geojson', data: oct7Sites as FeatureCollection },
       topography: {
         type: 'raster',
         tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
@@ -432,6 +457,32 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
           'line-dasharray': [4, 2],
         },
       },
+      // Historical-boundary overlays (default OFF; see DEFAULT_OFF_LAYERS).
+      // Drawn over the modern borders so eras can be compared directly.
+      {
+        id: BASEMAP_LAYERS.mandate,
+        type: 'line',
+        source: 'mandate-palestine',
+        layout: { visibility: 'none' },
+        paint: {
+          'line-color': MANDATE[tone],
+          'line-width': 1.8,
+          'line-opacity': 0.85,
+          'line-dasharray': [2, 2],
+        },
+      },
+      {
+        id: BASEMAP_LAYERS.borders1949,
+        type: 'line',
+        source: 'israel-1949',
+        layout: { visibility: 'none' },
+        paint: {
+          'line-color': BORDERS_1949[tone],
+          'line-width': 2,
+          'line-opacity': 0.9,
+          'line-dasharray': [6, 3],
+        },
+      },
       {
         id: 'graticule',
         type: 'line',
@@ -440,6 +491,21 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
           'line-color': GRATICULE[tone],
           'line-width': 0.5,
           'line-opacity': 0.5,
+        },
+      },
+      // October 7, 2023 attack sites — appear once zoomed into the Gaza
+      // envelope; each marker carries a name/date/detail popup (MapProvider).
+      {
+        id: BASEMAP_LAYERS.conflict,
+        type: 'circle',
+        source: 'oct7-sites',
+        minzoom: 6.5,
+        paint: {
+          'circle-color': CONFLICT[tone],
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 6.5, 3.5, 10, 7],
+          'circle-stroke-color': CONFLICT_STROKE[tone],
+          'circle-stroke-width': 1.5,
+          'circle-opacity': 0.9,
         },
       },
     ],

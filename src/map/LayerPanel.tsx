@@ -12,6 +12,9 @@ const LAYER_LABELS: Record<BasemapLayerKey, string> = {
   coastline: 'Coastline',
   borders: 'Country borders & names',
   graticule: 'Coordinate grid',
+  borders1949: 'Israel 1949–1967 (founding borders)',
+  mandate: 'Mandate Palestine 1920–1948',
+  conflict: 'Oct 7, 2023 attack sites',
 };
 
 /** Basemap layer toggles shared by every map-bearing mode — backed by

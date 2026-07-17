@@ -1,334 +1,395 @@
 [
-  {
-    "id": "artifact-tel-dan-stele",
-    "name": {
-      "en": "The Tel Dan Stele ('House of David')"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "Israel Museum, Jerusalem (found at Tel Dan, 1993-94)"
-    },
-    "corroborates": {
-      "en": "An Aramaic victory stele whose 'BYTDWD' is read by most scholars as 'House of David' — the earliest extra-biblical reference to the Davidic dynasty, c. 9th c. BC. A minority contest the reading."
-    },
-    "dateRange": {
-      "startYear": -841,
-      "endYear": -841,
-      "display": {
-        "en": "c. 841 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-tel-dan",
-      "cit-dth-biblical-figures-found-through-archaeology"
-    ]
+ {
+  "id": "artifact-tel-dan-stele",
+  "name": {
+   "en": "The Tel Dan Stele ('House of David')"
   },
-  {
-    "id": "artifact-mesha-stele",
-    "name": {
-      "en": "The Mesha Stele (Moabite Stone)"
-    },
-    "siteId": "site-mount-nebo",
-    "modernLocation": {
-      "en": "Louvre, Paris (found at Dhiban, Jordan, 1868)"
-    },
-    "corroborates": {
-      "en": "King Mesha of Moab's inscription (c. 840 BC) recounting revolt against Israel; it names Omri king of Israel, YHWH, and the town of Nebo — paralleling 2 Kings 3. Some read a damaged line as 'House of David'."
-    },
-    "dateRange": {
-      "startYear": -840,
-      "endYear": -840,
-      "display": {
-        "en": "c. 840 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-mesha",
-      "cit-dth-the-mesha-stele"
-    ]
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Israel Museum, Jerusalem (found at Tel Dan, 1993-94)"
   },
-  {
-    "id": "artifact-merneptah-stele",
-    "name": {
-      "en": "The Merneptah Stele ('Israel')"
-    },
-    "siteId": "site-goshen-rameses",
-    "modernLocation": {
-      "en": "Egyptian Museum, Cairo (found at Thebes, 1896)"
-    },
-    "corroborates": {
-      "en": "Pharaoh Merneptah's victory stele (c. 1208 BC) carries the earliest known mention of 'Israel' as a people in Canaan — a fixed point for Israel's presence in the land by the late 13th c. BC."
-    },
-    "dateRange": {
-      "startYear": -1208,
-      "endYear": -1208,
-      "display": {
-        "en": "c. 1208 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-merneptah"
-    ]
+  "corroborates": {
+   "en": "An Aramaic victory stele whose 'BYTDWD' is read by most scholars as 'House of David' — the earliest extra-biblical reference to the Davidic dynasty, c. 9th c. BC. A minority contest the reading."
   },
-  {
-    "id": "artifact-pool-of-bethesda",
-    "name": {
-      "en": "The Pool of Bethesda"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "Excavated near the Church of St Anne, Old City of Jerusalem"
-    },
-    "corroborates": {
-      "en": "A twin-pool complex with five porticoes matching John 5:2 — long doubted until excavation confirmed its form, a case where topographical detail in John was archaeologically vindicated."
-    },
-    "dateRange": {
-      "startYear": -100,
-      "endYear": 100,
-      "display": {
-        "en": "Second Temple period"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-bethesda",
-      "cit-arch-bethesda-academic",
-      "cit-dth-pool-of-bethesda",
-      "cit-dth-the-pool-of-bethesda"
-    ]
+  "dateRange": {
+   "startYear": -841,
+   "endYear": -841,
+   "display": {
+    "en": "c. 841 BC"
+   },
+   "approximate": true
   },
-  {
-    "id": "artifact-capernaum-house-peter",
-    "name": {
-      "en": "The House of St Peter, Capernaum"
-    },
-    "siteId": "site-capernaum",
-    "modernLocation": {
-      "en": "Capernaum, on the Sea of Galilee (beneath the modern memorial church)"
-    },
-    "corroborates": {
-      "en": "A 1st-c. house singled out very early for veneration (graffiti, later octagonal church) and identified by tradition as Peter's house, where Jesus stayed and healed (Mark 1:29-31). The identification is traditional."
-    },
-    "dateRange": {
-      "startYear": -50,
-      "endYear": 400,
-      "display": {
-        "en": "1st c. AD onward"
-      },
-      "approximate": true
-    },
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-capernaum-house",
-      "cit-arch-capernaum-house-corbo",
-      "cit-dth-the-house-of-peter"
-    ]
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-tel-dan",
+   "cit-dth-biblical-figures-found-through-archaeology"
+  ]
+ },
+ {
+  "id": "artifact-mesha-stele",
+  "name": {
+   "en": "The Mesha Stele (Moabite Stone)"
   },
-  {
-    "id": "artifact-hezekiah-siloam-tunnel",
-    "name": {
-      "en": "Hezekiah's Tunnel and the Siloam Inscription"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "Tunnel in the City of David; inscription in the Istanbul Archaeology Museums"
-    },
-    "corroborates": {
-      "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30)."
-    },
-    "dateRange": {
-      "startYear": -701,
-      "endYear": -701,
-      "display": {
-        "en": "c. 701 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-siloam-tunnel",
-      "cit-arch-siloam-tunnel-sayce"
-    ]
+  "siteId": "site-mount-nebo",
+  "modernLocation": {
+   "en": "Louvre, Paris (found at Dhiban, Jordan, 1868)"
   },
-  {
-    "id": "artifact-sennacherib-prism",
-    "name": {
-      "en": "Sennacherib's Prism (Annals)"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "Copies in the British Museum, Oriental Institute (Chicago), and Israel Museum"
-    },
-    "corroborates": {
-      "en": "Sennacherib's own account of his 701 BC campaign says he shut up Hezekiah 'like a bird in a cage' in Jerusalem — corroborating the siege of 2 Kings 18-19 while, tellingly, never claiming to take the city."
-    },
-    "dateRange": {
-      "startYear": -691,
-      "endYear": -691,
-      "display": {
-        "en": "c. 691 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-sennacherib-prism",
-      "cit-arch-sennacherib-prism-bm"
-    ]
+  "corroborates": {
+   "en": "King Mesha of Moab's inscription (c. 840 BC) recounting revolt against Israel; it names Omri king of Israel, YHWH, and the town of Nebo — paralleling 2 Kings 3. Some read a damaged line as 'House of David'."
   },
-  {
-    "id": "artifact-hezekiah-bulla",
-    "name": {
-      "en": "The Bulla of King Hezekiah"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "Found in the Ophel excavations, City of David, Jerusalem (2015)"
-    },
-    "corroborates": {
-      "en": "A clay seal impression reading 'Belonging to Hezekiah [son of] Ahaz, king of Judah' — a royal artifact naming a biblical king of Judah, from controlled excavation."
-    },
-    "dateRange": {
-      "startYear": -700,
-      "endYear": -700,
-      "display": {
-        "en": "late 8th c. BC"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-hezekiah-bulla",
-      "cit-arch-hezekiah-bulla-mazar"
-    ]
+  "dateRange": {
+   "startYear": -840,
+   "endYear": -840,
+   "display": {
+    "en": "c. 840 BC"
+   },
+   "approximate": true
   },
-  {
-    "id": "artifact-cyrus-cylinder",
-    "name": {
-      "en": "The Cyrus Cylinder"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "British Museum, London (found at Babylon, 1879)"
-    },
-    "corroborates": {
-      "en": "Cyrus the Great's proclamation (c. 539 BC) of restoring displaced peoples and their sanctuaries — the imperial policy behind the return from exile and the temple's rebuilding (Ezra 1; 6). Its direct bearing on Judah is inferred, not named."
-    },
-    "dateRange": {
-      "startYear": -539,
-      "endYear": -539,
-      "display": {
-        "en": "c. 539 BC"
-      },
-      "approximate": true
-    },
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-cyrus-cylinder",
-      "cit-arch-cyrus-cylinder-bm",
-      "cit-dth-the-cyrus-cylinder"
-    ]
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-mesha",
+   "cit-dth-the-mesha-stele"
+  ]
+ },
+ {
+  "id": "artifact-merneptah-stele",
+  "name": {
+   "en": "The Merneptah Stele ('Israel')"
   },
-  {
-    "id": "artifact-sergius-paulus",
-    "name": {
-      "en": "Inscriptions of the Sergii Pauli"
-    },
-    "siteId": "site-paphos",
-    "modernLocation": {
-      "en": "Inscriptions from Cyprus, Pisidian Antioch, and Rome"
-    },
-    "corroborates": {
-      "en": "Several inscriptions attest the aristocratic Sergii Pauli family, consistent with the proconsul Sergius Paulus whom Paul met on Cyprus (Acts 13:7); which individual Luke names is debated."
-    },
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 100,
-      "display": {
-        "en": "1st c. AD"
-      },
-      "approximate": true
-    },
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-sergius-paulus",
-      "cit-arch-sergius-paulus-met",
-      "cit-dth-legacy-of-barnabas-on-cyprus"
-    ],
-    "disputes": {
-      "en": "Inscriptions confirm the family and its standing, but securely matching a specific attested Sergius Paulus to Luke's Cypriot proconsul is not possible; the identification is probable, not certain."
-    }
+  "siteId": "site-goshen-rameses",
+  "modernLocation": {
+   "en": "Egyptian Museum, Cairo (found at Thebes, 1896)"
   },
-  {
-    "id": "artifact-jesus-boat",
-    "name": {
-      "en": "The Galilee Boat (the “Jesus Boat”)"
-    },
-    "siteId": "site-sea-of-galilee",
-    "modernLocation": {
-      "en": "Yigal Allon Museum, Kibbutz Ginosar, Sea of Galilee (found 1986)"
-    },
-    "corroborates": {
-      "en": "A 1st-century wooden fishing boat (~8.8 m long) uncovered in the lakebed mud between Ginosar and Magdala during a 1986 drought by brothers Moshe and Yuval Lufan. Radiocarbon dating, pottery, and nail analysis place its use c. 50 BC–AD 50 — the kind of vessel the Gospels describe Jesus and his fishermen disciples using on the Sea of Galilee (Matthew 8:23-27; Mark 4:35-41; Luke 5:1-11)."
-    },
-    "dateRange": {
-      "startYear": -50,
-      "endYear": 50,
-      "display": {
-        "en": "c. 50 BC – AD 50"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-jesus-boat",
-      "cit-dth-discovery-jesus-boat",
-      "cit-dth-galilee-boat"
-    ]
+  "corroborates": {
+   "en": "Pharaoh Merneptah's victory stele (c. 1208 BC) carries the earliest known mention of 'Israel' as a people in Canaan — a fixed point for Israel's presence in the land by the late 13th c. BC."
   },
-  {
-    "id": "artifact-babylonian-chronicle",
-    "name": {
-      "en": "The Babylonian (Nebuchadnezzar) Chronicle, ABC 5"
-    },
-    "siteId": "site-jerusalem",
-    "modernLocation": {
-      "en": "British Museum, London (BM 21946); excavated at Babylon"
-    },
-    "corroborates": {
-      "en": "A Neo-Babylonian scribal tablet recording that in Nebuchadnezzar’s 7th year (597 BC) his army besieged and took the ‘city of Judah’ (Jerusalem), captured its king (Jehoiachin/Jeconiah), appointed a king of his choosing (Zedekiah), and took tribute to Babylon — matching the account in 2 Kings 24:10-17, 2 Chronicles 36:9-10, Jeremiah, and Ezekiel."
-    },
-    "dateRange": {
-      "startYear": -597,
-      "endYear": -597,
-      "display": {
-        "en": "records 597 BC (composed 6th c. BC)"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-arch-babylonian-chronicle",
-      "cit-dth-neo-babylonian-jerusalem-chronicle"
-    ]
+  "dateRange": {
+   "startYear": -1208,
+   "endYear": -1208,
+   "display": {
+    "en": "c. 1208 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-merneptah"
+  ]
+ },
+ {
+  "id": "artifact-pool-of-bethesda",
+  "name": {
+   "en": "The Pool of Bethesda"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Excavated near the Church of St Anne, Old City of Jerusalem"
+  },
+  "corroborates": {
+   "en": "A twin-pool complex with five porticoes matching John 5:2 — long doubted until excavation confirmed its form, a case where topographical detail in John was archaeologically vindicated."
+  },
+  "dateRange": {
+   "startYear": -100,
+   "endYear": 100,
+   "display": {
+    "en": "Second Temple period"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-bethesda",
+   "cit-arch-bethesda-academic",
+   "cit-dth-pool-of-bethesda",
+   "cit-dth-the-pool-of-bethesda"
+  ]
+ },
+ {
+  "id": "artifact-capernaum-house-peter",
+  "name": {
+   "en": "The House of St Peter, Capernaum"
+  },
+  "siteId": "site-capernaum",
+  "modernLocation": {
+   "en": "Capernaum, on the Sea of Galilee (beneath the modern memorial church)"
+  },
+  "corroborates": {
+   "en": "A 1st-c. house singled out very early for veneration (graffiti, later octagonal church) and identified by tradition as Peter's house, where Jesus stayed and healed (Mark 1:29-31). The identification is traditional."
+  },
+  "dateRange": {
+   "startYear": -50,
+   "endYear": 400,
+   "display": {
+    "en": "1st c. AD onward"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-capernaum-house",
+   "cit-arch-capernaum-house-corbo",
+   "cit-dth-the-house-of-peter"
+  ]
+ },
+ {
+  "id": "artifact-hezekiah-siloam-tunnel",
+  "name": {
+   "en": "Hezekiah's Tunnel and the Siloam Inscription"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Tunnel in the City of David; inscription in the Istanbul Archaeology Museums"
+  },
+  "corroborates": {
+   "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30)."
+  },
+  "dateRange": {
+   "startYear": -701,
+   "endYear": -701,
+   "display": {
+    "en": "c. 701 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-siloam-tunnel",
+   "cit-arch-siloam-tunnel-sayce"
+  ]
+ },
+ {
+  "id": "artifact-sennacherib-prism",
+  "name": {
+   "en": "Sennacherib's Prism (Annals)"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Copies in the British Museum, Oriental Institute (Chicago), and Israel Museum"
+  },
+  "corroborates": {
+   "en": "Sennacherib's own account of his 701 BC campaign says he shut up Hezekiah 'like a bird in a cage' in Jerusalem — corroborating the siege of 2 Kings 18-19 while, tellingly, never claiming to take the city."
+  },
+  "dateRange": {
+   "startYear": -691,
+   "endYear": -691,
+   "display": {
+    "en": "c. 691 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-sennacherib-prism",
+   "cit-arch-sennacherib-prism-bm"
+  ]
+ },
+ {
+  "id": "artifact-hezekiah-bulla",
+  "name": {
+   "en": "The Bulla of King Hezekiah"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Found in the Ophel excavations, City of David, Jerusalem (2015)"
+  },
+  "corroborates": {
+   "en": "A clay seal impression reading 'Belonging to Hezekiah [son of] Ahaz, king of Judah' — a royal artifact naming a biblical king of Judah, from controlled excavation."
+  },
+  "dateRange": {
+   "startYear": -700,
+   "endYear": -700,
+   "display": {
+    "en": "late 8th c. BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-hezekiah-bulla",
+   "cit-arch-hezekiah-bulla-mazar"
+  ]
+ },
+ {
+  "id": "artifact-cyrus-cylinder",
+  "name": {
+   "en": "The Cyrus Cylinder"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "British Museum, London (found at Babylon, 1879)"
+  },
+  "corroborates": {
+   "en": "Cyrus the Great's proclamation (c. 539 BC) of restoring displaced peoples and their sanctuaries — the imperial policy behind the return from exile and the temple's rebuilding (Ezra 1; 6). Its direct bearing on Judah is inferred, not named."
+  },
+  "dateRange": {
+   "startYear": -539,
+   "endYear": -539,
+   "display": {
+    "en": "c. 539 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-cyrus-cylinder",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-dth-the-cyrus-cylinder"
+  ]
+ },
+ {
+  "id": "artifact-sergius-paulus",
+  "name": {
+   "en": "Inscriptions of the Sergii Pauli"
+  },
+  "siteId": "site-paphos",
+  "modernLocation": {
+   "en": "Inscriptions from Cyprus, Pisidian Antioch, and Rome"
+  },
+  "corroborates": {
+   "en": "Several inscriptions attest the aristocratic Sergii Pauli family, consistent with the proconsul Sergius Paulus whom Paul met on Cyprus (Acts 13:7); which individual Luke names is debated."
+  },
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 100,
+   "display": {
+    "en": "1st c. AD"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-sergius-paulus",
+   "cit-arch-sergius-paulus-met",
+   "cit-dth-legacy-of-barnabas-on-cyprus"
+  ],
+  "disputes": {
+   "en": "Inscriptions confirm the family and its standing, but securely matching a specific attested Sergius Paulus to Luke's Cypriot proconsul is not possible; the identification is probable, not certain."
   }
+ },
+ {
+  "id": "artifact-jesus-boat",
+  "name": {
+   "en": "The Galilee Boat (the “Jesus Boat”)"
+  },
+  "siteId": "site-sea-of-galilee",
+  "modernLocation": {
+   "en": "Yigal Allon Museum, Kibbutz Ginosar, Sea of Galilee (found 1986)"
+  },
+  "corroborates": {
+   "en": "A 1st-century wooden fishing boat (~8.8 m long) uncovered in the lakebed mud between Ginosar and Magdala during a 1986 drought by brothers Moshe and Yuval Lufan. Radiocarbon dating, pottery, and nail analysis place its use c. 50 BC–AD 50 — the kind of vessel the Gospels describe Jesus and his fishermen disciples using on the Sea of Galilee (Matthew 8:23-27; Mark 4:35-41; Luke 5:1-11)."
+  },
+  "dateRange": {
+   "startYear": -50,
+   "endYear": 50,
+   "display": {
+    "en": "c. 50 BC – AD 50"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-jesus-boat",
+   "cit-dth-discovery-jesus-boat",
+   "cit-dth-galilee-boat"
+  ]
+ },
+ {
+  "id": "artifact-babylonian-chronicle",
+  "name": {
+   "en": "The Babylonian (Nebuchadnezzar) Chronicle, ABC 5"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "British Museum, London (BM 21946); excavated at Babylon"
+  },
+  "corroborates": {
+   "en": "A Neo-Babylonian scribal tablet recording that in Nebuchadnezzar’s 7th year (597 BC) his army besieged and took the ‘city of Judah’ (Jerusalem), captured its king (Jehoiachin/Jeconiah), appointed a king of his choosing (Zedekiah), and took tribute to Babylon — matching the account in 2 Kings 24:10-17, 2 Chronicles 36:9-10, Jeremiah, and Ezekiel."
+  },
+  "dateRange": {
+   "startYear": -597,
+   "endYear": -597,
+   "display": {
+    "en": "records 597 BC (composed 6th c. BC)"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-arch-babylonian-chronicle",
+   "cit-dth-neo-babylonian-jerusalem-chronicle"
+  ]
+ },
+ {
+  "id": "artifact-durupinar-surveys",
+  "name": {
+   "en": "Durupınar formation surveys — GPR scans (2019) and soil analyses (2022–2024)"
+  },
+  "siteId": "site-ararat-landing",
+  "modernLocation": {
+   "en": "Durupınar site, near Üzengili, Doğubayazıt district, Ağrı Province, Türkiye — GPS 39.4406° N, 44.2347° E"
+  },
+  "corroborates": {
+   "en": "A boat-shaped formation about 160 m long — close to the ark's 300 cubits (Genesis 6:15). Ground-penetrating-radar surveys in 2019 reported parallel linear reflectors the team reads as possible buried structure, and 2022–2024 soil samples were reported to show elevated organic matter and clay differences inside the formation versus outside. Advocates present these as consistent with a decayed wooden vessel."
+  },
+  "dateRange": {
+   "startYear": 2019,
+   "endYear": 2024,
+   "display": {
+    "en": "surveys AD 2019–2024"
+   },
+   "approximate": false
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "None of the survey results are peer-reviewed or independently replicated, and mainstream geologists (Collins & Fasold 1996) identify the formation as a doubly plunging syncline — a natural rock structure — with no petrified wood present. Shown as a documented claim, not an established find."
+  },
+  "citations": [
+   "cit-ark-scans",
+   "cit-durupinar",
+   "cit-durupinar-geology"
+  ]
+ },
+ {
+  "id": "artifact-shuruppak-flood-layer",
+  "name": {
+   "en": "Flood deposit layer at Shuruppak"
+  },
+  "siteId": "site-shuruppak",
+  "modernLocation": {
+   "en": "Tell Fara, southern Iraq"
+  },
+  "corroborates": {
+   "en": "Excavations at Shuruppak — and at Kish and Ur — exposed river-flood silt strata from around the Jemdet Nasr / Early Dynastic transition (c. 2900 BC), showing catastrophic flooding was a lived reality of early Mesopotamia, the world in which the flood tradition of Ziusudra and Utnapishtim, paralleled in Genesis 6-9, took shape."
+  },
+  "dateRange": {
+   "startYear": -2950,
+   "endYear": -2850,
+   "display": {
+    "en": "c. 2900 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The flood strata at the several cities date to different episodes and are read by archaeologists as local river floods, not a single universal deluge."
+  },
+  "citations": [
+   "cit-shuruppak",
+   "cit-ziusudra"
+  ]
+ }
 ]

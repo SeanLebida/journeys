@@ -1711,5 +1711,88 @@
   },
   "url": "https://en.wikipedia.org/wiki/Finding_in_the_Temple",
   "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-flood-narrative",
+  "source": {
+   "en": "Wikipedia, 'Genesis flood narrative'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Genesis_flood_narrative",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ararat-region",
+  "source": {
+   "en": "Wikipedia, 'Mountains of Ararat'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mountains_of_Ararat",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-mount-ararat",
+  "source": {
+   "en": "Wikipedia, 'Mount Ararat'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mount_Ararat",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-durupinar",
+  "source": {
+   "en": "Wikipedia, 'Durupınar site'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Durup%C4%B1nar_site",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-ark-scans",
+  "source": {
+   "en": "Noah's Ark Scans — GPR survey (2019) and soil-analysis (2022–2024) announcements for the Durupınar formation"
+  },
+  "url": "https://noahsarkscans.com/",
+  "kind": "archaeological",
+  "note": {
+   "en": "Claims by an independent research team; not peer-reviewed. Presented here as a documented claim, not an established find."
+  }
+ },
+ {
+  "id": "cit-durupinar-geology",
+  "source": {
+   "en": "Lorence G. Collins & David F. Fasold, 'Bogus \"Noah's Ark\" from Turkey exposed as a common geologic structure', Journal of Geoscience Education 44 (1996)"
+  },
+  "url": "https://www.csun.edu/~vcgeo005/bogus.html",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-mount-judi",
+  "source": {
+   "en": "Wikipedia, 'Mount Judi'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mount_Judi",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-shuruppak",
+  "source": {
+   "en": "Wikipedia, 'Shuruppak'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Shuruppak",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-ziusudra",
+  "source": {
+   "en": "Wikipedia, 'Ziusudra' (Sumerian flood hero of Shuruppak)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ziusudra",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-gilgamesh-flood",
+  "source": {
+   "en": "Wikipedia, 'Gilgamesh flood myth' (Tablet XI)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
+  "kind": "primary-ancient"
  }
 ]
