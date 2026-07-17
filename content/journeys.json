@@ -14,7 +14,7 @@
       "approximate": true
     },
     "summary": {
-      "en": "The travels of Jesus from Galilee to Jerusalem — his baptism, Galilean ministry around the Sea of Galilee, northern excursions, and the final journey to Jerusalem, crucifixion and resurrection. The crucifixion year (AD 30 vs AD 33) is genuinely disputed; this atlas uses AD 30 as the mainstream default and flags the dispute."
+      "en": "The travels of Jesus from Galilee to Jerusalem — his baptism, Galilean ministry around the Sea of Galilee, northern excursions, the final journey to Jerusalem, crucifixion, resurrection, and the post-resurrection appearances: at the empty tomb, on the road to Emmaus, in the upper room (twice), at the Sea of Galilee, on a mountain in Galilee (the Great Commission), the appearance to James, and the Ascension from the Mount of Olives. Also includes the post-ascension visions of Stephen, Paul's encounter on the Damascus road, and John's vision on Patmos. The crucifixion year (AD 30 vs AD 33) is genuinely disputed; this atlas uses AD 30 as the mainstream default and flags the dispute."
     },
     "color": "#c75b39",
     "stops": [
@@ -36,7 +36,18 @@
       "stop-ministry-last-supper-15",
       "stop-ministry-gethsemane-16",
       "stop-ministry-trial-before-pilate-17",
-      "stop-ministry-golgotha-and-the-tomb-18"
+      "stop-ministry-golgotha-and-the-tomb-18",
+      "stop-ministry-resurrection-appearances-19",
+      "stop-ministry-road-to-emmaus-20",
+      "stop-ministry-upper-room-easter-21",
+      "stop-ministry-upper-room-thomas-22",
+      "stop-ministry-sea-of-galilee-appearance-23",
+      "stop-ministry-galilee-mountain-commission-24",
+      "stop-ministry-appearance-to-james-25",
+      "stop-ministry-ascension-26",
+      "stop-ministry-stephens-vision-27",
+      "stop-ministry-damascus-road-paul-28",
+      "stop-ministry-patmos-john-29"
     ],
     "citations": [
       "cit-www-britannica-com-topic-when-was-jesus-born",
@@ -78,7 +89,39 @@
       "cit-en-wikipedia-org-wiki-pilate-stone",
       "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
       "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-      "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
+      "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+      "cit-edicule-restoration",
+      "cit-emmaus-nicopolis",
+      "cit-emmaus-qubeibeh",
+      "cit-tabgha-primacy",
+      "cit-jesus-boat",
+      "cit-galilee-mountain",
+      "cit-1cor15-creed",
+      "cit-ascension-chapel",
+      "cit-mount-olives",
+      "cit-damascus-straight-street",
+      "cit-house-ananias",
+      "cit-pleiades-gazetteer",
+      "cit-archaeology-crucifixion-tzaferis",
+      "cit-history-early-creed-luedemann",
+      "cit-primary-josephus-antiquities",
+      "cit-primary-tacitus-annals",
+      "cit-arch-bethesda-academic",
+      "cit-arch-capernaum-house-corbo",
+      "cit-arch-siloam-tunnel-sayce",
+      "cit-arch-cyrus-cylinder-bm",
+      "cit-arch-sergius-paulus-met",
+      "cit-arch-sennacherib-prism-bm",
+      "cit-arch-hezekiah-bulla-mazar",
+      "cit-wit-josephus-jesus-loeb",
+      "cit-wit-josephus-james-loeb",
+      "cit-wit-josephus-jbaptist-loeb",
+      "cit-wit-tacitus-loeb",
+      "cit-wit-pliny-loeb",
+      "cit-wit-suetonius-loeb",
+      "cit-wit-thallus-wallraff",
+      "cit-wit-mara-cureton",
+      "cit-wit-josephus-baptist-loeb"
     ]
   },
   {

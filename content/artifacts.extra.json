@@ -22,7 +22,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-tel-dan"
+      "cit-arch-tel-dan",
+      "cit-dth-biblical-figures-found-through-archaeology"
     ]
   },
   {
@@ -48,7 +49,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-mesha"
+      "cit-arch-mesha",
+      "cit-dth-the-mesha-stele"
     ]
   },
   {
@@ -100,7 +102,10 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-bethesda"
+      "cit-arch-bethesda",
+      "cit-arch-bethesda-academic",
+      "cit-dth-pool-of-bethesda",
+      "cit-dth-the-pool-of-bethesda"
     ]
   },
   {
@@ -126,7 +131,9 @@
     "confidence": "medium",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-capernaum-house"
+      "cit-arch-capernaum-house",
+      "cit-arch-capernaum-house-corbo",
+      "cit-dth-the-house-of-peter"
     ]
   },
   {
@@ -152,7 +159,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-siloam-tunnel"
+      "cit-arch-siloam-tunnel",
+      "cit-arch-siloam-tunnel-sayce"
     ]
   },
   {
@@ -178,7 +186,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-sennacherib-prism"
+      "cit-arch-sennacherib-prism",
+      "cit-arch-sennacherib-prism-bm"
     ]
   },
   {
@@ -204,7 +213,8 @@
     "confidence": "high",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-hezekiah-bulla"
+      "cit-arch-hezekiah-bulla",
+      "cit-arch-hezekiah-bulla-mazar"
     ]
   },
   {
@@ -230,7 +240,9 @@
     "confidence": "medium",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-cyrus-cylinder"
+      "cit-arch-cyrus-cylinder",
+      "cit-arch-cyrus-cylinder-bm",
+      "cit-dth-the-cyrus-cylinder"
     ]
   },
   {
@@ -256,10 +268,67 @@
     "confidence": "medium",
     "reviewStatus": "self-reviewed",
     "citations": [
-      "cit-arch-sergius-paulus"
+      "cit-arch-sergius-paulus",
+      "cit-arch-sergius-paulus-met",
+      "cit-dth-legacy-of-barnabas-on-cyprus"
     ],
     "disputes": {
       "en": "Inscriptions confirm the family and its standing, but securely matching a specific attested Sergius Paulus to Luke's Cypriot proconsul is not possible; the identification is probable, not certain."
     }
+  },
+  {
+    "id": "artifact-jesus-boat",
+    "name": {
+      "en": "The Galilee Boat (the “Jesus Boat”)"
+    },
+    "siteId": "site-sea-of-galilee",
+    "modernLocation": {
+      "en": "Yigal Allon Museum, Kibbutz Ginosar, Sea of Galilee (found 1986)"
+    },
+    "corroborates": {
+      "en": "A 1st-century wooden fishing boat (~8.8 m long) uncovered in the lakebed mud between Ginosar and Magdala during a 1986 drought by brothers Moshe and Yuval Lufan. Radiocarbon dating, pottery, and nail analysis place its use c. 50 BC–AD 50 — the kind of vessel the Gospels describe Jesus and his fishermen disciples using on the Sea of Galilee (Matthew 8:23-27; Mark 4:35-41; Luke 5:1-11)."
+    },
+    "dateRange": {
+      "startYear": -50,
+      "endYear": 50,
+      "display": {
+        "en": "c. 50 BC – AD 50"
+      },
+      "approximate": true
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-arch-jesus-boat",
+      "cit-dth-discovery-jesus-boat",
+      "cit-dth-galilee-boat"
+    ]
+  },
+  {
+    "id": "artifact-babylonian-chronicle",
+    "name": {
+      "en": "The Babylonian (Nebuchadnezzar) Chronicle, ABC 5"
+    },
+    "siteId": "site-jerusalem",
+    "modernLocation": {
+      "en": "British Museum, London (BM 21946); excavated at Babylon"
+    },
+    "corroborates": {
+      "en": "A Neo-Babylonian scribal tablet recording that in Nebuchadnezzar’s 7th year (597 BC) his army besieged and took the ‘city of Judah’ (Jerusalem), captured its king (Jehoiachin/Jeconiah), appointed a king of his choosing (Zedekiah), and took tribute to Babylon — matching the account in 2 Kings 24:10-17, 2 Chronicles 36:9-10, Jeremiah, and Ezekiel."
+    },
+    "dateRange": {
+      "startYear": -597,
+      "endYear": -597,
+      "display": {
+        "en": "records 597 BC (composed 6th c. BC)"
+      },
+      "approximate": true
+    },
+    "confidence": "high",
+    "reviewStatus": "self-reviewed",
+    "citations": [
+      "cit-arch-babylonian-chronicle",
+      "cit-dth-neo-babylonian-jerusalem-chronicle"
+    ]
   }
 ]
