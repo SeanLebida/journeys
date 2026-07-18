@@ -639,5 +639,890 @@
   "citations": [
    "cit-wikipedia-jaffa"
   ]
+ },
+ {
+  "id": "site-valley-of-siddim",
+  "ancientName": {
+   "en": "Valley of Siddim (the Salt Sea basin)"
+  },
+  "modernLocation": {
+   "en": "Southern basin of the Dead Sea (traditional); exact field unknown"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.3,
+    "lon": 35.47
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-vale-of-siddim"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "The 'vale of Siddim, which is the salt sea' (Genesis 14:3), full of bitumen pits, where the four Mesopotamian kings under Chedorlaomer defeated the five cities of the plain and carried off Lot — prompting Abram's night pursuit and rescue. The traditional location is the shallow southern basin of the Dead Sea; no site has been identified."
+  },
+  "citations": [
+   "cit-wikipedia-vale-of-siddim"
+  ]
+ },
+ {
+  "id": "site-heshbon",
+  "ancientName": {
+   "en": "Heshbon (city of Sihon the Amorite)"
+  },
+  "modernName": {
+   "en": "Tell Hisban"
+  },
+  "modernLocation": {
+   "en": "Tell Hisban, Jordan, ~20 km southwest of Amman"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8017,
+    "lon": 35.8092
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-heshbon"
+   ]
+  },
+  "summary": {
+   "en": "Capital of Sihon king of the Amorites, taken by Israel on the march up the King's Highway when Sihon refused passage and gave battle at Jahaz (Numbers 21:21-31). Tell Hisban preserves the name; its excavated Iron Age remains post-date the conquest debate, one strand of the wider dating question."
+  },
+  "citations": [
+   "cit-wikipedia-heshbon"
+  ]
+ },
+ {
+  "id": "site-edrei",
+  "ancientName": {
+   "en": "Edrei (city of Og of Bashan)"
+  },
+  "modernName": {
+   "en": "Daraa"
+  },
+  "modernLocation": {
+   "en": "Daraa, southern Syria, on the Yarmouk tributaries"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.6189,
+    "lon": 36.1058
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-daraa-edrei"
+   ]
+  },
+  "summary": {
+   "en": "Where 'Og the king of Bashan went out against them... to battle at Edrei' (Numbers 21:33) and was defeated, giving Israel the Bashan plateau. The name survives continuously in modern Daraa."
+  },
+  "citations": [
+   "cit-wikipedia-daraa-edrei"
+  ]
+ },
+ {
+  "id": "site-jericho-ot",
+  "ancientName": {
+   "en": "Jericho (Old Testament city)"
+  },
+  "modernName": {
+   "en": "Tell es-Sultan"
+  },
+  "modernLocation": {
+   "en": "Tell es-Sultan, beside modern Jericho, West Bank — the world's oldest walled town"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8711,
+    "lon": 35.4442
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ot-jericho"
+   ]
+  },
+  "summary": {
+   "en": "The fortified oasis city whose walls fell to Joshua after seven days of circuits (Joshua 6) — the opening act of the conquest. Tell es-Sultan shows collapsed mudbrick ramparts and a burn layer; whether that destruction dates to c. 1400 BC (Garstang, Wood) or c. 1550 BC (Kenyon) is the classic conquest-archaeology debate."
+  },
+  "citations": [
+   "cit-ot-jericho"
+  ]
+ },
+ {
+  "id": "site-ai",
+  "ancientName": {
+   "en": "Ai (Ha-Ai, 'the ruin')"
+  },
+  "modernName": {
+   "en": "et-Tell (disputed)"
+  },
+  "modernLocation": {
+   "en": "et-Tell near Deir Dibwan, West Bank (majority identification; Khirbet el-Maqatir is the main rival)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.9169,
+    "lon": 35.2618
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-ai-canaan"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "The second city of the conquest: Israel's initial repulse (Achan's sin), then its capture by ambush (Joshua 7-8). The majority site, et-Tell, was unoccupied in the Late Bronze Age — the sharpest identification problem in conquest archaeology; Khirbet el-Maqatir has been proposed as an alternative."
+  },
+  "citations": [
+   "cit-wikipedia-ai-canaan"
+  ]
+ },
+ {
+  "id": "site-gibeon",
+  "ancientName": {
+   "en": "Gibeon"
+  },
+  "modernName": {
+   "en": "el-Jib"
+  },
+  "modernLocation": {
+   "en": "el-Jib, West Bank, ~9 km northwest of Jerusalem"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8497,
+    "lon": 35.1856
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-gibeon"
+   ]
+  },
+  "summary": {
+   "en": "The Hivite city that made peace with Joshua by ruse and was then defended by him against the five Amorite kings — the day of hailstones and the sun standing still (Joshua 10). Jar handles stamped 'gb'n' from el-Jib's great rock-cut pool confirmed the identification; the pool itself figures in 2 Samuel 2:13."
+  },
+  "citations": [
+   "cit-wikipedia-gibeon"
+  ]
+ },
+ {
+  "id": "site-hazor",
+  "ancientName": {
+   "en": "Hazor, 'the head of all those kingdoms'"
+  },
+  "modernName": {
+   "en": "Tel Hazor"
+  },
+  "modernLocation": {
+   "en": "Tel Hazor, Upper Galilee, Israel, ~14 km north of the Sea of Galilee"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 33.0175,
+    "lon": 35.5683
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tel-hazor"
+   ]
+  },
+  "summary": {
+   "en": "The largest Canaanite city of the land (~80 ha), seat of Jabin, head of the northern coalition crushed at the waters of Merom — 'and he burnt Hazor with fire' (Joshua 11:11-13). The tell's Late Bronze destruction layer, with burned palace and mutilated cult statues, is central to the conquest debate; the city rose again under Solomon (1 Kings 9:15) and fell to Tiglath-pileser III in 732 BC (2 Kings 15:29)."
+  },
+  "citations": [
+   "cit-wikipedia-tel-hazor"
+  ]
+ },
+ {
+  "id": "site-mount-tabor",
+  "ancientName": {
+   "en": "Mount Tabor"
+  },
+  "modernName": {
+   "en": "Har Tavor"
+  },
+  "modernLocation": {
+   "en": "Mount Tabor, Lower Galilee, Israel, rising from the Jezreel valley"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.687,
+    "lon": 35.3906
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-mount-tabor"
+   ]
+  },
+  "summary": {
+   "en": "The dome-shaped mountain where Barak mustered ten thousand of Naphtali and Zebulun at Deborah's word, descending on Sisera's nine hundred iron chariots as the Kishon swept them away (Judges 4-5)."
+  },
+  "citations": [
+   "cit-wikipedia-mount-tabor"
+  ]
+ },
+ {
+  "id": "site-spring-of-harod",
+  "ancientName": {
+   "en": "Spring of Harod (En-harod)"
+  },
+  "modernName": {
+   "en": "Ma'ayan Harod"
+  },
+  "modernLocation": {
+   "en": "Ma'ayan Harod at the foot of Mount Gilboa, Jezreel valley, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5503,
+    "lon": 35.3567
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-maayan-harod"
+   ]
+  },
+  "summary": {
+   "en": "The spring where Gideon's army was sifted to three hundred by the manner of their drinking, before the night attack with torches and trumpets on the Midianite camp by the hill of Moreh (Judges 7)."
+  },
+  "citations": [
+   "cit-wikipedia-maayan-harod"
+  ]
+ },
+ {
+  "id": "site-gibeah",
+  "ancientName": {
+   "en": "Gibeah of Benjamin (Gibeah of Saul)"
+  },
+  "modernName": {
+   "en": "Tell el-Ful (disputed)"
+  },
+  "modernLocation": {
+   "en": "Tell el-Ful, northern outskirts of Jerusalem (identification debated)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8236,
+    "lon": 35.2311
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-gibeah"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "Benjamite town whose outrage against the Levite's concubine ignited Israel's first civil war — all the tribes against Benjamin, and Benjamin nearly annihilated (Judges 19-21). Later Saul's seat. Albright's identification with Tell el-Ful, though standard, remains debated."
+  },
+  "citations": [
+   "cit-wikipedia-gibeah"
+  ]
+ },
+ {
+  "id": "site-mizpah",
+  "ancientName": {
+   "en": "Mizpah of Benjamin"
+  },
+  "modernName": {
+   "en": "Tell en-Nasbeh"
+  },
+  "modernLocation": {
+   "en": "Tell en-Nasbeh, ~12 km north of Jerusalem, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8853,
+    "lon": 35.2161
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tell-en-nasbeh"
+   ]
+  },
+  "summary": {
+   "en": "Samuel's mustering point, where thunder routed the Philistines and the stone Ebenezer — 'hitherto hath the LORD helped us' — was raised (1 Samuel 7:5-14). Later fortified by Asa against Israel with the stones of dismantled Ramah (1 Kings 15:22)."
+  },
+  "citations": [
+   "cit-wikipedia-tell-en-nasbeh"
+  ]
+ },
+ {
+  "id": "site-aphek-ebenezer",
+  "ancientName": {
+   "en": "Aphek (by Ebenezer)"
+  },
+  "modernName": {
+   "en": "Tel Afek (Antipatris)"
+  },
+  "modernLocation": {
+   "en": "Tel Afek, Rosh Ha'ayin, Israel, at the Yarkon springs"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.1047,
+    "lon": 34.9303
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-antipatris"
+   ]
+  },
+  "summary": {
+   "en": "The Philistine camp opposite Israel's at Ebenezer where the ark of the covenant was captured, Hophni and Phinehas killed, and Eli's line judged — 'the glory is departed from Israel' (1 Samuel 4). The same tell became Herod's Antipatris, where Paul spent a night under Roman escort (Acts 23:31)."
+  },
+  "citations": [
+   "cit-wikipedia-antipatris"
+  ]
+ },
+ {
+  "id": "site-michmash",
+  "ancientName": {
+   "en": "Michmash"
+  },
+  "modernName": {
+   "en": "Mukhmas"
+  },
+  "modernLocation": {
+   "en": "Mukhmas, West Bank, above the Wadi Suweinit pass ~11 km northeast of Jerusalem"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8697,
+    "lon": 35.2736
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-michmash"
+   ]
+  },
+  "summary": {
+   "en": "Philistine forward camp between the crags Bozez and Seneh, where Jonathan and his armour-bearer scaled the pass and started the panic that Saul's muster turned into a rout (1 Samuel 13-14)."
+  },
+  "citations": [
+   "cit-wikipedia-michmash"
+  ]
+ },
+ {
+  "id": "site-valley-of-elah",
+  "ancientName": {
+   "en": "Valley of Elah (between Socoh and Azekah)"
+  },
+  "modernName": {
+   "en": "Wadi es-Sunt"
+  },
+  "modernLocation": {
+   "en": "The Elah valley, Israel, overlooked by Khirbet Qeiyafa; the brook of the five smooth stones runs its floor"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.6906,
+    "lon": 34.9575
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-valley-of-elah"
+   ]
+  },
+  "summary": {
+   "en": "Where the armies faced off 'between Socoh and Azekah' and David met Goliath of Gath with a sling and a shepherd's staff (1 Samuel 17). The fortified early-10th-century site of Khirbet Qeiyafa above the valley bears directly on the debate over the kingdom David actually ruled."
+  },
+  "citations": [
+   "cit-wikipedia-valley-of-elah"
+  ]
+ },
+ {
+  "id": "site-mount-gilboa",
+  "ancientName": {
+   "en": "Mount Gilboa"
+  },
+  "modernName": {
+   "en": "Har Gilboa"
+  },
+  "modernLocation": {
+   "en": "Mount Gilboa ridge above the Jezreel valley, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5333,
+    "lon": 35.4167
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-mount-gilboa"
+   ]
+  },
+  "summary": {
+   "en": "Where Israel broke before the Philistines massed at Shunem: Saul's three sons fell, and the wounded king died on his own sword; the bodies were hung on the wall of Beth-shan (1 Samuel 31). David's lament: 'Ye mountains of Gilboa, let there be no dew' (2 Samuel 1:21)."
+  },
+  "citations": [
+   "cit-wikipedia-mount-gilboa"
+  ]
+ },
+ {
+  "id": "site-rabbah-ammon",
+  "ancientName": {
+   "en": "Rabbah of the Ammonites (Rabbath-ammon)"
+  },
+  "modernName": {
+   "en": "Amman Citadel"
+  },
+  "modernLocation": {
+   "en": "The Citadel (Jabal al-Qal'a), Amman, Jordan"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.9544,
+    "lon": 35.9344
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-amman-citadel"
+   ]
+  },
+  "summary": {
+   "en": "Capital of Ammon, besieged by Joab while David remained in Jerusalem — the siege in which Uriah the Hittite was deliberately abandoned at the wall (2 Samuel 11); David later took 'the city of waters' and its crown (2 Samuel 12:26-31)."
+  },
+  "citations": [
+   "cit-wikipedia-amman-citadel"
+  ]
+ },
+ {
+  "id": "site-mahanaim",
+  "ancientName": {
+   "en": "Mahanaim"
+  },
+  "modernName": {
+   "en": "Tulul adh-Dhahab (candidate)"
+  },
+  "modernLocation": {
+   "en": "Tulul adh-Dhahab twin tells on the Jabbok (Zarqa) river, Jordan (leading candidate; identification uncertain)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.1833,
+    "lon": 35.69
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-mahanaim"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "Jacob's 'two camps' on the Jabbok, Ish-bosheth's Transjordan capital, and David's refuge during Absalom's revolt — the battle of the forest of Ephraim was fought nearby, 'and the wood devoured more people that day than the sword' (2 Samuel 18)."
+  },
+  "citations": [
+   "cit-wikipedia-mahanaim"
+  ]
+ },
+ {
+  "id": "site-mount-zemaraim",
+  "ancientName": {
+   "en": "Mount Zemaraim (in the hills of Ephraim)"
+  },
+  "modernLocation": {
+   "en": "Unidentified rise near the Bethel plateau, West Bank (Ras et-Tahuneh and others proposed)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.9333,
+    "lon": 35.2333
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-mount-zemaraim"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "Where Abijah of Judah, outnumbered two to one, addressed Jeroboam's Israel from the mountainside and then broke the double envelopment — Judah took Bethel, Jeshanah, and Ephron (2 Chronicles 13). The mountain itself has not been securely identified."
+  },
+  "citations": [
+   "cit-wikipedia-mount-zemaraim"
+  ]
+ },
+ {
+  "id": "site-ramah",
+  "ancientName": {
+   "en": "Ramah of Benjamin"
+  },
+  "modernName": {
+   "en": "er-Ram"
+  },
+  "modernLocation": {
+   "en": "er-Ram, West Bank, ~8 km north of Jerusalem astride the north road"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.85,
+    "lon": 35.2333
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-ramah-benjamin"
+   ]
+  },
+  "summary": {
+   "en": "The border town Baasha of Israel fortified 'that he might not suffer any to go out or come in to Asa king of Judah' — the chokepoint of the Israel-Judah border war, dismantled when Asa's silver turned Ben-hadad of Damascus against the north (1 Kings 15:16-22)."
+  },
+  "citations": [
+   "cit-wikipedia-ramah-benjamin"
+  ]
+ },
+ {
+  "id": "site-beth-shemesh",
+  "ancientName": {
+   "en": "Beth-shemesh"
+  },
+  "modernName": {
+   "en": "Tel Beit Shemesh"
+  },
+  "modernLocation": {
+   "en": "Tel Beit Shemesh, Israel, in the Sorek valley ~30 km west of Jerusalem"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7522,
+    "lon": 34.9767
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-beth-shemesh"
+   ]
+  },
+  "summary": {
+   "en": "Judahite border town where the ark returned from Philistia on a cart (1 Samuel 6) — and where, generations later, Jehoash of Israel captured Amaziah of Judah in the bluntest Israel-vs-Judah defeat, then broke down Jerusalem's wall and emptied the temple treasuries (2 Kings 14:11-14)."
+  },
+  "citations": [
+   "cit-wikipedia-beth-shemesh"
+  ]
+ },
+ {
+  "id": "site-samaria-city",
+  "ancientName": {
+   "en": "Samaria (city of Omri and Ahab)"
+  },
+  "modernName": {
+   "en": "Sebastia"
+  },
+  "modernLocation": {
+   "en": "Sebastia, West Bank — the acropolis of Omri's hill"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.2764,
+    "lon": 35.19
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-samaria-city"
+   ]
+  },
+  "summary": {
+   "en": "Capital of the northern kingdom from Omri onward: Ahab's ivory house, Ben-hadad's failed siege (1 Kings 20), Elisha's famine siege lifted overnight (2 Kings 6-7), and at last the three-year Assyrian siege that ended the kingdom of Israel in 722 BC (2 Kings 17). Excavated palace quarter, ivories, and the Samaria ostraca survive."
+  },
+  "citations": [
+   "cit-wikipedia-samaria-city"
+  ]
+ },
+ {
+  "id": "site-aphek-golan",
+  "ancientName": {
+   "en": "Aphek (east of the Sea of Galilee)"
+  },
+  "modernName": {
+   "en": "Fiq/'Afiq area (candidate)"
+  },
+  "modernLocation": {
+   "en": "Golan Heights near modern 'Afiq, above En Gev (identification uncertain)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.7789,
+    "lon": 35.7
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-antipatris"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "The Aphek of the Aramean wars, 'where a wall fell upon twenty and seven thousand of the men that were left' after Israel's victory over Ben-hadad (1 Kings 20:26-30), and where Elisha told Joash he would smite Aram (2 Kings 13:17). Distinct from the coastal Aphek; the eastern site is not securely identified."
+  },
+  "citations": [
+   "cit-wikipedia-antipatris"
+  ]
+ },
+ {
+  "id": "site-qarqar",
+  "ancientName": {
+   "en": "Qarqar on the Orontes"
+  },
+  "modernName": {
+   "en": "Tell Qarqur"
+  },
+  "modernLocation": {
+   "en": "Tell Qarqur, Orontes valley, northwest Syria"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 35.7439,
+    "lon": 36.3339
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tell-qarqur"
+   ]
+  },
+  "summary": {
+   "en": "Where Shalmaneser III's Assyrian army met a twelve-king coalition in 853 BC — including 'Ahab the Israelite' with 2,000 chariots and 10,000 soldiers, per the Kurkh Monolith. Unmentioned in Scripture, the battle is the linchpin synchronism that fixes the divided-kingdom chronology to absolute dates."
+  },
+  "citations": [
+   "cit-wikipedia-tell-qarqur"
+  ]
+ },
+ {
+  "id": "site-ramoth-gilead",
+  "ancientName": {
+   "en": "Ramoth-gilead"
+  },
+  "modernName": {
+   "en": "Tell er-Rumeith (candidate)"
+  },
+  "modernLocation": {
+   "en": "Tell er-Rumeith, northern Jordan (leading candidate; identification uncertain)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5644,
+    "lon": 36.0106
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-ramoth-gilead-site"
+   ],
+   "disputes": {
+    "en": "The identification of this site is debated; coordinates mark the leading candidate described in the summary."
+   }
+  },
+  "summary": {
+   "en": "Levitical refuge city and perennial Israel-Aram flashpoint: Ahab fell here disguised in his chariot despite Micaiah's warning (1 Kings 22), and Joram's wounds from its later siege set the stage for Jehu's anointing in this same camp (2 Kings 8-9)."
+  },
+  "citations": [
+   "cit-wikipedia-ramoth-gilead-site"
+  ]
+ },
+ {
+  "id": "site-jezreel",
+  "ancientName": {
+   "en": "Jezreel (royal winter seat)"
+  },
+  "modernName": {
+   "en": "Tel Jezreel"
+  },
+  "modernLocation": {
+   "en": "Tel Jezreel, Jezreel valley, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5583,
+    "lon": 35.3278
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tel-jezreel"
+   ]
+  },
+  "summary": {
+   "en": "The Omride military enclosure and winter seat beside Naboth's vineyard — where Jehu's furious chariot drive ended with Joram dead in Naboth's field, Ahaziah of Judah mortally wounded, and Jezebel thrown from the window (2 Kings 9). The excavated Iron II casemate enclosure matches the dynasty's scale."
+  },
+  "citations": [
+   "cit-wikipedia-tel-jezreel"
+  ]
+ },
+ {
+  "id": "site-kir-hareseth",
+  "ancientName": {
+   "en": "Kir-hareseth (Kir of Moab)"
+  },
+  "modernName": {
+   "en": "al-Karak"
+  },
+  "modernLocation": {
+   "en": "al-Karak, Jordan, beneath the Crusader castle"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.1811,
+    "lon": 35.7047
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-kir-of-moab"
+   ]
+  },
+  "summary": {
+   "en": "Moab's fortress capital, the last hold-out in the allied campaign of Israel, Judah, and Edom against Mesha's rebellion — the siege broken off after the king of Moab offered his heir on the wall (2 Kings 3:25-27). Mesha's own account of the war survives on the Mesha Stele."
+  },
+  "citations": [
+   "cit-wikipedia-kir-of-moab"
+  ]
+ },
+ {
+  "id": "site-megiddo",
+  "ancientName": {
+   "en": "Megiddo"
+  },
+  "modernName": {
+   "en": "Tel Megiddo"
+  },
+  "modernLocation": {
+   "en": "Tel Megiddo, Israel, commanding the Aruna pass into the Jezreel valley"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.585,
+    "lon": 35.1839
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tel-megiddo"
+   ]
+  },
+  "summary": {
+   "en": "The chariot city guarding the great trunk road — fortified by Solomon (1 Kings 9:15), and the field where Josiah, intercepting Pharaoh Necho II's march to the Euphrates in 609 BC, was mortally wounded (2 Kings 23:29). Its twenty-plus superimposed cities made 'Har Megiddo' — Armageddon — a byword for battle."
+  },
+  "citations": [
+   "cit-wikipedia-tel-megiddo"
+  ]
+ },
+ {
+  "id": "site-carchemish",
+  "ancientName": {
+   "en": "Carchemish"
+  },
+  "modernName": {
+   "en": "Jerablus/Karkamış"
+  },
+  "modernLocation": {
+   "en": "On the Euphrates at the Syria-Turkey border, near Jerablus"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.83,
+    "lon": 38.015
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-carchemish"
+   ]
+  },
+  "summary": {
+   "en": "The Euphrates fortress where Nebuchadnezzar crushed the Egyptian and Assyrian remnant in 605 BC — 'concerning the army of Pharaoh-necho... which was by the river Euphrates in Carchemish' (Jeremiah 46:2) — opening the Levant to Babylon and setting Judah's final act in motion."
+  },
+  "citations": [
+   "cit-wikipedia-carchemish"
+  ]
+ },
+ {
+  "id": "site-dan",
+  "ancientName": {
+   "en": "Dan (Laish)"
+  },
+  "modernName": {
+   "en": "Tel Dan"
+  },
+  "modernLocation": {
+   "en": "Tel Dan nature reserve at the foot of Mount Hermon, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 33.2486,
+    "lon": 35.6522
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-tel-dan"
+   ]
+  },
+  "summary": {
+   "en": "Northernmost city of the land — 'from Dan even to Beersheba'. The Danites took Laish by the sword (Judges 18); Jeroboam I set one of the two golden calves here; and the Tel Dan Stele, found in its gate complex, carries an Aramean king's boast over the 'house of David'."
+  },
+  "citations": [
+   "cit-wikipedia-tel-dan"
+  ]
+ },
+ {
+  "id": "site-lachish",
+  "ancientName": {
+   "en": "Lachish"
+  },
+  "modernName": {
+   "en": "Tell ed-Duweir"
+  },
+  "modernLocation": {
+   "en": "Tel Lachish, Shephelah of Judah, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.565,
+    "lon": 34.8489
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-lachish"
+   ]
+  },
+  "summary": {
+   "en": "Judah's second city. Joshua took it in the southern campaign (Joshua 10:31-32); Sennacherib besieged and stormed it in 701 BC — carving the assault in stone for his palace at Nineveh, while his siege ramp still lies against the tell; and its gate-room yielded the Lachish letters, written as Nebuchadnezzar's army closed in c. 588 BC (Jeremiah 34:7)."
+  },
+  "citations": [
+   "cit-wikipedia-lachish"
+  ]
  }
 ]

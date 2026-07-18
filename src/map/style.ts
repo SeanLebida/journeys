@@ -11,6 +11,7 @@ import westBankBarrier from './basemap/west-bank-barrier.json';
 import israel1949 from './basemap/israel-1949.json';
 import mandatePalestine from './basemap/mandate-palestine.json';
 import oct7Sites from './basemap/oct7-attack-sites.json';
+import kingdomsIronII from './basemap/kingdoms-iron-ii.json';
 
 const COUNTRY_COLORS: Record<string, { light: string; dark: string }> = {
   'Italy': { light: '#a64f03', dark: '#f28e41' },       // Terracotta
@@ -94,6 +95,8 @@ export const BASEMAP_LAYERS = {
   borders1949: 'israel-1949-borders',
   mandate: 'mandate-borders',
   conflict: 'conflict-markers',
+  kingdomIsrael: 'kingdom-israel-fill',
+  kingdomJudah: 'kingdom-judah-fill',
 } as const;
 
 /** Online-only imagery overlays: opaque full basemaps that sit ABOVE the
@@ -105,7 +108,7 @@ export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const sa
 /** Layers that ship OFF by default: the online imagery basemaps plus the
  * historical-boundary overlays (users opt in to see Israel's founding-era
  * outlines drawn over the present-day borders). */
-export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
+export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate', 'kingdomIsrael', 'kingdomJudah'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
 
 // M1 ships a self-contained, offline, no-API-key style: real coastlines/land +
 // country borders (Natural Earth, public domain) + a computed graticule. The
@@ -132,6 +135,11 @@ const BARRIER_CASING = { light: '#faf5e9', dark: '#0a0a0a' } as const;
 // against the purple modern borders when drawn over them.
 const BORDERS_1949 = { light: '#1d5fa8', dark: '#7db1ec' } as const;
 const MANDATE = { light: '#1f6b4a', dark: '#5fbf92' } as const;
+// Divided-kingdom era highlights (approximate heartlands, c. 930 BC onward):
+// Israel in a cool north-blue, Judah in the brand's warm terracotta family,
+// so the two kingdoms read at a glance against the parchment land tone.
+const KINGDOM_ISRAEL = { light: '#2f6f8f', dark: '#6fb3d2' } as const;
+const KINGDOM_JUDAH = { light: '#8a4300', dark: '#d98a4a' } as const;
 // October 7, 2023 attack-site markers.
 const CONFLICT = { light: '#a11f2a', dark: '#e0565e' } as const;
 const CONFLICT_STROKE = { light: '#faf5e9', dark: '#0d0f12' } as const;
@@ -178,6 +186,10 @@ export function applyMapTone(
   set(BASEMAP_LAYERS.mandate, 'line-color', MANDATE[tone]);
   set(BASEMAP_LAYERS.conflict, 'circle-color', CONFLICT[tone]);
   set(BASEMAP_LAYERS.conflict, 'circle-stroke-color', CONFLICT_STROKE[tone]);
+  set(BASEMAP_LAYERS.kingdomIsrael, 'fill-color', KINGDOM_ISRAEL[tone]);
+  set(BASEMAP_LAYERS.kingdomIsrael, 'fill-outline-color', KINGDOM_ISRAEL[tone]);
+  set(BASEMAP_LAYERS.kingdomJudah, 'fill-color', KINGDOM_JUDAH[tone]);
+  set(BASEMAP_LAYERS.kingdomJudah, 'fill-outline-color', KINGDOM_JUDAH[tone]);
   set(BASEMAP_LAYERS.graticule, 'line-color', GRATICULE[tone]);
 }
 
@@ -281,6 +293,7 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
       'israel-1949': { type: 'geojson', data: israel1949 as FeatureCollection },
       'mandate-palestine': { type: 'geojson', data: mandatePalestine as FeatureCollection },
       'oct7-sites': { type: 'geojson', data: oct7Sites as FeatureCollection },
+      'kingdoms-iron-ii': { type: 'geojson', data: kingdomsIronII as FeatureCollection },
       topography: {
         type: 'raster',
         tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
@@ -464,6 +477,34 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
           'line-color': BARRIER[tone],
           'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.2, 12, 2.4],
           'line-opacity': 0.9,
+        },
+      },
+      // Divided-kingdom era highlights (default OFF): filled, approximate
+      // heartlands of Israel (c. 930-722 BC) and Judah (c. 930-586 BC), the
+      // stage of the battle catalogue's civil wars. Fills sit under the
+      // boundary-line overlays so eras can still be compared.
+      {
+        id: BASEMAP_LAYERS.kingdomIsrael,
+        type: 'fill',
+        source: 'kingdoms-iron-ii',
+        filter: ['==', ['get', 'id'], 'kingdom-israel'],
+        layout: { visibility: 'none' },
+        paint: {
+          'fill-color': KINGDOM_ISRAEL[tone],
+          'fill-opacity': 0.16,
+          'fill-outline-color': KINGDOM_ISRAEL[tone],
+        },
+      },
+      {
+        id: BASEMAP_LAYERS.kingdomJudah,
+        type: 'fill',
+        source: 'kingdoms-iron-ii',
+        filter: ['==', ['get', 'id'], 'kingdom-judah'],
+        layout: { visibility: 'none' },
+        paint: {
+          'fill-color': KINGDOM_JUDAH[tone],
+          'fill-opacity': 0.16,
+          'fill-outline-color': KINGDOM_JUDAH[tone],
         },
       },
       // Historical-boundary overlays (default OFF; see DEFAULT_OFF_LAYERS).

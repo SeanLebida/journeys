@@ -1882,5 +1882,477 @@
   },
   "url": "https://en.wikipedia.org/wiki/Ananias_of_Damascus",
   "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-thiele-chronology",
+  "source": {
+   "en": "Edwin R. Thiele, 'The Mysterious Numbers of the Hebrew Kings' (divided-kingdom chronology)"
+  },
+  "url": "https://archive.org/details/mysteriousnumber0000thie",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-jericho",
+  "source": {
+   "en": "Wikipedia, 'Battle of Jericho'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Jericho",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-ai-canaan",
+  "source": {
+   "en": "Wikipedia, 'Ai (Canaan)' (the et-Tell identification problem)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ai_(Canaan)",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-gibeon",
+  "source": {
+   "en": "Wikipedia, 'Battle of Gibeon'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Gibeon",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-waters-of-merom",
+  "source": {
+   "en": "Wikipedia, 'Waters of Merom'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Waters_of_Merom",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-mount-tabor",
+  "source": {
+   "en": "Wikipedia, 'Battle of Mount Tabor' (Deborah and Barak vs. Sisera)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Mount_Tabor",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-gideon",
+  "source": {
+   "en": "Wikipedia, 'Gideon'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Gideon",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-gibeah",
+  "source": {
+   "en": "Wikipedia, 'Battle of Gibeah' (the Benjamite civil war)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Gibeah",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-aphek",
+  "source": {
+   "en": "Wikipedia, 'Battle of Aphek' (the ark captured)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Aphek",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-michmash",
+  "source": {
+   "en": "Wikipedia, 'Battle of Michmash'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Michmash",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-goliath",
+  "source": {
+   "en": "Wikipedia, 'Goliath' (the Valley of Elah duel)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Goliath",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-mount-gilboa",
+  "source": {
+   "en": "Wikipedia, 'Battle of Mount Gilboa'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Mount_Gilboa",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-mount-zemaraim",
+  "source": {
+   "en": "Wikipedia, 'Battle of Mount Zemaraim' (Abijah vs. Jeroboam)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Mount_Zemaraim",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-qarqar",
+  "source": {
+   "en": "Wikipedia, 'Battle of Qarqar' (853 BC; Ahab in the Kurkh Monolith)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Qarqar",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-ramoth-gilead",
+  "source": {
+   "en": "Wikipedia, 'Ramoth-Gilead' (Ahab's last battle)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ramoth-Gilead",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-jehu",
+  "source": {
+   "en": "Wikipedia, 'Jehu' (the 841 BC coup; Black Obelisk tribute)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Jehu",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-mesha-stele",
+  "source": {
+   "en": "Wikipedia, 'Mesha Stele' (Moab's rebellion in Moab's own words)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mesha_Stele",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-syro-ephraimite-war",
+  "source": {
+   "en": "Wikipedia, 'Syro-Ephraimite War'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Syro-Ephraimite_War",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-sargon-ii",
+  "source": {
+   "en": "Wikipedia, 'Sargon II' (the fall of Samaria in Assyrian annals)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Sargon_II",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-siege-of-lachish",
+  "source": {
+   "en": "Wikipedia, 'Siege of Lachish' (701 BC)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Siege_of_Lachish",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-sennacherib-campaign",
+  "source": {
+   "en": "Wikipedia, 'Sennacherib's campaign in the Levant' (701 BC)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Sennacherib%27s_campaign_in_the_Levant",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-megiddo-609",
+  "source": {
+   "en": "Wikipedia, 'Battle of Megiddo (609 BC)' (death of Josiah)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Megiddo_(609_BC)",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-battle-of-carchemish",
+  "source": {
+   "en": "Wikipedia, 'Battle of Carchemish' (605 BC)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Battle_of_Carchemish",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-siege-jerusalem-597",
+  "source": {
+   "en": "Wikipedia, 'Siege of Jerusalem (597 BC)' (dated 2 Adar by the Babylonian Chronicle)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(597_BC)",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-siege-jerusalem-587",
+  "source": {
+   "en": "Wikipedia, 'Siege of Jerusalem (587 BC)' (the fall of the kingdom of Judah)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(587_BC)",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-vale-of-siddim",
+  "source": {
+   "en": "Wikipedia, 'Vale of Siddim' (Genesis 14)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Vale_of_Siddim",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-tel-hazor",
+  "source": {
+   "en": "Wikipedia, 'Tel Hazor'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tel_Hazor",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-tel-megiddo",
+  "source": {
+   "en": "Wikipedia, 'Tel Megiddo'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tel_Megiddo",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-lachish",
+  "source": {
+   "en": "Wikipedia, 'Lachish' (Tell ed-Duweir)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Lachish",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-gibeon",
+  "source": {
+   "en": "Wikipedia, 'Gibeon (ancient city)' (el-Jib)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Gibeon_(ancient_city)",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-gibeah",
+  "source": {
+   "en": "Wikipedia, 'Gibeah' (Tell el-Ful)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Gibeah",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-michmash",
+  "source": {
+   "en": "Wikipedia, 'Michmash' (Mukhmas)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Michmash",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-tell-en-nasbeh",
+  "source": {
+   "en": "Wikipedia, 'Tell en-Nasbeh' (Mizpah of Benjamin)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tell_en-Nasbeh",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-antipatris",
+  "source": {
+   "en": "Wikipedia, 'Antipatris' (Tel Afek / biblical Aphek)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Antipatris",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-valley-of-elah",
+  "source": {
+   "en": "Wikipedia, 'Valley of Elah'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Valley_of_Elah",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-mount-gilboa",
+  "source": {
+   "en": "Wikipedia, 'Mount Gilboa'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mount_Gilboa",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-amman-citadel",
+  "source": {
+   "en": "Wikipedia, 'Amman Citadel' (Rabbah of Ammon)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Amman_Citadel",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-mahanaim",
+  "source": {
+   "en": "Wikipedia, 'Mahanaim'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mahanaim",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-ramah-benjamin",
+  "source": {
+   "en": "Wikipedia, 'Ramah in Benjamin' (er-Ram)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ramah_in_Benjamin",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-beth-shemesh",
+  "source": {
+   "en": "Wikipedia, 'Beth Shemesh' (Tel Beit Shemesh)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Beth_Shemesh",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-samaria-city",
+  "source": {
+   "en": "Wikipedia, 'Samaria (ancient city)' (Sebastia)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Samaria_(ancient_city)",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-tel-jezreel",
+  "source": {
+   "en": "Wikipedia, 'Tel Jezreel'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tel_Jezreel",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-kir-of-moab",
+  "source": {
+   "en": "Wikipedia, 'Kir of Moab' (Kir-hareseth / al-Karak)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Kir_of_Moab",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-tell-qarqur",
+  "source": {
+   "en": "Wikipedia, 'Tell Qarqur' (Qarqar on the Orontes)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tell_Qarqur",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-carchemish",
+  "source": {
+   "en": "Wikipedia, 'Carchemish'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Carchemish",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-tel-dan",
+  "source": {
+   "en": "Wikipedia, 'Tel Dan' (Laish/Dan)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Tel_Dan",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-heshbon",
+  "source": {
+   "en": "Wikipedia, 'Heshbon' (Tell Hisban)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Heshbon",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-daraa-edrei",
+  "source": {
+   "en": "Wikipedia, 'Daraa' (biblical Edrei)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Daraa",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-mount-tabor",
+  "source": {
+   "en": "Wikipedia, 'Mount Tabor'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Mount_Tabor",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-maayan-harod",
+  "source": {
+   "en": "Wikipedia, 'Ma'ayan Harod' (the spring of Harod)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ma%27ayan_Harod",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-ramoth-gilead-site",
+  "source": {
+   "en": "Wikipedia, 'Ramoth-Gilead' (Tell er-Rumeith candidate)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ramoth-Gilead",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-lachish-reliefs",
+  "source": {
+   "en": "Wikipedia, 'Lachish reliefs' (British Museum)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Lachish_reliefs",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-lachish-letters",
+  "source": {
+   "en": "Wikipedia, 'Lachish letters' (ostraca)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Lachish_letters",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-kurkh-monoliths",
+  "source": {
+   "en": "Wikipedia, 'Kurkh Monoliths' (Shalmaneser III; 'Ahab the Israelite')"
+  },
+  "url": "https://en.wikipedia.org/wiki/Kurkh_Monoliths",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-black-obelisk",
+  "source": {
+   "en": "Wikipedia, 'Black Obelisk of Shalmaneser III' ('Jehu son of Omri')"
+  },
+  "url": "https://en.wikipedia.org/wiki/Black_Obelisk_of_Shalmaneser_III",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-khirbet-qeiyafa",
+  "source": {
+   "en": "Wikipedia, 'Khirbet Qeiyafa' (Elah fortress and ostracon)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Khirbet_Qeiyafa",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-jehoiachin-tablets",
+  "source": {
+   "en": "Wikipedia, 'Jehoiachin's rations tablets' (Babylon)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Jehoiachin%27s_rations_tablets",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-wikipedia-samaria-ostraca",
+  "source": {
+   "en": "Wikipedia, 'Samaria ostraca'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Samaria_ostraca",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-abr-jericho-walls",
+  "source": {
+   "en": "Bryant G. Wood / Associates for Biblical Research, 'Did the Israelites Conquer Jericho?' (the Tell es-Sultan dating debate)"
+  },
+  "url": "https://biblearchaeology.org/research/conquest-of-canaan/2310-did-the-israelites-conquer-jericho-a-new-look-at-the-archaeological-evidence",
+  "kind": "archaeological"
  }
 ]
