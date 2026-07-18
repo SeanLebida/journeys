@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { BundleIndex } from '../content/useBundle';
-import type { TArtifact, TVideo, TWitness } from '../content/schema';
-import { Citations, ConfidenceBadge, DisputeNote } from '../content/citations';
+import type { TArtifact, TMiracle, TMiracleKind, TVideo, TWitness } from '../content/schema';
+import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../content/citations';
 import artifactImages from '../content/artifactImages.json';
 
 interface ArtifactImageMeta {
@@ -128,6 +128,49 @@ export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: Bu
   );
 }
 
+const MIRACLE_KIND_LABEL: Record<TMiracleKind, string> = {
+  healing: 'Healing',
+  exorcism: 'Exorcism',
+  resurrection: 'Raising the dead',
+  nature: 'Nature miracle',
+  provision: 'Provision',
+  judgment: 'Judgment',
+  deliverance: 'Deliverance',
+  sign: 'Signs & wonders',
+};
+
+/**
+ * A miracle account anchored to this site: who worked it, what kind, the
+ * account itself, and the passages (loaded from the bundled Bible only when
+ * expanded). Location caveats ride along when the text leaves the spot
+ * unnamed.
+ */
+export function MiracleCard({ miracle, bundle }: { miracle: TMiracle; bundle: BundleIndex }) {
+  const [showPassages, setShowPassages] = useState(false);
+  return (
+    <article className="extra-card">
+      <header className="extra-card__head">
+        <h5>{miracle.title.en}</h5>
+        <ConfidenceBadge confidence={miracle.confidence} />
+      </header>
+      <p className="extra-card__meta">
+        {miracle.performerLabel.en} · {MIRACLE_KIND_LABEL[miracle.kind]} · {miracle.scriptureRefs.join('; ')}
+      </p>
+      <p>{miracle.summary.en}</p>
+      {miracle.locationNote && <p className="extra-card__meta">📍 {miracle.locationNote.en}</p>}
+      {showPassages ? (
+        miracle.scriptureRefs.map((r) => <ScripturePassage key={r} raw={r} />)
+      ) : (
+        <button type="button" className="miracle-card__read" onClick={() => setShowPassages(true)}>
+          Read the passage{miracle.scriptureRefs.length > 1 ? 's' : ''}
+        </button>
+      )}
+      <DisputeNote text={miracle.disputes?.en} />
+      <Citations ids={miracle.citations} bundle={bundle} />
+    </article>
+  );
+}
+
 /**
  * Supplementary video, click-to-load. Nothing is requested from YouTube until
  * the user taps play (privacy-consistent with the Mapillary viewer — see
@@ -171,17 +214,37 @@ export function VideoEmbed({ video }: { video: TVideo }) {
 }
 
 /**
- * All extra media anchored to a site: archaeological finds, extra-biblical
- * witnesses, and videos. Renders nothing when the site has none, so it's safe
- * to drop into any site/stop panel.
+ * All extra media anchored to a site: miracle accounts (Jesus' own, and those
+ * worked by his disciples, each in its own section), archaeological finds,
+ * extra-biblical witnesses, and videos. Renders nothing when the site has
+ * none, so it's safe to drop into any site/stop panel.
  */
 export function SiteExtras({ siteId, bundle }: { siteId: string; bundle: BundleIndex }) {
   const artifacts = bundle.artifactsForSite(siteId);
   const witnesses = bundle.witnessesForSite(siteId);
   const videos = bundle.videosForSite(siteId);
-  if (artifacts.length + witnesses.length + videos.length === 0) return null;
+  const miracles = bundle.miraclesForSite(siteId);
+  const jesusMiracles = miracles.filter((m) => m.performedBy === 'jesus');
+  const discipleMiracles = miracles.filter((m) => m.performedBy === 'disciple');
+  if (artifacts.length + witnesses.length + videos.length + miracles.length === 0) return null;
   return (
     <div className="site-extras">
+      {jesusMiracles.length > 0 && (
+        <section className="site-extras__group">
+          <h4 className="site-extras__title">Miracles of Jesus here</h4>
+          {jesusMiracles.map((m) => (
+            <MiracleCard key={m.id} miracle={m} bundle={bundle} />
+          ))}
+        </section>
+      )}
+      {discipleMiracles.length > 0 && (
+        <section className="site-extras__group">
+          <h4 className="site-extras__title">Miracles of the disciples here</h4>
+          {discipleMiracles.map((m) => (
+            <MiracleCard key={m.id} miracle={m} bundle={bundle} />
+          ))}
+        </section>
+      )}
       {artifacts.length > 0 && (
         <section className="site-extras__group">
           <h4 className="site-extras__title">Archaeological finds</h4>
