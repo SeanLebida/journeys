@@ -68,7 +68,7 @@ All milestones delivered and verified:
 - **M7** offline PWA (precaches app + 10 MB Bible DB) · **M8** OTA content manifest + apostolic traditions
 - **M9** credits/attribution screen, privacy policy, store docs, app icon, release review-gate
 
-**Content:** 68 sites · 8 journeys (patriarchs → apostles) · 76 stops · 8 historical route paths · 17 archaeological finds · 8 extra-biblical witnesses · 190+ citations, every claim carrying confidence + sources.
+**Content:** 80 sites · 9 journeys (patriarchs → apostles) · 92 stops · 9 historical route paths · 60 miracle accounts (all 37 recorded miracles of Jesus + the disciples' miracles of the Gospels and Acts, each anchored to a mapped site) · 21 archaeological finds · 9 extra-biblical witnesses · 330+ citations, every claim carrying confidence + sources.
 
 **Verified:** `typecheck` · `lint` · 28 unit tests · production build · 6 Playwright E2E (incl. scripture
 from the bundled DB, quiz scoring, WebGL map, and **offline reload**).

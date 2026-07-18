@@ -6,6 +6,7 @@ import {
   Citation,
   Journey,
   Lesson,
+  Miracle,
   Person,
   Quiz,
   Site,
@@ -28,9 +29,10 @@ const citations = [...read('citations.json'), ...read('citations.extra.json')];
 const sites = [...read('sites.json'), ...read('sites.extra.json')];
 const journeys = [...read('journeys.json'), ...read('journeys.extra.json')];
 const stops = [...read('stops.json'), ...read('stops.extra.json')];
-const persons = read('persons.json');
+const persons = [...read('persons.json'), ...read('persons.extra.json')];
 const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
 const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
+const miracles = [...read('miracles.json'), ...read('miracles.extra.json')];
 const videos = [...read('videos.json'), ...read('videos.extra.json')];
 const terms = read('terms.json');
 const lessons = read('lessons.json');
@@ -54,6 +56,7 @@ describe('content integrity (committed source)', () => {
     check('persons', Person, persons);
     check('artifacts', Artifact, artifacts);
     check('witnesses', Witness, witnesses);
+    check('miracles', Miracle, miracles);
     check('videos', Video, videos);
     check('terms', Term, terms);
     check('lessons', Lesson, lessons);
@@ -73,6 +76,7 @@ describe('content integrity (committed source)', () => {
       scan(s.coordinates.citations, `${s.id}.coords`);
     });
     (stops as { id: string; citations: string[] }[]).forEach((s) => scan(s.citations, s.id));
+    (miracles as { id: string; citations: string[] }[]).forEach((m) => scan(m.citations, m.id));
     expect(dangling, dangling.slice(0, 10).join('\n')).toHaveLength(0);
   });
 
@@ -105,7 +109,21 @@ describe('content integrity (committed source)', () => {
     (stops as { id: string; scriptureRefs: string[] }[]).forEach((s) =>
       s.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${s.id}: ${r}`)),
     );
+    (miracles as { id: string; scriptureRefs: string[] }[]).forEach((m) =>
+      m.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${m.id}: ${r}`)),
+    );
     expect(bad, bad.slice(0, 10).join('\n')).toHaveLength(0);
+  });
+
+  it('every miracle is anchored to a known site, with both sections covered', () => {
+    const bad: string[] = [];
+    const ms = miracles as { id: string; siteId: string; performedBy: string }[];
+    ms.forEach((m) => !siteIds.has(m.siteId) && bad.push(`${m.id}->${m.siteId}`));
+    expect(bad, bad.join('\n')).toHaveLength(0);
+    // The catalogue covers the 37 recorded miracles of Jesus and the
+    // disciples' miracles of the Gospels and Acts.
+    expect(ms.filter((m) => m.performedBy === 'jesus').length).toBeGreaterThanOrEqual(37);
+    expect(ms.filter((m) => m.performedBy === 'disciple').length).toBeGreaterThanOrEqual(20);
   });
 
   it('contains the expected seed coverage', () => {

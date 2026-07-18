@@ -1794,5 +1794,93 @@
   },
   "url": "https://en.wikipedia.org/wiki/Gilgamesh_flood_myth",
   "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-wikipedia-miracles-of-jesus",
+  "source": {
+   "en": "Wikipedia, 'Miracles of Jesus' (survey of the Gospel miracle accounts)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Miracles_of_Jesus",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-blb-miracles-of-jesus",
+  "source": {
+   "en": "Blue Letter Bible, 'The Miracles of Jesus' (harmonized study list)"
+  },
+  "url": "https://www.blueletterbible.org/study/misc/miracles.cfm",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-acts-of-the-apostles",
+  "source": {
+   "en": "Wikipedia, 'Acts of the Apostles'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Acts_of_the_Apostles",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-nein",
+  "source": {
+   "en": "Wikipedia, 'Nein' (the Galilean village identified with NT Nain)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Nein",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-bibleplaces-nain",
+  "source": {
+   "en": "BiblePlaces, 'Nain'"
+  },
+  "url": "https://www.bibleplaces.com/nain/",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-lod",
+  "source": {
+   "en": "Wikipedia, 'Lod' (ancient Lydda)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Lod",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-jaffa",
+  "source": {
+   "en": "Wikipedia, 'Jaffa' (ancient Joppa)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Jaffa",
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-wikipedia-gerasene-demoniac",
+  "source": {
+   "en": "Wikipedia, 'Exorcism of the Gerasene demoniac' (the Gerasa/Gadara/Gergesa location debate)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Exorcism_of_the_Gerasene_demoniac",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-saint-stephen",
+  "source": {
+   "en": "Wikipedia, 'Saint Stephen'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Saint_Stephen",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-philip-the-evangelist",
+  "source": {
+   "en": "Wikipedia, 'Philip the Evangelist'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Philip_the_Evangelist",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wikipedia-ananias-of-damascus",
+  "source": {
+   "en": "Wikipedia, 'Ananias of Damascus'"
+  },
+  "url": "https://en.wikipedia.org/wiki/Ananias_of_Damascus",
+  "kind": "secondary-scholarly"
  }
 ]

@@ -550,5 +550,94 @@
   "citations": [
    "cit-flood-narrative"
   ]
+ },
+ {
+  "id": "site-nain",
+  "ancientName": {
+   "en": "Nain"
+  },
+  "modernName": {
+   "en": "Nein"
+  },
+  "modernLocation": {
+   "en": "Nein, Lower Galilee, Israel — on the northwest slope of the Hill of Moreh, ~12 km south-southeast of Nazareth"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.63028,
+    "lon": 35.34889
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-nein",
+    "cit-bibleplaces-nain"
+   ]
+  },
+  "summary": {
+   "en": "The Galilean village where Luke records Jesus raising a widow's only son as the funeral procession left the gate (Luke 7:11-17) — the first raising of the dead in the Gospels. The Arab village of Nein preserves the ancient name, and the identification has been continuous since the Byzantine period; a Franciscan chapel marks the traditional spot."
+  },
+  "citations": [
+   "cit-wikipedia-nein",
+   "cit-bibleplaces-nain"
+  ]
+ },
+ {
+  "id": "site-lydda",
+  "ancientName": {
+   "en": "Lydda (Old Testament Lod)"
+  },
+  "modernName": {
+   "en": "Lod"
+  },
+  "modernLocation": {
+   "en": "Lod, Israel, on the coastal plain ~18 km southeast of Tel Aviv"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.9522,
+    "lon": 34.8896
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-lod"
+   ]
+  },
+  "summary": {
+   "en": "A town of the Sharon plain (Old Testament Lod, 1 Chronicles 8:12) where Peter, itinerating among the coastal congregations, healed the paralysed Aeneas — 'and all the residents of Lydda and Sharon saw him, and they turned to the Lord' (Acts 9:32-35). Modern Lod continuously preserves the name and site."
+  },
+  "citations": [
+   "cit-wikipedia-lod"
+  ]
+ },
+ {
+  "id": "site-joppa",
+  "ancientName": {
+   "en": "Joppa (Yafo)"
+  },
+  "modernName": {
+   "en": "Jaffa"
+  },
+  "modernLocation": {
+   "en": "Jaffa (Yafo), the old-city port on the south side of Tel Aviv, Israel; the traditional House of Simon the Tanner stands in the old city"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.05417,
+    "lon": 34.75222
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-wikipedia-jaffa"
+   ]
+  },
+  "summary": {
+   "en": "The ancient Mediterranean port of Judea (Jonah's embarkation point, Jonah 1:3). In Acts, Peter raised the disciple Tabitha (Dorcas) from death here (Acts 9:36-43), stayed with Simon the tanner, and on the housetop received the vision of the sheet that opened the gospel to the Gentiles (Acts 10). The old city of Jaffa preserves the site."
+  },
+  "citations": [
+   "cit-wikipedia-jaffa"
+  ]
  }
 ]

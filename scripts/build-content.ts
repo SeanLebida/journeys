@@ -26,6 +26,7 @@ import {
   Citation,
   Journey,
   Lesson,
+  Miracle,
   Person,
   Quiz,
   RoutePath,
@@ -146,6 +147,7 @@ async function main(): Promise<void> {
   const persons = merged('persons');
   const artifacts = merged('artifacts');
   const witnesses = merged('witnesses');
+  const miracles = merged('miracles');
   const videos = merged('videos');
   const terms = merged('terms');
   const lessons = merged('lessons');
@@ -160,6 +162,7 @@ async function main(): Promise<void> {
   const vPersons = validateArray('persons', Person, persons);
   const vArtifacts = validateArray('artifacts', Artifact, artifacts);
   const vWitnesses = validateArray('witnesses', Witness, witnesses);
+  const vMiracles = validateArray('miracles', Miracle, miracles);
   const vVideos = validateArray('videos', Video, videos);
   const vTerms = validateArray('terms', Term, terms);
   const vLessons = validateArray('lessons', Lesson, lessons);
@@ -193,6 +196,7 @@ async function main(): Promise<void> {
   vPersons.forEach((p) => checkCites(p.citations, `person ${p.id}`));
   vArtifacts.forEach((a) => checkCites(a.citations, `artifact ${a.id}`));
   vWitnesses.forEach((w) => checkCites(w.citations, `witness ${w.id}`));
+  vMiracles.forEach((mi) => checkCites(mi.citations, `miracle ${mi.id}`));
   vTerms.forEach((t) => checkCites(t.citations, `term ${t.id}`));
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
@@ -205,6 +209,7 @@ async function main(): Promise<void> {
   vStops.forEach((s) => neutralityCheck(s, 'stop'));
   vArtifacts.forEach((a) => neutralityCheck(a, 'artifact'));
   vWitnesses.forEach((w) => neutralityCheck(w, 'witness'));
+  vMiracles.forEach((mi) => neutralityCheck(mi, 'miracle'));
 
   // 6. Referential integrity.
   vStops.forEach((s) => {
@@ -232,6 +237,10 @@ async function main(): Promise<void> {
   vWitnesses.forEach((w) => {
     w.personIds?.forEach((p) => !personIds.has(p) && err(`witness ${w.id}: unknown person '${p}'`));
     w.siteIds?.forEach((s) => !siteIds.has(s) && err(`witness ${w.id}: unknown site '${s}'`));
+  });
+  vMiracles.forEach((mi) => {
+    if (!siteIds.has(mi.siteId)) err(`miracle ${mi.id}: unknown siteId '${mi.siteId}'`);
+    mi.performerIds?.forEach((p) => !personIds.has(p) && err(`miracle ${mi.id}: unknown person '${p}'`));
   });
   vVideos.forEach((v) => {
     if (v.siteId && !siteIds.has(v.siteId)) err(`video ${v.id}: unknown siteId '${v.siteId}'`);
@@ -332,6 +341,7 @@ async function main(): Promise<void> {
     });
   vStops.forEach((st: TStop) => checkRefs(st.scriptureRefs, `stop ${st.id}`));
   vPersons.forEach((p) => checkRefs(p.scriptureRefs, `person ${p.id}`));
+  vMiracles.forEach((mi) => checkRefs(mi.scriptureRefs, `miracle ${mi.id}`));
   vLessons.forEach((l) => l.steps.forEach((st, i) => checkRefs(st.scriptureRefs, `lesson ${l.id}.steps[${i}]`)));
 
   // 10. Review gate (release only).
@@ -340,6 +350,7 @@ async function main(): Promise<void> {
     ...vSites.filter((x) => x.coordinates.confidence === 'high' && x.coordinates.reviewStatus !== 'scholar-approved').map((x) => `site ${x.id}.coordinates`),
     ...vArtifacts.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `artifact ${x.id}`),
     ...vWitnesses.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `witness ${x.id}`),
+    ...vMiracles.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `miracle ${x.id}`),
   ];
   if (unreviewed.length) {
     const msg = `${unreviewed.length} 'high'-confidence claim(s) not yet scholar-approved`;
@@ -361,6 +372,7 @@ async function main(): Promise<void> {
     persons: vPersons,
     artifacts: vArtifacts,
     witnesses: vWitnesses,
+    miracles: vMiracles,
     videos: vVideos,
     terms: vTerms,
     lessons: vLessons,
@@ -389,7 +401,7 @@ async function main(): Promise<void> {
 
   // 12. Report.
   console.log('\n— Content build —');
-  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · routes ${vRoutes.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
+  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · routes ${vRoutes.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · miracles ${vMiracles.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
   console.log(`  citations ${vCitations.length} · Bible verses ${Object.entries(dbCounts).map(([k, v]) => `${k}:${v}`).join(' ') || 'none'}`);
   console.log(`  integrity ${integrity}`);
   warnings.forEach((wn) => console.warn(`  ⚠ ${wn}`));

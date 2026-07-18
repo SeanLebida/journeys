@@ -200,6 +200,47 @@ export const Witness = z.object({
   citations: z.array(z.string()),
 });
 
+export const MiracleKind = z.enum([
+  'healing',
+  'exorcism',
+  'resurrection',
+  'nature',
+  'provision',
+  'judgment',
+  'deliverance',
+  'sign', // unspecified "signs and wonders" summary accounts
+]);
+
+/**
+ * A miracle account, anchored to a mapped site. `performedBy` splits the
+ * catalogue into its two sections — the miracles of Jesus and the miracles
+ * worked by his disciples (in the Gospels and Acts). Like every event claim
+ * in this app, a miracle entry is a *reported account* carrying confidence,
+ * review status, and citations: the app presents what the text records and
+ * where tradition/scholarship locates it, never "proof".
+ */
+export const Miracle = z.object({
+  id: z.string().min(1),
+  title: LocalizedText,
+  /** Section: Jesus' own miracles vs. those worked by his disciples. */
+  performedBy: z.enum(['jesus', 'disciple']),
+  /** Display name of the worker(s), e.g. "Jesus", "Peter", "The Twelve". */
+  performerLabel: LocalizedText,
+  /** Linked Person ids for the worker(s), where they exist as entities. */
+  performerIds: z.array(z.string()).optional(),
+  kind: MiracleKind,
+  /** The site the miracle is anchored to on the map. */
+  siteId: z.string().min(1),
+  /** Caveat when the text leaves the exact spot unnamed or approximate. */
+  locationNote: LocalizedText.optional(),
+  summary: LocalizedText,
+  scriptureRefs: z.array(z.string()).min(1),
+  confidence: Confidence,
+  reviewStatus: ReviewStatus,
+  disputes: LocalizedText.optional(),
+  citations: z.array(z.string()),
+});
+
 /**
  * A geographically- and chronologically-anchored supplementary video (public
  * embed, e.g. YouTube). Videos are illustrative media, NOT cited factual
@@ -275,6 +316,7 @@ export const Bundle = z.object({
   persons: z.array(Person),
   artifacts: z.array(Artifact),
   witnesses: z.array(Witness),
+  miracles: z.array(Miracle),
   videos: z.array(Video),
   terms: z.array(Term),
   lessons: z.array(Lesson),
@@ -292,6 +334,8 @@ export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
 export type TArtifact = z.infer<typeof Artifact>;
 export type TWitness = z.infer<typeof Witness>;
+export type TMiracle = z.infer<typeof Miracle>;
+export type TMiracleKind = z.infer<typeof MiracleKind>;
 export type TVideo = z.infer<typeof Video>;
 export type TTerm = z.infer<typeof Term>;
 export type TLesson = z.infer<typeof Lesson>;

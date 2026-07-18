@@ -1573,6 +1573,19 @@ a {
   margin: 0.3rem 0;
 }
 
+/* Miracle card: lazy scripture expansion */
+.miracle-card__read {
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--link);
+  border-radius: var(--r-sm);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.2rem;
+}
+
 /* Video card (click-to-load) */
 .video-card {
   border: 1px solid var(--border);
