@@ -352,6 +352,34 @@ a {
   color: var(--accent);
 }
 
+/* Battle ⚔ markers: always visible (few enough to never congest; they ARE
+   the battles layer's affordance), martial crimson with the site-label halo. */
+.battle-label {
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: #8f1f1f;
+  -webkit-text-stroke: 3px var(--map-site-halo);
+  paint-order: stroke fill;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+:root[data-theme='dark'] .battle-label {
+  color: #e06a6a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .battle-label {
+    color: #e06a6a;
+  }
+}
+.battle-label:hover,
+.battle-label:focus-visible {
+  transform: scale(1.35);
+}
+
 /* Trace stop labels styling: rendered as high-quality clickable badges */
 .site-label.trace-stop-label {
   display: inline-block;

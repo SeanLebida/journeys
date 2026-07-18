@@ -2,10 +2,20 @@ import type { Map as MapLibreMap, MapGeoJSONFeature } from 'maplibre-gl';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { BundleIndex } from '../../content/useBundle';
 
-export const ATLAS_LAYERS = { sites: 'atlas-sites-circle', routes: 'atlas-routes-line' } as const;
-const SRC = { sites: 'atlas-sites', routes: 'atlas-routes' };
+export const ATLAS_LAYERS = {
+  sites: 'atlas-sites-circle',
+  routes: 'atlas-routes-line',
+  battles: 'atlas-battles-circle',
+  battleAreas: 'atlas-battle-areas-fill',
+  battleAreasLine: 'atlas-battle-areas-line',
+  battleAreaSelected: 'atlas-battle-area-selected',
+} as const;
+const SRC = { sites: 'atlas-sites', routes: 'atlas-routes', battles: 'atlas-battles', battleAreas: 'atlas-battle-areas' };
 
 const CONF_COLOR = ['match', ['get', 'confidence'], 'high', '#2f6f6b', 'medium', '#c9a227', 'legendary', '#6b4a8f', 'disputed', '#c75b39', '#888888'];
+// Battles carry one martial crimson across markers and area sweeps, so they
+// read as a distinct class from the confidence-coloured site dots.
+const BATTLE_COLOR = '#8f1f1f';
 
 /** Each site's date span, widened to cover every stop that visits it. */
 function computeSiteSpans(bundle: BundleIndex): Map<string, [number, number]> {
@@ -61,6 +71,82 @@ export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
   });
 }
 
+/** Battle markers: one point per battle at its anchor site, with the battle's
+ * own date span (not the site's) so the period slider replays the wars in
+ * order. */
+export function atlasBattlesFC(bundle: BundleIndex): FeatureCollection {
+  const features: Feature[] = (bundle.battles ?? [])
+    .map((b) => {
+      const s = bundle.site(b.siteId);
+      if (!s) return null;
+      return {
+        type: 'Feature',
+        properties: {
+          battleId: b.id,
+          title: b.title.en,
+          kind: b.kind,
+          confidence: b.confidence,
+          ymin: b.dateRange.startYear,
+          ymax: b.dateRange.endYear,
+        },
+        geometry: { type: 'Point', coordinates: [s.coordinates.value.lon, s.coordinates.value.lat] },
+      } as Feature;
+    })
+    .filter((f): f is Feature => f !== null);
+  return { type: 'FeatureCollection', features };
+}
+
+/** Area sweeps for battles that carry a highlight polygon (campaigns,
+ * annexations, the fall of the kingdoms). */
+export function atlasBattleAreasFC(bundle: BundleIndex): FeatureCollection {
+  const features: Feature[] = (bundle.battles ?? [])
+    .filter((b) => b.area && b.area.length >= 4)
+    .map((b) => ({
+      type: 'Feature' as const,
+      properties: {
+        battleId: b.id,
+        title: b.title.en,
+        confidence: b.confidence,
+        ymin: b.dateRange.startYear,
+        ymax: b.dateRange.endYear,
+      },
+      geometry: { type: 'Polygon' as const, coordinates: [b.area as [number, number][]] },
+    }));
+  return { type: 'FeatureCollection', features };
+}
+
+export interface AtlasBattleLabel {
+  id: string;
+  title: string;
+  siteId: string;
+  lon: number;
+  lat: number;
+  confidence: string;
+  ymin: number;
+  ymax: number;
+}
+
+/** Battle records for the DOM ⚔ label markers (same no-glyph constraint as
+ * the site labels). */
+export function atlasBattleLabels(bundle: BundleIndex): AtlasBattleLabel[] {
+  return (bundle.battles ?? [])
+    .map((b): AtlasBattleLabel | null => {
+      const s = bundle.site(b.siteId);
+      if (!s) return null;
+      return {
+        id: b.id,
+        title: b.title.en,
+        siteId: b.siteId,
+        lon: s.coordinates.value.lon,
+        lat: s.coordinates.value.lat,
+        confidence: b.confidence,
+        ymin: b.dateRange.startYear,
+        ymax: b.dateRange.endYear,
+      };
+    })
+    .filter((x): x is AtlasBattleLabel => x !== null);
+}
+
 /** One LineString per journey, carrying its route color. */
 export function atlasRoutesFC(bundle: BundleIndex): FeatureCollection {
   const features: Feature[] = bundle.journeys.map((j) => {
@@ -89,6 +175,29 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
   if (map.getLayer(ATLAS_LAYERS.sites)) return;
   if (!map.getSource(SRC.routes)) map.addSource(SRC.routes, { type: 'geojson', data: atlasRoutesFC(bundle) });
   if (!map.getSource(SRC.sites)) map.addSource(SRC.sites, { type: 'geojson', data: atlasSitesFC(bundle) });
+  if (!map.getSource(SRC.battles)) map.addSource(SRC.battles, { type: 'geojson', data: atlasBattlesFC(bundle) });
+  if (!map.getSource(SRC.battleAreas)) map.addSource(SRC.battleAreas, { type: 'geojson', data: atlasBattleAreasFC(bundle) });
+  // Area sweeps go in first so routes/sites/markers draw above them.
+  map.addLayer({
+    id: ATLAS_LAYERS.battleAreas,
+    type: 'fill',
+    source: SRC.battleAreas,
+    paint: { 'fill-color': BATTLE_COLOR, 'fill-opacity': 0.1 },
+  });
+  map.addLayer({
+    id: ATLAS_LAYERS.battleAreasLine,
+    type: 'line',
+    source: SRC.battleAreas,
+    paint: { 'line-color': BATTLE_COLOR, 'line-width': 1, 'line-opacity': 0.5, 'line-dasharray': [3, 2] },
+  });
+  // Selected battle's sweep, emphasized; filter set by setSelectedBattleArea.
+  map.addLayer({
+    id: ATLAS_LAYERS.battleAreaSelected,
+    type: 'fill',
+    source: SRC.battleAreas,
+    filter: ['==', ['get', 'battleId'], ''],
+    paint: { 'fill-color': BATTLE_COLOR, 'fill-opacity': 0.28 },
+  });
   map.addLayer({
     id: ATLAS_LAYERS.routes,
     type: 'line',
@@ -107,21 +216,40 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
       'circle-stroke-color': '#ffffff',
     },
   });
+  map.addLayer({
+    id: ATLAS_LAYERS.battles,
+    type: 'circle',
+    source: SRC.battles,
+    paint: {
+      'circle-radius': 4,
+      'circle-color': BATTLE_COLOR,
+      'circle-stroke-width': 1.5,
+      'circle-stroke-color': '#ffffff',
+    },
+  });
+}
+
+/** Emphasize one battle's area sweep (pass null to clear). */
+export function setSelectedBattleArea(map: MapLibreMap, battleId: string | null): void {
+  if (!map.getLayer(ATLAS_LAYERS.battleAreaSelected)) return;
+  map.setFilter(ATLAS_LAYERS.battleAreaSelected, ['==', ['get', 'battleId'], battleId ?? ''] as never);
 }
 
 export function setLayerVisible(map: MapLibreMap, layerId: string, visible: boolean): void {
   if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
 }
 
-/** Filter sites to those whose date span overlaps [min,max] and confidence is allowed. */
+/** Filter sites + battles to those whose date span overlaps [min,max] and confidence is allowed. */
 export function setAtlasFilter(map: MapLibreMap, minYear: number, maxYear: number, confidences: string[]): void {
-  if (!map.getLayer(ATLAS_LAYERS.sites)) return;
-  map.setFilter(ATLAS_LAYERS.sites, [
+  const filter = [
     'all',
     ['>=', ['get', 'ymax'], minYear],
     ['<=', ['get', 'ymin'], maxYear],
     ['in', ['get', 'confidence'], ['literal', confidences]],
-  ] as never);
+  ] as never;
+  for (const id of [ATLAS_LAYERS.sites, ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine]) {
+    if (map.getLayer(id)) map.setFilter(id, filter);
+  }
 }
 
 export function removeAtlasLayers(map: MapLibreMap): void {

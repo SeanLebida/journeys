@@ -4,17 +4,28 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { SiteExtras } from './SiteExtras';
 import type { BundleIndex } from '../content/useBundle';
-import type { TMiracle } from '../content/schema';
+import type { TArtifact, TBattle, TMiracle } from '../content/schema';
 
-// Render the miracle sections against the real committed catalogue, with a
-// minimal BundleIndex stub (no map, no Bible DB — passages stay collapsed).
+// Render the miracle + battle sections against the real committed catalogues,
+// with a minimal BundleIndex stub (no map, no Bible DB — passages stay
+// collapsed).
 const miracles = JSON.parse(
   readFileSync(join(process.cwd(), 'content', 'miracles.json'), 'utf8'),
 ) as TMiracle[];
+const battles = JSON.parse(
+  readFileSync(join(process.cwd(), 'content', 'battles.json'), 'utf8'),
+) as TBattle[];
+const artifacts = [
+  ...(JSON.parse(readFileSync(join(process.cwd(), 'content', 'artifacts.json'), 'utf8')) as TArtifact[]),
+  ...(JSON.parse(readFileSync(join(process.cwd(), 'content', 'artifacts.extra.json'), 'utf8')) as TArtifact[]),
+];
 
 const stub = {
   miracles,
+  battles,
   miraclesForSite: (siteId: string) => miracles.filter((m) => m.siteId === siteId),
+  battlesForSite: (siteId: string) => battles.filter((b) => b.siteId === siteId),
+  artifact: (id: string) => artifacts.find((a) => a.id === id),
   artifactsForSite: () => [],
   witnessesForSite: () => [],
   videosForSite: () => [],
@@ -50,5 +61,31 @@ describe('SiteExtras miracle sections', () => {
   it('renders nothing for a site with no extras', () => {
     const { container } = render(<SiteExtras siteId="site-nowhere" bundle={stub} />);
     expect(container).toBeEmptyDOMElement();
+  });
+});
+
+describe('SiteExtras battle section', () => {
+  it('lists both Lachish battles chronologically with artifact cross-refs', () => {
+    render(<SiteExtras siteId="site-lachish" bundle={stub} />);
+    expect(screen.getByText('Battles & conquests here')).toBeInTheDocument();
+    expect(screen.getByText(/Sennacherib storms Lachish/)).toBeInTheDocument();
+    // The 701 BC siege cross-references the Lachish Reliefs + Sennacherib Prism.
+    expect(screen.getByText('Corroborating finds (2)')).toBeInTheDocument();
+    expect(screen.getByText('The Lachish Reliefs')).toBeInTheDocument();
+  });
+
+  it('shows an Israel-vs-Judah civil war with combatants, date, and outcome', () => {
+    render(<SiteExtras siteId="site-beth-shemesh" bundle={stub} />);
+    expect(screen.getByText(/Israel humbles Judah/)).toBeInTheDocument();
+    expect(screen.getByText(/Civil war \(Israel\/Judah\) · c\. 790 BC/)).toBeInTheDocument();
+    expect(screen.getByText(/Israel under Jehoash vs\. Judah under Amaziah/)).toBeInTheDocument();
+    expect(screen.getByText('Outcome:')).toBeInTheDocument();
+  });
+
+  it('keeps the extra-biblical Qarqar entry passage-free but dated and cited', () => {
+    render(<SiteExtras siteId="site-qarqar" bundle={stub} />);
+    expect(screen.getByText(/battle of Qarqar/)).toBeInTheDocument();
+    expect(screen.getByText(/Pitched battle · 853 BC/)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /Read the passage/ })).not.toBeInTheDocument();
   });
 });

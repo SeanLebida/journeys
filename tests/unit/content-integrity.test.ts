@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   Artifact,
+  Battle,
   Citation,
   Journey,
   Lesson,
@@ -33,6 +34,7 @@ const persons = [...read('persons.json'), ...read('persons.extra.json')];
 const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
 const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
 const miracles = [...read('miracles.json'), ...read('miracles.extra.json')];
+const battles = [...read('battles.json'), ...read('battles.extra.json')];
 const videos = [...read('videos.json'), ...read('videos.extra.json')];
 const terms = read('terms.json');
 const lessons = read('lessons.json');
@@ -57,6 +59,7 @@ describe('content integrity (committed source)', () => {
     check('artifacts', Artifact, artifacts);
     check('witnesses', Witness, witnesses);
     check('miracles', Miracle, miracles);
+    check('battles', Battle, battles);
     check('videos', Video, videos);
     check('terms', Term, terms);
     check('lessons', Lesson, lessons);
@@ -77,6 +80,7 @@ describe('content integrity (committed source)', () => {
     });
     (stops as { id: string; citations: string[] }[]).forEach((s) => scan(s.citations, s.id));
     (miracles as { id: string; citations: string[] }[]).forEach((m) => scan(m.citations, m.id));
+    (battles as { id: string; citations: string[] }[]).forEach((b) => scan(b.citations, b.id));
     expect(dangling, dangling.slice(0, 10).join('\n')).toHaveLength(0);
   });
 
@@ -112,7 +116,33 @@ describe('content integrity (committed source)', () => {
     (miracles as { id: string; scriptureRefs: string[] }[]).forEach((m) =>
       m.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${m.id}: ${r}`)),
     );
+    (battles as { id: string; scriptureRefs: string[] }[]).forEach((b) =>
+      b.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${b.id}: ${r}`)),
+    );
     expect(bad, bad.slice(0, 10).join('\n')).toHaveLength(0);
+  });
+
+  it('every battle anchors to a known site with resolvable artifact cross-refs and sane areas', () => {
+    const [w, s, e, n] = WORLD_BBOX;
+    const artifactIds = new Set((artifacts as { id: string }[]).map((a) => a.id));
+    const bad: string[] = [];
+    (battles as { id: string; siteId: string; artifactIds?: string[]; area?: [number, number][] }[]).forEach((b) => {
+      if (!siteIds.has(b.siteId)) bad.push(`${b.id}->${b.siteId}`);
+      b.artifactIds?.forEach((a) => !artifactIds.has(a) && bad.push(`${b.id}->artifact:${a}`));
+      if (b.area) {
+        const first = b.area[0];
+        const last = b.area[b.area.length - 1];
+        if (first[0] !== last[0] || first[1] !== last[1]) bad.push(`${b.id}: area ring not closed`);
+        b.area.forEach(([lon, lat]) => {
+          if (lon < w || lon > e || lat < s || lat > n) bad.push(`${b.id}: area point ${lat},${lon} out of bbox`);
+        });
+      }
+    });
+    expect(bad, bad.join('\n')).toHaveLength(0);
+    // Coverage floor: patriarchs -> fall of Jerusalem, incl. the
+    // Israel-vs-Judah civil wars.
+    expect(battles.length).toBeGreaterThanOrEqual(35);
+    expect((battles as { kind: string }[]).filter((b) => b.kind === 'civil-war').length).toBeGreaterThanOrEqual(4);
   });
 
   it('every miracle is anchored to a known site, with both sections covered', () => {

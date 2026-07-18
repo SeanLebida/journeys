@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { loadBundle } from '../platform/assets';
-import type { TArtifact, TBundle, TCitation, TJourney, TLesson, TMiracle, TPerson, TQuiz, TRoutePath, TSite, TStop, TTerm, TVideo, TWitness } from './schema';
+import type { TArtifact, TBattle, TBundle, TCitation, TJourney, TLesson, TMiracle, TPerson, TQuiz, TRoutePath, TSite, TStop, TTerm, TVideo, TWitness } from './schema';
 
 export interface BundleIndex extends TBundle {
   attributions?: { id: string; name: string; license: string; url?: string }[];
@@ -23,6 +23,9 @@ export interface BundleIndex extends TBundle {
   /** Miracle accounts anchored to a site (Jesus' and the disciples'). */
   miraclesForSite: (siteId: string) => TMiracle[];
   miraclesForPerson: (personId: string) => TMiracle[];
+  /** Battles, sieges, and conquest campaigns anchored to a site. */
+  battle: (id: string) => TBattle | undefined;
+  battlesForSite: (siteId: string) => TBattle[];
   /** Supplementary videos anchored to a site, journey, or person. */
   videosForSite: (siteId: string) => TVideo[];
   videosForJourney: (journeyId: string) => TVideo[];
@@ -60,6 +63,8 @@ function index(b: TBundle): BundleIndex {
     witnessesForPerson: (personId) => (b.witnesses ?? []).filter((w) => w.personIds?.includes(personId)),
     miraclesForSite: (siteId) => (b.miracles ?? []).filter((mi) => mi.siteId === siteId),
     miraclesForPerson: (personId) => (b.miracles ?? []).filter((mi) => mi.performerIds?.includes(personId)),
+    battle: (id) => (b.battles ?? []).find((x) => x.id === id),
+    battlesForSite: (siteId) => (b.battles ?? []).filter((x) => x.siteId === siteId),
     videosForSite: (siteId) => (b.videos ?? []).filter((v) => v.siteId === siteId),
     videosForJourney: (journeyId) => (b.videos ?? []).filter((v) => v.journeyId === journeyId),
     routeForJourney: (journeyId) => (b.routes ?? []).find((r) => r.journeyId === journeyId),
