@@ -546,17 +546,15 @@
  {
   "id": "cit-wit-josephus-jesus",
   "source": {
-   "en": "Josephus, 'Antiquities of the Jews' 18.3.3 (Testimonium Flavianum)"
+   "en": "Josephus, 'Antiquities of the Jews' 18.3.3 (Testimonium Flavianum); Loeb Classical Library, trans. L. H. Feldman"
   },
-  "url": "https://en.wikipedia.org/wiki/Josephus_on_Jesus",
   "kind": "primary-ancient"
  },
  {
   "id": "cit-wit-josephus-james",
   "source": {
-   "en": "Josephus, 'Antiquities of the Jews' 20.9.1"
+   "en": "Josephus, 'Antiquities of the Jews' 20.9.1; Loeb Classical Library, trans. L. H. Feldman"
   },
-  "url": "https://en.wikipedia.org/wiki/Josephus_on_Jesus",
   "kind": "primary-ancient"
  },
  {
@@ -570,49 +568,45 @@
  {
   "id": "cit-wit-tacitus",
   "source": {
-   "en": "Tacitus, 'Annals' 15.44"
+   "en": "Tacitus, 'Annals' 15.44 (Latin text, The Latin Library)"
   },
-  "url": "https://en.wikipedia.org/wiki/Tacitus_on_Christ",
-  "kind": "primary-ancient"
+  "kind": "primary-ancient",
+  "url": "https://www.thelatinlibrary.com/tacitus/tac.ann15.shtml"
  },
  {
   "id": "cit-wit-pliny",
   "source": {
-   "en": "Pliny the Younger, 'Letters' 10.96"
+   "en": "Pliny the Younger, 'Letters' 10.96 to Trajan (Latin text, The Latin Library)"
   },
-  "url": "https://en.wikipedia.org/wiki/Pliny_the_Younger_on_Christians",
-  "kind": "primary-ancient"
+  "kind": "primary-ancient",
+  "url": "https://www.thelatinlibrary.com/pliny.ep10.html"
  },
  {
   "id": "cit-wit-suetonius",
   "source": {
-   "en": "Suetonius, 'Lives of the Caesars' (Claudius 25; Nero 16)"
+   "en": "Suetonius, 'Lives of the Caesars' (Divus Claudius 25.4; Nero 16.2); Loeb Classical Library"
   },
-  "url": "https://en.wikipedia.org/wiki/Suetonius_on_Christians",
   "kind": "primary-ancient"
  },
  {
   "id": "cit-wit-thallus",
   "source": {
-   "en": "Thallus, cited by Julius Africanus"
+   "en": "Thallus, 'Histories' (lost), quoted in Julius Africanus, 'Chronography' F18, ed. M. Wallraff (De Gruyter, 2007)"
   },
-  "url": "https://en.wikipedia.org/wiki/Thallus_(historian)",
   "kind": "primary-ancient"
  },
  {
   "id": "cit-wit-mara",
   "source": {
-   "en": "Mara bar Serapion, 'Letter to his son'"
+   "en": "Mara bar Serapion, 'Letter to his son' (British Library Add. MS 14658); ed./trans. Cureton, 'Spicilegium Syriacum' (1855)"
   },
-  "url": "https://en.wikipedia.org/wiki/Mara_bar_Serapion",
   "kind": "primary-ancient"
  },
  {
   "id": "cit-wit-josephus-baptist",
   "source": {
-   "en": "Josephus, 'Antiquities of the Jews' 18.5.2"
+   "en": "Josephus, 'Antiquities of the Jews' 18.5.2; Loeb Classical Library, trans. L. H. Feldman"
   },
-  "url": "https://en.wikipedia.org/wiki/John_the_Baptist",
   "kind": "primary-ancient"
  },
  {
@@ -746,17 +740,15 @@
  {
   "id": "cit-nt-dating",
   "source": {
-   "en": "Wikipedia, 'Dating the Bible' (composition of the New Testament)"
+   "en": "Raymond E. Brown, 'An Introduction to the New Testament' (Anchor Bible Reference Library, Doubleday 1997) — dates of composition"
   },
-  "url": "https://en.wikipedia.org/wiki/Dating_the_Bible",
   "kind": "secondary-scholarly"
  },
  {
   "id": "cit-quran-dating",
   "source": {
-   "en": "Wikipedia, 'History of the Quran' (7th-century composition)"
+   "en": "Nicolai Sinai, 'The Qur'an: A Historical-Critical Introduction' (Edinburgh University Press, 2017) — 7th-century composition"
   },
-  "url": "https://en.wikipedia.org/wiki/History_of_the_Quran",
   "kind": "secondary-scholarly"
  },
  {
@@ -2353,6 +2345,114 @@
    "en": "Bryant G. Wood / Associates for Biblical Research, 'Did the Israelites Conquer Jericho?' (the Tell es-Sultan dating debate)"
   },
   "url": "https://biblearchaeology.org/research/conquest-of-canaan/2310-did-the-israelites-conquer-jericho-a-new-look-at-the-archaeological-evidence",
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-ref-anet",
+  "source": {
+   "en": "J. B. Pritchard (ed.), 'Ancient Near Eastern Texts Relating to the Old Testament', 3rd ed. (Princeton University Press, 1969) — Assyrian, Babylonian and Egyptian royal inscriptions in translation"
+  },
+  "kind": "primary-ancient",
+  "url": "https://www.livius.org/sources/content/anet/"
+ },
+ {
+  "id": "cit-ref-cos",
+  "source": {
+   "en": "W. W. Hallo & K. L. Younger (eds.), 'The Context of Scripture', 3 vols. (Brill, 1997-2002) — Near Eastern inscriptions incl. the Mesha Stele, the Assyrian annals, and the Siloam inscription"
+  },
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-ref-grayson-chronicles",
+  "source": {
+   "en": "A. K. Grayson, 'Assyrian and Babylonian Chronicles' (Texts from Cuneiform Sources 5; J. J. Augustin, 1975; repr. Eisenbrauns) — the Babylonian Chronicle series in edition"
+  },
+  "kind": "primary-ancient"
+ },
+ {
+  "id": "cit-src-livius-abc5",
+  "source": {
+   "en": "Babylonian Chronicle ABC 5 ('Jerusalem Chronicle', BM 21946), trans. on Livius.org — Nebuchadnezzar's 605-594 BC campaigns, incl. the capture of Jerusalem on 2 Adar 597 BC"
+  },
+  "kind": "primary-ancient",
+  "url": "https://www.livius.org/sources/content/mesopotamian-chronicles-content/abc-5-jerusalem-chronicle/"
+ },
+ {
+  "id": "cit-src-livius-abc4",
+  "source": {
+   "en": "Babylonian Chronicle ABC 4 (late years of Nabopolassar), trans. on Livius.org — the fall of Harran and the run-up to Carchemish"
+  },
+  "kind": "primary-ancient",
+  "url": "https://www.livius.org/sources/content/mesopotamian-chronicles-content/abc-4-late-years-of-nabopolassar/"
+ },
+ {
+  "id": "cit-ref-abd",
+  "source": {
+   "en": "D. N. Freedman (ed.), 'The Anchor Bible Dictionary', 6 vols. (Doubleday, 1992)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-bright",
+  "source": {
+   "en": "John Bright, 'A History of Israel', 4th ed. (Westminster John Knox, 2000)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-kitchen",
+  "source": {
+   "en": "K. A. Kitchen, 'On the Reliability of the Old Testament' (Eerdmans, 2003)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-provan-history",
+  "source": {
+   "en": "I. Provan, V. P. Long & T. Longman III, 'A Biblical History of Israel', 2nd ed. (Westminster John Knox, 2015)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-keener-bbcnt",
+  "source": {
+   "en": "Craig S. Keener, 'The IVP Bible Background Commentary: New Testament', 2nd ed. (IVP Academic, 2014)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-blomberg-gospels",
+  "source": {
+   "en": "Craig L. Blomberg, 'The Historical Reliability of the Gospels', 2nd ed. (IVP Academic, 2007)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-vanvoorst",
+  "source": {
+   "en": "Robert E. Van Voorst, 'Jesus Outside the New Testament: An Introduction to the Ancient Evidence' (Eerdmans, 2000)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ref-aharoni",
+  "source": {
+   "en": "Yohanan Aharoni, 'The Land of the Bible: A Historical Geography', rev. ed., trans. A. F. Rainey (Westminster, 1979)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-ref-sacred-bridge",
+  "source": {
+   "en": "A. F. Rainey & R. S. Notley, 'The Sacred Bridge: Carta's Atlas of the Biblical World' (Carta Jerusalem, 2006)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-ref-negev-gibson",
+  "source": {
+   "en": "A. Negev & S. Gibson (eds.), 'Archaeological Encyclopedia of the Holy Land', rev. ed. (Continuum, 2001)"
+  },
   "kind": "archaeological"
  }
 ]

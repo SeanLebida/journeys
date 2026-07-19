@@ -35,6 +35,7 @@ const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
 const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
 const miracles = [...read('miracles.json'), ...read('miracles.extra.json')];
 const battles = [...read('battles.json'), ...read('battles.extra.json')];
+const routes = [...read('routes.json'), ...read('routes.extra.json')];
 const videos = [...read('videos.json'), ...read('videos.extra.json')];
 const terms = read('terms.json');
 const lessons = read('lessons.json');
@@ -82,6 +83,42 @@ describe('content integrity (committed source)', () => {
     (miracles as { id: string; citations: string[] }[]).forEach((m) => scan(m.citations, m.id));
     (battles as { id: string; citations: string[] }[]).forEach((b) => scan(b.citations, b.id));
     expect(dangling, dangling.slice(0, 10).join('\n')).toHaveLength(0);
+  });
+
+  it('no claim rests on Wikipedia alone (constitutional sourcing)', () => {
+    // Wikipedia is an orienting link, never the sole authority: every cited
+    // claim must also carry a concrete source (primary text, scholarship,
+    // excavation report, or gazetteer). Uncited claims are not checked.
+    const citById = new Map(
+      (citations as { id: string; url?: string }[]).map((c) => [c.id, c]),
+    );
+    const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
+    const bad: string[] = [];
+    const req = (ids: string[] | undefined, where: string) => {
+      const present = (ids ?? []).filter((id) => citById.has(id));
+      if (present.length > 0 && !present.some((id) => !isTertiary(id))) bad.push(where);
+    };
+    (sites as { id: string; citations: string[]; coordinates: { citations: string[] }; candidates?: { citations: string[] }[] }[]).forEach((s) => {
+      req(s.citations, `site ${s.id}`);
+      req(s.coordinates.citations, `site ${s.id}.coords`);
+      s.candidates?.forEach((c, i) => req(c.citations, `site ${s.id}.cand[${i}]`));
+    });
+    const each = (arr: unknown[], label: string) =>
+      (arr as { id: string; citations?: string[] }[]).forEach((x) => req(x.citations, `${label} ${x.id}`));
+    each(journeys, 'journey');
+    each(routes, 'route');
+    each(stops, 'stop');
+    each(persons, 'person');
+    each(artifacts, 'artifact');
+    each(witnesses, 'witness');
+    each(miracles, 'miracle');
+    each(battles, 'battle');
+    each(terms, 'term');
+    each(lessons, 'lesson');
+    (quizzes as { id: string; questions: { id: string; citations: string[] }[] }[]).forEach((q) =>
+      q.questions.forEach((qq) => req(qq.citations, `quiz ${q.id}.${qq.id}`)),
+    );
+    expect(bad, `${bad.length} claim(s) cited only to Wikipedia:\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
   });
 
   it('every stop references a known site and journey', () => {

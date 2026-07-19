@@ -14,6 +14,7 @@ historical layers), **guided lessons**, and **quizzes**.
 ## Principles
 
 - Every factual claim carries **citations** and a **confidence level** (`high` / `medium` / `legendary` / `disputed`).
+- **Wikipedia is an orienting link, never the sole authority.** Every cited claim is also backed by a **concrete source** — a primary text (ANET, the Context of Scripture, the Babylonian Chronicles, Josephus, Tacitus), a standard scholarly work (the Anchor Bible Dictionary, Bright, Kitchen, Keener), an excavation report, or a historical-geography reference (Aharoni, the Sacred Bridge atlas). `build:content` **fails** on any claim resting on Wikipedia alone.
 - Dates are shown as **scholarly ranges**, never false single-year precision.
 - Where scholars or traditions disagree, the app **says so**.
 - Bible text is **public domain** (World English Bible, King James Version), bundled for offline use.
@@ -68,7 +69,7 @@ All milestones delivered and verified:
 - **M7** offline PWA (precaches app + 10 MB Bible DB) · **M8** OTA content manifest + apostolic traditions
 - **M9** credits/attribution screen, privacy policy, store docs, app icon, release review-gate
 
-**Content:** 110 sites · 9 journeys (patriarchs → apostles) · 92 stops · 9 historical route paths · 60 miracle accounts (all 37 recorded miracles of Jesus + the disciples' miracles of the Gospels and Acts, each anchored to a mapped site) · 38 battles & conquests (patriarchs → fall of Jerusalem, incl. the Israel-vs-Judah civil wars, dated by the cuneiform synchronisms and cross-referenced to stelae, reliefs, ostraca, and burn layers) · 30 archaeological finds · 9 extra-biblical witnesses · ~400 citations, every claim carrying confidence + sources. Map: ⚔ battle markers with campaign-area highlighting + divided-kingdom (Israel/Judah) era overlays.
+**Content:** 110 sites · 9 journeys (patriarchs → apostles) · 92 stops · 9 historical route paths · 60 miracle accounts (all 37 recorded miracles of Jesus + the disciples' miracles of the Gospels and Acts, each anchored to a mapped site) · 38 battles & conquests (patriarchs → fall of Jerusalem, incl. the Israel-vs-Judah civil wars, dated by the cuneiform synchronisms and cross-referenced to stelae, reliefs, ostraca, and burn layers) · 30 archaeological finds · 9 extra-biblical witnesses · 412 citations (233 concrete primary/scholarly sources — no claim rests on Wikipedia alone), every claim carrying confidence + sources. Map: ⚔ battle markers with campaign-area highlighting + divided-kingdom (Israel/Judah) era overlays.
 
 **Verified:** `typecheck` · `lint` · 28 unit tests · production build · 6 Playwright E2E (incl. scripture
 from the bundled DB, quiz scoring, WebGL map, and **offline reload**).
