@@ -30,7 +30,8 @@
    "cit-john-ephesus",
    "cit-patmos",
    "cit-philip-hierapolis",
-   "cit-mark-alexandria"
+   "cit-mark-alexandria",
+   "cit-ref-sacred-bridge"
   ]
  },
  {
@@ -97,7 +98,8 @@
   ],
   "citations": [
    "cit-ot-exodus",
-   "cit-ot-exodus-route"
+   "cit-ot-exodus-route",
+   "cit-ref-sacred-bridge"
   ]
  },
  {
@@ -129,7 +131,8 @@
   "citations": [
    "cit-flood-narrative",
    "cit-ararat-region",
-   "cit-shuruppak"
+   "cit-shuruppak",
+   "cit-ref-sacred-bridge"
   ]
  }
 ]
