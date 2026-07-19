@@ -7,17 +7,19 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import {
   ATLAS_LAYERS,
+  atlasBattleLabels,
   atlasSiteLabels,
   ensureAtlasLayers,
   removeAtlasLayers,
   setAtlasFilter,
   setLayerVisible,
+  setSelectedBattleArea,
   siteIdFromFeature,
 } from '../../map/layers/atlas';
 import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
-import { SiteExtras } from '../../components/SiteExtras';
+import { BattleCard, SiteExtras } from '../../components/SiteExtras';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 // Span the whole biblical timeline: the patriarchs (c. 2000 BC) through the
@@ -46,9 +48,11 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const { mapRef, ready } = useMap();
   const [showSites, setShowSites] = useState(true);
   const [showRoutes, setShowRoutes] = useState(true);
+  const [showBattles, setShowBattles] = useState(true);
   const [conf, setConf] = useState<string[]>(CONFIDENCES);
   const [maxYear, setMaxYear] = useState(YEAR_MAX);
   const [selected, setSelected] = useState<string | null>(null);
+  const [selectedBattle, setSelectedBattle] = useState<string | null>(null);
 
   // Add layers + click handler once the map is ready.
   useEffect(() => {
@@ -60,7 +64,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
 
     const onClick = (e: MapLayerMouseEvent) => {
       const id = e.features?.[0] && siteIdFromFeature(e.features[0]);
-      if (id) setSelected(id);
+      if (id) {
+        setSelected(id);
+        setSelectedBattle(null);
+      }
     };
     const onEnter = () => (map.getCanvas().style.cursor = 'pointer');
     const onLeave = () => (map.getCanvas().style.cursor = '');
@@ -81,8 +88,40 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     if (!map || !map.getLayer(ATLAS_LAYERS.sites)) return;
     setLayerVisible(map, ATLAS_LAYERS.sites, showSites);
     setLayerVisible(map, ATLAS_LAYERS.routes, showRoutes);
+    for (const id of [ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine, ATLAS_LAYERS.battleAreaSelected])
+      setLayerVisible(map, id, showBattles);
     setAtlasFilter(map, YEAR_MIN, maxYear, conf);
-  }, [mapRef, ready, showSites, showRoutes, conf, maxYear]);
+  }, [mapRef, ready, showSites, showRoutes, showBattles, conf, maxYear]);
+
+  // Emphasize the selected battle's area sweep on the map.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    setSelectedBattleArea(map, selectedBattle);
+  }, [mapRef, ready, selectedBattle]);
+
+  // ⚔ battle markers, filtered like the battle circle layer; clicking one
+  // opens the battle panel (and its area highlight).
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !showBattles) return;
+    const markers = atlasBattleLabels(bundle)
+      .filter((b) => b.ymax >= YEAR_MIN && b.ymin <= maxYear && conf.includes(b.confidence))
+      .map((b) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'battle-label';
+        el.textContent = '⚔';
+        el.title = b.title;
+        el.setAttribute('aria-label', `Show battle: ${b.title}`);
+        el.addEventListener('click', () => {
+          setSelectedBattle(b.id);
+          setSelected(null);
+        });
+        return new maplibregl.Marker({ element: el, anchor: 'right', offset: [-7, 0] }).setLngLat([b.lon, b.lat]).addTo(map);
+      });
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, bundle, showBattles, conf, maxYear]);
 
   // Name label next to every visible dot — no glyph/font source is shipped,
   // so labels are DOM markers (mirrors the circle layer's own filter).
@@ -97,17 +136,22 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         el.className = 'site-label';
         el.textContent = s.name;
         el.setAttribute('aria-label', `Show details for ${s.name}`);
-        el.addEventListener('click', () => setSelected(s.id));
+        el.addEventListener('click', () => {
+          setSelected(s.id);
+          setSelectedBattle(null);
+        });
         return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([s.lon, s.lat]).addTo(map);
       });
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showSites, conf, maxYear]);
 
-  // Center map on selected site in Atlas mode
+  // Center map on selected site (or selected battle's site) in Atlas mode
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !ready || !selected) return;
-    const site = bundle.site(selected);
+    if (!map || !ready) return;
+    const siteId = selected ?? (selectedBattle ? bundle.battle(selectedBattle)?.siteId : undefined);
+    if (!siteId) return;
+    const site = bundle.site(siteId);
     if (site) {
       map.easeTo({
         center: [site.coordinates.value.lon, site.coordinates.value.lat],
@@ -115,10 +159,12 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         duration: 800,
       });
     }
-  }, [mapRef, ready, selected, bundle]);
+  }, [mapRef, ready, selected, selectedBattle, bundle]);
 
   const site = selected ? bundle.site(selected) : undefined;
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];
+  const battle = selectedBattle ? bundle.battle(selectedBattle) : undefined;
+  const battleSite = battle ? bundle.site(battle.siteId) : undefined;
   const toggleConf = (c: string) =>
     setConf((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
 
@@ -132,6 +178,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         <legend>Atlas content</legend>
         <label><input type="checkbox" checked={showSites} onChange={(e) => setShowSites(e.target.checked)} /> Sites</label>
         <label><input type="checkbox" checked={showRoutes} onChange={(e) => setShowRoutes(e.target.checked)} /> Journey routes</label>
+        <label><input type="checkbox" checked={showBattles} onChange={(e) => setShowBattles(e.target.checked)} /> ⚔ Battles &amp; conquests</label>
       </fieldset>
 
       <fieldset className="atlas-toggles">
@@ -172,6 +219,24 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           ))}
         </span>
       </label>
+
+      {battle && (
+        <article className="stop-panel" aria-live="polite">
+          <BattleCard battle={battle} bundle={bundle} />
+          {battleSite && (
+            <button
+              type="button"
+              className="miracle-card__read"
+              onClick={() => {
+                setSelected(battleSite.id);
+                setSelectedBattle(null);
+              }}
+            >
+              About this place: {battleSite.ancientName.en}
+            </button>
+          )}
+        </article>
+      )}
 
       {site && (
         <article className="stop-panel" aria-live="polite">

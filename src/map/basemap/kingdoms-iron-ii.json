@@ -1,0 +1,59 @@
+{
+  "type": "FeatureCollection",
+  "note": "Approximate heartland extents of the divided kingdoms — Israel (c. 930-722 BC) and Judah (c. 930-586 BC). Drawn as era-context highlighting for the battle catalogue, NOT surveyed boundaries: borders shifted continually (Ramah, Beth-shemesh, the Transjordan) and scholarly maps differ. Vertices follow the conventional atlas picture: Israel from the Jezreel/Carmel line and coastal Sharon edge up to Dan and across Gilead; Judah from the Bethel plateau south through the Shephelah edge and Negev to Beersheba, east to the Dead Sea.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kingdom-israel",
+        "name": "Kingdom of Israel (Samaria)",
+        "era": "c. 930–722 BC",
+        "detail": "The northern kingdom of the ten tribes, from the schism under Jeroboam I to the fall of Samaria to Assyria in 722/721 BC. Capitals: Shechem, Tirzah, then Samaria. Approximate heartland including Galilee and Gilead."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.93, 32.02],
+          [35.24, 31.95],
+          [35.55, 31.87],
+          [35.78, 31.95],
+          [36.00, 32.30],
+          [36.10, 32.70],
+          [35.95, 33.10],
+          [35.68, 33.30],
+          [35.45, 33.15],
+          [35.25, 33.05],
+          [35.10, 32.92],
+          [34.91, 32.83],
+          [34.87, 32.45],
+          [34.93, 32.02]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kingdom-judah",
+        "name": "Kingdom of Judah",
+        "era": "c. 930–586 BC",
+        "detail": "The southern kingdom of the house of David, from the schism to the Babylonian destruction of Jerusalem in 586 BC. Capital: Jerusalem. Approximate heartland from the Benjamin plateau to Beersheba and the Dead Sea shore."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.93, 31.95],
+          [35.24, 31.88],
+          [35.55, 31.80],
+          [35.57, 31.40],
+          [35.50, 31.15],
+          [35.40, 30.95],
+          [34.95, 30.88],
+          [34.72, 31.22],
+          [34.82, 31.62],
+          [34.88, 31.80],
+          [34.93, 31.95]
+        ]]
+      }
+    }
+  ]
+}

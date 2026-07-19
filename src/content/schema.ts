@@ -200,6 +200,93 @@ export const Witness = z.object({
   citations: z.array(z.string()),
 });
 
+export const BattleKind = z.enum([
+  'battle', // pitched field battle
+  'siege', // a city invested/besieged
+  'conquest', // campaign that took and held territory
+  'campaign', // multi-site military sweep
+  'civil-war', // Israel vs. Judah (or intra-Israel) conflict
+  'coup', // internal violent overthrow
+  'deliverance', // a battle decided by reported divine intervention
+]);
+
+/**
+ * A military event of the biblical narrative — a battle, siege, conquest
+ * campaign, or civil war — anchored to a mapped site, dated as a scholarly
+ * range, and cross-referenced to the archaeological record (`artifactIds`
+ * link corroborating finds such as stelae, reliefs, ostraca, and burn
+ * layers). `area` optionally carries a closed [lon,lat] polygon ring of the
+ * territory the event swept or contested, for map highlighting. Like every
+ * event claim in this app it is a *reported account* carrying confidence,
+ * review status, and citations; genuinely contested locations or dates are
+ * `disputed` with a disputes note. `scriptureRefs` may be empty only for
+ * extra-biblical engagements included for chronological anchoring (e.g. the
+ * battle of Qarqar, which fixes Ahab against Assyrian records).
+ */
+export const Battle = z.object({
+  id: z.string().min(1),
+  title: LocalizedText,
+  kind: BattleKind,
+  /** Who fought whom, e.g. "Judah under Abijah vs. Israel under Jeroboam I". */
+  combatants: LocalizedText,
+  outcome: LocalizedText,
+  siteId: z.string().min(1),
+  /** Caveat when the text leaves the field unnamed or the anchor approximate. */
+  locationNote: LocalizedText.optional(),
+  dateRange: DateRange,
+  summary: LocalizedText,
+  scriptureRefs: z.array(z.string()),
+  /** Corroborating archaeological finds (Artifact ids). */
+  artifactIds: z.array(z.string()).optional(),
+  /** Closed polygon ring [lon,lat] of the swept/contested territory. */
+  area: z.array(z.tuple([z.number(), z.number()])).min(4).optional(),
+  confidence: Confidence,
+  reviewStatus: ReviewStatus,
+  disputes: LocalizedText.optional(),
+  citations: z.array(z.string()),
+});
+
+export const MiracleKind = z.enum([
+  'healing',
+  'exorcism',
+  'resurrection',
+  'nature',
+  'provision',
+  'judgment',
+  'deliverance',
+  'sign', // unspecified "signs and wonders" summary accounts
+]);
+
+/**
+ * A miracle account, anchored to a mapped site. `performedBy` splits the
+ * catalogue into its two sections — the miracles of Jesus and the miracles
+ * worked by his disciples (in the Gospels and Acts). Like every event claim
+ * in this app, a miracle entry is a *reported account* carrying confidence,
+ * review status, and citations: the app presents what the text records and
+ * where tradition/scholarship locates it, never "proof".
+ */
+export const Miracle = z.object({
+  id: z.string().min(1),
+  title: LocalizedText,
+  /** Section: Jesus' own miracles vs. those worked by his disciples. */
+  performedBy: z.enum(['jesus', 'disciple']),
+  /** Display name of the worker(s), e.g. "Jesus", "Peter", "The Twelve". */
+  performerLabel: LocalizedText,
+  /** Linked Person ids for the worker(s), where they exist as entities. */
+  performerIds: z.array(z.string()).optional(),
+  kind: MiracleKind,
+  /** The site the miracle is anchored to on the map. */
+  siteId: z.string().min(1),
+  /** Caveat when the text leaves the exact spot unnamed or approximate. */
+  locationNote: LocalizedText.optional(),
+  summary: LocalizedText,
+  scriptureRefs: z.array(z.string()).min(1),
+  confidence: Confidence,
+  reviewStatus: ReviewStatus,
+  disputes: LocalizedText.optional(),
+  citations: z.array(z.string()),
+});
+
 /**
  * A geographically- and chronologically-anchored supplementary video (public
  * embed, e.g. YouTube). Videos are illustrative media, NOT cited factual
@@ -275,6 +362,8 @@ export const Bundle = z.object({
   persons: z.array(Person),
   artifacts: z.array(Artifact),
   witnesses: z.array(Witness),
+  miracles: z.array(Miracle),
+  battles: z.array(Battle),
   videos: z.array(Video),
   terms: z.array(Term),
   lessons: z.array(Lesson),
@@ -292,6 +381,10 @@ export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
 export type TArtifact = z.infer<typeof Artifact>;
 export type TWitness = z.infer<typeof Witness>;
+export type TMiracle = z.infer<typeof Miracle>;
+export type TMiracleKind = z.infer<typeof MiracleKind>;
+export type TBattle = z.infer<typeof Battle>;
+export type TBattleKind = z.infer<typeof BattleKind>;
 export type TVideo = z.infer<typeof Video>;
 export type TTerm = z.infer<typeof Term>;
 export type TLesson = z.infer<typeof Lesson>;

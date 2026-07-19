@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { BundleIndex } from '../content/useBundle';
-import type { TArtifact, TVideo, TWitness } from '../content/schema';
-import { Citations, ConfidenceBadge, DisputeNote } from '../content/citations';
+import type { TArtifact, TBattle, TBattleKind, TMiracle, TMiracleKind, TVideo, TWitness } from '../content/schema';
+import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../content/citations';
 import artifactImages from '../content/artifactImages.json';
 
 interface ArtifactImageMeta {
@@ -128,6 +128,107 @@ export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: Bu
   );
 }
 
+/** Click-to-load scripture passages: the Bible DB is only queried once the
+ * reader asks, keeping dense site panels cheap. */
+function ScriptureToggle({ refs }: { refs: string[] }) {
+  const [open, setOpen] = useState(false);
+  if (refs.length === 0) return null;
+  if (open) return <>{refs.map((r) => <ScripturePassage key={r} raw={r} />)}</>;
+  return (
+    <button type="button" className="miracle-card__read" onClick={() => setOpen(true)}>
+      Read the passage{refs.length > 1 ? 's' : ''}
+    </button>
+  );
+}
+
+const MIRACLE_KIND_LABEL: Record<TMiracleKind, string> = {
+  healing: 'Healing',
+  exorcism: 'Exorcism',
+  resurrection: 'Raising the dead',
+  nature: 'Nature miracle',
+  provision: 'Provision',
+  judgment: 'Judgment',
+  deliverance: 'Deliverance',
+  sign: 'Signs & wonders',
+};
+
+/**
+ * A miracle account anchored to this site: who worked it, what kind, the
+ * account itself, and the passages (loaded from the bundled Bible only when
+ * expanded). Location caveats ride along when the text leaves the spot
+ * unnamed.
+ */
+export function MiracleCard({ miracle, bundle }: { miracle: TMiracle; bundle: BundleIndex }) {
+  return (
+    <article className="extra-card">
+      <header className="extra-card__head">
+        <h5>{miracle.title.en}</h5>
+        <ConfidenceBadge confidence={miracle.confidence} />
+      </header>
+      <p className="extra-card__meta">
+        {miracle.performerLabel.en} · {MIRACLE_KIND_LABEL[miracle.kind]} · {miracle.scriptureRefs.join('; ')}
+      </p>
+      <p>{miracle.summary.en}</p>
+      {miracle.locationNote && <p className="extra-card__meta">📍 {miracle.locationNote.en}</p>}
+      <ScriptureToggle refs={miracle.scriptureRefs} />
+      <DisputeNote text={miracle.disputes?.en} />
+      <Citations ids={miracle.citations} bundle={bundle} />
+    </article>
+  );
+}
+
+const BATTLE_KIND_LABEL: Record<TBattleKind, string> = {
+  battle: 'Pitched battle',
+  siege: 'Siege',
+  conquest: 'Conquest',
+  campaign: 'Campaign',
+  'civil-war': 'Civil war (Israel/Judah)',
+  coup: 'Coup',
+  deliverance: 'Deliverance',
+};
+
+/**
+ * A battle/siege/conquest account: who fought whom, the scholarly date range,
+ * outcome, the passages (click-to-load), and — the cross-reference the
+ * catalogue exists for — the corroborating archaeological finds, expandable
+ * in place even when the find is anchored at another site (a stele in a
+ * museum, a relief from Nineveh).
+ */
+export function BattleCard({ battle, bundle }: { battle: TBattle; bundle: BundleIndex }) {
+  const finds = (battle.artifactIds ?? [])
+    .map((id) => bundle.artifact(id))
+    .filter((a): a is TArtifact => Boolean(a));
+  return (
+    <article className="extra-card">
+      <header className="extra-card__head">
+        <h5>⚔ {battle.title.en}</h5>
+        <ConfidenceBadge confidence={battle.confidence} />
+      </header>
+      <p className="extra-card__meta">
+        {BATTLE_KIND_LABEL[battle.kind]} · {battle.dateRange.display.en}
+        {battle.scriptureRefs.length > 0 && <> · {battle.scriptureRefs.join('; ')}</>}
+      </p>
+      <p className="extra-card__meta">{battle.combatants.en}</p>
+      <p>{battle.summary.en}</p>
+      <p>
+        <strong>Outcome:</strong> {battle.outcome.en}
+      </p>
+      {battle.locationNote && <p className="extra-card__meta">📍 {battle.locationNote.en}</p>}
+      <ScriptureToggle refs={battle.scriptureRefs} />
+      {finds.length > 0 && (
+        <details className="citations">
+          <summary>Corroborating finds ({finds.length})</summary>
+          {finds.map((a) => (
+            <ArtifactCard key={a.id} artifact={a} bundle={bundle} />
+          ))}
+        </details>
+      )}
+      <DisputeNote text={battle.disputes?.en} />
+      <Citations ids={battle.citations} bundle={bundle} />
+    </article>
+  );
+}
+
 /**
  * Supplementary video, click-to-load. Nothing is requested from YouTube until
  * the user taps play (privacy-consistent with the Mapillary viewer — see
@@ -171,17 +272,49 @@ export function VideoEmbed({ video }: { video: TVideo }) {
 }
 
 /**
- * All extra media anchored to a site: archaeological finds, extra-biblical
- * witnesses, and videos. Renders nothing when the site has none, so it's safe
- * to drop into any site/stop panel.
+ * All extra media anchored to a site: miracle accounts (Jesus' own, and those
+ * worked by his disciples, each in its own section), archaeological finds,
+ * extra-biblical witnesses, and videos. Renders nothing when the site has
+ * none, so it's safe to drop into any site/stop panel.
  */
 export function SiteExtras({ siteId, bundle }: { siteId: string; bundle: BundleIndex }) {
   const artifacts = bundle.artifactsForSite(siteId);
   const witnesses = bundle.witnessesForSite(siteId);
   const videos = bundle.videosForSite(siteId);
-  if (artifacts.length + witnesses.length + videos.length === 0) return null;
+  const miracles = bundle.miraclesForSite(siteId);
+  const battles = bundle.battlesForSite(siteId);
+  const jesusMiracles = miracles.filter((m) => m.performedBy === 'jesus');
+  const discipleMiracles = miracles.filter((m) => m.performedBy === 'disciple');
+  if (artifacts.length + witnesses.length + videos.length + miracles.length + battles.length === 0) return null;
   return (
     <div className="site-extras">
+      {battles.length > 0 && (
+        <section className="site-extras__group">
+          <h4 className="site-extras__title">Battles &amp; conquests here</h4>
+          {battles
+            .slice()
+            .sort((a, b) => a.dateRange.startYear - b.dateRange.startYear)
+            .map((b) => (
+              <BattleCard key={b.id} battle={b} bundle={bundle} />
+            ))}
+        </section>
+      )}
+      {jesusMiracles.length > 0 && (
+        <section className="site-extras__group">
+          <h4 className="site-extras__title">Miracles of Jesus here</h4>
+          {jesusMiracles.map((m) => (
+            <MiracleCard key={m.id} miracle={m} bundle={bundle} />
+          ))}
+        </section>
+      )}
+      {discipleMiracles.length > 0 && (
+        <section className="site-extras__group">
+          <h4 className="site-extras__title">Miracles of the disciples here</h4>
+          {discipleMiracles.map((m) => (
+            <MiracleCard key={m.id} miracle={m} bundle={bundle} />
+          ))}
+        </section>
+      )}
       {artifacts.length > 0 && (
         <section className="site-extras__group">
           <h4 className="site-extras__title">Archaeological finds</h4>

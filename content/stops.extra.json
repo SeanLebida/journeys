@@ -28,7 +28,8 @@
    "en": "Peter's presence at Antioch is supported by Galatians 2:11, but the 'first bishop' tradition is later church tradition, not Scripture."
   },
   "citations": [
-   "cit-simon-peter"
+   "cit-simon-peter",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -60,7 +61,8 @@
    "en": "Peter's Roman martyrdom is early and widely attested in tradition but not recorded in the New Testament; the 'Babylon=Rome' reading of 1 Peter 5:13 is the usual but not the only interpretation."
   },
   "citations": [
-   "cit-simon-peter"
+   "cit-simon-peter",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -90,7 +92,8 @@
    "en": "The Ephesian residence of John rests on second-century tradition; the identity of 'John' of Revelation, the Gospel and the elder is itself debated."
   },
   "citations": [
-   "cit-john-ephesus"
+   "cit-john-ephesus",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -120,7 +123,8 @@
    "en": "Patmos as a place of John's exile is stated in Revelation; the Domitianic dating and the exile interpretation are traditional."
   },
   "citations": [
-   "cit-patmos"
+   "cit-patmos",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -149,7 +153,8 @@
    "en": "Sources conflate Philip the apostle and Philip the evangelist (Acts) at Hierapolis; the martyrium confirms veneration, not the historical events."
   },
   "citations": [
-   "cit-philip-hierapolis"
+   "cit-philip-hierapolis",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -181,7 +186,8 @@
    "en": "Mark's founding of the Alexandrian church is firm Coptic tradition but is not recorded in the New Testament."
   },
   "citations": [
-   "cit-mark-alexandria"
+   "cit-mark-alexandria",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -376,7 +382,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-exodus",
-   "cit-ot-pi-ramesses"
+   "cit-ot-pi-ramesses",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -407,7 +414,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-mount-sinai",
-   "cit-ot-exodus"
+   "cit-ot-exodus",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "Both the Exodus date and the identity of Mount Sinai are disputed; the traditional Jebel Musa is used with alternatives noted on the site."
@@ -438,7 +446,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-kadesh-barnea",
-   "cit-ot-exodus-route"
+   "cit-ot-exodus-route",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -469,7 +478,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-mount-nebo",
-   "cit-ot-exodus"
+   "cit-ot-exodus",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -532,7 +542,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-flight-into-egypt"
+   "cit-flight-into-egypt",
+   "cit-ref-keener-bbcnt"
   ],
   "disputes": {
    "en": "The flight into Egypt is attested only in Matthew and its route and Egyptian location are traditional; the mapped point (Old Cairo) is one of several Coptic-tradition sites, not an archaeologically fixed spot."
@@ -564,7 +575,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-finding-in-the-temple"
+   "cit-finding-in-the-temple",
+   "cit-ref-keener-bbcnt"
   ]
  },
  {
@@ -600,7 +612,8 @@
   "citations": [
    "cit-shuruppak",
    "cit-ziusudra",
-   "cit-flood-narrative"
+   "cit-flood-narrative",
+   "cit-ref-bright"
   ]
  },
  {
@@ -671,7 +684,8 @@
   "confidence": "legendary",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-flood-narrative"
+   "cit-flood-narrative",
+   "cit-ref-bright"
   ]
  }
 ]

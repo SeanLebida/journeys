@@ -212,6 +212,25 @@ export function MapProvider({ children }: { children: ReactNode }) {
           }
         }
 
+        // 0a. Divided-kingdom era fills — popup carries the feature's own
+        // name/era/detail (approximate heartlands, labelled as such).
+        for (const layerId of ['kingdom-israel-fill', 'kingdom-judah-fill']) {
+          if (!map.getLayer(layerId)) continue;
+          const feats = map.queryRenderedFeatures(e.point, { layers: [layerId] });
+          if (feats && feats.length > 0) {
+            const p = feats[0].properties ?? {};
+            const content = `
+              <div class="country-popup-content">
+                <h3 style="color: var(--accent)">${p.name ?? ''} — ${p.era ?? ''}</h3>
+                <p>${p.detail ?? ''}</p>
+                <p>Extent shown is an approximate heartland for era context — borders shifted continually and scholarly maps differ.</p>
+              </div>
+            `;
+            popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
+          }
+        }
+
         // 0b. Historical-boundary overlays
         for (const [layerId, title, body] of [
           ['israel-1949-borders', 'Israel, 1949–1967 (founding borders)',

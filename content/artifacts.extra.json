@@ -76,7 +76,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-arch-merneptah"
+   "cit-arch-merneptah",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -389,7 +390,260 @@
   },
   "citations": [
    "cit-shuruppak",
-   "cit-ziusudra"
+   "cit-ziusudra",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-lachish-reliefs",
+  "name": {
+   "en": "The Lachish Reliefs"
+  },
+  "siteId": "site-lachish",
+  "modernLocation": {
+   "en": "British Museum, London (from Sennacherib's 'Palace Without Rival', Nineveh)"
+  },
+  "corroborates": {
+   "en": "Sennacherib's own wall-carvings of the 701 BC storming of Lachish — siege ramp, battering rams, archers, impaled defenders, and files of Judean deportees — matching 2 Kings 18:13-14 ('Sennacherib... came up against all the fenced cities of Judah, and took them') and the ramp, arrowheads, and burn layer excavated at the tell itself. The fullest visual record of any event named in the Bible."
+  },
+  "dateRange": {
+   "startYear": -700,
+   "endYear": -681,
+   "display": {
+    "en": "carved c. 700-681 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-lachish-reliefs",
+   "cit-wikipedia-siege-of-lachish",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-lachish-letters",
+  "name": {
+   "en": "The Lachish Letters (ostraca)"
+  },
+  "siteId": "site-lachish",
+  "modernLocation": {
+   "en": "British Museum, London, and the Israel Museum, Jerusalem"
+  },
+  "corroborates": {
+   "en": "Eighteen ink-on-sherd military dispatches found in the burned gate-room of Lachish, written as Nebuchadnezzar's army reduced Judah c. 589-588 BC. Letter IV reports 'we are watching for the signals of Lachish... for we cannot see Azekah' — the same last-two-fortresses moment as Jeremiah 34:7."
+  },
+  "dateRange": {
+   "startYear": -590,
+   "endYear": -586,
+   "display": {
+    "en": "c. 589-586 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-lachish-letters",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-kurkh-monolith",
+  "name": {
+   "en": "The Kurkh Monolith of Shalmaneser III"
+  },
+  "siteId": "site-qarqar",
+  "modernLocation": {
+   "en": "British Museum, London (found at Kurkh, upper Tigris)"
+  },
+  "corroborates": {
+   "en": "Assyrian victory stele naming 'Ahab the Israelite' (A-ha-ab-bu mat Sir-'i-la-a-a) fielding 2,000 chariots and 10,000 soldiers in the coalition that met Shalmaneser III at Qarqar in 853 BC — the earliest securely dated extra-biblical mention of a king of Israel, and the synchronism that anchors the divided-kingdom chronology."
+  },
+  "dateRange": {
+   "startYear": -853,
+   "endYear": -845,
+   "display": {
+    "en": "c. 853-845 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-kurkh-monoliths",
+   "cit-wikipedia-battle-of-qarqar",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-black-obelisk",
+  "name": {
+   "en": "The Black Obelisk of Shalmaneser III"
+  },
+  "siteId": "site-samaria-city",
+  "modernLocation": {
+   "en": "British Museum, London (found at Nimrud/Kalhu)"
+  },
+  "corroborates": {
+   "en": "Four-sided basalt obelisk whose second register shows 'Jehu son of Omri' (Ia-u-a mar Hu-um-ri) bowing to the ground before Shalmaneser III and rendering tribute in 841 BC — the only surviving ancient depiction of an Israelite king, within months of the coup of 2 Kings 9-10."
+  },
+  "dateRange": {
+   "startYear": -827,
+   "endYear": -824,
+   "display": {
+    "en": "c. 827-824 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-black-obelisk",
+   "cit-wikipedia-jehu",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-khirbet-qeiyafa",
+  "name": {
+   "en": "Khirbet Qeiyafa — the Elah fortress and ostracon"
+  },
+  "siteId": "site-valley-of-elah",
+  "modernLocation": {
+   "en": "Khirbet Qeiyafa, above the Valley of Elah; ostracon in the Israel Museum"
+  },
+  "corroborates": {
+   "en": "A massively fortified, single-period city overlooking the Elah valley, radiocarbon-dated to c. 1020-980 BC, with a casemate wall, two gates (suggesting biblical Shaaraim, 1 Samuel 17:52), an absence of pig bones, and the earliest known Hebrew-language ostracon. Bears directly on whether a centralized kingdom existed in Judah in David's generation — the very valley of the Goliath duel."
+  },
+  "dateRange": {
+   "startYear": -1020,
+   "endYear": -980,
+   "display": {
+    "en": "c. 1020-980 BC (radiocarbon)"
+   },
+   "approximate": true
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-khirbet-qeiyafa",
+   "cit-ref-negev-gibson"
+  ],
+  "disputes": {
+   "en": "Identification and ethnicity are argued: Garfinkel reads a Judahite fortress of David's kingdom; others propose a northern-Israelite, Philistine, or Canaanite town, and the 'Shaaraim' reading of the two gates is contested. The radiocarbon dating window itself is broadly accepted."
+  }
+ },
+ {
+  "id": "artifact-jehoiachin-tablets",
+  "name": {
+   "en": "Jehoiachin's Rations Tablets"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Pergamon Museum, Berlin (from the South Palace archive, Babylon)"
+  },
+  "corroborates": {
+   "en": "Babylonian administrative tablets (c. 592 BC) listing oil rations for 'Ya'u-kinu, king of the land of Yahudu' and his five sons — the exiled Jehoiachin of 2 Kings 24:15, held in Babylon exactly as 2 Kings 25:27-30 describes his maintenance at the royal table."
+  },
+  "dateRange": {
+   "startYear": -595,
+   "endYear": -570,
+   "display": {
+    "en": "c. 595-570 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-jehoiachin-tablets",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-samaria-ostraca",
+  "name": {
+   "en": "The Samaria Ostraca"
+  },
+  "siteId": "site-samaria-city",
+  "modernLocation": {
+   "en": "Found in the palace treasury quarter of Samaria; Istanbul Archaeology Museums"
+  },
+  "corroborates": {
+   "en": "Over a hundred eighth-century BC ink-inscribed sherds recording wine and oil shipments to the capital, written in the northern Hebrew dialect. Their clan and district names — Abiezer, Helek, Shechem, Shemida — match the Manassite clan lists of Joshua 17, fixing the tribal geography in the kingdom of Israel's own administration."
+  },
+  "dateRange": {
+   "startYear": -790,
+   "endYear": -750,
+   "display": {
+    "en": "c. 790-750 BC"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-samaria-ostraca",
+   "cit-ref-negev-gibson"
+  ]
+ },
+ {
+  "id": "artifact-jericho-fallen-walls",
+  "name": {
+   "en": "The fallen walls of Jericho (Tell es-Sultan)"
+  },
+  "siteId": "site-jericho-ot",
+  "modernLocation": {
+   "en": "Tell es-Sultan, Jericho — excavated ramparts in situ"
+  },
+  "corroborates": {
+   "en": "Collapsed mudbrick city walls lying at the base of the stone revetment — in places forming a ready ramp up into the city — with a thick destruction-burn layer and jars still full of charred grain from a short siege in spring, matching the sequence of Joshua 6 (walls fallen flat, city burned, harvest-time, plunder banned)."
+  },
+  "dateRange": {
+   "startYear": -1550,
+   "endYear": -1400,
+   "display": {
+    "en": "destruction c. 1550 BC (Kenyon) or c. 1400 BC (Garstang/Wood)"
+   },
+   "approximate": true
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-abr-jericho-walls",
+   "cit-ot-jericho"
+  ],
+  "disputes": {
+   "en": "Kenyon dated the fallen City IV walls to c. 1550 BC (too early for any conquest chronology); Garstang and later Wood re-date the same destruction to c. 1400 BC on pottery and scarab grounds, matching the early conquest date. Bienkowski, Sharon and others defend Kenyon. The debate is unresolved and turns on Cypriot pottery and radiocarbon calibration."
+  }
+ },
+ {
+  "id": "artifact-hazor-burn-layer",
+  "name": {
+   "en": "The Late Bronze destruction of Hazor"
+  },
+  "siteId": "site-hazor",
+  "modernLocation": {
+   "en": "Tel Hazor — excavated palace destruction in situ"
+  },
+  "corroborates": {
+   "en": "A violent, city-wide destruction ending Late Bronze Hazor (stratum XIII/1A, 13th century BC): the ceremonial palace burned at temperatures over 1,000 °C, and the heads and hands of Canaanite cult statues were deliberately severed — matching 'he burnt Hazor with fire' and the iconoclasm of Joshua 11:11-13. Who set the fire is argued; that the greatest city of Canaan fell exactly as only this one city is said to have been burned is the point of contact."
+  },
+  "dateRange": {
+   "startYear": -1300,
+   "endYear": -1200,
+   "display": {
+    "en": "13th century BC"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-negev-gibson"
   ]
  }
 ]
