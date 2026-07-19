@@ -22,10 +22,12 @@ import initSqlJs from 'sql.js';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import {
   Artifact,
+  Battle,
   Bundle,
   Citation,
   Journey,
   Lesson,
+  Miracle,
   Person,
   Quiz,
   RoutePath,
@@ -146,6 +148,8 @@ async function main(): Promise<void> {
   const persons = merged('persons');
   const artifacts = merged('artifacts');
   const witnesses = merged('witnesses');
+  const miracles = merged('miracles');
+  const battles = merged('battles');
   const videos = merged('videos');
   const terms = merged('terms');
   const lessons = merged('lessons');
@@ -160,6 +164,8 @@ async function main(): Promise<void> {
   const vPersons = validateArray('persons', Person, persons);
   const vArtifacts = validateArray('artifacts', Artifact, artifacts);
   const vWitnesses = validateArray('witnesses', Witness, witnesses);
+  const vMiracles = validateArray('miracles', Miracle, miracles);
+  const vBattles = validateArray('battles', Battle, battles);
   const vVideos = validateArray('videos', Video, videos);
   const vTerms = validateArray('terms', Term, terms);
   const vLessons = validateArray('lessons', Lesson, lessons);
@@ -193,9 +199,40 @@ async function main(): Promise<void> {
   vPersons.forEach((p) => checkCites(p.citations, `person ${p.id}`));
   vArtifacts.forEach((a) => checkCites(a.citations, `artifact ${a.id}`));
   vWitnesses.forEach((w) => checkCites(w.citations, `witness ${w.id}`));
+  vMiracles.forEach((mi) => checkCites(mi.citations, `miracle ${mi.id}`));
+  vBattles.forEach((b) => checkCites(b.citations, `battle ${b.id}`));
   vTerms.forEach((t) => checkCites(t.citations, `term ${t.id}`));
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
+
+  // 4b. Constitutional sourcing invariant: no claim rests on Wikipedia alone.
+  // Wikipedia is a useful orienting link but a TERTIARY source; every cited
+  // claim must also carry >=1 concrete source — a primary text, a standard
+  // scholarly work, an excavation report, or a gazetteer. An uncited claim is
+  // not leaning on Wikipedia, so only non-empty citation lists are checked.
+  const citById = new Map(vCitations.map((c) => [c.id, c]));
+  const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
+  const requireConcrete = (ids: string[] | undefined, where: string) => {
+    const present = (ids ?? []).filter((id) => citIds.has(id));
+    if (present.length > 0 && !present.some((id) => !isTertiary(id)))
+      err(`${where}: cited only to Wikipedia — needs >=1 concrete (primary/scholarly/archaeological/gazetteer) source`);
+  };
+  vSites.forEach((s) => {
+    requireConcrete(s.citations, `site ${s.id}`);
+    requireConcrete(s.coordinates.citations, `site ${s.id}.coordinates`);
+    s.candidates?.forEach((c, i) => requireConcrete(c.citations, `site ${s.id}.candidates[${i}]`));
+  });
+  vJourneys.forEach((j) => requireConcrete(j.citations, `journey ${j.id}`));
+  vRoutes.forEach((r) => requireConcrete(r.citations, `route ${r.id}`));
+  vStops.forEach((s) => requireConcrete(s.citations, `stop ${s.id}`));
+  vPersons.forEach((p) => requireConcrete(p.citations, `person ${p.id}`));
+  vArtifacts.forEach((a) => requireConcrete(a.citations, `artifact ${a.id}`));
+  vWitnesses.forEach((w) => requireConcrete(w.citations, `witness ${w.id}`));
+  vMiracles.forEach((mi) => requireConcrete(mi.citations, `miracle ${mi.id}`));
+  vBattles.forEach((b) => requireConcrete(b.citations, `battle ${b.id}`));
+  vTerms.forEach((t) => requireConcrete(t.citations, `term ${t.id}`));
+  vLessons.forEach((l) => requireConcrete(l.citations, `lesson ${l.id}`));
+  vQuizzes.forEach((q) => q.questions.forEach((qq) => requireConcrete(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
   // 5. Neutrality invariants on stops + artifacts (zod covers Claim wrappers).
   const neutralityCheck = (e: { confidence: string; reviewStatus: string; citations: string[]; disputes?: unknown; id: string }, kind: string) => {
@@ -205,6 +242,8 @@ async function main(): Promise<void> {
   vStops.forEach((s) => neutralityCheck(s, 'stop'));
   vArtifacts.forEach((a) => neutralityCheck(a, 'artifact'));
   vWitnesses.forEach((w) => neutralityCheck(w, 'witness'));
+  vMiracles.forEach((mi) => neutralityCheck(mi, 'miracle'));
+  vBattles.forEach((b) => neutralityCheck(b, 'battle'));
 
   // 6. Referential integrity.
   vStops.forEach((s) => {
@@ -232,6 +271,14 @@ async function main(): Promise<void> {
   vWitnesses.forEach((w) => {
     w.personIds?.forEach((p) => !personIds.has(p) && err(`witness ${w.id}: unknown person '${p}'`));
     w.siteIds?.forEach((s) => !siteIds.has(s) && err(`witness ${w.id}: unknown site '${s}'`));
+  });
+  vMiracles.forEach((mi) => {
+    if (!siteIds.has(mi.siteId)) err(`miracle ${mi.id}: unknown siteId '${mi.siteId}'`);
+    mi.performerIds?.forEach((p) => !personIds.has(p) && err(`miracle ${mi.id}: unknown person '${p}'`));
+  });
+  vBattles.forEach((b) => {
+    if (!siteIds.has(b.siteId)) err(`battle ${b.id}: unknown siteId '${b.siteId}'`);
+    b.artifactIds?.forEach((a) => !artifactIds.has(a) && err(`battle ${b.id}: unknown artifact '${a}'`));
   });
   vVideos.forEach((v) => {
     if (v.siteId && !siteIds.has(v.siteId)) err(`video ${v.id}: unknown siteId '${v.siteId}'`);
@@ -307,6 +354,14 @@ async function main(): Promise<void> {
   );
   vJourneys.forEach((j) => dateCheck(j.dateRange, `journey ${j.id}`));
   vStops.forEach((st) => dateCheck(st.dateRange, `stop ${st.id}`));
+  vBattles.forEach((b) => {
+    dateCheck(b.dateRange, `battle ${b.id}`);
+    b.area?.forEach(([lon, lat]) => {
+      if (lon < w || lon > e || lat < s || lat > n) err(`battle ${b.id}: area point ${lat},${lon} outside world bbox`);
+    });
+    if (b.area && (b.area[0][0] !== b.area[b.area.length - 1][0] || b.area[0][1] !== b.area[b.area.length - 1][1]))
+      err(`battle ${b.id}: area ring is not closed (first point must equal last)`);
+  });
 
   // 8. License completeness.
   const creditIds = new Set(ATTRIBUTIONS.map((a) => a.id));
@@ -332,6 +387,8 @@ async function main(): Promise<void> {
     });
   vStops.forEach((st: TStop) => checkRefs(st.scriptureRefs, `stop ${st.id}`));
   vPersons.forEach((p) => checkRefs(p.scriptureRefs, `person ${p.id}`));
+  vMiracles.forEach((mi) => checkRefs(mi.scriptureRefs, `miracle ${mi.id}`));
+  vBattles.forEach((b) => checkRefs(b.scriptureRefs, `battle ${b.id}`));
   vLessons.forEach((l) => l.steps.forEach((st, i) => checkRefs(st.scriptureRefs, `lesson ${l.id}.steps[${i}]`)));
 
   // 10. Review gate (release only).
@@ -340,6 +397,8 @@ async function main(): Promise<void> {
     ...vSites.filter((x) => x.coordinates.confidence === 'high' && x.coordinates.reviewStatus !== 'scholar-approved').map((x) => `site ${x.id}.coordinates`),
     ...vArtifacts.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `artifact ${x.id}`),
     ...vWitnesses.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `witness ${x.id}`),
+    ...vMiracles.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `miracle ${x.id}`),
+    ...vBattles.filter((x) => x.confidence === 'high' && x.reviewStatus !== 'scholar-approved').map((x) => `battle ${x.id}`),
   ];
   if (unreviewed.length) {
     const msg = `${unreviewed.length} 'high'-confidence claim(s) not yet scholar-approved`;
@@ -361,6 +420,8 @@ async function main(): Promise<void> {
     persons: vPersons,
     artifacts: vArtifacts,
     witnesses: vWitnesses,
+    miracles: vMiracles,
+    battles: vBattles,
     videos: vVideos,
     terms: vTerms,
     lessons: vLessons,
@@ -389,7 +450,7 @@ async function main(): Promise<void> {
 
   // 12. Report.
   console.log('\n— Content build —');
-  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · routes ${vRoutes.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
+  console.log(`  sites ${vSites.length} · journeys ${vJourneys.length} · routes ${vRoutes.length} · stops ${vStops.length} · persons ${vPersons.length} · artifacts ${vArtifacts.length} · witnesses ${vWitnesses.length} · miracles ${vMiracles.length} · battles ${vBattles.length} · videos ${vVideos.length} · terms ${vTerms.length} · lessons ${vLessons.length} · quizzes ${vQuizzes.length}`);
   console.log(`  citations ${vCitations.length} · Bible verses ${Object.entries(dbCounts).map(([k, v]) => `${k}:${v}`).join(' ') || 'none'}`);
   console.log(`  integrity ${integrity}`);
   warnings.forEach((wn) => console.warn(`  ⚠ ${wn}`));

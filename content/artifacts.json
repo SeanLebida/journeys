@@ -1,196 +1,197 @@
 [
-  {
-    "id": "artifact-pilate-stone",
-    "name": {
-      "en": "The Pilate Stone"
-    },
-    "modernLocation": {
-      "en": "Israel Museum, Jerusalem (found at Caesarea Maritima, 1961)"
-    },
-    "corroborates": {
-      "en": "Confirms the historicity and title of Pontius Pilate: a limestone dedication block naming '[Po]ntius Pilatus, [Praef]ectus Iuda[ea]e' — establishing 'prefect' (not 'procurator') as his title."
-    },
-    "dateRange": {
-      "startYear": 26,
-      "endYear": 36,
-      "display": {
-        "en": "AD 26–36 (Pilate's prefecture)"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pilate-stone",
-      "cit-dth-the-praetorium-of-pilate"
-    ],
-    "siteId": "site-trial-before-pilate"
+ {
+  "id": "artifact-pilate-stone",
+  "name": {
+   "en": "The Pilate Stone"
   },
-  {
-    "id": "artifact-gallio-inscription",
-    "name": {
-      "en": "The Delphi (Gallio) Inscription"
-    },
-    "modernLocation": {
-      "en": "Archaeological Museum of Delphi, Greece"
-    },
-    "corroborates": {
-      "en": "A rescript of the emperor Claudius mentioning Gallio as proconsul of Achaia, dating his term to c. AD 51–52. Cross-referenced with Acts 18:12, it is the firmest fixed point for dating Paul's journeys."
-    },
-    "dateRange": {
-      "startYear": 51,
-      "endYear": 52,
-      "display": {
-        "en": "c. AD 51–52"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-gallio-inscription",
-      "cit-dth-the-gallio-inscription"
-    ],
-    "siteId": "site-corinth"
+  "modernLocation": {
+   "en": "Israel Museum, Jerusalem (found at Caesarea Maritima, 1961)"
   },
-  {
-    "id": "artifact-erastus-inscription",
-    "name": {
-      "en": "The Erastus Inscription"
-    },
-    "modernLocation": {
-      "en": "In situ near the theatre, Ancient Corinth"
-    },
-    "corroborates": {
-      "en": "A paving inscription recording that 'Erastus, in return for his aedileship, laid this pavement at his own expense.' Many scholars connect it to the Erastus, 'city treasurer' of Corinth, greeted in Romans 16:23, though the identification is debated."
-    },
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 99,
-      "display": {
-        "en": "1st century AD"
-      },
-      "approximate": true
-    },
-    "confidence": "disputed",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "The link between the pavement's Erastus (an aedile) and the Erastus of Romans 16:23 (Greek 'oikonomos', city steward/treasurer) rests on the name and city; some scholars accept it, others note the office titles differ."
-    },
-    "citations": [
-      "cit-erastus-inscription",
-      "cit-dth-erastus-inscription"
-    ],
-    "siteId": "site-corinth"
+  "corroborates": {
+   "en": "Confirms the historicity and title of Pontius Pilate: a limestone dedication block naming '[Po]ntius Pilatus, [Praef]ectus Iuda[ea]e' — establishing 'prefect' (not 'procurator') as his title."
   },
-  {
-    "id": "artifact-politarch-inscription",
-    "name": {
-      "en": "The Politarch Inscriptions (Thessalonica)"
-    },
-    "modernLocation": {
-      "en": "British Museum and Thessaloniki (various inscriptions)"
-    },
-    "corroborates": {
-      "en": "Greek inscriptions using the civic title 'politarch' for Thessalonian magistrates — the very word Luke uses in Acts 17:6,8 ('rulers of the city'). Once thought a Lukan error, the title is now attested in dozens of Macedonian inscriptions."
-    },
-    "dateRange": {
-      "startYear": -100,
-      "endYear": 200,
-      "display": {
-        "en": "2nd c. BC – 2nd c. AD"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-politarch-inscription"
-    ],
-    "siteId": "site-thessalonica"
+  "dateRange": {
+   "startYear": 26,
+   "endYear": 36,
+   "display": {
+    "en": "AD 26–36 (Pilate's prefecture)"
+   },
+   "approximate": true
   },
-  {
-    "id": "artifact-pool-of-siloam",
-    "name": {
-      "en": "The Pool of Siloam"
-    },
-    "modernLocation": {
-      "en": "City of David, Jerusalem (excavated from 2004)"
-    },
-    "corroborates": {
-      "en": "A monumental Second Temple-period stepped pool at the south of the City of David, matching the site where John 9:7 says Jesus sent a blind man to wash. Excavation confirmed a 1st-century public pool fed by the Siloam channel."
-    },
-    "dateRange": {
-      "startYear": -10,
-      "endYear": 70,
-      "display": {
-        "en": "late 1st c. BC – AD 70"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pool-of-siloam",
-      "cit-dth-pool-of-siloam",
-      "cit-dth-jesus-pool-siloam-rivers-living-water"
-    ],
-    "siteId": "site-jerusalem"
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pilate-stone",
+   "cit-dth-the-praetorium-of-pilate"
+  ],
+  "siteId": "site-trial-before-pilate"
+ },
+ {
+  "id": "artifact-gallio-inscription",
+  "name": {
+   "en": "The Delphi (Gallio) Inscription"
   },
-  {
-    "id": "artifact-caiaphas-ossuary",
-    "name": {
-      "en": "The Caiaphas Ossuary"
-    },
-    "modernLocation": {
-      "en": "Israel Museum, Jerusalem (found in Jerusalem, 1990)"
-    },
-    "corroborates": {
-      "en": "An ornate 1st-century bone-box inscribed 'Yehosef bar Qayafa' (Joseph, son of Caiaphas), widely (though not universally) associated with the high priest Caiaphas of the Gospels (Matthew 26:57)."
-    },
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 70,
-      "display": {
-        "en": "1st century AD"
-      },
-      "approximate": true
-    },
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "disputes": {
-      "en": "The identification with the high priest Caiaphas is widely held but not certain; the name was common and the family link is inferred from the form 'bar Qayafa'."
-    },
-    "citations": [
-      "cit-caiaphas-ossuary",
-      "cit-dth-caiaphas-the-high-priest"
-    ],
-    "siteId": "site-jerusalem"
+  "modernLocation": {
+   "en": "Archaeological Museum of Delphi, Greece"
   },
-  {
-    "id": "artifact-nazareth-house",
-    "name": {
-      "en": "First-century house and village remains, Nazareth"
-    },
-    "modernLocation": {
-      "en": "Nazareth (near the Church of the Annunciation; Nazareth Village Farm)"
-    },
-    "corroborates": {
-      "en": "IAA excavations of a 1st-century courtyard house, agricultural installations, tombs and pottery establish that Nazareth was an inhabited Jewish village in Jesus' day, rebutting claims that it did not exist."
-    },
-    "dateRange": {
-      "startYear": -100,
-      "endYear": 100,
-      "display": {
-        "en": "early Roman period"
-      },
-      "approximate": true
-    },
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-nazareth-house"
-    ],
-    "siteId": "site-nazareth"
-  }
+  "corroborates": {
+   "en": "A rescript of the emperor Claudius mentioning Gallio as proconsul of Achaia, dating his term to c. AD 51–52. Cross-referenced with Acts 18:12, it is the firmest fixed point for dating Paul's journeys."
+  },
+  "dateRange": {
+   "startYear": 51,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 51–52"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-gallio-inscription",
+   "cit-dth-the-gallio-inscription"
+  ],
+  "siteId": "site-corinth"
+ },
+ {
+  "id": "artifact-erastus-inscription",
+  "name": {
+   "en": "The Erastus Inscription"
+  },
+  "modernLocation": {
+   "en": "In situ near the theatre, Ancient Corinth"
+  },
+  "corroborates": {
+   "en": "A paving inscription recording that 'Erastus, in return for his aedileship, laid this pavement at his own expense.' Many scholars connect it to the Erastus, 'city treasurer' of Corinth, greeted in Romans 16:23, though the identification is debated."
+  },
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 99,
+   "display": {
+    "en": "1st century AD"
+   },
+   "approximate": true
+  },
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The link between the pavement's Erastus (an aedile) and the Erastus of Romans 16:23 (Greek 'oikonomos', city steward/treasurer) rests on the name and city; some scholars accept it, others note the office titles differ."
+  },
+  "citations": [
+   "cit-erastus-inscription",
+   "cit-dth-erastus-inscription"
+  ],
+  "siteId": "site-corinth"
+ },
+ {
+  "id": "artifact-politarch-inscription",
+  "name": {
+   "en": "The Politarch Inscriptions (Thessalonica)"
+  },
+  "modernLocation": {
+   "en": "British Museum and Thessaloniki (various inscriptions)"
+  },
+  "corroborates": {
+   "en": "Greek inscriptions using the civic title 'politarch' for Thessalonian magistrates — the very word Luke uses in Acts 17:6,8 ('rulers of the city'). Once thought a Lukan error, the title is now attested in dozens of Macedonian inscriptions."
+  },
+  "dateRange": {
+   "startYear": -100,
+   "endYear": 200,
+   "display": {
+    "en": "2nd c. BC – 2nd c. AD"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-politarch-inscription",
+   "cit-ref-negev-gibson"
+  ],
+  "siteId": "site-thessalonica"
+ },
+ {
+  "id": "artifact-pool-of-siloam",
+  "name": {
+   "en": "The Pool of Siloam"
+  },
+  "modernLocation": {
+   "en": "City of David, Jerusalem (excavated from 2004)"
+  },
+  "corroborates": {
+   "en": "A monumental Second Temple-period stepped pool at the south of the City of David, matching the site where John 9:7 says Jesus sent a blind man to wash. Excavation confirmed a 1st-century public pool fed by the Siloam channel."
+  },
+  "dateRange": {
+   "startYear": -10,
+   "endYear": 70,
+   "display": {
+    "en": "late 1st c. BC – AD 70"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pool-of-siloam",
+   "cit-dth-pool-of-siloam",
+   "cit-dth-jesus-pool-siloam-rivers-living-water"
+  ],
+  "siteId": "site-jerusalem"
+ },
+ {
+  "id": "artifact-caiaphas-ossuary",
+  "name": {
+   "en": "The Caiaphas Ossuary"
+  },
+  "modernLocation": {
+   "en": "Israel Museum, Jerusalem (found in Jerusalem, 1990)"
+  },
+  "corroborates": {
+   "en": "An ornate 1st-century bone-box inscribed 'Yehosef bar Qayafa' (Joseph, son of Caiaphas), widely (though not universally) associated with the high priest Caiaphas of the Gospels (Matthew 26:57)."
+  },
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 70,
+   "display": {
+    "en": "1st century AD"
+   },
+   "approximate": true
+  },
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The identification with the high priest Caiaphas is widely held but not certain; the name was common and the family link is inferred from the form 'bar Qayafa'."
+  },
+  "citations": [
+   "cit-caiaphas-ossuary",
+   "cit-dth-caiaphas-the-high-priest"
+  ],
+  "siteId": "site-jerusalem"
+ },
+ {
+  "id": "artifact-nazareth-house",
+  "name": {
+   "en": "First-century house and village remains, Nazareth"
+  },
+  "modernLocation": {
+   "en": "Nazareth (near the Church of the Annunciation; Nazareth Village Farm)"
+  },
+  "corroborates": {
+   "en": "IAA excavations of a 1st-century courtyard house, agricultural installations, tombs and pottery establish that Nazareth was an inhabited Jewish village in Jesus' day, rebutting claims that it did not exist."
+  },
+  "dateRange": {
+   "startYear": -100,
+   "endYear": 100,
+   "display": {
+    "en": "early Roman period"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-nazareth-house"
+  ],
+  "siteId": "site-nazareth"
+ }
 ]

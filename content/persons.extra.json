@@ -36,7 +36,8 @@
    "Genesis 23:2"
   ],
   "citations": [
-   "cit-ot-sarah"
+   "cit-ot-sarah",
+   "cit-ref-abd"
   ]
  },
  {
@@ -156,7 +157,72 @@
    "Genesis 9:29"
   ],
   "citations": [
-   "cit-flood-narrative"
+   "cit-flood-narrative",
+   "cit-ref-abd"
+  ]
+ },
+ {
+  "id": "person-stephen",
+  "name": {
+   "en": "Stephen"
+  },
+  "role": {
+   "en": "One of the Seven; the church's first martyr"
+  },
+  "summary": {
+   "en": "Chosen among the Seven to serve the Jerusalem church, 'full of faith and of the Holy Spirit'. Acts records that he 'did great wonders and signs among the people' (Acts 6:8) before his defence to the Sanhedrin and stoning — witnessed by the young Saul of Tarsus."
+  },
+  "scriptureRefs": [
+   "Acts 6:5",
+   "Acts 6:8",
+   "Acts 7:59-60"
+  ],
+  "citations": [
+   "cit-wikipedia-saint-stephen",
+   "cit-ref-abd"
+  ]
+ },
+ {
+  "id": "person-philip-evangelist",
+  "name": {
+   "en": "Philip the Evangelist"
+  },
+  "role": {
+   "en": "One of the Seven; evangelist of Samaria and the coast"
+  },
+  "summary": {
+   "en": "One of the Seven (distinct from Philip the apostle). Scattered by the persecution after Stephen's death, he proclaimed Christ in Samaria with exorcisms and healings (Acts 8:6-7), baptized the Ethiopian eunuch on the Gaza road, and settled at Caesarea, where Paul later lodged with him (Acts 21:8)."
+  },
+  "scriptureRefs": [
+   "Acts 6:5",
+   "Acts 8:6-7",
+   "Acts 8:26",
+   "Acts 21:8-9"
+  ],
+  "citations": [
+   "cit-wikipedia-philip-the-evangelist",
+   "cit-ref-abd"
+  ]
+ },
+ {
+  "id": "person-ananias-of-damascus",
+  "name": {
+   "en": "Ananias of Damascus"
+  },
+  "role": {
+   "en": "Disciple in Damascus who restored Saul's sight"
+  },
+  "summary": {
+   "en": "A devout disciple living in Damascus, sent in a vision to the blinded Saul of Tarsus on Straight Street. Laying hands on him, he restored Saul's sight and baptized him (Acts 9:10-19) — the hinge between the persecutor and the apostle."
+  },
+  "scriptureRefs": [
+   "Acts 9:10",
+   "Acts 9:17-18",
+   "Acts 22:12-13"
+  ],
+  "citations": [
+   "cit-wikipedia-ananias-of-damascus",
+   "cit-ref-abd"
   ]
  }
 ]

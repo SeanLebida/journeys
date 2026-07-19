@@ -1,1770 +1,1778 @@
 [
-  {
-    "id": "site-bethlehem",
-    "ancientName": {
-      "en": "Bethlehem of Judea (Hebrew Beit Lehem, 'house of bread'; Ephrathah)"
-    },
-    "modernLocation": {
-      "en": "Bethlehem, West Bank (Palestinian Authority), ~9 km south of Jerusalem; traditional site at the Church of the Nativity"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.70444,
-        "lon": 35.20639
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-britannica-com-topic-when-was-jesus-born",
-        "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
-        "cit-www-holylandsite-com-bethlehem-nativity-church"
-      ]
-    },
-    "summary": {
-      "en": "Matthew and Luke place Jesus' birth in Bethlehem, the city of David, before the death of Herod the Great. Luke ties it to a census under Quirinius; Matthew records the magi and the flight to Egypt. The Church of the Nativity (built under Constantine/Justinian over a cave venerated from at least the 2nd c., per Justin Martyr and Origen) marks the traditional grotto. Scholarly birth window is c. 6-4 BC, set by Herod's death (securely c. spring 4 BC via Josephus' lunar-eclipse note of 13 March 4 BC and reign calculations)."
-    },
-    "citations": [
-      "cit-www-britannica-com-topic-when-was-jesus-born",
-      "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
-      "cit-www-holylandsite-com-bethlehem-nativity-church",
-      "cit-dth-birthplace-of-jesus",
-      "cit-dth-the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus",
-      "cit-dth-shepherds-fields-near-bethlehem"
-    ]
+ {
+  "id": "site-bethlehem",
+  "ancientName": {
+   "en": "Bethlehem of Judea (Hebrew Beit Lehem, 'house of bread'; Ephrathah)"
   },
-  {
-    "id": "site-nazareth",
-    "ancientName": {
-      "en": "Nazareth (Hebrew Natzrat); 'Jesus of Nazareth', a Nazarene"
-    },
-    "modernLocation": {
-      "en": "Nazareth, Lower Galilee, northern Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.70194,
-        "lon": 35.30333
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
-        "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
-      ]
-    },
-    "summary": {
-      "en": "Nazareth was Jesus' hometown (Luke's annunciation; the family's return after Egypt in Matthew). A small agrarian Jewish village (~few hundred people) in the early 1st c., confirmed by IAA excavations (the Nazareth Village Farm, a 1st-c. house near the Church of the Annunciation, wine/olive presses, tombs, and pottery). Jesus taught in its synagogue (Luke 4:16-30) and was rejected ('no prophet is accepted in his hometown'); a cliff is associated with the attempt to throw him down."
-    },
-    "citations": [
-      "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
-      "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
-      "cit-dth-church-of-the-annunciation-in-nazareth",
-      "cit-dth-jesus-nazareth-prophet-rejected-hometown",
-      "cit-dth-history-of-the-traditions-and-locations-related-to-the-annunciation"
-    ]
+  "modernLocation": {
+   "en": "Bethlehem, West Bank (Palestinian Authority), ~9 km south of Jerusalem; traditional site at the Church of the Nativity"
   },
-  {
-    "id": "site-baptism-at-the-jordan",
-    "ancientName": {
-      "en": "Bethany beyond the Jordan (Bethabara); Aenon near Salim"
-    },
-    "modernLocation": {
-      "en": "Al-Maghtas (Bethany beyond the Jordan), east bank of the Jordan, Jordan (UNESCO site); traditional Qasr al-Yahud on the west bank"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.8372,
-        "lon": 35.545
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-whc-unesco-org-en-list-1446"
-      ]
-    },
-    "summary": {
-      "en": "Jesus' public ministry opens with his baptism by John in the Jordan and the wilderness temptation. John names the baptism site 'Bethany beyond the Jordan' (John 1:28). Al-Maghtas in Jordan, with Byzantine churches and pilgrimage remains, is the leading candidate and a UNESCO World Heritage Site; Qasr al-Yahud opposite is the western traditional spot."
-    },
-    "citations": [
-      "cit-whc-unesco-org-en-list-1446",
-      "cit-dth-john-the-baptist",
-      "cit-dth-john-the-baptizer-prepares-the-way"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 31.70444,
+    "lon": 35.20639
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-britannica-com-topic-when-was-jesus-born",
+    "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
+    "cit-www-holylandsite-com-bethlehem-nativity-church"
+   ]
   },
-  {
-    "id": "site-capernaum",
-    "ancientName": {
-      "en": "Capernaum / Kapharnaoum (Hebrew Kfar Nahum, 'village of Nahum'); modern ruin Tell Hum"
-    },
-    "modernLocation": {
-      "en": "Kfar Nahum National Park / Franciscan and Greek Orthodox sites, north shore of the Sea of Galilee, Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.88111,
-        "lon": 35.575
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-capernaum",
-        "cit-www-bibleplaces-com-capernaum",
-        "cit-dannythedigger-com-capernaum-synagogue",
-        "cit-arch-capernaum-house"
-      ]
-    },
-    "summary": {
-      "en": "Capernaum was Jesus' adopted base ('his own city', Matthew 9:1) and home of Peter, Andrew, James and John and Matthew the tax-collector. Many events occur here: healing of Peter's mother-in-law, the paralytic lowered through the roof, the centurion's servant, the synagogue teaching/exorcism, and the Bread of Life discourse (John 6). Archaeology shows a 1st-c. basalt synagogue foundation beneath the later 4th-5th-c. white limestone synagogue, and an octagonal Byzantine church over a 1st-c. house traditionally identified as Peter's. Jesus pronounced woe on it (Matthew 11:23)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-capernaum",
-      "cit-www-bibleplaces-com-capernaum",
-      "cit-dannythedigger-com-capernaum-synagogue",
-      "cit-arch-capernaum-house",
-      "cit-dth-ancient-capernaum-synagogue-house-peter",
-      "cit-dth-capernaum"
-    ]
+  "summary": {
+   "en": "Matthew and Luke place Jesus' birth in Bethlehem, the city of David, before the death of Herod the Great. Luke ties it to a census under Quirinius; Matthew records the magi and the flight to Egypt. The Church of the Nativity (built under Constantine/Justinian over a cave venerated from at least the 2nd c., per Justin Martyr and Origen) marks the traditional grotto. Scholarly birth window is c. 6-4 BC, set by Herod's death (securely c. spring 4 BC via Josephus' lunar-eclipse note of 13 March 4 BC and reign calculations)."
   },
-  {
-    "id": "site-cana-of-galilee",
-    "ancientName": {
-      "en": "Cana / Kana of Galilee"
-    },
-    "modernLocation": {
-      "en": "Disputed: Khirbet Qana (leading archaeological candidate, Beit Netofa Valley) vs Kafr Kanna (traditional pilgrimage town, ~7 km NE of Nazareth) vs Karm er-Ras / Reineh"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.82,
-        "lon": 35.31
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-cana",
-        "cit-www-biblicalarchaeology-org-daily-people-culture"
-      ]
-    },
-    "summary": {
-      "en": "Cana is where John places Jesus' first 'sign', turning water into wine at a wedding (John 2), and the healing of the official's son (John 4:46-54); it is also the home of Nathanael (John 21:2). Site is contested. Khirbet Qana shows continuous Jewish settlement (323 BC-AD 324), a synagogue/study hall, and a pilgrimage veneration cave, making it the strongest archaeological candidate; Kafr Kanna is the medieval-to-modern pilgrim site but lacks demonstrable Roman-era Jewish remains beneath it."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-cana",
-      "cit-www-biblicalarchaeology-org-daily-people-culture",
-      "cit-dth-the-village-of-cana-in-galilee",
-      "cit-dth-stone-jars-ritual-washing-water-wine-miracle-cana"
-    ]
+  "citations": [
+   "cit-www-britannica-com-topic-when-was-jesus-born",
+   "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
+   "cit-www-holylandsite-com-bethlehem-nativity-church",
+   "cit-dth-birthplace-of-jesus",
+   "cit-dth-the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus",
+   "cit-dth-shepherds-fields-near-bethlehem"
+  ]
+ },
+ {
+  "id": "site-nazareth",
+  "ancientName": {
+   "en": "Nazareth (Hebrew Natzrat); 'Jesus of Nazareth', a Nazarene"
   },
-  {
-    "id": "site-sea-of-galilee",
-    "ancientName": {
-      "en": "Sea of Galilee / Lake of Gennesaret / Sea of Tiberias (Hebrew Kinneret)"
-    },
-    "modernLocation": {
-      "en": "Lake Kinneret, northern Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.8167,
-        "lon": 35.5833
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-sea-of-galilee",
-        "cit-en-wikipedia-org-wiki-sea-of-galilee-boat"
-      ]
-    },
-    "summary": {
-      "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-sea-of-galilee",
-      "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
-      "cit-dth-sea-of-galilee",
-      "cit-dth-discovery-jesus-boat",
-      "cit-dth-galilee-boat"
-    ]
+  "modernLocation": {
+   "en": "Nazareth, Lower Galilee, northern Israel"
   },
-  {
-    "id": "site-bethsaida",
-    "ancientName": {
-      "en": "Bethsaida ('house of fishing'); Julias (refounded by Philip the Tetrarch)"
-    },
-    "modernLocation": {
-      "en": "Disputed: et-Tell (~2 km north of the lake, Jordan Park) vs el-Araj (on the shoreline) on the NE shore of the Sea of Galilee, Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.91,
-        "lon": 35.63
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-biblicalarchaeology-org-daily-biblical-sites",
-        "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
-      ]
-    },
-    "summary": {
-      "en": "Bethsaida is named as the home of Peter, Andrew and Philip (John 1:44) and the setting of the healing of a blind man (Mark 8:22-26) and a feeding-miracle vicinity (Luke 9:10). Jesus cursed it with Chorazin (Matthew 11:21). Two excavated sites contend: et-Tell (large mound, Iron Age and Roman remains, long the favored ID) and el-Araj (on the shore, with 1st-c. Roman material and a Byzantine church, fitting a fishing village better). Excavations at both continue."
-    },
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites",
-      "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.70194,
+    "lon": 35.30333
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+    "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
+   ]
   },
-  {
-    "id": "site-chorazin",
-    "ancientName": {
-      "en": "Chorazin / Korazim (Hebrew Korazim)"
-    },
-    "modernLocation": {
-      "en": "Korazim National Park, basalt plateau ~3.5 km north of Capernaum, Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.91137,
-        "lon": 35.56378
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-chorazin",
-        "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
-      ]
-    },
-    "summary": {
-      "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-chorazin",
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
-    ]
+  "summary": {
+   "en": "Nazareth was Jesus' hometown (Luke's annunciation; the family's return after Egypt in Matthew). A small agrarian Jewish village (~few hundred people) in the early 1st c., confirmed by IAA excavations (the Nazareth Village Farm, a 1st-c. house near the Church of the Annunciation, wine/olive presses, tombs, and pottery). Jesus taught in its synagogue (Luke 4:16-30) and was rejected ('no prophet is accepted in his hometown'); a cliff is associated with the attempt to throw him down."
   },
-  {
-    "id": "site-decapolis",
-    "ancientName": {
-      "en": "Region of the Gerasenes/Gadarenes/Gergesenes; Gergesa (traditional = Kursi); Decapolis cities Gadara and Gerasa (Jerash)"
-    },
-    "modernLocation": {
-      "en": "Kursi, eastern shore of the Sea of Galilee, Israel (traditional site of the swine miracle); Gadara = Umm Qais, Jordan; Gerasa = Jerash, Jordan"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.82609,
-        "lon": 35.65038
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
-        "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d"
-      ]
-    },
-    "summary": {
-      "en": "On the gentile (eastern/Decapolis) side of the lake, Jesus exorcises 'Legion' into a herd of pigs that rush down a steep bank into the sea (Mark 5). Manuscripts vary between 'Gerasenes', 'Gadarenes', and 'Gergesenes'. Gergesa is traditionally identified with Kursi, where a steep slope meets the shore and a large Byzantine monastery commemorated the miracle. Gadara (Umm Qais) and Gerasa (Jerash) are major Decapolis cities lying farther inland/southeast. Jesus also healed and fed crowds in the Decapolis (Mark 7:31-37; 8:1-10)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
-      "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
-      "cit-dth-the-decapolis-region"
-    ]
+  "citations": [
+   "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+   "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
+   "cit-dth-church-of-the-annunciation-in-nazareth",
+   "cit-dth-jesus-nazareth-prophet-rejected-hometown",
+   "cit-dth-history-of-the-traditions-and-locations-related-to-the-annunciation"
+  ]
+ },
+ {
+  "id": "site-baptism-at-the-jordan",
+  "ancientName": {
+   "en": "Bethany beyond the Jordan (Bethabara); Aenon near Salim"
   },
-  {
-    "id": "site-tyre-and-sidon",
-    "ancientName": {
-      "en": "Tyre (Tsor) and Sidon (Tsidon), Phoenician coastal cities"
-    },
-    "modernLocation": {
-      "en": "Tyre (Sur) and Sidon (Saida), South Lebanon, on the Mediterranean coast"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 33.27083,
-        "lon": 35.19611
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-tyre-lebanon",
-        "cit-en-wikipedia-org-wiki-sidon",
-        "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni"
-      ]
-    },
-    "summary": {
-      "en": "Jesus withdrew northwest into gentile Phoenician territory ('the region of Tyre and Sidon'), where he healed the daughter of the Syrophoenician/Canaanite woman (Mark 7:24-30; Matthew 15:21-28). Both cities are ancient, securely located Phoenician ports. Tyre lies ~50 km NW of Capernaum; Sidon ~40 km further north."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-tyre-lebanon",
-      "cit-en-wikipedia-org-wiki-sidon",
-      "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni"
-    ]
+  "modernLocation": {
+   "en": "Al-Maghtas (Bethany beyond the Jordan), east bank of the Jordan, Jordan (UNESCO site); traditional Qasr al-Yahud on the west bank"
   },
-  {
-    "id": "site-caesarea-philippi",
-    "ancientName": {
-      "en": "Caesarea Philippi; earlier Panias/Paneas (sanctuary of Pan); rebuilt by Philip the Tetrarch"
-    },
-    "modernLocation": {
-      "en": "Banias, at the southern foot of Mount Hermon, Golan Heights, ~40 km north of the Sea of Galilee"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 33.24861,
-        "lon": 35.69444
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-caesarea-philippi",
-        "cit-www-bibleplaces-com-caesarea-philippi-banias"
-      ]
-    },
-    "summary": {
-      "en": "At Caesarea Philippi, near the cave-sanctuary of Pan and the springs of the Jordan, Peter confesses Jesus as the Messiah and Jesus speaks of building his church and his coming passion (Matthew 16:13-23). The Transfiguration follows about a week later on a 'high mountain' (Matthew 17:1-8), traditionally Mount Tabor but, given proximity, possibly a spur of Mount Hermon. The site preserves the Pan sanctuary niches and Philip's city remains."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-caesarea-philippi",
-      "cit-www-bibleplaces-com-caesarea-philippi-banias",
-      "cit-dth-caesarea-philippi",
-      "cit-dth-peters-confession"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 31.8372,
+    "lon": 35.545
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-whc-unesco-org-en-list-1446"
+   ]
   },
-  {
-    "id": "site-samaria",
-    "ancientName": {
-      "en": "Sychar, near Shechem; Jacob's Well; Mount Gerizim region"
-    },
-    "modernLocation": {
-      "en": "Bir Ya'qub (Jacob's Well), within the Greek Orthodox Church/Monastery of St. Photina at Balata, east of Nablus, West Bank"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.2103,
-        "lon": 35.2847
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-seetheholyland-net-jacobs-well",
-        "cit-www-holylandsite-com-shechem-jacobs-well"
-      ]
-    },
-    "summary": {
-      "en": "Traveling between Judea and Galilee through Samaria, Jesus meets the Samaritan woman at Jacob's Well (John 4), discusses worship 'on this mountain' (Mount Gerizim) versus Jerusalem, and stays two days in Sychar. The deep ancient well (still extant inside the church) and the Samaritan sanctity of Gerizim are well attested."
-    },
-    "citations": [
-      "cit-www-seetheholyland-net-jacobs-well",
-      "cit-www-holylandsite-com-shechem-jacobs-well",
-      "cit-dth-jacob-well-in-samaria"
-    ]
+  "summary": {
+   "en": "Jesus' public ministry opens with his baptism by John in the Jordan and the wilderness temptation. John names the baptism site 'Bethany beyond the Jordan' (John 1:28). Al-Maghtas in Jordan, with Byzantine churches and pilgrimage remains, is the leading candidate and a UNESCO World Heritage Site; Qasr al-Yahud opposite is the western traditional spot."
   },
-  {
-    "id": "site-final-journey-jericho",
-    "ancientName": {
-      "en": "Jericho; New Testament Herodian Jericho at Tulul Abu el-Alayiq (winter palaces); Old Testament Jericho at Tell es-Sultan"
-    },
-    "modernLocation": {
-      "en": "Jericho (Ariha), Jordan Valley, West Bank; modern town near ancient mounds"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.8561,
-        "lon": 35.46
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-jericho",
-        "cit-www-jerusalemperspective-com-1402"
-      ]
-    },
-    "summary": {
-      "en": "On the final ascent to Jerusalem for Passover, Jesus passes through Jericho: he heals blind Bartimaeus (Mark 10:46-52) and calls the tax-collector Zacchaeus down from a sycamore-fig (Luke 19:1-10). The NT Roman/Herodian Jericho (Hasmonean-Herodian palace complex at Tulul Abu el-Alayiq) lies near the wadi Qelt, distinct from the prehistoric Tell es-Sultan mound. The road climbs ~1,000 m over ~27 km from Jericho (below sea level) to Jerusalem."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-jericho",
-      "cit-www-jerusalemperspective-com-1402",
-      "cit-dth-jericho-and-jesus",
-      "cit-dth-jesus-in-jericho",
-      "cit-dth-zacchaeus-the-tax-collector"
-    ]
+  "citations": [
+   "cit-whc-unesco-org-en-list-1446",
+   "cit-dth-john-the-baptist",
+   "cit-dth-john-the-baptizer-prepares-the-way"
+  ]
+ },
+ {
+  "id": "site-capernaum",
+  "ancientName": {
+   "en": "Capernaum / Kapharnaoum (Hebrew Kfar Nahum, 'village of Nahum'); modern ruin Tell Hum"
   },
-  {
-    "id": "site-bethany-and-bethphage",
-    "ancientName": {
-      "en": "Bethany (Beit Anya); el-Azariyeh ('place of Lazarus'); Bethphage"
-    },
-    "modernLocation": {
-      "en": "al-Eizariya (el-Azariyeh), SE slope of the Mount of Olives, ~2.5 km E of Jerusalem's Old City, West Bank"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7717,
-        "lon": 35.2569
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-seetheholyland-net-bethany",
-        "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
-      ]
-    },
-    "summary": {
-      "en": "Bethany, home of Mary, Martha and Lazarus, is where Jesus raised Lazarus (John 11) and was anointed before the passion (John 12; Mark 14:3-9). It served as his lodging during Passion Week. The Triumphal Entry was staged from neighboring Bethphage. The Tomb of Lazarus has been venerated since at least the 2nd c.; Eusebius notes the village was already called by the Lazarus-name."
-    },
-    "citations": [
-      "cit-www-seetheholyland-net-bethany",
-      "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
-      "cit-dth-the-village-of-bethphage",
-      "cit-dth-jesus-and-the-raising-of-lazarus"
-    ]
+  "modernLocation": {
+   "en": "Kfar Nahum National Park / Franciscan and Greek Orthodox sites, north shore of the Sea of Galilee, Israel"
   },
-  {
-    "id": "site-jerusalem",
-    "ancientName": {
-      "en": "Jerusalem; the Second Temple (Herodian Temple) and its courts; the Temple Mount (Har HaBayit)"
-    },
-    "modernLocation": {
-      "en": "Temple Mount / Haram al-Sharif, Old City of Jerusalem; surviving Herodian remains include the Western Wall and the southern steps/Robinson's Arch"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.778,
-        "lon": 35.2354
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-temple-mount",
-        "cit-en-wikipedia-org-wiki-second-temple"
-      ]
-    },
-    "summary": {
-      "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-temple-mount",
-      "cit-en-wikipedia-org-wiki-second-temple",
-      "cit-dth-the-temple-in-jerusalem",
-      "cit-dth-destruction-of-jerusalem-and-the-temple",
-      "cit-dth-history-of-jerusalem",
-      "cit-dth-the-golden-gate"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.88111,
+    "lon": 35.575
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-capernaum",
+    "cit-www-bibleplaces-com-capernaum",
+    "cit-dannythedigger-com-capernaum-synagogue",
+    "cit-arch-capernaum-house"
+   ]
   },
-  {
-    "id": "site-last-supper",
-    "ancientName": {
-      "en": "The 'large upper room' (anagaion); traditional Cenacle on Mount Zion"
-    },
-    "modernLocation": {
-      "en": "Cenacle building, Mount Zion, just outside the Old City walls, Jerusalem (current Gothic structure is medieval, over earlier tradition)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7717,
-        "lon": 35.2294
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
-        "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
-      ]
-    },
-    "summary": {
-      "en": "Jesus shares the Last Supper with the Twelve in a furnished upper room (Mark 14; Luke 22), instituting the bread-and-cup remembrance. In the Synoptics this is a Passover meal (Nisan 15); in John the meal precedes Passover (Jesus dies as the lambs are slain on Nisan 14). The traditional Cenacle on Mount Zion is a long-standing but architecturally later commemoration."
-    },
-    "citations": [
-      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
-      "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
-      "cit-dth-the-upper-room"
-    ]
+  "summary": {
+   "en": "Capernaum was Jesus' adopted base ('his own city', Matthew 9:1) and home of Peter, Andrew, James and John and Matthew the tax-collector. Many events occur here: healing of Peter's mother-in-law, the paralytic lowered through the roof, the centurion's servant, the synagogue teaching/exorcism, and the Bread of Life discourse (John 6). Archaeology shows a 1st-c. basalt synagogue foundation beneath the later 4th-5th-c. white limestone synagogue, and an octagonal Byzantine church over a 1st-c. house traditionally identified as Peter's. Jesus pronounced woe on it (Matthew 11:23)."
   },
-  {
-    "id": "site-gethsemane",
-    "ancientName": {
-      "en": "Gethsemane ('oil press'), a garden/grove at the foot/lower slope of the Mount of Olives, across the Kidron Valley"
-    },
-    "modernLocation": {
-      "en": "Garden of Gethsemane beside the Church of All Nations (Basilica of the Agony), western foot of the Mount of Olives, Jerusalem; ancient olive trees on site"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7794,
-        "lon": 35.2397
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-mount-of-olives"
-      ]
-    },
-    "summary": {
-      "en": "After the supper Jesus prays in agony at Gethsemane and is arrested following Judas' betrayal (Mark 14:32-52). The site at the Mount of Olives foot, across the Kidron, fits the Gospel topography; very old olive trees grow there (some radiocarbon/genetic studies date roots to the 12th c., though the locale itself is early-attested by pilgrims)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-mount-of-olives",
-      "cit-dth-garden-of-gethsemane",
-      "cit-dth-jesus-prays-garden-gethsemane"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-capernaum",
+   "cit-www-bibleplaces-com-capernaum",
+   "cit-dannythedigger-com-capernaum-synagogue",
+   "cit-arch-capernaum-house",
+   "cit-dth-ancient-capernaum-synagogue-house-peter",
+   "cit-dth-capernaum"
+  ]
+ },
+ {
+  "id": "site-cana-of-galilee",
+  "ancientName": {
+   "en": "Cana / Kana of Galilee"
   },
-  {
-    "id": "site-trial-before-pilate",
-    "ancientName": {
-      "en": "The Praetorium; the pavement 'Lithostrotos'/'Gabbatha' (John 19:13); Herod's Palace vs the Antonia Fortress"
-    },
-    "modernLocation": {
-      "en": "Disputed: Herod's Palace (western Old City, near the Jaffa Gate / Tower of David / Kishle area) vs the Antonia Fortress (NW corner of the Temple Mount, near today's Ecce Homo/Via Dolorosa start), Jerusalem"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7765,
-        "lon": 35.2278
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
-        "cit-en-wikipedia-org-wiki-pilate-stone"
-      ]
-    },
-    "summary": {
-      "en": "Jesus is tried before the Jewish authorities and then Pontius Pilate, who sentences him at a place called Gabbatha/Lithostrotos. Two candidate locations: the older pilgrim tradition (Antonia Fortress, anchoring the Via Dolorosa) and the now widely-favored scholarly view that Pilate, when in Jerusalem, resided and judged at Herod's Palace in the western city. The 'Pilate stone' from Caesarea independently confirms Pontius Pilate as prefect of Judaea."
-    },
-    "citations": [
-      "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
-      "cit-en-wikipedia-org-wiki-pilate-stone",
-      "cit-dth-the-praetorium-of-pilate",
-      "cit-dth-jesus-before-caiaphas",
-      "cit-dth-the-trial-of-jesus"
-    ]
+  "modernLocation": {
+   "en": "Disputed: Khirbet Qana (leading archaeological candidate, Beit Netofa Valley) vs Kafr Kanna (traditional pilgrimage town, ~7 km NE of Nazareth) vs Karm er-Ras / Reineh"
   },
-  {
-    "id": "site-golgotha-and-the-tomb",
-    "ancientName": {
-      "en": "Golgotha/Calvary ('place of the skull'); the rock-cut tomb in a nearby garden"
-    },
-    "modernLocation": {
-      "en": "Church of the Holy Sepulchre, Christian Quarter, Old City of Jerusalem (traditional/scholarly leading site); alternative: the Garden Tomb / Gordon's Calvary north of the Damascus Gate"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7784,
-        "lon": 35.2297
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
-        "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-        "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
-      ]
-    },
-    "summary": {
-      "en": "Jesus is crucified at Golgotha, dies, and is buried in a new rock-cut tomb nearby (Joseph of Arimathea's), with the resurrection proclaimed on the first day of the week. The Church of the Holy Sepulchre is the strongest candidate: excavations show the area was a disused quarry with 1st-c. rock-cut tombs, lay outside the city wall in Jesus' day, and was venerated continuously (Constantine built over it in the 4th c. on earlier memory); a 2025 report noted ancient garden/cultivation remains beneath, consistent with John 19:41. The Garden Tomb is archaeologically Iron Age and rejected as the original by scholars."
-    },
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
-      "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-      "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
-      "cit-dth-golgotha",
-      "cit-dth-golgotha-location",
-      "cit-dth-the-tomb-of-jesus",
-      "cit-dth-the-empty-tomb-of-jesus",
-      "cit-dth-roman-crucifixion-execution-jesus"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.82,
+    "lon": 35.31
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-cana",
+    "cit-www-biblicalarchaeology-org-daily-people-culture"
+   ]
   },
-  {
-    "id": "site-antioch",
-    "ancientName": {
-      "en": "Antiocheia / Antiochia ad Orontem"
-    },
-    "modernLocation": {
-      "en": "Antakya, Hatay Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.2,
-        "lon": 36.16
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-livius-org-articles-place-antioch-antakya",
-        "cit-topostext-org-place-362362pant",
-        "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
-      ]
-    },
-    "summary": {
-      "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' (Acts 11:26). LEG: start point (land departure on journey 2; departs by land to Seleucia on journey 1"
-    },
-    "citations": [
-      "cit-www-livius-org-articles-place-antioch-antakya",
-      "cit-topostext-org-place-362362pant",
-      "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
-    ]
+  "summary": {
+   "en": "Cana is where John places Jesus' first 'sign', turning water into wine at a wedding (John 2), and the healing of the official's son (John 4:46-54); it is also the home of Nathanael (John 21:2). Site is contested. Khirbet Qana shows continuous Jewish settlement (323 BC-AD 324), a synagogue/study hall, and a pilgrimage veneration cave, making it the strongest archaeological candidate; Kafr Kanna is the medieval-to-modern pilgrim site but lacks demonstrable Roman-era Jewish remains beneath it."
   },
-  {
-    "id": "site-seleucia-pieria",
-    "ancientName": {
-      "en": "Seleukeia Pieria"
-    },
-    "modernLocation": {
-      "en": "near Samandağ / Çevlik, Hatay Province, Turkey (ruins of the harbor incl. the Vespasian-Titus tunnel)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.1239,
-        "lon": 35.9219
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-seleucia-pieria",
-        "cit-www-britannica-com-place-seleucia-pieria",
-        "cit-www-bibleplaces-com-seleucia"
-      ]
-    },
-    "summary": {
-      "en": "The seaport of Antioch, ~16 mi (25 km) downriver/WSW, founded by Seleucus I Nicator (301 BC). On Journey 1 Paul and Barnabas 'went down to Seleucia, and from there sailed to Cyprus' (Acts 13:4). LEG: short LAND leg from Antioch to the coast, then point of embarkation for the SEA crossing to Cyprus."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-seleucia-pieria",
-      "cit-www-britannica-com-place-seleucia-pieria",
-      "cit-www-bibleplaces-com-seleucia"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-cana",
+   "cit-www-biblicalarchaeology-org-daily-people-culture",
+   "cit-dth-the-village-of-cana-in-galilee",
+   "cit-dth-stone-jars-ritual-washing-water-wine-miracle-cana"
+  ]
+ },
+ {
+  "id": "site-sea-of-galilee",
+  "ancientName": {
+   "en": "Sea of Galilee / Lake of Gennesaret / Sea of Tiberias (Hebrew Kinneret)"
   },
-  {
-    "id": "site-salamis",
-    "ancientName": {
-      "en": "Salamis"
-    },
-    "modernLocation": {
-      "en": "near Famagusta, eastern Cyprus (archaeological park ~6 km N of Famagusta)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 35.1814,
-        "lon": 33.9
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-salamis-cyprus"
-      ]
-    },
-    "summary": {
-      "en": "Landfall on Cyprus. Paul and Barnabas 'proclaimed the word of God in the synagogues of the Jews' (Acts 13:5); John Mark accompanied them as assistant (hyperetes). Salamis was the chief eastern port, with a sizable Jewish community. LEG: SEA arrival from Seleucia; then LAND travel west across the island to Paphos."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-salamis-cyprus",
-      "cit-dth-ancient-salamis"
-    ]
+  "modernLocation": {
+   "en": "Lake Kinneret, northern Israel"
   },
-  {
-    "id": "site-paphos",
-    "ancientName": {
-      "en": "Nea Paphos (Paphos)"
-    },
-    "modernLocation": {
-      "en": "Paphos (Kato Paphos archaeological site), SW Cyprus"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 34.7571,
-        "lon": 32.4065
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
-        "cit-biblearchaeology-org-research-chronological-cate",
-        "cit-www-britannica-com-place-paphos"
-      ]
-    },
-    "summary": {
-      "en": "Roman provincial capital and seat of the proconsul. Here the magician Bar-Jesus / Elymas opposed them before the proconsul Sergius Paulus; Paul struck Elymas with temporary blindness, and the proconsul 'believed, being astonished at the teaching of the Lord' (Acts 13:6-12). This passage marks the narrative shift from 'Saul' to 'Paul' and his emergence as lead missionary. ARCHAEOLOGY: inscriptions naming a 'Sergius Paulus' / a 'Paulus [proconsul]' (e.g., the Soloi inscription on Cyprus) corroborate the name, title, and senatorial (proconsular) governance of Cyprus, though no inscription definitively ties one to THIS Acts episode. LEG: end of Cyprus land transit; SEA departure NW to Perga in P"
-    },
-    "citations": [
-      "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
-      "cit-biblearchaeology-org-research-chronological-cate",
-      "cit-www-britannica-com-place-paphos",
-      "cit-dth-ancient-paphos",
-      "cit-dth-legacy-of-barnabas-on-cyprus"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.8167,
+    "lon": 35.5833
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-sea-of-galilee",
+    "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+    "cit-ref-sacred-bridge"
+   ]
   },
-  {
-    "id": "site-perga",
-    "ancientName": {
-      "en": "Perge / Perga"
-    },
-    "modernLocation": {
-      "en": "near Aksu, Antalya Province, Turkey (~15 km E of Antalya)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.9614,
-        "lon": 30.8539
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-perga",
-        "cit-www-britannica-com-place-perga",
-        "cit-topostext-org-place-370309pper"
-      ]
-    },
-    "summary": {
-      "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-perga",
-      "cit-www-britannica-com-place-perga",
-      "cit-topostext-org-place-370309pper"
-    ]
+  "summary": {
+   "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
   },
-  {
-    "id": "site-pisidian-antioch",
-    "ancientName": {
-      "en": "Antiocheia / Antioch 'near Pisidia' (Colonia Caesarea Antiochia)"
-    },
-    "modernLocation": {
-      "en": "near Yalvaç, Isparta Province, Turkey (~1 km N of Yalvaç)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 38.3062,
-        "lon": 31.1899
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-vici-org-vici-2325-lang-en",
-        "cit-www-biblicalarchaeology-org-daily-biblical-topic",
-        "cit-www-thegospelcoalition-org-themelios-article-act"
-      ]
-    },
-    "summary": {
-      "en": "Roman colony and administrative center of the southern part of the province of Galatia. Setting of Paul's first recorded major sermon (Acts 13:16-41) in the synagogue. After many Gentiles responded the next Sabbath, jealous synagogue leaders incited 'devout women of high standing and the leading men' to drive them out; Paul and Barnabas 'shook the dust from their feet' and turned to the Gentiles (Acts 13:42-52). VISITED AGAIN on the return leg to strengthen disciples and appoint elders (Acts 14:21-23). ARCHAEOLOGY: excavated since W. Ramsay (1913-14); imperial cult temple (Augusteum), city gate, Sergii Pauli connections. LEG: LAND."
-    },
-    "citations": [
-      "cit-vici-org-vici-2325-lang-en",
-      "cit-www-biblicalarchaeology-org-daily-biblical-topic",
-      "cit-www-thegospelcoalition-org-themelios-article-act",
-      "cit-dth-pisidian-antioch"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-sea-of-galilee",
+   "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+   "cit-dth-sea-of-galilee",
+   "cit-dth-discovery-jesus-boat",
+   "cit-dth-galilee-boat"
+  ]
+ },
+ {
+  "id": "site-bethsaida",
+  "ancientName": {
+   "en": "Bethsaida ('house of fishing'); Julias (refounded by Philip the Tetrarch)"
   },
-  {
-    "id": "site-iconium",
-    "ancientName": {
-      "en": "Ikonion / Iconium"
-    },
-    "modernLocation": {
-      "en": "Konya, Konya Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.8714,
-        "lon": 32.4846
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-konya",
-        "cit-www-bibleref-com-acts-14-acts-14-6-html"
-      ]
-    },
-    "summary": {
-      "en": "City in Lycaonia/Galatia where Paul and Barnabas spoke boldly in the synagogue 'so that a great number both of Jews and of Greeks believed' (Acts 14:1) and stayed 'a long time' performing signs. The city divided; on learning of a plot to stone them, they fled to Lystra and Derbe (Acts 14:2-6). REVISITED on return (Acts 14:21). Iconium's continuous occupation (modern Konya) limits excavation. LEG: LAND."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-konya",
-      "cit-www-bibleref-com-acts-14-acts-14-6-html"
-    ]
+  "modernLocation": {
+   "en": "Disputed: et-Tell (~2 km north of the lake, Jordan Park) vs el-Araj (on the shoreline) on the NE shore of the Sea of Galilee, Israel"
   },
-  {
-    "id": "site-lystra",
-    "ancientName": {
-      "en": "Lystra (Colonia Iulia Felix Gemina Lustra)"
-    },
-    "modernLocation": {
-      "en": "near Hatunsaray (Gökyurt), Konya Province, Turkey (mound near Hatunsaray)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.6019,
-        "lon": 32.3383
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-lystra",
-        "cit-www-bibleplaces-com-derbelystra"
-      ]
-    },
-    "summary": {
-      "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-lystra",
-      "cit-www-bibleplaces-com-derbelystra",
-      "cit-dth-the-miracle-at-lystra"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.91,
+    "lon": 35.63
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+    "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
+   ]
   },
-  {
-    "id": "site-derbe",
-    "ancientName": {
-      "en": "Derbe"
-    },
-    "modernLocation": {
-      "en": "Kerti Höyük mound, near Ekinözü, ~24 km NE of Karaman (ancient Laranda), Karaman Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.3493,
-        "lon": 33.3617
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-derbe",
-        "cit-vici-org-vici-24065"
-      ]
-    },
-    "summary": {
-      "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-derbe",
-      "cit-vici-org-vici-24065"
-    ]
+  "summary": {
+   "en": "Bethsaida is named as the home of Peter, Andrew and Philip (John 1:44) and the setting of the healing of a blind man (Mark 8:22-26) and a feeding-miracle vicinity (Luke 9:10). Jesus cursed it with Chorazin (Matthew 11:21). Two excavated sites contend: et-Tell (large mound, Iron Age and Roman remains, long the favored ID) and el-Araj (on the shore, with 1st-c. Roman material and a Byzantine church, fitting a fishing village better). Excavations at both continue."
   },
-  {
-    "id": "site-attalia",
-    "ancientName": {
-      "en": "Attaleia"
-    },
-    "modernLocation": {
-      "en": "Antalya, Antalya Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.8841,
-        "lon": 30.7056
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-ephesustoursguide-com-must-see-places-in-tur"
-      ]
-    },
-    "summary": {
-      "en": "After preaching at Perga on the return leg, they 'went down to Attalia, and from there sailed back to Antioch' (Acts 14:25-26). Attalia was the principal Pamphylian harbor (founded by Attalus II of Pergamon). LEG: short LAND leg from Perga; then SEA voyage back to Syrian Antioch, ending Journey 1."
-    },
-    "citations": [
-      "cit-www-ephesustoursguide-com-must-see-places-in-tur"
-    ]
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+   "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
+  ]
+ },
+ {
+  "id": "site-chorazin",
+  "ancientName": {
+   "en": "Chorazin / Korazim (Hebrew Korazim)"
   },
-  {
-    "id": "site-syria",
-    "ancientName": {
-      "en": "Cilicia; Tarsus"
-    },
-    "modernLocation": {
-      "en": "SE Turkey (Adana/Mersin region; Tarsus)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.9177,
-        "lon": 34.8947
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-esv-org-resources-esv-global-study-bible-map"
-      ]
-    },
-    "summary": {
-      "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
-    },
-    "citations": [
-      "cit-www-esv-org-resources-esv-global-study-bible-map"
-    ]
+  "modernLocation": {
+   "en": "Korazim National Park, basalt plateau ~3.5 km north of Capernaum, Israel"
   },
-  {
-    "id": "site-alexandria-troas",
-    "ancientName": {
-      "en": "Alexandria Troas (Troas)"
-    },
-    "modernLocation": {
-      "en": "Dalyan, near Geyikli, Çanakkale Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 39.7517,
-        "lon": 26.1586
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-alexandria-troas",
-        "cit-www-bibleplaces-com-acts16"
-      ]
-    },
-    "summary": {
-      "en": "Port on the NW Aegean coast where Paul saw a night vision of 'a man of Macedonia' pleading 'Come over to Macedonia and help us' (Acts 16:8-10). Here the narrative shifts to first-person plural ('we'), traditionally marking Luke joining the party. From Troas they set sail for Europe. LEG: LAND arrival; SEA embarkation point for the crossing to Europe (via Samothrace to Neapolis)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-alexandria-troas",
-      "cit-www-bibleplaces-com-acts16"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.91137,
+    "lon": 35.56378
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-chorazin",
+    "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
+   ]
   },
-  {
-    "id": "site-samothrace",
-    "ancientName": {
-      "en": "Samothrake"
-    },
-    "modernLocation": {
-      "en": "Samothraki island, NE Aegean, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 40.45,
-        "lon": 25.53
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
-      ]
-    },
-    "summary": {
-      "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA."
-    },
-    "citations": [
-      "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
-    ]
+  "summary": {
+   "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
   },
-  {
-    "id": "site-neapolis",
-    "ancientName": {
-      "en": "Neapolis"
-    },
-    "modernLocation": {
-      "en": "Kavala, eastern Macedonia, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 40.9369,
-        "lon": 24.4122
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
-      ]
-    },
-    "summary": {
-      "en": "Port of Philippi and the gospel's first recorded landfall in Europe: 'from Troas... to Neapolis, and from there to Philippi' (Acts 16:11-12). LEG: SEA arrival; then short LAND leg (~16 km up the Via Egnatia) to Philippi."
-    },
-    "citations": [
-      "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-chorazin",
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
+  ]
+ },
+ {
+  "id": "site-decapolis",
+  "ancientName": {
+   "en": "Region of the Gerasenes/Gadarenes/Gergesenes; Gergesa (traditional = Kursi); Decapolis cities Gadara and Gerasa (Jerash)"
   },
-  {
-    "id": "site-philippi",
-    "ancientName": {
-      "en": "Philippoi (Colonia Iulia Augusta Philippensis)"
-    },
-    "modernLocation": {
-      "en": "near Krinides / Filippoi, ~10 km NW of Kavala, eastern Macedonia, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 41.0131,
-        "lon": 24.2864
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-philippi",
-        "cit-www-padfield-com-2005-philippi-html"
-      ]
-    },
-    "summary": {
-      "en": "A leading Roman colony of Macedonia. By a riverside place of prayer Lydia, a God-fearing dealer in purple from Thyatira, believed and was baptized with her household (Acts 16:13-15). Paul exorcised a slave girl with a spirit of divination, costing her owners their profit; Paul and Silas were beaten and jailed; a midnight earthquake opened the prison and the jailer's household was converted; the magistrates, alarmed to learn they had flogged Roman citizens, apologized (Acts 16:16-40). Recipient church of Philippians. LEG: LAND (then westward along the Via Egnatia)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-philippi",
-      "cit-www-padfield-com-2005-philippi-html",
-      "cit-dth-philippi-of-macedonia",
-      "cit-dth-lydias-conversion-at-philippi",
-      "cit-dth-paul-and-silas-in-prison-at-philippi"
-    ]
+  "modernLocation": {
+   "en": "Kursi, eastern shore of the Sea of Galilee, Israel (traditional site of the swine miracle); Gadara = Umm Qais, Jordan; Gerasa = Jerash, Jordan"
   },
-  {
-    "id": "site-thessalonica",
-    "ancientName": {
-      "en": "Thessalonike"
-    },
-    "modernLocation": {
-      "en": "Thessaloniki, Central Macedonia, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 40.6403,
-        "lon": 22.9356
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-thessaloniki",
-        "cit-catholic-resources-org-bible-geography-roman-pro"
-      ]
-    },
-    "summary": {
-      "en": "Provincial capital of Macedonia. Paul reasoned in the synagogue 'for three Sabbaths' (Acts 17:2-4); some Jews, many God-fearing Greeks and leading women believed. Jealous opponents formed a mob, attacked Jason's house, and dragged believers before the politarchs charging them with defying Caesar ('there is another king, Jesus,' Acts 17:5-9). Recipient of 1-2 Thessalonians. LEG: LAND; departed by night to Berea."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-thessaloniki",
-      "cit-catholic-resources-org-bible-geography-roman-pro",
-      "cit-dth-thessalonica-thessalonike"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.82609,
+    "lon": 35.65038
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+    "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+    "cit-ref-sacred-bridge"
+   ]
   },
-  {
-    "id": "site-berea",
-    "ancientName": {
-      "en": "Beroia / Beroea"
-    },
-    "modernLocation": {
-      "en": "Veria (Veroia), Imathia, Central Macedonia, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 40.5244,
-        "lon": 22.2024
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-veria",
-        "cit-www-casualenglishbible-com-resource-location-ber"
-      ]
-    },
-    "summary": {
-      "en": "Sent on by night, Paul and Silas preached in the synagogue; the Bereans 'were more noble than those in Thessalonica... examining the Scriptures daily' and many believed (Acts 17:10-12). When Thessalonian agitators arrived, the believers sent Paul on to the coast/Athens while Silas and Timothy remained (Acts 17:13-15). Sopater of Berea later accompanies Paul (Acts 20:4). LEG: LAND arrival; Paul then leaves by SEA toward Athens (Silas/Timothy stay)."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-veria",
-      "cit-www-casualenglishbible-com-resource-location-ber"
-    ]
+  "summary": {
+   "en": "On the gentile (eastern/Decapolis) side of the lake, Jesus exorcises 'Legion' into a herd of pigs that rush down a steep bank into the sea (Mark 5). Manuscripts vary between 'Gerasenes', 'Gadarenes', and 'Gergesenes'. Gergesa is traditionally identified with Kursi, where a steep slope meets the shore and a large Byzantine monastery commemorated the miracle. Gadara (Umm Qais) and Gerasa (Jerash) are major Decapolis cities lying farther inland/southeast. Jesus also healed and fed crowds in the Decapolis (Mark 7:31-37; 8:1-10)."
   },
-  {
-    "id": "site-athens",
-    "ancientName": {
-      "en": "Athenai"
-    },
-    "modernLocation": {
-      "en": "Athens, Attica, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.9715,
-        "lon": 23.7257
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-latitude-to-articles-by-country-gr-greece-853-ac"
-      ]
-    },
-    "summary": {
-      "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
-    },
-    "citations": [
-      "cit-latitude-to-articles-by-country-gr-greece-853-ac",
-      "cit-dth-athens",
-      "cit-dth-paul-at-the-areopagus-of-athens"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+   "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+   "cit-dth-the-decapolis-region"
+  ]
+ },
+ {
+  "id": "site-tyre-and-sidon",
+  "ancientName": {
+   "en": "Tyre (Tsor) and Sidon (Tsidon), Phoenician coastal cities"
   },
-  {
-    "id": "site-corinth",
-    "ancientName": {
-      "en": "Korinthos (Roman Colonia Laus Iulia Corinthiensis)"
-    },
-    "modernLocation": {
-      "en": "Ancient Corinth (Archaia Korinthos), near modern Corinth, Peloponnese, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.9061,
-        "lon": 22.8792
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
-        "cit-holylandphotos-org-photos-gctcdlar14",
-        "cit-latitude-to-map-gr-greece-cities-corinth"
-      ]
-    },
-    "summary": {
-      "en": "Capital of the province of Achaia and the longest stop of Journey 2: Paul stayed 18 months (Acts 18:11). He met Aquila and Priscilla (recently expelled from Rome under Claudius) and worked as a tentmaker; Silas and Timothy rejoined him; Crispus the synagogue ruler believed (Acts 18:1-11). The Jews brought Paul before the proconsul Gallio, who dismissed the case as an internal religious matter (Acts 18:12-17). Founding visit for 1-2 Corinthians. The DELPHI (GALLIO) INSCRIPTION, naming Gallio as proconsul of Achaia and dated by Claudius's 26th imperial acclamation (early AD 52), fixes Gallio's term to c. AD 51-52 and thus anchors Paul's Corinth stay to roughly AD 50-52 — the firmest date in al"
-    },
-    "citations": [
-      "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
-      "cit-holylandphotos-org-photos-gctcdlar14",
-      "cit-latitude-to-map-gr-greece-cities-corinth",
-      "cit-dth-corinth",
-      "cit-dth-paul-before-the-proconsul-at-corinth",
-      "cit-dth-the-isthmian-games"
-    ]
+  "modernLocation": {
+   "en": "Tyre (Sur) and Sidon (Saida), South Lebanon, on the Mediterranean coast"
   },
-  {
-    "id": "site-cenchreae",
-    "ancientName": {
-      "en": "Kenchreai"
-    },
-    "modernLocation": {
-      "en": "Kechries, on the Saronic Gulf ~7 km E of ancient Corinth, Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.8847,
-        "lon": 22.9889
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-kechries",
-        "cit-www-bibleplaces-com-corintharea"
-      ]
-    },
-    "summary": {
-      "en": "Eastern harbor of Corinth. Paul, having taken a vow, 'had his hair cut off at Cenchreae' (Acts 18:18) before sailing for Syria with Priscilla and Aquila. Later home of Phoebe, deaconess of the Cenchreae church (Rom 16:1). LEG: SEA embarkation for the eastward voyage (via Ephesus) toward Caesarea."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-kechries",
-      "cit-www-bibleplaces-com-corintharea"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 33.27083,
+    "lon": 35.19611
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-tyre-lebanon",
+    "cit-en-wikipedia-org-wiki-sidon",
+    "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+    "cit-ref-sacred-bridge"
+   ]
   },
-  {
-    "id": "site-ephesus",
-    "ancientName": {
-      "en": "Ephesos"
-    },
-    "modernLocation": {
-      "en": "near Selçuk, İzmir Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.9498,
-        "lon": 27.3639
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-en-wikipedia-org-wiki-sel-c3-a7uk"
-      ]
-    },
-    "summary": {
-      "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
-    },
-    "citations": [
-      "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
-      "cit-dth-ephesus",
-      "cit-dth-the-temple-of-artemis-at-ephesus",
-      "cit-dth-magic-in-the-marketplace-of-ephesus"
-    ]
+  "summary": {
+   "en": "Jesus withdrew northwest into gentile Phoenician territory ('the region of Tyre and Sidon'), where he healed the daughter of the Syrophoenician/Canaanite woman (Mark 7:24-30; Matthew 15:21-28). Both cities are ancient, securely located Phoenician ports. Tyre lies ~50 km NW of Capernaum; Sidon ~40 km further north."
   },
-  {
-    "id": "site-caesarea-maritima",
-    "ancientName": {
-      "en": "Caesarea Maritima; Hierosolyma (Jerusalem)"
-    },
-    "modernLocation": {
-      "en": "Caesarea (near Or Akiva), Israel; Jerusalem"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.5021,
-        "lon": 34.8917
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-catholic-resources-org-bible-nt-geography-htm",
-        "cit-www-esv-org-resources-esv-global-study-bible-map"
-      ]
-    },
-    "summary": {
-      "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
-    },
-    "citations": [
-      "cit-catholic-resources-org-bible-nt-geography-htm",
-      "cit-www-esv-org-resources-esv-global-study-bible-map",
-      "cit-dth-caesarea-maritima",
-      "cit-dth-paul-at-caesarea-for-two-years"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-tyre-lebanon",
+   "cit-en-wikipedia-org-wiki-sidon",
+   "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+   "cit-ref-sacred-bridge"
+  ]
+ },
+ {
+  "id": "site-caesarea-philippi",
+  "ancientName": {
+   "en": "Caesarea Philippi; earlier Panias/Paneas (sanctuary of Pan); rebuilt by Philip the Tetrarch"
   },
-  {
-    "id": "site-antioch-on-the-orontes",
-    "ancientName": {
-      "en": "Antiocheia / Antioch (Syria)"
-    },
-    "modernLocation": {
-      "en": "Antakya, Hatay Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.2,
-        "lon": 36.16
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-        "cit-www-gotquestions-org-paul-third-missionary-journ"
-      ]
-    },
-    "summary": {
-      "en": "After spending time in Antioch (his home base, Acts 18:22-23), Paul set out a third time, departing through 'the region of Galatia and Phrygia in order, strengthening all the disciples.' Antioch is the launch point of the third journey. Acts notes he first 'went up and greeted the church' (widely read as Jerusalem) then went down to Antioch."
-    },
-    "citations": [
-      "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-      "cit-www-gotquestions-org-paul-third-missionary-journ"
-    ]
+  "modernLocation": {
+   "en": "Banias, at the southern foot of Mount Hermon, Golan Heights, ~40 km north of the Sea of Galilee"
   },
-  {
-    "id": "site-galatia-and-phrygia",
-    "ancientName": {
-      "en": "Galatia and Phrygia (incl. Derbe, Lystra, Iconium, Pisidian Antioch)"
-    },
-    "modernLocation": {
-      "en": "Central/south-central Anatolia, Turkey (Konya, Karaman, Yalvaç areas)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 38.31,
-        "lon": 31.18
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
-        "cit-www-esv-org-resources-esv-global-study-bible-map-2"
-      ]
-    },
-    "summary": {
-      "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point."
-    },
-    "citations": [
-      "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
-      "cit-www-esv-org-resources-esv-global-study-bible-map-2"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 33.24861,
+    "lon": 35.69444
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-caesarea-philippi",
+    "cit-www-bibleplaces-com-caesarea-philippi-banias"
+   ]
   },
-  {
-    "id": "site-macedonia",
-    "ancientName": {
-      "en": "Macedonia and Hellas/Achaia"
-    },
-    "modernLocation": {
-      "en": "Northern Greece (Macedonia region) and southern Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 41.01,
-        "lon": 24.29
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-enduringword-com-bible-commentary-acts-20",
-        "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
-      ]
-    },
-    "summary": {
-      "en": "After the Ephesian riot, Paul left for Macedonia (Acts 20:1), passing through (revisiting Philippi, Thessalonica, Berea) and 'gave much encouragement,' then came into Greece, where he stayed three months (Acts 20:2-3). He likely wrote 2 Corinthians from Macedonia and Romans from Corinth/Greece during this period (the collection for Jerusalem is a major theme). Coordinates given are for Philippi as representative."
-    },
-    "citations": [
-      "cit-enduringword-com-bible-commentary-acts-20",
-      "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
-    ]
+  "summary": {
+   "en": "At Caesarea Philippi, near the cave-sanctuary of Pan and the springs of the Jordan, Peter confesses Jesus as the Messiah and Jesus speaks of building his church and his coming passion (Matthew 16:13-23). The Transfiguration follows about a week later on a 'high mountain' (Matthew 17:1-8), traditionally Mount Tabor but, given proximity, possibly a spur of Mount Hermon. The site preserves the Pan sanctuary niches and Philip's city remains."
   },
-  {
-    "id": "site-troas",
-    "ancientName": {
-      "en": "Alexandria Troas (Antigoneia)"
-    },
-    "modernLocation": {
-      "en": "Dalyan/Eski Stambul, near Geyikli, Çanakkale Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 39.75,
-        "lon": 26.16
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-enduringword-com-bible-commentary-acts-20",
-        "cit-www-preceptaustin-org-acts-20-commentary"
-      ]
-    },
-    "summary": {
-      "en": "Returning from Greece via Macedonia (after a plot forced an overland detour, Acts 20:3), Paul rejoined his companions at Troas and stayed seven days. On the first day of the week, gathered to break bread, Paul preached until midnight; the young man Eutychus, asleep in a third-story window, fell to his death and was raised by Paul (Acts 20:7-12). A 'we'-passage resumes here, marking Luke's presence."
-    },
-    "citations": [
-      "cit-enduringword-com-bible-commentary-acts-20",
-      "cit-www-preceptaustin-org-acts-20-commentary"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-caesarea-philippi",
+   "cit-www-bibleplaces-com-caesarea-philippi-banias",
+   "cit-dth-caesarea-philippi",
+   "cit-dth-peters-confession"
+  ]
+ },
+ {
+  "id": "site-samaria",
+  "ancientName": {
+   "en": "Sychar, near Shechem; Jacob's Well; Mount Gerizim region"
   },
-  {
-    "id": "site-miletus",
-    "ancientName": {
-      "en": "Miletos / Miletus"
-    },
-    "modernLocation": {
-      "en": "Near Balat, Didim/Söke area, Aydın Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 37.53,
-        "lon": 27.28
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-bible-org-seriespage-pauls-parting-words-acts-20",
-        "cit-enduringword-com-bible-commentary-acts-20"
-      ]
-    },
-    "summary": {
-      "en": "Paul, hurrying to reach Jerusalem by Pentecost (Acts 20:16), bypassed Ephesus and summoned the Ephesian elders to Miletus, where he delivered his moving farewell address (Acts 20:18-35), warning of 'savage wolves' and quoting 'It is more blessed to give than to receive.' They prayed and wept, knowing they would not see his face again (20:36-38)."
-    },
-    "citations": [
-      "cit-bible-org-seriespage-pauls-parting-words-acts-20",
-      "cit-enduringword-com-bible-commentary-acts-20"
-    ]
+  "modernLocation": {
+   "en": "Bir Ya'qub (Jacob's Well), within the Greek Orthodox Church/Monastery of St. Photina at Balata, east of Nablus, West Bank"
   },
-  {
-    "id": "site-caesarea",
-    "ancientName": {
-      "en": "Caesarea Maritima (Stratonos Pyrgos / Caesarea)"
-    },
-    "modernLocation": {
-      "en": "Caesarea National Park, near Or Akiva / Caesarea, Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.5018388,
-        "lon": 34.8924472
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-pleiades-stoa-org-places-678401",
-        "cit-missionbibleclass-org-new-testament-part2-acts-f"
-      ]
-    },
-    "summary": {
-      "en": "Arriving at Caesarea, the party stayed with Philip the evangelist (one of the Seven, with four prophesying daughters). The prophet Agabus came down from Judea, bound his own hands and feet with Paul's belt, and prophesied Paul's arrest in Jerusalem. Despite pleas, Paul resolved to go up, saying he was ready to die for the name of the Lord (Acts 21:10-14). This is the closing scene of the third journey before Paul reaches Jerusalem (Acts 21:15-17)."
-    },
-    "citations": [
-      "cit-pleiades-stoa-org-places-678401",
-      "cit-missionbibleclass-org-new-testament-part2-acts-f"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 32.2103,
+    "lon": 35.2847
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-seetheholyland-net-jacobs-well",
+    "cit-www-holylandsite-com-shechem-jacobs-well"
+   ]
   },
-  {
-    "id": "site-caesarea-imprisonment",
-    "ancientName": {
-      "en": "Caesarea Maritima"
-    },
-    "modernLocation": {
-      "en": "Caesarea National Park, Israel"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.5018388,
-        "lon": 34.8924472
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-executableoutlines-com-topical-series-harmony-li",
-        "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
-        "cit-enduringword-com-bible-commentary-acts-25"
-      ]
-    },
-    "summary": {
-      "en": "Paul was held in the praetorium (Herod's palace) at Caesarea for about two years. He was tried before the governor Antonius Felix (Acts 24), who, hoping for a bribe and wishing to please the Jews, left him bound. When Porcius Festus succeeded Felix (Acts 24:27; 25:1), Paul - to avoid being sent back to a hostile Jerusalem - exercised his right as a Roman citizen and appealed to Caesar ('Caesarem appello', Acts 25:11-12). He then made his defense before Festus and the visiting client-king Herod Agrippa II and Bernice (Acts 25:13-26:32); Agrippa's verdict was that Paul could have been freed had he not appealed to Caesar (26:32)."
-    },
-    "citations": [
-      "cit-executableoutlines-com-topical-series-harmony-li",
-      "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
-      "cit-enduringword-com-bible-commentary-acts-25"
-    ]
+  "summary": {
+   "en": "Traveling between Judea and Galilee through Samaria, Jesus meets the Samaritan woman at Jacob's Well (John 4), discusses worship 'on this mountain' (Mount Gerizim) versus Jerusalem, and stays two days in Sychar. The deep ancient well (still extant inside the church) and the Samaritan sanctity of Gerizim are well attested."
   },
-  {
-    "id": "site-sidon",
-    "ancientName": {
-      "en": "Sidon / Tsidon (Phoenician Ṣidunu)"
-    },
-    "modernLocation": {
-      "en": "Saida, Lebanon"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 33.5606,
-        "lon": 35.3758
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-pleiades-stoa-org-places-678393",
-        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-      ]
-    },
-    "summary": {
-      "en": "Paul, with other prisoners, was handed to a centurion named Julius of the Augustan Cohort and embarked on a ship of Adramyttium (Acts 27:1-2). Luke and Aristarchus accompanied him (a 'we'-passage). The next day they put in at Sidon, where Julius kindly allowed Paul to visit friends and be cared for (27:3)."
-    },
-    "citations": [
-      "cit-pleiades-stoa-org-places-678393",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
+  "citations": [
+   "cit-www-seetheholyland-net-jacobs-well",
+   "cit-www-holylandsite-com-shechem-jacobs-well",
+   "cit-dth-jacob-well-in-samaria"
+  ]
+ },
+ {
+  "id": "site-final-journey-jericho",
+  "ancientName": {
+   "en": "Jericho; New Testament Herodian Jericho at Tulul Abu el-Alayiq (winter palaces); Old Testament Jericho at Tell es-Sultan"
   },
-  {
-    "id": "site-myra-of-lycia",
-    "ancientName": {
-      "en": "Myra (Lycia)"
-    },
-    "modernLocation": {
-      "en": "Demre (Kale), Antalya Province, Turkey"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 36.26,
-        "lon": 29.98
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-pleiades-stoa-org-places-639005",
-        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-      ]
-    },
-    "summary": {
-      "en": "Because of contrary winds they sailed under the lee (sheltered side) of Cyprus, then across the open sea off Cilicia and Pamphylia, landing at Myra in Lycia (Acts 27:4-5). There the centurion found an Alexandrian ship (a grain freighter) bound for Italy and transferred the prisoners onto it (27:6). Myra was a known port on the Alexandria-to-Rome grain route."
-    },
-    "citations": [
-      "cit-pleiades-stoa-org-places-639005",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
+  "modernLocation": {
+   "en": "Jericho (Ariha), Jordan Valley, West Bank; modern town near ancient mounds"
   },
-  {
-    "id": "site-cnidus-and-fair-havens",
-    "ancientName": {
-      "en": "Knidos (Caria); Kaloi Limenes (Fair Havens) near Lasaia/Lasea, Crete"
-    },
-    "modernLocation": {
-      "en": "Knidos on the Datça peninsula (Turkey); Kaloi Limenes, south coast of Crete (Greece)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 34.9297,
-        "lon": 24.8003
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-bibleplaces-com-fair-havens",
-        "cit-en-wikipedia-org-wiki-kaloi-limenes",
-        "cit-en-wikipedia-org-wiki-knidos"
-      ]
-    },
-    "summary": {
-      "en": "Sailing slowly against the wind, the ship reached Cnidus with difficulty, then ran under the lee of Crete off Cape Salmone, and arrived at Fair Havens near the city of Lasea (Acts 27:7-8). The coordinates given are for Fair Havens (Kaloi Limenes). 'Much time had been lost and the voyage was now dangerous because the Fast (Yom Kippur, ~late September/October) had already gone by' (27:9). Paul warned against sailing on, but the centurion followed the pilot and owner; since the harbor was unsuitable to winter in, the majority decided to try to reach Phoenix, a better Cretan harbor (27:10-12)."
-    },
-    "citations": [
-      "cit-www-bibleplaces-com-fair-havens",
-      "cit-en-wikipedia-org-wiki-kaloi-limenes",
-      "cit-en-wikipedia-org-wiki-knidos"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 31.8561,
+    "lon": 35.46
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-jericho",
+    "cit-www-jerusalemperspective-com-1402"
+   ]
   },
-  {
-    "id": "site-phoenix",
-    "ancientName": {
-      "en": "Phoinix / Phoenix (Crete)"
-    },
-    "modernLocation": {
-      "en": "South Crete near Loutro / Phoinix (Sfakia), Greece"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 35.1866,
-        "lon": 24.3467
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
-        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-      ]
-    },
-    "summary": {
-      "en": "Attempting to reach Phoenix, a Cretan harbor 'facing southwest and northwest' (Acts 27:12), the ship was caught by a violent northeasterly wind called Euraquilo (Euroclydon; a Greek-Latin compound for the ENE wind, attested on a Roman wind-rose in Tunisia). Driven past the small island of Cauda (Clauda/Gavdos), the crew undergirded the hull with cables, lowered gear, jettisoned cargo and tackle, and lost sight of sun and stars for many days (27:13-20). Paul, after an angelic vision, assured all 276 aboard that no life would be lost, only the ship (27:21-26)."
-    },
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
+  "summary": {
+   "en": "On the final ascent to Jerusalem for Passover, Jesus passes through Jericho: he heals blind Bartimaeus (Mark 10:46-52) and calls the tax-collector Zacchaeus down from a sycamore-fig (Luke 19:1-10). The NT Roman/Herodian Jericho (Hasmonean-Herodian palace complex at Tulul Abu el-Alayiq) lies near the wadi Qelt, distinct from the prehistoric Tell es-Sultan mound. The road climbs ~1,000 m over ~27 km from Jericho (below sea level) to Jerusalem."
   },
-  {
-    "id": "site-malta-shipwreck",
-    "ancientName": {
-      "en": "Melite / Melita (the island); traditional 'St Paul's Bay'"
-    },
-    "modernLocation": {
-      "en": "Malta; traditionally St Paul's Bay (San Pawl il-Baħar), with Salina Bay proposed as an alternative wreck site"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 35.9483,
-        "lon": 14.4017
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-bibleplaces-com-st-pauls-bay-malta",
-        "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
-        "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
-      ]
-    },
-    "summary": {
-      "en": "On the 14th night, drifting across the Adria (the central Mediterranean), sailors sensed land, took soundings (20 then 15 fathoms), and at dawn ran the ship aground on a sandbar/reef; the bow stuck fast and the stern broke up, but all 276 reached land safely (Acts 27:27-44). The island was Melite (Malta). The 'barbaroi' (native, non-Greek-speaking) islanders showed unusual kindness, kindling a fire; a viper fastened on Paul's hand without harming him, leading them to think him a god (28:1-6). Paul healed the father of Publius, the 'chief man' (Greek 'protos') of the island, and many others (28:7-10). They wintered three months."
-    },
-    "citations": [
-      "cit-www-bibleplaces-com-st-pauls-bay-malta",
-      "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
-      "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
-      "cit-dth-location-of-pauls-shipwreck-on-malta",
-      "cit-dth-pauls-ministry-on-malta",
-      "cit-dth-melita-the-place-of-refuge"
-    ]
+  "citations": [
+   "cit-en-wikipedia-org-wiki-jericho",
+   "cit-www-jerusalemperspective-com-1402",
+   "cit-dth-jericho-and-jesus",
+   "cit-dth-jesus-in-jericho",
+   "cit-dth-zacchaeus-the-tax-collector"
+  ]
+ },
+ {
+  "id": "site-bethany-and-bethphage",
+  "ancientName": {
+   "en": "Bethany (Beit Anya); el-Azariyeh ('place of Lazarus'); Bethphage"
   },
-  {
-    "id": "site-syracuse-rhegium-puteoli",
-    "ancientName": {
-      "en": "Syrakousai (Syracuse, Sicily); Rhegion (Rhegium); Puteoli / Dikaiarcheia"
-    },
-    "modernLocation": {
-      "en": "Siracusa, Sicily; Reggio Calabria; Pozzuoli (Bay of Naples), Italy"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 40.8259,
-        "lon": 14.1253
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-topostext-org-place-408141pdik",
-        "cit-pleiades-stoa-org-places-432815"
-      ]
-    },
-    "summary": {
-      "en": "After three months they sailed on another Alexandrian grain ship with the figurehead of the Twin Brothers (Castor and Pollux, the Dioscuri). They put in at Syracuse (3 days), then Rhegium, and with a favorable south wind reached Puteoli in one more day (Acts 28:11-13). At Puteoli they found believers and stayed seven days, then headed toward Rome. Coordinates given are for Puteoli (Pozzuoli)."
-    },
-    "citations": [
-      "cit-topostext-org-place-408141pdik",
-      "cit-pleiades-stoa-org-places-432815"
-    ]
+  "modernLocation": {
+   "en": "al-Eizariya (el-Azariyeh), SE slope of the Mount of Olives, ~2.5 km E of Jerusalem's Old City, West Bank"
   },
-  {
-    "id": "site-rome",
-    "ancientName": {
-      "en": "Roma; en route Forum Appii and Tres Tabernae on the Via Appia"
-    },
-    "modernLocation": {
-      "en": "Rome, Italy (Forum Appii near Borgo Faiti; Tres Tabernae near Cisterna di Latina)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 41.8919,
-        "lon": 12.5113
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
-        "cit-enduringword-com-bible-commentary-acts-27"
-      ]
-    },
-    "summary": {
-      "en": "Roman believers came out to meet Paul at the Forum of Appius and Three Taverns on the Via Appia (Acts 28:15). In Rome Paul was allowed to live by himself under guard (light custody/house arrest). He met the local Jewish leaders, expounded the kingdom of God and Jesus from the Law and Prophets (28:17-28), and 'lived there two whole years at his own expense, welcoming all who came, preaching the kingdom of God and teaching about the Lord Jesus Christ with all boldness and without hindrance' (28:30-31). Acts ends here, abruptly, without recording the trial's outcome."
-    },
-    "citations": [
-      "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
-      "cit-enduringword-com-bible-commentary-acts-27",
-      "cit-dth-ancient-rome",
-      "cit-dth-paul-and-the-roman-christians",
-      "cit-dth-nero-and-the-burning-of-rome"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 31.7717,
+    "lon": 35.2569
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-seetheholyland-net-bethany",
+    "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+   ]
   },
-  {
-    "id": "site-emmaus",
-    "ancientName": {
-      "en": "Emmaus / Emmaus-Nicopolis; Amwas"
-    },
-    "modernLocation": {
-      "en": "Disputed: Emmaus Nicopolis (Amwas/Latrun, ~30 km W of Jerusalem — strongest ancient attestation, Eusebius c. AD 330); el-Qubeibeh (~11 km NW, Franciscan tradition since 15th c.); Motza/Colonia (~6 km W, Josephus reference)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.8389,
-        "lon": 34.9889
-      },
-      "confidence": "medium",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-emmaus-nicopolis",
-        "cit-emmaus-qubeibeh",
-        "cit-pleiades-gazetteer"
-      ]
-    },
-    "summary": {
-      "en": "On Easter Sunday afternoon, two disciples walked from Jerusalem to Emmaus; a stranger (Jesus) joined them, expounded Scripture, and was recognized in the breaking of bread before vanishing (Luke 24:13-35). The site is disputed. Emmaus Nicopolis (Amwas/Latrun) has the strongest ancient attestation: Eusebius identifies it in the Onomasticon (c. AD 330) and Byzantine basilica ruins survive. It lies ~30 km W of Jerusalem, matching the 160-stadia reading of Codex Sinaiticus and other early manuscripts. El-Qubeibeh (~11 km NW) and Motza (~6 km W) better fit the majority 60-stadia reading but have weaker ancient tradition. The textual variant — 60 vs 160 stadia — drives the geographic debate."
-    },
-    "citations": [
-      "cit-emmaus-nicopolis",
-      "cit-emmaus-qubeibeh",
-      "cit-pleiades-gazetteer",
-      "cit-dth-the-road-to-emmaus"
-    ]
+  "summary": {
+   "en": "Bethany, home of Mary, Martha and Lazarus, is where Jesus raised Lazarus (John 11) and was anointed before the passion (John 12; Mark 14:3-9). It served as his lodging during Passion Week. The Triumphal Entry was staged from neighboring Bethphage. The Tomb of Lazarus has been venerated since at least the 2nd c.; Eusebius notes the village was already called by the Lazarus-name."
   },
-  {
-    "id": "site-tabgha",
-    "ancientName": {
-      "en": "Tabgha / Heptapegon ('Seven Springs'); the shore of the Sea of Tiberias"
-    },
-    "modernLocation": {
-      "en": "Tabgha, northwest shore of the Sea of Galilee, Israel; Church of the Primacy of St. Peter (Franciscan, built 1933 on 4th-c. foundations)"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.8731,
-        "lon": 35.5464
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-tabgha-primacy",
-        "cit-jesus-boat",
-        "cit-pleiades-gazetteer"
-      ]
-    },
-    "summary": {
-      "en": "The traditional site of Jesus' post-resurrection appearance to seven disciples at the Sea of Tiberias (John 21). After a fruitless night, Jesus called from the shore to cast on the right side; 153 large fish were caught. He had a charcoal-fire breakfast ready — echoing Peter's denial by a charcoal fire (John 18:18) — and restored Peter with three 'Do you love me?' exchanges. The Church of the Primacy of St. Peter preserves the Mensa Christi ('Table of Christ'), a flat rock traditionally identified as the breakfast site. Excavations revealed 4th-c. Byzantine church foundations, confirming very early veneration. The 1st-c. 'Jesus Boat' excavated in 1986 near Magdala/Ginosar (~3 km east), carbon-dated c. 40 BC – AD 70, exemplifies the fishing craft of the Galilean disciples."
-    },
-    "citations": [
-      "cit-tabgha-primacy",
-      "cit-jesus-boat",
-      "cit-pleiades-gazetteer"
-    ]
+  "citations": [
+   "cit-www-seetheholyland-net-bethany",
+   "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
+   "cit-dth-the-village-of-bethphage",
+   "cit-dth-jesus-and-the-raising-of-lazarus"
+  ]
+ },
+ {
+  "id": "site-jerusalem",
+  "ancientName": {
+   "en": "Jerusalem; the Second Temple (Herodian Temple) and its courts; the Temple Mount (Har HaBayit)"
   },
-  {
-    "id": "site-galilee-mountain",
-    "ancientName": {
-      "en": "The mountain in Galilee (unnamed); 'the mountain to which Jesus had directed them'"
-    },
-    "modernLocation": {
-      "en": "Unknown; candidates include Mount Tabor (32.6872°N, 35.3928°E), Mount Arbel (32.8261°N, 35.5025°E), the Mount of Beatitudes ridge (32.8817°N, 35.5556°E), and the Horns of Hattin"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 32.8817,
-        "lon": 35.5556
-      },
-      "confidence": "disputed",
-      "disputes": {
-        "en": "The exact mountain in Galilee is not named; coordinates are representative of the Mount of Beatitudes ridge."
-      },
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-galilee-mountain",
-        "cit-pleiades-gazetteer"
-      ]
-    },
-    "summary": {
-      "en": "Matthew 28:16 records that the Eleven went to 'the mountain to which Jesus had directed them' in Galilee, where he delivered the Great Commission: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations...' The mountain is not named; the Mount of Beatitudes is used as a representative location but the identification is speculative. Many scholars associate the appearance to 'more than 500 brothers at one time' (1 Corinthians 15:6) with this Galilean gathering, since it is the only large-scale outdoor post-resurrection event recorded. Paul's note that 'most of them are still alive' (c. AD 53-55) functions as an implicit invitation to verify the claim."
-    },
-    "citations": [
-      "cit-galilee-mountain",
-      "cit-pleiades-gazetteer"
-    ]
+  "modernLocation": {
+   "en": "Temple Mount / Haram al-Sharif, Old City of Jerusalem; surviving Herodian remains include the Western Wall and the southern steps/Robinson's Arch"
   },
-  {
-    "id": "site-mount-of-olives-ascension",
-    "ancientName": {
-      "en": "Mount Olivet; 'the mount called Olivet' (Acts 1:12); near Bethany"
-    },
-    "modernLocation": {
-      "en": "Chapel of the Ascension (Mosque of the Ascension), summit of the Mount of Olives, at-Tur, Jerusalem; ~1 km ('a Sabbath day's journey') east of the Temple Mount"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 31.7783,
-        "lon": 35.245
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-ascension-chapel",
-        "cit-mount-olives",
-        "cit-pleiades-gazetteer"
-      ]
-    },
-    "summary": {
-      "en": "The site of Jesus' ascension, 40 days after the resurrection (Acts 1:3, 9-12). Jesus led the apostles out 'as far as Bethany' (Luke 24:50), on the Mount of Olives — Acts 1:12 calls it 'a Sabbath day's journey' (~2,000 cubits, ~1 km) from Jerusalem. He gave final instructions about the coming Holy Spirit and the worldwide witness ('to the end of the earth'), then 'was lifted up, and a cloud took him out of their sight.' Two angels promised his return 'in the same way.' The Chapel of the Ascension marks a site venerated since at least the 4th century; the Bordeaux Pilgrim (AD 333) and Egeria (c. 384) describe pilgrimages here. The original Byzantine rotunda (Imbomon) was built by a Roman matron named Poimenia (c. AD 378-384). Destroyed in AD 614, rebuilt by the Crusaders as an octagonal chapel, later converted to a mosque by Saladin (1187)."
-    },
-    "citations": [
-      "cit-ascension-chapel",
-      "cit-mount-olives",
-      "cit-pleiades-gazetteer",
-      "cit-dth-kidron-valley-and-mount-of-olives",
-      "cit-dth-the-ascension-of-jesus"
-    ]
+  "coordinates": {
+   "value": {
+    "lat": 31.778,
+    "lon": 35.2354
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-temple-mount",
+    "cit-en-wikipedia-org-wiki-second-temple",
+    "cit-ref-sacred-bridge"
+   ]
   },
-  {
-    "id": "site-damascus",
-    "ancientName": {
-      "en": "Damascus (Dimashq / Dammeseq); one of the oldest continuously inhabited cities in the world"
-    },
-    "modernLocation": {
-      "en": "Damascus, Syria; the Roman-era Via Recta ('Straight Street', Acts 9:11) survives as Midhat Pasha / Bab Sharqi Street in the Old City"
-    },
-    "coordinates": {
-      "value": {
-        "lat": 33.513,
-        "lon": 36.31
-      },
-      "confidence": "high",
-      "reviewStatus": "self-reviewed",
-      "citations": [
-        "cit-damascus-straight-street",
-        "cit-house-ananias",
-        "cit-pleiades-gazetteer"
-      ]
-    },
-    "summary": {
-      "en": "Near Damascus, the risen Jesus appeared to Saul/Paul in a blinding light (Acts 9:1-19; 22:6-16; 26:12-18): 'Saul, Saul, why are you persecuting me? I am Jesus, whom you are persecuting.' Blinded for three days, Paul was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Paul calls this the last resurrection appearance: 'Last of all, as to one untimely born, he appeared also to me' (1 Corinthians 15:8). The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus, though the modern street sits ~4 meters above the Roman level. An underground chapel near Bab Sharqi, identified as the House of Ananias, preserves 5th/6th-c. Byzantine remains (excavated 1921). Paul's basket escape through the city wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan."
-    },
-    "citations": [
-      "cit-damascus-straight-street",
-      "cit-house-ananias",
-      "cit-pleiades-gazetteer"
-    ]
-  }
+  "summary": {
+   "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-temple-mount",
+   "cit-en-wikipedia-org-wiki-second-temple",
+   "cit-dth-the-temple-in-jerusalem",
+   "cit-dth-destruction-of-jerusalem-and-the-temple",
+   "cit-dth-history-of-jerusalem",
+   "cit-dth-the-golden-gate"
+  ]
+ },
+ {
+  "id": "site-last-supper",
+  "ancientName": {
+   "en": "The 'large upper room' (anagaion); traditional Cenacle on Mount Zion"
+  },
+  "modernLocation": {
+   "en": "Cenacle building, Mount Zion, just outside the Old City walls, Jerusalem (current Gothic structure is medieval, over earlier tradition)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7717,
+    "lon": 35.2294
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+    "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
+   ]
+  },
+  "summary": {
+   "en": "Jesus shares the Last Supper with the Twelve in a furnished upper room (Mark 14; Luke 22), instituting the bread-and-cup remembrance. In the Synoptics this is a Passover meal (Nisan 15); in John the meal precedes Passover (Jesus dies as the lambs are slain on Nisan 14). The traditional Cenacle on Mount Zion is a long-standing but architecturally later commemoration."
+  },
+  "citations": [
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+   "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
+   "cit-dth-the-upper-room"
+  ]
+ },
+ {
+  "id": "site-gethsemane",
+  "ancientName": {
+   "en": "Gethsemane ('oil press'), a garden/grove at the foot/lower slope of the Mount of Olives, across the Kidron Valley"
+  },
+  "modernLocation": {
+   "en": "Garden of Gethsemane beside the Church of All Nations (Basilica of the Agony), western foot of the Mount of Olives, Jerusalem; ancient olive trees on site"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7794,
+    "lon": 35.2397
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-mount-of-olives",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "After the supper Jesus prays in agony at Gethsemane and is arrested following Judas' betrayal (Mark 14:32-52). The site at the Mount of Olives foot, across the Kidron, fits the Gospel topography; very old olive trees grow there (some radiocarbon/genetic studies date roots to the 12th c., though the locale itself is early-attested by pilgrims)."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-mount-of-olives",
+   "cit-dth-garden-of-gethsemane",
+   "cit-dth-jesus-prays-garden-gethsemane"
+  ]
+ },
+ {
+  "id": "site-trial-before-pilate",
+  "ancientName": {
+   "en": "The Praetorium; the pavement 'Lithostrotos'/'Gabbatha' (John 19:13); Herod's Palace vs the Antonia Fortress"
+  },
+  "modernLocation": {
+   "en": "Disputed: Herod's Palace (western Old City, near the Jaffa Gate / Tower of David / Kishle area) vs the Antonia Fortress (NW corner of the Temple Mount, near today's Ecce Homo/Via Dolorosa start), Jerusalem"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7765,
+    "lon": 35.2278
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+    "cit-en-wikipedia-org-wiki-pilate-stone"
+   ]
+  },
+  "summary": {
+   "en": "Jesus is tried before the Jewish authorities and then Pontius Pilate, who sentences him at a place called Gabbatha/Lithostrotos. Two candidate locations: the older pilgrim tradition (Antonia Fortress, anchoring the Via Dolorosa) and the now widely-favored scholarly view that Pilate, when in Jerusalem, resided and judged at Herod's Palace in the western city. The 'Pilate stone' from Caesarea independently confirms Pontius Pilate as prefect of Judaea."
+  },
+  "citations": [
+   "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+   "cit-en-wikipedia-org-wiki-pilate-stone",
+   "cit-dth-the-praetorium-of-pilate",
+   "cit-dth-jesus-before-caiaphas",
+   "cit-dth-the-trial-of-jesus"
+  ]
+ },
+ {
+  "id": "site-golgotha-and-the-tomb",
+  "ancientName": {
+   "en": "Golgotha/Calvary ('place of the skull'); the rock-cut tomb in a nearby garden"
+  },
+  "modernLocation": {
+   "en": "Church of the Holy Sepulchre, Christian Quarter, Old City of Jerusalem (traditional/scholarly leading site); alternative: the Garden Tomb / Gordon's Calvary north of the Damascus Gate"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7784,
+    "lon": 35.2297
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+    "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+    "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
+   ]
+  },
+  "summary": {
+   "en": "Jesus is crucified at Golgotha, dies, and is buried in a new rock-cut tomb nearby (Joseph of Arimathea's), with the resurrection proclaimed on the first day of the week. The Church of the Holy Sepulchre is the strongest candidate: excavations show the area was a disused quarry with 1st-c. rock-cut tombs, lay outside the city wall in Jesus' day, and was venerated continuously (Constantine built over it in the 4th c. on earlier memory); a 2025 report noted ancient garden/cultivation remains beneath, consistent with John 19:41. The Garden Tomb is archaeologically Iron Age and rejected as the original by scholars."
+  },
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+   "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+   "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+   "cit-dth-golgotha",
+   "cit-dth-golgotha-location",
+   "cit-dth-the-tomb-of-jesus",
+   "cit-dth-the-empty-tomb-of-jesus",
+   "cit-dth-roman-crucifixion-execution-jesus"
+  ]
+ },
+ {
+  "id": "site-antioch",
+  "ancientName": {
+   "en": "Antiocheia / Antiochia ad Orontem"
+  },
+  "modernLocation": {
+   "en": "Antakya, Hatay Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.2,
+    "lon": 36.16
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-livius-org-articles-place-antioch-antakya",
+    "cit-topostext-org-place-362362pant",
+    "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+   ]
+  },
+  "summary": {
+   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' (Acts 11:26). LEG: start point (land departure on journey 2; departs by land to Seleucia on journey 1"
+  },
+  "citations": [
+   "cit-www-livius-org-articles-place-antioch-antakya",
+   "cit-topostext-org-place-362362pant",
+   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+  ]
+ },
+ {
+  "id": "site-seleucia-pieria",
+  "ancientName": {
+   "en": "Seleukeia Pieria"
+  },
+  "modernLocation": {
+   "en": "near Samandağ / Çevlik, Hatay Province, Turkey (ruins of the harbor incl. the Vespasian-Titus tunnel)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.1239,
+    "lon": 35.9219
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-seleucia-pieria",
+    "cit-www-britannica-com-place-seleucia-pieria",
+    "cit-www-bibleplaces-com-seleucia"
+   ]
+  },
+  "summary": {
+   "en": "The seaport of Antioch, ~16 mi (25 km) downriver/WSW, founded by Seleucus I Nicator (301 BC). On Journey 1 Paul and Barnabas 'went down to Seleucia, and from there sailed to Cyprus' (Acts 13:4). LEG: short LAND leg from Antioch to the coast, then point of embarkation for the SEA crossing to Cyprus."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-seleucia-pieria",
+   "cit-www-britannica-com-place-seleucia-pieria",
+   "cit-www-bibleplaces-com-seleucia"
+  ]
+ },
+ {
+  "id": "site-salamis",
+  "ancientName": {
+   "en": "Salamis"
+  },
+  "modernLocation": {
+   "en": "near Famagusta, eastern Cyprus (archaeological park ~6 km N of Famagusta)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 35.1814,
+    "lon": 33.9
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-salamis-cyprus",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "Landfall on Cyprus. Paul and Barnabas 'proclaimed the word of God in the synagogues of the Jews' (Acts 13:5); John Mark accompanied them as assistant (hyperetes). Salamis was the chief eastern port, with a sizable Jewish community. LEG: SEA arrival from Seleucia; then LAND travel west across the island to Paphos."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-salamis-cyprus",
+   "cit-dth-ancient-salamis"
+  ]
+ },
+ {
+  "id": "site-paphos",
+  "ancientName": {
+   "en": "Nea Paphos (Paphos)"
+  },
+  "modernLocation": {
+   "en": "Paphos (Kato Paphos archaeological site), SW Cyprus"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 34.7571,
+    "lon": 32.4065
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+    "cit-biblearchaeology-org-research-chronological-cate",
+    "cit-www-britannica-com-place-paphos"
+   ]
+  },
+  "summary": {
+   "en": "Roman provincial capital and seat of the proconsul. Here the magician Bar-Jesus / Elymas opposed them before the proconsul Sergius Paulus; Paul struck Elymas with temporary blindness, and the proconsul 'believed, being astonished at the teaching of the Lord' (Acts 13:6-12). This passage marks the narrative shift from 'Saul' to 'Paul' and his emergence as lead missionary. ARCHAEOLOGY: inscriptions naming a 'Sergius Paulus' / a 'Paulus [proconsul]' (e.g., the Soloi inscription on Cyprus) corroborate the name, title, and senatorial (proconsular) governance of Cyprus, though no inscription definitively ties one to THIS Acts episode. LEG: end of Cyprus land transit; SEA departure NW to Perga in P"
+  },
+  "citations": [
+   "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+   "cit-biblearchaeology-org-research-chronological-cate",
+   "cit-www-britannica-com-place-paphos",
+   "cit-dth-ancient-paphos",
+   "cit-dth-legacy-of-barnabas-on-cyprus"
+  ]
+ },
+ {
+  "id": "site-perga",
+  "ancientName": {
+   "en": "Perge / Perga"
+  },
+  "modernLocation": {
+   "en": "near Aksu, Antalya Province, Turkey (~15 km E of Antalya)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.9614,
+    "lon": 30.8539
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-perga",
+    "cit-www-britannica-com-place-perga",
+    "cit-topostext-org-place-370309pper"
+   ]
+  },
+  "summary": {
+   "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-perga",
+   "cit-www-britannica-com-place-perga",
+   "cit-topostext-org-place-370309pper"
+  ]
+ },
+ {
+  "id": "site-pisidian-antioch",
+  "ancientName": {
+   "en": "Antiocheia / Antioch 'near Pisidia' (Colonia Caesarea Antiochia)"
+  },
+  "modernLocation": {
+   "en": "near Yalvaç, Isparta Province, Turkey (~1 km N of Yalvaç)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 38.3062,
+    "lon": 31.1899
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-vici-org-vici-2325-lang-en",
+    "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+    "cit-www-thegospelcoalition-org-themelios-article-act"
+   ]
+  },
+  "summary": {
+   "en": "Roman colony and administrative center of the southern part of the province of Galatia. Setting of Paul's first recorded major sermon (Acts 13:16-41) in the synagogue. After many Gentiles responded the next Sabbath, jealous synagogue leaders incited 'devout women of high standing and the leading men' to drive them out; Paul and Barnabas 'shook the dust from their feet' and turned to the Gentiles (Acts 13:42-52). VISITED AGAIN on the return leg to strengthen disciples and appoint elders (Acts 14:21-23). ARCHAEOLOGY: excavated since W. Ramsay (1913-14); imperial cult temple (Augusteum), city gate, Sergii Pauli connections. LEG: LAND."
+  },
+  "citations": [
+   "cit-vici-org-vici-2325-lang-en",
+   "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+   "cit-www-thegospelcoalition-org-themelios-article-act",
+   "cit-dth-pisidian-antioch"
+  ]
+ },
+ {
+  "id": "site-iconium",
+  "ancientName": {
+   "en": "Ikonion / Iconium"
+  },
+  "modernLocation": {
+   "en": "Konya, Konya Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.8714,
+    "lon": 32.4846
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-konya",
+    "cit-www-bibleref-com-acts-14-acts-14-6-html"
+   ]
+  },
+  "summary": {
+   "en": "City in Lycaonia/Galatia where Paul and Barnabas spoke boldly in the synagogue 'so that a great number both of Jews and of Greeks believed' (Acts 14:1) and stayed 'a long time' performing signs. The city divided; on learning of a plot to stone them, they fled to Lystra and Derbe (Acts 14:2-6). REVISITED on return (Acts 14:21). Iconium's continuous occupation (modern Konya) limits excavation. LEG: LAND."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-konya",
+   "cit-www-bibleref-com-acts-14-acts-14-6-html"
+  ]
+ },
+ {
+  "id": "site-lystra",
+  "ancientName": {
+   "en": "Lystra (Colonia Iulia Felix Gemina Lustra)"
+  },
+  "modernLocation": {
+   "en": "near Hatunsaray (Gökyurt), Konya Province, Turkey (mound near Hatunsaray)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.6019,
+    "lon": 32.3383
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-lystra",
+    "cit-www-bibleplaces-com-derbelystra"
+   ]
+  },
+  "summary": {
+   "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-lystra",
+   "cit-www-bibleplaces-com-derbelystra",
+   "cit-dth-the-miracle-at-lystra"
+  ]
+ },
+ {
+  "id": "site-derbe",
+  "ancientName": {
+   "en": "Derbe"
+  },
+  "modernLocation": {
+   "en": "Kerti Höyük mound, near Ekinözü, ~24 km NE of Karaman (ancient Laranda), Karaman Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.3493,
+    "lon": 33.3617
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-derbe",
+    "cit-vici-org-vici-24065"
+   ]
+  },
+  "summary": {
+   "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-derbe",
+   "cit-vici-org-vici-24065"
+  ]
+ },
+ {
+  "id": "site-attalia",
+  "ancientName": {
+   "en": "Attaleia"
+  },
+  "modernLocation": {
+   "en": "Antalya, Antalya Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.8841,
+    "lon": 30.7056
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+   ]
+  },
+  "summary": {
+   "en": "After preaching at Perga on the return leg, they 'went down to Attalia, and from there sailed back to Antioch' (Acts 14:25-26). Attalia was the principal Pamphylian harbor (founded by Attalus II of Pergamon). LEG: short LAND leg from Perga; then SEA voyage back to Syrian Antioch, ending Journey 1."
+  },
+  "citations": [
+   "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+  ]
+ },
+ {
+  "id": "site-syria",
+  "ancientName": {
+   "en": "Cilicia; Tarsus"
+  },
+  "modernLocation": {
+   "en": "SE Turkey (Adana/Mersin region; Tarsus)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.9177,
+    "lon": 34.8947
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-esv-org-resources-esv-global-study-bible-map"
+   ]
+  },
+  "summary": {
+   "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
+  },
+  "citations": [
+   "cit-www-esv-org-resources-esv-global-study-bible-map"
+  ]
+ },
+ {
+  "id": "site-alexandria-troas",
+  "ancientName": {
+   "en": "Alexandria Troas (Troas)"
+  },
+  "modernLocation": {
+   "en": "Dalyan, near Geyikli, Çanakkale Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 39.7517,
+    "lon": 26.1586
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-alexandria-troas",
+    "cit-www-bibleplaces-com-acts16"
+   ]
+  },
+  "summary": {
+   "en": "Port on the NW Aegean coast where Paul saw a night vision of 'a man of Macedonia' pleading 'Come over to Macedonia and help us' (Acts 16:8-10). Here the narrative shifts to first-person plural ('we'), traditionally marking Luke joining the party. From Troas they set sail for Europe. LEG: LAND arrival; SEA embarkation point for the crossing to Europe (via Samothrace to Neapolis)."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-alexandria-troas",
+   "cit-www-bibleplaces-com-acts16"
+  ]
+ },
+ {
+  "id": "site-samothrace",
+  "ancientName": {
+   "en": "Samothrake"
+  },
+  "modernLocation": {
+   "en": "Samothraki island, NE Aegean, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 40.45,
+    "lon": 25.53
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
+   ]
+  },
+  "summary": {
+   "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA."
+  },
+  "citations": [
+   "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
+  ]
+ },
+ {
+  "id": "site-neapolis",
+  "ancientName": {
+   "en": "Neapolis"
+  },
+  "modernLocation": {
+   "en": "Kavala, eastern Macedonia, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 40.9369,
+    "lon": 24.4122
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
+   ]
+  },
+  "summary": {
+   "en": "Port of Philippi and the gospel's first recorded landfall in Europe: 'from Troas... to Neapolis, and from there to Philippi' (Acts 16:11-12). LEG: SEA arrival; then short LAND leg (~16 km up the Via Egnatia) to Philippi."
+  },
+  "citations": [
+   "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
+  ]
+ },
+ {
+  "id": "site-philippi",
+  "ancientName": {
+   "en": "Philippoi (Colonia Iulia Augusta Philippensis)"
+  },
+  "modernLocation": {
+   "en": "near Krinides / Filippoi, ~10 km NW of Kavala, eastern Macedonia, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 41.0131,
+    "lon": 24.2864
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-philippi",
+    "cit-www-padfield-com-2005-philippi-html"
+   ]
+  },
+  "summary": {
+   "en": "A leading Roman colony of Macedonia. By a riverside place of prayer Lydia, a God-fearing dealer in purple from Thyatira, believed and was baptized with her household (Acts 16:13-15). Paul exorcised a slave girl with a spirit of divination, costing her owners their profit; Paul and Silas were beaten and jailed; a midnight earthquake opened the prison and the jailer's household was converted; the magistrates, alarmed to learn they had flogged Roman citizens, apologized (Acts 16:16-40). Recipient church of Philippians. LEG: LAND (then westward along the Via Egnatia)."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-philippi",
+   "cit-www-padfield-com-2005-philippi-html",
+   "cit-dth-philippi-of-macedonia",
+   "cit-dth-lydias-conversion-at-philippi",
+   "cit-dth-paul-and-silas-in-prison-at-philippi"
+  ]
+ },
+ {
+  "id": "site-thessalonica",
+  "ancientName": {
+   "en": "Thessalonike"
+  },
+  "modernLocation": {
+   "en": "Thessaloniki, Central Macedonia, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 40.6403,
+    "lon": 22.9356
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-thessaloniki",
+    "cit-catholic-resources-org-bible-geography-roman-pro"
+   ]
+  },
+  "summary": {
+   "en": "Provincial capital of Macedonia. Paul reasoned in the synagogue 'for three Sabbaths' (Acts 17:2-4); some Jews, many God-fearing Greeks and leading women believed. Jealous opponents formed a mob, attacked Jason's house, and dragged believers before the politarchs charging them with defying Caesar ('there is another king, Jesus,' Acts 17:5-9). Recipient of 1-2 Thessalonians. LEG: LAND; departed by night to Berea."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-thessaloniki",
+   "cit-catholic-resources-org-bible-geography-roman-pro",
+   "cit-dth-thessalonica-thessalonike"
+  ]
+ },
+ {
+  "id": "site-berea",
+  "ancientName": {
+   "en": "Beroia / Beroea"
+  },
+  "modernLocation": {
+   "en": "Veria (Veroia), Imathia, Central Macedonia, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 40.5244,
+    "lon": 22.2024
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-veria",
+    "cit-www-casualenglishbible-com-resource-location-ber"
+   ]
+  },
+  "summary": {
+   "en": "Sent on by night, Paul and Silas preached in the synagogue; the Bereans 'were more noble than those in Thessalonica... examining the Scriptures daily' and many believed (Acts 17:10-12). When Thessalonian agitators arrived, the believers sent Paul on to the coast/Athens while Silas and Timothy remained (Acts 17:13-15). Sopater of Berea later accompanies Paul (Acts 20:4). LEG: LAND arrival; Paul then leaves by SEA toward Athens (Silas/Timothy stay)."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-veria",
+   "cit-www-casualenglishbible-com-resource-location-ber"
+  ]
+ },
+ {
+  "id": "site-athens",
+  "ancientName": {
+   "en": "Athenai"
+  },
+  "modernLocation": {
+   "en": "Athens, Attica, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.9715,
+    "lon": 23.7257
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-latitude-to-articles-by-country-gr-greece-853-ac"
+   ]
+  },
+  "summary": {
+   "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
+  },
+  "citations": [
+   "cit-latitude-to-articles-by-country-gr-greece-853-ac",
+   "cit-dth-athens",
+   "cit-dth-paul-at-the-areopagus-of-athens"
+  ]
+ },
+ {
+  "id": "site-corinth",
+  "ancientName": {
+   "en": "Korinthos (Roman Colonia Laus Iulia Corinthiensis)"
+  },
+  "modernLocation": {
+   "en": "Ancient Corinth (Archaia Korinthos), near modern Corinth, Peloponnese, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.9061,
+    "lon": 22.8792
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+    "cit-holylandphotos-org-photos-gctcdlar14",
+    "cit-latitude-to-map-gr-greece-cities-corinth"
+   ]
+  },
+  "summary": {
+   "en": "Capital of the province of Achaia and the longest stop of Journey 2: Paul stayed 18 months (Acts 18:11). He met Aquila and Priscilla (recently expelled from Rome under Claudius) and worked as a tentmaker; Silas and Timothy rejoined him; Crispus the synagogue ruler believed (Acts 18:1-11). The Jews brought Paul before the proconsul Gallio, who dismissed the case as an internal religious matter (Acts 18:12-17). Founding visit for 1-2 Corinthians. The DELPHI (GALLIO) INSCRIPTION, naming Gallio as proconsul of Achaia and dated by Claudius's 26th imperial acclamation (early AD 52), fixes Gallio's term to c. AD 51-52 and thus anchors Paul's Corinth stay to roughly AD 50-52 — the firmest date in al"
+  },
+  "citations": [
+   "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+   "cit-holylandphotos-org-photos-gctcdlar14",
+   "cit-latitude-to-map-gr-greece-cities-corinth",
+   "cit-dth-corinth",
+   "cit-dth-paul-before-the-proconsul-at-corinth",
+   "cit-dth-the-isthmian-games"
+  ]
+ },
+ {
+  "id": "site-cenchreae",
+  "ancientName": {
+   "en": "Kenchreai"
+  },
+  "modernLocation": {
+   "en": "Kechries, on the Saronic Gulf ~7 km E of ancient Corinth, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.8847,
+    "lon": 22.9889
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-kechries",
+    "cit-www-bibleplaces-com-corintharea"
+   ]
+  },
+  "summary": {
+   "en": "Eastern harbor of Corinth. Paul, having taken a vow, 'had his hair cut off at Cenchreae' (Acts 18:18) before sailing for Syria with Priscilla and Aquila. Later home of Phoebe, deaconess of the Cenchreae church (Rom 16:1). LEG: SEA embarkation for the eastward voyage (via Ephesus) toward Caesarea."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-kechries",
+   "cit-www-bibleplaces-com-corintharea"
+  ]
+ },
+ {
+  "id": "site-ephesus",
+  "ancientName": {
+   "en": "Ephesos"
+  },
+  "modernLocation": {
+   "en": "near Selçuk, İzmir Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.9498,
+    "lon": 27.3639
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
+  },
+  "citations": [
+   "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+   "cit-dth-ephesus",
+   "cit-dth-the-temple-of-artemis-at-ephesus",
+   "cit-dth-magic-in-the-marketplace-of-ephesus"
+  ]
+ },
+ {
+  "id": "site-caesarea-maritima",
+  "ancientName": {
+   "en": "Caesarea Maritima; Hierosolyma (Jerusalem)"
+  },
+  "modernLocation": {
+   "en": "Caesarea (near Or Akiva), Israel; Jerusalem"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5021,
+    "lon": 34.8917
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-catholic-resources-org-bible-nt-geography-htm",
+    "cit-www-esv-org-resources-esv-global-study-bible-map"
+   ]
+  },
+  "summary": {
+   "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
+  },
+  "citations": [
+   "cit-catholic-resources-org-bible-nt-geography-htm",
+   "cit-www-esv-org-resources-esv-global-study-bible-map",
+   "cit-dth-caesarea-maritima",
+   "cit-dth-paul-at-caesarea-for-two-years"
+  ]
+ },
+ {
+  "id": "site-antioch-on-the-orontes",
+  "ancientName": {
+   "en": "Antiocheia / Antioch (Syria)"
+  },
+  "modernLocation": {
+   "en": "Antakya, Hatay Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.2,
+    "lon": 36.16
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+    "cit-www-gotquestions-org-paul-third-missionary-journ"
+   ]
+  },
+  "summary": {
+   "en": "After spending time in Antioch (his home base, Acts 18:22-23), Paul set out a third time, departing through 'the region of Galatia and Phrygia in order, strengthening all the disciples.' Antioch is the launch point of the third journey. Acts notes he first 'went up and greeted the church' (widely read as Jerusalem) then went down to Antioch."
+  },
+  "citations": [
+   "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+   "cit-www-gotquestions-org-paul-third-missionary-journ"
+  ]
+ },
+ {
+  "id": "site-galatia-and-phrygia",
+  "ancientName": {
+   "en": "Galatia and Phrygia (incl. Derbe, Lystra, Iconium, Pisidian Antioch)"
+  },
+  "modernLocation": {
+   "en": "Central/south-central Anatolia, Turkey (Konya, Karaman, Yalvaç areas)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 38.31,
+    "lon": 31.18
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+    "cit-www-esv-org-resources-esv-global-study-bible-map-2"
+   ]
+  },
+  "summary": {
+   "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point."
+  },
+  "citations": [
+   "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+   "cit-www-esv-org-resources-esv-global-study-bible-map-2"
+  ]
+ },
+ {
+  "id": "site-macedonia",
+  "ancientName": {
+   "en": "Macedonia and Hellas/Achaia"
+  },
+  "modernLocation": {
+   "en": "Northern Greece (Macedonia region) and southern Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 41.01,
+    "lon": 24.29
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-enduringword-com-bible-commentary-acts-20",
+    "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
+   ]
+  },
+  "summary": {
+   "en": "After the Ephesian riot, Paul left for Macedonia (Acts 20:1), passing through (revisiting Philippi, Thessalonica, Berea) and 'gave much encouragement,' then came into Greece, where he stayed three months (Acts 20:2-3). He likely wrote 2 Corinthians from Macedonia and Romans from Corinth/Greece during this period (the collection for Jerusalem is a major theme). Coordinates given are for Philippi as representative."
+  },
+  "citations": [
+   "cit-enduringword-com-bible-commentary-acts-20",
+   "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
+  ]
+ },
+ {
+  "id": "site-troas",
+  "ancientName": {
+   "en": "Alexandria Troas (Antigoneia)"
+  },
+  "modernLocation": {
+   "en": "Dalyan/Eski Stambul, near Geyikli, Çanakkale Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 39.75,
+    "lon": 26.16
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-enduringword-com-bible-commentary-acts-20",
+    "cit-www-preceptaustin-org-acts-20-commentary"
+   ]
+  },
+  "summary": {
+   "en": "Returning from Greece via Macedonia (after a plot forced an overland detour, Acts 20:3), Paul rejoined his companions at Troas and stayed seven days. On the first day of the week, gathered to break bread, Paul preached until midnight; the young man Eutychus, asleep in a third-story window, fell to his death and was raised by Paul (Acts 20:7-12). A 'we'-passage resumes here, marking Luke's presence."
+  },
+  "citations": [
+   "cit-enduringword-com-bible-commentary-acts-20",
+   "cit-www-preceptaustin-org-acts-20-commentary"
+  ]
+ },
+ {
+  "id": "site-miletus",
+  "ancientName": {
+   "en": "Miletos / Miletus"
+  },
+  "modernLocation": {
+   "en": "Near Balat, Didim/Söke area, Aydın Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 37.53,
+    "lon": 27.28
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+    "cit-enduringword-com-bible-commentary-acts-20"
+   ]
+  },
+  "summary": {
+   "en": "Paul, hurrying to reach Jerusalem by Pentecost (Acts 20:16), bypassed Ephesus and summoned the Ephesian elders to Miletus, where he delivered his moving farewell address (Acts 20:18-35), warning of 'savage wolves' and quoting 'It is more blessed to give than to receive.' They prayed and wept, knowing they would not see his face again (20:36-38)."
+  },
+  "citations": [
+   "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+   "cit-enduringword-com-bible-commentary-acts-20"
+  ]
+ },
+ {
+  "id": "site-caesarea",
+  "ancientName": {
+   "en": "Caesarea Maritima (Stratonos Pyrgos / Caesarea)"
+  },
+  "modernLocation": {
+   "en": "Caesarea National Park, near Or Akiva / Caesarea, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5018388,
+    "lon": 34.8924472
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-pleiades-stoa-org-places-678401",
+    "cit-missionbibleclass-org-new-testament-part2-acts-f"
+   ]
+  },
+  "summary": {
+   "en": "Arriving at Caesarea, the party stayed with Philip the evangelist (one of the Seven, with four prophesying daughters). The prophet Agabus came down from Judea, bound his own hands and feet with Paul's belt, and prophesied Paul's arrest in Jerusalem. Despite pleas, Paul resolved to go up, saying he was ready to die for the name of the Lord (Acts 21:10-14). This is the closing scene of the third journey before Paul reaches Jerusalem (Acts 21:15-17)."
+  },
+  "citations": [
+   "cit-pleiades-stoa-org-places-678401",
+   "cit-missionbibleclass-org-new-testament-part2-acts-f"
+  ]
+ },
+ {
+  "id": "site-caesarea-imprisonment",
+  "ancientName": {
+   "en": "Caesarea Maritima"
+  },
+  "modernLocation": {
+   "en": "Caesarea National Park, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5018388,
+    "lon": 34.8924472
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-executableoutlines-com-topical-series-harmony-li",
+    "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+    "cit-enduringword-com-bible-commentary-acts-25"
+   ]
+  },
+  "summary": {
+   "en": "Paul was held in the praetorium (Herod's palace) at Caesarea for about two years. He was tried before the governor Antonius Felix (Acts 24), who, hoping for a bribe and wishing to please the Jews, left him bound. When Porcius Festus succeeded Felix (Acts 24:27; 25:1), Paul - to avoid being sent back to a hostile Jerusalem - exercised his right as a Roman citizen and appealed to Caesar ('Caesarem appello', Acts 25:11-12). He then made his defense before Festus and the visiting client-king Herod Agrippa II and Bernice (Acts 25:13-26:32); Agrippa's verdict was that Paul could have been freed had he not appealed to Caesar (26:32)."
+  },
+  "citations": [
+   "cit-executableoutlines-com-topical-series-harmony-li",
+   "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+   "cit-enduringword-com-bible-commentary-acts-25"
+  ]
+ },
+ {
+  "id": "site-sidon",
+  "ancientName": {
+   "en": "Sidon / Tsidon (Phoenician Ṣidunu)"
+  },
+  "modernLocation": {
+   "en": "Saida, Lebanon"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 33.5606,
+    "lon": 35.3758
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-pleiades-stoa-org-places-678393",
+    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   ]
+  },
+  "summary": {
+   "en": "Paul, with other prisoners, was handed to a centurion named Julius of the Augustan Cohort and embarked on a ship of Adramyttium (Acts 27:1-2). Luke and Aristarchus accompanied him (a 'we'-passage). The next day they put in at Sidon, where Julius kindly allowed Paul to visit friends and be cared for (27:3)."
+  },
+  "citations": [
+   "cit-pleiades-stoa-org-places-678393",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "site-myra-of-lycia",
+  "ancientName": {
+   "en": "Myra (Lycia)"
+  },
+  "modernLocation": {
+   "en": "Demre (Kale), Antalya Province, Turkey"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.26,
+    "lon": 29.98
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-pleiades-stoa-org-places-639005",
+    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   ]
+  },
+  "summary": {
+   "en": "Because of contrary winds they sailed under the lee (sheltered side) of Cyprus, then across the open sea off Cilicia and Pamphylia, landing at Myra in Lycia (Acts 27:4-5). There the centurion found an Alexandrian ship (a grain freighter) bound for Italy and transferred the prisoners onto it (27:6). Myra was a known port on the Alexandria-to-Rome grain route."
+  },
+  "citations": [
+   "cit-pleiades-stoa-org-places-639005",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "site-cnidus-and-fair-havens",
+  "ancientName": {
+   "en": "Knidos (Caria); Kaloi Limenes (Fair Havens) near Lasaia/Lasea, Crete"
+  },
+  "modernLocation": {
+   "en": "Knidos on the Datça peninsula (Turkey); Kaloi Limenes, south coast of Crete (Greece)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 34.9297,
+    "lon": 24.8003
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-bibleplaces-com-fair-havens",
+    "cit-en-wikipedia-org-wiki-kaloi-limenes",
+    "cit-en-wikipedia-org-wiki-knidos"
+   ]
+  },
+  "summary": {
+   "en": "Sailing slowly against the wind, the ship reached Cnidus with difficulty, then ran under the lee of Crete off Cape Salmone, and arrived at Fair Havens near the city of Lasea (Acts 27:7-8). The coordinates given are for Fair Havens (Kaloi Limenes). 'Much time had been lost and the voyage was now dangerous because the Fast (Yom Kippur, ~late September/October) had already gone by' (27:9). Paul warned against sailing on, but the centurion followed the pilot and owner; since the harbor was unsuitable to winter in, the majority decided to try to reach Phoenix, a better Cretan harbor (27:10-12)."
+  },
+  "citations": [
+   "cit-www-bibleplaces-com-fair-havens",
+   "cit-en-wikipedia-org-wiki-kaloi-limenes",
+   "cit-en-wikipedia-org-wiki-knidos"
+  ]
+ },
+ {
+  "id": "site-phoenix",
+  "ancientName": {
+   "en": "Phoinix / Phoenix (Crete)"
+  },
+  "modernLocation": {
+   "en": "South Crete near Loutro / Phoinix (Sfakia), Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 35.1866,
+    "lon": 24.3467
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   ]
+  },
+  "summary": {
+   "en": "Attempting to reach Phoenix, a Cretan harbor 'facing southwest and northwest' (Acts 27:12), the ship was caught by a violent northeasterly wind called Euraquilo (Euroclydon; a Greek-Latin compound for the ENE wind, attested on a Roman wind-rose in Tunisia). Driven past the small island of Cauda (Clauda/Gavdos), the crew undergirded the hull with cables, lowered gear, jettisoned cargo and tackle, and lost sight of sun and stars for many days (27:13-20). Paul, after an angelic vision, assured all 276 aboard that no life would be lost, only the ship (27:21-26)."
+  },
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "site-malta-shipwreck",
+  "ancientName": {
+   "en": "Melite / Melita (the island); traditional 'St Paul's Bay'"
+  },
+  "modernLocation": {
+   "en": "Malta; traditionally St Paul's Bay (San Pawl il-Baħar), with Salina Bay proposed as an alternative wreck site"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 35.9483,
+    "lon": 14.4017
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-bibleplaces-com-st-pauls-bay-malta",
+    "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+    "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
+   ]
+  },
+  "summary": {
+   "en": "On the 14th night, drifting across the Adria (the central Mediterranean), sailors sensed land, took soundings (20 then 15 fathoms), and at dawn ran the ship aground on a sandbar/reef; the bow stuck fast and the stern broke up, but all 276 reached land safely (Acts 27:27-44). The island was Melite (Malta). The 'barbaroi' (native, non-Greek-speaking) islanders showed unusual kindness, kindling a fire; a viper fastened on Paul's hand without harming him, leading them to think him a god (28:1-6). Paul healed the father of Publius, the 'chief man' (Greek 'protos') of the island, and many others (28:7-10). They wintered three months."
+  },
+  "citations": [
+   "cit-www-bibleplaces-com-st-pauls-bay-malta",
+   "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+   "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
+   "cit-dth-location-of-pauls-shipwreck-on-malta",
+   "cit-dth-pauls-ministry-on-malta",
+   "cit-dth-melita-the-place-of-refuge"
+  ]
+ },
+ {
+  "id": "site-syracuse-rhegium-puteoli",
+  "ancientName": {
+   "en": "Syrakousai (Syracuse, Sicily); Rhegion (Rhegium); Puteoli / Dikaiarcheia"
+  },
+  "modernLocation": {
+   "en": "Siracusa, Sicily; Reggio Calabria; Pozzuoli (Bay of Naples), Italy"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 40.8259,
+    "lon": 14.1253
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-topostext-org-place-408141pdik",
+    "cit-pleiades-stoa-org-places-432815"
+   ]
+  },
+  "summary": {
+   "en": "After three months they sailed on another Alexandrian grain ship with the figurehead of the Twin Brothers (Castor and Pollux, the Dioscuri). They put in at Syracuse (3 days), then Rhegium, and with a favorable south wind reached Puteoli in one more day (Acts 28:11-13). At Puteoli they found believers and stayed seven days, then headed toward Rome. Coordinates given are for Puteoli (Pozzuoli)."
+  },
+  "citations": [
+   "cit-topostext-org-place-408141pdik",
+   "cit-pleiades-stoa-org-places-432815"
+  ]
+ },
+ {
+  "id": "site-rome",
+  "ancientName": {
+   "en": "Roma; en route Forum Appii and Tres Tabernae on the Via Appia"
+  },
+  "modernLocation": {
+   "en": "Rome, Italy (Forum Appii near Borgo Faiti; Tres Tabernae near Cisterna di Latina)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 41.8919,
+    "lon": 12.5113
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+    "cit-enduringword-com-bible-commentary-acts-27"
+   ]
+  },
+  "summary": {
+   "en": "Roman believers came out to meet Paul at the Forum of Appius and Three Taverns on the Via Appia (Acts 28:15). In Rome Paul was allowed to live by himself under guard (light custody/house arrest). He met the local Jewish leaders, expounded the kingdom of God and Jesus from the Law and Prophets (28:17-28), and 'lived there two whole years at his own expense, welcoming all who came, preaching the kingdom of God and teaching about the Lord Jesus Christ with all boldness and without hindrance' (28:30-31). Acts ends here, abruptly, without recording the trial's outcome."
+  },
+  "citations": [
+   "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+   "cit-enduringword-com-bible-commentary-acts-27",
+   "cit-dth-ancient-rome",
+   "cit-dth-paul-and-the-roman-christians",
+   "cit-dth-nero-and-the-burning-of-rome"
+  ]
+ },
+ {
+  "id": "site-emmaus",
+  "ancientName": {
+   "en": "Emmaus / Emmaus-Nicopolis; Amwas"
+  },
+  "modernLocation": {
+   "en": "Disputed: Emmaus Nicopolis (Amwas/Latrun, ~30 km W of Jerusalem — strongest ancient attestation, Eusebius c. AD 330); el-Qubeibeh (~11 km NW, Franciscan tradition since 15th c.); Motza/Colonia (~6 km W, Josephus reference)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8389,
+    "lon": 34.9889
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-emmaus-nicopolis",
+    "cit-emmaus-qubeibeh",
+    "cit-pleiades-gazetteer"
+   ]
+  },
+  "summary": {
+   "en": "On Easter Sunday afternoon, two disciples walked from Jerusalem to Emmaus; a stranger (Jesus) joined them, expounded Scripture, and was recognized in the breaking of bread before vanishing (Luke 24:13-35). The site is disputed. Emmaus Nicopolis (Amwas/Latrun) has the strongest ancient attestation: Eusebius identifies it in the Onomasticon (c. AD 330) and Byzantine basilica ruins survive. It lies ~30 km W of Jerusalem, matching the 160-stadia reading of Codex Sinaiticus and other early manuscripts. El-Qubeibeh (~11 km NW) and Motza (~6 km W) better fit the majority 60-stadia reading but have weaker ancient tradition. The textual variant — 60 vs 160 stadia — drives the geographic debate."
+  },
+  "citations": [
+   "cit-emmaus-nicopolis",
+   "cit-emmaus-qubeibeh",
+   "cit-pleiades-gazetteer",
+   "cit-dth-the-road-to-emmaus"
+  ]
+ },
+ {
+  "id": "site-tabgha",
+  "ancientName": {
+   "en": "Tabgha / Heptapegon ('Seven Springs'); the shore of the Sea of Tiberias"
+  },
+  "modernLocation": {
+   "en": "Tabgha, northwest shore of the Sea of Galilee, Israel; Church of the Primacy of St. Peter (Franciscan, built 1933 on 4th-c. foundations)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.8731,
+    "lon": 35.5464
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-tabgha-primacy",
+    "cit-jesus-boat",
+    "cit-pleiades-gazetteer"
+   ]
+  },
+  "summary": {
+   "en": "The traditional site of Jesus' post-resurrection appearance to seven disciples at the Sea of Tiberias (John 21). After a fruitless night, Jesus called from the shore to cast on the right side; 153 large fish were caught. He had a charcoal-fire breakfast ready — echoing Peter's denial by a charcoal fire (John 18:18) — and restored Peter with three 'Do you love me?' exchanges. The Church of the Primacy of St. Peter preserves the Mensa Christi ('Table of Christ'), a flat rock traditionally identified as the breakfast site. Excavations revealed 4th-c. Byzantine church foundations, confirming very early veneration. The 1st-c. 'Jesus Boat' excavated in 1986 near Magdala/Ginosar (~3 km east), carbon-dated c. 40 BC – AD 70, exemplifies the fishing craft of the Galilean disciples."
+  },
+  "citations": [
+   "cit-tabgha-primacy",
+   "cit-jesus-boat",
+   "cit-pleiades-gazetteer"
+  ]
+ },
+ {
+  "id": "site-galilee-mountain",
+  "ancientName": {
+   "en": "The mountain in Galilee (unnamed); 'the mountain to which Jesus had directed them'"
+  },
+  "modernLocation": {
+   "en": "Unknown; candidates include Mount Tabor (32.6872°N, 35.3928°E), Mount Arbel (32.8261°N, 35.5025°E), the Mount of Beatitudes ridge (32.8817°N, 35.5556°E), and the Horns of Hattin"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.8817,
+    "lon": 35.5556
+   },
+   "confidence": "disputed",
+   "disputes": {
+    "en": "The exact mountain in Galilee is not named; coordinates are representative of the Mount of Beatitudes ridge."
+   },
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-galilee-mountain",
+    "cit-pleiades-gazetteer"
+   ]
+  },
+  "summary": {
+   "en": "Matthew 28:16 records that the Eleven went to 'the mountain to which Jesus had directed them' in Galilee, where he delivered the Great Commission: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations...' The mountain is not named; the Mount of Beatitudes is used as a representative location but the identification is speculative. Many scholars associate the appearance to 'more than 500 brothers at one time' (1 Corinthians 15:6) with this Galilean gathering, since it is the only large-scale outdoor post-resurrection event recorded. Paul's note that 'most of them are still alive' (c. AD 53-55) functions as an implicit invitation to verify the claim."
+  },
+  "citations": [
+   "cit-galilee-mountain",
+   "cit-pleiades-gazetteer"
+  ]
+ },
+ {
+  "id": "site-mount-of-olives-ascension",
+  "ancientName": {
+   "en": "Mount Olivet; 'the mount called Olivet' (Acts 1:12); near Bethany"
+  },
+  "modernLocation": {
+   "en": "Chapel of the Ascension (Mosque of the Ascension), summit of the Mount of Olives, at-Tur, Jerusalem; ~1 km ('a Sabbath day's journey') east of the Temple Mount"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.7783,
+    "lon": 35.245
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ascension-chapel",
+    "cit-mount-olives",
+    "cit-pleiades-gazetteer"
+   ]
+  },
+  "summary": {
+   "en": "The site of Jesus' ascension, 40 days after the resurrection (Acts 1:3, 9-12). Jesus led the apostles out 'as far as Bethany' (Luke 24:50), on the Mount of Olives — Acts 1:12 calls it 'a Sabbath day's journey' (~2,000 cubits, ~1 km) from Jerusalem. He gave final instructions about the coming Holy Spirit and the worldwide witness ('to the end of the earth'), then 'was lifted up, and a cloud took him out of their sight.' Two angels promised his return 'in the same way.' The Chapel of the Ascension marks a site venerated since at least the 4th century; the Bordeaux Pilgrim (AD 333) and Egeria (c. 384) describe pilgrimages here. The original Byzantine rotunda (Imbomon) was built by a Roman matron named Poimenia (c. AD 378-384). Destroyed in AD 614, rebuilt by the Crusaders as an octagonal chapel, later converted to a mosque by Saladin (1187)."
+  },
+  "citations": [
+   "cit-ascension-chapel",
+   "cit-mount-olives",
+   "cit-pleiades-gazetteer",
+   "cit-dth-kidron-valley-and-mount-of-olives",
+   "cit-dth-the-ascension-of-jesus"
+  ]
+ },
+ {
+  "id": "site-damascus",
+  "ancientName": {
+   "en": "Damascus (Dimashq / Dammeseq); one of the oldest continuously inhabited cities in the world"
+  },
+  "modernLocation": {
+   "en": "Damascus, Syria; the Roman-era Via Recta ('Straight Street', Acts 9:11) survives as Midhat Pasha / Bab Sharqi Street in the Old City"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 33.513,
+    "lon": 36.31
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-damascus-straight-street",
+    "cit-house-ananias",
+    "cit-pleiades-gazetteer"
+   ]
+  },
+  "summary": {
+   "en": "Near Damascus, the risen Jesus appeared to Saul/Paul in a blinding light (Acts 9:1-19; 22:6-16; 26:12-18): 'Saul, Saul, why are you persecuting me? I am Jesus, whom you are persecuting.' Blinded for three days, Paul was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Paul calls this the last resurrection appearance: 'Last of all, as to one untimely born, he appeared also to me' (1 Corinthians 15:8). The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus, though the modern street sits ~4 meters above the Roman level. An underground chapel near Bab Sharqi, identified as the House of Ananias, preserves 5th/6th-c. Byzantine remains (excavated 1921). Paul's basket escape through the city wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan."
+  },
+  "citations": [
+   "cit-damascus-straight-street",
+   "cit-house-ananias",
+   "cit-pleiades-gazetteer"
+  ]
+ }
 ]

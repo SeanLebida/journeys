@@ -15,6 +15,8 @@ const LAYER_LABELS: Record<BasemapLayerKey, string> = {
   borders1949: 'Israel 1949–1967 (founding borders)',
   mandate: 'Mandate Palestine 1920–1948',
   conflict: 'Oct 7, 2023 attack sites',
+  kingdomIsrael: 'Kingdom of Israel c. 930–722 BC (approx.)',
+  kingdomJudah: 'Kingdom of Judah c. 930–586 BC (approx.)',
 };
 
 /** Basemap layer toggles shared by every map-bearing mode — backed by

@@ -3,9 +3,11 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   Artifact,
+  Battle,
   Citation,
   Journey,
   Lesson,
+  Miracle,
   Person,
   Quiz,
   Site,
@@ -28,9 +30,12 @@ const citations = [...read('citations.json'), ...read('citations.extra.json')];
 const sites = [...read('sites.json'), ...read('sites.extra.json')];
 const journeys = [...read('journeys.json'), ...read('journeys.extra.json')];
 const stops = [...read('stops.json'), ...read('stops.extra.json')];
-const persons = read('persons.json');
+const persons = [...read('persons.json'), ...read('persons.extra.json')];
 const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
 const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
+const miracles = [...read('miracles.json'), ...read('miracles.extra.json')];
+const battles = [...read('battles.json'), ...read('battles.extra.json')];
+const routes = [...read('routes.json'), ...read('routes.extra.json')];
 const videos = [...read('videos.json'), ...read('videos.extra.json')];
 const terms = read('terms.json');
 const lessons = read('lessons.json');
@@ -54,6 +59,8 @@ describe('content integrity (committed source)', () => {
     check('persons', Person, persons);
     check('artifacts', Artifact, artifacts);
     check('witnesses', Witness, witnesses);
+    check('miracles', Miracle, miracles);
+    check('battles', Battle, battles);
     check('videos', Video, videos);
     check('terms', Term, terms);
     check('lessons', Lesson, lessons);
@@ -73,7 +80,45 @@ describe('content integrity (committed source)', () => {
       scan(s.coordinates.citations, `${s.id}.coords`);
     });
     (stops as { id: string; citations: string[] }[]).forEach((s) => scan(s.citations, s.id));
+    (miracles as { id: string; citations: string[] }[]).forEach((m) => scan(m.citations, m.id));
+    (battles as { id: string; citations: string[] }[]).forEach((b) => scan(b.citations, b.id));
     expect(dangling, dangling.slice(0, 10).join('\n')).toHaveLength(0);
+  });
+
+  it('no claim rests on Wikipedia alone (constitutional sourcing)', () => {
+    // Wikipedia is an orienting link, never the sole authority: every cited
+    // claim must also carry a concrete source (primary text, scholarship,
+    // excavation report, or gazetteer). Uncited claims are not checked.
+    const citById = new Map(
+      (citations as { id: string; url?: string }[]).map((c) => [c.id, c]),
+    );
+    const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
+    const bad: string[] = [];
+    const req = (ids: string[] | undefined, where: string) => {
+      const present = (ids ?? []).filter((id) => citById.has(id));
+      if (present.length > 0 && !present.some((id) => !isTertiary(id))) bad.push(where);
+    };
+    (sites as { id: string; citations: string[]; coordinates: { citations: string[] }; candidates?: { citations: string[] }[] }[]).forEach((s) => {
+      req(s.citations, `site ${s.id}`);
+      req(s.coordinates.citations, `site ${s.id}.coords`);
+      s.candidates?.forEach((c, i) => req(c.citations, `site ${s.id}.cand[${i}]`));
+    });
+    const each = (arr: unknown[], label: string) =>
+      (arr as { id: string; citations?: string[] }[]).forEach((x) => req(x.citations, `${label} ${x.id}`));
+    each(journeys, 'journey');
+    each(routes, 'route');
+    each(stops, 'stop');
+    each(persons, 'person');
+    each(artifacts, 'artifact');
+    each(witnesses, 'witness');
+    each(miracles, 'miracle');
+    each(battles, 'battle');
+    each(terms, 'term');
+    each(lessons, 'lesson');
+    (quizzes as { id: string; questions: { id: string; citations: string[] }[] }[]).forEach((q) =>
+      q.questions.forEach((qq) => req(qq.citations, `quiz ${q.id}.${qq.id}`)),
+    );
+    expect(bad, `${bad.length} claim(s) cited only to Wikipedia:\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
   });
 
   it('every stop references a known site and journey', () => {
@@ -105,7 +150,47 @@ describe('content integrity (committed source)', () => {
     (stops as { id: string; scriptureRefs: string[] }[]).forEach((s) =>
       s.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${s.id}: ${r}`)),
     );
+    (miracles as { id: string; scriptureRefs: string[] }[]).forEach((m) =>
+      m.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${m.id}: ${r}`)),
+    );
+    (battles as { id: string; scriptureRefs: string[] }[]).forEach((b) =>
+      b.scriptureRefs.forEach((r) => !parseScriptureRef(r) && bad.push(`${b.id}: ${r}`)),
+    );
     expect(bad, bad.slice(0, 10).join('\n')).toHaveLength(0);
+  });
+
+  it('every battle anchors to a known site with resolvable artifact cross-refs and sane areas', () => {
+    const [w, s, e, n] = WORLD_BBOX;
+    const artifactIds = new Set((artifacts as { id: string }[]).map((a) => a.id));
+    const bad: string[] = [];
+    (battles as { id: string; siteId: string; artifactIds?: string[]; area?: [number, number][] }[]).forEach((b) => {
+      if (!siteIds.has(b.siteId)) bad.push(`${b.id}->${b.siteId}`);
+      b.artifactIds?.forEach((a) => !artifactIds.has(a) && bad.push(`${b.id}->artifact:${a}`));
+      if (b.area) {
+        const first = b.area[0];
+        const last = b.area[b.area.length - 1];
+        if (first[0] !== last[0] || first[1] !== last[1]) bad.push(`${b.id}: area ring not closed`);
+        b.area.forEach(([lon, lat]) => {
+          if (lon < w || lon > e || lat < s || lat > n) bad.push(`${b.id}: area point ${lat},${lon} out of bbox`);
+        });
+      }
+    });
+    expect(bad, bad.join('\n')).toHaveLength(0);
+    // Coverage floor: patriarchs -> fall of Jerusalem, incl. the
+    // Israel-vs-Judah civil wars.
+    expect(battles.length).toBeGreaterThanOrEqual(35);
+    expect((battles as { kind: string }[]).filter((b) => b.kind === 'civil-war').length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('every miracle is anchored to a known site, with both sections covered', () => {
+    const bad: string[] = [];
+    const ms = miracles as { id: string; siteId: string; performedBy: string }[];
+    ms.forEach((m) => !siteIds.has(m.siteId) && bad.push(`${m.id}->${m.siteId}`));
+    expect(bad, bad.join('\n')).toHaveLength(0);
+    // The catalogue covers the 37 recorded miracles of Jesus and the
+    // disciples' miracles of the Gospels and Acts.
+    expect(ms.filter((m) => m.performedBy === 'jesus').length).toBeGreaterThanOrEqual(37);
+    expect(ms.filter((m) => m.performedBy === 'disciple').length).toBeGreaterThanOrEqual(20);
   });
 
   it('contains the expected seed coverage', () => {

@@ -1,0 +1,1693 @@
+[
+ {
+  "id": "battle-vale-of-siddim",
+  "title": {
+   "en": "The battle of the Vale of Siddim and Abram's rescue of Lot"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Four Mesopotamian kings under Chedorlaomer of Elam vs. the five cities of the plain; then Abram's 318 men vs. the withdrawing coalition"
+  },
+  "outcome": {
+   "en": "The cities of the plain fell and Lot was carried off; Abram pursued to Dan and Hobah by night, routed the column, and recovered Lot, the people, and the goods"
+  },
+  "siteId": "site-valley-of-siddim",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1750,
+   "display": {
+    "en": "c. 2000-1750 BC (patriarchal era)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The Bible's first recorded battle: the eastern coalition crushed the rebellion of Sodom and its neighbours among the bitumen pits of Siddim, taking Lot captive. Abram armed his household, fell on the camp by night divisions, and chased the survivors north of Damascus — returning to meet Melchizedek of Salem with the spoil."
+  },
+  "scriptureRefs": [
+   "Genesis 14:1-16",
+   "Genesis 14:17-20"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-vale-of-siddim",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "The vale is placed by the text at the Salt Sea; the pursuit ran the length of the land to Dan and beyond Damascus."
+  }
+ },
+ {
+  "id": "battle-rephidim",
+  "title": {
+   "en": "Amalek attacks Israel at Rephidim"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Amalek vs. Israel under Joshua's first command"
+  },
+  "outcome": {
+   "en": "Amalek was defeated 'with the edge of the sword' while Moses' hands were held up on the hill; Amalek's ambush of the stragglers was never forgotten (Deuteronomy 25:17-19)"
+  },
+  "siteId": "site-mount-sinai",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1210,
+   "display": {
+    "en": "c. 1446 BC or c. 1260-1210 BC (exodus-date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Israel's first battle as a people: Amalek fell on the rear of the column at Rephidim, near the mountain of God. Joshua led the chosen men in the valley while Moses, flanked by Aaron and Hur, kept the staff of God raised until sunset — 'and Joshua discomfited Amalek'."
+  },
+  "scriptureRefs": [
+   "Exodus 17:8-16"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-thiele-chronology"
+  ],
+  "locationNote": {
+   "en": "Rephidim lay one stage before Sinai (Exodus 19:2); anchored to the traditional Mount Sinai, with the site itself unidentified."
+  },
+  "disputes": {
+   "en": "Both the site of Rephidim and the date of the exodus are unresolved: the early chronology places the battle c. 1446 BC, the late chronology c. 1260-1210 BC, and Rephidim's location depends on which Sinai route is accepted."
+  }
+ },
+ {
+  "id": "battle-jahaz-sihon",
+  "title": {
+   "en": "The defeat of Sihon king of the Amorites"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Moses vs. Sihon king of Heshbon"
+  },
+  "outcome": {
+   "en": "Sihon fell at Jahaz; Israel took his land 'from Arnon unto Jabbok' and occupied Heshbon and her towns"
+  },
+  "siteId": "site-heshbon",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Refused passage on the King's Highway, Sihon marched out and gave battle at Jahaz — and lost his whole Transjordan kingdom, the first territory Israel held. The victory became a fixed refrain of Israel's memory (Deuteronomy 2, Psalm 135, Psalm 136)."
+  },
+  "scriptureRefs": [
+   "Numbers 21:21-31",
+   "Deuteronomy 2:24-36"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-heshbon",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Jahaz itself is unidentified (candidates on the Moabite plateau); anchored at Sihon's capital, Heshbon."
+  },
+  "disputes": {
+   "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
+  }
+ },
+ {
+  "id": "battle-edrei-og",
+  "title": {
+   "en": "The defeat of Og king of Bashan at Edrei"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Moses vs. Og king of Bashan, 'of the remnant of the giants'"
+  },
+  "outcome": {
+   "en": "Og was defeated 'until there was none left him remaining'; sixty fortified cities of Argob fell to Israel"
+  },
+  "siteId": "site-edrei",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Turning north up the King's Highway, Israel met Og of Bashan — whose iron bedstead, nine cubits long, was still pointed out in Rabbah (Deuteronomy 3:11) — at Edrei, and took the whole basalt plateau of Bashan with its walled cities."
+  },
+  "scriptureRefs": [
+   "Numbers 21:33-35",
+   "Deuteronomy 3:1-11"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-daraa-edrei",
+   "cit-ref-bright"
+  ],
+  "disputes": {
+   "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
+  }
+ },
+ {
+  "id": "battle-jericho",
+  "title": {
+   "en": "The fall of Jericho"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Israel under Joshua vs. the walled city of Jericho"
+  },
+  "outcome": {
+   "en": "After seven days of circuits the wall 'fell down flat'; the city was burned and put under the ban, Rahab's household alone spared"
+  },
+  "siteId": "site-jericho-ot",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The opening act of the conquest west of the Jordan: no assault, but seven days of processions with the ark and seven trumpets of rams' horns, then the shout — and the collapse. Tell es-Sultan's fallen mudbrick ramparts, burn layer, and jars of charred spring grain are the debate's centrepiece: the sequence matches Joshua 6 strikingly, but whether it dates to c. 1400 or c. 1550 BC divides the field."
+  },
+  "scriptureRefs": [
+   "Joshua 6:1-21",
+   "Joshua 6:24-25"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-jericho",
+   "cit-abr-jericho-walls"
+  ],
+  "artifactIds": [
+   "artifact-jericho-fallen-walls"
+  ],
+  "disputes": {
+   "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
+  }
+ },
+ {
+  "id": "battle-ai",
+  "title": {
+   "en": "The taking of Ai"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Joshua vs. the men of Ai and Bethel"
+  },
+  "outcome": {
+   "en": "After the repulse caused by Achan's sin, Ai fell to a feigned-retreat ambush; the city was burned and left 'an heap for ever'"
+  },
+  "siteId": "site-ai",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The conquest's hard lesson: three thousand men were routed at first ('the hearts of the people melted'), the sin of Achan was exposed by lot, and then Joshua drew the defenders out with a feigned flight while thirty thousand lay in ambush behind the city — the classic double envelopment of ancient literature."
+  },
+  "scriptureRefs": [
+   "Joshua 7:2-5",
+   "Joshua 8:1-28"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-ai-canaan",
+   "cit-ref-bright"
+  ],
+  "disputes": {
+   "en": "Beyond the conquest-date debate, Ai's very site is contested: et-Tell, the majority identification, was unoccupied in the Late Bronze Age; Khirbet el-Maqatir is the principal proposed alternative. The entry anchors to et-Tell as the standard identification."
+  }
+ },
+ {
+  "id": "battle-gibeon-southern-campaign",
+  "title": {
+   "en": "The battle of Gibeon and the southern campaign"
+  },
+  "kind": "campaign",
+  "combatants": {
+   "en": "Israel under Joshua vs. the five Amorite kings (Jerusalem, Hebron, Jarmuth, Lachish, Eglon)"
+  },
+  "outcome": {
+   "en": "The coalition broke at Gibeon and was destroyed down the Beth-horon descent; the campaign then swept the Shephelah — Makkedah, Libnah, Lachish, Eglon, Hebron, Debir"
+  },
+  "siteId": "site-gibeon",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The five kings marched to punish Gibeon for its treaty with Israel; Joshua force-marched all night from Gilgal and fell on them at dawn. Great hailstones did more execution than the sword down the pass, and the day of the long light — 'Sun, stand thou still upon Gibeon' — became Israel's byword for a day unlike any other. The southern hill country and Shephelah fell in the sweep that followed."
+  },
+  "scriptureRefs": [
+   "Joshua 10:1-15",
+   "Joshua 10:28-43"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-gibeon",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Area highlight is an approximate sweep of the Joshua 10 campaign (Gibeon and the Aijalon descent through the Shephelah cities to Hebron and Debir), not a surveyed boundary."
+  },
+  "artifactIds": [
+   "artifact-merneptah-stele"
+  ],
+  "area": [
+   [
+    35.19,
+    31.85
+   ],
+   [
+    35.3,
+    31.7
+   ],
+   [
+    35.25,
+    31.45
+   ],
+   [
+    35.05,
+    31.35
+   ],
+   [
+    34.8,
+    31.45
+   ],
+   [
+    34.85,
+    31.7
+   ],
+   [
+    35.0,
+    31.85
+   ],
+   [
+    35.19,
+    31.85
+   ]
+  ],
+  "disputes": {
+   "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
+  }
+ },
+ {
+  "id": "battle-waters-of-merom",
+  "title": {
+   "en": "The waters of Merom and the burning of Hazor"
+  },
+  "kind": "campaign",
+  "combatants": {
+   "en": "Israel under Joshua vs. the northern coalition under Jabin king of Hazor"
+  },
+  "outcome": {
+   "en": "The coalition of the northern kings, 'as the sand that is upon the sea shore', was surprised and routed at the waters of Merom; their horses hamstrung, their chariots burned — and Hazor, 'the head of all those kingdoms', burned with fire"
+  },
+  "siteId": "site-hazor",
+  "dateRange": {
+   "startYear": -1406,
+   "endYear": -1200,
+   "display": {
+    "en": "conquest era (see date debate)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The largest muster of the conquest: the kings of the north massed with horses and chariots at the waters of Merom, and Joshua fell upon them suddenly. Hazor alone of the northern cities was burned — and Tel Hazor's Late Bronze stratum shows precisely that: a palace burned beyond 1,000 °C and its cult images deliberately mutilated. The date and agent of that destruction remain argued."
+  },
+  "scriptureRefs": [
+   "Joshua 11:1-15"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-waters-of-merom",
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "The waters of Merom are usually placed in the upland basin west of Hazor; area highlight approximates the Joshua 11 northern sweep."
+  },
+  "artifactIds": [
+   "artifact-hazor-burn-layer"
+  ],
+  "area": [
+   [
+    35.3,
+    32.85
+   ],
+   [
+    35.65,
+    32.8
+   ],
+   [
+    35.75,
+    33.05
+   ],
+   [
+    35.6,
+    33.25
+   ],
+   [
+    35.3,
+    33.1
+   ],
+   [
+    35.2,
+    32.95
+   ],
+   [
+    35.3,
+    32.85
+   ]
+  ],
+  "disputes": {
+   "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
+  }
+ },
+ {
+  "id": "battle-kishon-deborah",
+  "title": {
+   "en": "Deborah and Barak against Sisera at the Kishon"
+  },
+  "kind": "deliverance",
+  "combatants": {
+   "en": "Israel (Naphtali and Zebulun under Barak, at Deborah's word) vs. the chariot army of Sisera, commander for Jabin of Canaan"
+  },
+  "outcome": {
+   "en": "Sisera's nine hundred iron chariots were routed as the Kishon flooded — 'the river of Kishon swept them away'; Sisera fled afoot and died by Jael's tent peg"
+  },
+  "siteId": "site-mount-tabor",
+  "dateRange": {
+   "startYear": -1200,
+   "endYear": -1125,
+   "display": {
+    "en": "c. 1200-1125 BC (Judges era)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "From the slopes of Tabor, Barak's ten thousand charged into the plain as a storm turned the Kishon into a torrent and mired the iron chariots — commemorated in the Song of Deborah (Judges 5), by common consent among the oldest Hebrew poetry preserved: 'the stars in their courses fought against Sisera'."
+  },
+  "scriptureRefs": [
+   "Judges 4:4-16",
+   "Judges 5:19-21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-mount-tabor",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Fought in the Jezreel valley between Tabor and 'Taanach by the waters of Megiddo' (Judges 5:19); area highlight approximates the battle plain."
+  },
+  "area": [
+   [
+    35.05,
+    32.7
+   ],
+   [
+    35.35,
+    32.55
+   ],
+   [
+    35.5,
+    32.55
+   ],
+   [
+    35.45,
+    32.7
+   ],
+   [
+    35.2,
+    32.8
+   ],
+   [
+    35.05,
+    32.7
+   ]
+  ]
+ },
+ {
+  "id": "battle-harod-gideon",
+  "title": {
+   "en": "Gideon's three hundred against Midian"
+  },
+  "kind": "deliverance",
+  "combatants": {
+   "en": "Gideon's three hundred vs. the Midianite-Amalekite camp 'like grasshoppers for multitude'"
+  },
+  "outcome": {
+   "en": "The camp panicked at the torches and trumpets and turned every man's sword against his fellow; the rout was pursued across the Jordan and the princes Oreb and Zeeb taken"
+  },
+  "siteId": "site-spring-of-harod",
+  "dateRange": {
+   "startYear": -1180,
+   "endYear": -1100,
+   "display": {
+    "en": "c. 1180-1100 BC (Judges era)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Sifted from thirty-two thousand to three hundred at the spring of Harod 'lest Israel vaunt themselves', Gideon's men ringed the Midianite camp below the hill of Moreh at the middle watch with trumpets, empty jars, and hidden torches — and the host broke itself."
+  },
+  "scriptureRefs": [
+   "Judges 7:1-8",
+   "Judges 7:16-25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-gideon",
+   "cit-wikipedia-maayan-harod",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-gibeah-civil-war",
+  "title": {
+   "en": "The Benjamite war at Gibeah — Israel's first civil war"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "The united tribes of Israel vs. the tribe of Benjamin"
+  },
+  "outcome": {
+   "en": "After two bloody repulses, Benjamin was drawn from the city by feigned flight and nearly annihilated — six hundred men surviving at the rock of Rimmon; the tribe was rebuilt by the provision of wives at Shiloh"
+  },
+  "siteId": "site-gibeah",
+  "dateRange": {
+   "startYear": -1150,
+   "endYear": -1050,
+   "display": {
+    "en": "c. 1150-1050 BC (late Judges era)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The atrocity against the Levite's concubine at Gibeah summoned all Israel 'as one man' against Benjamin, who would not give up the guilty city. Four hundred thousand mustered; twice the tribes were repulsed with slaughter before the ambush stratagem — an internal war so dark the book closes over it: 'In those days there was no king in Israel.'"
+  },
+  "scriptureRefs": [
+   "Judges 19:22-30",
+   "Judges 20:1-48",
+   "Judges 21:1-23"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-gibeah",
+   "cit-wikipedia-gibeah",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-ebenezer-ark-lost",
+  "title": {
+   "en": "The battle of Aphek-Ebenezer — the ark captured"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "The Philistine lords vs. Israel under Eli's sons"
+  },
+  "outcome": {
+   "en": "Israel lost four thousand, then thirty thousand; the ark of the covenant was captured, Hophni and Phinehas killed, and Eli died at the news — 'The glory is departed from Israel'"
+  },
+  "siteId": "site-aphek-ebenezer",
+  "dateRange": {
+   "startYear": -1080,
+   "endYear": -1050,
+   "display": {
+    "en": "c. 1080-1050 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Israel's darkest field of the Philistine wars: after the first defeat the elders fetched the ark itself to the camp as a talisman, and lost it. The ark's captivity among the Philistine cities (Ashdod, Gath, Ekron) and its return by cart to Beth-shemesh fill the sequel."
+  },
+  "scriptureRefs": [
+   "1 Samuel 4:1-18",
+   "1 Samuel 5:1-2",
+   "1 Samuel 6:10-15"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-aphek",
+   "cit-wikipedia-antipatris",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-mizpah-ebenezer-raised",
+  "title": {
+   "en": "The rout from Mizpah — Ebenezer raised"
+  },
+  "kind": "deliverance",
+  "combatants": {
+   "en": "The Philistine lords vs. Israel gathered under Samuel"
+  },
+  "outcome": {
+   "en": "A great thunder threw the Philistine line into confusion; Israel pursued from Mizpah to below Beth-car, and the lost cities were restored"
+  },
+  "siteId": "site-mizpah",
+  "dateRange": {
+   "startYear": -1070,
+   "endYear": -1040,
+   "display": {
+    "en": "c. 1070-1040 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "As Samuel offered the burnt offering at the national assembly of repentance, the Philistines attacked — and broke. Samuel set the memorial stone between Mizpah and Shen: Ebenezer, 'hitherto hath the LORD helped us', answering the field where the ark had been lost."
+  },
+  "scriptureRefs": [
+   "1 Samuel 7:5-14"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-tell-en-nasbeh",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-michmash",
+  "title": {
+   "en": "Jonathan at the pass of Michmash"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Saul and Jonathan vs. the Philistine garrison and camp"
+  },
+  "outcome": {
+   "en": "Jonathan and his armour-bearer's assault on the outpost set off an earthquake-panic in the camp; Saul's six hundred and the returning Hebrews turned it into a general rout 'beyond Beth-aven'"
+  },
+  "siteId": "site-michmash",
+  "dateRange": {
+   "startYear": -1025,
+   "endYear": -1010,
+   "display": {
+    "en": "c. 1025-1010 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "With Israel disarmed ('no smith found throughout all the land') and hiding in caves, Jonathan climbed the crag between Bozez and Seneh with one companion — 'there is no restraint to the LORD to save by many or by few' — and the Philistine grip on the central ridge broke in a day."
+  },
+  "scriptureRefs": [
+   "1 Samuel 13:16-23",
+   "1 Samuel 14:1-23"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-michmash",
+   "cit-wikipedia-michmash",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-valley-of-elah",
+  "title": {
+   "en": "David and Goliath in the Valley of Elah"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Saul vs. the Philistines; decided by single combat — David of Bethlehem vs. Goliath of Gath"
+  },
+  "outcome": {
+   "en": "The champion fell to a sling stone; the Philistines broke and were pursued to the gates of Ekron 'by the way to Shaaraim'"
+  },
+  "siteId": "site-valley-of-elah",
+  "dateRange": {
+   "startYear": -1025,
+   "endYear": -1005,
+   "display": {
+    "en": "c. 1025-1005 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Forty days the armies faced each other across the brook while the six-cubit champion of Gath defied 'the armies of the living God'. The duel that answered him — a shepherd's sling against spear and shield, 'that all the earth may know that there is a God in Israel' — is the Bible's defining battle narrative. Khirbet Qeiyafa, the fortified two-gated city above this valley, dates to exactly the following generation and anchors the debate over David's kingdom."
+  },
+  "scriptureRefs": [
+   "1 Samuel 17:1-11",
+   "1 Samuel 17:38-53"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-goliath",
+   "cit-wikipedia-valley-of-elah",
+   "cit-wikipedia-khirbet-qeiyafa",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-khirbet-qeiyafa"
+  ]
+ },
+ {
+  "id": "battle-mount-gilboa",
+  "title": {
+   "en": "The battle of Mount Gilboa — the death of Saul"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "The massed Philistine lords (camped at Shunem) vs. Israel under Saul (camped at Gilboa)"
+  },
+  "outcome": {
+   "en": "Israel broke and fell on the mountain; Jonathan, Abinadab, and Malchishua died, and Saul fell on his own sword; the bodies were hung on the wall of Beth-shan"
+  },
+  "siteId": "site-mount-gilboa",
+  "dateRange": {
+   "startYear": -1012,
+   "endYear": -1008,
+   "display": {
+    "en": "c. 1010 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The end of Israel's first king, foretold at Endor the night before. The Philistines took the valley cities and cut the kingdom in two; the men of Jabesh-gilead, remembering Saul's first rescue, crossed by night to recover the bodies. David's lament over Saul and Jonathan — 'how are the mighty fallen' — opens his reign."
+  },
+  "scriptureRefs": [
+   "1 Samuel 28:4-19",
+   "1 Samuel 31:1-13",
+   "2 Samuel 1:17-27"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-mount-gilboa",
+   "cit-wikipedia-mount-gilboa",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-jebus-jerusalem",
+  "title": {
+   "en": "David takes the stronghold of Zion (Jebus)"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "David and his men vs. the Jebusite city"
+  },
+  "outcome": {
+   "en": "The 'stronghold of Zion' fell — by the water shaft, in the standard reading of 2 Samuel 5:8 — and became the city of David, capital of the united kingdom"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -1005,
+   "endYear": -1000,
+   "display": {
+    "en": "c. 1003 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The Jebusites taunted from walls that had never fallen — 'the blind and the lame shall keep thee out'. David took the ridge fortress between Judah and Benjamin and made it his neutral capital; Warren's Shaft and the Gihon spring-works excavated on the Ophel ridge frame the debate over how."
+  },
+  "scriptureRefs": [
+   "2 Samuel 5:6-10",
+   "1 Chronicles 11:4-9"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-thiele-chronology"
+  ],
+  "artifactIds": [
+   "artifact-tel-dan-stele"
+  ]
+ },
+ {
+  "id": "battle-rephaim-baal-perazim",
+  "title": {
+   "en": "The Philistine thrusts in the Valley of Rephaim"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "The Philistines vs. David's new kingdom"
+  },
+  "outcome": {
+   "en": "Two invasions broke — at Baal-perazim ('the LORD hath broken forth upon mine enemies'), then by the encircling march at the mulberry trees; the Philistines were driven 'from Geba until thou come to Gazer'"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -1003,
+   "endYear": -995,
+   "display": {
+    "en": "c. 1003-995 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Twice the Philistines pushed up the Rephaim valley to strangle the new capital, and twice were thrown back — the second time by David's rear encirclement at the balsam trees, waiting for 'the sound of a going in the tops of the mulberry trees'. The victories ended Philistine power in the hill country."
+  },
+  "scriptureRefs": [
+   "2 Samuel 5:17-25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-thiele-chronology"
+  ],
+  "locationNote": {
+   "en": "The Valley of Rephaim runs southwest from Jerusalem toward Bethlehem; Baal-perazim itself is unidentified."
+  }
+ },
+ {
+  "id": "battle-rabbah",
+  "title": {
+   "en": "The siege of Rabbah of the Ammonites"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Israel under Joab (and David) vs. Ammon and its Aramean mercenaries"
+  },
+  "outcome": {
+   "en": "The Ammonite-Aramean coalition was beaten in the field, Rabbah invested, the 'city of waters' taken by Joab, and the citadel stormed under David — but the siege is remembered for Uriah"
+  },
+  "siteId": "site-rabbah-ammon",
+  "dateRange": {
+   "startYear": -995,
+   "endYear": -985,
+   "display": {
+    "en": "c. 995-985 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The war that frames the Bathsheba narrative: 'at the time when kings go forth to battle... David tarried still at Jerusalem'. Uriah the Hittite was set 'in the forefront of the hottest battle' at the wall of Rabbah and abandoned; the city fell in the following season, and Nathan's parable had already fallen on the king."
+  },
+  "scriptureRefs": [
+   "2 Samuel 10:6-14",
+   "2 Samuel 11:1",
+   "2 Samuel 11:14-17",
+   "2 Samuel 12:26-31"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-amman-citadel",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-forest-of-ephraim",
+  "title": {
+   "en": "The forest of Ephraim — Absalom's revolt broken"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "David's field army under Joab, Abishai, and Ittai vs. all Israel under Absalom"
+  },
+  "outcome": {
+   "en": "Twenty thousand fell in the broken woodland where 'the wood devoured more people that day than the sword'; Absalom, caught by his head in the oak, was killed by Joab against orders"
+  },
+  "siteId": "site-mahanaim",
+  "dateRange": {
+   "startYear": -980,
+   "endYear": -972,
+   "display": {
+    "en": "c. 980-972 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The dynasty's civil war: David, driven across the Jordan to Mahanaim, sent his companies out with the charge every soldier heard — 'Deal gently for my sake with the young man, even with Absalom.' The victory dissolved in the king's grief: 'O my son Absalom... would God I had died for thee.'"
+  },
+  "scriptureRefs": [
+   "2 Samuel 17:24-26",
+   "2 Samuel 18:1-17",
+   "2 Samuel 18:33"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-mahanaim",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "The 'wood of Ephraim' lay in Gilead near Mahanaim, east of the Jordan; the forest itself is unidentified."
+  }
+ },
+ {
+  "id": "battle-mount-zemaraim",
+  "title": {
+   "en": "The battle of Mount Zemaraim — Judah against Jeroboam"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "Judah under Abijah (400,000) vs. Israel under Jeroboam I (800,000)"
+  },
+  "outcome": {
+   "en": "Jeroboam's double envelopment failed; the Chronicler counts 500,000 of Israel fallen, and Judah took Bethel, Jeshanah, and Ephron with their villages"
+  },
+  "siteId": "site-mount-zemaraim",
+  "dateRange": {
+   "startYear": -915,
+   "endYear": -910,
+   "display": {
+    "en": "c. 913 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The bloodiest recorded clash of the brother kingdoms, a generation after the schism. Abijah's speech from the mountain claimed the Davidic covenant and the Aaronic priesthood against the golden calves; ambushed front and rear, Judah 'cried unto the LORD' and broke both wings. The numbers are the Chronicler's characteristic large figures; the campaign's Bethel gains were real but brief."
+  },
+  "scriptureRefs": [
+   "2 Chronicles 13:3-20",
+   "1 Kings 15:6-7"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-mount-zemaraim",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "battle-ramah-asa-baasha",
+  "title": {
+   "en": "The Ramah border war — Asa against Baasha"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "Judah under Asa vs. Israel under Baasha (with Ben-hadad I of Damascus bought in against Israel)"
+  },
+  "outcome": {
+   "en": "Baasha fortified Ramah to seal Judah's border; Asa stripped temple and palace treasuries to turn Ben-hadad against the north, and when Baasha withdrew, Judah carried off Ramah's stones and timber to fortify Geba and Mizpah"
+  },
+  "siteId": "site-ramah",
+  "dateRange": {
+   "startYear": -900,
+   "endYear": -885,
+   "display": {
+    "en": "c. 895-885 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "'And there was war between Asa and Baasha king of Israel all their days.' The war of the fortified border: Ramah sat astride the north road five miles from Jerusalem, close enough to choke the capital. Asa's Aramean bribe worked — Ben-hadad ravaged Ijon, Dan, and the Naphtali storelands — but the seer Hanani condemned the reliance on Damascus, and the precedent haunted both kingdoms."
+  },
+  "scriptureRefs": [
+   "1 Kings 15:16-22",
+   "2 Chronicles 16:1-10"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-ramah-benjamin",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "battle-beth-shemesh",
+  "title": {
+   "en": "The battle of Beth-shemesh — Israel humbles Judah"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "Israel under Jehoash vs. Judah under Amaziah"
+  },
+  "outcome": {
+   "en": "Judah was routed 'every man to their tents'; Amaziah was captured, four hundred cubits of Jerusalem's wall broken down from the Ephraim gate to the corner gate, and the temple and palace treasuries emptied to Samaria with hostages"
+  },
+  "siteId": "site-beth-shemesh",
+  "dateRange": {
+   "startYear": -792,
+   "endYear": -786,
+   "display": {
+    "en": "c. 790 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Flushed with victory over Edom, Amaziah challenged the north: 'Come, let us look one another in the face.' Jehoash's thistle-and-cedar parable warned him off — 'glory of this, and tarry at home' — and the field at Beth-shemesh proved the parable. The one recorded sack of Jerusalem by the sister kingdom."
+  },
+  "scriptureRefs": [
+   "2 Kings 14:8-14",
+   "2 Chronicles 25:17-24"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-beth-shemesh",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "battle-syro-ephraimite-war",
+  "title": {
+   "en": "The Syro-Ephraimite war — Israel and Aram against Judah"
+  },
+  "kind": "civil-war",
+  "combatants": {
+   "en": "Israel under Pekah with Aram under Rezin vs. Judah under Ahaz"
+  },
+  "outcome": {
+   "en": "Jerusalem withstood the siege but Judah was mauled (the Chronicler counts 120,000 fallen and mass captives, returned at the prophet Oded's word); Ahaz bought Assyria's intervention — Damascus fell and Rezin died, and Judah became Tiglath-pileser's tributary"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -735,
+   "endYear": -732,
+   "display": {
+    "en": "735-732 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The coalition sought to depose the Davidic king and install 'the son of Tabeal'. Into the panic — 'his heart was moved... as the trees of the wood are moved with the wind' — Isaiah brought the sign of Immanuel (Isaiah 7:14). Ahaz appealed instead to Assyria, mortgaging the kingdom's independence: the pivotal wrong turn of Judah's foreign policy, in the prophets' verdict."
+  },
+  "scriptureRefs": [
+   "2 Kings 16:5-9",
+   "Isaiah 7:1-16",
+   "2 Chronicles 28:5-15"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-syro-ephraimite-war",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "battle-samaria-ben-hadad",
+  "title": {
+   "en": "Ben-hadad's siege of Samaria repelled"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Aram-Damascus under Ben-hadad with thirty-two kings vs. Israel under Ahab"
+  },
+  "outcome": {
+   "en": "The drunken siege camp was surprised at noon by the 232 young men of the provincial governors; Aram broke, 'and Israel slew the Syrians with a great slaughter'"
+  },
+  "siteId": "site-samaria-city",
+  "dateRange": {
+   "startYear": -860,
+   "endYear": -855,
+   "display": {
+    "en": "c. 860-855 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Ben-hadad's demand escalated from tribute to open plunder, and the elders counselled defiance. At a prophet's word Ahab led the sortie himself while the Aramean king drank in the pavilions — the first round of the Aphek campaign the following spring."
+  },
+  "scriptureRefs": [
+   "1 Kings 20:1-21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-samaria-city",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-aphek-ben-hadad",
+  "title": {
+   "en": "The battle of Aphek — 'God of the hills' refuted"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Aram-Damascus under Ben-hadad ('their gods are gods of the hills') vs. Israel under Ahab"
+  },
+  "outcome": {
+   "en": "Aram fell 'an hundred thousand footmen in one day'; the wall of Aphek fell on the remnant, Ben-hadad surrendered, and Ahab's lenient treaty was prophetically condemned"
+  },
+  "siteId": "site-aphek-golan",
+  "dateRange": {
+   "startYear": -857,
+   "endYear": -854,
+   "display": {
+    "en": "c. 856 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Aram re-mustered in the plain east of the lake, reasoning Israel's God could not fight on level ground. The seven-day face-off ended in a rout that the narrative expressly frames as the refutation: 'thus shall ye know that I am the LORD.' Ahab spared Ben-hadad for trade concessions in Damascus — and was told he had traded his life for it."
+  },
+  "scriptureRefs": [
+   "1 Kings 20:22-34",
+   "1 Kings 20:35-43"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-samaria-city",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "The eastern Aphek is not securely identified; anchored near 'Afiq in the Golan above En Gev."
+  }
+ },
+ {
+  "id": "battle-qarqar",
+  "title": {
+   "en": "The battle of Qarqar (extra-biblical anchor)"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Assyria under Shalmaneser III vs. a twelve-king coalition — Hadadezer of Damascus, Irhuleni of Hamath, and 'Ahab the Israelite' with 2,000 chariots and 10,000 soldiers"
+  },
+  "outcome": {
+   "en": "Shalmaneser claimed a crushing victory, but the Assyrian advance stalled for years — the coalition held; Assyria returned repeatedly in the following decade"
+  },
+  "siteId": "site-qarqar",
+  "dateRange": {
+   "startYear": -854,
+   "endYear": -853,
+   "display": {
+    "en": "853 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Unmentioned in Scripture, indispensable to its chronology: the Kurkh Monolith's report of Qarqar is the earliest securely dated appearance of any Israelite king in the extra-biblical record, and — with the Black Obelisk's Jehu — the synchronism from which the entire divided-kingdom timeline is calculated. Ahab's chariot corps as listed was among the coalition's largest, matching the stables archaeology at Megiddo long attributed to the Omrides."
+  },
+  "scriptureRefs": [],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-qarqar",
+   "cit-wikipedia-kurkh-monoliths",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-kurkh-monolith"
+  ]
+ },
+ {
+  "id": "battle-ramoth-gilead-ahab",
+  "title": {
+   "en": "Ramoth-gilead — the death of Ahab"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Israel under Ahab with Judah under Jehoshaphat vs. Aram-Damascus under Ben-hadad"
+  },
+  "outcome": {
+   "en": "Israel failed to retake the city; Ahab, disguised in the ranks while Jehoshaphat wore the robes, was mortally wounded 'between the joints of the harness' by a bow drawn at a venture, and died at even, propped in his chariot"
+  },
+  "siteId": "site-ramoth-gilead",
+  "dateRange": {
+   "startYear": -853,
+   "endYear": -852,
+   "display": {
+    "en": "c. 853-852 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The campaign opened with four hundred court prophets promising victory and one — Micaiah ben Imlah — foretelling Israel scattered 'as sheep that have not a shepherd'. Ahab's theatrical precaution against the prophecy is the narrative's irony: the random arrow found him anyway. The dogs licked up the blood at the pool of Samaria, as Elijah had said over Naboth's vineyard."
+  },
+  "scriptureRefs": [
+   "1 Kings 22:1-38",
+   "2 Chronicles 18:28-34"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-ramoth-gilead",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-moab-rebellion",
+  "title": {
+   "en": "The Moabite war — Mesha's rebellion"
+  },
+  "kind": "campaign",
+  "combatants": {
+   "en": "Israel under Jehoram, Judah under Jehoshaphat, and Edom vs. Moab under Mesha"
+  },
+  "outcome": {
+   "en": "The allies, saved from thirst by Elisha's word, ravaged Moab to Kir-hareseth; the siege broke off in horror when Mesha offered his firstborn on the wall — and Moab remained independent, as Mesha's own stele boasts"
+  },
+  "siteId": "site-kir-hareseth",
+  "dateRange": {
+   "startYear": -850,
+   "endYear": -840,
+   "display": {
+    "en": "c. 850-840 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The one war narrated from both sides: 2 Kings 3 from Israel's camp, and the Mesha Stele from Moab's — Mesha 'king of Moab, the Dibonite' recording that 'Omri had oppressed Moab many days' and that he threw off 'the house of Omri', took Nebo and Ataroth, and built cisterns with Israelite captives. The two accounts disagree in outcome-framing and agree in substance: the rebellion succeeded."
+  },
+  "scriptureRefs": [
+   "2 Kings 1:1",
+   "2 Kings 3:4-27"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-mesha-stele",
+   "cit-wikipedia-kir-of-moab",
+   "cit-ref-cos",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-mesha-stele"
+  ]
+ },
+ {
+  "id": "battle-jehu-coup",
+  "title": {
+   "en": "Jehu's coup at Jezreel"
+  },
+  "kind": "coup",
+  "combatants": {
+   "en": "Jehu, anointed at Ramoth-gilead, vs. the house of Ahab (Joram of Israel and his ally Ahaziah of Judah)"
+  },
+  "outcome": {
+   "en": "Joram was shot through the heart in Naboth's field; Ahaziah of Judah died of his wounds at Megiddo; Jezebel was thrown from the window; Ahab's seventy sons followed — the Omride dynasty was annihilated, and Jehu paid tribute to Assyria within the year"
+  },
+  "siteId": "site-jezreel",
+  "dateRange": {
+   "startYear": -842,
+   "endYear": -841,
+   "display": {
+    "en": "841 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Anointed in secret in the siege camp, Jehu drove 'furiously' to Jezreel before word could travel. The purge fulfilled Elijah's oracle over Naboth's vineyard to the letter — and the Tel Dan Stele complicates it fascinatingly: an Aramean king (almost certainly Hazael) claims *he* killed both kings, naming the 'king of Israel' and the king of the 'house of David'. On the Black Obelisk, within months, Jehu bows to Shalmaneser III — the only Israelite king ever depicted."
+  },
+  "scriptureRefs": [
+   "2 Kings 9:1-13",
+   "2 Kings 9:14-37",
+   "2 Kings 10:1-11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-jehu",
+   "cit-wikipedia-tel-jezreel",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-tel-dan-stele",
+   "artifact-black-obelisk"
+  ],
+  "disputes": {
+   "en": "The Tel Dan Stele's author (Hazael) claims to have killed Joram and Ahaziah, where 2 Kings credits Jehu; harmonizations (Jehu acting as Hazael's de facto instrument, or royal boast-convention) are debated. The coup's date, 841 BC, is fixed by the Black Obelisk synchronism."
+  }
+ },
+ {
+  "id": "battle-galilee-tiglath-pileser",
+  "title": {
+   "en": "Tiglath-pileser III takes Galilee and Gilead"
+  },
+  "kind": "conquest",
+  "combatants": {
+   "en": "Assyria under Tiglath-pileser III vs. Israel under Pekah"
+  },
+  "outcome": {
+   "en": "Ijon, Abel-beth-maachah, Janoah, Kedesh, Hazor, Gilead, and Galilee — 'all the land of Naphtali' — were taken and their people deported to Assyria: the first stage of Israel's end"
+  },
+  "siteId": "site-hazor",
+  "dateRange": {
+   "startYear": -734,
+   "endYear": -732,
+   "display": {
+    "en": "733-732 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The price of the Syro-Ephraimite adventure: called in by Ahaz, Assyria detached Israel's whole north into provinces. Hazor's stratum V shows the destruction; the deportations begin the Israelite diaspora. Isaiah's oracle turns the darkness inside out: 'the land of Zebulun and the land of Naphtali... the people that walked in darkness have seen a great light' (Isaiah 9:1-2) — the very region of Jesus' Galilean ministry."
+  },
+  "scriptureRefs": [
+   "2 Kings 15:29",
+   "1 Chronicles 5:26",
+   "Isaiah 9:1-2"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-syro-ephraimite-war",
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Area highlight approximates the annexed Galilee-Naphtali region; Gilead across the Jordan was taken in the same campaigns."
+  },
+  "area": [
+   [
+    35.1,
+    32.85
+   ],
+   [
+    35.7,
+    32.7
+   ],
+   [
+    36.0,
+    32.9
+   ],
+   [
+    35.9,
+    33.3
+   ],
+   [
+    35.55,
+    33.3
+   ],
+   [
+    35.15,
+    33.05
+   ],
+   [
+    35.1,
+    32.85
+   ]
+  ]
+ },
+ {
+  "id": "battle-fall-of-samaria",
+  "title": {
+   "en": "The fall of Samaria — the end of the kingdom of Israel"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Assyria under Shalmaneser V (completed/claimed by Sargon II) vs. Israel under Hoshea"
+  },
+  "outcome": {
+   "en": "After a three-year siege Samaria fell (722/721 BC); 27,290 captives by Sargon's count were deported to Halah, Habor, and the cities of the Medes, and foreign settlers were planted in the land — the ten tribes' exile"
+  },
+  "siteId": "site-samaria-city",
+  "dateRange": {
+   "startYear": -725,
+   "endYear": -721,
+   "display": {
+    "en": "725-722/721 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Hoshea's withheld tribute and Egyptian intrigue brought the final siege. 2 Kings 17 reads the catastrophe theologically — covenant broken, prophets ignored — while Sargon II's annals count the deportees and the fifty chariots impressed into the Assyrian army. The resettled mixed population becomes the Samaritans of the later narrative."
+  },
+  "scriptureRefs": [
+   "2 Kings 17:1-6",
+   "2 Kings 17:22-24",
+   "2 Kings 18:9-12"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-sargon-ii",
+   "cit-wikipedia-samaria-city",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Area highlight approximates the northern kingdom's Samarian heartland annexed as the Assyrian province of Samerina."
+  },
+  "artifactIds": [
+   "artifact-samaria-ostraca"
+  ],
+  "area": [
+   [
+    34.95,
+    32.05
+   ],
+   [
+    35.4,
+    31.95
+   ],
+   [
+    35.55,
+    32.2
+   ],
+   [
+    35.55,
+    32.6
+   ],
+   [
+    35.2,
+    32.75
+   ],
+   [
+    34.95,
+    32.55
+   ],
+   [
+    34.95,
+    32.05
+   ]
+  ]
+ },
+ {
+  "id": "battle-lachish-701",
+  "title": {
+   "en": "Sennacherib storms Lachish"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Assyria under Sennacherib vs. the fortified cities of Judah under Hezekiah"
+  },
+  "outcome": {
+   "en": "Lachish fell by ramp and battering ram; 'all the fenced cities of Judah' — forty-six by Sennacherib's count — were taken, and 200,150 people by his figure deported, while Hezekiah was shut up in Jerusalem"
+  },
+  "siteId": "site-lachish",
+  "dateRange": {
+   "startYear": -702,
+   "endYear": -701,
+   "display": {
+    "en": "701 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The best-documented battle of the biblical world: 2 Kings 18:13-14 names the siege in one verse; Sennacherib carved it across a whole palace room at Nineveh (the Lachish Reliefs); and the tell preserves the only fully excavated Assyrian siege ramp, with sling stones, arrowheads, the counter-ramp, and a mass burial. Text, image, and ground agree to an extraordinary degree."
+  },
+  "scriptureRefs": [
+   "2 Kings 18:13-17",
+   "2 Chronicles 32:9",
+   "Micah 1:13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-siege-of-lachish",
+   "cit-wikipedia-sennacherib-campaign",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Area highlight approximates the Shephelah swath of Sennacherib's 701 BC campaign against Judah's fortified cities."
+  },
+  "artifactIds": [
+   "artifact-lachish-reliefs",
+   "artifact-sennacherib-prism"
+  ],
+  "area": [
+   [
+    34.75,
+    31.4
+   ],
+   [
+    35.1,
+    31.35
+   ],
+   [
+    35.25,
+    31.55
+   ],
+   [
+    35.2,
+    31.8
+   ],
+   [
+    34.95,
+    31.85
+   ],
+   [
+    34.75,
+    31.65
+   ],
+   [
+    34.75,
+    31.4
+   ]
+  ]
+ },
+ {
+  "id": "battle-jerusalem-701",
+  "title": {
+   "en": "Sennacherib before Jerusalem — the city spared"
+  },
+  "kind": "deliverance",
+  "combatants": {
+   "en": "Assyria under Sennacherib (the Rabshakeh's embassy and army) vs. Jerusalem under Hezekiah and Isaiah"
+  },
+  "outcome": {
+   "en": "The siege never closed: the biblical account reports the angel of the LORD striking the camp and Sennacherib withdrawing to Nineveh (where he was later murdered by his sons); Sennacherib's own prism boasts of shutting Hezekiah up 'like a caged bird' — and conspicuously claims no capture"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -702,
+   "endYear": -701,
+   "display": {
+    "en": "701 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The Rabshakeh's speech at the conduit of the upper pool — in Hebrew, to the men on the wall — is one of the Bible's great set-pieces of psychological warfare. Hezekiah had prepared: the Siloam tunnel brought the Gihon's water inside the walls (its workmen's inscription survives), and the Broad Wall sheltered the swollen city. The deliverance of 701 became the touchstone of Zion theology — and Sennacherib's silence about Jerusalem's fate in his own annals is its most argued corroboration."
+  },
+  "scriptureRefs": [
+   "2 Kings 18:17-37",
+   "2 Kings 19:32-37",
+   "Isaiah 37:33-38",
+   "2 Chronicles 32:1-23"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-sennacherib-campaign",
+   "cit-ref-anet",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-sennacherib-prism",
+   "artifact-hezekiah-siloam-tunnel",
+   "artifact-hezekiah-bulla"
+  ],
+  "disputes": {
+   "en": "The mechanism and scale of the Assyrian withdrawal are debated (plague, Egyptian pressure, tribute-satisfied withdrawal, or a two-campaign reconstruction); that Sennacherib devastated Judah, that Jerusalem did not fall, and that Hezekiah paid heavy tribute are common ground between the sources."
+  }
+ },
+ {
+  "id": "battle-megiddo-609",
+  "title": {
+   "en": "The battle of Megiddo — the death of Josiah"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Egypt under Pharaoh Necho II (marching to the Euphrates) vs. Judah under Josiah"
+  },
+  "outcome": {
+   "en": "Josiah, intercepting the Egyptian march despite Necho's warning, was mortally wounded by archers at Megiddo and died at (or en route to) Jerusalem; Judah became Egypt's vassal, and the reforming king's death shook the kingdom's theology"
+  },
+  "siteId": "site-megiddo",
+  "dateRange": {
+   "startYear": -610,
+   "endYear": -609,
+   "display": {
+    "en": "609 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Necho was hurrying north to prop up the last Assyrian remnant at Harran against Babylon; Josiah — the Deuteronomic reformer — blocked the Aruna pass and died for it. 'And all Judah and Jerusalem mourned for Josiah'; Jeremiah lamented him, and Zechariah 12:11 still remembers 'the mourning of Hadadrimmon in the valley of Megiddon'. Within four years the world he tried to hold back arrived at Carchemish."
+  },
+  "scriptureRefs": [
+   "2 Kings 23:29-30",
+   "2 Chronicles 35:20-27"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-megiddo-609",
+   "cit-wikipedia-tel-megiddo",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "battle-carchemish",
+  "title": {
+   "en": "The battle of Carchemish"
+  },
+  "kind": "battle",
+  "combatants": {
+   "en": "Babylon under crown prince Nebuchadnezzar vs. Egypt under Necho II with the Assyrian remnant"
+  },
+  "outcome": {
+   "en": "The Egyptian army was shattered and pursued to Hamath 'so that not a man escaped to his own country' (Babylonian Chronicle); Assyria ended, and 'the king of Egypt came not again any more out of his land' (2 Kings 24:7)"
+  },
+  "siteId": "site-carchemish",
+  "dateRange": {
+   "startYear": -606,
+   "endYear": -605,
+   "display": {
+    "en": "605 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The hinge of the age, dated precisely by the Babylonian Chronicle to 605 BC: Jeremiah 46 turns the battle into an oracle — 'the mighty man hath stumbled... by the river Euphrates'. Within months Nebuchadnezzar took Syria-Palestine's submission and Daniel's generation went to Babylon in the first deportation (Daniel 1:1-4)."
+  },
+  "scriptureRefs": [
+   "Jeremiah 46:1-12",
+   "2 Kings 24:7",
+   "Daniel 1:1-4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-battle-of-carchemish",
+   "cit-wikipedia-carchemish",
+   "cit-src-livius-abc4",
+   "cit-src-livius-abc5",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-babylonian-chronicle"
+  ]
+ },
+ {
+  "id": "battle-jerusalem-597",
+  "title": {
+   "en": "Nebuchadnezzar takes Jerusalem — the first deportation of the house of David"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Babylon under Nebuchadnezzar II vs. Judah under Jehoiachin"
+  },
+  "outcome": {
+   "en": "Jerusalem surrendered on 2 Adar (15/16 March) 597 BC — a date fixed to the day by the Babylonian Chronicle; Jehoiachin, the queen mother, the elite, the craftsmen, and the temple treasures went to Babylon, and Zedekiah was installed as vassal"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -598,
+   "endYear": -597,
+   "display": {
+    "en": "597 BC (2 Adar: 15/16 March)"
+   },
+   "approximate": false
+  },
+  "summary": {
+   "en": "The rare event dated to a calendar day by an independent source: the Chronicle records that Nebuchadnezzar 'encamped against the city of Judah and on the second day of Adar took the city and captured its king'. Among the ten thousand deported was the young priest Ezekiel, whose visions by the Chebar canal are dated from 'king Jehoiachin's captivity' — and the Babylonian ration tablets later list the exiled king's oil allowance by name."
+  },
+  "scriptureRefs": [
+   "2 Kings 24:10-17",
+   "2 Chronicles 36:9-10",
+   "Ezekiel 1:1-3"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-siege-jerusalem-597",
+   "cit-src-livius-abc5",
+   "cit-ref-bright"
+  ],
+  "artifactIds": [
+   "artifact-babylonian-chronicle",
+   "artifact-jehoiachin-tablets"
+  ]
+ },
+ {
+  "id": "battle-fall-of-jerusalem-586",
+  "title": {
+   "en": "The fall of Jerusalem and the end of the kingdom of Judah"
+  },
+  "kind": "siege",
+  "combatants": {
+   "en": "Babylon under Nebuchadnezzar II vs. Judah under Zedekiah"
+  },
+  "outcome": {
+   "en": "After an eighteen-month siege (with one pause for Egypt's relief attempt) the wall was breached, Zedekiah was caught near Jericho, his sons killed before his blinding, and in the fifth month the temple, palace, and city were burned; Judah went into exile"
+  },
+  "siteId": "site-jerusalem",
+  "dateRange": {
+   "startYear": -589,
+   "endYear": -586,
+   "display": {
+    "en": "588-586 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The catastrophe toward which Kings and Jeremiah drive: famine 'sore in the city', the night flight through the gate between the two walls, Riblah's judgment, and the burning of the house of the LORD on the seventh/tenth of the fifth month — mourned ever after on Tisha B'Av, and lamented verse by verse in Lamentations. Archaeology preserves the moment across the City of David: burnt rooms, Scythian-type arrowheads, and the bullae of officials named in Jeremiah; at Lachish, the last ostraca watch Azekah's signal fire go out (Jeremiah 34:7)."
+  },
+  "scriptureRefs": [
+   "2 Kings 25:1-21",
+   "Jeremiah 39:1-10",
+   "Jeremiah 52:4-27",
+   "Lamentations 2:1-9"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-siege-jerusalem-587",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "locationNote": {
+   "en": "Area highlight approximates the kingdom of Judah extinguished in the 588-586 BC campaign."
+  },
+  "artifactIds": [
+   "artifact-lachish-letters",
+   "artifact-babylonian-chronicle"
+  ],
+  "area": [
+   [
+    34.9,
+    31.9
+   ],
+   [
+    35.55,
+    31.8
+   ],
+   [
+    35.55,
+    31.15
+   ],
+   [
+    35.35,
+    30.95
+   ],
+   [
+    34.9,
+    30.9
+   ],
+   [
+    34.75,
+    31.25
+   ],
+   [
+    34.85,
+    31.65
+   ],
+   [
+    34.9,
+    31.9
+   ]
+  ]
+ }
+]

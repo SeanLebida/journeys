@@ -1,0 +1,1712 @@
+[
+ {
+  "id": "miracle-water-into-wine",
+  "title": {
+   "en": "Water turned into wine"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "nature",
+  "siteId": "site-cana-of-galilee",
+  "summary": {
+   "en": "At a wedding feast in Cana of Galilee the water in six stone purification jars became wine — John calls it 'the first of his signs', by which Jesus 'manifested his glory'."
+  },
+  "scriptureRefs": [
+   "John 2:1-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-officials-son-healed",
+  "title": {
+   "en": "The royal official's son healed at a distance"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-cana-of-galilee",
+  "summary": {
+   "en": "A royal official from Capernaum begged Jesus, then at Cana, to come heal his dying son; Jesus answered 'Go; your son will live', and the fever left the boy at that very hour — John's second Galilean sign."
+  },
+  "scriptureRefs": [
+   "John 4:46-54"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "Spoken at Cana; the boy lay ~26 km away in Capernaum and was healed at a distance."
+  }
+ },
+ {
+  "id": "miracle-capernaum-demoniac",
+  "title": {
+   "en": "The demoniac in the Capernaum synagogue"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "In the synagogue at Capernaum a man with an unclean spirit cried out; Jesus rebuked it — 'Be silent, and come out of him!' — and the spirit left. The first exorcism in Mark's Gospel."
+  },
+  "scriptureRefs": [
+   "Mark 1:21-28",
+   "Luke 4:31-37"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-peters-mother-in-law",
+  "title": {
+   "en": "Peter's mother-in-law healed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Leaving the synagogue, Jesus took Simon Peter's fever-stricken mother-in-law by the hand and raised her up; the fever left her and she served them. The traditional 'house of Peter' lies a stone's throw from the Capernaum synagogue."
+  },
+  "scriptureRefs": [
+   "Mark 1:29-31",
+   "Matthew 8:14-15",
+   "Luke 4:38-39"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-first-catch-of-fish",
+  "title": {
+   "en": "The first miraculous catch of fish"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "provision",
+  "siteId": "site-sea-of-galilee",
+  "summary": {
+   "en": "After teaching from Simon's boat, Jesus told the fishermen — who had toiled all night for nothing — to put out into the deep; their nets filled to breaking. Peter fell at his knees, and Jesus called them to fish for people."
+  },
+  "scriptureRefs": [
+   "Luke 5:1-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-cleansing-a-leper",
+  "title": {
+   "en": "A leper cleansed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "A leper knelt before Jesus: 'If you will, you can make me clean.' Moved with compassion, Jesus touched him — 'I will; be clean' — and the leprosy left immediately; he was sent to the priest as Moses commanded."
+  },
+  "scriptureRefs": [
+   "Mark 1:40-45",
+   "Matthew 8:1-4",
+   "Luke 5:12-16"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "Luke places it 'in one of the towns' of Galilee, unnamed; anchored to Capernaum as the hub of this preaching circuit."
+  }
+ },
+ {
+  "id": "miracle-centurions-servant",
+  "title": {
+   "en": "The centurion's servant healed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "A Roman centurion at Capernaum asked healing for his paralysed servant but counted himself unworthy of a visit: 'only say the word'. Jesus marvelled — 'not even in Israel have I found such faith' — and the servant was healed that hour."
+  },
+  "scriptureRefs": [
+   "Matthew 8:5-13",
+   "Luke 7:1-10"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-paralytic-through-roof",
+  "title": {
+   "en": "The paralytic lowered through the roof"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Four friends, blocked by the crowd, dug through the roof of the Capernaum house and lowered a paralysed man to Jesus, who first pronounced his sins forgiven — then, to show the Son of Man's authority to forgive, told him to rise and carry his bed home."
+  },
+  "scriptureRefs": [
+   "Mark 2:1-12",
+   "Matthew 9:1-8",
+   "Luke 5:17-26"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-withered-hand",
+  "title": {
+   "en": "The man with the withered hand"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "In a Galilean synagogue on the sabbath, watched by opponents, Jesus asked whether it is lawful to do good or harm on the sabbath, then told the man 'Stretch out your hand' — and it was restored."
+  },
+  "scriptureRefs": [
+   "Mark 3:1-6",
+   "Matthew 12:9-14",
+   "Luke 6:6-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "The synagogue is unnamed; the setting follows the Capernaum ministry in all three Synoptics."
+  }
+ },
+ {
+  "id": "miracle-widows-son-nain",
+  "title": {
+   "en": "The widow's son at Nain raised"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "resurrection",
+  "siteId": "site-nain",
+  "summary": {
+   "en": "Meeting a funeral at the village gate — a widow's only son — Jesus had compassion, touched the bier and said 'Young man, I say to you, arise.' The dead man sat up and spoke, and Jesus gave him to his mother. The first raising of the dead in the Gospels."
+  },
+  "scriptureRefs": [
+   "Luke 7:11-17"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-calming-the-storm",
+  "title": {
+   "en": "The storm stilled"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "nature",
+  "siteId": "site-sea-of-galilee",
+  "summary": {
+   "en": "Crossing the lake, a violent squall swamped the boat while Jesus slept on the cushion. Woken — 'Teacher, do you not care that we are perishing?' — he rebuked the wind and said to the sea 'Peace! Be still', and there was a great calm."
+  },
+  "scriptureRefs": [
+   "Mark 4:35-41",
+   "Matthew 8:23-27",
+   "Luke 8:22-25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-gerasene-demoniac",
+  "title": {
+   "en": "The Gerasene demoniac ('Legion')"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-decapolis",
+  "summary": {
+   "en": "On the lake's eastern shore a man living among the tombs, possessed by a 'Legion' of spirits, was delivered; the spirits entered a herd of pigs that rushed down the steep bank into the sea. The healed man became the first herald of the Decapolis."
+  },
+  "scriptureRefs": [
+   "Mark 5:1-20",
+   "Matthew 8:28-34",
+   "Luke 8:26-39"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-wikipedia-gerasene-demoniac",
+   "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "disputes": {
+   "en": "The manuscripts read variously 'Gerasenes', 'Gadarenes', and 'Gergesenes'; Gerasa and Gadara both lie miles from the lake, so many scholars and Byzantine tradition favour Kursi (Gergesa) on the eastern shore, where the bank drops steeply to the water. The event's anchor here spans that debate."
+  }
+ },
+ {
+  "id": "miracle-jairus-daughter",
+  "title": {
+   "en": "Jairus's daughter raised"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "resurrection",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Jairus, a synagogue ruler, fell at Jesus' feet for his dying twelve-year-old daughter. Word came that she had died — 'Do not fear, only believe.' Taking her by the hand: 'Talitha cumi' — 'Little girl, I say to you, arise' — and she got up and walked."
+  },
+  "scriptureRefs": [
+   "Mark 5:21-43",
+   "Matthew 9:18-26",
+   "Luke 8:40-56"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-woman-with-issue-of-blood",
+  "title": {
+   "en": "The woman with the twelve-year haemorrhage"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "On the way to Jairus's house, a woman who had suffered a discharge of blood twelve years touched the fringe of his garment in the crowd and was instantly healed. Jesus, perceiving power had gone out, told her: 'Daughter, your faith has made you well.'"
+  },
+  "scriptureRefs": [
+   "Mark 5:25-34",
+   "Matthew 9:20-22",
+   "Luke 8:43-48"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-two-blind-men",
+  "title": {
+   "en": "Two blind men healed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Two blind men followed Jesus crying 'Have mercy on us, Son of David.' Indoors he touched their eyes — 'According to your faith be it done to you' — and their sight was restored."
+  },
+  "scriptureRefs": [
+   "Matthew 9:27-31"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-mute-demoniac",
+  "title": {
+   "en": "The mute demoniac"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "As the blind men left, a demon-oppressed man who could not speak was brought; when the demon was cast out the mute man spoke, and the crowds marvelled: 'Never was anything like this seen in Israel.'"
+  },
+  "scriptureRefs": [
+   "Matthew 9:32-34"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-blind-mute-demoniac",
+  "title": {
+   "en": "The blind and mute demoniac"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "A demon-oppressed man, blind and mute, was healed so that he both spoke and saw — provoking the Beelzebul controversy, to which Jesus answered that a kingdom divided against itself cannot stand."
+  },
+  "scriptureRefs": [
+   "Matthew 12:22-28",
+   "Luke 11:14"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "Galilean ministry context; the town is not named."
+  }
+ },
+ {
+  "id": "miracle-gennesaret-healings",
+  "title": {
+   "en": "Healings at Gennesaret"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-sea-of-galilee",
+  "summary": {
+   "en": "Landing at Gennesaret on the lake's northwest shore, crowds carried their sick on beds wherever he went — marketplaces, villages, fields — and 'as many as touched' even the fringe of his garment 'were made well'."
+  },
+  "scriptureRefs": [
+   "Mark 6:53-56",
+   "Matthew 14:34-36"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "The fertile plain of Gennesaret, between Capernaum and Magdala on the northwest shore."
+  }
+ },
+ {
+  "id": "miracle-feeding-5000",
+  "title": {
+   "en": "Feeding the five thousand"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "provision",
+  "siteId": "site-tabgha",
+  "summary": {
+   "en": "With five barley loaves and two fish, Jesus fed a crowd of five thousand men 'besides women and children' in a desolate place by the lake; twelve baskets of fragments remained. The only miracle before the resurrection recorded in all four Gospels."
+  },
+  "scriptureRefs": [
+   "Mark 6:30-44",
+   "Matthew 14:13-21",
+   "Luke 9:10-17",
+   "John 6:1-14"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-tabgha-primacy"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "Luke places it near Bethsaida; Byzantine tradition fixed the commemoration at Tabgha on the northwest shore, where the Church of the Multiplication preserves the ancient loaves-and-fish mosaic."
+  }
+ },
+ {
+  "id": "miracle-walking-on-water",
+  "title": {
+   "en": "Walking on the sea"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "nature",
+  "siteId": "site-sea-of-galilee",
+  "summary": {
+   "en": "In the fourth watch of the night, the disciples straining at the oars against the wind, Jesus came to them walking on the sea — 'Take heart; it is I. Do not be afraid' — and when he got into the boat the wind ceased."
+  },
+  "scriptureRefs": [
+   "Mark 6:45-52",
+   "Matthew 14:22-33",
+   "John 6:16-21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-syrophoenician-daughter",
+  "title": {
+   "en": "The Syrophoenician woman's daughter"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-tyre-and-sidon",
+  "summary": {
+   "en": "In the region of Tyre a Gentile woman begged deliverance for her demon-oppressed daughter and answered Jesus' hard saying with persistent faith — 'even the dogs under the table eat the children's crumbs.' 'For this statement... the demon has left your daughter.' Healed at a distance."
+  },
+  "scriptureRefs": [
+   "Mark 7:24-30",
+   "Matthew 15:21-28"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-deaf-mute-decapolis",
+  "title": {
+   "en": "The deaf man with a speech impediment"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-decapolis",
+  "summary": {
+   "en": "Returning through the Decapolis, Jesus took a deaf man with a speech impediment aside, put his fingers in his ears, touched his tongue, and sighed 'Ephphatha' — 'Be opened.' His ears were opened and he spoke plainly."
+  },
+  "scriptureRefs": [
+   "Mark 7:31-37"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-feeding-4000",
+  "title": {
+   "en": "Feeding the four thousand"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "provision",
+  "siteId": "site-decapolis",
+  "summary": {
+   "en": "In the Decapolis, after the crowd had stayed three days with nothing to eat, Jesus — 'I have compassion on the crowd' — fed four thousand from seven loaves and a few small fish; seven baskets of pieces were taken up."
+  },
+  "scriptureRefs": [
+   "Mark 8:1-10",
+   "Matthew 15:32-39"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-blind-man-bethsaida",
+  "title": {
+   "en": "The blind man of Bethsaida"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-bethsaida",
+  "summary": {
+   "en": "At Bethsaida Jesus led a blind man out of the village and healed him in two stages — first 'I see people, but they look like trees, walking', then, after a second touch, he saw everything clearly. The only two-stage healing in the Gospels."
+  },
+  "scriptureRefs": [
+   "Mark 8:22-26"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-boy-with-unclean-spirit",
+  "title": {
+   "en": "The boy with the convulsing spirit"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "exorcism",
+  "siteId": "site-caesarea-philippi",
+  "summary": {
+   "en": "Descending from the Mount of Transfiguration, Jesus found his disciples unable to help a father's convulsing, self-destructive boy. 'All things are possible for one who believes' — 'I believe; help my unbelief!' — and the spirit was rebuked and driven out."
+  },
+  "scriptureRefs": [
+   "Mark 9:14-29",
+   "Matthew 17:14-21",
+   "Luke 9:37-43"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "Below the mount of Transfiguration, in the Caesarea Philippi district (Mount Hermon's traditional slopes)."
+  }
+ },
+ {
+  "id": "miracle-coin-in-the-fish",
+  "title": {
+   "en": "The temple-tax coin in the fish's mouth"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "provision",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Asked at Capernaum whether his teacher paid the half-shekel temple tax, Peter was sent to the lake: 'take the first fish that comes up... you will find a shekel. Take that and give it to them for me and for yourself.'"
+  },
+  "scriptureRefs": [
+   "Matthew 17:24-27"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-bethesda-invalid",
+  "title": {
+   "en": "The invalid at the pool of Bethesda"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "By the Sheep Gate pool with five roofed colonnades, Jesus told a man an invalid thirty-eight years: 'Get up, take up your bed, and walk' — on a sabbath, igniting the Jerusalem controversy of John 5. The five-porticoed double pool John describes has been excavated near St Anne's church."
+  },
+  "scriptureRefs": [
+   "John 5:1-15"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-arch-bethesda"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-man-born-blind",
+  "title": {
+   "en": "The man born blind (Siloam)"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Jesus anointed the eyes of a beggar blind from birth with clay and sent him: 'Go, wash in the pool of Siloam.' He came back seeing — and his interrogation before the Pharisees fills John 9. The stepped Second-Temple pool of Siloam was uncovered in 2004."
+  },
+  "scriptureRefs": [
+   "John 9:1-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-pool-of-siloam"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-crippled-woman",
+  "title": {
+   "en": "The woman bent double for eighteen years"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-samaria",
+  "summary": {
+   "en": "Teaching in a synagogue on the sabbath, Jesus laid hands on a woman bent double eighteen years — 'Woman, you are freed from your disability' — and she straightened and glorified God; he defended the healing as loosing 'a daughter of Abraham' from her bond."
+  },
+  "scriptureRefs": [
+   "Luke 13:10-17"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "An unnamed synagogue on the final journey toward Jerusalem."
+  },
+  "disputes": {
+   "en": "Luke does not name the synagogue's town; the episode sits in the travel narrative (Luke 9:51-19:27), whose route runs through the Samaria-Perea corridor toward Jerusalem. The anchor here is the narrative region, not an identified place."
+  }
+ },
+ {
+  "id": "miracle-man-with-dropsy",
+  "title": {
+   "en": "The man with dropsy"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-samaria",
+  "summary": {
+   "en": "At a sabbath dinner in the house of a ruler of the Pharisees, Jesus healed a man suffering from dropsy, asking his silent watchers: 'Which of you, having a son or an ox that has fallen into a well on a Sabbath day, will not immediately pull him out?'"
+  },
+  "scriptureRefs": [
+   "Luke 14:1-6"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "An unnamed Pharisee's house on the final journey toward Jerusalem."
+  },
+  "disputes": {
+   "en": "The host's town is unnamed; like the bent woman, the scene belongs to Luke's travel narrative through the Samaria-Perea corridor, and the anchor is the narrative region rather than an identified site."
+  }
+ },
+ {
+  "id": "miracle-ten-lepers",
+  "title": {
+   "en": "The ten lepers cleansed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-samaria",
+  "summary": {
+   "en": "'Between Samaria and Galilee' ten lepers stood at a distance crying for mercy; sent to show themselves to the priests, they were cleansed as they went. Only one — a Samaritan — turned back to give thanks: 'Your faith has made you well.'"
+  },
+  "scriptureRefs": [
+   "Luke 17:11-19"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "On the border of Samaria and Galilee (Luke 17:11); the village is unnamed."
+  }
+ },
+ {
+  "id": "miracle-raising-lazarus",
+  "title": {
+   "en": "Lazarus raised from the dead"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "resurrection",
+  "siteId": "site-bethany-and-bethphage",
+  "summary": {
+   "en": "At Bethany, four days after burial, Jesus wept at the tomb of his friend, had the stone removed, and cried 'Lazarus, come out' — and the dead man came out bound in linen strips. John presents it as the sign that sealed the plot against Jesus."
+  },
+  "scriptureRefs": [
+   "John 11:1-44"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-blind-bartimaeus",
+  "title": {
+   "en": "Blind Bartimaeus at Jericho"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-final-journey-jericho",
+  "summary": {
+   "en": "Leaving Jericho on the final ascent to Jerusalem, Jesus stopped for a blind beggar crying 'Son of David, have mercy on me!' — 'Go your way; your faith has made you well.' Bartimaeus recovered his sight and followed him on the way. Matthew recalls two blind men."
+  },
+  "scriptureRefs": [
+   "Mark 10:46-52",
+   "Matthew 20:29-34",
+   "Luke 18:35-43"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-fig-tree-withered",
+  "title": {
+   "en": "The fig tree withered"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "judgment",
+  "siteId": "site-bethany-and-bethphage",
+  "summary": {
+   "en": "On the road from Bethany, Jesus cursed a leafy fig tree that bore no fruit; by the next morning it had withered from the roots — an acted parable of judgment beside the temple cleansing, turned into a lesson on faith and prayer."
+  },
+  "scriptureRefs": [
+   "Mark 11:12-14",
+   "Mark 11:20-25",
+   "Matthew 21:18-22"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-malchus-ear",
+  "title": {
+   "en": "The high priest's servant's ear healed"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-gethsemane",
+  "summary": {
+   "en": "At the arrest in Gethsemane, Peter's sword cut off the right ear of the high priest's servant, Malchus. 'No more of this!' — Jesus touched the ear and healed him: his last recorded miracle before the crucifixion."
+  },
+  "scriptureRefs": [
+   "Luke 22:50-51",
+   "John 18:10-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-second-catch-of-fish",
+  "title": {
+   "en": "The second miraculous catch of fish"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "provision",
+  "siteId": "site-tabgha",
+  "summary": {
+   "en": "After the resurrection, seven disciples fished all night and caught nothing; at dawn a figure on the shore said 'Cast the net on the right side of the boat' — 153 large fish, and the net not torn. 'It is the Lord!' Breakfast on the shore followed, and Peter's threefold restoration."
+  },
+  "scriptureRefs": [
+   "John 21:1-14"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus",
+   "cit-tabgha-primacy"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ],
+  "locationNote": {
+   "en": "By the Sea of Galilee (Tiberias); tradition places the appearance at Tabgha, where the Church of the Primacy of Peter marks the shore."
+  }
+ },
+ {
+  "id": "miracle-nazareth-few-sick-healed",
+  "title": {
+   "en": "A few sick healed at Nazareth"
+  },
+  "performedBy": "jesus",
+  "performerLabel": {
+   "en": "Jesus"
+  },
+  "kind": "healing",
+  "siteId": "site-nazareth",
+  "summary": {
+   "en": "In his hometown, met with unbelief — 'Is not this the carpenter?' — Jesus 'could do no mighty work there, except that he laid his hands on a few sick people and healed them', and he marvelled at their unbelief."
+  },
+  "scriptureRefs": [
+   "Mark 6:1-6",
+   "Matthew 13:53-58"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "miracle-mission-of-the-twelve",
+  "title": {
+   "en": "The Twelve heal and cast out demons"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "The twelve apostles"
+  },
+  "kind": "healing",
+  "siteId": "site-capernaum",
+  "summary": {
+   "en": "Sent out two by two with authority over unclean spirits, the Twelve 'cast out many demons and anointed with oil many who were sick and healed them' through the villages of Galilee — the first miracles the Gospels record of the disciples."
+  },
+  "scriptureRefs": [
+   "Mark 6:7-13",
+   "Luke 9:1-6",
+   "Matthew 10:1"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "locationNote": {
+   "en": "Itinerant through the villages of Galilee; anchored to Capernaum, the mission's home base."
+  }
+ },
+ {
+  "id": "miracle-peter-walks-on-water",
+  "title": {
+   "en": "Peter walks on the water"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Peter"
+  },
+  "kind": "nature",
+  "siteId": "site-sea-of-galilee",
+  "summary": {
+   "en": "'Lord, if it is you, command me to come to you on the water.' Peter got out of the boat and walked on the water toward Jesus — until, seeing the wind, he feared and began to sink: 'Lord, save me.' Jesus caught him: 'O you of little faith, why did you doubt?'"
+  },
+  "scriptureRefs": [
+   "Matthew 14:28-31"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-miracles-of-jesus",
+   "cit-blb-miracles-of-jesus"
+  ],
+  "performerIds": [
+   "person-peter"
+  ],
+  "locationNote": {
+   "en": "Mid-lake, in the same night crossing as Jesus' walking on the sea."
+  }
+ },
+ {
+  "id": "miracle-return-of-the-seventy",
+  "title": {
+   "en": "The seventy(-two) return with joy"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "The seventy(-two) disciples"
+  },
+  "kind": "exorcism",
+  "siteId": "site-samaria",
+  "summary": {
+   "en": "The seventy(-two), sent ahead in pairs to every town Jesus was about to enter, healed the sick and returned rejoicing: 'Lord, even the demons are subject to us in your name!' — 'Do not rejoice in this... but rejoice that your names are written in heaven.'"
+  },
+  "scriptureRefs": [
+   "Luke 10:1-9",
+   "Luke 10:17-20"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "locationNote": {
+   "en": "Itinerant through the towns of the travel narrative toward Jerusalem; the region, not a single site, is the anchor."
+  }
+ },
+ {
+  "id": "miracle-apostles-wonders-jerusalem",
+  "title": {
+   "en": "Many wonders and signs through the apostles"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "The apostles"
+  },
+  "kind": "sign",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "In the first days of the Jerusalem church after Pentecost, 'awe came upon every soul, and many wonders and signs were being done through the apostles'."
+  },
+  "scriptureRefs": [
+   "Acts 2:43"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "miracle-lame-man-beautiful-gate",
+  "title": {
+   "en": "The lame man at the Beautiful Gate"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Peter (with John)"
+  },
+  "kind": "healing",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "A man lame from birth, laid daily at the temple's Beautiful Gate, asked alms. 'I have no silver and gold, but what I do have I give to you. In the name of Jesus Christ of Nazareth, rise up and walk!' — he leapt up, walking and praising God in Solomon's Portico."
+  },
+  "scriptureRefs": [
+   "Acts 3:1-10"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-ananias-and-sapphira",
+  "title": {
+   "en": "The judgment of Ananias and Sapphira"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Peter"
+  },
+  "kind": "judgment",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Ananias and his wife Sapphira sold a field, kept back part of the price, and laid the rest at the apostles' feet as if it were the whole. Confronted by Peter — 'You have not lied to man but to God' — each fell dead in turn, 'and great fear came upon the whole church'."
+  },
+  "scriptureRefs": [
+   "Acts 5:1-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-peters-shadow",
+  "title": {
+   "en": "Signs in Solomon's Portico; Peter's shadow"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "The apostles; Peter"
+  },
+  "kind": "healing",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Many signs and wonders were done among the people in Solomon's Portico; the sick were carried into the streets on cots 'that as Peter came by at least his shadow might fall on some of them', and multitudes from the towns around Jerusalem 'were all healed'."
+  },
+  "scriptureRefs": [
+   "Acts 5:12-16"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-apostles-freed-from-prison",
+  "title": {
+   "en": "The apostles freed from prison"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "An angel of the Lord (for the apostles)"
+  },
+  "kind": "deliverance",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Arrested by the high priest's party, the apostles were freed in the night by an angel of the Lord who opened the prison doors — and at daybreak they were found back in the temple, teaching."
+  },
+  "scriptureRefs": [
+   "Acts 5:17-25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "miracle-stephen-wonders",
+  "title": {
+   "en": "Stephen's great wonders and signs"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Stephen"
+  },
+  "kind": "sign",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Stephen, 'full of grace and power, was doing great wonders and signs among the people' of Jerusalem — the ministry that drew the opposition leading to his defence before the Sanhedrin and his martyrdom."
+  },
+  "scriptureRefs": [
+   "Acts 6:8"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-wikipedia-saint-stephen",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-stephen"
+  ]
+ },
+ {
+  "id": "miracle-philip-in-samaria",
+  "title": {
+   "en": "Philip's signs in Samaria"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Philip the Evangelist"
+  },
+  "kind": "healing",
+  "siteId": "site-samaria",
+  "summary": {
+   "en": "Scattered by persecution, Philip proclaimed Christ in a city of Samaria: unclean spirits came out 'crying with a loud voice', and many paralysed and lame were healed — 'so there was much joy in that city'. Simon the magician himself believed at the sight."
+  },
+  "scriptureRefs": [
+   "Acts 8:4-8",
+   "Acts 8:13"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-wikipedia-philip-the-evangelist",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-philip-evangelist"
+  ]
+ },
+ {
+  "id": "miracle-ananias-restores-saul",
+  "title": {
+   "en": "Ananias restores Saul's sight"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Ananias of Damascus"
+  },
+  "kind": "healing",
+  "siteId": "site-damascus",
+  "summary": {
+   "en": "Sent in a vision to Straight Street, Ananias laid hands on the blinded persecutor: 'Brother Saul, the Lord Jesus... has sent me so that you may regain your sight and be filled with the Holy Spirit.' Something like scales fell from Saul's eyes, and he was baptized."
+  },
+  "scriptureRefs": [
+   "Acts 9:10-19"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-wikipedia-ananias-of-damascus",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-ananias-of-damascus"
+  ]
+ },
+ {
+  "id": "miracle-peter-heals-aeneas",
+  "title": {
+   "en": "Aeneas healed at Lydda"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Peter"
+  },
+  "kind": "healing",
+  "siteId": "site-lydda",
+  "summary": {
+   "en": "Itinerating among the coastal churches, Peter found Aeneas, bedridden with paralysis eight years: 'Aeneas, Jesus Christ heals you; rise and make your bed.' He rose at once, 'and all the residents of Lydda and Sharon... turned to the Lord'."
+  },
+  "scriptureRefs": [
+   "Acts 9:32-35"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-peter-raises-tabitha",
+  "title": {
+   "en": "Tabitha (Dorcas) raised at Joppa"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Peter"
+  },
+  "kind": "resurrection",
+  "siteId": "site-joppa",
+  "summary": {
+   "en": "The disciple Tabitha of Joppa, 'full of good works', died and was laid in an upper room. Summoned from Lydda, Peter knelt, prayed, and said 'Tabitha, arise' — she opened her eyes and sat up, and many in Joppa believed."
+  },
+  "scriptureRefs": [
+   "Acts 9:36-43"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-peter-freed-from-prison",
+  "title": {
+   "en": "Peter delivered from Herod's prison"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "An angel of the Lord (for Peter)"
+  },
+  "kind": "deliverance",
+  "siteId": "site-jerusalem",
+  "summary": {
+   "en": "Imprisoned by Herod Agrippa I under four squads of soldiers, Peter — sleeping between two guards, bound with two chains — was woken by an angel; the chains fell off, the iron gate opened of its own accord, and he came knocking at Mary's house to the astonishment of the praying church."
+  },
+  "scriptureRefs": [
+   "Acts 12:5-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "miracle-elymas-blinded",
+  "title": {
+   "en": "Elymas the magician blinded"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "judgment",
+  "siteId": "site-paphos",
+  "summary": {
+   "en": "At Paphos, before the proconsul Sergius Paulus, the magician Elymas (Bar-Jesus) opposed the message. Paul, filled with the Holy Spirit: 'you will be blind and unable to see the sun for a time' — mist and darkness fell on him, and the proconsul believed."
+  },
+  "scriptureRefs": [
+   "Acts 13:6-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-signs-at-iconium",
+  "title": {
+   "en": "Signs and wonders at Iconium"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul and Barnabas"
+  },
+  "kind": "sign",
+  "siteId": "site-iconium",
+  "summary": {
+   "en": "At Iconium Paul and Barnabas 'remained for a long time, speaking boldly for the Lord, who bore witness to the word of his grace, granting signs and wonders to be done by their hands'."
+  },
+  "scriptureRefs": [
+   "Acts 14:3"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul",
+   "person-barnabas"
+  ]
+ },
+ {
+  "id": "miracle-lame-man-lystra",
+  "title": {
+   "en": "The man lame from birth at Lystra"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "healing",
+  "siteId": "site-lystra",
+  "summary": {
+   "en": "At Lystra a man crippled from birth, who had never walked, listened to Paul. Seeing he had faith to be made well, Paul said in a loud voice 'Stand upright on your feet' — he sprang up and walked, and the crowds took Paul and Barnabas for Hermes and Zeus."
+  },
+  "scriptureRefs": [
+   "Acts 14:8-10"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-dth-the-miracle-at-lystra"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-philippi-slave-girl",
+  "title": {
+   "en": "The spirit of divination cast out at Philippi"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "exorcism",
+  "siteId": "site-philippi",
+  "summary": {
+   "en": "A slave girl with a spirit of divination, whose fortune-telling enriched her owners, followed Paul for days. 'I command you in the name of Jesus Christ to come out of her' — it left that very hour, and her owners' lost profits landed Paul and Silas in prison."
+  },
+  "scriptureRefs": [
+   "Acts 16:16-18"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-philippi-earthquake",
+  "title": {
+   "en": "The prison shaken open at Philippi"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "God (for Paul and Silas)"
+  },
+  "kind": "deliverance",
+  "siteId": "site-philippi",
+  "summary": {
+   "en": "At midnight, Paul and Silas praying and singing in the inner prison, a great earthquake shook the foundations; every door opened and every bond came loose — and the jailer, about to fall on his sword, instead asked 'what must I do to be saved?' and was baptized with his household."
+  },
+  "scriptureRefs": [
+   "Acts 16:25-34"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul",
+   "person-silas"
+  ]
+ },
+ {
+  "id": "miracle-ephesus-handkerchiefs",
+  "title": {
+   "en": "Extraordinary miracles at Ephesus"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "healing",
+  "siteId": "site-ephesus",
+  "summary": {
+   "en": "At Ephesus 'God was doing extraordinary miracles by the hands of Paul, so that even handkerchiefs or aprons that had touched his skin were carried away to the sick, and their diseases left them and the evil spirits came out of them' — the backdrop of the seven sons of Sceva episode."
+  },
+  "scriptureRefs": [
+   "Acts 19:11-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-eutychus-raised",
+  "title": {
+   "en": "Eutychus raised at Troas"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "resurrection",
+  "siteId": "site-troas",
+  "summary": {
+   "en": "As Paul talked past midnight in the upper room at Troas, the young man Eutychus sank into sleep in the window and fell from the third storey, 'taken up dead'. Paul bent over him and embraced him — 'his life is in him' — and they took the boy away alive, 'not a little comforted'."
+  },
+  "scriptureRefs": [
+   "Acts 20:7-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-malta-viper",
+  "title": {
+   "en": "Unharmed by the viper on Malta"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "deliverance",
+  "siteId": "site-malta-shipwreck",
+  "summary": {
+   "en": "Gathering brushwood after the shipwreck, Paul was fastened on by a viper driven out by the heat. The islanders waited for him to swell up or fall dead; he shook the creature into the fire and suffered no harm — and they changed their minds and said he was a god."
+  },
+  "scriptureRefs": [
+   "Acts 28:3-6"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ },
+ {
+  "id": "miracle-publius-father-healed",
+  "title": {
+   "en": "The father of Publius and the sick of Malta healed"
+  },
+  "performedBy": "disciple",
+  "performerLabel": {
+   "en": "Paul"
+  },
+  "kind": "healing",
+  "siteId": "site-malta-shipwreck",
+  "summary": {
+   "en": "Publius, the chief man of Malta, hosted the survivors; his father lay sick with fever and dysentery, and Paul visited him, prayed, laid hands on him and healed him — 'and the rest of the people on the island who had diseases also came and were cured'."
+  },
+  "scriptureRefs": [
+   "Acts 28:7-9"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-wikipedia-acts-of-the-apostles",
+   "cit-ref-keener-bbcnt"
+  ],
+  "performerIds": [
+   "person-paul"
+  ]
+ }
+]
