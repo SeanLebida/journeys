@@ -56,18 +56,31 @@ def upsert(arr, items):
 
 
 CITES = [
-    ("cit-wit-josephus-jesus", "Josephus, 'Antiquities of the Jews' 18.3.3 (Testimonium Flavianum)", "https://en.wikipedia.org/wiki/Josephus_on_Jesus", "primary-ancient"),
-    ("cit-wit-josephus-james", "Josephus, 'Antiquities of the Jews' 20.9.1", "https://en.wikipedia.org/wiki/Josephus_on_Jesus", "primary-ancient"),
-    ("cit-wit-josephus-baptist", "Josephus, 'Antiquities of the Jews' 18.5.2", "https://en.wikipedia.org/wiki/John_the_Baptist", "primary-ancient"),
-    ("cit-wit-tacitus", "Tacitus, 'Annals' 15.44", "https://en.wikipedia.org/wiki/Tacitus_on_Christ", "primary-ancient"),
-    ("cit-wit-pliny", "Pliny the Younger, 'Letters' 10.96", "https://en.wikipedia.org/wiki/Pliny_the_Younger_on_Christians", "primary-ancient"),
-    ("cit-wit-suetonius", "Suetonius, 'Lives of the Caesars' (Claudius 25; Nero 16)", "https://en.wikipedia.org/wiki/Suetonius_on_Christians", "primary-ancient"),
-    ("cit-wit-thallus", "Thallus, cited by Julius Africanus", "https://en.wikipedia.org/wiki/Thallus_(historian)", "primary-ancient"),
-    ("cit-wit-mara", "Mara bar Serapion, 'Letter to his son'", "https://en.wikipedia.org/wiki/Mara_bar_Serapion", "primary-ancient"),
-    ("cit-nt-dating", "Wikipedia, 'Dating the Bible' (composition of the New Testament)", "https://en.wikipedia.org/wiki/Dating_the_Bible", "secondary-scholarly"),
-    ("cit-quran-dating", "Wikipedia, 'History of the Quran' (7th-century composition)", "https://en.wikipedia.org/wiki/History_of_the_Quran", "secondary-scholarly"),
+    # Primary-ancient sources cite the text itself (a scholarly edition or a
+    # verified primary-text repository), NOT an encyclopedia. Where no stable
+    # online text is confirmed, the precise print locus stands on its own —
+    # Loeb Classical Library gives a canonical edition for each classical work.
+    ("cit-wit-josephus-jesus", "Josephus, 'Antiquities of the Jews' 18.3.3 (Testimonium Flavianum); Loeb Classical Library, trans. L. H. Feldman", None, "primary-ancient"),
+    ("cit-wit-josephus-james", "Josephus, 'Antiquities of the Jews' 20.9.1; Loeb Classical Library, trans. L. H. Feldman", None, "primary-ancient"),
+    ("cit-wit-josephus-baptist", "Josephus, 'Antiquities of the Jews' 18.5.2; Loeb Classical Library, trans. L. H. Feldman", None, "primary-ancient"),
+    ("cit-wit-tacitus", "Tacitus, 'Annals' 15.44 (Latin text, The Latin Library)", "https://www.thelatinlibrary.com/tacitus/tac.ann15.shtml", "primary-ancient"),
+    ("cit-wit-pliny", "Pliny the Younger, 'Letters' 10.96 to Trajan (Latin text, The Latin Library)", "https://www.thelatinlibrary.com/pliny.ep10.html", "primary-ancient"),
+    ("cit-wit-suetonius", "Suetonius, 'Lives of the Caesars' (Divus Claudius 25.4; Nero 16.2); Loeb Classical Library", None, "primary-ancient"),
+    ("cit-wit-thallus", "Thallus, 'Histories' (lost), quoted in Julius Africanus, 'Chronography' F18, ed. M. Wallraff (De Gruyter, 2007)", None, "primary-ancient"),
+    ("cit-wit-mara", "Mara bar Serapion, 'Letter to his son' (British Library Add. MS 14658); ed./trans. Cureton, 'Spicilegium Syriacum' (1855)", None, "primary-ancient"),
+    ("cit-nt-dating", "Raymond E. Brown, 'An Introduction to the New Testament' (Anchor Bible Reference Library, Doubleday 1997) — dates of composition", None, "secondary-scholarly"),
+    ("cit-quran-dating", "Nicolai Sinai, 'The Qur'an: A Historical-Critical Introduction' (Edinburgh University Press, 2017) — 7th-century composition", None, "secondary-scholarly"),
 ]
-citations = [{"id": i, "source": en(s), "url": u, "kind": k} for i, s, u, k in CITES]
+def _cite(i, s, u, k):
+    # Omit `url` entirely when absent — the schema's optional url rejects null,
+    # and a precise print locus is a valid citation with no link.
+    c = {"id": i, "source": en(s), "kind": k}
+    if u:
+        c["url"] = u
+    return c
+
+
+citations = [_cite(i, s, u, k) for i, s, u, k in CITES]
 
 
 def wit(id, title, author, work, era, authored, attests, parallel, persons, sites, conf, cites, disputes=None):
