@@ -1,60 +1,129 @@
 [
-  {
-    "id": "quiz-foundations",
-    "title": { "en": "Journeys: Foundations" },
-    "questions": [
-      {
-        "id": "q-pilate-title",
-        "kind": "mcq",
-        "prompt": { "en": "The Pilate Stone, found at Caesarea Maritima, confirms Pontius Pilate held which title?" },
-        "choices": [{ "en": "Procurator" }, { "en": "Prefect" }, { "en": "Proconsul" }, { "en": "Tetrarch" }],
-        "answerIndex": 1,
-        "answerSiteId": "site-caesarea",
-        "explanation": { "en": "The inscription reads '[Praef]ectus Iuda[ea]e' — 'prefect of Judea' — the correct title for governors of Judea in Pilate's era." },
-        "citations": ["cit-pilate-stone"]
-      },
-      {
-        "id": "q-gallio-anchor",
-        "kind": "true-false",
-        "prompt": { "en": "The Delphi (Gallio) Inscription gives the single firmest fixed date for Paul's chronology, placing Gallio's proconsulship around AD 51–52." },
-        "answerIndex": 0,
-        "choices": [{ "en": "True" }, { "en": "False" }],
-        "answerSiteId": "site-corinth",
-        "explanation": { "en": "True. Acts 18:12 places Paul before Gallio at Corinth; the inscription dates Gallio to c. AD 51–52, anchoring the surrounding journeys." },
-        "citations": ["cit-gallio-inscription"]
-      },
-      {
-        "id": "q-crucifixion-year",
-        "kind": "mcq",
-        "prompt": { "en": "Which best describes the scholarly dating of the crucifixion?" },
-        "choices": [
-          { "en": "Certainly AD 33" },
-          { "en": "Certainly AD 30" },
-          { "en": "Most likely AD 30, with AD 33 also defended" },
-          { "en": "Unknown to within a century" }
-        ],
-        "answerIndex": 2,
-        "answerSiteId": "site-jerusalem",
-        "explanation": { "en": "A Friday near Passover under Pilate yields two candidate years; AD 30 is the mainstream default and AD 33 a serious minority. This atlas uses AD 30 by default and flags the dispute." },
-        "citations": ["cit-en-wikipedia-org-wiki-crucifixion-of-jesus"]
-      },
-      {
-        "id": "q-paul1-order",
-        "kind": "order-stops",
-        "prompt": { "en": "Put the first four stops of Paul's first journey in order." },
-        "answerOrder": ["stop-paul-1-antioch-0", "stop-paul-1-seleucia-pieria-1", "stop-paul-1-salamis-2", "stop-paul-1-paphos-3"],
-        "explanation": { "en": "From Syrian Antioch they went down to its port Seleucia Pieria, sailed to Salamis on Cyprus, then crossed the island to Paphos (Acts 13:1–6)." },
-        "citations": ["cit-biblearchaeology-org-research-chronological-cate"]
-      },
-      {
-        "id": "q-areopagus-pin",
-        "kind": "map-pin",
-        "prompt": { "en": "Tap the city where Paul addressed the philosophers at the Areopagus." },
-        "answerSiteId": "site-athens",
-        "toleranceKm": 50,
-        "explanation": { "en": "Athens — Paul's Areopagus (Mars Hill) address is recorded in Acts 17:22–31." },
-        "citations": ["cit-areopagus"]
-      }
+ {
+  "id": "quiz-foundations",
+  "title": {
+   "en": "Journeys: Foundations"
+  },
+  "questions": [
+   {
+    "id": "q-pilate-title",
+    "kind": "mcq",
+    "prompt": {
+     "en": "The Pilate Stone, found at Caesarea Maritima, confirms Pontius Pilate held which title?"
+    },
+    "choices": [
+     {
+      "en": "Procurator"
+     },
+     {
+      "en": "Prefect"
+     },
+     {
+      "en": "Proconsul"
+     },
+     {
+      "en": "Tetrarch"
+     }
+    ],
+    "answerIndex": 1,
+    "answerSiteId": "site-caesarea",
+    "explanation": {
+     "en": "The inscription reads '[Praef]ectus Iuda[ea]e' — 'prefect of Judea' — the correct title for governors of Judea in Pilate's era."
+    },
+    "citations": [
+     "cit-pilate-stone",
+     "cit-ref-abd"
     ]
-  }
+   },
+   {
+    "id": "q-gallio-anchor",
+    "kind": "true-false",
+    "prompt": {
+     "en": "The Delphi (Gallio) Inscription gives the single firmest fixed date for Paul's chronology, placing Gallio's proconsulship around AD 51–52."
+    },
+    "answerIndex": 0,
+    "choices": [
+     {
+      "en": "True"
+     },
+     {
+      "en": "False"
+     }
+    ],
+    "answerSiteId": "site-corinth",
+    "explanation": {
+     "en": "True. Acts 18:12 places Paul before Gallio at Corinth; the inscription dates Gallio to c. AD 51–52, anchoring the surrounding journeys."
+    },
+    "citations": [
+     "cit-gallio-inscription",
+     "cit-ref-abd"
+    ]
+   },
+   {
+    "id": "q-crucifixion-year",
+    "kind": "mcq",
+    "prompt": {
+     "en": "Which best describes the scholarly dating of the crucifixion?"
+    },
+    "choices": [
+     {
+      "en": "Certainly AD 33"
+     },
+     {
+      "en": "Certainly AD 30"
+     },
+     {
+      "en": "Most likely AD 30, with AD 33 also defended"
+     },
+     {
+      "en": "Unknown to within a century"
+     }
+    ],
+    "answerIndex": 2,
+    "answerSiteId": "site-jerusalem",
+    "explanation": {
+     "en": "A Friday near Passover under Pilate yields two candidate years; AD 30 is the mainstream default and AD 33 a serious minority. This atlas uses AD 30 by default and flags the dispute."
+    },
+    "citations": [
+     "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+     "cit-ref-abd"
+    ]
+   },
+   {
+    "id": "q-paul1-order",
+    "kind": "order-stops",
+    "prompt": {
+     "en": "Put the first four stops of Paul's first journey in order."
+    },
+    "answerOrder": [
+     "stop-paul-1-antioch-0",
+     "stop-paul-1-seleucia-pieria-1",
+     "stop-paul-1-salamis-2",
+     "stop-paul-1-paphos-3"
+    ],
+    "explanation": {
+     "en": "From Syrian Antioch they went down to its port Seleucia Pieria, sailed to Salamis on Cyprus, then crossed the island to Paphos (Acts 13:1–6)."
+    },
+    "citations": [
+     "cit-biblearchaeology-org-research-chronological-cate"
+    ]
+   },
+   {
+    "id": "q-areopagus-pin",
+    "kind": "map-pin",
+    "prompt": {
+     "en": "Tap the city where Paul addressed the philosophers at the Areopagus."
+    },
+    "answerSiteId": "site-athens",
+    "toleranceKm": 50,
+    "explanation": {
+     "en": "Athens — Paul's Areopagus (Mars Hill) address is recorded in Acts 17:22–31."
+    },
+    "citations": [
+     "cit-areopagus",
+     "cit-ref-abd"
+    ]
+   }
+  ]
+ }
 ]

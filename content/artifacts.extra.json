@@ -76,7 +76,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-arch-merneptah"
+   "cit-arch-merneptah",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -389,7 +390,8 @@
   },
   "citations": [
    "cit-shuruppak",
-   "cit-ziusudra"
+   "cit-ziusudra",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -416,7 +418,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-lachish-reliefs",
-   "cit-wikipedia-siege-of-lachish"
+   "cit-wikipedia-siege-of-lachish",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -442,7 +445,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-lachish-letters"
+   "cit-wikipedia-lachish-letters",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -469,7 +473,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-kurkh-monoliths",
-   "cit-wikipedia-battle-of-qarqar"
+   "cit-wikipedia-battle-of-qarqar",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -496,7 +501,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-black-obelisk",
-   "cit-wikipedia-jehu"
+   "cit-wikipedia-jehu",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -522,7 +528,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-khirbet-qeiyafa"
+   "cit-wikipedia-khirbet-qeiyafa",
+   "cit-ref-negev-gibson"
   ],
   "disputes": {
    "en": "Identification and ethnicity are argued: Garfinkel reads a Judahite fortress of David's kingdom; others propose a northern-Israelite, Philistine, or Canaanite town, and the 'Shaaraim' reading of the two gates is contested. The radiocarbon dating window itself is broadly accepted."
@@ -551,7 +558,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-jehoiachin-tablets"
+   "cit-wikipedia-jehoiachin-tablets",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -577,7 +585,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-samaria-ostraca"
+   "cit-wikipedia-samaria-ostraca",
+   "cit-ref-negev-gibson"
   ]
  },
  {
@@ -633,7 +642,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-tel-hazor"
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-negev-gibson"
   ]
  }
 ]

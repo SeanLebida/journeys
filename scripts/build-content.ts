@@ -205,6 +205,35 @@ async function main(): Promise<void> {
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
+  // 4b. Constitutional sourcing invariant: no claim rests on Wikipedia alone.
+  // Wikipedia is a useful orienting link but a TERTIARY source; every cited
+  // claim must also carry >=1 concrete source — a primary text, a standard
+  // scholarly work, an excavation report, or a gazetteer. An uncited claim is
+  // not leaning on Wikipedia, so only non-empty citation lists are checked.
+  const citById = new Map(vCitations.map((c) => [c.id, c]));
+  const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
+  const requireConcrete = (ids: string[] | undefined, where: string) => {
+    const present = (ids ?? []).filter((id) => citIds.has(id));
+    if (present.length > 0 && !present.some((id) => !isTertiary(id)))
+      err(`${where}: cited only to Wikipedia — needs >=1 concrete (primary/scholarly/archaeological/gazetteer) source`);
+  };
+  vSites.forEach((s) => {
+    requireConcrete(s.citations, `site ${s.id}`);
+    requireConcrete(s.coordinates.citations, `site ${s.id}.coordinates`);
+    s.candidates?.forEach((c, i) => requireConcrete(c.citations, `site ${s.id}.candidates[${i}]`));
+  });
+  vJourneys.forEach((j) => requireConcrete(j.citations, `journey ${j.id}`));
+  vRoutes.forEach((r) => requireConcrete(r.citations, `route ${r.id}`));
+  vStops.forEach((s) => requireConcrete(s.citations, `stop ${s.id}`));
+  vPersons.forEach((p) => requireConcrete(p.citations, `person ${p.id}`));
+  vArtifacts.forEach((a) => requireConcrete(a.citations, `artifact ${a.id}`));
+  vWitnesses.forEach((w) => requireConcrete(w.citations, `witness ${w.id}`));
+  vMiracles.forEach((mi) => requireConcrete(mi.citations, `miracle ${mi.id}`));
+  vBattles.forEach((b) => requireConcrete(b.citations, `battle ${b.id}`));
+  vTerms.forEach((t) => requireConcrete(t.citations, `term ${t.id}`));
+  vLessons.forEach((l) => requireConcrete(l.citations, `lesson ${l.id}`));
+  vQuizzes.forEach((q) => q.questions.forEach((qq) => requireConcrete(qq.citations, `quiz ${q.id}.${qq.id}`)));
+
   // 5. Neutrality invariants on stops + artifacts (zod covers Claim wrappers).
   const neutralityCheck = (e: { confidence: string; reviewStatus: string; citations: string[]; disputes?: unknown; id: string }, kind: string) => {
     if (e.confidence !== 'high' && e.citations.length < 1) err(`${kind} ${e.id}: non-'high' confidence needs >=1 citation`);

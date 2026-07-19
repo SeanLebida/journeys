@@ -30,7 +30,8 @@
   "confidence": "legendary",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-vale-of-siddim"
+   "cit-wikipedia-vale-of-siddim",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "The vale is placed by the text at the Salt Sea; the pursuit ran the length of the land to Dan and beyond Damascus."
@@ -106,7 +107,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-heshbon"
+   "cit-wikipedia-heshbon",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Jahaz itself is unidentified (candidates on the Moabite plateau); anchored at Sihon's capital, Heshbon."
@@ -146,7 +148,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-daraa-edrei"
+   "cit-wikipedia-daraa-edrei",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
@@ -224,7 +227,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-ai-canaan"
+   "cit-wikipedia-ai-canaan",
+   "cit-ref-bright"
   ],
   "disputes": {
    "en": "Beyond the conquest-date debate, Ai's very site is contested: et-Tell, the majority identification, was unoccupied in the Late Bronze Age; Khirbet el-Maqatir is the principal proposed alternative. The entry anchors to et-Tell as the standard identification."
@@ -261,7 +265,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-battle-of-gibeon"
+   "cit-wikipedia-battle-of-gibeon",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Area highlight is an approximate sweep of the Joshua 10 campaign (Gibeon and the Aijalon descent through the Shephelah cities to Hebron and Debir), not a surveyed boundary."
@@ -338,7 +343,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-waters-of-merom",
-   "cit-wikipedia-tel-hazor"
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "The waters of Merom are usually placed in the upland basin west of Hazor; area highlight approximates the Joshua 11 northern sweep."
@@ -411,7 +417,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-battle-mount-tabor"
+   "cit-wikipedia-battle-mount-tabor",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Fought in the Jezreel valley between Tabor and 'Taanach by the waters of Megiddo' (Judges 5:19); area highlight approximates the battle plain."
@@ -475,7 +482,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-gideon",
-   "cit-wikipedia-maayan-harod"
+   "cit-wikipedia-maayan-harod",
+   "cit-ref-bright"
   ]
  },
  {
@@ -511,7 +519,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-gibeah",
-   "cit-wikipedia-gibeah"
+   "cit-wikipedia-gibeah",
+   "cit-ref-bright"
   ]
  },
  {
@@ -547,7 +556,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-aphek",
-   "cit-wikipedia-antipatris"
+   "cit-wikipedia-antipatris",
+   "cit-ref-bright"
   ]
  },
  {
@@ -580,7 +590,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-tell-en-nasbeh"
+   "cit-wikipedia-tell-en-nasbeh",
+   "cit-ref-bright"
   ]
  },
  {
@@ -615,7 +626,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-michmash",
-   "cit-wikipedia-michmash"
+   "cit-wikipedia-michmash",
+   "cit-ref-bright"
   ]
  },
  {
@@ -651,7 +663,8 @@
   "citations": [
    "cit-wikipedia-goliath",
    "cit-wikipedia-valley-of-elah",
-   "cit-wikipedia-khirbet-qeiyafa"
+   "cit-wikipedia-khirbet-qeiyafa",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-khirbet-qeiyafa"
@@ -690,7 +703,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-mount-gilboa",
-   "cit-wikipedia-mount-gilboa"
+   "cit-wikipedia-mount-gilboa",
+   "cit-ref-bright"
   ]
  },
  {
@@ -799,7 +813,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-amman-citadel"
+   "cit-wikipedia-amman-citadel",
+   "cit-ref-bright"
   ]
  },
  {
@@ -834,7 +849,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-mahanaim"
+   "cit-wikipedia-mahanaim",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "The 'wood of Ephraim' lay in Gilead near Mahanaim, east of the Jordan; the forest itself is unidentified."
@@ -1011,7 +1027,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-samaria-city"
+   "cit-wikipedia-samaria-city",
+   "cit-ref-bright"
   ]
  },
  {
@@ -1045,7 +1062,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-samaria-city"
+   "cit-wikipedia-samaria-city",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "The eastern Aphek is not securely identified; anchored near 'Afiq in the Golan above En Gev."
@@ -1080,7 +1098,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-qarqar",
-   "cit-wikipedia-kurkh-monoliths"
+   "cit-wikipedia-kurkh-monoliths",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-kurkh-monolith"
@@ -1117,7 +1137,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-ramoth-gilead"
+   "cit-wikipedia-ramoth-gilead",
+   "cit-ref-bright"
   ]
  },
  {
@@ -1152,7 +1173,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-mesha-stele",
-   "cit-wikipedia-kir-of-moab"
+   "cit-wikipedia-kir-of-moab",
+   "cit-ref-cos",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-mesha-stele"
@@ -1191,7 +1214,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-jehu",
-   "cit-wikipedia-tel-jezreel"
+   "cit-wikipedia-tel-jezreel",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-tel-dan-stele",
@@ -1234,7 +1259,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-syro-ephraimite-war",
-   "cit-wikipedia-tel-hazor"
+   "cit-wikipedia-tel-hazor",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Area highlight approximates the annexed Galilee-Naphtali region; Gilead across the Jordan was taken in the same campaigns."
@@ -1303,7 +1330,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-sargon-ii",
-   "cit-wikipedia-samaria-city"
+   "cit-wikipedia-samaria-city",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Area highlight approximates the northern kingdom's Samarian heartland annexed as the Assyrian province of Samerina."
@@ -1375,7 +1404,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-siege-of-lachish",
-   "cit-wikipedia-sennacherib-campaign"
+   "cit-wikipedia-sennacherib-campaign",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Area highlight approximates the Shephelah swath of Sennacherib's 701 BC campaign against Judah's fortified cities."
@@ -1448,7 +1479,9 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-sennacherib-campaign"
+   "cit-wikipedia-sennacherib-campaign",
+   "cit-ref-anet",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-sennacherib-prism",
@@ -1491,7 +1524,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-megiddo-609",
-   "cit-wikipedia-tel-megiddo"
+   "cit-wikipedia-tel-megiddo",
+   "cit-ref-bright"
   ]
  },
  {
@@ -1527,7 +1561,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-carchemish",
-   "cit-wikipedia-carchemish"
+   "cit-wikipedia-carchemish",
+   "cit-src-livius-abc4",
+   "cit-src-livius-abc5",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-babylonian-chronicle"
@@ -1565,7 +1602,9 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-siege-jerusalem-597"
+   "cit-wikipedia-siege-jerusalem-597",
+   "cit-src-livius-abc5",
+   "cit-ref-bright"
   ],
   "artifactIds": [
    "artifact-babylonian-chronicle",
@@ -1605,7 +1644,9 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-wikipedia-siege-jerusalem-587"
+   "cit-wikipedia-siege-jerusalem-587",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
   ],
   "locationNote": {
    "en": "Area highlight approximates the kingdom of Judah extinguished in the 588-586 BC campaign."

@@ -1,2077 +1,2086 @@
 [
-  {
-    "id": "stop-ministry-bethlehem-0",
-    "journeyId": "journey-ministry",
-    "order": 0,
-    "siteId": "site-bethlehem",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": -6,
-      "endYear": -4,
-      "display": {
-        "en": "birth c. 6-4 BC"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Matthew and Luke place Jesus' birth in Bethlehem, the city of David, before the death of Herod the Great. Luke ties it to a census under Quirinius; Matthew records the magi and the flight to Egypt. The Church of the Nativity (built under Constantine/Justinian over a cave venerated from at least the 2nd c., per Justin Martyr and Origen) marks the traditional grotto. Scholarly birth window is c. 6-4 BC, set by Herod's death (securely c. spring 4 BC via Josephus' lunar-eclipse note of 13 March 4 BC and reign calculations)."
-    },
-    "scriptureRefs": [
-      "Matthew 2:1",
-      "Matthew 2:13",
-      "Luke 2:1",
-      "Micah 5:2",
-      "John 7:42"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-britannica-com-topic-when-was-jesus-born",
-      "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
-      "cit-www-holylandsite-com-bethlehem-nativity-church"
-    ]
-  },
-  {
-    "id": "stop-ministry-nazareth-1",
-    "journeyId": "journey-ministry",
-    "order": 2,
-    "siteId": "site-nazareth",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "boyhood pre-ministry; rejection episode early-mid ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Nazareth was Jesus' hometown (Luke's annunciation; the family's return after Egypt in Matthew). A small agrarian Jewish village (~few hundred people) in the early 1st c., confirmed by IAA excavations (the Nazareth Village Farm, a 1st-c. house near the Church of the Annunciation, wine/olive presses, tombs, and pottery). Jesus taught in its synagogue (Luke 4:16-30) and was rejected ('no prophet is accepted in his hometown'); a cliff is associated with the attempt to throw him down."
-    },
-    "scriptureRefs": [
-      "Luke 1:26",
-      "Matthew 2:23",
-      "Luke 2:39",
-      "Luke 4:16",
-      "Mark 6:1",
-      "Matthew 13:54",
-      "John 1:46"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
-      "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
-    ]
-  },
-  {
-    "id": "stop-ministry-baptism-at-the-jordan-2",
-    "journeyId": "journey-ministry",
-    "order": 4,
-    "siteId": "site-baptism-at-the-jordan",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 27,
-      "endYear": 29,
-      "display": {
-        "en": "start of ministry c. AD 27-29"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jesus' public ministry opens with his baptism by John in the Jordan and the wilderness temptation. John names the baptism site 'Bethany beyond the Jordan' (John 1:28). Al-Maghtas in Jordan, with Byzantine churches and pilgrimage remains, is the leading candidate and a UNESCO World Heritage Site; Qasr al-Yahud opposite is the western traditional spot."
-    },
-    "scriptureRefs": [
-      "Mark 1:9",
-      "Matthew 3:13",
-      "Luke 3:21",
-      "Luke 4:1",
-      "John 1:28"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-whc-unesco-org-en-list-1446"
-    ]
-  },
-  {
-    "id": "stop-ministry-capernaum-3",
-    "journeyId": "journey-ministry",
-    "order": 6,
-    "siteId": "site-capernaum",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "primary base throughout Galilean ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Capernaum was Jesus' adopted base ('his own city', Matthew 9:1) and home of Peter, Andrew, James and John and Matthew the tax-collector. Many events occur here: healing of Peter's mother-in-law, the paralytic lowered through the roof, the centurion's servant, the synagogue teaching/exorcism, and the Bread of Life discourse (John 6). Archaeology shows a 1st-c. basalt synagogue foundation beneath the later 4th-5th-c. white limestone synagogue, and an octagonal Byzantine church over a 1st-c. house traditionally identified as Peter's. Jesus pronounced woe on it (Matthew 11:23)."
-    },
-    "scriptureRefs": [
-      "Matthew 4:13",
-      "Matthew 8:5",
-      "Matthew 9:1",
-      "Matthew 11:23",
-      "Mark 1:21",
-      "Mark 2:1",
-      "Luke 4:31",
-      "John 6:24"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-capernaum",
-      "cit-www-bibleplaces-com-capernaum",
-      "cit-dannythedigger-com-capernaum-synagogue"
-    ]
-  },
-  {
-    "id": "stop-ministry-cana-of-galilee-4",
-    "journeyId": "journey-ministry",
-    "order": 7,
-    "siteId": "site-cana-of-galilee",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 29,
-      "display": {
-        "en": "early ministry c. AD 28-29"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Cana is where John places Jesus' first 'sign', turning water into wine at a wedding (John 2), and the healing of the official's son (John 4:46-54); it is also the home of Nathanael (John 21:2). Site is contested. Khirbet Qana shows continuous Jewish settlement (323 BC-AD 324), a synagogue/study hall, and a pilgrimage veneration cave, making it the strongest archaeological candidate; Kafr Kanna is the medieval-to-modern pilgrim site but lacks demonstrable Roman-era Jewish remains beneath it."
-    },
-    "scriptureRefs": [
-      "John 2:1",
-      "John 4:46",
-      "John 21:2"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-cana",
-      "cit-www-biblicalarchaeology-org-daily-people-culture"
-    ]
-  },
-  {
-    "id": "stop-ministry-sea-of-galilee-5",
-    "journeyId": "journey-ministry",
-    "order": 8,
-    "siteId": "site-sea-of-galilee",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "throughout Galilean ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
-    },
-    "scriptureRefs": [
-      "Mark 1:16",
-      "Mark 4:35",
-      "Mark 6:45",
-      "Matthew 14:22",
-      "Luke 5:1",
-      "John 21:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-sea-of-galilee",
-      "cit-en-wikipedia-org-wiki-sea-of-galilee-boat"
-    ]
-  },
-  {
-    "id": "stop-ministry-bethsaida-6",
-    "journeyId": "journey-ministry",
-    "order": 9,
-    "siteId": "site-bethsaida",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "Galilean ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Bethsaida is named as the home of Peter, Andrew and Philip (John 1:44) and the setting of the healing of a blind man (Mark 8:22-26) and a feeding-miracle vicinity (Luke 9:10). Jesus cursed it with Chorazin (Matthew 11:21). Two excavated sites contend: et-Tell (large mound, Iron Age and Roman remains, long the favored ID) and el-Araj (on the shore, with 1st-c. Roman material and a Byzantine church, fitting a fishing village better). Excavations at both continue."
-    },
-    "scriptureRefs": [
-      "John 1:44",
-      "Mark 6:45",
-      "Mark 8:22",
-      "Luke 9:10",
-      "Matthew 11:21",
-      "Luke 10:13"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites",
-      "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
-    ]
-  },
-  {
-    "id": "stop-ministry-chorazin-7",
-    "journeyId": "journey-ministry",
-    "order": 10,
-    "siteId": "site-chorazin",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "Galilean ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
-    },
-    "scriptureRefs": [
-      "Matthew 11:21",
-      "Luke 10:13"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-chorazin",
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
-    ]
-  },
-  {
-    "id": "stop-ministry-decapolis-8",
-    "journeyId": "journey-ministry",
-    "order": 11,
-    "siteId": "site-decapolis",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 30,
-      "display": {
-        "en": "Galilean/Decapolis ministry c. AD 28-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "On the gentile (eastern/Decapolis) side of the lake, Jesus exorcises 'Legion' into a herd of pigs that rush down a steep bank into the sea (Mark 5). Manuscripts vary between 'Gerasenes', 'Gadarenes', and 'Gergesenes'. Gergesa is traditionally identified with Kursi, where a steep slope meets the shore and a large Byzantine monastery commemorated the miracle. Gadara (Umm Qais) and Gerasa (Jerash) are major Decapolis cities lying farther inland/southeast. Jesus also healed and fed crowds in the Decapolis (Mark 7:31-37; 8:1-10)."
-    },
-    "scriptureRefs": [
-      "Mark 5:1",
-      "Matthew 8:28",
-      "Luke 8:26",
-      "Mark 7:31",
-      "Matthew 4:25"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
-      "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d"
-    ]
-  },
-  {
-    "id": "stop-ministry-tyre-and-sidon-9",
-    "journeyId": "journey-ministry",
-    "order": 12,
-    "siteId": "site-tyre-and-sidon",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 29,
-      "endYear": 29,
-      "display": {
-        "en": "mid ministry, northern excursion c. AD 29"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jesus withdrew northwest into gentile Phoenician territory ('the region of Tyre and Sidon'), where he healed the daughter of the Syrophoenician/Canaanite woman (Mark 7:24-30; Matthew 15:21-28). Both cities are ancient, securely located Phoenician ports. Tyre lies ~50 km NW of Capernaum; Sidon ~40 km further north."
-    },
-    "scriptureRefs": [
-      "Mark 7:24",
-      "Mark 7:31",
-      "Matthew 15:21",
-      "Luke 6:17",
-      "Matthew 11:21"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-tyre-lebanon",
-      "cit-en-wikipedia-org-wiki-sidon",
-      "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni"
-    ]
-  },
-  {
-    "id": "stop-ministry-caesarea-philippi-10",
-    "journeyId": "journey-ministry",
-    "order": 13,
-    "siteId": "site-caesarea-philippi",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 29,
-      "endYear": 30,
-      "display": {
-        "en": "later Galilean ministry, turning point c. AD 29-30"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "At Caesarea Philippi, near the cave-sanctuary of Pan and the springs of the Jordan, Peter confesses Jesus as the Messiah and Jesus speaks of building his church and his coming passion (Matthew 16:13-23). The Transfiguration follows about a week later on a 'high mountain' (Matthew 17:1-8), traditionally Mount Tabor but, given proximity, possibly a spur of Mount Hermon. The site preserves the Pan sanctuary niches and Philip's city remains."
-    },
-    "scriptureRefs": [
-      "Matthew 16:13",
-      "Mark 8:27",
-      "Matthew 17:1",
-      "Mark 9:2",
-      "Luke 9:18"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-caesarea-philippi",
-      "cit-www-bibleplaces-com-caesarea-philippi-banias"
-    ]
-  },
-  {
-    "id": "stop-ministry-samaria-11",
-    "journeyId": "journey-ministry",
-    "order": 5,
-    "siteId": "site-samaria",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 29,
-      "display": {
-        "en": "earlier ministry/transit c. AD 28-29"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Traveling between Judea and Galilee through Samaria, Jesus meets the Samaritan woman at Jacob's Well (John 4), discusses worship 'on this mountain' (Mount Gerizim) versus Jerusalem, and stays two days in Sychar. The deep ancient well (still extant inside the church) and the Samaritan sanctity of Gerizim are well attested."
-    },
-    "scriptureRefs": [
-      "John 4:1",
-      "Luke 9:51",
-      "Luke 17:11"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-seetheholyland-net-jacobs-well",
-      "cit-www-holylandsite-com-shechem-jacobs-well"
-    ]
-  },
-  {
-    "id": "stop-ministry-final-journey-jericho-12",
-    "journeyId": "journey-ministry",
-    "order": 14,
-    "siteId": "site-final-journey-jericho",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "final journey to Jerusalem, c. days before the last Passover (AD 30 or 33)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "On the final ascent to Jerusalem for Passover, Jesus passes through Jericho: he heals blind Bartimaeus (Mark 10:46-52) and calls the tax-collector Zacchaeus down from a sycamore-fig (Luke 19:1-10). The NT Roman/Herodian Jericho (Hasmonean-Herodian palace complex at Tulul Abu el-Alayiq) lies near the wadi Qelt, distinct from the prehistoric Tell es-Sultan mound. The road climbs ~1,000 m over ~27 km from Jericho (below sea level) to Jerusalem."
-    },
-    "scriptureRefs": [
-      "Mark 10:46",
-      "Luke 18:35",
-      "Luke 19:1",
-      "Matthew 20:29"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-jericho",
-      "cit-www-jerusalemperspective-com-1402"
-    ]
-  },
-  {
-    "id": "stop-ministry-bethany-and-bethphage-13",
-    "journeyId": "journey-ministry",
-    "order": 15,
-    "siteId": "site-bethany-and-bethphage",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Lazarus shortly before the last Passover; Passion Week c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Bethany, home of Mary, Martha and Lazarus, is where Jesus raised Lazarus (John 11) and was anointed before the passion (John 12; Mark 14:3-9). It served as his lodging during Passion Week. The Triumphal Entry was staged from neighboring Bethphage. The Tomb of Lazarus has been venerated since at least the 2nd c.; Eusebius notes the village was already called by the Lazarus-name."
-    },
-    "scriptureRefs": [
-      "John 11:1",
-      "John 12:1",
-      "Mark 11:1",
-      "Matthew 21:1",
-      "Luke 19:28",
-      "Mark 14:3"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-seetheholyland-net-bethany",
-      "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
-    ]
-  },
-  {
-    "id": "stop-ministry-jerusalem-14",
-    "journeyId": "journey-ministry",
-    "order": 16,
-    "siteId": "site-jerusalem",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "festival visits across ministry; climactic Passion Week c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70."
-    },
-    "scriptureRefs": [
-      "Mark 11:15",
-      "Matthew 21:12",
-      "Luke 19:45",
-      "John 2:13",
-      "Mark 13:1",
-      "John 7:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-temple-mount",
-      "cit-en-wikipedia-org-wiki-second-temple"
-    ]
-  },
-  {
-    "id": "stop-ministry-last-supper-15",
-    "journeyId": "journey-ministry",
-    "order": 17,
-    "siteId": "site-last-supper",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Thursday evening before the crucifixion, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jesus shares the Last Supper with the Twelve in a furnished upper room (Mark 14; Luke 22), instituting the bread-and-cup remembrance. In the Synoptics this is a Passover meal (Nisan 15); in John the meal precedes Passover (Jesus dies as the lambs are slain on Nisan 14). The traditional Cenacle on Mount Zion is a long-standing but architecturally later commemoration."
-    },
-    "scriptureRefs": [
-      "Mark 14:12",
-      "Matthew 26:17",
-      "Luke 22:7",
-      "John 13:1",
-      "1 Corinthians 11:23"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
-      "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
-    ]
-  },
-  {
-    "id": "stop-ministry-gethsemane-16",
-    "journeyId": "journey-ministry",
-    "order": 18,
-    "siteId": "site-gethsemane",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "night before the crucifixion, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "After the supper Jesus prays in agony at Gethsemane and is arrested following Judas' betrayal (Mark 14:32-52). The site at the Mount of Olives foot, across the Kidron, fits the Gospel topography; very old olive trees grow there (some radiocarbon/genetic studies date roots to the 12th c., though the locale itself is early-attested by pilgrims)."
-    },
-    "scriptureRefs": [
-      "Mark 14:32",
-      "Matthew 26:36",
-      "Luke 22:39",
-      "John 18:1"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-mount-of-olives"
-    ]
-  },
-  {
-    "id": "stop-ministry-trial-before-pilate-17",
-    "journeyId": "journey-ministry",
-    "order": 19,
-    "siteId": "site-trial-before-pilate",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Friday of the crucifixion, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jesus is tried before the Jewish authorities and then Pontius Pilate, who sentences him at a place called Gabbatha/Lithostrotos. Two candidate locations: the older pilgrim tradition (Antonia Fortress, anchoring the Via Dolorosa) and the now widely-favored scholarly view that Pilate, when in Jerusalem, resided and judged at Herod's Palace in the western city. The 'Pilate stone' from Caesarea independently confirms Pontius Pilate as prefect of Judaea."
-    },
-    "scriptureRefs": [
-      "Mark 15:1",
-      "Matthew 27:11",
-      "Luke 23:1",
-      "John 18:28"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
-      "cit-en-wikipedia-org-wiki-pilate-stone"
-    ]
-  },
-  {
-    "id": "stop-ministry-golgotha-and-the-tomb-18",
-    "journeyId": "journey-ministry",
-    "order": 20,
-    "siteId": "site-golgotha-and-the-tomb",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "crucifixion Friday 7 April AD 30 or Friday 3 April AD 33 (Nisan 14); resurrection proclaimed the following Sunday"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Jesus is crucified at Golgotha, dies, and is buried in a new rock-cut tomb nearby (Joseph of Arimathea's), with the resurrection proclaimed on the first day of the week. The Church of the Holy Sepulchre is the strongest candidate: excavations show the area was a disused quarry with 1st-c. rock-cut tombs, lay outside the city wall in Jesus' day, and was venerated continuously (Constantine built over it in the 4th c. on earlier memory); a 2025 report noted ancient garden/cultivation remains beneath, consistent with John 19:41. The Garden Tomb is archaeologically Iron Age and rejected as the orig"
-    },
-    "scriptureRefs": [
-      "Mark 15:21",
-      "Matthew 27:32",
-      "Luke 23:26",
-      "John 19:16",
-      "Mark 16:1",
-      "John 20:1",
-      "1 Corinthians 15:3"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
-      "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-      "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
-    ]
-  },
-  {
-    "id": "stop-paul-1-antioch-0",
-    "journeyId": "journey-paul-1",
-    "order": 0,
-    "siteId": "site-antioch",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 50,
-      "display": {
-        "en": "Journey 1 start c. AD 46-47; Journey 2 start c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
-    },
-    "scriptureRefs": [
-      "Acts 13:1",
-      "Acts 11:19",
-      "Acts 14:26",
-      "Acts 15:35",
-      "Acts 18:22"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-livius-org-articles-place-antioch-antakya",
-      "cit-topostext-org-place-362362pant",
-      "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
-    ]
-  },
-  {
-    "id": "stop-paul-1-seleucia-pieria-1",
-    "journeyId": "journey-paul-1",
-    "order": 1,
-    "siteId": "site-seleucia-pieria",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 46,
-      "endYear": 47,
-      "display": {
-        "en": "c. AD 46-47"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The seaport of Antioch, ~16 mi (25 km) downriver/WSW, founded by Seleucus I Nicator (301 BC). On Journey 1 Paul and Barnabas 'went down to Seleucia, and from there sailed to Cyprus' (Acts 13:4). LEG: short LAND leg from Antioch to the coast, then point of embarkation for the SEA crossing to Cyprus."
-    },
-    "scriptureRefs": [
-      "Acts 13:4"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-seleucia-pieria",
-      "cit-www-britannica-com-place-seleucia-pieria",
-      "cit-www-bibleplaces-com-seleucia"
-    ]
-  },
-  {
-    "id": "stop-paul-1-salamis-2",
-    "journeyId": "journey-paul-1",
-    "order": 2,
-    "siteId": "site-salamis",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 46,
-      "endYear": 47,
-      "display": {
-        "en": "c. AD 46-47"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Landfall on Cyprus. Paul and Barnabas 'proclaimed the word of God in the synagogues of the Jews' (Acts 13:5); John Mark accompanied them as assistant (hyperetes). Salamis was the chief eastern port, with a sizable Jewish community. LEG: SEA arrival from Seleucia; then LAND travel west across the island to Paphos."
-    },
-    "scriptureRefs": [
-      "Acts 13:4"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-salamis-cyprus"
-    ]
-  },
-  {
-    "id": "stop-paul-1-paphos-3",
-    "journeyId": "journey-paul-1",
-    "order": 3,
-    "siteId": "site-paphos",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 46,
-      "endYear": 47,
-      "display": {
-        "en": "c. AD 46-47"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Roman provincial capital and seat of the proconsul. Here the magician Bar-Jesus / Elymas opposed them before the proconsul Sergius Paulus; Paul struck Elymas with temporary blindness, and the proconsul 'believed, being astonished at the teaching of the Lord' (Acts 13:6-12). This passage marks the narrative shift from 'Saul' to 'Paul' and his emergence as lead missionary. ARCHAEOLOGY: inscriptions naming a 'Sergius Paulus' / a 'Paulus [proconsul]' (e.g., the Soloi inscription on Cyprus) corroborate the name, title, and senatorial (proconsular) governance of Cyprus, though no inscription definit"
-    },
-    "scriptureRefs": [
-      "Acts 13:6"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
-      "cit-biblearchaeology-org-research-chronological-cate",
-      "cit-www-britannica-com-place-paphos"
-    ]
-  },
-  {
-    "id": "stop-paul-1-perga-4",
-    "journeyId": "journey-paul-1",
-    "order": 4,
-    "siteId": "site-perga",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 46,
-      "endYear": 48,
-      "display": {
-        "en": "c. AD 46-47 (outbound); c. AD 47-48 (return)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
-    },
-    "scriptureRefs": [
-      "Acts 13:13",
-      "Acts 14:24"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-perga",
-      "cit-www-britannica-com-place-perga",
-      "cit-topostext-org-place-370309pper"
-    ]
-  },
-  {
-    "id": "stop-paul-1-pisidian-antioch-5",
-    "journeyId": "journey-paul-1",
-    "order": 5,
-    "siteId": "site-pisidian-antioch",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 46,
-      "endYear": 47,
-      "display": {
-        "en": "c. AD 46-47"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Roman colony and administrative center of the southern part of the province of Galatia. Setting of Paul's first recorded major sermon (Acts 13:16-41) in the synagogue. After many Gentiles responded the next Sabbath, jealous synagogue leaders incited 'devout women of high standing and the leading men' to drive them out; Paul and Barnabas 'shook the dust from their feet' and turned to the Gentiles (Acts 13:42-52). VISITED AGAIN on the return leg to strengthen disciples and appoint elders (Acts 14:21-23). ARCHAEOLOGY: excavated since W. Ramsay (1913-14); imperial cult temple (Augusteum), city gat"
-    },
-    "scriptureRefs": [
-      "Acts 13:14",
-      "Acts 14:21",
-      "2 Timothy 3:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-vici-org-vici-2325-lang-en",
-      "cit-www-biblicalarchaeology-org-daily-biblical-topic",
-      "cit-www-thegospelcoalition-org-themelios-article-act"
-    ]
-  },
-  {
-    "id": "stop-paul-1-iconium-6",
-    "journeyId": "journey-paul-1",
-    "order": 6,
-    "siteId": "site-iconium",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 47,
-      "endYear": 47,
-      "display": {
-        "en": "c. AD 47"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "City in Lycaonia/Galatia where Paul and Barnabas spoke boldly in the synagogue 'so that a great number both of Jews and of Greeks believed' (Acts 14:1) and stayed 'a long time' performing signs. The city divided; on learning of a plot to stone them, they fled to Lystra and Derbe (Acts 14:2-6). REVISITED on return (Acts 14:21). Iconium's continuous occupation (modern Konya) limits excavation. LEG: LAND."
-    },
-    "scriptureRefs": [
-      "Acts 14:1",
-      "Acts 14:21",
-      "2 Timothy 3:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-konya",
-      "cit-www-bibleref-com-acts-14-acts-14-6-html"
-    ]
-  },
-  {
-    "id": "stop-paul-1-lystra-7",
-    "journeyId": "journey-paul-1",
-    "order": 7,
-    "siteId": "site-lystra",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 47 (J1); revisited c. AD 49-50 (J2)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
-    },
-    "scriptureRefs": [
-      "Acts 14:6",
-      "Acts 14:21",
-      "Acts 16:1",
-      "2 Timothy 3:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-lystra",
-      "cit-www-bibleplaces-com-derbelystra"
-    ]
-  },
-  {
-    "id": "stop-paul-1-derbe-8",
-    "journeyId": "journey-paul-1",
-    "order": 8,
-    "siteId": "site-derbe",
-    "legMode": "turnaround",
-    "dateRange": {
-      "startYear": 47,
-      "endYear": 48,
-      "display": {
-        "en": "c. AD 47-48"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
-    },
-    "scriptureRefs": [
-      "Acts 14:6",
-      "Acts 14:20",
-      "Acts 16:1",
-      "Acts 20:4"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-derbe",
-      "cit-vici-org-vici-24065"
-    ]
-  },
-  {
-    "id": "stop-paul-1-attalia-9",
-    "journeyId": "journey-paul-1",
-    "order": 9,
-    "siteId": "site-attalia",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 47,
-      "endYear": 48,
-      "display": {
-        "en": "c. AD 47-48"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "After preaching at Perga on the return leg, they 'went down to Attalia, and from there sailed back to Antioch' (Acts 14:25-26). Attalia was the principal Pamphylian harbor (founded by Attalus II of Pergamon). LEG: short LAND leg from Perga; then SEA voyage back to Syrian Antioch, ending Journey 1."
-    },
-    "scriptureRefs": [
-      "Acts 14:25"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-ephesustoursguide-com-must-see-places-in-tur"
-    ]
-  },
-  {
-    "id": "stop-paul-2-antioch-0",
-    "journeyId": "journey-paul-2",
-    "order": 0,
-    "siteId": "site-antioch",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 50,
-      "display": {
-        "en": "Journey 1 start c. AD 46-47; Journey 2 start c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
-    },
-    "scriptureRefs": [
-      "Acts 13:1",
-      "Acts 11:19",
-      "Acts 14:26",
-      "Acts 15:35",
-      "Acts 18:22"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-livius-org-articles-place-antioch-antakya",
-      "cit-topostext-org-place-362362pant",
-      "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
-    ]
-  },
-  {
-    "id": "stop-paul-2-syria-1",
-    "journeyId": "journey-paul-2",
-    "order": 1,
-    "siteId": "site-syria",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
-    },
-    "scriptureRefs": [
-      "Acts 15:40",
-      "Acts 16:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-esv-org-resources-esv-global-study-bible-map"
-    ]
-  },
-  {
-    "id": "stop-paul-2-lystra-2",
-    "journeyId": "journey-paul-2",
-    "order": 2,
-    "siteId": "site-lystra",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 1,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 47 (J1); revisited c. AD 49-50 (J2)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
-    },
-    "scriptureRefs": [
-      "Acts 14:6",
-      "Acts 14:21",
-      "Acts 16:1",
-      "2 Timothy 3:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-lystra",
-      "cit-www-bibleplaces-com-derbelystra"
-    ]
-  },
-  {
-    "id": "stop-paul-2-alexandria-troas-3",
-    "journeyId": "journey-paul-2",
-    "order": 3,
-    "siteId": "site-alexandria-troas",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Port on the NW Aegean coast where Paul saw a night vision of 'a man of Macedonia' pleading 'Come over to Macedonia and help us' (Acts 16:8-10). Here the narrative shifts to first-person plural ('we'), traditionally marking Luke joining the party. From Troas they set sail for Europe. LEG: LAND arrival; SEA embarkation point for the crossing to Europe (via Samothrace to Neapolis)."
-    },
-    "scriptureRefs": [
-      "Acts 16:8",
-      "2 Corinthians 2:12",
-      "Acts 20:5"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-alexandria-troas",
-      "cit-www-bibleplaces-com-acts16"
-    ]
-  },
-  {
-    "id": "stop-paul-2-samothrace-4",
-    "journeyId": "journey-paul-2",
-    "order": 4,
-    "siteId": "site-samothrace",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA."
-    },
-    "scriptureRefs": [
-      "Acts 16:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
-    ]
-  },
-  {
-    "id": "stop-paul-2-neapolis-5",
-    "journeyId": "journey-paul-2",
-    "order": 5,
-    "siteId": "site-neapolis",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Port of Philippi and the gospel's first recorded landfall in Europe: 'from Troas... to Neapolis, and from there to Philippi' (Acts 16:11-12). LEG: SEA arrival; then short LAND leg (~16 km up the Via Egnatia) to Philippi."
-    },
-    "scriptureRefs": [
-      "Acts 16:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
-    ]
-  },
-  {
-    "id": "stop-paul-2-philippi-6",
-    "journeyId": "journey-paul-2",
-    "order": 6,
-    "siteId": "site-philippi",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "A leading Roman colony of Macedonia. By a riverside place of prayer Lydia, a God-fearing dealer in purple from Thyatira, believed and was baptized with her household (Acts 16:13-15). Paul exorcised a slave girl with a spirit of divination, costing her owners their profit; Paul and Silas were beaten and jailed; a midnight earthquake opened the prison and the jailer's household was converted; the magistrates, alarmed to learn they had flogged Roman citizens, apologized (Acts 16:16-40). Recipient church of Philippians. LEG: LAND (then westward along the Via Egnatia)."
-    },
-    "scriptureRefs": [
-      "Acts 16:12",
-      "Philippians 1:1",
-      "1 Thessalonians 2:2"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-philippi",
-      "cit-www-padfield-com-2005-philippi-html"
-    ]
-  },
-  {
-    "id": "stop-paul-2-thessalonica-7",
-    "journeyId": "journey-paul-2",
-    "order": 7,
-    "siteId": "site-thessalonica",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Provincial capital of Macedonia. Paul reasoned in the synagogue 'for three Sabbaths' (Acts 17:2-4); some Jews, many God-fearing Greeks and leading women believed. Jealous opponents formed a mob, attacked Jason's house, and dragged believers before the politarchs charging them with defying Caesar ('there is another king, Jesus,' Acts 17:5-9). Recipient of 1-2 Thessalonians. LEG: LAND; departed by night to Berea."
-    },
-    "scriptureRefs": [
-      "Acts 17:1",
-      "1 Thessalonians 1:1",
-      "2 Thessalonians 1:1",
-      "Philippians 4:16"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-thessaloniki",
-      "cit-catholic-resources-org-bible-geography-roman-pro"
-    ]
-  },
-  {
-    "id": "stop-paul-2-berea-8",
-    "journeyId": "journey-paul-2",
-    "order": 8,
-    "siteId": "site-berea",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 49,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 49-50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Sent on by night, Paul and Silas preached in the synagogue; the Bereans 'were more noble than those in Thessalonica... examining the Scriptures daily' and many believed (Acts 17:10-12). When Thessalonian agitators arrived, the believers sent Paul on to the coast/Athens while Silas and Timothy remained (Acts 17:13-15). Sopater of Berea later accompanies Paul (Acts 20:4). LEG: LAND arrival; Paul then leaves by SEA toward Athens (Silas/Timothy stay)."
-    },
-    "scriptureRefs": [
-      "Acts 17:10",
-      "Acts 20:4"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-veria",
-      "cit-www-casualenglishbible-com-resource-location-ber"
-    ]
-  },
-  {
-    "id": "stop-paul-2-athens-9",
-    "journeyId": "journey-paul-2",
-    "order": 9,
-    "siteId": "site-athens",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 50,
-      "endYear": 50,
-      "display": {
-        "en": "c. AD 50"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
-    },
-    "scriptureRefs": [
-      "Acts 17:16",
-      "1 Thessalonians 3:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-latitude-to-articles-by-country-gr-greece-853-ac"
-    ]
-  },
-  {
-    "id": "stop-paul-2-corinth-10",
-    "journeyId": "journey-paul-2",
-    "order": 10,
-    "siteId": "site-corinth",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 50,
-      "endYear": 52,
-      "display": {
-        "en": "c. AD 50-52 (Gallio episode c. AD 51-52)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Capital of the province of Achaia and the longest stop of Journey 2: Paul stayed 18 months (Acts 18:11). He met Aquila and Priscilla (recently expelled from Rome under Claudius) and worked as a tentmaker; Silas and Timothy rejoined him; Crispus the synagogue ruler believed (Acts 18:1-11). The Jews brought Paul before the proconsul Gallio, who dismissed the case as an internal religious matter (Acts 18:12-17). Founding visit for 1-2 Corinthians. The DELPHI (GALLIO) INSCRIPTION, naming Gallio as proconsul of Achaia and dated by Claudius's 26th imperial acclamation (early AD 52), fixes Gallio's t"
-    },
-    "scriptureRefs": [
-      "Acts 18:1",
-      "1 Corinthians 1:1",
-      "2 Corinthians 1:1",
-      "Romans 16:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
-      "cit-holylandphotos-org-photos-gctcdlar14",
-      "cit-latitude-to-map-gr-greece-cities-corinth"
-    ]
-  },
-  {
-    "id": "stop-paul-2-cenchreae-11",
-    "journeyId": "journey-paul-2",
-    "order": 11,
-    "siteId": "site-cenchreae",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 52,
-      "endYear": 52,
-      "display": {
-        "en": "c. AD 52"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Eastern harbor of Corinth. Paul, having taken a vow, 'had his hair cut off at Cenchreae' (Acts 18:18) before sailing for Syria with Priscilla and Aquila. Later home of Phoebe, deaconess of the Cenchreae church (Rom 16:1). LEG: SEA embarkation for the eastward voyage (via Ephesus) toward Caesarea."
-    },
-    "scriptureRefs": [
-      "Acts 18:18",
-      "Romans 16:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-kechries",
-      "cit-www-bibleplaces-com-corintharea"
-    ]
-  },
-  {
-    "id": "stop-paul-2-ephesus-12",
-    "journeyId": "journey-paul-2",
-    "order": 12,
-    "siteId": "site-ephesus",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 52,
-      "endYear": 52,
-      "display": {
-        "en": "c. AD 52"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
-    },
-    "scriptureRefs": [
-      "Acts 18:19",
-      "Acts 19:1",
-      "1 Corinthians 16:8"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-sel-c3-a7uk"
-    ]
-  },
-  {
-    "id": "stop-paul-2-caesarea-maritima-13",
-    "journeyId": "journey-paul-2",
-    "order": 13,
-    "siteId": "site-caesarea-maritima",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 52,
-      "endYear": 52,
-      "display": {
-        "en": "c. AD 52"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
-    },
-    "scriptureRefs": [
-      "Acts 18:22"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-catholic-resources-org-bible-nt-geography-htm",
-      "cit-www-esv-org-resources-esv-global-study-bible-map"
-    ]
-  },
-  {
-    "id": "stop-paul-3-antioch-on-the-orontes-0",
-    "journeyId": "journey-paul-3",
-    "order": 0,
-    "siteId": "site-antioch-on-the-orontes",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": 51,
-      "endYear": 54,
-      "display": {
-        "en": "AD 52-54 (early chronology AD 51/52; late c. 53/54)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "After spending time in Antioch (his home base, Acts 18:22-23), Paul set out a third time, departing through 'the region of Galatia and Phrygia in order, strengthening all the disciples.' Antioch is the launch point of the third journey. Acts notes he first 'went up and greeted the church' (widely read as Jerusalem) then went down to Antioch."
-    },
-    "scriptureRefs": [
-      "Acts 18:22"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-      "cit-www-gotquestions-org-paul-third-missionary-journ"
-    ]
-  },
-  {
-    "id": "stop-paul-3-galatia-and-phrygia-1",
-    "journeyId": "journey-paul-3",
-    "order": 1,
-    "siteId": "site-galatia-and-phrygia",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 52,
-      "endYear": 54,
-      "display": {
-        "en": "AD 52-54"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point."
-    },
-    "scriptureRefs": [
-      "Acts 18:23"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
-      "cit-www-esv-org-resources-esv-global-study-bible-map-2"
-    ]
-  },
-  {
-    "id": "stop-paul-3-ephesus-2",
-    "journeyId": "journey-paul-3",
-    "order": 2,
-    "siteId": "site-ephesus",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 20,
-      "endYear": 57,
-      "display": {
-        "en": "AD 52-55 (early chronology) to AD 54-57 (later chronology); roughly 'three years' (Acts 20:31)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The heart of the third journey. Paul stayed in Ephesus for about three years (Acts 20:31; cf. 19:8 three months in the synagogue, 19:10 two years in the hall of Tyrannus). Apollos was instructed by Priscilla and Aquila here (18:24-28); Paul rebaptized disciples of John (19:1-7), performed extraordinary miracles (19:11-12), and the burning of magic books occurred (19:19). The ministry ended with the riot of the silversmiths led by Demetrius over the threat to the cult of Artemis (19:23-41). Paul likely wrote 1 Corinthians from Ephesus (1 Cor 16:8)."
-    },
-    "scriptureRefs": [
-      "Acts 18:24",
-      "Acts 19:1",
-      "Acts 20:31",
-      "1 Corinthians 16:8"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pleiades-stoa-org-places-599612",
-      "cit-www-jesuswalk-com-paul-07-ephesus-htm",
-      "cit-denverjournal-denverseminary-edu-the-denver-jour"
-    ]
-  },
-  {
-    "id": "stop-paul-3-macedonia-3",
-    "journeyId": "journey-paul-3",
-    "order": 3,
-    "siteId": "site-macedonia",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 55,
-      "endYear": 57,
-      "display": {
-        "en": "AD 55-57 (late autumn through following spring; varies by chronology)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "After the Ephesian riot, Paul left for Macedonia (Acts 20:1), passing through (revisiting Philippi, Thessalonica, Berea) and 'gave much encouragement,' then came into Greece, where he stayed three months (Acts 20:2-3). He likely wrote 2 Corinthians from Macedonia and Romans from Corinth/Greece during this period (the collection for Jerusalem is a major theme). Coordinates given are for Philippi as representative."
-    },
-    "scriptureRefs": [
-      "Acts 20:1",
-      "1 Corinthians 16:5",
-      "2 Corinthians 2:12",
-      "2 Corinthians 7:5"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-enduringword-com-bible-commentary-acts-20",
-      "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
-    ]
-  },
-  {
-    "id": "stop-paul-3-troas-4",
-    "journeyId": "journey-paul-3",
-    "order": 4,
-    "siteId": "site-troas",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 56,
-      "endYear": 57,
-      "display": {
-        "en": "Spring AD 57 (late chronology) / 56 (early chronology), around Passover/Unleavened Bread"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Returning from Greece via Macedonia (after a plot forced an overland detour, Acts 20:3), Paul rejoined his companions at Troas and stayed seven days. On the first day of the week, gathered to break bread, Paul preached until midnight; the young man Eutychus, asleep in a third-story window, fell to his death and was raised by Paul (Acts 20:7-12). A 'we'-passage resumes here, marking Luke's presence."
-    },
-    "scriptureRefs": [
-      "Acts 20:4",
-      "2 Corinthians 2:12"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-enduringword-com-bible-commentary-acts-20",
-      "cit-www-preceptaustin-org-acts-20-commentary"
-    ]
-  },
-  {
-    "id": "stop-paul-3-miletus-5",
-    "journeyId": "journey-paul-3",
-    "order": 5,
-    "siteId": "site-miletus",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 56,
-      "endYear": 57,
-      "display": {
-        "en": "Spring AD 56/57"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul, hurrying to reach Jerusalem by Pentecost (Acts 20:16), bypassed Ephesus and summoned the Ephesian elders to Miletus, where he delivered his moving farewell address (Acts 20:18-35), warning of 'savage wolves' and quoting 'It is more blessed to give than to receive.' They prayed and wept, knowing they would not see his face again (20:36-38)."
-    },
-    "scriptureRefs": [
-      "Acts 20:15"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-bible-org-seriespage-pauls-parting-words-acts-20",
-      "cit-enduringword-com-bible-commentary-acts-20"
-    ]
-  },
-  {
-    "id": "stop-paul-3-caesarea-6",
-    "journeyId": "journey-paul-3",
-    "order": 6,
-    "siteId": "site-caesarea",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 56,
-      "endYear": 57,
-      "display": {
-        "en": "Late spring AD 56/57 (shortly before Pentecost)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Arriving at Caesarea, the party stayed with Philip the evangelist (one of the Seven, with four prophesying daughters). The prophet Agabus came down from Judea, bound his own hands and feet with Paul's belt, and prophesied Paul's arrest in Jerusalem. Despite pleas, Paul resolved to go up, saying he was ready to die for the name of the Lord (Acts 21:10-14). This is the closing scene of the third journey before Paul reaches Jerusalem (Acts 21:15-17)."
-    },
-    "scriptureRefs": [
-      "Acts 21:8"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pleiades-stoa-org-places-678401",
-      "cit-missionbibleclass-org-new-testament-part2-acts-f"
-    ]
-  },
-  {
-    "id": "stop-paul-3-jerusalem-7",
-    "journeyId": "journey-paul-3",
-    "order": 7,
-    "siteId": "site-jerusalem",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 56,
-      "endYear": 57,
-      "display": {
-        "en": "AD 57 (late chronology) / 56 (early); arrest around Pentecost"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul met James and the elders, delivered the collection (implied), and undertook a purification rite to defuse rumors that he taught against the Law (Acts 21:17-26). Asian Jews accused him of bringing Greeks into the Temple, sparking a riot; the Roman tribune (Claudius Lysias) rescued and arrested him at the Antonia Fortress (21:27-36). Paul addressed the crowd (22:1-21), invoked his Roman citizenship to avoid scourging (22:25-29), appeared before the Sanhedrin (23:1-10), survived a 40-man assassination plot revealed by his nephew (23:12-22), and was sent under heavy guard by night to Caesarea"
-    },
-    "scriptureRefs": [
-      "Acts 21:17"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-brentwoodbaptist-com-acts-204-2335",
-      "cit-www-ccel-org-bible-phillips-cn341actspaularrest-"
-    ]
-  },
-  {
-    "id": "stop-rome-caesarea-imprisonment-0",
-    "journeyId": "journey-rome",
-    "order": 0,
-    "siteId": "site-caesarea-imprisonment",
-    "legMode": "start",
-    "dateRange": {
-      "startYear": 24,
-      "endYear": 60,
-      "display": {
-        "en": "c. AD 57-59 (early chronology) or AD 58-60 (later chronology); 'two years' (Acts 24:27)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul was held in the praetorium (Herod's palace) at Caesarea for about two years. He was tried before the governor Antonius Felix (Acts 24), who, hoping for a bribe and wishing to please the Jews, left him bound. When Porcius Festus succeeded Felix (Acts 24:27; 25:1), Paul - to avoid being sent back to a hostile Jerusalem - exercised his right as a Roman citizen and appealed to Caesar ('Caesarem appello', Acts 25:11-12). He then made his defense before Festus and the visiting client-king Herod Agrippa II and Bernice (Acts 25:13-26:32); Agrippa's verdict was that Paul could have been freed had "
-    },
-    "scriptureRefs": [
-      "Acts 23:31",
-      "Acts 24:27",
-      "Acts 25:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-executableoutlines-com-topical-series-harmony-li",
-      "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
-      "cit-enduringword-com-bible-commentary-acts-25"
-    ]
-  },
-  {
-    "id": "stop-rome-sidon-1",
-    "journeyId": "journey-rome",
-    "order": 1,
-    "siteId": "site-sidon",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 57,
-      "endYear": 59,
-      "display": {
-        "en": "Autumn AD 59 (later) / 57 (early)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul, with other prisoners, was handed to a centurion named Julius of the Augustan Cohort and embarked on a ship of Adramyttium (Acts 27:1-2). Luke and Aristarchus accompanied him (a 'we'-passage). The next day they put in at Sidon, where Julius kindly allowed Paul to visit friends and be cared for (27:3)."
-    },
-    "scriptureRefs": [
-      "Acts 27:1"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pleiades-stoa-org-places-678393",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
-  },
-  {
-    "id": "stop-rome-myra-of-lycia-2",
-    "journeyId": "journey-rome",
-    "order": 2,
-    "siteId": "site-myra-of-lycia",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 57,
-      "endYear": 59,
-      "display": {
-        "en": "Autumn AD 59 / 57"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Because of contrary winds they sailed under the lee (sheltered side) of Cyprus, then across the open sea off Cilicia and Pamphylia, landing at Myra in Lycia (Acts 27:4-5). There the centurion found an Alexandrian ship (a grain freighter) bound for Italy and transferred the prisoners onto it (27:6). Myra was a known port on the Alexandria-to-Rome grain route."
-    },
-    "scriptureRefs": [
-      "Acts 27:4"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-pleiades-stoa-org-places-639005",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
-  },
-  {
-    "id": "stop-rome-cnidus-and-fair-havens-3",
-    "journeyId": "journey-rome",
-    "order": 3,
-    "siteId": "site-cnidus-and-fair-havens",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 9,
-      "endYear": 59,
-      "display": {
-        "en": "Autumn AD 59 / 57 (after the Day of Atonement 'fast', Acts 27:9)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Sailing slowly against the wind, the ship reached Cnidus with difficulty, then ran under the lee of Crete off Cape Salmone, and arrived at Fair Havens near the city of Lasea (Acts 27:7-8). The coordinates given are for Fair Havens (Kaloi Limenes). 'Much time had been lost and the voyage was now dangerous because the Fast (Yom Kippur, ~late September/October) had already gone by' (27:9). Paul warned against sailing on, but the centurion followed the pilot and owner; since the harbor was unsuitable to winter in, the majority decided to try to reach Phoenix, a better Cretan harbor (27:10-12)."
-    },
-    "scriptureRefs": [
-      "Acts 27:7"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-bibleplaces-com-fair-havens",
-      "cit-en-wikipedia-org-wiki-kaloi-limenes",
-      "cit-en-wikipedia-org-wiki-knidos"
-    ]
-  },
-  {
-    "id": "stop-rome-phoenix-4",
-    "journeyId": "journey-rome",
-    "order": 4,
-    "siteId": "site-phoenix",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 57,
-      "endYear": 59,
-      "display": {
-        "en": "Autumn AD 59 / 57"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Attempting to reach Phoenix, a Cretan harbor 'facing southwest and northwest' (Acts 27:12), the ship was caught by a violent northeasterly wind called Euraquilo (Euroclydon; a Greek-Latin compound for the ENE wind, attested on a Roman wind-rose in Tunisia). Driven past the small island of Cauda (Clauda/Gavdos), the crew undergirded the hull with cables, lowered gear, jettisoned cargo and tackle, and lost sight of sun and stars for many days (27:13-20). Paul, after an angelic vision, assured all 276 aboard that no life would be lost, only the ship (27:21-26)."
-    },
-    "scriptureRefs": [
-      "Acts 27:12"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
-      "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-    ]
-  },
-  {
-    "id": "stop-rome-malta-shipwreck-5",
-    "journeyId": "journey-rome",
-    "order": 5,
-    "siteId": "site-malta-shipwreck",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 11,
-      "endYear": 60,
-      "display": {
-        "en": "Winter AD 59/60 (later) or 57/58 (early); 'three months' (Acts 28:11)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "On the 14th night, drifting across the Adria (the central Mediterranean), sailors sensed land, took soundings (20 then 15 fathoms), and at dawn ran the ship aground on a sandbar/reef; the bow stuck fast and the stern broke up, but all 276 reached land safely (Acts 27:27-44). The island was Melite (Malta). The 'barbaroi' (native, non-Greek-speaking) islanders showed unusual kindness, kindling a fire; a viper fastened on Paul's hand without harming him, leading them to think him a god (28:1-6). Paul healed the father of Publius, the 'chief man' (Greek 'protos') of the island, and many others (28"
-    },
-    "scriptureRefs": [
-      "Acts 27:27"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-bibleplaces-com-st-pauls-bay-malta",
-      "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
-      "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
-    ]
-  },
-  {
-    "id": "stop-rome-syracuse-rhegium-puteoli-6",
-    "journeyId": "journey-rome",
-    "order": 6,
-    "siteId": "site-syracuse-rhegium-puteoli",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 58,
-      "endYear": 60,
-      "display": {
-        "en": "Spring AD 60 / 58"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "After three months they sailed on another Alexandrian grain ship with the figurehead of the Twin Brothers (Castor and Pollux, the Dioscuri). They put in at Syracuse (3 days), then Rhegium, and with a favorable south wind reached Puteoli in one more day (Acts 28:11-13). At Puteoli they found believers and stayed seven days, then headed toward Rome. Coordinates given are for Puteoli (Pozzuoli)."
-    },
-    "scriptureRefs": [
-      "Acts 28:11"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-topostext-org-place-408141pdik",
-      "cit-pleiades-stoa-org-places-432815"
-    ]
-  },
-  {
-    "id": "stop-rome-rome-7",
-    "journeyId": "journey-rome",
-    "order": 7,
-    "siteId": "site-rome",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 28,
-      "endYear": 62,
-      "display": {
-        "en": "AD 60-62 (later) or 58-60 (early); 'two whole years' (Acts 28:30)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Roman believers came out to meet Paul at the Forum of Appius and Three Taverns on the Via Appia (Acts 28:15). In Rome Paul was allowed to live by himself under guard (light custody/house arrest). He met the local Jewish leaders, expounded the kingdom of God and Jesus from the Law and Prophets (28:17-28), and 'lived there two whole years at his own expense, welcoming all who came, preaching the kingdom of God and teaching about the Lord Jesus Christ with all boldness and without hindrance' (28:30-31). Acts ends here, abruptly, without recording the trial's outcome."
-    },
-    "scriptureRefs": [
-      "Acts 28:14"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
-      "cit-enduringword-com-bible-commentary-acts-27"
-    ]
-  },
-  {
-    "id": "stop-ministry-resurrection-appearances-19",
-    "journeyId": "journey-ministry",
-    "order": 21,
-    "siteId": "site-golgotha-and-the-tomb",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Resurrection Sunday, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus — mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb')."
-    },
-    "scriptureRefs": [
-      "John 20:1",
-      "John 20:11",
-      "Matthew 28:1",
-      "Matthew 28:9",
-      "Mark 16:1",
-      "Luke 24:1",
-      "Luke 24:34",
-      "1 Corinthians 15:5"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
-      "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-      "cit-edicule-restoration",
-      "cit-archaeology-crucifixion-tzaferis",
-      "cit-primary-josephus-antiquities",
-      "cit-primary-tacitus-annals"
-    ]
-  },
-  {
-    "id": "stop-ministry-road-to-emmaus-20",
-    "journeyId": "journey-ministry",
-    "order": 22,
-    "siteId": "site-emmaus",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Easter Sunday afternoon, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Two disciples — one named Cleopas, the other unnamed — walked from Jerusalem to Emmaus (~60 stadia / ~11 km in most manuscripts; ~160 stadia / ~30 km in Codex Sinaiticus). A stranger joined them and, beginning with Moses and all the Prophets, explained 'the things concerning himself' in all the Scriptures. At supper in Emmaus, 'he took the bread and blessed and broke it and gave it to them. And their eyes were opened, and they recognized him. And he vanished from their sight' (Luke 24:30-31). They exclaimed, 'Did not our hearts burn within us while he talked to us on the road, while he opened to us the Scriptures?' and returned immediately to Jerusalem to tell the Eleven. The Emmaus-Nicopolis identification (Amwas/Latrun) has Byzantine basilica ruins and attestation by Eusebius (c. AD 330); el-Qubeibeh is the Franciscan traditional site since the 15th century."
-    },
-    "scriptureRefs": [
-      "Luke 24:13",
-      "Luke 24:30",
-      "Mark 16:12"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-emmaus-nicopolis",
-      "cit-emmaus-qubeibeh"
-    ]
-  },
-  {
-    "id": "stop-ministry-upper-room-easter-21",
-    "journeyId": "journey-ministry",
-    "order": 23,
-    "siteId": "site-last-supper",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "Easter Sunday evening, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "That evening the disciples gathered behind locked doors 'for fear of the Jews.' Jesus appeared in their midst and said, 'Peace be with you.' He showed them his hands and side, breathed on them and said, 'Receive the Holy Spirit' (John 20:19-23). He ate a piece of broiled fish to demonstrate his physical, bodily reality (Luke 24:36-43). Thomas was absent and later refused to believe: 'Unless I see in his hands the mark of the nails, and place my finger into the mark of the nails, and place my hand into his side, I will never believe' (John 20:25). Epiphanius (4th c.) mentions a 'Church of the Apostles' on Mount Zion that survived the AD 70 destruction; archaeologist Bargil Pixner argued for a Judeo-Christian synagogue or house church predating the current medieval Cenacle structure."
-    },
-    "scriptureRefs": [
-      "Luke 24:36",
-      "John 20:19",
-      "John 20:25",
-      "1 Corinthians 15:5"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
-    ]
-  },
-  {
-    "id": "stop-ministry-upper-room-thomas-22",
-    "journeyId": "journey-ministry",
-    "order": 24,
-    "siteId": "site-last-supper",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "one week after Easter, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Eight days later (the following Sunday), the disciples were again in the locked room, this time with Thomas present. Jesus appeared, stood among them, and said to Thomas, 'Put your finger here, and see my hands; and put out your hand, and place it in my side. Do not disbelieve, but believe.' Thomas exclaimed, 'My Lord and my God!' (Greek: ho kyrios mou kai ho theos mou) — the highest christological declaration in the Gospels. Jesus replied, 'Have you believed because you have seen me? Blessed are those who have not seen and yet have believed' (John 20:26-29). This bridges to all subsequent faith beyond the eyewitness generation."
-    },
-    "scriptureRefs": [
-      "John 20:26",
-      "John 20:28",
-      "John 20:29"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
-    ]
-  },
-  {
-    "id": "stop-ministry-sea-of-galilee-appearance-23",
-    "journeyId": "journey-ministry",
-    "order": 25,
-    "siteId": "site-tabgha",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "during the 40 days before Ascension, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples — Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed — fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia — the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' — one restoration for each denial — and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period."
-    },
-    "scriptureRefs": [
-      "John 21:1",
-      "John 21:6",
-      "John 21:11",
-      "John 21:15",
-      "John 21:18"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-tabgha-primacy",
-      "cit-jesus-boat"
-    ]
-  },
-  {
-    "id": "stop-ministry-galilee-mountain-commission-24",
-    "journeyId": "journey-ministry",
-    "order": 26,
-    "siteId": "site-galilee-mountain",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "during the 40 days before Ascension, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "The Eleven went to the mountain in Galilee 'to which Jesus had directed them' (Matthew 28:16). When they saw him, they worshiped, though 'some doubted.' Jesus declared: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age' (Matthew 28:18-20). Many scholars associate the appearance to 'more than 500 brothers at one time, most of whom are still alive' (1 Corinthians 15:6) with this Galilean mountain gathering, as it is the only large-scale outdoor post-resurrection event. Paul wrote c. AD 53-55; his note about surviving witnesses is an implicit invitation to verify. The 1 Corinthians 15:3-8 creed is dated by virtually all critical scholars — including skeptics Gerd Lüdemann and Bart Ehrman — to within 3-6 years of the crucifixion, making it the earliest datable testimony to the resurrection appearances."
-    },
-    "scriptureRefs": [
-      "Matthew 28:16",
-      "Matthew 28:18",
-      "Matthew 28:19",
-      "Matthew 28:20",
-      "1 Corinthians 15:6"
-    ],
-    "confidence": "disputed",
-    "disputes": {
-      "en": "The mountain in Galilee is not named in the Gospel accounts. Mount Tabor is the traditional site, while Mount Arbel is a popular alternative overlooking the Sea of Galilee."
-    },
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-galilee-mountain",
-      "cit-1cor15-creed",
-      "cit-history-early-creed-luedemann"
-    ]
-  },
-  {
-    "id": "stop-ministry-appearance-to-james-25",
-    "journeyId": "journey-ministry",
-    "order": 27,
-    "siteId": "site-jerusalem",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "during the 40 days before Ascension, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Paul's creedal summary records that Jesus 'appeared to James, then to all the apostles' (1 Corinthians 15:7). No narrative details are given in the New Testament. James — the brother of Jesus, not James son of Zebedee — was skeptical during the ministry ('not even his brothers believed in him', John 7:5) but became the leader of the Jerusalem church (Acts 15; Galatians 1:19; 2:9). This transformation from skeptic to martyr-leader is most naturally explained by a post-resurrection appearance. The lost Gospel of the Hebrews (quoted by Jerome) preserves a tradition that James had vowed not to eat until he saw the risen Lord. Josephus independently records the execution of 'James, the brother of Jesus who was called Christ' in AD 62 (Antiquities 20.9.1), confirming both James's existence and his identification as Jesus's brother. The location of this appearance is not specified; Jerusalem is assumed as the base of James's subsequent ministry."
-    },
-    "scriptureRefs": [
-      "1 Corinthians 15:7",
-      "John 7:5",
-      "Galatians 1:19",
-      "Acts 15:13"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-1cor15-creed",
-      "cit-wit-josephus-james",
-      "cit-history-early-creed-luedemann",
-      "cit-primary-josephus-antiquities"
-    ]
-  },
-  {
-    "id": "stop-ministry-ascension-26",
-    "journeyId": "journey-ministry",
-    "order": 28,
-    "siteId": "site-mount-of-olives-ascension",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 30,
-      "endYear": 33,
-      "display": {
-        "en": "40 days after the resurrection, c. AD 30 or 33"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Forty days after the resurrection (Acts 1:3), Jesus led the apostles out to the Mount of Olives, near Bethany. Over those 40 days he had appeared to them repeatedly, 'speaking about the kingdom of God' and 'presenting himself alive after his suffering by many proofs' (Acts 1:3). He gave final instructions: 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth' (Acts 1:8). 'And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight' (Acts 1:9). Two men in white appeared and said, 'This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven' (Acts 1:11). The disciples returned to Jerusalem from Olivet, 'a Sabbath day's journey away' (~2,000 cubits, ~1 km). The Chapel of the Ascension has been venerated since the Bordeaux Pilgrim (AD 333); the original Imbomon rotunda was built c. AD 378-384 by Poimenia, destroyed in AD 614, rebuilt by Crusaders, and converted to a mosque by Saladin (1187)."
-    },
-    "scriptureRefs": [
-      "Luke 24:50",
-      "Luke 24:51",
-      "Acts 1:3",
-      "Acts 1:8",
-      "Acts 1:9",
-      "Acts 1:11",
-      "Acts 1:12",
-      "Mark 16:19"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-ascension-chapel",
-      "cit-mount-olives"
-    ]
-  },
-  {
-    "id": "stop-ministry-stephens-vision-27",
-    "journeyId": "journey-ministry",
-    "order": 29,
-    "siteId": "site-jerusalem",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 34,
-      "endYear": 35,
-      "display": {
-        "en": "c. AD 34-35"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "During his trial before the Sanhedrin, Stephen — the first Christian martyr — 'full of the Holy Spirit, gazed into heaven and saw the glory of God, and Jesus standing at the right hand of God' (Acts 7:55). Notably, Jesus is described as standing (not seated, as in other passages), possibly signifying welcome or advocacy. Stephen reported the vision aloud; the council rushed him, dragged him outside the city, and stoned him. As he died, he prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' Saul of Tarsus (later Paul) watched, approving the execution (Acts 7:58; 8:1). This is a vision rather than a bodily appearance. The traditional stoning site is near St. Stephen's Gate (Lions' Gate) on Jerusalem's eastern wall; the 5th-c. Basilica of St. Stephen (now Saint-Étienne, within the École Biblique grounds) commemorates the northern tradition."
-    },
-    "scriptureRefs": [
-      "Acts 7:55",
-      "Acts 7:56",
-      "Acts 7:58",
-      "Acts 7:59",
-      "Acts 7:60",
-      "Acts 8:1"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-en-wikipedia-org-wiki-temple-mount"
-    ]
-  },
-  {
-    "id": "stop-ministry-damascus-road-paul-28",
-    "journeyId": "journey-ministry",
-    "order": 30,
-    "siteId": "site-damascus",
-    "legMode": "land",
-    "dateRange": {
-      "startYear": 33,
-      "endYear": 36,
-      "display": {
-        "en": "c. AD 33-36"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "Saul of Tarsus, carrying letters from the high priest to arrest Christians in Damascus, encountered the risen Jesus near the city. 'Suddenly a light from heaven, brighter than the sun, flashed around him. He fell to the ground and heard a voice: Saul, Saul, why are you persecuting me?' (Acts 26:13-14). Blinded for three days, he was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Three separate accounts in Acts (chs. 9, 22, 26) plus Paul's own first-person testimony in 1 Corinthians 9:1 ('Have I not seen Jesus our Lord?'), 1 Corinthians 15:8 ('Last of all, as to one untimely born, he appeared also to me'), and Galatians 1:15-16 attest this encounter. Paul's testimony, written c. AD 53-55, is ~20-25 years after the event. The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus. The underground Chapel of Ananias near Bab Sharqi preserves 5th/6th-c. Byzantine church remains (excavated 1921). Paul's basket escape through the wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan. Even non-Christian scholars treat Paul's radical transformation from persecutor to apostle as historically certain."
-    },
-    "scriptureRefs": [
-      "Acts 9:1",
-      "Acts 9:3",
-      "Acts 9:11",
-      "Acts 9:25",
-      "Acts 22:6",
-      "Acts 26:12",
-      "1 Corinthians 9:1",
-      "1 Corinthians 15:8",
-      "Galatians 1:15",
-      "2 Corinthians 11:33"
-    ],
-    "confidence": "high",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-damascus-straight-street",
-      "cit-house-ananias"
-    ]
-  },
-  {
-    "id": "stop-ministry-patmos-john-29",
-    "journeyId": "journey-ministry",
-    "order": 31,
-    "siteId": "site-patmos",
-    "legMode": "sea",
-    "dateRange": {
-      "startYear": 81,
-      "endYear": 96,
-      "display": {
-        "en": "c. AD 81-96 (traditionally under Domitian)"
-      },
-      "approximate": true
-    },
-    "eventSummary": {
-      "en": "John, exiled to Patmos 'because of the word of God and the testimony of Jesus' (Revelation 1:9), was 'in the Spirit on the Lord's day' when he heard a loud voice and, turning, saw the risen Christ glorified among seven golden lampstands: 'one like a son of man, clothed with a long robe... his eyes were like a flame of fire, his feet were like burnished bronze... and his voice was like the roar of many waters' (Revelation 1:12-16). John fell at his feet 'as though dead,' but Jesus laid his right hand on him and said, 'Fear not, I am the first and the last, and the living one. I died, and behold I am alive forevermore, and I have the keys of Death and Hades' (Revelation 1:17-18). He commanded John to write the visions and dictated seven letters to the churches of Asia (Revelation 2-3). The Domitianic dating rests on Irenaeus (Against Heresies 5.30.3, c. AD 180). The Cave of the Apocalypse and the Monastery of St. John the Theologian (founded AD 1088) are UNESCO World Heritage Sites (inscribed 1999). The identity of 'John' — apostle, elder, or another figure — is itself debated."
-    },
-    "scriptureRefs": [
-      "Revelation 1:9",
-      "Revelation 1:12",
-      "Revelation 1:17",
-      "Revelation 1:18"
-    ],
-    "confidence": "medium",
-    "reviewStatus": "self-reviewed",
-    "citations": [
-      "cit-patmos"
-    ]
-  }
+ {
+  "id": "stop-ministry-bethlehem-0",
+  "journeyId": "journey-ministry",
+  "order": 0,
+  "siteId": "site-bethlehem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -6,
+   "endYear": -4,
+   "display": {
+    "en": "birth c. 6-4 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Matthew and Luke place Jesus' birth in Bethlehem, the city of David, before the death of Herod the Great. Luke ties it to a census under Quirinius; Matthew records the magi and the flight to Egypt. The Church of the Nativity (built under Constantine/Justinian over a cave venerated from at least the 2nd c., per Justin Martyr and Origen) marks the traditional grotto. Scholarly birth window is c. 6-4 BC, set by Herod's death (securely c. spring 4 BC via Josephus' lunar-eclipse note of 13 March 4 BC and reign calculations)."
+  },
+  "scriptureRefs": [
+   "Matthew 2:1",
+   "Matthew 2:13",
+   "Luke 2:1",
+   "Micah 5:2",
+   "John 7:42"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-britannica-com-topic-when-was-jesus-born",
+   "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
+   "cit-www-holylandsite-com-bethlehem-nativity-church"
+  ]
+ },
+ {
+  "id": "stop-ministry-nazareth-1",
+  "journeyId": "journey-ministry",
+  "order": 2,
+  "siteId": "site-nazareth",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "boyhood pre-ministry; rejection episode early-mid ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Nazareth was Jesus' hometown (Luke's annunciation; the family's return after Egypt in Matthew). A small agrarian Jewish village (~few hundred people) in the early 1st c., confirmed by IAA excavations (the Nazareth Village Farm, a 1st-c. house near the Church of the Annunciation, wine/olive presses, tombs, and pottery). Jesus taught in its synagogue (Luke 4:16-30) and was rejected ('no prophet is accepted in his hometown'); a cliff is associated with the attempt to throw him down."
+  },
+  "scriptureRefs": [
+   "Luke 1:26",
+   "Matthew 2:23",
+   "Luke 2:39",
+   "Luke 4:16",
+   "Mark 6:1",
+   "Matthew 13:54",
+   "John 1:46"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+   "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
+  ]
+ },
+ {
+  "id": "stop-ministry-baptism-at-the-jordan-2",
+  "journeyId": "journey-ministry",
+  "order": 4,
+  "siteId": "site-baptism-at-the-jordan",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 27,
+   "endYear": 29,
+   "display": {
+    "en": "start of ministry c. AD 27-29"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jesus' public ministry opens with his baptism by John in the Jordan and the wilderness temptation. John names the baptism site 'Bethany beyond the Jordan' (John 1:28). Al-Maghtas in Jordan, with Byzantine churches and pilgrimage remains, is the leading candidate and a UNESCO World Heritage Site; Qasr al-Yahud opposite is the western traditional spot."
+  },
+  "scriptureRefs": [
+   "Mark 1:9",
+   "Matthew 3:13",
+   "Luke 3:21",
+   "Luke 4:1",
+   "John 1:28"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-whc-unesco-org-en-list-1446"
+  ]
+ },
+ {
+  "id": "stop-ministry-capernaum-3",
+  "journeyId": "journey-ministry",
+  "order": 6,
+  "siteId": "site-capernaum",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "primary base throughout Galilean ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Capernaum was Jesus' adopted base ('his own city', Matthew 9:1) and home of Peter, Andrew, James and John and Matthew the tax-collector. Many events occur here: healing of Peter's mother-in-law, the paralytic lowered through the roof, the centurion's servant, the synagogue teaching/exorcism, and the Bread of Life discourse (John 6). Archaeology shows a 1st-c. basalt synagogue foundation beneath the later 4th-5th-c. white limestone synagogue, and an octagonal Byzantine church over a 1st-c. house traditionally identified as Peter's. Jesus pronounced woe on it (Matthew 11:23)."
+  },
+  "scriptureRefs": [
+   "Matthew 4:13",
+   "Matthew 8:5",
+   "Matthew 9:1",
+   "Matthew 11:23",
+   "Mark 1:21",
+   "Mark 2:1",
+   "Luke 4:31",
+   "John 6:24"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-capernaum",
+   "cit-www-bibleplaces-com-capernaum",
+   "cit-dannythedigger-com-capernaum-synagogue"
+  ]
+ },
+ {
+  "id": "stop-ministry-cana-of-galilee-4",
+  "journeyId": "journey-ministry",
+  "order": 7,
+  "siteId": "site-cana-of-galilee",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 29,
+   "display": {
+    "en": "early ministry c. AD 28-29"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Cana is where John places Jesus' first 'sign', turning water into wine at a wedding (John 2), and the healing of the official's son (John 4:46-54); it is also the home of Nathanael (John 21:2). Site is contested. Khirbet Qana shows continuous Jewish settlement (323 BC-AD 324), a synagogue/study hall, and a pilgrimage veneration cave, making it the strongest archaeological candidate; Kafr Kanna is the medieval-to-modern pilgrim site but lacks demonstrable Roman-era Jewish remains beneath it."
+  },
+  "scriptureRefs": [
+   "John 2:1",
+   "John 4:46",
+   "John 21:2"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-cana",
+   "cit-www-biblicalarchaeology-org-daily-people-culture"
+  ]
+ },
+ {
+  "id": "stop-ministry-sea-of-galilee-5",
+  "journeyId": "journey-ministry",
+  "order": 8,
+  "siteId": "site-sea-of-galilee",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "throughout Galilean ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
+  },
+  "scriptureRefs": [
+   "Mark 1:16",
+   "Mark 4:35",
+   "Mark 6:45",
+   "Matthew 14:22",
+   "Luke 5:1",
+   "John 21:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-sea-of-galilee",
+   "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-bethsaida-6",
+  "journeyId": "journey-ministry",
+  "order": 9,
+  "siteId": "site-bethsaida",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "Galilean ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Bethsaida is named as the home of Peter, Andrew and Philip (John 1:44) and the setting of the healing of a blind man (Mark 8:22-26) and a feeding-miracle vicinity (Luke 9:10). Jesus cursed it with Chorazin (Matthew 11:21). Two excavated sites contend: et-Tell (large mound, Iron Age and Roman remains, long the favored ID) and el-Araj (on the shore, with 1st-c. Roman material and a Byzantine church, fitting a fishing village better). Excavations at both continue."
+  },
+  "scriptureRefs": [
+   "John 1:44",
+   "Mark 6:45",
+   "Mark 8:22",
+   "Luke 9:10",
+   "Matthew 11:21",
+   "Luke 10:13"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+   "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
+  ]
+ },
+ {
+  "id": "stop-ministry-chorazin-7",
+  "journeyId": "journey-ministry",
+  "order": 10,
+  "siteId": "site-chorazin",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "Galilean ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
+  },
+  "scriptureRefs": [
+   "Matthew 11:21",
+   "Luke 10:13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-chorazin",
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
+  ]
+ },
+ {
+  "id": "stop-ministry-decapolis-8",
+  "journeyId": "journey-ministry",
+  "order": 11,
+  "siteId": "site-decapolis",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 30,
+   "display": {
+    "en": "Galilean/Decapolis ministry c. AD 28-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On the gentile (eastern/Decapolis) side of the lake, Jesus exorcises 'Legion' into a herd of pigs that rush down a steep bank into the sea (Mark 5). Manuscripts vary between 'Gerasenes', 'Gadarenes', and 'Gergesenes'. Gergesa is traditionally identified with Kursi, where a steep slope meets the shore and a large Byzantine monastery commemorated the miracle. Gadara (Umm Qais) and Gerasa (Jerash) are major Decapolis cities lying farther inland/southeast. Jesus also healed and fed crowds in the Decapolis (Mark 7:31-37; 8:1-10)."
+  },
+  "scriptureRefs": [
+   "Mark 5:1",
+   "Matthew 8:28",
+   "Luke 8:26",
+   "Mark 7:31",
+   "Matthew 4:25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+   "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-tyre-and-sidon-9",
+  "journeyId": "journey-ministry",
+  "order": 12,
+  "siteId": "site-tyre-and-sidon",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 29,
+   "endYear": 29,
+   "display": {
+    "en": "mid ministry, northern excursion c. AD 29"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jesus withdrew northwest into gentile Phoenician territory ('the region of Tyre and Sidon'), where he healed the daughter of the Syrophoenician/Canaanite woman (Mark 7:24-30; Matthew 15:21-28). Both cities are ancient, securely located Phoenician ports. Tyre lies ~50 km NW of Capernaum; Sidon ~40 km further north."
+  },
+  "scriptureRefs": [
+   "Mark 7:24",
+   "Mark 7:31",
+   "Matthew 15:21",
+   "Luke 6:17",
+   "Matthew 11:21"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-tyre-lebanon",
+   "cit-en-wikipedia-org-wiki-sidon",
+   "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-caesarea-philippi-10",
+  "journeyId": "journey-ministry",
+  "order": 13,
+  "siteId": "site-caesarea-philippi",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 29,
+   "endYear": 30,
+   "display": {
+    "en": "later Galilean ministry, turning point c. AD 29-30"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "At Caesarea Philippi, near the cave-sanctuary of Pan and the springs of the Jordan, Peter confesses Jesus as the Messiah and Jesus speaks of building his church and his coming passion (Matthew 16:13-23). The Transfiguration follows about a week later on a 'high mountain' (Matthew 17:1-8), traditionally Mount Tabor but, given proximity, possibly a spur of Mount Hermon. The site preserves the Pan sanctuary niches and Philip's city remains."
+  },
+  "scriptureRefs": [
+   "Matthew 16:13",
+   "Mark 8:27",
+   "Matthew 17:1",
+   "Mark 9:2",
+   "Luke 9:18"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-caesarea-philippi",
+   "cit-www-bibleplaces-com-caesarea-philippi-banias"
+  ]
+ },
+ {
+  "id": "stop-ministry-samaria-11",
+  "journeyId": "journey-ministry",
+  "order": 5,
+  "siteId": "site-samaria",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 29,
+   "display": {
+    "en": "earlier ministry/transit c. AD 28-29"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Traveling between Judea and Galilee through Samaria, Jesus meets the Samaritan woman at Jacob's Well (John 4), discusses worship 'on this mountain' (Mount Gerizim) versus Jerusalem, and stays two days in Sychar. The deep ancient well (still extant inside the church) and the Samaritan sanctity of Gerizim are well attested."
+  },
+  "scriptureRefs": [
+   "John 4:1",
+   "Luke 9:51",
+   "Luke 17:11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-seetheholyland-net-jacobs-well",
+   "cit-www-holylandsite-com-shechem-jacobs-well"
+  ]
+ },
+ {
+  "id": "stop-ministry-final-journey-jericho-12",
+  "journeyId": "journey-ministry",
+  "order": 14,
+  "siteId": "site-final-journey-jericho",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "final journey to Jerusalem, c. days before the last Passover (AD 30 or 33)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On the final ascent to Jerusalem for Passover, Jesus passes through Jericho: he heals blind Bartimaeus (Mark 10:46-52) and calls the tax-collector Zacchaeus down from a sycamore-fig (Luke 19:1-10). The NT Roman/Herodian Jericho (Hasmonean-Herodian palace complex at Tulul Abu el-Alayiq) lies near the wadi Qelt, distinct from the prehistoric Tell es-Sultan mound. The road climbs ~1,000 m over ~27 km from Jericho (below sea level) to Jerusalem."
+  },
+  "scriptureRefs": [
+   "Mark 10:46",
+   "Luke 18:35",
+   "Luke 19:1",
+   "Matthew 20:29"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-jericho",
+   "cit-www-jerusalemperspective-com-1402"
+  ]
+ },
+ {
+  "id": "stop-ministry-bethany-and-bethphage-13",
+  "journeyId": "journey-ministry",
+  "order": 15,
+  "siteId": "site-bethany-and-bethphage",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Lazarus shortly before the last Passover; Passion Week c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Bethany, home of Mary, Martha and Lazarus, is where Jesus raised Lazarus (John 11) and was anointed before the passion (John 12; Mark 14:3-9). It served as his lodging during Passion Week. The Triumphal Entry was staged from neighboring Bethphage. The Tomb of Lazarus has been venerated since at least the 2nd c.; Eusebius notes the village was already called by the Lazarus-name."
+  },
+  "scriptureRefs": [
+   "John 11:1",
+   "John 12:1",
+   "Mark 11:1",
+   "Matthew 21:1",
+   "Luke 19:28",
+   "Mark 14:3"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-seetheholyland-net-bethany",
+   "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+  ]
+ },
+ {
+  "id": "stop-ministry-jerusalem-14",
+  "journeyId": "journey-ministry",
+  "order": 16,
+  "siteId": "site-jerusalem",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "festival visits across ministry; climactic Passion Week c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70."
+  },
+  "scriptureRefs": [
+   "Mark 11:15",
+   "Matthew 21:12",
+   "Luke 19:45",
+   "John 2:13",
+   "Mark 13:1",
+   "John 7:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-temple-mount",
+   "cit-en-wikipedia-org-wiki-second-temple",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-last-supper-15",
+  "journeyId": "journey-ministry",
+  "order": 17,
+  "siteId": "site-last-supper",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Thursday evening before the crucifixion, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jesus shares the Last Supper with the Twelve in a furnished upper room (Mark 14; Luke 22), instituting the bread-and-cup remembrance. In the Synoptics this is a Passover meal (Nisan 15); in John the meal precedes Passover (Jesus dies as the lambs are slain on Nisan 14). The traditional Cenacle on Mount Zion is a long-standing but architecturally later commemoration."
+  },
+  "scriptureRefs": [
+   "Mark 14:12",
+   "Matthew 26:17",
+   "Luke 22:7",
+   "John 13:1",
+   "1 Corinthians 11:23"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+   "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
+  ]
+ },
+ {
+  "id": "stop-ministry-gethsemane-16",
+  "journeyId": "journey-ministry",
+  "order": 18,
+  "siteId": "site-gethsemane",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "night before the crucifixion, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After the supper Jesus prays in agony at Gethsemane and is arrested following Judas' betrayal (Mark 14:32-52). The site at the Mount of Olives foot, across the Kidron, fits the Gospel topography; very old olive trees grow there (some radiocarbon/genetic studies date roots to the 12th c., though the locale itself is early-attested by pilgrims)."
+  },
+  "scriptureRefs": [
+   "Mark 14:32",
+   "Matthew 26:36",
+   "Luke 22:39",
+   "John 18:1"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-mount-of-olives",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-trial-before-pilate-17",
+  "journeyId": "journey-ministry",
+  "order": 19,
+  "siteId": "site-trial-before-pilate",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Friday of the crucifixion, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jesus is tried before the Jewish authorities and then Pontius Pilate, who sentences him at a place called Gabbatha/Lithostrotos. Two candidate locations: the older pilgrim tradition (Antonia Fortress, anchoring the Via Dolorosa) and the now widely-favored scholarly view that Pilate, when in Jerusalem, resided and judged at Herod's Palace in the western city. The 'Pilate stone' from Caesarea independently confirms Pontius Pilate as prefect of Judaea."
+  },
+  "scriptureRefs": [
+   "Mark 15:1",
+   "Matthew 27:11",
+   "Luke 23:1",
+   "John 18:28"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+   "cit-en-wikipedia-org-wiki-pilate-stone"
+  ]
+ },
+ {
+  "id": "stop-ministry-golgotha-and-the-tomb-18",
+  "journeyId": "journey-ministry",
+  "order": 20,
+  "siteId": "site-golgotha-and-the-tomb",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "crucifixion Friday 7 April AD 30 or Friday 3 April AD 33 (Nisan 14); resurrection proclaimed the following Sunday"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Jesus is crucified at Golgotha, dies, and is buried in a new rock-cut tomb nearby (Joseph of Arimathea's), with the resurrection proclaimed on the first day of the week. The Church of the Holy Sepulchre is the strongest candidate: excavations show the area was a disused quarry with 1st-c. rock-cut tombs, lay outside the city wall in Jesus' day, and was venerated continuously (Constantine built over it in the 4th c. on earlier memory); a 2025 report noted ancient garden/cultivation remains beneath, consistent with John 19:41. The Garden Tomb is archaeologically Iron Age and rejected as the orig"
+  },
+  "scriptureRefs": [
+   "Mark 15:21",
+   "Matthew 27:32",
+   "Luke 23:26",
+   "John 19:16",
+   "Mark 16:1",
+   "John 20:1",
+   "1 Corinthians 15:3"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+   "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+   "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
+  ]
+ },
+ {
+  "id": "stop-paul-1-antioch-0",
+  "journeyId": "journey-paul-1",
+  "order": 0,
+  "siteId": "site-antioch",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 50,
+   "display": {
+    "en": "Journey 1 start c. AD 46-47; Journey 2 start c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
+  },
+  "scriptureRefs": [
+   "Acts 13:1",
+   "Acts 11:19",
+   "Acts 14:26",
+   "Acts 15:35",
+   "Acts 18:22"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-livius-org-articles-place-antioch-antakya",
+   "cit-topostext-org-place-362362pant",
+   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+  ]
+ },
+ {
+  "id": "stop-paul-1-seleucia-pieria-1",
+  "journeyId": "journey-paul-1",
+  "order": 1,
+  "siteId": "site-seleucia-pieria",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 46,
+   "endYear": 47,
+   "display": {
+    "en": "c. AD 46-47"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The seaport of Antioch, ~16 mi (25 km) downriver/WSW, founded by Seleucus I Nicator (301 BC). On Journey 1 Paul and Barnabas 'went down to Seleucia, and from there sailed to Cyprus' (Acts 13:4). LEG: short LAND leg from Antioch to the coast, then point of embarkation for the SEA crossing to Cyprus."
+  },
+  "scriptureRefs": [
+   "Acts 13:4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-seleucia-pieria",
+   "cit-www-britannica-com-place-seleucia-pieria",
+   "cit-www-bibleplaces-com-seleucia"
+  ]
+ },
+ {
+  "id": "stop-paul-1-salamis-2",
+  "journeyId": "journey-paul-1",
+  "order": 2,
+  "siteId": "site-salamis",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 46,
+   "endYear": 47,
+   "display": {
+    "en": "c. AD 46-47"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Landfall on Cyprus. Paul and Barnabas 'proclaimed the word of God in the synagogues of the Jews' (Acts 13:5); John Mark accompanied them as assistant (hyperetes). Salamis was the chief eastern port, with a sizable Jewish community. LEG: SEA arrival from Seleucia; then LAND travel west across the island to Paphos."
+  },
+  "scriptureRefs": [
+   "Acts 13:4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-salamis-cyprus",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-paul-1-paphos-3",
+  "journeyId": "journey-paul-1",
+  "order": 3,
+  "siteId": "site-paphos",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 46,
+   "endYear": 47,
+   "display": {
+    "en": "c. AD 46-47"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Roman provincial capital and seat of the proconsul. Here the magician Bar-Jesus / Elymas opposed them before the proconsul Sergius Paulus; Paul struck Elymas with temporary blindness, and the proconsul 'believed, being astonished at the teaching of the Lord' (Acts 13:6-12). This passage marks the narrative shift from 'Saul' to 'Paul' and his emergence as lead missionary. ARCHAEOLOGY: inscriptions naming a 'Sergius Paulus' / a 'Paulus [proconsul]' (e.g., the Soloi inscription on Cyprus) corroborate the name, title, and senatorial (proconsular) governance of Cyprus, though no inscription definit"
+  },
+  "scriptureRefs": [
+   "Acts 13:6"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+   "cit-biblearchaeology-org-research-chronological-cate",
+   "cit-www-britannica-com-place-paphos"
+  ]
+ },
+ {
+  "id": "stop-paul-1-perga-4",
+  "journeyId": "journey-paul-1",
+  "order": 4,
+  "siteId": "site-perga",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 46,
+   "endYear": 48,
+   "display": {
+    "en": "c. AD 46-47 (outbound); c. AD 47-48 (return)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
+  },
+  "scriptureRefs": [
+   "Acts 13:13",
+   "Acts 14:24"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-perga",
+   "cit-www-britannica-com-place-perga",
+   "cit-topostext-org-place-370309pper"
+  ]
+ },
+ {
+  "id": "stop-paul-1-pisidian-antioch-5",
+  "journeyId": "journey-paul-1",
+  "order": 5,
+  "siteId": "site-pisidian-antioch",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 46,
+   "endYear": 47,
+   "display": {
+    "en": "c. AD 46-47"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Roman colony and administrative center of the southern part of the province of Galatia. Setting of Paul's first recorded major sermon (Acts 13:16-41) in the synagogue. After many Gentiles responded the next Sabbath, jealous synagogue leaders incited 'devout women of high standing and the leading men' to drive them out; Paul and Barnabas 'shook the dust from their feet' and turned to the Gentiles (Acts 13:42-52). VISITED AGAIN on the return leg to strengthen disciples and appoint elders (Acts 14:21-23). ARCHAEOLOGY: excavated since W. Ramsay (1913-14); imperial cult temple (Augusteum), city gat"
+  },
+  "scriptureRefs": [
+   "Acts 13:14",
+   "Acts 14:21",
+   "2 Timothy 3:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-vici-org-vici-2325-lang-en",
+   "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+   "cit-www-thegospelcoalition-org-themelios-article-act"
+  ]
+ },
+ {
+  "id": "stop-paul-1-iconium-6",
+  "journeyId": "journey-paul-1",
+  "order": 6,
+  "siteId": "site-iconium",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 47,
+   "endYear": 47,
+   "display": {
+    "en": "c. AD 47"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "City in Lycaonia/Galatia where Paul and Barnabas spoke boldly in the synagogue 'so that a great number both of Jews and of Greeks believed' (Acts 14:1) and stayed 'a long time' performing signs. The city divided; on learning of a plot to stone them, they fled to Lystra and Derbe (Acts 14:2-6). REVISITED on return (Acts 14:21). Iconium's continuous occupation (modern Konya) limits excavation. LEG: LAND."
+  },
+  "scriptureRefs": [
+   "Acts 14:1",
+   "Acts 14:21",
+   "2 Timothy 3:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-konya",
+   "cit-www-bibleref-com-acts-14-acts-14-6-html"
+  ]
+ },
+ {
+  "id": "stop-paul-1-lystra-7",
+  "journeyId": "journey-paul-1",
+  "order": 7,
+  "siteId": "site-lystra",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 47 (J1); revisited c. AD 49-50 (J2)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
+  },
+  "scriptureRefs": [
+   "Acts 14:6",
+   "Acts 14:21",
+   "Acts 16:1",
+   "2 Timothy 3:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-lystra",
+   "cit-www-bibleplaces-com-derbelystra"
+  ]
+ },
+ {
+  "id": "stop-paul-1-derbe-8",
+  "journeyId": "journey-paul-1",
+  "order": 8,
+  "siteId": "site-derbe",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 47,
+   "endYear": 48,
+   "display": {
+    "en": "c. AD 47-48"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
+  },
+  "scriptureRefs": [
+   "Acts 14:6",
+   "Acts 14:20",
+   "Acts 16:1",
+   "Acts 20:4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-derbe",
+   "cit-vici-org-vici-24065"
+  ]
+ },
+ {
+  "id": "stop-paul-1-attalia-9",
+  "journeyId": "journey-paul-1",
+  "order": 9,
+  "siteId": "site-attalia",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 47,
+   "endYear": 48,
+   "display": {
+    "en": "c. AD 47-48"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After preaching at Perga on the return leg, they 'went down to Attalia, and from there sailed back to Antioch' (Acts 14:25-26). Attalia was the principal Pamphylian harbor (founded by Attalus II of Pergamon). LEG: short LAND leg from Perga; then SEA voyage back to Syrian Antioch, ending Journey 1."
+  },
+  "scriptureRefs": [
+   "Acts 14:25"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+  ]
+ },
+ {
+  "id": "stop-paul-2-antioch-0",
+  "journeyId": "journey-paul-2",
+  "order": 0,
+  "siteId": "site-antioch",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 50,
+   "display": {
+    "en": "Journey 1 start c. AD 46-47; Journey 2 start c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
+  },
+  "scriptureRefs": [
+   "Acts 13:1",
+   "Acts 11:19",
+   "Acts 14:26",
+   "Acts 15:35",
+   "Acts 18:22"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-livius-org-articles-place-antioch-antakya",
+   "cit-topostext-org-place-362362pant",
+   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+  ]
+ },
+ {
+  "id": "stop-paul-2-syria-1",
+  "journeyId": "journey-paul-2",
+  "order": 1,
+  "siteId": "site-syria",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
+  },
+  "scriptureRefs": [
+   "Acts 15:40",
+   "Acts 16:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-esv-org-resources-esv-global-study-bible-map"
+  ]
+ },
+ {
+  "id": "stop-paul-2-lystra-2",
+  "journeyId": "journey-paul-2",
+  "order": 2,
+  "siteId": "site-lystra",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 1,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 47 (J1); revisited c. AD 49-50 (J2)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND."
+  },
+  "scriptureRefs": [
+   "Acts 14:6",
+   "Acts 14:21",
+   "Acts 16:1",
+   "2 Timothy 3:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-lystra",
+   "cit-www-bibleplaces-com-derbelystra"
+  ]
+ },
+ {
+  "id": "stop-paul-2-alexandria-troas-3",
+  "journeyId": "journey-paul-2",
+  "order": 3,
+  "siteId": "site-alexandria-troas",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Port on the NW Aegean coast where Paul saw a night vision of 'a man of Macedonia' pleading 'Come over to Macedonia and help us' (Acts 16:8-10). Here the narrative shifts to first-person plural ('we'), traditionally marking Luke joining the party. From Troas they set sail for Europe. LEG: LAND arrival; SEA embarkation point for the crossing to Europe (via Samothrace to Neapolis)."
+  },
+  "scriptureRefs": [
+   "Acts 16:8",
+   "2 Corinthians 2:12",
+   "Acts 20:5"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-alexandria-troas",
+   "cit-www-bibleplaces-com-acts16"
+  ]
+ },
+ {
+  "id": "stop-paul-2-samothrace-4",
+  "journeyId": "journey-paul-2",
+  "order": 4,
+  "siteId": "site-samothrace",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA."
+  },
+  "scriptureRefs": [
+   "Acts 16:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
+  ]
+ },
+ {
+  "id": "stop-paul-2-neapolis-5",
+  "journeyId": "journey-paul-2",
+  "order": 5,
+  "siteId": "site-neapolis",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Port of Philippi and the gospel's first recorded landfall in Europe: 'from Troas... to Neapolis, and from there to Philippi' (Acts 16:11-12). LEG: SEA arrival; then short LAND leg (~16 km up the Via Egnatia) to Philippi."
+  },
+  "scriptureRefs": [
+   "Acts 16:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
+  ]
+ },
+ {
+  "id": "stop-paul-2-philippi-6",
+  "journeyId": "journey-paul-2",
+  "order": 6,
+  "siteId": "site-philippi",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A leading Roman colony of Macedonia. By a riverside place of prayer Lydia, a God-fearing dealer in purple from Thyatira, believed and was baptized with her household (Acts 16:13-15). Paul exorcised a slave girl with a spirit of divination, costing her owners their profit; Paul and Silas were beaten and jailed; a midnight earthquake opened the prison and the jailer's household was converted; the magistrates, alarmed to learn they had flogged Roman citizens, apologized (Acts 16:16-40). Recipient church of Philippians. LEG: LAND (then westward along the Via Egnatia)."
+  },
+  "scriptureRefs": [
+   "Acts 16:12",
+   "Philippians 1:1",
+   "1 Thessalonians 2:2"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-philippi",
+   "cit-www-padfield-com-2005-philippi-html"
+  ]
+ },
+ {
+  "id": "stop-paul-2-thessalonica-7",
+  "journeyId": "journey-paul-2",
+  "order": 7,
+  "siteId": "site-thessalonica",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Provincial capital of Macedonia. Paul reasoned in the synagogue 'for three Sabbaths' (Acts 17:2-4); some Jews, many God-fearing Greeks and leading women believed. Jealous opponents formed a mob, attacked Jason's house, and dragged believers before the politarchs charging them with defying Caesar ('there is another king, Jesus,' Acts 17:5-9). Recipient of 1-2 Thessalonians. LEG: LAND; departed by night to Berea."
+  },
+  "scriptureRefs": [
+   "Acts 17:1",
+   "1 Thessalonians 1:1",
+   "2 Thessalonians 1:1",
+   "Philippians 4:16"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-thessaloniki",
+   "cit-catholic-resources-org-bible-geography-roman-pro"
+  ]
+ },
+ {
+  "id": "stop-paul-2-berea-8",
+  "journeyId": "journey-paul-2",
+  "order": 8,
+  "siteId": "site-berea",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 49,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 49-50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sent on by night, Paul and Silas preached in the synagogue; the Bereans 'were more noble than those in Thessalonica... examining the Scriptures daily' and many believed (Acts 17:10-12). When Thessalonian agitators arrived, the believers sent Paul on to the coast/Athens while Silas and Timothy remained (Acts 17:13-15). Sopater of Berea later accompanies Paul (Acts 20:4). LEG: LAND arrival; Paul then leaves by SEA toward Athens (Silas/Timothy stay)."
+  },
+  "scriptureRefs": [
+   "Acts 17:10",
+   "Acts 20:4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-veria",
+   "cit-www-casualenglishbible-com-resource-location-ber"
+  ]
+ },
+ {
+  "id": "stop-paul-2-athens-9",
+  "journeyId": "journey-paul-2",
+  "order": 9,
+  "siteId": "site-athens",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 50,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
+  },
+  "scriptureRefs": [
+   "Acts 17:16",
+   "1 Thessalonians 3:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-latitude-to-articles-by-country-gr-greece-853-ac"
+  ]
+ },
+ {
+  "id": "stop-paul-2-corinth-10",
+  "journeyId": "journey-paul-2",
+  "order": 10,
+  "siteId": "site-corinth",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 50,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 50-52 (Gallio episode c. AD 51-52)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Capital of the province of Achaia and the longest stop of Journey 2: Paul stayed 18 months (Acts 18:11). He met Aquila and Priscilla (recently expelled from Rome under Claudius) and worked as a tentmaker; Silas and Timothy rejoined him; Crispus the synagogue ruler believed (Acts 18:1-11). The Jews brought Paul before the proconsul Gallio, who dismissed the case as an internal religious matter (Acts 18:12-17). Founding visit for 1-2 Corinthians. The DELPHI (GALLIO) INSCRIPTION, naming Gallio as proconsul of Achaia and dated by Claudius's 26th imperial acclamation (early AD 52), fixes Gallio's t"
+  },
+  "scriptureRefs": [
+   "Acts 18:1",
+   "1 Corinthians 1:1",
+   "2 Corinthians 1:1",
+   "Romans 16:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+   "cit-holylandphotos-org-photos-gctcdlar14",
+   "cit-latitude-to-map-gr-greece-cities-corinth"
+  ]
+ },
+ {
+  "id": "stop-paul-2-cenchreae-11",
+  "journeyId": "journey-paul-2",
+  "order": 11,
+  "siteId": "site-cenchreae",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 52,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 52"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eastern harbor of Corinth. Paul, having taken a vow, 'had his hair cut off at Cenchreae' (Acts 18:18) before sailing for Syria with Priscilla and Aquila. Later home of Phoebe, deaconess of the Cenchreae church (Rom 16:1). LEG: SEA embarkation for the eastward voyage (via Ephesus) toward Caesarea."
+  },
+  "scriptureRefs": [
+   "Acts 18:18",
+   "Romans 16:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-kechries",
+   "cit-www-bibleplaces-com-corintharea"
+  ]
+ },
+ {
+  "id": "stop-paul-2-ephesus-12",
+  "journeyId": "journey-paul-2",
+  "order": 12,
+  "siteId": "site-ephesus",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 52,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 52"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
+  },
+  "scriptureRefs": [
+   "Acts 18:19",
+   "Acts 19:1",
+   "1 Corinthians 16:8"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-paul-2-caesarea-maritima-13",
+  "journeyId": "journey-paul-2",
+  "order": 13,
+  "siteId": "site-caesarea-maritima",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 52,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 52"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
+  },
+  "scriptureRefs": [
+   "Acts 18:22"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-catholic-resources-org-bible-nt-geography-htm",
+   "cit-www-esv-org-resources-esv-global-study-bible-map"
+  ]
+ },
+ {
+  "id": "stop-paul-3-antioch-on-the-orontes-0",
+  "journeyId": "journey-paul-3",
+  "order": 0,
+  "siteId": "site-antioch-on-the-orontes",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 51,
+   "endYear": 54,
+   "display": {
+    "en": "AD 52-54 (early chronology AD 51/52; late c. 53/54)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After spending time in Antioch (his home base, Acts 18:22-23), Paul set out a third time, departing through 'the region of Galatia and Phrygia in order, strengthening all the disciples.' Antioch is the launch point of the third journey. Acts notes he first 'went up and greeted the church' (widely read as Jerusalem) then went down to Antioch."
+  },
+  "scriptureRefs": [
+   "Acts 18:22"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+   "cit-www-gotquestions-org-paul-third-missionary-journ"
+  ]
+ },
+ {
+  "id": "stop-paul-3-galatia-and-phrygia-1",
+  "journeyId": "journey-paul-3",
+  "order": 1,
+  "siteId": "site-galatia-and-phrygia",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 52,
+   "endYear": 54,
+   "display": {
+    "en": "AD 52-54"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point."
+  },
+  "scriptureRefs": [
+   "Acts 18:23"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+   "cit-www-esv-org-resources-esv-global-study-bible-map-2"
+  ]
+ },
+ {
+  "id": "stop-paul-3-ephesus-2",
+  "journeyId": "journey-paul-3",
+  "order": 2,
+  "siteId": "site-ephesus",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 20,
+   "endYear": 57,
+   "display": {
+    "en": "AD 52-55 (early chronology) to AD 54-57 (later chronology); roughly 'three years' (Acts 20:31)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The heart of the third journey. Paul stayed in Ephesus for about three years (Acts 20:31; cf. 19:8 three months in the synagogue, 19:10 two years in the hall of Tyrannus). Apollos was instructed by Priscilla and Aquila here (18:24-28); Paul rebaptized disciples of John (19:1-7), performed extraordinary miracles (19:11-12), and the burning of magic books occurred (19:19). The ministry ended with the riot of the silversmiths led by Demetrius over the threat to the cult of Artemis (19:23-41). Paul likely wrote 1 Corinthians from Ephesus (1 Cor 16:8)."
+  },
+  "scriptureRefs": [
+   "Acts 18:24",
+   "Acts 19:1",
+   "Acts 20:31",
+   "1 Corinthians 16:8"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pleiades-stoa-org-places-599612",
+   "cit-www-jesuswalk-com-paul-07-ephesus-htm",
+   "cit-denverjournal-denverseminary-edu-the-denver-jour"
+  ]
+ },
+ {
+  "id": "stop-paul-3-macedonia-3",
+  "journeyId": "journey-paul-3",
+  "order": 3,
+  "siteId": "site-macedonia",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 55,
+   "endYear": 57,
+   "display": {
+    "en": "AD 55-57 (late autumn through following spring; varies by chronology)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After the Ephesian riot, Paul left for Macedonia (Acts 20:1), passing through (revisiting Philippi, Thessalonica, Berea) and 'gave much encouragement,' then came into Greece, where he stayed three months (Acts 20:2-3). He likely wrote 2 Corinthians from Macedonia and Romans from Corinth/Greece during this period (the collection for Jerusalem is a major theme). Coordinates given are for Philippi as representative."
+  },
+  "scriptureRefs": [
+   "Acts 20:1",
+   "1 Corinthians 16:5",
+   "2 Corinthians 2:12",
+   "2 Corinthians 7:5"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-enduringword-com-bible-commentary-acts-20",
+   "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
+  ]
+ },
+ {
+  "id": "stop-paul-3-troas-4",
+  "journeyId": "journey-paul-3",
+  "order": 4,
+  "siteId": "site-troas",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 56,
+   "endYear": 57,
+   "display": {
+    "en": "Spring AD 57 (late chronology) / 56 (early chronology), around Passover/Unleavened Bread"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Returning from Greece via Macedonia (after a plot forced an overland detour, Acts 20:3), Paul rejoined his companions at Troas and stayed seven days. On the first day of the week, gathered to break bread, Paul preached until midnight; the young man Eutychus, asleep in a third-story window, fell to his death and was raised by Paul (Acts 20:7-12). A 'we'-passage resumes here, marking Luke's presence."
+  },
+  "scriptureRefs": [
+   "Acts 20:4",
+   "2 Corinthians 2:12"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-enduringword-com-bible-commentary-acts-20",
+   "cit-www-preceptaustin-org-acts-20-commentary"
+  ]
+ },
+ {
+  "id": "stop-paul-3-miletus-5",
+  "journeyId": "journey-paul-3",
+  "order": 5,
+  "siteId": "site-miletus",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 56,
+   "endYear": 57,
+   "display": {
+    "en": "Spring AD 56/57"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul, hurrying to reach Jerusalem by Pentecost (Acts 20:16), bypassed Ephesus and summoned the Ephesian elders to Miletus, where he delivered his moving farewell address (Acts 20:18-35), warning of 'savage wolves' and quoting 'It is more blessed to give than to receive.' They prayed and wept, knowing they would not see his face again (20:36-38)."
+  },
+  "scriptureRefs": [
+   "Acts 20:15"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+   "cit-enduringword-com-bible-commentary-acts-20"
+  ]
+ },
+ {
+  "id": "stop-paul-3-caesarea-6",
+  "journeyId": "journey-paul-3",
+  "order": 6,
+  "siteId": "site-caesarea",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 56,
+   "endYear": 57,
+   "display": {
+    "en": "Late spring AD 56/57 (shortly before Pentecost)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Arriving at Caesarea, the party stayed with Philip the evangelist (one of the Seven, with four prophesying daughters). The prophet Agabus came down from Judea, bound his own hands and feet with Paul's belt, and prophesied Paul's arrest in Jerusalem. Despite pleas, Paul resolved to go up, saying he was ready to die for the name of the Lord (Acts 21:10-14). This is the closing scene of the third journey before Paul reaches Jerusalem (Acts 21:15-17)."
+  },
+  "scriptureRefs": [
+   "Acts 21:8"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pleiades-stoa-org-places-678401",
+   "cit-missionbibleclass-org-new-testament-part2-acts-f"
+  ]
+ },
+ {
+  "id": "stop-paul-3-jerusalem-7",
+  "journeyId": "journey-paul-3",
+  "order": 7,
+  "siteId": "site-jerusalem",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 56,
+   "endYear": 57,
+   "display": {
+    "en": "AD 57 (late chronology) / 56 (early); arrest around Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul met James and the elders, delivered the collection (implied), and undertook a purification rite to defuse rumors that he taught against the Law (Acts 21:17-26). Asian Jews accused him of bringing Greeks into the Temple, sparking a riot; the Roman tribune (Claudius Lysias) rescued and arrested him at the Antonia Fortress (21:27-36). Paul addressed the crowd (22:1-21), invoked his Roman citizenship to avoid scourging (22:25-29), appeared before the Sanhedrin (23:1-10), survived a 40-man assassination plot revealed by his nephew (23:12-22), and was sent under heavy guard by night to Caesarea"
+  },
+  "scriptureRefs": [
+   "Acts 21:17"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-brentwoodbaptist-com-acts-204-2335",
+   "cit-www-ccel-org-bible-phillips-cn341actspaularrest-"
+  ]
+ },
+ {
+  "id": "stop-rome-caesarea-imprisonment-0",
+  "journeyId": "journey-rome",
+  "order": 0,
+  "siteId": "site-caesarea-imprisonment",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 24,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 57-59 (early chronology) or AD 58-60 (later chronology); 'two years' (Acts 24:27)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul was held in the praetorium (Herod's palace) at Caesarea for about two years. He was tried before the governor Antonius Felix (Acts 24), who, hoping for a bribe and wishing to please the Jews, left him bound. When Porcius Festus succeeded Felix (Acts 24:27; 25:1), Paul - to avoid being sent back to a hostile Jerusalem - exercised his right as a Roman citizen and appealed to Caesar ('Caesarem appello', Acts 25:11-12). He then made his defense before Festus and the visiting client-king Herod Agrippa II and Bernice (Acts 25:13-26:32); Agrippa's verdict was that Paul could have been freed had "
+  },
+  "scriptureRefs": [
+   "Acts 23:31",
+   "Acts 24:27",
+   "Acts 25:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-executableoutlines-com-topical-series-harmony-li",
+   "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+   "cit-enduringword-com-bible-commentary-acts-25"
+  ]
+ },
+ {
+  "id": "stop-rome-sidon-1",
+  "journeyId": "journey-rome",
+  "order": 1,
+  "siteId": "site-sidon",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 57,
+   "endYear": 59,
+   "display": {
+    "en": "Autumn AD 59 (later) / 57 (early)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul, with other prisoners, was handed to a centurion named Julius of the Augustan Cohort and embarked on a ship of Adramyttium (Acts 27:1-2). Luke and Aristarchus accompanied him (a 'we'-passage). The next day they put in at Sidon, where Julius kindly allowed Paul to visit friends and be cared for (27:3)."
+  },
+  "scriptureRefs": [
+   "Acts 27:1"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pleiades-stoa-org-places-678393",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "stop-rome-myra-of-lycia-2",
+  "journeyId": "journey-rome",
+  "order": 2,
+  "siteId": "site-myra-of-lycia",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 57,
+   "endYear": 59,
+   "display": {
+    "en": "Autumn AD 59 / 57"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Because of contrary winds they sailed under the lee (sheltered side) of Cyprus, then across the open sea off Cilicia and Pamphylia, landing at Myra in Lycia (Acts 27:4-5). There the centurion found an Alexandrian ship (a grain freighter) bound for Italy and transferred the prisoners onto it (27:6). Myra was a known port on the Alexandria-to-Rome grain route."
+  },
+  "scriptureRefs": [
+   "Acts 27:4"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-pleiades-stoa-org-places-639005",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "stop-rome-cnidus-and-fair-havens-3",
+  "journeyId": "journey-rome",
+  "order": 3,
+  "siteId": "site-cnidus-and-fair-havens",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 9,
+   "endYear": 59,
+   "display": {
+    "en": "Autumn AD 59 / 57 (after the Day of Atonement 'fast', Acts 27:9)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sailing slowly against the wind, the ship reached Cnidus with difficulty, then ran under the lee of Crete off Cape Salmone, and arrived at Fair Havens near the city of Lasea (Acts 27:7-8). The coordinates given are for Fair Havens (Kaloi Limenes). 'Much time had been lost and the voyage was now dangerous because the Fast (Yom Kippur, ~late September/October) had already gone by' (27:9). Paul warned against sailing on, but the centurion followed the pilot and owner; since the harbor was unsuitable to winter in, the majority decided to try to reach Phoenix, a better Cretan harbor (27:10-12)."
+  },
+  "scriptureRefs": [
+   "Acts 27:7"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-bibleplaces-com-fair-havens",
+   "cit-en-wikipedia-org-wiki-kaloi-limenes",
+   "cit-en-wikipedia-org-wiki-knidos"
+  ]
+ },
+ {
+  "id": "stop-rome-phoenix-4",
+  "journeyId": "journey-rome",
+  "order": 4,
+  "siteId": "site-phoenix",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 57,
+   "endYear": 59,
+   "display": {
+    "en": "Autumn AD 59 / 57"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Attempting to reach Phoenix, a Cretan harbor 'facing southwest and northwest' (Acts 27:12), the ship was caught by a violent northeasterly wind called Euraquilo (Euroclydon; a Greek-Latin compound for the ENE wind, attested on a Roman wind-rose in Tunisia). Driven past the small island of Cauda (Clauda/Gavdos), the crew undergirded the hull with cables, lowered gear, jettisoned cargo and tackle, and lost sight of sun and stars for many days (27:13-20). Paul, after an angelic vision, assured all 276 aboard that no life would be lost, only the ship (27:21-26)."
+  },
+  "scriptureRefs": [
+   "Acts 27:12"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+  ]
+ },
+ {
+  "id": "stop-rome-malta-shipwreck-5",
+  "journeyId": "journey-rome",
+  "order": 5,
+  "siteId": "site-malta-shipwreck",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 11,
+   "endYear": 60,
+   "display": {
+    "en": "Winter AD 59/60 (later) or 57/58 (early); 'three months' (Acts 28:11)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On the 14th night, drifting across the Adria (the central Mediterranean), sailors sensed land, took soundings (20 then 15 fathoms), and at dawn ran the ship aground on a sandbar/reef; the bow stuck fast and the stern broke up, but all 276 reached land safely (Acts 27:27-44). The island was Melite (Malta). The 'barbaroi' (native, non-Greek-speaking) islanders showed unusual kindness, kindling a fire; a viper fastened on Paul's hand without harming him, leading them to think him a god (28:1-6). Paul healed the father of Publius, the 'chief man' (Greek 'protos') of the island, and many others (28"
+  },
+  "scriptureRefs": [
+   "Acts 27:27"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-bibleplaces-com-st-pauls-bay-malta",
+   "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+   "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
+  ]
+ },
+ {
+  "id": "stop-rome-syracuse-rhegium-puteoli-6",
+  "journeyId": "journey-rome",
+  "order": 6,
+  "siteId": "site-syracuse-rhegium-puteoli",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 58,
+   "endYear": 60,
+   "display": {
+    "en": "Spring AD 60 / 58"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After three months they sailed on another Alexandrian grain ship with the figurehead of the Twin Brothers (Castor and Pollux, the Dioscuri). They put in at Syracuse (3 days), then Rhegium, and with a favorable south wind reached Puteoli in one more day (Acts 28:11-13). At Puteoli they found believers and stayed seven days, then headed toward Rome. Coordinates given are for Puteoli (Pozzuoli)."
+  },
+  "scriptureRefs": [
+   "Acts 28:11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-topostext-org-place-408141pdik",
+   "cit-pleiades-stoa-org-places-432815"
+  ]
+ },
+ {
+  "id": "stop-rome-rome-7",
+  "journeyId": "journey-rome",
+  "order": 7,
+  "siteId": "site-rome",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 28,
+   "endYear": 62,
+   "display": {
+    "en": "AD 60-62 (later) or 58-60 (early); 'two whole years' (Acts 28:30)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Roman believers came out to meet Paul at the Forum of Appius and Three Taverns on the Via Appia (Acts 28:15). In Rome Paul was allowed to live by himself under guard (light custody/house arrest). He met the local Jewish leaders, expounded the kingdom of God and Jesus from the Law and Prophets (28:17-28), and 'lived there two whole years at his own expense, welcoming all who came, preaching the kingdom of God and teaching about the Lord Jesus Christ with all boldness and without hindrance' (28:30-31). Acts ends here, abruptly, without recording the trial's outcome."
+  },
+  "scriptureRefs": [
+   "Acts 28:14"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+   "cit-enduringword-com-bible-commentary-acts-27"
+  ]
+ },
+ {
+  "id": "stop-ministry-resurrection-appearances-19",
+  "journeyId": "journey-ministry",
+  "order": 21,
+  "siteId": "site-golgotha-and-the-tomb",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Resurrection Sunday, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus — mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb')."
+  },
+  "scriptureRefs": [
+   "John 20:1",
+   "John 20:11",
+   "Matthew 28:1",
+   "Matthew 28:9",
+   "Mark 16:1",
+   "Luke 24:1",
+   "Luke 24:34",
+   "1 Corinthians 15:5"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+   "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+   "cit-edicule-restoration",
+   "cit-archaeology-crucifixion-tzaferis",
+   "cit-primary-josephus-antiquities",
+   "cit-primary-tacitus-annals"
+  ]
+ },
+ {
+  "id": "stop-ministry-road-to-emmaus-20",
+  "journeyId": "journey-ministry",
+  "order": 22,
+  "siteId": "site-emmaus",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Easter Sunday afternoon, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Two disciples — one named Cleopas, the other unnamed — walked from Jerusalem to Emmaus (~60 stadia / ~11 km in most manuscripts; ~160 stadia / ~30 km in Codex Sinaiticus). A stranger joined them and, beginning with Moses and all the Prophets, explained 'the things concerning himself' in all the Scriptures. At supper in Emmaus, 'he took the bread and blessed and broke it and gave it to them. And their eyes were opened, and they recognized him. And he vanished from their sight' (Luke 24:30-31). They exclaimed, 'Did not our hearts burn within us while he talked to us on the road, while he opened to us the Scriptures?' and returned immediately to Jerusalem to tell the Eleven. The Emmaus-Nicopolis identification (Amwas/Latrun) has Byzantine basilica ruins and attestation by Eusebius (c. AD 330); el-Qubeibeh is the Franciscan traditional site since the 15th century."
+  },
+  "scriptureRefs": [
+   "Luke 24:13",
+   "Luke 24:30",
+   "Mark 16:12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-emmaus-nicopolis",
+   "cit-emmaus-qubeibeh"
+  ]
+ },
+ {
+  "id": "stop-ministry-upper-room-easter-21",
+  "journeyId": "journey-ministry",
+  "order": 23,
+  "siteId": "site-last-supper",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "Easter Sunday evening, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "That evening the disciples gathered behind locked doors 'for fear of the Jews.' Jesus appeared in their midst and said, 'Peace be with you.' He showed them his hands and side, breathed on them and said, 'Receive the Holy Spirit' (John 20:19-23). He ate a piece of broiled fish to demonstrate his physical, bodily reality (Luke 24:36-43). Thomas was absent and later refused to believe: 'Unless I see in his hands the mark of the nails, and place my finger into the mark of the nails, and place my hand into his side, I will never believe' (John 20:25). Epiphanius (4th c.) mentions a 'Church of the Apostles' on Mount Zion that survived the AD 70 destruction; archaeologist Bargil Pixner argued for a Judeo-Christian synagogue or house church predating the current medieval Cenacle structure."
+  },
+  "scriptureRefs": [
+   "Luke 24:36",
+   "John 20:19",
+   "John 20:25",
+   "1 Corinthians 15:5"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
+  ]
+ },
+ {
+  "id": "stop-ministry-upper-room-thomas-22",
+  "journeyId": "journey-ministry",
+  "order": 24,
+  "siteId": "site-last-supper",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "one week after Easter, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eight days later (the following Sunday), the disciples were again in the locked room, this time with Thomas present. Jesus appeared, stood among them, and said to Thomas, 'Put your finger here, and see my hands; and put out your hand, and place it in my side. Do not disbelieve, but believe.' Thomas exclaimed, 'My Lord and my God!' (Greek: ho kyrios mou kai ho theos mou) — the highest christological declaration in the Gospels. Jesus replied, 'Have you believed because you have seen me? Blessed are those who have not seen and yet have believed' (John 20:26-29). This bridges to all subsequent faith beyond the eyewitness generation."
+  },
+  "scriptureRefs": [
+   "John 20:26",
+   "John 20:28",
+   "John 20:29"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
+  ]
+ },
+ {
+  "id": "stop-ministry-sea-of-galilee-appearance-23",
+  "journeyId": "journey-ministry",
+  "order": 25,
+  "siteId": "site-tabgha",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "during the 40 days before Ascension, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples — Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed — fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia — the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' — one restoration for each denial — and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period."
+  },
+  "scriptureRefs": [
+   "John 21:1",
+   "John 21:6",
+   "John 21:11",
+   "John 21:15",
+   "John 21:18"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-tabgha-primacy",
+   "cit-jesus-boat"
+  ]
+ },
+ {
+  "id": "stop-ministry-galilee-mountain-commission-24",
+  "journeyId": "journey-ministry",
+  "order": 26,
+  "siteId": "site-galilee-mountain",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "during the 40 days before Ascension, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The Eleven went to the mountain in Galilee 'to which Jesus had directed them' (Matthew 28:16). When they saw him, they worshiped, though 'some doubted.' Jesus declared: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age' (Matthew 28:18-20). Many scholars associate the appearance to 'more than 500 brothers at one time, most of whom are still alive' (1 Corinthians 15:6) with this Galilean mountain gathering, as it is the only large-scale outdoor post-resurrection event. Paul wrote c. AD 53-55; his note about surviving witnesses is an implicit invitation to verify. The 1 Corinthians 15:3-8 creed is dated by virtually all critical scholars — including skeptics Gerd Lüdemann and Bart Ehrman — to within 3-6 years of the crucifixion, making it the earliest datable testimony to the resurrection appearances."
+  },
+  "scriptureRefs": [
+   "Matthew 28:16",
+   "Matthew 28:18",
+   "Matthew 28:19",
+   "Matthew 28:20",
+   "1 Corinthians 15:6"
+  ],
+  "confidence": "disputed",
+  "disputes": {
+   "en": "The mountain in Galilee is not named in the Gospel accounts. Mount Tabor is the traditional site, while Mount Arbel is a popular alternative overlooking the Sea of Galilee."
+  },
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-galilee-mountain",
+   "cit-1cor15-creed",
+   "cit-history-early-creed-luedemann"
+  ]
+ },
+ {
+  "id": "stop-ministry-appearance-to-james-25",
+  "journeyId": "journey-ministry",
+  "order": 27,
+  "siteId": "site-jerusalem",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "during the 40 days before Ascension, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul's creedal summary records that Jesus 'appeared to James, then to all the apostles' (1 Corinthians 15:7). No narrative details are given in the New Testament. James — the brother of Jesus, not James son of Zebedee — was skeptical during the ministry ('not even his brothers believed in him', John 7:5) but became the leader of the Jerusalem church (Acts 15; Galatians 1:19; 2:9). This transformation from skeptic to martyr-leader is most naturally explained by a post-resurrection appearance. The lost Gospel of the Hebrews (quoted by Jerome) preserves a tradition that James had vowed not to eat until he saw the risen Lord. Josephus independently records the execution of 'James, the brother of Jesus who was called Christ' in AD 62 (Antiquities 20.9.1), confirming both James's existence and his identification as Jesus's brother. The location of this appearance is not specified; Jerusalem is assumed as the base of James's subsequent ministry."
+  },
+  "scriptureRefs": [
+   "1 Corinthians 15:7",
+   "John 7:5",
+   "Galatians 1:19",
+   "Acts 15:13"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-1cor15-creed",
+   "cit-wit-josephus-james",
+   "cit-history-early-creed-luedemann",
+   "cit-primary-josephus-antiquities"
+  ]
+ },
+ {
+  "id": "stop-ministry-ascension-26",
+  "journeyId": "journey-ministry",
+  "order": 28,
+  "siteId": "site-mount-of-olives-ascension",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "40 days after the resurrection, c. AD 30 or 33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Forty days after the resurrection (Acts 1:3), Jesus led the apostles out to the Mount of Olives, near Bethany. Over those 40 days he had appeared to them repeatedly, 'speaking about the kingdom of God' and 'presenting himself alive after his suffering by many proofs' (Acts 1:3). He gave final instructions: 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth' (Acts 1:8). 'And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight' (Acts 1:9). Two men in white appeared and said, 'This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven' (Acts 1:11). The disciples returned to Jerusalem from Olivet, 'a Sabbath day's journey away' (~2,000 cubits, ~1 km). The Chapel of the Ascension has been venerated since the Bordeaux Pilgrim (AD 333); the original Imbomon rotunda was built c. AD 378-384 by Poimenia, destroyed in AD 614, rebuilt by Crusaders, and converted to a mosque by Saladin (1187)."
+  },
+  "scriptureRefs": [
+   "Luke 24:50",
+   "Luke 24:51",
+   "Acts 1:3",
+   "Acts 1:8",
+   "Acts 1:9",
+   "Acts 1:11",
+   "Acts 1:12",
+   "Mark 16:19"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-ascension-chapel",
+   "cit-mount-olives"
+  ]
+ },
+ {
+  "id": "stop-ministry-stephens-vision-27",
+  "journeyId": "journey-ministry",
+  "order": 29,
+  "siteId": "site-jerusalem",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 34,
+   "endYear": 35,
+   "display": {
+    "en": "c. AD 34-35"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "During his trial before the Sanhedrin, Stephen — the first Christian martyr — 'full of the Holy Spirit, gazed into heaven and saw the glory of God, and Jesus standing at the right hand of God' (Acts 7:55). Notably, Jesus is described as standing (not seated, as in other passages), possibly signifying welcome or advocacy. Stephen reported the vision aloud; the council rushed him, dragged him outside the city, and stoned him. As he died, he prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' Saul of Tarsus (later Paul) watched, approving the execution (Acts 7:58; 8:1). This is a vision rather than a bodily appearance. The traditional stoning site is near St. Stephen's Gate (Lions' Gate) on Jerusalem's eastern wall; the 5th-c. Basilica of St. Stephen (now Saint-Étienne, within the École Biblique grounds) commemorates the northern tradition."
+  },
+  "scriptureRefs": [
+   "Acts 7:55",
+   "Acts 7:56",
+   "Acts 7:58",
+   "Acts 7:59",
+   "Acts 7:60",
+   "Acts 8:1"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-en-wikipedia-org-wiki-temple-mount",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-ministry-damascus-road-paul-28",
+  "journeyId": "journey-ministry",
+  "order": 30,
+  "siteId": "site-damascus",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 33,
+   "endYear": 36,
+   "display": {
+    "en": "c. AD 33-36"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Saul of Tarsus, carrying letters from the high priest to arrest Christians in Damascus, encountered the risen Jesus near the city. 'Suddenly a light from heaven, brighter than the sun, flashed around him. He fell to the ground and heard a voice: Saul, Saul, why are you persecuting me?' (Acts 26:13-14). Blinded for three days, he was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Three separate accounts in Acts (chs. 9, 22, 26) plus Paul's own first-person testimony in 1 Corinthians 9:1 ('Have I not seen Jesus our Lord?'), 1 Corinthians 15:8 ('Last of all, as to one untimely born, he appeared also to me'), and Galatians 1:15-16 attest this encounter. Paul's testimony, written c. AD 53-55, is ~20-25 years after the event. The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus. The underground Chapel of Ananias near Bab Sharqi preserves 5th/6th-c. Byzantine church remains (excavated 1921). Paul's basket escape through the wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan. Even non-Christian scholars treat Paul's radical transformation from persecutor to apostle as historically certain."
+  },
+  "scriptureRefs": [
+   "Acts 9:1",
+   "Acts 9:3",
+   "Acts 9:11",
+   "Acts 9:25",
+   "Acts 22:6",
+   "Acts 26:12",
+   "1 Corinthians 9:1",
+   "1 Corinthians 15:8",
+   "Galatians 1:15",
+   "2 Corinthians 11:33"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-damascus-straight-street",
+   "cit-house-ananias"
+  ]
+ },
+ {
+  "id": "stop-ministry-patmos-john-29",
+  "journeyId": "journey-ministry",
+  "order": 31,
+  "siteId": "site-patmos",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 81,
+   "endYear": 96,
+   "display": {
+    "en": "c. AD 81-96 (traditionally under Domitian)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "John, exiled to Patmos 'because of the word of God and the testimony of Jesus' (Revelation 1:9), was 'in the Spirit on the Lord's day' when he heard a loud voice and, turning, saw the risen Christ glorified among seven golden lampstands: 'one like a son of man, clothed with a long robe... his eyes were like a flame of fire, his feet were like burnished bronze... and his voice was like the roar of many waters' (Revelation 1:12-16). John fell at his feet 'as though dead,' but Jesus laid his right hand on him and said, 'Fear not, I am the first and the last, and the living one. I died, and behold I am alive forevermore, and I have the keys of Death and Hades' (Revelation 1:17-18). He commanded John to write the visions and dictated seven letters to the churches of Asia (Revelation 2-3). The Domitianic dating rests on Irenaeus (Against Heresies 5.30.3, c. AD 180). The Cave of the Apocalypse and the Monastery of St. John the Theologian (founded AD 1088) are UNESCO World Heritage Sites (inscribed 1999). The identity of 'John' — apostle, elder, or another figure — is itself debated."
+  },
+  "scriptureRefs": [
+   "Revelation 1:9",
+   "Revelation 1:12",
+   "Revelation 1:17",
+   "Revelation 1:18"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-patmos",
+   "cit-ref-keener-bbcnt"
+  ]
+ }
 ]
