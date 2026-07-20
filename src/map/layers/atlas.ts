@@ -1,6 +1,7 @@
 import type { Map as MapLibreMap, MapGeoJSONFeature } from 'maplibre-gl';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { BundleIndex } from '../../content/useBundle';
+import { hasLiveStyle } from '../lifecycle';
 
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
@@ -294,6 +295,7 @@ export function setAtlasFilter(map: MapLibreMap, minYear: number, maxYear: numbe
 }
 
 export function removeAtlasLayers(map: MapLibreMap): void {
+  if (!hasLiveStyle(map)) return;
   for (const id of Object.values(ATLAS_LAYERS)) if (map.getLayer(id)) map.removeLayer(id);
   for (const id of Object.values(SRC)) if (map.getSource(id)) map.removeSource(id);
 }

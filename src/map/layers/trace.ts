@@ -1,6 +1,7 @@
 import type { Map as MapLibreMap, GeoJSONSource } from 'maplibre-gl';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { LngLat, RouteProgress } from '../route';
+import { hasLiveStyle } from '../lifecycle';
 
 const SRC = { full: 'trace-full', progress: 'trace-progress', traveler: 'trace-traveler', stops: 'trace-stops' };
 const LYR = {
@@ -90,6 +91,7 @@ export function updateTrace(map: MapLibreMap, full: LngLat[], progress: RoutePro
 }
 
 export function removeTraceLayers(map: MapLibreMap): void {
+  if (!hasLiveStyle(map)) return;
   for (const id of Object.values(LYR)) if (map.getLayer(id)) map.removeLayer(id);
   for (const id of Object.values(SRC)) if (map.getSource(id)) map.removeSource(id);
 }
