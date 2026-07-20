@@ -150,7 +150,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     if (map.isStyleLoaded()) add();
     else map.once('load', add);
     return () => {
-      if (map.getLayer('trace-progress-line')) removeTraceLayers(map);
+      removeTraceLayers(map);
     };
   }, [mapRef, ready, coords, color]);
 

@@ -79,7 +79,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       map.off('click', ATLAS_LAYERS.sites, onClick);
       map.off('mouseenter', ATLAS_LAYERS.sites, onEnter);
       map.off('mouseleave', ATLAS_LAYERS.sites, onLeave);
-      if (map.getLayer(ATLAS_LAYERS.sites)) removeAtlasLayers(map);
+      removeAtlasLayers(map);
     };
   }, [mapRef, ready, bundle]);
 
