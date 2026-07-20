@@ -5,11 +5,29 @@ import type { BundleIndex } from '../../content/useBundle';
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
   routes: 'atlas-routes-line',
+  routesReconstructed: 'atlas-routes-line-reconstructed',
+  routesSea: 'atlas-routes-line-sea',
+  routesSchematic: 'atlas-routes-line-schematic',
   battles: 'atlas-battles-circle',
   battleAreas: 'atlas-battle-areas-fill',
   battleAreasLine: 'atlas-battle-areas-line',
   battleAreaSelected: 'atlas-battle-area-selected',
 } as const;
+
+/**
+ * Stroke styling per geometry grade. `line-dasharray` is not data-driven in
+ * MapLibre, so each grade gets its own filtered layer: solid = surveyed road,
+ * progressively sparser dashes = progressively weaker geometric claim.
+ */
+export const ROUTE_GRADE_STYLE = [
+  { layer: ATLAS_LAYERS.routes, grade: 'surveyed-road', width: 5.0, opacity: 0.7, dash: undefined },
+  { layer: ATLAS_LAYERS.routesReconstructed, grade: 'reconstructed-land', width: 4.0, opacity: 0.6, dash: [4, 2] },
+  { layer: ATLAS_LAYERS.routesSea, grade: 'sea-lane', width: 3.5, opacity: 0.55, dash: [2, 3] },
+  { layer: ATLAS_LAYERS.routesSchematic, grade: 'schematic', width: 3.0, opacity: 0.4, dash: [1, 4] },
+] as const;
+
+/** Every route stroke layer, so callers can toggle "journey routes" as one unit. */
+export const ROUTE_LAYER_IDS = ROUTE_GRADE_STYLE.map((s) => s.layer);
 const SRC = { sites: 'atlas-sites', routes: 'atlas-routes', battles: 'atlas-battles', battleAreas: 'atlas-battle-areas' };
 
 const CONF_COLOR = ['match', ['get', 'confidence'], 'high', '#2f6f6b', 'medium', '#c9a227', 'legendary', '#6b4a8f', 'disputed', '#c75b39', '#888888'];
@@ -147,27 +165,42 @@ export function atlasBattleLabels(bundle: BundleIndex): AtlasBattleLabel[] {
     .filter((x): x is AtlasBattleLabel => x !== null);
 }
 
-/** One LineString per journey, carrying its route color. */
+/**
+ * One LineString per *leg*, carrying its journey color and geometry grade.
+ * Splitting per leg is what lets the map draw a surveyed Roman-road snap
+ * differently from a reconstructed corridor or a bare schematic connector —
+ * a single merged line per journey would claim uniform survey quality.
+ * Journeys without authored legs fall back to one straight `schematic` line.
+ */
 export function atlasRoutesFC(bundle: BundleIndex): FeatureCollection {
-  const features: Feature[] = bundle.journeys.map((j) => {
+  const features: Feature[] = [];
+  for (const j of bundle.journeys) {
     const stopCoords = bundle
       .stopsFor(j.id)
       .map((s) => bundle.site(s.siteId))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
       .map((s) => [s.coordinates.value.lon, s.coordinates.value.lat] as [number, number]);
-    // Draw the authored historical path (roads / caravan arcs / sail lanes)
-    // when one exists; otherwise the straight stop-to-stop fallback.
+    const color = j.color ?? '#c75b39';
+    const base = { journeyId: j.id, color, title: j.title.en };
     const route = bundle.routeForJourney(j.id);
-    const coords =
-      route && route.legs.length === stopCoords.length - 1
-        ? [stopCoords[0], ...route.legs.flatMap((leg) => leg.slice(1))]
-        : stopCoords;
-    return {
-      type: 'Feature',
-      properties: { journeyId: j.id, color: j.color ?? '#c75b39', title: j.title.en },
-      geometry: { type: 'LineString', coordinates: coords },
-    };
-  });
+
+    if (route && route.legs.length === stopCoords.length - 1) {
+      route.legs.forEach((leg, i) => {
+        if (leg.length < 2) return;
+        features.push({
+          type: 'Feature',
+          properties: { ...base, leg: i, grade: route.legGrades?.[i] ?? 'schematic' },
+          geometry: { type: 'LineString', coordinates: leg },
+        });
+      });
+    } else if (stopCoords.length >= 2) {
+      features.push({
+        type: 'Feature',
+        properties: { ...base, leg: 0, grade: 'schematic' },
+        geometry: { type: 'LineString', coordinates: stopCoords },
+      });
+    }
+  }
   return { type: 'FeatureCollection', features };
 }
 
@@ -198,13 +231,21 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
     filter: ['==', ['get', 'battleId'], ''],
     paint: { 'fill-color': BATTLE_COLOR, 'fill-opacity': 0.28 },
   });
-  map.addLayer({
-    id: ATLAS_LAYERS.routes,
-    type: 'line',
-    source: SRC.routes,
-    layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': ['get', 'color'], 'line-width': 5.0, 'line-opacity': 0.6 },
-  });
+  for (const s of ROUTE_GRADE_STYLE) {
+    map.addLayer({
+      id: s.layer,
+      type: 'line',
+      source: SRC.routes,
+      filter: ['==', ['get', 'grade'], s.grade],
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: {
+        'line-color': ['get', 'color'],
+        'line-width': s.width,
+        'line-opacity': s.opacity,
+        ...(s.dash ? { 'line-dasharray': [...s.dash] } : {}),
+      },
+    });
+  }
   map.addLayer({
     id: ATLAS_LAYERS.sites,
     type: 'circle',
