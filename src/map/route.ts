@@ -126,3 +126,26 @@ export function activeStopFromFractions(fractions: number[], t: number): number 
   for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) idx = i;
   return idx;
 }
+
+/**
+ * The inclusive range of stop indices sitting at fraction `t`.
+ *
+ * Consecutive stops can share a location — Golgotha and the resurrection
+ * appearances are the same tomb; the two Upper Room stops are the same room —
+ * so they share a progress fraction *exactly*. A single index cannot address
+ * them, and taking the last of the tie (as `activeStopFromFractions` does)
+ * silently skips every stop before it. Playback walks this range with a dwell
+ * instead, so each co-located stop gets its own moment.
+ */
+export function stopRangeAtFraction(fractions: number[], t: number): [first: number, last: number] {
+  let last = 0;
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) last = i;
+  // Group only the stops sitting *at* this fraction. Once the traveler has
+  // moved even slightly beyond it, those co-located stops are behind and must
+  // not be re-entered: the dwell would restart, advance, reset, and restart
+  // again — ping-ponging on one stop forever.
+  if (Math.abs(fractions[last] - t) > 1e-9) return [last, last];
+  let first = last;
+  while (first > 0 && Math.abs(fractions[first - 1] - fractions[last]) <= 1e-9) first--;
+  return [first, last];
+}

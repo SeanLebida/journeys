@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {activeStopIndex, haversine, lineLength, lineProgress, type LngLat, expandJourneyPath, stopFractions, activeStopFromFractions } from './route';
+import {activeStopIndex, haversine, lineLength, lineProgress, type LngLat, expandJourneyPath, stopFractions, activeStopFromFractions, stopRangeAtFraction } from './route';
 
 const A: LngLat = [0, 0];
 const B: LngLat = [0, 1];
@@ -89,5 +89,44 @@ describe('expandJourneyPath', () => {
   it('falls back to a straight segment when the leg count mismatches', () => {
     const p = expandJourneyPath(stops, [[[0, 0], [1, 0]]]); // 1 leg for 2 gaps
     expect(p.coords).toEqual(stops);
+  });
+
+  // Consecutive stops can genuinely share a location (Golgotha and the
+  // resurrection appearances; the two Upper Room stops), so they land on an
+  // identical progress fraction. Playback walks them with a dwell — these
+  // guard both failure modes that produced.
+  describe('co-located stops', () => {
+    //          0     1     2(tied with 1)  3
+    const fr = [0, 0.25, 0.25, 1];
+
+    it('activeStopFromFractions alone would skip the first of a tie', () => {
+      // Documents *why* stopRangeAtFraction exists: the old resolution jumped
+      // straight to stop 2, so stop 1 never became active.
+      expect(activeStopFromFractions(fr, 0.25)).toBe(2);
+    });
+
+    it('groups the tied stops when sitting exactly on their fraction', () => {
+      expect(stopRangeAtFraction(fr, 0.25)).toEqual([1, 2]);
+    });
+
+    it('does not re-enter the tie once progress has moved past it', () => {
+      // The ping-pong bug: returning [1,2] here sends the walk back to stop 1,
+      // which dwells, advances, resets, and repeats forever.
+      expect(stopRangeAtFraction(fr, 0.2500001)).toEqual([2, 2]);
+    });
+
+    it('reports a single stop where there is no tie', () => {
+      expect(stopRangeAtFraction(fr, 0)).toEqual([0, 0]);
+      expect(stopRangeAtFraction(fr, 1)).toEqual([3, 3]);
+    });
+
+    it('never returns an empty or inverted range', () => {
+      for (const t of [0, 0.1, 0.25, 0.3, 0.9999, 1]) {
+        const [first, last] = stopRangeAtFraction(fr, t);
+        expect(first).toBeLessThanOrEqual(last);
+        expect(first).toBeGreaterThanOrEqual(0);
+        expect(last).toBeLessThan(fr.length);
+      }
+    });
   });
 });

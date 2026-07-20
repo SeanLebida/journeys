@@ -352,6 +352,11 @@ async function main(): Promise<void> {
     const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a[1])) * Math.cos(toRad(b[1])) * Math.sin(dLon / 2) ** 2;
     return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
   };
+  const lineLengthKm = (pts: [number, number][]) => {
+    let t = 0;
+    for (let i = 1; i < pts.length; i++) t += distKm(pts[i - 1], pts[i]);
+    return t;
+  };
   const siteById = new Map(vSites.map((x) => [x.id, x]));
   const stopById = new Map(vStops.map((x) => [x.id, x]));
   vRoutes.forEach((r) => {
@@ -367,10 +372,24 @@ async function main(): Promise<void> {
       if (!sa || !sb) return;
       const a: [number, number] = [sa.coordinates.value.lon, sa.coordinates.value.lat];
       const b: [number, number] = [sb.coordinates.value.lon, sb.coordinates.value.lat];
-      // Generators emit EXACT stop coordinates as leg endpoints; 5 km guards
-      // against hand-edit drift without blocking legitimate coordinate updates.
-      if (distKm(leg[0] as [number, number], a) > 5) err(`route ${r.id}.legs[${k}]: start is ${Math.round(distKm(leg[0] as [number, number], a))} km from stop ${j.stops[k]}`);
-      if (distKm(leg[leg.length - 1] as [number, number], b) > 5) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
+      // Generators emit EXACT stop coordinates as leg endpoints. The tolerance
+      // must scale with the leg: a flat 5 km is meaningless for a 0.9 km walk
+      // across Jerusalem, and once let eight Passion-week legs through that
+      // were verbatim copies of the Bethany->Jerusalem segment — every one of
+      // them "within 5 km" of stops that are themselves ~1 km apart.
+      const spanKm = distKm(a, b);
+      const tol = Math.max(0.05, Math.min(5, 0.25 * spanKm));
+      const startOff = distKm(leg[0] as [number, number], a);
+      const endOff = distKm(leg[leg.length - 1] as [number, number], b);
+      if (startOff > tol)
+        err(`route ${r.id}.legs[${k}]: start is ${startOff.toFixed(2)} km from stop ${j.stops[k]} (tolerance ${tol.toFixed(2)} km on a ${spanKm.toFixed(2)} km leg)`);
+      if (endOff > tol)
+        err(`route ${r.id}.legs[${k}]: end is ${endOff.toFixed(2)} km from stop ${j.stops[k + 1]} (tolerance ${tol.toFixed(2)} km on a ${spanKm.toFixed(2)} km leg)`);
+      // A leg that carries no length while its stops are genuinely apart makes
+      // the stop unreachable on the animated timeline — it collapses to the
+      // same progress fraction as its neighbour and gets skipped.
+      if (spanKm > 0.05 && lineLengthKm(leg as [number, number][]) < 0.5 * spanKm)
+        err(`route ${r.id}.legs[${k}]: geometry is ${lineLengthKm(leg as [number, number][]).toFixed(2)} km for a ${spanKm.toFixed(2)} km leg — degenerate, stop would be skipped in playback`);
     });
   });
 
