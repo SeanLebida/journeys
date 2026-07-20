@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import type { BundleIndex } from './useBundle';
 import { useScripture } from './useBible';
 import { useUiStore } from '../state/useUiStore';
-import type { TConfidence } from './schema';
+import type { TConfidence, TGeometryGrade } from './schema';
 
 export function ConfidenceBadge({ confidence }: { confidence: TConfidence }) {
   const { t } = useTranslation();
@@ -20,6 +20,30 @@ export function DisputeNote({ text }: { text?: string }) {
     <details className="dispute">
       <summary>{t('common.disputes')}</summary>
       <p>{text}</p>
+    </details>
+  );
+}
+
+/**
+ * Honest per-journey geometry caveat: names every grade the drawn path uses,
+ * so a reconstructed corridor or schematic connector is never read as a
+ * surveyed road just because it renders as a confident line.
+ */
+export function RouteGeometryNote({ grades }: { grades?: TGeometryGrade[] }) {
+  const { t } = useTranslation();
+  const used = [...new Set(grades ?? [])];
+  if (used.length === 0) return null;
+  return (
+    <details className="geometry-note">
+      <summary>{t('sourcing.geometry.title')}</summary>
+      <ul className="geometry-note__list">
+        {used.map((g) => (
+          <li key={g}>
+            <span className={`geometry geometry--${g}`} />
+            {t(`sourcing.geometry.${g}`)}
+          </li>
+        ))}
+      </ul>
     </details>
   );
 }

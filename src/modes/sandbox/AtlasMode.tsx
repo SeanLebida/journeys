@@ -7,6 +7,7 @@ import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import {
   ATLAS_LAYERS,
+  ROUTE_LAYER_IDS,
   atlasBattleLabels,
   atlasSiteLabels,
   ensureAtlasLayers,
@@ -87,7 +88,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     const map = mapRef.current;
     if (!map || !map.getLayer(ATLAS_LAYERS.sites)) return;
     setLayerVisible(map, ATLAS_LAYERS.sites, showSites);
-    setLayerVisible(map, ATLAS_LAYERS.routes, showRoutes);
+    for (const id of ROUTE_LAYER_IDS) setLayerVisible(map, id, showRoutes);
     for (const id of [ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine, ATLAS_LAYERS.battleAreaSelected])
       setLayerVisible(map, id, showBattles);
     setAtlasFilter(map, YEAR_MIN, maxYear, conf);

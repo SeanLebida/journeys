@@ -10,7 +10,7 @@ import { useJourneyStore } from '../../state/useJourneyStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { activeStopFromFractions, expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
-import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
+import { Citations, ConfidenceBadge, DisputeNote, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
@@ -84,6 +84,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
 
   const stops = useMemo(() => (journey ? bundle.stopsFor(journey.id) : []), [bundle, journey]);
+  const legGrades = journey ? bundle.routeForJourney(journey.id)?.legGrades : undefined;
   const { path, fractions, stopCoords, stopIds, traceStops, names } = useMemo(() => {
     const c: LngLat[] = [];
     const ids: string[] = [];
@@ -123,6 +124,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
         <p className="journey-trace__date">{journey.dateRange.display.en}</p>
         <p>{journey.summary.en}</p>
         {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+        <RouteGeometryNote grades={legGrades} />
         {bundle.videosForJourney(journey.id).map((v) => (
           <VideoEmbed key={v.id} video={v} />
         ))}
