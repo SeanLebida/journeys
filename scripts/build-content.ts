@@ -39,6 +39,11 @@ import {
   type TStop,
 } from '../src/content/schema';
 import { parseScriptureRef } from '../src/content/scriptureRef';
+import {
+  GENERIC_BACKSTOP_IDS,
+  isTertiaryCitation,
+  onlyGenericBackstops,
+} from '../src/content/accuracy';
 import { WORLD_BBOX } from '../src/map/graticule';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
@@ -205,17 +210,16 @@ async function main(): Promise<void> {
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
-  // 4b. Constitutional sourcing invariant: no claim rests on Wikipedia alone.
-  // Wikipedia is a useful orienting link but a TERTIARY source; every cited
-  // claim must also carry >=1 concrete source — a primary text, a standard
-  // scholarly work, an excavation report, or a gazetteer. An uncited claim is
-  // not leaning on Wikipedia, so only non-empty citation lists are checked.
+  // 4b. Constitutional sourcing: no claim rests on tertiary sources alone
+  // (Wikipedia, popular encyclopedias, study-Bible maps, blogs). Every cited
+  // claim needs ≥1 concrete source — primary text, scholarship, excavation,
+  // or gazetteer. Uncited claims are not leaning on tertiary, so only
+  // non-empty lists are checked here.
   const citById = new Map(vCitations.map((c) => [c.id, c]));
-  const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
   const requireConcrete = (ids: string[] | undefined, where: string) => {
     const present = (ids ?? []).filter((id) => citIds.has(id));
-    if (present.length > 0 && !present.some((id) => !isTertiary(id)))
-      err(`${where}: cited only to Wikipedia — needs >=1 concrete (primary/scholarly/archaeological/gazetteer) source`);
+    if (present.length > 0 && !present.some((id) => !isTertiaryCitation(citById.get(id))))
+      err(`${where}: cited only to tertiary/popular sources — needs ≥1 concrete (primary/scholarly/archaeological/gazetteer) source`);
   };
   vSites.forEach((s) => {
     requireConcrete(s.citations, `site ${s.id}`);
@@ -234,9 +238,42 @@ async function main(): Promise<void> {
   vLessons.forEach((l) => requireConcrete(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => requireConcrete(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
-  // 5. Neutrality invariants on stops + artifacts (zod covers Claim wrappers).
+  // 4c. High coordinates may not rest solely on whole-atlas backstops unless
+  // the site carries a place-specific gazetteer id (Pleiades/DARE).
+  vSites.forEach((s) => {
+    if (s.coordinates.confidence !== 'high') return;
+    if (s.pleiadesId || s.dareId) return;
+    if (onlyGenericBackstops(s.coordinates.citations, citById))
+      err(
+        `site ${s.id}.coordinates: high confidence rests only on generic gazetteer/scholarly backstops ` +
+          `(${[...GENERIC_BACKSTOP_IDS].filter((id) => s.coordinates.citations.includes(id)).join(', ') || 'generic'}) ` +
+          `— add a place-specific cite or pleiadesId/dareId, or downgrade confidence`,
+      );
+  });
+
+  // 4d. Medium/disputed coordinates must show ambiguity: ≥2 candidates OR a disputes note.
+  vSites.forEach((s) => {
+    const conf = s.coordinates.confidence;
+    if (conf !== 'medium' && conf !== 'disputed') return;
+    const nCand = s.candidates?.length ?? 0;
+    if (nCand < 2 && !s.coordinates.disputes)
+      err(`site ${s.id}.coordinates: ${conf} needs candidates (≥2) or a disputes note`);
+  });
+
+  // 4e. Narrative entities with scriptureRefs should cite primary-scripture.
+  const requirePrimaryScripture = (refs: string[] | undefined, cites: string[] | undefined, where: string) => {
+    if (!refs?.length) return;
+    const has = (cites ?? []).some((id) => citById.get(id)?.kind === 'primary-scripture');
+    if (!has) err(`${where}: has scriptureRefs but no primary-scripture citation`);
+  };
+  vStops.forEach((s) => requirePrimaryScripture(s.scriptureRefs, s.citations, `stop ${s.id}`));
+  vPersons.forEach((p) => requirePrimaryScripture(p.scriptureRefs, p.citations, `person ${p.id}`));
+  vMiracles.forEach((mi) => requirePrimaryScripture(mi.scriptureRefs, mi.citations, `miracle ${mi.id}`));
+  vBattles.forEach((b) => requirePrimaryScripture(b.scriptureRefs, b.citations, `battle ${b.id}`));
+
+  // 5. Neutrality invariants — every claim needs ≥1 citation; disputed needs a note.
   const neutralityCheck = (e: { confidence: string; reviewStatus: string; citations: string[]; disputes?: unknown; id: string }, kind: string) => {
-    if (e.confidence !== 'high' && e.citations.length < 1) err(`${kind} ${e.id}: non-'high' confidence needs >=1 citation`);
+    if (e.citations.length < 1) err(`${kind} ${e.id}: every claim needs ≥1 citation`);
     if (e.confidence === 'disputed' && !e.disputes) err(`${kind} ${e.id}: 'disputed' needs a disputes note`);
   };
   vStops.forEach((s) => neutralityCheck(s, 'stop'));
@@ -322,6 +359,8 @@ async function main(): Promise<void> {
     if (!j) return err(`route ${r.id}: unknown journeyId '${r.journeyId}'`);
     if (r.legs.length !== j.stops.length - 1)
       return err(`route ${r.id}: ${r.legs.length} legs for ${j.stops.length} stops (need ${j.stops.length - 1})`);
+    if (r.legGrades && r.legGrades.length !== r.legs.length)
+      err(`route ${r.id}: legGrades length ${r.legGrades.length} != legs length ${r.legs.length}`);
     r.legs.forEach((leg, k) => {
       const sa = siteById.get(stopById.get(j.stops[k])?.siteId ?? '');
       const sb = siteById.get(stopById.get(j.stops[k + 1])?.siteId ?? '');
@@ -334,6 +373,11 @@ async function main(): Promise<void> {
       if (distKm(leg[leg.length - 1] as [number, number], b) > 5) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
     });
   });
+
+  // 6c. Soft gazetteer drift warning: when a site has pleiadesId we cannot
+  // fetch live coords offline, but we record coverage for the report.
+  const withPleiades = vSites.filter((s) => s.pleiadesId).length;
+  if (withPleiades < 40) warn(`gazetteer coverage: only ${withPleiades}/ ${vSites.length} sites have pleiadesId (target ≥40 well-attested)`);
 
   // 7. Geo sanity + date discipline.
   const [w, s, e, n] = WORLD_BBOX;

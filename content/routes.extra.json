@@ -4172,6 +4172,39 @@
   "citations": [
    "cit-route-orbis",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "sea-lane",
+   "reconstructed-land",
+   "reconstructed-land",
+   "sea-lane",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "sea-lane"
   ]
  },
  {
@@ -24268,6 +24301,17 @@
    "cit-route-orbis",
    "cit-route-via-sebaste",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "surveyed-road",
+   "sea-lane",
+   "surveyed-road",
+   "sea-lane",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road"
   ]
  },
  {
@@ -53677,6 +53721,21 @@
    "cit-route-cilician-gates",
    "cit-route-via-egnatia",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "sea-lane",
+   "sea-lane",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "surveyed-road",
+   "sea-lane",
+   "sea-lane"
   ]
  },
  {
@@ -66657,6 +66716,15 @@
    "cit-route-orbis",
    "cit-route-cilician-gates",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "surveyed-road",
+   "surveyed-road",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "surveyed-road"
   ]
  },
  {
@@ -68958,6 +69026,15 @@
    "cit-route-acts-sea",
    "cit-route-via-appia",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane",
+   "surveyed-road"
   ]
  },
  {
@@ -69357,6 +69434,13 @@
   "citations": [
    "cit-route-orbis",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "schematic",
+   "schematic",
+   "schematic",
+   "schematic",
+   "schematic"
   ]
  },
  {
@@ -71985,6 +72069,13 @@
    "cit-route-orbis",
    "cit-route-kings-highway",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land"
   ]
  },
  {
@@ -77643,6 +77734,12 @@
    "cit-route-kings-highway",
    "cit-route-orbis",
    "cit-route-itinere"
+  ],
+  "legGrades": [
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land",
+   "reconstructed-land"
   ]
  },
  {
@@ -77736,6 +77833,10 @@
   "citations": [
    "cit-flood-narrative",
    "cit-ref-sacred-bridge"
+  ],
+  "legGrades": [
+   "schematic",
+   "schematic"
   ]
  }
 ]

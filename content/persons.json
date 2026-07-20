@@ -18,7 +18,10 @@
   "citations": [
    "cit-jesus",
    "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-luke-3-23",
+   "cit-scripture-mark-1-14",
+   "cit-scripture-john-1-14"
   ]
  },
  {
@@ -39,7 +42,10 @@
   ],
   "citations": [
    "cit-apostle-paul",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-9-1",
+   "cit-scripture-acts-13-9",
+   "cit-scripture-galatians-1-1"
   ]
  },
  {
@@ -60,7 +66,10 @@
   ],
   "citations": [
    "cit-barnabas",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-4-36",
+   "cit-scripture-acts-13-2",
+   "cit-scripture-acts-15-36"
   ]
  },
  {
@@ -80,7 +89,9 @@
   ],
   "citations": [
    "cit-john-mark",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-13-13",
+   "cit-scripture-acts-15-37"
   ]
  },
  {
@@ -100,7 +111,9 @@
   ],
   "citations": [
    "cit-silas",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-15-40",
+   "cit-scripture-acts-16-25"
   ]
  },
  {
@@ -120,7 +133,9 @@
   ],
   "citations": [
    "cit-timothy",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-16-1",
+   "cit-scripture-1-corinthians-4-17"
   ]
  },
  {
@@ -140,7 +155,9 @@
   ],
   "citations": [
    "cit-luke-evangelist",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-colossians-4-14",
+   "cit-scripture-acts-16-10"
   ]
  },
  {
@@ -161,7 +178,10 @@
   ],
   "citations": [
    "cit-simon-peter",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-matthew-16-16",
+   "cit-scripture-acts-2-14",
+   "cit-scripture-acts-15-7"
   ]
  },
  {
@@ -180,7 +200,8 @@
   ],
   "citations": [
    "cit-sergius-paulus",
-   "cit-biblearchaeology-org-research-chronological-cate"
+   "cit-biblearchaeology-org-research-chronological-cate",
+   "cit-scripture-acts-13-7"
   ]
  },
  {
@@ -200,7 +221,8 @@
   "citations": [
    "cit-gallio-person",
    "cit-gallio-inscription",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-18-12"
   ]
  },
  {
@@ -221,7 +243,9 @@
   "citations": [
    "cit-pontius-pilate",
    "cit-pilate-stone",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-mark-15-15",
+   "cit-scripture-john-19-16"
   ]
  }
 ]

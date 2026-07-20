@@ -18,6 +18,25 @@ import {
 } from '../../src/content/schema';
 import { parseScriptureRef } from '../../src/content/scriptureRef';
 import { WORLD_BBOX } from '../../src/map/graticule';
+import { haversine, type LngLat } from '../../src/map/route';
+import { isTertiaryCitation, onlyGenericBackstops, type CiteLike } from '../../src/content/accuracy';
+
+/** Generators emit exact stop coordinates as leg endpoints; 5 km guards drift. */
+const ENDPOINT_TOLERANCE_KM = 5;
+
+type SiteLike = {
+  id: string;
+  pleiadesId?: string;
+  dareId?: string;
+  citations: string[];
+  candidates?: { citations: string[] }[];
+  coordinates: {
+    value: { lat: number; lon: number };
+    confidence: string;
+    citations: string[];
+    disputes?: unknown;
+  };
+};
 
 const CONTENT = join(process.cwd(), 'content');
 const read = (n: string): unknown[] =>
@@ -85,14 +104,15 @@ describe('content integrity (committed source)', () => {
     expect(dangling, dangling.slice(0, 10).join('\n')).toHaveLength(0);
   });
 
-  it('no claim rests on Wikipedia alone (constitutional sourcing)', () => {
-    // Wikipedia is an orienting link, never the sole authority: every cited
-    // claim must also carry a concrete source (primary text, scholarship,
-    // excavation report, or gazetteer). Uncited claims are not checked.
-    const citById = new Map(
-      (citations as { id: string; url?: string }[]).map((c) => [c.id, c]),
-    );
-    const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
+  // Same helpers the build gate uses, so test and gate cannot drift apart.
+  const citById = new Map((citations as CiteLike[]).map((c) => [c.id, c]));
+
+  it('no claim rests on tertiary sources alone (constitutional sourcing)', () => {
+    // Wikipedia, popular encyclopedias, study-Bible maps and devotional sites
+    // are orienting links, never the sole authority: every cited claim must
+    // also carry a concrete source (primary text, scholarship, excavation
+    // report, or gazetteer). Uncited claims are not checked here.
+    const isTertiary = (id: string) => isTertiaryCitation(citById.get(id));
     const bad: string[] = [];
     const req = (ids: string[] | undefined, where: string) => {
       const present = (ids ?? []).filter((id) => citById.has(id));
@@ -118,7 +138,98 @@ describe('content integrity (committed source)', () => {
     (quizzes as { id: string; questions: { id: string; citations: string[] }[] }[]).forEach((q) =>
       q.questions.forEach((qq) => req(qq.citations, `quiz ${q.id}.${qq.id}`)),
     );
-    expect(bad, `${bad.length} claim(s) cited only to Wikipedia:\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+    expect(bad, `${bad.length} claim(s) cited only to tertiary sources:\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+  });
+
+  it('every claim carries at least one citation', () => {
+    // `high` confidence is not a free pass — an unsourced assertion is the one
+    // failure mode a confidence badge cannot express honestly.
+    const bad: string[] = [];
+    const req = (ids: string[] | undefined, where: string) => !ids?.length && bad.push(where);
+    (sites as SiteLike[]).forEach((s) => {
+      req(s.citations, `site ${s.id}`);
+      req(s.coordinates.citations, `site ${s.id}.coords`);
+    });
+    const each = (arr: unknown[], label: string) =>
+      (arr as { id: string; citations?: string[] }[]).forEach((x) => req(x.citations, `${label} ${x.id}`));
+    each(journeys, 'journey');
+    each(stops, 'stop');
+    each(persons, 'person');
+    each(miracles, 'miracle');
+    each(battles, 'battle');
+    each(artifacts, 'artifact');
+    expect(bad, `${bad.length} uncited claim(s):\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+  });
+
+  it('high coordinates never rest on whole-atlas backstops alone', () => {
+    // A `high` pin claims a *specific* place; a citation covering the whole
+    // atlas cannot support it. A gazetteer id is the accepted alternative.
+    const bad = (sites as SiteLike[])
+      .filter(
+        (s) =>
+          s.coordinates.confidence === 'high' &&
+          !s.pleiadesId &&
+          !s.dareId &&
+          onlyGenericBackstops(s.coordinates.citations, citById),
+      )
+      .map((s) => s.id);
+    expect(bad, `${bad.length} site(s):\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+  });
+
+  it('ambiguous coordinates show their rivals', () => {
+    // medium/disputed must not render as a single confident pin.
+    const bad = (sites as SiteLike[])
+      .filter((s) => s.coordinates.confidence === 'medium' || s.coordinates.confidence === 'disputed')
+      .filter((s) => (s.candidates?.length ?? 0) < 2 && !s.coordinates.disputes)
+      .map((s) => `${s.id} (${s.coordinates.confidence})`);
+    expect(bad, `${bad.length} site(s) hiding ambiguity:\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+  });
+
+  it('narrative claims with scripture cite scripture as a primary source', () => {
+    const bad: string[] = [];
+    const req = (refs: string[] | undefined, cites: string[] | undefined, where: string) => {
+      if (!refs?.length) return;
+      if (!(cites ?? []).some((id) => citById.get(id)?.kind === 'primary-scripture')) bad.push(where);
+    };
+    const each = (arr: unknown[], label: string) =>
+      (arr as { id: string; scriptureRefs?: string[]; citations?: string[] }[]).forEach((x) =>
+        req(x.scriptureRefs, x.citations, `${label} ${x.id}`),
+      );
+    each(stops, 'stop');
+    each(persons, 'person');
+    each(miracles, 'miracle');
+    each(battles, 'battle');
+    expect(bad, `${bad.length} claim(s):\n${bad.slice(0, 15).join('\n')}`).toHaveLength(0);
+  });
+
+  it('route leg grades line up with route legs', () => {
+    const bad = (routes as { id: string; legs: unknown[]; legGrades?: unknown[] }[])
+      .filter((r) => r.legGrades && r.legGrades.length !== r.legs.length)
+      .map((r) => `${r.id}: ${r.legGrades!.length} grades vs ${r.legs.length} legs`);
+    expect(bad, bad.join('\n')).toHaveLength(0);
+  });
+
+  it('route legs start and end near the stops they connect', () => {
+    // A leg that lands far from its stop is drawing a road nobody travelled.
+    const siteById = new Map((sites as SiteLike[]).map((s) => [s.id, s]));
+    const stopById = new Map((stops as { id: string; siteId: string }[]).map((s) => [s.id, s]));
+    const journeyById = new Map((journeys as { id: string; stops: string[] }[]).map((j) => [j.id, j]));
+    const coordOf = (stopId: string | undefined): LngLat | undefined => {
+      const site = siteById.get(stopById.get(stopId ?? '')?.siteId ?? '');
+      return site ? [site.coordinates.value.lon, site.coordinates.value.lat] : undefined;
+    };
+    const bad: string[] = [];
+    (routes as { id: string; journeyId: string; legs: LngLat[][] }[]).forEach((r) => {
+      const j = journeyById.get(r.journeyId);
+      if (!j || r.legs.length !== j.stops.length - 1) return;
+      r.legs.forEach((leg, k) => {
+        const a = coordOf(j.stops[k]);
+        const b = coordOf(j.stops[k + 1]);
+        if (a && haversine(a, leg[0]) > ENDPOINT_TOLERANCE_KM) bad.push(`${r.id} leg ${k}: start off by >${ENDPOINT_TOLERANCE_KM}km`);
+        if (b && haversine(b, leg[leg.length - 1]) > ENDPOINT_TOLERANCE_KM) bad.push(`${r.id} leg ${k}: end off by >${ENDPOINT_TOLERANCE_KM}km`);
+      });
+    });
+    expect(bad, bad.slice(0, 10).join('\n')).toHaveLength(0);
   });
 
   it('every stop references a known site and journey', () => {
