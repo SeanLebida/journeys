@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useMap } from './MapProvider';
-import { activeStopFromFractions, lineLength, lineProgress, stopFractions, type JourneyPath } from './route';
+import { activeStopFromFractions, lineLength, lineProgress, stopFractions, stopRangeAtFraction, type JourneyPath } from './route';
 import { ensureTraceLayers, removeTraceLayers, updateTrace, type TraceStop } from './layers/trace';
 import { useJourneyStore } from '../state/useJourneyStore';
 
@@ -27,6 +27,18 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   const setActiveStop = useJourneyStore((s) => s.setActiveStop);
   const playbackSpeed = useJourneyStore((s) => s.playbackSpeed);
   const pauseAtStops = useJourneyStore((s) => s.pauseAtStops);
+  const tieOffset = useJourneyStore((s) => s.tieOffset);
+  const advanceTie = useJourneyStore((s) => s.advanceTie);
+
+  /** Resolved stop index at a fraction, walking co-located stops via `tieOffset`. */
+  const resolveStop = useMemo(
+    () =>
+      (t: number, offset: number): { idx: number; last: number } => {
+        const [first, last] = stopRangeAtFraction(fractions, t);
+        return { idx: Math.min(first + offset, last), last };
+      },
+    [fractions],
+  );
 
   const isUserInteractingRef = useRef(false);
 
@@ -155,10 +167,13 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   }, [mapRef, ready, coords, color]);
 
   const lastIdxRef = useRef<number>(-1);
+  /** ms spent standing at a co-located stop, since progress cannot measure it. */
+  const dwellRef = useRef(0);
 
   // Reset lastIdxRef when coordinates/journey changes
   useEffect(() => {
     lastIdxRef.current = -1;
+    dwellRef.current = 0;
   }, [coords]);
 
   // Mirror progress to the map + active stop + auto-center on active stop.
@@ -166,7 +181,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2 || !map.getLayer('trace-progress-line')) return;
     const prog = lineProgress(coords, progress);
-    const idx = activeStopFromFractions(fractions, progress);
+    const { idx } = resolveStop(progress, tieOffset);
     updateTrace(
       map,
       coords,
@@ -194,7 +209,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
         }
       }
     }
-  }, [mapRef, ready, coords, path, fractions, progress, stops, stopIds, setActiveStop, playing, pauseAtStops, pause, getTargetZoomForLeg]);
+  }, [mapRef, ready, coords, path, fractions, progress, tieOffset, resolveStop, stops, stopIds, setActiveStop, playing, pauseAtStops, pause, getTargetZoomForLeg]);
 
   // rAF playback.
   useEffect(() => {
@@ -212,9 +227,26 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const dt = now - last;
       last = now;
       const cur = useJourneyStore.getState().progress;
+      const offset = useJourneyStore.getState().tieOffset;
 
       // Which leg are we on, and how far into it (0..1 of this leg's length)?
-      const i = activeStopFromFractions(fractions, cur);
+      const { idx: i, last: tiedLast } = resolveStop(cur, offset);
+
+      // Co-located stops (same tomb, same upper room) share this exact
+      // fraction, so there is no distance to travel between them. Advancing
+      // `progress` cannot separate them — it would stall on the identical
+      // value forever. Dwell for the leg's budget, then step the stop pointer.
+      if (i < tiedLast) {
+        dwellRef.current += dt * playbackSpeed;
+        if (dwellRef.current >= (durations[i] || 2500)) {
+          dwellRef.current = 0;
+          advanceTie();
+        }
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      dwellRef.current = 0;
+
       let next: number;
       if (i >= lastLeg) {
         next = 1;
@@ -266,5 +298,5 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, coords, stopIds, setProgress, pause, mapRef, ready, playbackSpeed, timeline, fractions]);
+  }, [playing, coords, stopIds, setProgress, pause, mapRef, ready, playbackSpeed, timeline, fractions, resolveStop, advanceTie]);
 }

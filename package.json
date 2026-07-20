@@ -1,6 +1,6 @@
 {
   "name": "journeys",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "type": "module",
   "description": "Biblically, geographically, historically and archaeologically accurate interactive atlas of the missionary journeys of Jesus and the apostles.",
