@@ -1,0 +1,2498 @@
+{
+  "title": "Journeys high-claim scholar review packet",
+  "instructions": "For each claim set decision to approve | downgrade | dispute. approve → reviewStatus scholar-approved; downgrade → lower confidence; dispute → confidence disputed + disputes note. Do not rubber-stamp.",
+  "generatedFrom": "scripts/gen-accuracy-pass.py",
+  "count": 152,
+  "claims": [
+    {
+      "kind": "site.coordinates",
+      "id": "site-nazareth",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Nazareth (Hebrew Natzrat); 'Jesus of Nazareth', a Nazarene",
+      "citations": [
+        "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+        "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.70194,
+      "lon": 35.30333,
+      "pleiadesId": "678306",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-capernaum",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Capernaum / Kapharnaoum (Hebrew Kfar Nahum, 'village of Nahum'); modern ruin Tell Hum",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-capernaum",
+        "cit-www-bibleplaces-com-capernaum",
+        "cit-dannythedigger-com-capernaum-synagogue",
+        "cit-arch-capernaum-house"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.88111,
+      "lon": 35.575,
+      "pleiadesId": "678106",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-chorazin",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Chorazin / Korazim (Hebrew Korazim)",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-chorazin",
+        "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.91137,
+      "lon": 35.56378,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-tyre-and-sidon",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Tyre (Tsor) and Sidon (Tsidon), Phoenician coastal cities",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-tyre-lebanon",
+        "cit-en-wikipedia-org-wiki-sidon",
+        "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.27083,
+      "lon": 35.19611,
+      "pleiadesId": "678400",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-caesarea-philippi",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Caesarea Philippi; earlier Panias/Paneas (sanctuary of Pan); rebuilt by Philip the Tetrarch",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-caesarea-philippi",
+        "cit-www-bibleplaces-com-caesarea-philippi-banias"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.24861,
+      "lon": 35.69444,
+      "pleiadesId": "678094",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-final-journey-jericho",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jericho; New Testament Herodian Jericho at Tulul Abu el-Alayiq (winter palaces); Old Testament Jericho at Tell es-Sultan",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-jericho",
+        "cit-www-jerusalemperspective-com-1402"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.8561,
+      "lon": 35.46,
+      "pleiadesId": "687949",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-jerusalem",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jerusalem; the Second Temple (Herodian Temple) and its courts; the Temple Mount (Har HaBayit)",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-temple-mount",
+        "cit-en-wikipedia-org-wiki-second-temple",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.778,
+      "lon": 35.2354,
+      "pleiadesId": "687928",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-golgotha-and-the-tomb",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Golgotha/Calvary ('place of the skull'); the rock-cut tomb in a nearby garden",
+      "citations": [
+        "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+        "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+        "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.7784,
+      "lon": 35.2297,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-antioch",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Antiocheia / Antiochia ad Orontem",
+      "citations": [
+        "cit-www-livius-org-articles-place-antioch-antakya",
+        "cit-topostext-org-place-362362pant",
+        "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.2,
+      "lon": 36.16,
+      "pleiadesId": "658381",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-seleucia-pieria",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Seleukeia Pieria",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-seleucia-pieria",
+        "cit-www-britannica-com-place-seleucia-pieria",
+        "cit-www-bibleplaces-com-seleucia"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.1239,
+      "lon": 35.9219,
+      "pleiadesId": "658554",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-salamis",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Salamis",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-salamis-cyprus",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 35.1814,
+      "lon": 33.9,
+      "pleiadesId": "707609",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-paphos",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Nea Paphos (Paphos)",
+      "citations": [
+        "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+        "cit-biblearchaeology-org-research-chronological-cate",
+        "cit-www-britannica-com-place-paphos"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 34.7571,
+      "lon": 32.4065,
+      "pleiadesId": "707586",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-perga",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Perge / Perga",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-perga",
+        "cit-www-britannica-com-place-perga",
+        "cit-topostext-org-place-370309pper"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.9614,
+      "lon": 30.8539,
+      "pleiadesId": "639047",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-pisidian-antioch",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Antiocheia / Antioch 'near Pisidia' (Colonia Caesarea Antiochia)",
+      "citations": [
+        "cit-vici-org-vici-2325-lang-en",
+        "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+        "cit-www-thegospelcoalition-org-themelios-article-act"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 38.3062,
+      "lon": 31.1899,
+      "pleiadesId": "648621",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-iconium",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Ikonion / Iconium",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-konya",
+        "cit-www-bibleref-com-acts-14-acts-14-6-html"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.8714,
+      "lon": 32.4846,
+      "pleiadesId": "648715",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-lystra",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Lystra (Colonia Iulia Felix Gemina Lustra)",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-lystra",
+        "cit-www-bibleplaces-com-derbelystra"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.6019,
+      "lon": 32.3383,
+      "pleiadesId": "648749",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-derbe",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Derbe",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-derbe",
+        "cit-vici-org-vici-24065"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.3493,
+      "lon": 33.3617,
+      "pleiadesId": "648661",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-attalia",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Attaleia",
+      "citations": [
+        "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.8841,
+      "lon": 30.7056,
+      "pleiadesId": "638753",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-syria",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Cilicia; Tarsus",
+      "citations": [
+        "cit-www-esv-org-resources-esv-global-study-bible-map"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.9177,
+      "lon": 34.8947,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-alexandria-troas",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Alexandria Troas (Troas)",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-alexandria-troas",
+        "cit-www-bibleplaces-com-acts16"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 39.7517,
+      "lon": 26.1586,
+      "pleiadesId": "501416",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-samothrace",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Samothrake",
+      "citations": [
+        "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 40.45,
+      "lon": 25.53,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-neapolis",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Neapolis",
+      "citations": [
+        "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 40.9369,
+      "lon": 24.4122,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-philippi",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Philippoi (Colonia Iulia Augusta Philippensis)",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-philippi",
+        "cit-www-padfield-com-2005-philippi-html"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 41.0131,
+      "lon": 24.2864,
+      "pleiadesId": "501482",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-thessalonica",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Thessalonike",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-thessaloniki",
+        "cit-catholic-resources-org-bible-geography-roman-pro"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 40.6403,
+      "lon": 22.9356,
+      "pleiadesId": "491741",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-berea",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Beroia / Beroea",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-veria",
+        "cit-www-casualenglishbible-com-resource-location-ber"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 40.5244,
+      "lon": 22.2024,
+      "pleiadesId": "491557",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-athens",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Athenai",
+      "citations": [
+        "cit-latitude-to-articles-by-country-gr-greece-853-ac"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.9715,
+      "lon": 23.7257,
+      "pleiadesId": "579885",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-corinth",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Korinthos (Roman Colonia Laus Iulia Corinthiensis)",
+      "citations": [
+        "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+        "cit-holylandphotos-org-photos-gctcdlar14",
+        "cit-latitude-to-map-gr-greece-cities-corinth"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.9061,
+      "lon": 22.8792,
+      "pleiadesId": "570182",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-cenchreae",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Kenchreai",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-kechries",
+        "cit-www-bibleplaces-com-corintharea"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.8847,
+      "lon": 22.9889,
+      "pleiadesId": "570183",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-ephesus",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Ephesos",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.9498,
+      "lon": 27.3639,
+      "pleiadesId": "599612",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-caesarea-maritima",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Caesarea Maritima; Hierosolyma (Jerusalem)",
+      "citations": [
+        "cit-catholic-resources-org-bible-nt-geography-htm",
+        "cit-www-esv-org-resources-esv-global-study-bible-map"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.5021,
+      "lon": 34.8917,
+      "pleiadesId": "678406",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-antioch-on-the-orontes",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Antiocheia / Antioch (Syria)",
+      "citations": [
+        "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+        "cit-www-gotquestions-org-paul-third-missionary-journ"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.2,
+      "lon": 36.16,
+      "pleiadesId": "658381",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-galatia-and-phrygia",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Galatia and Phrygia (incl. Derbe, Lystra, Iconium, Pisidian Antioch)",
+      "citations": [
+        "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+        "cit-www-esv-org-resources-esv-global-study-bible-map-2"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 38.31,
+      "lon": 31.18,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-macedonia",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Macedonia and Hellas/Achaia",
+      "citations": [
+        "cit-enduringword-com-bible-commentary-acts-20",
+        "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 41.01,
+      "lon": 24.29,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-troas",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Alexandria Troas (Antigoneia)",
+      "citations": [
+        "cit-enduringword-com-bible-commentary-acts-20",
+        "cit-www-preceptaustin-org-acts-20-commentary"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 39.75,
+      "lon": 26.16,
+      "pleiadesId": "501635",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-miletus",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Miletos / Miletus",
+      "citations": [
+        "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+        "cit-enduringword-com-bible-commentary-acts-20"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.53,
+      "lon": 27.28,
+      "pleiadesId": "599788",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-caesarea",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Caesarea Maritima (Stratonos Pyrgos / Caesarea)",
+      "citations": [
+        "cit-pleiades-stoa-org-places-678401",
+        "cit-missionbibleclass-org-new-testament-part2-acts-f"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.5018388,
+      "lon": 34.8924472,
+      "pleiadesId": "678406",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-caesarea-imprisonment",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Caesarea Maritima",
+      "citations": [
+        "cit-executableoutlines-com-topical-series-harmony-li",
+        "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+        "cit-enduringword-com-bible-commentary-acts-25"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.5018388,
+      "lon": 34.8924472,
+      "pleiadesId": "678406",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-sidon",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sidon / Tsidon (Phoenician Ṣidunu)",
+      "citations": [
+        "cit-pleiades-stoa-org-places-678393",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.5606,
+      "lon": 35.3758,
+      "pleiadesId": "678386",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-myra-of-lycia",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Myra (Lycia)",
+      "citations": [
+        "cit-pleiades-stoa-org-places-639005",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.26,
+      "lon": 29.98,
+      "pleiadesId": "638922",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-cnidus-and-fair-havens",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Knidos (Caria); Kaloi Limenes (Fair Havens) near Lasaia/Lasea, Crete",
+      "citations": [
+        "cit-www-bibleplaces-com-fair-havens",
+        "cit-en-wikipedia-org-wiki-kaloi-limenes",
+        "cit-en-wikipedia-org-wiki-knidos"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 34.9297,
+      "lon": 24.8003,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-phoenix",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Phoinix / Phoenix (Crete)",
+      "citations": [
+        "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 35.1866,
+      "lon": 24.3467,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-malta-shipwreck",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Melite / Melita (the island); traditional 'St Paul's Bay'",
+      "citations": [
+        "cit-www-bibleplaces-com-st-pauls-bay-malta",
+        "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+        "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 35.9483,
+      "lon": 14.4017,
+      "pleiadesId": "462231",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-syracuse-rhegium-puteoli",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Syrakousai (Syracuse, Sicily); Rhegion (Rhegium); Puteoli / Dikaiarcheia",
+      "citations": [
+        "cit-topostext-org-place-408141pdik",
+        "cit-pleiades-stoa-org-places-432815"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 40.8259,
+      "lon": 14.1253,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-rome",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roma; en route Forum Appii and Tres Tabernae on the Via Appia",
+      "citations": [
+        "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+        "cit-enduringword-com-bible-commentary-acts-27"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 41.8919,
+      "lon": 12.5113,
+      "pleiadesId": "423025",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-tabgha",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Tabgha / Heptapegon ('Seven Springs'); the shore of the Sea of Tiberias",
+      "citations": [
+        "cit-tabgha-primacy",
+        "cit-jesus-boat",
+        "cit-pleiades-gazetteer"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.8731,
+      "lon": 35.5464,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-mount-of-olives-ascension",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Mount Olivet; 'the mount called Olivet' (Acts 1:12); near Bethany",
+      "citations": [
+        "cit-ascension-chapel",
+        "cit-mount-olives",
+        "cit-pleiades-gazetteer"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.7783,
+      "lon": 35.245,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-damascus",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Damascus (Dimashq / Dammeseq); one of the oldest continuously inhabited cities in the world",
+      "citations": [
+        "cit-damascus-straight-street",
+        "cit-house-ananias",
+        "cit-pleiades-gazetteer"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.513,
+      "lon": 36.31,
+      "pleiadesId": "678110",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-patmos",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Patmos",
+      "citations": [
+        "cit-patmos",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.3089,
+      "lon": 26.5489,
+      "pleiadesId": "599866",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-hierapolis",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Hierapolis",
+      "citations": [
+        "cit-philip-hierapolis",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 37.9244,
+      "lon": 29.1289,
+      "pleiadesId": "638866",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-alexandria",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Alexandria",
+      "citations": [
+        "cit-mark-alexandria",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.2001,
+      "lon": 29.9187,
+      "pleiadesId": "727070",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-haran",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Haran (Harran)",
+      "citations": [
+        "cit-ot-haran",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.8642,
+      "lon": 39.0308,
+      "pleiadesId": "658457",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-hebron-machpelah",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Hebron; the Cave of Machpelah",
+      "citations": [
+        "cit-ot-machpelah",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.5247,
+      "lon": 35.1108,
+      "pleiadesId": "687941",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-beersheba-ot",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Beersheba ('well of the oath')",
+      "citations": [
+        "cit-ot-beersheba",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.2456,
+      "lon": 34.84,
+      "pleiadesId": "687918",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-nain",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Nain",
+      "citations": [
+        "cit-wikipedia-nein",
+        "cit-bibleplaces-nain"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.63028,
+      "lon": 35.34889,
+      "pleiadesId": null,
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-lydda",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Lydda (Old Testament Lod)",
+      "citations": [
+        "cit-wikipedia-lod",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.9522,
+      "lon": 34.8896,
+      "pleiadesId": "687954",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-joppa",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Joppa (Yafo)",
+      "citations": [
+        "cit-wikipedia-jaffa",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.05417,
+      "lon": 34.75222,
+      "pleiadesId": "687953",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-jericho-ot",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jericho (Old Testament city)",
+      "citations": [
+        "cit-ot-jericho",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.8711,
+      "lon": 35.4442,
+      "pleiadesId": "687949",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-hazor",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Hazor, 'the head of all those kingdoms'",
+      "citations": [
+        "cit-wikipedia-tel-hazor",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.0175,
+      "lon": 35.5683,
+      "pleiadesId": "678184",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-samaria-city",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Samaria (city of Omri and Ahab)",
+      "citations": [
+        "cit-wikipedia-samaria-city",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.2764,
+      "lon": 35.19,
+      "pleiadesId": "687961",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-megiddo",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Megiddo",
+      "citations": [
+        "cit-wikipedia-tel-megiddo",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 32.585,
+      "lon": 35.1839,
+      "pleiadesId": "678270",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-carchemish",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Carchemish",
+      "citations": [
+        "cit-wikipedia-carchemish",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 36.83,
+      "lon": 38.015,
+      "pleiadesId": "658415",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-dan",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Dan (Laish)",
+      "citations": [
+        "cit-wikipedia-tel-dan",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 33.2486,
+      "lon": 35.6522,
+      "pleiadesId": "678114",
+      "candidates": 0
+    },
+    {
+      "kind": "site.coordinates",
+      "id": "site-lachish",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Lachish",
+      "citations": [
+        "cit-wikipedia-lachish",
+        "cit-ref-sacred-bridge"
+      ],
+      "decision": null,
+      "reviewerNote": null,
+      "lat": 31.565,
+      "lon": 34.8489,
+      "pleiadesId": "687955",
+      "candidates": 0
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-nazareth-1",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Nazareth was Jesus' hometown (Luke's annunciation; the family's return after Egypt in Matthew). A small agrarian Jewish village (~few hundred people) in the early 1st c., confirmed by IAA excavations (the Nazareth Village Farm, a 1st-c. house near the Church of the Annunciation, wine/olive presses, tombs, and pottery). Jesus taught in its synagogue (Luke 4:16-30) and was rejected ('no prophet is accepted in his hometown'); a cliff is associated with the attempt to throw him down.",
+      "citations": [
+        "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
+        "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
+        "cit-scripture-luke-1-26",
+        "cit-scripture-matthew-2-23",
+        "cit-scripture-luke-2-39",
+        "cit-scripture-luke-4-16",
+        "cit-scripture-mark-6-1",
+        "cit-scripture-matthew-13-54",
+        "cit-scripture-john-1-46"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-capernaum-3",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Capernaum was Jesus' adopted base ('his own city', Matthew 9:1) and home of Peter, Andrew, James and John and Matthew the tax-collector. Many events occur here: healing of Peter's mother-in-law, the paralytic lowered through the roof, the centurion's servant, the synagogue teaching/exorcism, and the Bread of Life discourse (John 6). Archaeology shows a 1st-c. basalt synagogue foundation beneath the later 4th-5th-c. white limestone synagogue, and an octagonal Byzantine church over a 1st-c. house traditionally identified as Peter's. Jesus pronounced woe on it (Matthew 11:23).",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-capernaum",
+        "cit-www-bibleplaces-com-capernaum",
+        "cit-dannythedigger-com-capernaum-synagogue",
+        "cit-scripture-matthew-4-13",
+        "cit-scripture-matthew-8-5",
+        "cit-scripture-matthew-9-1",
+        "cit-scripture-matthew-11-23",
+        "cit-scripture-mark-1-21",
+        "cit-scripture-mark-2-1",
+        "cit-scripture-luke-4-31",
+        "cit-scripture-john-6-24"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-sea-of-galilee-5",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-sea-of-galilee",
+        "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-mark-1-16",
+        "cit-scripture-mark-4-35",
+        "cit-scripture-mark-6-45",
+        "cit-scripture-matthew-14-22",
+        "cit-scripture-luke-5-1",
+        "cit-scripture-john-21-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-chorazin-7",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-chorazin",
+        "cit-www-biblicalarchaeology-org-daily-biblical-sites-2",
+        "cit-scripture-matthew-11-21",
+        "cit-scripture-luke-10-13"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-tyre-and-sidon-9",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jesus withdrew northwest into gentile Phoenician territory ('the region of Tyre and Sidon'), where he healed the daughter of the Syrophoenician/Canaanite woman (Mark 7:24-30; Matthew 15:21-28). Both cities are ancient, securely located Phoenician ports. Tyre lies ~50 km NW of Capernaum; Sidon ~40 km further north.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-tyre-lebanon",
+        "cit-en-wikipedia-org-wiki-sidon",
+        "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-mark-7-24",
+        "cit-scripture-mark-7-31",
+        "cit-scripture-matthew-15-21",
+        "cit-scripture-luke-6-17",
+        "cit-scripture-matthew-11-21"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-caesarea-philippi-10",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "At Caesarea Philippi, near the cave-sanctuary of Pan and the springs of the Jordan, Peter confesses Jesus as the Messiah and Jesus speaks of building his church and his coming passion (Matthew 16:13-23). The Transfiguration follows about a week later on a 'high mountain' (Matthew 17:1-8), traditionally Mount Tabor but, given proximity, possibly a spur of Mount Hermon. The site preserves the Pan sanctuary niches and Philip's city remains.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-caesarea-philippi",
+        "cit-www-bibleplaces-com-caesarea-philippi-banias",
+        "cit-scripture-matthew-16-13",
+        "cit-scripture-mark-8-27",
+        "cit-scripture-matthew-17-1",
+        "cit-scripture-mark-9-2",
+        "cit-scripture-luke-9-18"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-final-journey-jericho-12",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "On the final ascent to Jerusalem for Passover, Jesus passes through Jericho: he heals blind Bartimaeus (Mark 10:46-52) and calls the tax-collector Zacchaeus down from a sycamore-fig (Luke 19:1-10). The NT Roman/Herodian Jericho (Hasmonean-Herodian palace complex at Tulul Abu el-Alayiq) lies near the wadi Qelt, distinct from the prehistoric Tell es-Sultan mound. The road climbs ~1,000 m over ~27 km from Jericho (below sea level) to Jerusalem.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-jericho",
+        "cit-www-jerusalemperspective-com-1402",
+        "cit-scripture-mark-10-46",
+        "cit-scripture-luke-18-35",
+        "cit-scripture-luke-19-1",
+        "cit-scripture-matthew-20-29"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-jerusalem-14",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-temple-mount",
+        "cit-en-wikipedia-org-wiki-second-temple",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-mark-11-15",
+        "cit-scripture-matthew-21-12",
+        "cit-scripture-luke-19-45",
+        "cit-scripture-john-2-13",
+        "cit-scripture-mark-13-1",
+        "cit-scripture-john-7-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-golgotha-and-the-tomb-18",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jesus is crucified at Golgotha, dies, and is buried in a new rock-cut tomb nearby (Joseph of Arimathea's), with the resurrection proclaimed on the first day of the week. The Church of the Holy Sepulchre is the strongest candidate: excavations show the area was a disused quarry with 1st-c. rock-cut tombs, lay outside the city wall in Jesus' day, and was venerated continuously (Constantine built over it in the 4th c. on earlier memory); a 2025 report noted ancient garden/cultivation remains beneath, consistent with John 19:41. The Garden Tomb is archaeologically Iron Age and rejected as the orig",
+      "citations": [
+        "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+        "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+        "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+        "cit-scripture-mark-15-21",
+        "cit-scripture-matthew-27-32",
+        "cit-scripture-luke-23-26",
+        "cit-scripture-john-19-16",
+        "cit-scripture-mark-16-1",
+        "cit-scripture-john-20-1",
+        "cit-scripture-1-corinthians-15-3"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-antioch-0",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' (",
+      "citations": [
+        "cit-www-livius-org-articles-place-antioch-antakya",
+        "cit-topostext-org-place-362362pant",
+        "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+        "cit-scripture-acts-13-1",
+        "cit-scripture-acts-11-19",
+        "cit-scripture-acts-14-26",
+        "cit-scripture-acts-15-35",
+        "cit-scripture-acts-18-22"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-seleucia-pieria-1",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The seaport of Antioch, ~16 mi (25 km) downriver/WSW, founded by Seleucus I Nicator (301 BC). On Journey 1 Paul and Barnabas 'went down to Seleucia, and from there sailed to Cyprus' (Acts 13:4). LEG: short LAND leg from Antioch to the coast, then point of embarkation for the SEA crossing to Cyprus.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-seleucia-pieria",
+        "cit-www-britannica-com-place-seleucia-pieria",
+        "cit-www-bibleplaces-com-seleucia",
+        "cit-scripture-acts-13-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-salamis-2",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Landfall on Cyprus. Paul and Barnabas 'proclaimed the word of God in the synagogues of the Jews' (Acts 13:5); John Mark accompanied them as assistant (hyperetes). Salamis was the chief eastern port, with a sizable Jewish community. LEG: SEA arrival from Seleucia; then LAND travel west across the island to Paphos.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-salamis-cyprus",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-acts-13-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-paphos-3",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roman provincial capital and seat of the proconsul. Here the magician Bar-Jesus / Elymas opposed them before the proconsul Sergius Paulus; Paul struck Elymas with temporary blindness, and the proconsul 'believed, being astonished at the teaching of the Lord' (Acts 13:6-12). This passage marks the narrative shift from 'Saul' to 'Paul' and his emergence as lead missionary. ARCHAEOLOGY: inscriptions naming a 'Sergius Paulus' / a 'Paulus [proconsul]' (e.g., the Soloi inscription on Cyprus) corroborate the name, title, and senatorial (proconsular) governance of Cyprus, though no inscription definit",
+      "citations": [
+        "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
+        "cit-biblearchaeology-org-research-chronological-cate",
+        "cit-www-britannica-com-place-paphos",
+        "cit-scripture-acts-13-6"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-perga-4",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-perga",
+        "cit-www-britannica-com-place-perga",
+        "cit-topostext-org-place-370309pper",
+        "cit-scripture-acts-13-13",
+        "cit-scripture-acts-14-24"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-pisidian-antioch-5",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roman colony and administrative center of the southern part of the province of Galatia. Setting of Paul's first recorded major sermon (Acts 13:16-41) in the synagogue. After many Gentiles responded the next Sabbath, jealous synagogue leaders incited 'devout women of high standing and the leading men' to drive them out; Paul and Barnabas 'shook the dust from their feet' and turned to the Gentiles (Acts 13:42-52). VISITED AGAIN on the return leg to strengthen disciples and appoint elders (Acts 14:21-23). ARCHAEOLOGY: excavated since W. Ramsay (1913-14); imperial cult temple (Augusteum), city gat",
+      "citations": [
+        "cit-vici-org-vici-2325-lang-en",
+        "cit-www-biblicalarchaeology-org-daily-biblical-topic",
+        "cit-www-thegospelcoalition-org-themelios-article-act",
+        "cit-scripture-acts-13-14",
+        "cit-scripture-acts-14-21",
+        "cit-scripture-2-timothy-3-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-iconium-6",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "City in Lycaonia/Galatia where Paul and Barnabas spoke boldly in the synagogue 'so that a great number both of Jews and of Greeks believed' (Acts 14:1) and stayed 'a long time' performing signs. The city divided; on learning of a plot to stone them, they fled to Lystra and Derbe (Acts 14:2-6). REVISITED on return (Acts 14:21). Iconium's continuous occupation (modern Konya) limits excavation. LEG: LAND.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-konya",
+        "cit-www-bibleref-com-acts-14-acts-14-6-html",
+        "cit-scripture-acts-14-1",
+        "cit-scripture-acts-14-21",
+        "cit-scripture-2-timothy-3-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-lystra-7",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-lystra",
+        "cit-www-bibleplaces-com-derbelystra",
+        "cit-scripture-acts-14-6",
+        "cit-scripture-acts-14-21",
+        "cit-scripture-acts-16-1",
+        "cit-scripture-2-timothy-3-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-derbe-8",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point).",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-derbe",
+        "cit-vici-org-vici-24065",
+        "cit-scripture-acts-14-6",
+        "cit-scripture-acts-14-20",
+        "cit-scripture-acts-16-1",
+        "cit-scripture-acts-20-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-1-attalia-9",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "After preaching at Perga on the return leg, they 'went down to Attalia, and from there sailed back to Antioch' (Acts 14:25-26). Attalia was the principal Pamphylian harbor (founded by Attalus II of Pergamon). LEG: short LAND leg from Perga; then SEA voyage back to Syrian Antioch, ending Journey 1.",
+      "citations": [
+        "cit-www-ephesustoursguide-com-must-see-places-in-tur",
+        "cit-scripture-acts-14-25"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-antioch-0",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' (",
+      "citations": [
+        "cit-www-livius-org-articles-place-antioch-antakya",
+        "cit-topostext-org-place-362362pant",
+        "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+        "cit-scripture-acts-13-1",
+        "cit-scripture-acts-11-19",
+        "cit-scripture-acts-14-26",
+        "cit-scripture-acts-15-35",
+        "cit-scripture-acts-18-22"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-syria-1",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND.",
+      "citations": [
+        "cit-www-esv-org-resources-esv-global-study-bible-map",
+        "cit-scripture-acts-15-40",
+        "cit-scripture-acts-16-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-lystra-2",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roman colony in Lycaonia. After Paul healed a man lame from birth, the crowd, speaking Lycaonian, hailed Barnabas as Zeus and Paul as Hermes ('because he was the chief speaker') and the priest of Zeus tried to offer sacrifice (Acts 14:8-18). Then Jews from Antioch and Iconium stirred the crowd; Paul was stoned and dragged out, presumed dead, but recovered (Acts 14:19-20). Hometown of Timothy, whom Paul recruits here on Journey 2 (Acts 16:1-3). REVISITED on return (Acts 14:21). LEG: LAND.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-lystra",
+        "cit-www-bibleplaces-com-derbelystra",
+        "cit-scripture-acts-14-6",
+        "cit-scripture-acts-14-21",
+        "cit-scripture-acts-16-1",
+        "cit-scripture-2-timothy-3-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-alexandria-troas-3",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Port on the NW Aegean coast where Paul saw a night vision of 'a man of Macedonia' pleading 'Come over to Macedonia and help us' (Acts 16:8-10). Here the narrative shifts to first-person plural ('we'), traditionally marking Luke joining the party. From Troas they set sail for Europe. LEG: LAND arrival; SEA embarkation point for the crossing to Europe (via Samothrace to Neapolis).",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-alexandria-troas",
+        "cit-www-bibleplaces-com-acts16",
+        "cit-scripture-acts-16-8",
+        "cit-scripture-2-corinthians-2-12",
+        "cit-scripture-acts-20-5"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-samothrace-4",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA.",
+      "citations": [
+        "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas",
+        "cit-scripture-acts-16-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-neapolis-5",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Port of Philippi and the gospel's first recorded landfall in Europe: 'from Troas... to Neapolis, and from there to Philippi' (Acts 16:11-12). LEG: SEA arrival; then short LAND leg (~16 km up the Via Egnatia) to Philippi.",
+      "citations": [
+        "cit-www-padfield-com-2002-neapolis-kavala-greece-htm",
+        "cit-scripture-acts-16-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-philippi-6",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "A leading Roman colony of Macedonia. By a riverside place of prayer Lydia, a God-fearing dealer in purple from Thyatira, believed and was baptized with her household (Acts 16:13-15). Paul exorcised a slave girl with a spirit of divination, costing her owners their profit; Paul and Silas were beaten and jailed; a midnight earthquake opened the prison and the jailer's household was converted; the magistrates, alarmed to learn they had flogged Roman citizens, apologized (Acts 16:16-40). Recipient church of Philippians. LEG: LAND (then westward along the Via Egnatia).",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-philippi",
+        "cit-www-padfield-com-2005-philippi-html",
+        "cit-scripture-acts-16-12",
+        "cit-scripture-philippians-1-1",
+        "cit-scripture-1-thessalonians-2-2"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-thessalonica-7",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Provincial capital of Macedonia. Paul reasoned in the synagogue 'for three Sabbaths' (Acts 17:2-4); some Jews, many God-fearing Greeks and leading women believed. Jealous opponents formed a mob, attacked Jason's house, and dragged believers before the politarchs charging them with defying Caesar ('there is another king, Jesus,' Acts 17:5-9). Recipient of 1-2 Thessalonians. LEG: LAND; departed by night to Berea.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-thessaloniki",
+        "cit-catholic-resources-org-bible-geography-roman-pro",
+        "cit-scripture-acts-17-1",
+        "cit-scripture-1-thessalonians-1-1",
+        "cit-scripture-2-thessalonians-1-1",
+        "cit-scripture-philippians-4-16"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-berea-8",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sent on by night, Paul and Silas preached in the synagogue; the Bereans 'were more noble than those in Thessalonica... examining the Scriptures daily' and many believed (Acts 17:10-12). When Thessalonian agitators arrived, the believers sent Paul on to the coast/Athens while Silas and Timothy remained (Acts 17:13-15). Sopater of Berea later accompanies Paul (Acts 20:4). LEG: LAND arrival; Paul then leaves by SEA toward Athens (Silas/Timothy stay).",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-veria",
+        "cit-www-casualenglishbible-com-resource-location-ber",
+        "cit-scripture-acts-17-10",
+        "cit-scripture-acts-20-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-athens-9",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth.",
+      "citations": [
+        "cit-latitude-to-articles-by-country-gr-greece-853-ac",
+        "cit-scripture-acts-17-16",
+        "cit-scripture-1-thessalonians-3-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-corinth-10",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Capital of the province of Achaia and the longest stop of Journey 2: Paul stayed 18 months (Acts 18:11). He met Aquila and Priscilla (recently expelled from Rome under Claudius) and worked as a tentmaker; Silas and Timothy rejoined him; Crispus the synagogue ruler believed (Acts 18:1-11). The Jews brought Paul before the proconsul Gallio, who dismissed the case as an internal religious matter (Acts 18:12-17). Founding visit for 1-2 Corinthians. The DELPHI (GALLIO) INSCRIPTION, naming Gallio as proconsul of Achaia and dated by Claudius's 26th imperial acclamation (early AD 52), fixes Gallio's t",
+      "citations": [
+        "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
+        "cit-holylandphotos-org-photos-gctcdlar14",
+        "cit-latitude-to-map-gr-greece-cities-corinth",
+        "cit-scripture-acts-18-1",
+        "cit-scripture-1-corinthians-1-1",
+        "cit-scripture-2-corinthians-1-1",
+        "cit-scripture-romans-16-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-cenchreae-11",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Eastern harbor of Corinth. Paul, having taken a vow, 'had his hair cut off at Cenchreae' (Acts 18:18) before sailing for Syria with Priscilla and Aquila. Later home of Phoebe, deaconess of the Cenchreae church (Rom 16:1). LEG: SEA embarkation for the eastward voyage (via Ephesus) toward Caesarea.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-kechries",
+        "cit-www-bibleplaces-com-corintharea",
+        "cit-scripture-acts-18-18",
+        "cit-scripture-romans-16-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-ephesus-12",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea.",
+      "citations": [
+        "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-acts-18-19",
+        "cit-scripture-acts-19-1",
+        "cit-scripture-1-corinthians-16-8"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-2-caesarea-maritima-13",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch.",
+      "citations": [
+        "cit-catholic-resources-org-bible-nt-geography-htm",
+        "cit-www-esv-org-resources-esv-global-study-bible-map",
+        "cit-scripture-acts-18-22"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-antioch-on-the-orontes-0",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "After spending time in Antioch (his home base, Acts 18:22-23), Paul set out a third time, departing through 'the region of Galatia and Phrygia in order, strengthening all the disciples.' Antioch is the launch point of the third journey. Acts notes he first 'went up and greeted the church' (widely read as Jerusalem) then went down to Antioch.",
+      "citations": [
+        "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+        "cit-www-gotquestions-org-paul-third-missionary-journ",
+        "cit-scripture-acts-18-22"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-galatia-and-phrygia-1",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point.",
+      "citations": [
+        "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
+        "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+        "cit-scripture-acts-18-23"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-ephesus-2",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The heart of the third journey. Paul stayed in Ephesus for about three years (Acts 20:31; cf. 19:8 three months in the synagogue, 19:10 two years in the hall of Tyrannus). Apollos was instructed by Priscilla and Aquila here (18:24-28); Paul rebaptized disciples of John (19:1-7), performed extraordinary miracles (19:11-12), and the burning of magic books occurred (19:19). The ministry ended with the riot of the silversmiths led by Demetrius over the threat to the cult of Artemis (19:23-41). Paul likely wrote 1 Corinthians from Ephesus (1 Cor 16:8).",
+      "citations": [
+        "cit-pleiades-stoa-org-places-599612",
+        "cit-www-jesuswalk-com-paul-07-ephesus-htm",
+        "cit-denverjournal-denverseminary-edu-the-denver-jour",
+        "cit-scripture-acts-18-24",
+        "cit-scripture-acts-19-1",
+        "cit-scripture-acts-20-31",
+        "cit-scripture-1-corinthians-16-8"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-macedonia-3",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "After the Ephesian riot, Paul left for Macedonia (Acts 20:1), passing through (revisiting Philippi, Thessalonica, Berea) and 'gave much encouragement,' then came into Greece, where he stayed three months (Acts 20:2-3). He likely wrote 2 Corinthians from Macedonia and Romans from Corinth/Greece during this period (the collection for Jerusalem is a major theme). Coordinates given are for Philippi as representative.",
+      "citations": [
+        "cit-enduringword-com-bible-commentary-acts-20",
+        "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm",
+        "cit-scripture-acts-20-1",
+        "cit-scripture-1-corinthians-16-5",
+        "cit-scripture-2-corinthians-2-12",
+        "cit-scripture-2-corinthians-7-5"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-troas-4",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Returning from Greece via Macedonia (after a plot forced an overland detour, Acts 20:3), Paul rejoined his companions at Troas and stayed seven days. On the first day of the week, gathered to break bread, Paul preached until midnight; the young man Eutychus, asleep in a third-story window, fell to his death and was raised by Paul (Acts 20:7-12). A 'we'-passage resumes here, marking Luke's presence.",
+      "citations": [
+        "cit-enduringword-com-bible-commentary-acts-20",
+        "cit-www-preceptaustin-org-acts-20-commentary",
+        "cit-scripture-acts-20-4",
+        "cit-scripture-2-corinthians-2-12"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-miletus-5",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul, hurrying to reach Jerusalem by Pentecost (Acts 20:16), bypassed Ephesus and summoned the Ephesian elders to Miletus, where he delivered his moving farewell address (Acts 20:18-35), warning of 'savage wolves' and quoting 'It is more blessed to give than to receive.' They prayed and wept, knowing they would not see his face again (20:36-38).",
+      "citations": [
+        "cit-bible-org-seriespage-pauls-parting-words-acts-20",
+        "cit-enduringword-com-bible-commentary-acts-20",
+        "cit-scripture-acts-20-15"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-caesarea-6",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Arriving at Caesarea, the party stayed with Philip the evangelist (one of the Seven, with four prophesying daughters). The prophet Agabus came down from Judea, bound his own hands and feet with Paul's belt, and prophesied Paul's arrest in Jerusalem. Despite pleas, Paul resolved to go up, saying he was ready to die for the name of the Lord (Acts 21:10-14). This is the closing scene of the third journey before Paul reaches Jerusalem (Acts 21:15-17).",
+      "citations": [
+        "cit-pleiades-stoa-org-places-678401",
+        "cit-missionbibleclass-org-new-testament-part2-acts-f",
+        "cit-scripture-acts-21-8"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-paul-3-jerusalem-7",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul met James and the elders, delivered the collection (implied), and undertook a purification rite to defuse rumors that he taught against the Law (Acts 21:17-26). Asian Jews accused him of bringing Greeks into the Temple, sparking a riot; the Roman tribune (Claudius Lysias) rescued and arrested him at the Antonia Fortress (21:27-36). Paul addressed the crowd (22:1-21), invoked his Roman citizenship to avoid scourging (22:25-29), appeared before the Sanhedrin (23:1-10), survived a 40-man assassination plot revealed by his nephew (23:12-22), and was sent under heavy guard by night to Caesarea",
+      "citations": [
+        "cit-brentwoodbaptist-com-acts-204-2335",
+        "cit-www-ccel-org-bible-phillips-cn341actspaularrest-",
+        "cit-scripture-acts-21-17"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-caesarea-imprisonment-0",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul was held in the praetorium (Herod's palace) at Caesarea for about two years. He was tried before the governor Antonius Felix (Acts 24), who, hoping for a bribe and wishing to please the Jews, left him bound. When Porcius Festus succeeded Felix (Acts 24:27; 25:1), Paul - to avoid being sent back to a hostile Jerusalem - exercised his right as a Roman citizen and appealed to Caesar ('Caesarem appello', Acts 25:11-12). He then made his defense before Festus and the visiting client-king Herod Agrippa II and Bernice (Acts 25:13-26:32); Agrippa's verdict was that Paul could have been freed had ",
+      "citations": [
+        "cit-executableoutlines-com-topical-series-harmony-li",
+        "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
+        "cit-enduringword-com-bible-commentary-acts-25",
+        "cit-scripture-acts-23-31",
+        "cit-scripture-acts-24-27",
+        "cit-scripture-acts-25-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-sidon-1",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Paul, with other prisoners, was handed to a centurion named Julius of the Augustan Cohort and embarked on a ship of Adramyttium (Acts 27:1-2). Luke and Aristarchus accompanied him (a 'we'-passage). The next day they put in at Sidon, where Julius kindly allowed Paul to visit friends and be cared for (27:3).",
+      "citations": [
+        "cit-pleiades-stoa-org-places-678393",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+        "cit-scripture-acts-27-1"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-myra-of-lycia-2",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Because of contrary winds they sailed under the lee (sheltered side) of Cyprus, then across the open sea off Cilicia and Pamphylia, landing at Myra in Lycia (Acts 27:4-5). There the centurion found an Alexandrian ship (a grain freighter) bound for Italy and transferred the prisoners onto it (27:6). Myra was a known port on the Alexandria-to-Rome grain route.",
+      "citations": [
+        "cit-pleiades-stoa-org-places-639005",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+        "cit-scripture-acts-27-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-cnidus-and-fair-havens-3",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sailing slowly against the wind, the ship reached Cnidus with difficulty, then ran under the lee of Crete off Cape Salmone, and arrived at Fair Havens near the city of Lasea (Acts 27:7-8). The coordinates given are for Fair Havens (Kaloi Limenes). 'Much time had been lost and the voyage was now dangerous because the Fast (Yom Kippur, ~late September/October) had already gone by' (27:9). Paul warned against sailing on, but the centurion followed the pilot and owner; since the harbor was unsuitable to winter in, the majority decided to try to reach Phoenix, a better Cretan harbor (27:10-12).",
+      "citations": [
+        "cit-www-bibleplaces-com-fair-havens",
+        "cit-en-wikipedia-org-wiki-kaloi-limenes",
+        "cit-en-wikipedia-org-wiki-knidos",
+        "cit-scripture-acts-27-7"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-phoenix-4",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Attempting to reach Phoenix, a Cretan harbor 'facing southwest and northwest' (Acts 27:12), the ship was caught by a violent northeasterly wind called Euraquilo (Euroclydon; a Greek-Latin compound for the ENE wind, attested on a Roman wind-rose in Tunisia). Driven past the small island of Cauda (Clauda/Gavdos), the crew undergirded the hull with cables, lowered gear, jettisoned cargo and tackle, and lost sight of sun and stars for many days (27:13-20). Paul, after an angelic vision, assured all 276 aboard that no life would be lost, only the ship (27:21-26).",
+      "citations": [
+        "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
+        "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+        "cit-scripture-acts-27-12"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-malta-shipwreck-5",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "On the 14th night, drifting across the Adria (the central Mediterranean), sailors sensed land, took soundings (20 then 15 fathoms), and at dawn ran the ship aground on a sandbar/reef; the bow stuck fast and the stern broke up, but all 276 reached land safely (Acts 27:27-44). The island was Melite (Malta). The 'barbaroi' (native, non-Greek-speaking) islanders showed unusual kindness, kindling a fire; a viper fastened on Paul's hand without harming him, leading them to think him a god (28:1-6). Paul healed the father of Publius, the 'chief man' (Greek 'protos') of the island, and many others (28",
+      "citations": [
+        "cit-www-bibleplaces-com-st-pauls-bay-malta",
+        "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
+        "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
+        "cit-scripture-acts-27-27"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-syracuse-rhegium-puteoli-6",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "After three months they sailed on another Alexandrian grain ship with the figurehead of the Twin Brothers (Castor and Pollux, the Dioscuri). They put in at Syracuse (3 days), then Rhegium, and with a favorable south wind reached Puteoli in one more day (Acts 28:11-13). At Puteoli they found believers and stayed seven days, then headed toward Rome. Coordinates given are for Puteoli (Pozzuoli).",
+      "citations": [
+        "cit-topostext-org-place-408141pdik",
+        "cit-pleiades-stoa-org-places-432815",
+        "cit-scripture-acts-28-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-rome-rome-7",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Roman believers came out to meet Paul at the Forum of Appius and Three Taverns on the Via Appia (Acts 28:15). In Rome Paul was allowed to live by himself under guard (light custody/house arrest). He met the local Jewish leaders, expounded the kingdom of God and Jesus from the Law and Prophets (28:17-28), and 'lived there two whole years at his own expense, welcoming all who came, preaching the kingdom of God and teaching about the Lord Jesus Christ with all boldness and without hindrance' (28:30-31). Acts ends here, abruptly, without recording the trial's outcome.",
+      "citations": [
+        "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
+        "cit-enduringword-com-bible-commentary-acts-27",
+        "cit-scripture-acts-28-14"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-resurrection-appearances-19",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus — mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb').",
+      "citations": [
+        "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
+        "cit-archaeologymag-com-2025-04-ancient-garden-found-",
+        "cit-edicule-restoration",
+        "cit-archaeology-crucifixion-tzaferis",
+        "cit-primary-josephus-antiquities",
+        "cit-primary-tacitus-annals",
+        "cit-scripture-john-20-1",
+        "cit-scripture-john-20-11",
+        "cit-scripture-matthew-28-1",
+        "cit-scripture-matthew-28-9",
+        "cit-scripture-mark-16-1",
+        "cit-scripture-luke-24-1",
+        "cit-scripture-luke-24-34",
+        "cit-scripture-1-corinthians-15-5"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-sea-of-galilee-appearance-23",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples — Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed — fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia — the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' — one restoration for each denial — and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period.",
+      "citations": [
+        "cit-tabgha-primacy",
+        "cit-jesus-boat",
+        "cit-scripture-john-21-1",
+        "cit-scripture-john-21-6",
+        "cit-scripture-john-21-11",
+        "cit-scripture-john-21-15",
+        "cit-scripture-john-21-18"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-ascension-26",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Forty days after the resurrection (Acts 1:3), Jesus led the apostles out to the Mount of Olives, near Bethany. Over those 40 days he had appeared to them repeatedly, 'speaking about the kingdom of God' and 'presenting himself alive after his suffering by many proofs' (Acts 1:3). He gave final instructions: 'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth' (Acts 1:8). 'And when he had said these things, as they were looking on, he was lifted up, and a cloud took him out of their sight' (Acts 1:9). Two men in white appeared and said, 'This Jesus, who was taken up from you into heaven, will come in the same way as you saw him go into heaven' (Acts 1:11). The disciples returned to Jerusalem from Olivet, 'a Sabbath day's journey away' (~2,000 cubits, ~1 km). The Chapel of the Ascension has been venerated since the Bordeaux Pilgrim (AD 333); the original Imbomon rotunda was built c. AD 378-384 by Poimenia, destroyed in AD 614, rebuilt by Crusaders, and converted to a mosque by Saladin (1187).",
+      "citations": [
+        "cit-ascension-chapel",
+        "cit-mount-olives",
+        "cit-scripture-luke-24-50",
+        "cit-scripture-luke-24-51",
+        "cit-scripture-acts-1-3",
+        "cit-scripture-acts-1-8",
+        "cit-scripture-acts-1-9",
+        "cit-scripture-acts-1-11",
+        "cit-scripture-acts-1-12",
+        "cit-scripture-mark-16-19"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-damascus-road-paul-28",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Saul of Tarsus, carrying letters from the high priest to arrest Christians in Damascus, encountered the risen Jesus near the city. 'Suddenly a light from heaven, brighter than the sun, flashed around him. He fell to the ground and heard a voice: Saul, Saul, why are you persecuting me?' (Acts 26:13-14). Blinded for three days, he was led to 'the house of Judas on the street called Straight' (Acts 9:11), where Ananias healed and baptized him. Three separate accounts in Acts (chs. 9, 22, 26) plus Paul's own first-person testimony in 1 Corinthians 9:1 ('Have I not seen Jesus our Lord?'), 1 Corinthians 15:8 ('Last of all, as to one untimely born, he appeared also to me'), and Galatians 1:15-16 attest this encounter. Paul's testimony, written c. AD 53-55, is ~20-25 years after the event. The Via Recta ('Straight Street') still follows the exact route of the 1st-c. Roman decumanus maximus. The underground Chapel of Ananias near Bab Sharqi preserves 5th/6th-c. Byzantine church remains (excavated 1921). Paul's basket escape through the wall (Acts 9:25; 2 Corinthians 11:33) is commemorated at the Chapel of St. Paul at Bab Kisan. Even non-Christian scholars treat Paul's radical transformation from persecutor to apostle as historically certain.",
+      "citations": [
+        "cit-damascus-straight-street",
+        "cit-house-ananias",
+        "cit-scripture-acts-9-1",
+        "cit-scripture-acts-9-3",
+        "cit-scripture-acts-9-11",
+        "cit-scripture-acts-9-25",
+        "cit-scripture-acts-22-6",
+        "cit-scripture-acts-26-12",
+        "cit-scripture-1-corinthians-9-1",
+        "cit-scripture-1-corinthians-15-8",
+        "cit-scripture-galatians-1-15",
+        "cit-scripture-2-corinthians-11-33"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "stop",
+      "id": "stop-ministry-temple-boy",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "At Passover, when Jesus was twelve, the family made the pilgrimage to Jerusalem; on the way home his parents realised he was missing and, after three days, found him in the temple courts 'sitting among the teachers, both listening to them and asking them questions.' Asked why, he answered, 'Did you not know that I must be in my Father's house?' (Luke 2:41-49). It is the only canonical episode between the infancy and the baptism; Luke closes it noting he 'grew in wisdom and stature, and in favour with God and man' (Luke 2:52).",
+      "citations": [
+        "cit-finding-in-the-temple",
+        "cit-ref-keener-bbcnt",
+        "cit-scripture-luke-2-41",
+        "cit-scripture-luke-2-46",
+        "cit-scripture-luke-2-49",
+        "cit-scripture-luke-2-52"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-pilate-stone",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Pilate Stone",
+      "citations": [
+        "cit-pilate-stone",
+        "cit-dth-the-praetorium-of-pilate"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-gallio-inscription",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Delphi (Gallio) Inscription",
+      "citations": [
+        "cit-gallio-inscription",
+        "cit-dth-the-gallio-inscription"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-politarch-inscription",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Politarch Inscriptions (Thessalonica)",
+      "citations": [
+        "cit-politarch-inscription",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-pool-of-siloam",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Pool of Siloam",
+      "citations": [
+        "cit-pool-of-siloam",
+        "cit-dth-pool-of-siloam",
+        "cit-dth-jesus-pool-siloam-rivers-living-water"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-nazareth-house",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "First-century house and village remains, Nazareth",
+      "citations": [
+        "cit-nazareth-house"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-tel-dan-stele",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Tel Dan Stele ('House of David')",
+      "citations": [
+        "cit-arch-tel-dan",
+        "cit-dth-biblical-figures-found-through-archaeology"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-mesha-stele",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Mesha Stele (Moabite Stone)",
+      "citations": [
+        "cit-arch-mesha",
+        "cit-dth-the-mesha-stele"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-merneptah-stele",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Merneptah Stele ('Israel')",
+      "citations": [
+        "cit-arch-merneptah",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-pool-of-bethesda",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Pool of Bethesda",
+      "citations": [
+        "cit-arch-bethesda",
+        "cit-arch-bethesda-academic",
+        "cit-dth-pool-of-bethesda",
+        "cit-dth-the-pool-of-bethesda"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-hezekiah-siloam-tunnel",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Hezekiah's Tunnel and the Siloam Inscription",
+      "citations": [
+        "cit-arch-siloam-tunnel",
+        "cit-arch-siloam-tunnel-sayce"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-sennacherib-prism",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sennacherib's Prism (Annals)",
+      "citations": [
+        "cit-arch-sennacherib-prism",
+        "cit-arch-sennacherib-prism-bm"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-hezekiah-bulla",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Bulla of King Hezekiah",
+      "citations": [
+        "cit-arch-hezekiah-bulla",
+        "cit-arch-hezekiah-bulla-mazar"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-jesus-boat",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Galilee Boat (the “Jesus Boat”)",
+      "citations": [
+        "cit-arch-jesus-boat",
+        "cit-dth-discovery-jesus-boat",
+        "cit-dth-galilee-boat"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-babylonian-chronicle",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Babylonian (Nebuchadnezzar) Chronicle, ABC 5",
+      "citations": [
+        "cit-arch-babylonian-chronicle",
+        "cit-dth-neo-babylonian-jerusalem-chronicle"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-lachish-reliefs",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Lachish Reliefs",
+      "citations": [
+        "cit-wikipedia-lachish-reliefs",
+        "cit-wikipedia-siege-of-lachish",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-lachish-letters",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Lachish Letters (ostraca)",
+      "citations": [
+        "cit-wikipedia-lachish-letters",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-kurkh-monolith",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Kurkh Monolith of Shalmaneser III",
+      "citations": [
+        "cit-wikipedia-kurkh-monoliths",
+        "cit-wikipedia-battle-of-qarqar",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-black-obelisk",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Black Obelisk of Shalmaneser III",
+      "citations": [
+        "cit-wikipedia-black-obelisk",
+        "cit-wikipedia-jehu",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "artifact",
+      "id": "artifact-jehoiachin-tablets",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jehoiachin's Rations Tablets",
+      "citations": [
+        "cit-wikipedia-jehoiachin-tablets",
+        "cit-ref-negev-gibson"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "witness",
+      "id": "witness-josephus-james",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Josephus on James, 'brother of Jesus who was called Christ'",
+      "citations": [
+        "cit-wit-josephus-james",
+        "cit-nt-dating",
+        "cit-quran-dating"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "witness",
+      "id": "witness-josephus-baptist",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Josephus on John the Baptist",
+      "citations": [
+        "cit-wit-josephus-baptist",
+        "cit-nt-dating",
+        "cit-quran-dating"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "witness",
+      "id": "witness-tacitus",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Tacitus on 'Christus' and the Christians of Rome",
+      "citations": [
+        "cit-wit-tacitus",
+        "cit-nt-dating",
+        "cit-quran-dating"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "witness",
+      "id": "witness-pliny",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Pliny the Younger on early Christian worship",
+      "citations": [
+        "cit-wit-pliny",
+        "cit-nt-dating"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-syro-ephraimite-war",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Syro-Ephraimite war — Israel and Aram against Judah",
+      "citations": [
+        "cit-wikipedia-syro-ephraimite-war",
+        "cit-thiele-chronology",
+        "cit-scripture-2-kings-16-5-9",
+        "cit-scripture-isaiah-7-1-16",
+        "cit-scripture-2-chronicles-28-5-15"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-qarqar",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The battle of Qarqar (extra-biblical anchor)",
+      "citations": [
+        "cit-wikipedia-battle-of-qarqar",
+        "cit-wikipedia-kurkh-monoliths",
+        "cit-ref-anet",
+        "cit-ref-bright"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-moab-rebellion",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The Moabite war — Mesha's rebellion",
+      "citations": [
+        "cit-wikipedia-mesha-stele",
+        "cit-wikipedia-kir-of-moab",
+        "cit-ref-cos",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-1-1",
+        "cit-scripture-2-kings-3-4-27"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-jehu-coup",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Jehu's coup at Jezreel",
+      "citations": [
+        "cit-wikipedia-jehu",
+        "cit-wikipedia-tel-jezreel",
+        "cit-ref-anet",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-9-1-13",
+        "cit-scripture-2-kings-9-14-37",
+        "cit-scripture-2-kings-10-1-11"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-galilee-tiglath-pileser",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Tiglath-pileser III takes Galilee and Gilead",
+      "citations": [
+        "cit-wikipedia-syro-ephraimite-war",
+        "cit-wikipedia-tel-hazor",
+        "cit-ref-anet",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-15-29",
+        "cit-scripture-1-chronicles-5-26",
+        "cit-scripture-isaiah-9-1-2"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-fall-of-samaria",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The fall of Samaria — the end of the kingdom of Israel",
+      "citations": [
+        "cit-wikipedia-sargon-ii",
+        "cit-wikipedia-samaria-city",
+        "cit-ref-anet",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-17-1-6",
+        "cit-scripture-2-kings-17-22-24",
+        "cit-scripture-2-kings-18-9-12"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-lachish-701",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sennacherib storms Lachish",
+      "citations": [
+        "cit-wikipedia-siege-of-lachish",
+        "cit-wikipedia-sennacherib-campaign",
+        "cit-ref-anet",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-18-13-17",
+        "cit-scripture-2-chronicles-32-9",
+        "cit-scripture-micah-1-13"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-jerusalem-701",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Sennacherib before Jerusalem — the city spared",
+      "citations": [
+        "cit-wikipedia-sennacherib-campaign",
+        "cit-ref-anet",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-18-17-37",
+        "cit-scripture-2-kings-19-32-37",
+        "cit-scripture-isaiah-37-33-38",
+        "cit-scripture-2-chronicles-32-1-23"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-megiddo-609",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The battle of Megiddo — the death of Josiah",
+      "citations": [
+        "cit-wikipedia-megiddo-609",
+        "cit-wikipedia-tel-megiddo",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-23-29-30",
+        "cit-scripture-2-chronicles-35-20-27"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-carchemish",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The battle of Carchemish",
+      "citations": [
+        "cit-wikipedia-battle-of-carchemish",
+        "cit-wikipedia-carchemish",
+        "cit-src-livius-abc4",
+        "cit-src-livius-abc5",
+        "cit-ref-bright",
+        "cit-scripture-jeremiah-46-1-12",
+        "cit-scripture-2-kings-24-7",
+        "cit-scripture-daniel-1-1-4"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-jerusalem-597",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "Nebuchadnezzar takes Jerusalem — the first deportation of the house of David",
+      "citations": [
+        "cit-wikipedia-siege-jerusalem-597",
+        "cit-src-livius-abc5",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-24-10-17",
+        "cit-scripture-2-chronicles-36-9-10",
+        "cit-scripture-ezekiel-1-1-3"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    },
+    {
+      "kind": "battle",
+      "id": "battle-fall-of-jerusalem-586",
+      "confidence": "high",
+      "reviewStatus": "self-reviewed",
+      "summary": "The fall of Jerusalem and the end of the kingdom of Judah",
+      "citations": [
+        "cit-wikipedia-siege-jerusalem-587",
+        "cit-ref-grayson-chronicles",
+        "cit-ref-bright",
+        "cit-scripture-2-kings-25-1-21",
+        "cit-scripture-jeremiah-39-1-10",
+        "cit-scripture-jeremiah-52-4-27",
+        "cit-scripture-lamentations-2-1-9"
+      ],
+      "decision": null,
+      "reviewerNote": null
+    }
+  ]
+}

@@ -14,10 +14,13 @@ historical layers), **guided lessons**, and **quizzes**.
 ## Principles
 
 - Every factual claim carries **citations** and a **confidence level** (`high` / `medium` / `legendary` / `disputed`).
-- **Wikipedia is an orienting link, never the sole authority.** Every cited claim is also backed by a **concrete source** — a primary text (ANET, the Context of Scripture, the Babylonian Chronicles, Josephus, Tacitus), a standard scholarly work (the Anchor Bible Dictionary, Bright, Kitchen, Keener), an excavation report, or a historical-geography reference (Aharoni, the Sacred Bridge atlas). `build:content` **fails** on any claim resting on Wikipedia alone.
+- **Tertiary sources are orienting links, never the sole authority.** Wikipedia, popular encyclopedias, study-Bible maps and devotional sites all count as tertiary. Every cited claim is also backed by a **concrete source** — a primary text (Scripture itself, ANET, the Context of Scripture, the Babylonian Chronicles, Josephus, Tacitus, Strabo), a standard scholarly work (the Anchor Bible Dictionary, Bright, Kitchen, Keener), an excavation report, or a gazetteer (Pleiades, DARE, Aharoni, the Sacred Bridge atlas). `build:content` **fails** on any claim resting on tertiary sources alone.
+- **Every claim carries ≥1 citation** — `high` confidence is not a free pass. A `high` coordinate must further rest on a *place-specific* cite or a `pleiadesId`/`dareId`; a whole-atlas backstop alone fails the build.
+- **Ambiguity is shown, not hidden.** `medium`/`disputed` coordinates must carry ≥2 rival `candidates` or an explicit disputes note.
+- **Route strokes are graded.** Each leg declares `surveyed-road`, `reconstructed-land`, `sea-lane`, or `schematic`, and the map draws each differently so a reconstruction never reads as a survey.
 - Dates are shown as **scholarly ranges**, never false single-year precision.
 - Where scholars or traditions disagree, the app **says so**.
-- Bible text is **public domain** (World English Bible, King James Version), bundled for offline use.
+- Bible text is **public domain** (King James Version, American Standard Version), bundled for offline use.
 - "Cited and reviewed — not definitive."
 
 ## Stack

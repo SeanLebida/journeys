@@ -702,15 +702,47 @@ a {
   text-decoration: none;
 }
 .dispute,
-.citations {
+.citations,
+.geometry-note {
   margin: 0.6rem 0;
   font-size: 0.85rem;
 }
 .dispute > summary,
-.citations > summary {
+.citations > summary,
+.geometry-note > summary {
   cursor: pointer;
   color: var(--link);
   font-weight: 600;
+}
+.geometry-note__list {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+}
+.geometry-note__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+/* Swatches mirror the map stroke grades: solid = surveyed, sparser dashes = weaker claim. */
+.geometry {
+  flex: none;
+  width: 2rem;
+  height: 0;
+  border-top: 3px solid var(--accent, currentColor);
+}
+.geometry--reconstructed-land {
+  border-top-style: dashed;
+}
+.geometry--sea-lane {
+  border-top-style: dashed;
+  opacity: 0.75;
+}
+.geometry--schematic {
+  border-top-style: dotted;
+  opacity: 0.55;
 }
 .dispute > p {
   margin: 0.4rem 0 0;

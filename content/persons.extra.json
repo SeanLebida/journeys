@@ -17,7 +17,10 @@
   ],
   "citations": [
    "cit-ot-abraham",
-   "cit-ot-patriarchal-dating"
+   "cit-ot-patriarchal-dating",
+   "cit-scripture-genesis-12-1",
+   "cit-scripture-genesis-15-6",
+   "cit-scripture-genesis-17-5"
   ]
  },
  {
@@ -37,7 +40,9 @@
   ],
   "citations": [
    "cit-ot-sarah",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-genesis-17-15",
+   "cit-scripture-genesis-23-2"
   ]
  },
  {
@@ -56,7 +61,9 @@
    "Genesis 26:3"
   ],
   "citations": [
-   "cit-ot-isaac"
+   "cit-ot-isaac",
+   "cit-scripture-genesis-21-3",
+   "cit-scripture-genesis-26-3"
   ]
  },
  {
@@ -75,7 +82,9 @@
    "Genesis 32:28"
   ],
   "citations": [
-   "cit-ot-jacob"
+   "cit-ot-jacob",
+   "cit-scripture-genesis-28-12",
+   "cit-scripture-genesis-32-28"
   ]
  },
  {
@@ -95,7 +104,10 @@
    "Genesis 50:20"
   ],
   "citations": [
-   "cit-ot-joseph"
+   "cit-ot-joseph",
+   "cit-scripture-genesis-37-28",
+   "cit-scripture-genesis-41-41",
+   "cit-scripture-genesis-50-20"
   ]
  },
  {
@@ -116,7 +128,10 @@
   ],
   "citations": [
    "cit-ot-moses",
-   "cit-ot-exodus"
+   "cit-ot-exodus",
+   "cit-scripture-exodus-3-10",
+   "cit-scripture-exodus-20-1",
+   "cit-scripture-deuteronomy-34-5"
   ]
  },
  {
@@ -136,7 +151,10 @@
    "Joshua 3:17"
   ],
   "citations": [
-   "cit-ot-joshua"
+   "cit-ot-joshua",
+   "cit-scripture-numbers-27-18",
+   "cit-scripture-joshua-1-2",
+   "cit-scripture-joshua-3-17"
   ]
  },
  {
@@ -158,7 +176,11 @@
   ],
   "citations": [
    "cit-flood-narrative",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-genesis-6-9",
+   "cit-scripture-genesis-6-14-15",
+   "cit-scripture-genesis-8-4",
+   "cit-scripture-genesis-9-29"
   ]
  },
  {
@@ -179,7 +201,10 @@
   ],
   "citations": [
    "cit-wikipedia-saint-stephen",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-6-5",
+   "cit-scripture-acts-6-8",
+   "cit-scripture-acts-7-59-60"
   ]
  },
  {
@@ -201,7 +226,11 @@
   ],
   "citations": [
    "cit-wikipedia-philip-the-evangelist",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-6-5",
+   "cit-scripture-acts-8-6-7",
+   "cit-scripture-acts-8-26",
+   "cit-scripture-acts-21-8-9"
   ]
  },
  {
@@ -222,7 +251,10 @@
   ],
   "citations": [
    "cit-wikipedia-ananias-of-damascus",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-scripture-acts-9-10",
+   "cit-scripture-acts-9-17-18",
+   "cit-scripture-acts-22-12-13"
   ]
  }
 ]

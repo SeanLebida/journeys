@@ -20,9 +20,18 @@ export const CitationKind = z.enum([
   'secondary-scholarly',
   'archaeological',
   'gazetteer',
+  /** Popular encyclopedias, study-Bible maps, blogs — orienting only, never sole concrete source. */
+  'tertiary-popular',
 ]);
 export const LegMode = z.enum(['land', 'sea', 'start', 'turnaround']);
 export const JourneyKind = z.enum(['patriarchal', 'exodus', 'ministry', 'apostolic']);
+/** Per-leg geometry quality for route paths (honest stroke styling + UI caveats). */
+export const GeometryGrade = z.enum([
+  'surveyed-road', // snapped to a published surveyed network (e.g. Itiner-e Roman roads)
+  'reconstructed-land', // curated historical corridor, not survey-grade
+  'sea-lane', // sail-lane reconstruction from ancient notices
+  'schematic', // connector only; no claim of a travelled road
+]);
 
 export const DateRange = z
   .object({
@@ -42,20 +51,17 @@ export const Citation = z.object({
   license: z.string().optional(),
 });
 
-/** A neutrality-aware claim wrapper. */
+/** A neutrality-aware claim wrapper. Every claim needs citations; `high` is not a free pass. */
 const claimOf = <T extends z.ZodTypeAny>(value: T) =>
   z
     .object({
       value,
       confidence: Confidence,
       reviewStatus: ReviewStatus,
-      citations: z.array(z.string()),
+      citations: z.array(z.string()).min(1),
       disputes: LocalizedText.optional(),
     })
     .superRefine((c, ctx) => {
-      if (c.confidence !== 'high' && c.citations.length < 1) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'non-`high` claim needs >=1 citation' });
-      }
       if (c.confidence === 'disputed' && !c.disputes) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: '`disputed` claim needs a `disputes` note' });
       }
@@ -80,7 +86,10 @@ export const Site = z.object({
       }),
     )
     .optional(),
+  /** Pleiades gazetteer place id (https://pleiades.stoa.org/places/<id>). */
   pleiadesId: z.string().optional(),
+  /** Digital Atlas of the Roman Empire place id, when distinct from Pleiades. */
+  dareId: z.string().optional(),
   summary: LocalizedText,
   citations: z.array(z.string()),
 });
@@ -98,6 +107,12 @@ export const RoutePath = z.object({
   journeyId: z.string().min(1),
   /** legs[k] joins stop k to stop k+1; each an array of [lon, lat] incl. both endpoints. */
   legs: z.array(z.array(z.tuple([z.number(), z.number()])).min(2)).min(1),
+  /**
+   * Geometry quality per leg (same length as `legs` when present). Surveyed
+   * Roman-road snaps vs reconstructed land corridors vs sea lanes vs schematic
+   * connectors — drives map stroke style and the trace-panel caveat.
+   */
+  legGrades: z.array(GeometryGrade).optional(),
   note: LocalizedText.optional(),
   citations: z.array(z.string()),
 });
@@ -372,8 +387,10 @@ export const Bundle = z.object({
 
 export type TConfidence = z.infer<typeof Confidence>;
 export type TReviewStatus = z.infer<typeof ReviewStatus>;
+export type TGeometryGrade = z.infer<typeof GeometryGrade>;
 export type TDateRange = z.infer<typeof DateRange>;
 export type TCitation = z.infer<typeof Citation>;
+export type TCitationKind = z.infer<typeof CitationKind>;
 export type TSite = z.infer<typeof Site>;
 export type TJourney = z.infer<typeof Journey>;
 export type TRoutePath = z.infer<typeof RoutePath>;

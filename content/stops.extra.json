@@ -29,7 +29,8 @@
   },
   "citations": [
    "cit-simon-peter",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-galatians-2-11"
   ]
  },
  {
@@ -62,7 +63,8 @@
   },
   "citations": [
    "cit-simon-peter",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-1-peter-5-13"
   ]
  },
  {
@@ -93,7 +95,8 @@
   },
   "citations": [
    "cit-john-ephesus",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-revelation-1-11"
   ]
  },
  {
@@ -124,7 +127,8 @@
   },
   "citations": [
    "cit-patmos",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-revelation-1-9"
   ]
  },
  {
@@ -154,7 +158,8 @@
   },
   "citations": [
    "cit-philip-hierapolis",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-8-5"
   ]
  },
  {
@@ -187,7 +192,8 @@
   },
   "citations": [
    "cit-mark-alexandria",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-12-25"
   ]
  },
  {
@@ -214,7 +220,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-ur",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-11-31"
   ]
  },
  {
@@ -242,7 +249,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-haran",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-1",
+   "cit-scripture-genesis-12-4"
   ]
  },
  {
@@ -270,7 +279,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-shechem",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-6",
+   "cit-scripture-genesis-12-7"
   ]
  },
  {
@@ -298,7 +309,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-bethel",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-8",
+   "cit-scripture-genesis-28-19"
   ]
  },
  {
@@ -326,7 +339,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-machpelah",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-13-18",
+   "cit-scripture-genesis-23-19"
   ]
  },
  {
@@ -354,7 +369,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-beersheba",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-21-31",
+   "cit-scripture-genesis-26-33"
   ]
  },
  {
@@ -383,7 +400,9 @@
   "citations": [
    "cit-ot-exodus",
    "cit-ot-pi-ramesses",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-exodus-1-11",
+   "cit-scripture-exodus-12-37"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -415,7 +434,9 @@
   "citations": [
    "cit-ot-mount-sinai",
    "cit-ot-exodus",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-exodus-19-1",
+   "cit-scripture-exodus-20-1"
   ],
   "disputes": {
    "en": "Both the Exodus date and the identity of Mount Sinai are disputed; the traditional Jebel Musa is used with alternatives noted on the site."
@@ -447,7 +468,9 @@
   "citations": [
    "cit-ot-kadesh-barnea",
    "cit-ot-exodus-route",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-numbers-13-26",
+   "cit-scripture-numbers-20-1"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -479,7 +502,9 @@
   "citations": [
    "cit-ot-mount-nebo",
    "cit-ot-exodus",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-deuteronomy-34-1",
+   "cit-scripture-deuteronomy-34-5"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -510,7 +535,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-joshua",
-   "cit-ot-jericho"
+   "cit-ot-jericho",
+   "cit-scripture-joshua-3-17",
+   "cit-scripture-joshua-6-20"
   ],
   "disputes": {
    "en": "The archaeology of Jericho's fall (dating of the destruction at Tell es-Sultan) is much debated and does not cleanly fit either Exodus date."
@@ -543,7 +570,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-flight-into-egypt",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-matthew-2-13",
+   "cit-scripture-matthew-2-14",
+   "cit-scripture-matthew-2-15",
+   "cit-scripture-hosea-11-1"
   ],
   "disputes": {
    "en": "The flight into Egypt is attested only in Matthew and its route and Egyptian location are traditional; the mapped point (Old Cairo) is one of several Coptic-tradition sites, not an archaeologically fixed spot."
@@ -576,7 +607,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-finding-in-the-temple",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-luke-2-41",
+   "cit-scripture-luke-2-46",
+   "cit-scripture-luke-2-49",
+   "cit-scripture-luke-2-52"
   ]
  },
  {
@@ -613,7 +648,10 @@
    "cit-shuruppak",
    "cit-ziusudra",
    "cit-flood-narrative",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-genesis-6-14-16",
+   "cit-scripture-genesis-6-22",
+   "cit-scripture-genesis-7-11-12"
   ]
  },
  {
@@ -654,7 +692,10 @@
    "cit-durupinar",
    "cit-ark-scans",
    "cit-durupinar-geology",
-   "cit-mount-judi"
+   "cit-mount-judi",
+   "cit-scripture-genesis-8-4",
+   "cit-scripture-genesis-8-18-20",
+   "cit-scripture-genesis-9-12-17"
   ]
  },
  {
@@ -685,7 +726,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-flood-narrative",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-genesis-9-28",
+   "cit-scripture-genesis-11-2-4"
   ]
  }
 ]
