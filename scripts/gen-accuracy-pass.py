@@ -133,7 +133,7 @@ PLEIADES = {
 
 CANDIDATES = {
     "site-emmaus": [
-        ("Emmaus-Nicopolis (Amwas/Latrun) — strongest ancient attestation (Eusebius); ~160 stadia", 31.8389, 34.9889, "medium"),
+        ("Emmaus-Nicopolis (Amwas/Latrun) — strongest ancient attestation (Eusebius); ~160 stadia", 31.83889, 34.98889, "medium"),
         ("el-Qubeibeh — Franciscan tradition; ~60-stadia reading", 31.8400, 35.1360, "legendary"),
         ("Motza / Colonia — Josephus 'Ammaus'; ~60 stadia W of Jerusalem", 31.7936, 35.1631, "disputed"),
     ],
@@ -184,7 +184,7 @@ CANDIDATES = {
         ("er-Ramtha region — alternate Gilead proposals", 32.5592, 36.0069, "disputed"),
     ],
     "site-gibeah": [
-        ("Tell el-Ful — traditional Saul's Gibeah", 31.8236, 35.2311, "disputed"),
+        ("Tell el-Ful — traditional Saul's Gibeah", 31.82278, 35.23111, "disputed"),
         ("Jeba' / Geba region alternatives", 31.8550, 35.2600, "disputed"),
     ],
     "site-galilee-mountain": [

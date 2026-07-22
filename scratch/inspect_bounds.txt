@@ -1,6 +1,0 @@
-Polygon 0 bounds:
-  Lon: 34.200269 to 34.556032
-  Lat: 31.211449 to 31.583141
-Polygon 1 bounds:
-  Lon: 34.867153 to 35.572536
-  Lat: 31.34491 to 32.54264

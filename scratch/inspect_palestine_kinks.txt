@@ -1,4 +1,0 @@
-Palestine poly 0 ring 0 self-intersections: 0
-
-Palestine poly 1 ring 0 self-intersections: 0
-

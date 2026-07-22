@@ -82,6 +82,7 @@ describe('expandJourneyPath', () => {
     expect(fr[1]).toBeLessThan(0.6);
     expect(activeStopFromFractions(fr, 0)).toBe(0);
     expect(activeStopFromFractions(fr, fr[1])).toBe(1);
+    expect(activeStopFromFractions(fr, fr[1] - 1e-8)).toBe(1);
     expect(activeStopFromFractions(fr, fr[1] - 0.01)).toBe(0);
     expect(activeStopFromFractions(fr, 1)).toBe(2);
   });
@@ -112,7 +113,7 @@ describe('expandJourneyPath', () => {
     it('does not re-enter the tie once progress has moved past it', () => {
       // The ping-pong bug: returning [1,2] here sends the walk back to stop 1,
       // which dwells, advances, resets, and repeats forever.
-      expect(stopRangeAtFraction(fr, 0.2500001)).toEqual([2, 2]);
+      expect(stopRangeAtFraction(fr, 0.2505)).toEqual([2, 2]);
     });
 
     it('reports a single stop where there is no tie', () => {

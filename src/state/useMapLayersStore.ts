@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { platformStorage } from './persistAdapter';
-import { BASEMAP_LAYERS, DEFAULT_OFF_LAYERS } from '../map/style';
+import { BASEMAP_LAYERS } from '../map/style';
 
 export type BasemapLayerKey = keyof typeof BASEMAP_LAYERS;
 
@@ -14,14 +14,26 @@ interface MapLayersState extends LayerVisibility {
   setLabelsAlwaysOn: (on: boolean) => void;
 }
 
-// Offline stylized layers default ON; online imagery basemaps (satellite,
-// streets, ancient map) and the historical-boundary overlays default OFF so
-// the app stays offline-first and uncluttered out of the box — users opt in
-// per layer, and the choice persists.
-const DEFAULT_VISIBILITY: LayerVisibility = Object.keys(BASEMAP_LAYERS).reduce(
-  (acc, key) => ({ ...acc, [key]: !(DEFAULT_OFF_LAYERS as readonly string[]).includes(key) }),
-  {} as LayerVisibility,
-);
+// Explicit default visibility: Topography, Country borders & names, Rivers, Lakes,
+// Coastlines, and Coordinate grid are ON by default. All online overlays and
+// specialized historical layers default OFF.
+export const DEFAULT_VISIBILITY: LayerVisibility = {
+  land: true,
+  topography: true,
+  borders: true,
+  rivers: true,
+  lakes: true,
+  coastline: true,
+  graticule: true,
+  satellite: false,
+  streets: false,
+  ancientMap: false,
+  borders1949: false,
+  mandate: false,
+  conflict: false,
+  kingdomIsrael: false,
+  kingdomJudah: false,
+};
 
 // Cross-mode basemap layer toggles: the map is a single persistent instance
 // shared by every mode (see MapProvider), so "hide country borders" made in

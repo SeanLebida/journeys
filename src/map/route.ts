@@ -123,7 +123,7 @@ export function stopFractions(path: JourneyPath): number[] {
 /** Index of the stop most recently reached at fraction `t` (fractions from stopFractions). */
 export function activeStopFromFractions(fractions: number[], t: number): number {
   let idx = 0;
-  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) idx = i;
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) idx = i;
   return idx;
 }
 
@@ -139,13 +139,12 @@ export function activeStopFromFractions(fractions: number[], t: number): number 
  */
 export function stopRangeAtFraction(fractions: number[], t: number): [first: number, last: number] {
   let last = 0;
-  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) last = i;
-  // Group only the stops sitting *at* this fraction. Once the traveler has
-  // moved even slightly beyond it, those co-located stops are behind and must
-  // not be re-entered: the dwell would restart, advance, reset, and restart
-  // again — ping-ponging on one stop forever.
-  if (Math.abs(fractions[last] - t) > 1e-9) return [last, last];
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) last = i;
+  // Group only the stops sitting *at* this exact fraction. Once progress moves past it,
+  // those co-located stops are behind us: return single stop `last` so we do not
+  // re-enter the tie walk or drop tieOffset back to first.
+  if (t > fractions[last] + 1e-7 || Math.abs(fractions[last] - t) > 1e-7) return [last, last];
   let first = last;
-  while (first > 0 && Math.abs(fractions[first - 1] - fractions[last]) <= 1e-9) first--;
+  while (first > 0 && Math.abs(fractions[first - 1] - fractions[last]) <= 1e-7) first--;
   return [first, last];
 }

@@ -277,8 +277,36 @@ export function setSelectedBattleArea(map: MapLibreMap, battleId: string | null)
   map.setFilter(ATLAS_LAYERS.battleAreaSelected, ['==', ['get', 'battleId'], battleId ?? ''] as never);
 }
 
+const RASTER_TARGET_OPACITY: Record<string, number> = {
+  'topography-raster': 0.35,
+  'satellite-raster': 1.0,
+  'streets-raster': 1.0,
+  'ancient-map-raster': 1.0,
+};
+
 export function setLayerVisible(map: MapLibreMap, layerId: string, visible: boolean): void {
-  if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
+  if (!map.getLayer(layerId)) return;
+  const type = map.getLayer(layerId)?.type;
+
+  if (type === 'raster') {
+    const targetOpacity = RASTER_TARGET_OPACITY[layerId] ?? 1.0;
+    if (visible) {
+      map.setLayoutProperty(layerId, 'visibility', 'visible');
+      map.setPaintProperty(layerId, 'raster-opacity-transition', { duration: 500 });
+      map.setPaintProperty(layerId, 'raster-opacity', targetOpacity);
+    } else {
+      map.setPaintProperty(layerId, 'raster-opacity-transition', { duration: 500 });
+      map.setPaintProperty(layerId, 'raster-opacity', 0);
+      setTimeout(() => {
+        if (map.getLayer(layerId) && map.getPaintProperty(layerId, 'raster-opacity') === 0) {
+          map.setLayoutProperty(layerId, 'visibility', 'none');
+        }
+      }, 500);
+    }
+    return;
+  }
+
+  map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
 }
 
 /** Filter sites + battles to those whose date span overlaps [min,max] and confidence is allowed. */

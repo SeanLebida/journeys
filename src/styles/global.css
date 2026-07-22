@@ -685,6 +685,20 @@ a {
 .confidence--disputed {
   color: var(--c-disputed);
 }
+.stop-panel__event-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-heading, var(--text));
+  line-height: 1.3;
+}
+.stop-panel__site-subtitle {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  font-weight: 400;
+}
 
 /* ---- Shared content UI ---- */
 .visually-hidden {
@@ -830,6 +844,34 @@ a {
   gap: 0.6rem;
   width: 100%;
 }
+.trace-controls__status-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.trace-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.trace-status-badge--animating {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  animation: pulse-animating 1.5s infinite ease-in-out;
+}
+@keyframes pulse-animating {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
 .trace-controls__main {
   display: flex;
   align-items: center;
@@ -849,19 +891,16 @@ a {
   .trace-controls {
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap; /* let the scrub drop to a second line if space is tight */
+    flex-wrap: wrap;
     gap: 0.8rem;
   }
   .trace-controls__main {
-    /* Shrink + wrap instead of forcing one rigid line — at borderline widths a
-       nowrap row is a hair wider than the available map space and spills past the
-       pill's right edge. Wrapping keeps every control inside the background. */
     flex: 1 1 auto;
     flex-wrap: wrap;
     min-width: 0;
   }
   .trace-controls__scrub-group {
-    flex: 1 1 220px; /* real basis so the slider has width and the bar sizes to fit */
+    flex: 1 1 220px;
   }
 }
 .trace-controls button {
@@ -876,40 +915,19 @@ a {
 .trace-controls button:hover {
   border-color: var(--accent);
 }
-.trace-controls button.trace-controls__play {
+.trace-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.trace-controls button.trace-controls__next {
   background: var(--accent);
   color: var(--accent-contrast);
   border-color: var(--accent);
   font-weight: 500;
 }
-.trace-controls button.trace-controls__play:hover {
+.trace-controls button.trace-controls__next:hover:not(:disabled) {
   background: color-mix(in srgb, var(--accent) 85%, black);
   border-color: color-mix(in srgb, var(--accent) 85%, black);
-}
-.trace-controls__speed {
-  font: inherit;
-  padding: 0.4rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  background: var(--surface);
-  color: var(--text);
-  cursor: pointer;
-}
-.trace-controls__speed:hover {
-  border-color: var(--accent);
-}
-.trace-controls__pause-stops {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  user-select: none;
-}
-.trace-controls__pause-stops input {
-  margin: 0;
-  cursor: pointer;
 }
 .trace-controls__scrub {
   flex: 1 1 auto;
@@ -1207,28 +1225,99 @@ a {
   color: var(--text-muted);
 }
 
+/* ---- Floating map layer widget ---- */
+.map-floating-layers {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 100;
+  width: 290px;
+  pointer-events: auto;
+}
+@media (max-width: 1023px) {
+  .map-floating-layers {
+    top: 4.5rem;
+    right: 0.8rem;
+    width: calc(100vw - 1.6rem);
+    max-width: 320px;
+  }
+}
+
 /* ---- Atlas controls ---- */
-.atlas-toggles {
+.atlas-toggles-expandable {
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 0.6rem 0.8rem;
+  background: var(--surface-raised);
   margin: 0.75rem 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  transition: all 0.2s ease;
+}
+.atlas-toggles-expandable[open] {
+  box-shadow: var(--shadow-2);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+.atlas-toggles__summary {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.9rem;
-  min-width: 0; /* a <fieldset> defaults to min-content — let it shrink to the panel */
-  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  user-select: none;
+  background: color-mix(in srgb, var(--surface-raised) 90%, var(--accent));
+  transition: background 0.15s ease;
 }
-.atlas-toggles legend {
+.atlas-toggles__summary:hover {
+  background: color-mix(in srgb, var(--surface-raised) 80%, var(--accent));
+}
+.atlas-toggles__summary-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.atlas-toggles__icon {
+  font-size: 1rem;
+}
+.atlas-toggles__badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--r-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.atlas-toggles__content {
+  padding: 0.8rem 0.9rem;
+  display: grid;
+  gap: 0.8rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.atlas-toggles__group-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  font-size: 0.85rem;
-  padding: 0 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
 }
-.atlas-toggles label {
+.atlas-toggles__group-items {
+  display: grid;
+  gap: 0.4rem;
+}
+.atlas-toggles__checkbox-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.9rem;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+}
+.atlas-toggles__checkbox-label input {
+  margin: 0;
+  cursor: pointer;
 }
 .atlas-period {
   display: block;

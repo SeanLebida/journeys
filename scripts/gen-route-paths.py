@@ -164,6 +164,7 @@ ROUTE_META = {
     "journey-apostolic-traditions": ("Traditions travel the customary Mediterranean sail lanes and the Maeander valley road; routes are illustrative.", ["cit-route-orbis"]),
     "journey-abraham": ("The Fertile Crescent caravan arc: up the Euphrates by Babylon and Mari to Haran, then south by Aleppo, Hamath and Damascus into Canaan's ridge road — not a straight line across the Arabian desert.", ["cit-route-orbis", "cit-route-kings-highway"]),
     "journey-exodus": ("The traditional southern itinerary (Succoth, the Bitter Lakes crossing region, the west-Sinai coast to Jebel Musa), north to Kadesh, then the detour around Edom to the King's Highway and Mount Nebo. The route is disputed; this is the traditional reconstruction.", ["cit-route-kings-highway", "cit-route-orbis"]),
+    "journey-noah": ("Follows the Genesis flood narrative progression from Shuruppak down the Mesopotamian basin to the Mount Ararat landing, then south to the plain of Shinar (Babylon).", ["cit-route-orbis"]),
 }
 
 GENERIC_NOTE = " Waypoints are drawn at map resolution along the documented route; the path is illustrative between attested points."

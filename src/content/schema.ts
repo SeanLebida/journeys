@@ -134,6 +134,7 @@ export const Stop = z.object({
   journeyId: z.string(),
   order: z.number().int().nonnegative(),
   siteId: z.string(),
+  title: LocalizedText.optional(),
   legMode: LegMode,
   dateRange: DateRange,
   eventSummary: LocalizedText,

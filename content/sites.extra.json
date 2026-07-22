@@ -12,8 +12,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.3089,
-    "lon": 26.5489
+    "lat": 37.30944,
+    "lon": 26.54778
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -45,8 +45,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.9244,
-    "lon": 29.1289
+    "lat": 37.92583,
+    "lon": 29.12944
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -77,8 +77,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.2001,
-    "lon": 29.9187
+    "lat": 31.18194,
+    "lon": 29.89667
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -109,8 +109,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 30.9626,
-    "lon": 46.1032
+    "lat": 30.96278,
+    "lon": 46.10306
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -171,8 +171,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.8642,
-    "lon": 39.0308
+    "lat": 36.86472,
+    "lon": 39.03083
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -203,8 +203,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.2136,
-    "lon": 35.2814
+    "lat": 32.21361,
+    "lon": 35.28139
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -237,8 +237,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.9308,
-    "lon": 35.2233
+    "lat": 31.93083,
+    "lon": 35.22333
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -294,8 +294,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.5247,
-    "lon": 35.1108
+    "lat": 31.52472,
+    "lon": 35.11083
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -326,8 +326,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.2456,
-    "lon": 34.84
+    "lat": 31.24472,
+    "lon": 34.84083
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -358,8 +358,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 30.8,
-    "lon": 31.8333
+    "lat": 30.79972,
+    "lon": 31.82139
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -419,8 +419,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 28.5395,
-    "lon": 33.9749
+    "lat": 28.53944,
+    "lon": 33.97528
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -491,8 +491,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 30.6889,
-    "lon": 34.4167
+    "lat": 30.645,
+    "lon": 34.42167
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -548,8 +548,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7683,
-    "lon": 35.7256
+    "lat": 31.76833,
+    "lon": 35.72556
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -582,8 +582,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 30.0059,
-    "lon": 31.2306
+    "lat": 30.00556,
+    "lon": 31.23028
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -642,8 +642,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7667,
-    "lon": 45.35
+    "lat": 31.76861,
+    "lon": 45.34861
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -700,8 +700,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 39.7016,
-    "lon": 44.2983
+    "lat": 39.70167,
+    "lon": 44.29833
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -779,8 +779,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5364,
-    "lon": 44.4209
+    "lat": 32.54222,
+    "lon": 44.42111
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -867,8 +867,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.9522,
-    "lon": 34.8896
+    "lat": 31.95222,
+    "lon": 34.88972
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -899,8 +899,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.05417,
-    "lon": 34.75222
+    "lat": 32.05444,
+    "lon": 34.75167
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -928,8 +928,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.3,
-    "lon": 35.47
+    "lat": 31.25,
+    "lon": 35.53333
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -988,8 +988,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8017,
-    "lon": 35.8092
+    "lat": 31.8,
+    "lon": 35.80778
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1045,8 +1045,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.6189,
-    "lon": 36.1058
+    "lat": 32.61889,
+    "lon": 36.10583
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1102,8 +1102,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8711,
-    "lon": 35.4442
+    "lat": 31.87111,
+    "lon": 35.44417
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1134,8 +1134,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.9169,
-    "lon": 35.2618
+    "lat": 31.91694,
+    "lon": 35.26194
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -1194,8 +1194,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8497,
-    "lon": 35.1856
+    "lat": 31.84833,
+    "lon": 35.18528
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1229,7 +1229,7 @@
   "coordinates": {
    "value": {
     "lat": 33.0175,
-    "lon": 35.5683
+    "lon": 35.56833
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1260,8 +1260,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.687,
-    "lon": 35.3906
+    "lat": 32.68722,
+    "lon": 35.39278
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1294,8 +1294,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5503,
-    "lon": 35.3567
+    "lat": 32.55028,
+    "lon": 35.35667
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1328,8 +1328,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8236,
-    "lon": 35.2311
+    "lat": 31.82278,
+    "lon": 35.23111
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -1388,8 +1388,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8853,
-    "lon": 35.2161
+    "lat": 31.88472,
+    "lon": 35.21667
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1445,8 +1445,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.1047,
-    "lon": 34.9303
+    "lat": 32.10472,
+    "lon": 34.93028
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1479,8 +1479,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8697,
-    "lon": 35.2736
+    "lat": 31.86972,
+    "lon": 35.27361
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1513,8 +1513,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.6906,
-    "lon": 34.9575
+    "lat": 31.69639,
+    "lon": 34.95778
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1547,8 +1547,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5333,
-    "lon": 35.4167
+    "lat": 32.53333,
+    "lon": 35.41667
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1581,8 +1581,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.9544,
-    "lon": 35.9344
+    "lat": 31.95472,
+    "lon": 35.93528
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1615,7 +1615,7 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.1833,
+    "lat": 32.18333,
     "lon": 35.69
    },
    "confidence": "disputed",
@@ -1672,8 +1672,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.9333,
-    "lon": 35.2333
+    "lat": 31.93333,
+    "lon": 35.23333
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -1732,8 +1732,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.85,
-    "lon": 35.2333
+    "lat": 31.84861,
+    "lon": 35.2325
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1766,8 +1766,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7522,
-    "lon": 34.9767
+    "lat": 31.75139,
+    "lon": 34.97528
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1800,8 +1800,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.2764,
-    "lon": 35.19
+    "lat": 32.27694,
+    "lon": 35.18944
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1832,7 +1832,7 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.7789,
+    "lat": 32.77889,
     "lon": 35.7
    },
    "confidence": "disputed",
@@ -1892,8 +1892,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 35.7439,
-    "lon": 36.3339
+    "lat": 35.74389,
+    "lon": 36.33389
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1950,8 +1950,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5644,
-    "lon": 36.0106
+    "lat": 32.56444,
+    "lon": 36.01056
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -2010,8 +2010,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5583,
-    "lon": 35.3278
+    "lat": 32.55833,
+    "lon": 35.32778
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -2044,8 +2044,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.1811,
-    "lon": 35.7047
+    "lat": 31.18111,
+    "lon": 35.70472
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -2078,8 +2078,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.585,
-    "lon": 35.1839
+    "lat": 32.58556,
+    "lon": 35.18472
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -2110,8 +2110,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.83,
-    "lon": 38.015
+    "lat": 36.82944,
+    "lon": 38.01528
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -2142,8 +2142,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 33.2486,
-    "lon": 35.6522
+    "lat": 33.24889,
+    "lon": 35.6525
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -2174,8 +2174,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.565,
-    "lon": 34.8489
+    "lat": 31.56528,
+    "lon": 34.84889
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
