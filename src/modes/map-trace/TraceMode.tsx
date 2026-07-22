@@ -7,8 +7,9 @@ import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
+import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import { activeStopFromFractions, expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
+import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ConfidenceBadge, DisputeNote, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
@@ -84,7 +85,8 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
 
   const stops = useMemo(() => (journey ? bundle.stopsFor(journey.id) : []), [bundle, journey]);
-  const legGrades = journey ? bundle.routeForJourney(journey.id)?.legGrades : undefined;
+  const route = useMemo(() => (journey ? bundle.routeForJourney(journey.id) : undefined), [bundle, journey]);
+  const legGrades = route?.legGrades;
   const { path, fractions, stopCoords, stopIds, traceStops, names } = useMemo(() => {
     const c: LngLat[] = [];
     const ids: string[] = [];
@@ -101,10 +103,9 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
     });
     // Expand along the authored historical route (Roman roads, caravan arcs,
     // sail lanes); journeys without route data keep straight segments.
-    const route = journey ? bundle.routeForJourney(journey.id) : undefined;
     const p = expandJourneyPath(c, route?.legs as LngLat[][] | undefined);
     return { path: p, fractions: stopFractions(p), stopCoords: c, stopIds: ids, traceStops: ts, names: n };
-  }, [bundle, stops, journey]);
+  }, [bundle, stops, route]);
 
   useEffect(() => {
     setActiveJourney(journeyId);
@@ -124,26 +125,34 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
         <p className="journey-trace__date">{journey.dateRange.display.en}</p>
         <p>{journey.summary.en}</p>
         {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
-        <RouteGeometryNote grades={legGrades} />
+        <RouteGeometryNote
+          grades={legGrades}
+          note={route?.note?.en}
+          citations={route?.citations}
+          bundle={bundle}
+        />
         {bundle.videosForJourney(journey.id).map((v) => (
           <VideoEmbed key={v.id} video={v} />
         ))}
-        <LayerPanel />
         <ActiveStopPanel bundle={bundle} stops={stops} />
       </ModePanel>
+      <div className="map-floating-layers">
+        <LayerPanel />
+      </div>
       <div className="trace-controls-fixed" style={{ '--accent': journey.color } as React.CSSProperties}>
-        <TraceControls stopCount={stops.length} fractions={fractions} />
+        <TraceControls stopCount={stops.length} fractions={fractions} stops={stops} bundle={bundle} />
       </div>
     </div>
   );
 }
 
-/** Name label at every stop on the traced route; clicking one scrubs straight to it. */
+/** Name label at every stop on the traced route; clicking one jumps straight to it. */
 function useStopLabels(coords: LngLat[], fractions: number[], names: string[], stopIds: string[], color: string): void {
   const { mapRef, ready } = useMap();
   const setProgress = useJourneyStore((s) => s.setProgress);
-  const pause = useJourneyStore((s) => s.pause);
+  const setCurrentStopIdx = useJourneyStore((s) => s.setCurrentStopIdx);
   const activeStopId = useJourneyStore((s) => s.activeStopId);
+  const labelsAlwaysOn = useMapLayersStore((s) => s.labelsAlwaysOn);
 
   // Keep references to all label button elements.
   const elementsRef = useMemo(() => ({ current: [] as HTMLButtonElement[] }), []);
@@ -160,34 +169,38 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       el.textContent = `${i + 1}. ${names[i] ?? ''}`;
       el.setAttribute('aria-label', `Jump to stop ${i + 1}: ${names[i]}`);
       el.addEventListener('click', () => {
-        pause();
-        // Scrub to this stop's fraction along the detailed historical path.
+        setCurrentStopIdx(i);
         setProgress(fractions[i] ?? 0);
       });
       elementsRef.current.push(el);
       return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
     });
 
-    // Initial active class, style, and visibility application
+    // Sequentially reveal waypoint name labels as the journey progresses, or show all if labelsAlwaysOn is true
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
-      
-      // Match the display value CSS expects: the active label uses -webkit-box so
-      // its two-line clamp applies; others are a single inline-block badge.
-      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
+      const isVisible = labelsAlwaysOn || isReached;
+
+      el.style.display = !isVisible ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
+      el.classList.toggle('reached', isReached);
+
       if (isActive) {
         el.style.backgroundColor = color;
         el.style.borderColor = color;
         el.style.color = '#ffffff';
         el.style.boxShadow = `0 0 8px ${color}80`;
+        el.style.opacity = '1';
+        el.style.zIndex = '10';
       } else {
         el.style.backgroundColor = '';
         el.style.borderColor = '';
         el.style.color = '';
         el.style.boxShadow = '';
+        el.style.opacity = '0.9';
+        el.style.zIndex = '2';
       }
     });
 
@@ -195,74 +208,94 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       markers.forEach((m) => m.remove());
       elementsRef.current = [];
     };
-  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
+  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, setCurrentStopIdx, color, activeStopId, labelsAlwaysOn, elementsRef]);
 
-  // Update active class, styles, and visibility when activeStopId changes
+  // Update active class, styles, and visibility when activeStopId or labelsAlwaysOn changes
   useEffect(() => {
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
-      
-      // Match the display value CSS expects: the active label uses -webkit-box so
-      // its two-line clamp applies; others are a single inline-block badge.
-      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
+      const isVisible = labelsAlwaysOn || isReached;
+
+      el.style.display = !isVisible ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
+      el.classList.toggle('reached', isReached);
+
       if (isActive) {
         el.style.backgroundColor = color;
         el.style.borderColor = color;
         el.style.color = '#ffffff';
         el.style.boxShadow = `0 0 8px ${color}80`;
+        el.style.opacity = '1';
+        el.style.zIndex = '10';
       } else {
         el.style.backgroundColor = '';
         el.style.borderColor = '';
         el.style.color = '';
         el.style.boxShadow = '';
+        el.style.opacity = '0.9';
+        el.style.zIndex = '2';
       }
     });
-  }, [activeStopId, stopIds, color, elementsRef]);
+  }, [activeStopId, stopIds, color, labelsAlwaysOn, elementsRef]);
 }
 
-function TraceControls({ stopCount, fractions }: { stopCount: number; fractions: number[] }) {
-  const { progress, playing, play, pause, setProgress, reset, playbackSpeed, setPlaybackSpeed, pauseAtStops, setPauseAtStops } = useJourneyStore();
-  // Match the on-map active-stop label exactly: derive the index from the same
-  // path-length fractions, not a linear `progress * (stopCount-1)` guess (stops
-  // aren't evenly spaced along the route, so the linear version drifts).
-  const currentStop = activeStopFromFractions(fractions, progress) + 1;
+function TraceControls({ stopCount, fractions, stops, bundle }: { stopCount: number; fractions: number[]; stops?: TStop[]; bundle?: BundleIndex }) {
+  const { progress, currentStopIdx, targetStopIdx, setCurrentStopIdx, setTargetStopIdx, setProgress, reset } = useJourneyStore();
+  const isTravelling = targetStopIdx !== null;
+  const currentStop = (targetStopIdx ?? currentStopIdx) + 1;
+
+  const goToPrevStop = () => {
+    if (currentStopIdx <= 0 || isTravelling) return;
+    setTargetStopIdx(currentStopIdx - 1);
+  };
+
+  const goToNextStop = () => {
+    if (currentStopIdx >= stopCount - 1 || isTravelling) return;
+    setTargetStopIdx(currentStopIdx + 1);
+  };
+
+  const activeStop = stops?.[targetStopIdx ?? currentStopIdx];
+  const siteName = activeStop && bundle ? bundle.site(activeStop.siteId)?.ancientName.en : undefined;
+  const activeStopTitle = activeStop?.title?.en ?? siteName ?? `Stop ${currentStop}`;
+
+  const statusMessage = isTravelling
+    ? `🚶 Travelling to ${activeStopTitle}…`
+    : currentStopIdx >= stopCount - 1
+    ? `✓ Journey Complete (${stopCount}/${stopCount})`
+    : `📍 ${activeStopTitle} (${currentStop} of ${stopCount})`;
+
   return (
     <div className="trace-controls">
+      <div className="trace-controls__status-bar">
+        <span className={`trace-status-badge ${isTravelling ? 'trace-status-badge--animating' : ''}`}>
+          {statusMessage}
+        </span>
+      </div>
       <div className="trace-controls__main">
         <button
           type="button"
-          onClick={() => (playing ? pause() : play())}
-          aria-pressed={playing}
-          className="trace-controls__play"
+          onClick={goToPrevStop}
+          disabled={currentStopIdx <= 0 || isTravelling}
+          title="Previous Stop"
+          aria-label="Previous stop"
         >
-          {playing ? '⏸ Pause' : '▶ Play'}
+          ⏮ Prev
+        </button>
+        <button
+          type="button"
+          onClick={goToNextStop}
+          disabled={currentStopIdx >= stopCount - 1 || isTravelling}
+          title="Next Stop"
+          aria-label="Next stop"
+          className="trace-controls__next"
+        >
+          Next ⏭
         </button>
         <button type="button" onClick={reset}>
           ↺ Reset
         </button>
-        <select
-          value={playbackSpeed}
-          onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
-          className="trace-controls__speed"
-          aria-label="Playback speed"
-        >
-          <option value={0.25}>0.25x</option>
-          <option value={0.5}>0.5x</option>
-          <option value={1}>1.0x (Default)</option>
-          <option value={1.5}>1.5x</option>
-          <option value={2}>2.0x</option>
-        </select>
-        <label className="trace-controls__pause-stops">
-          <input
-            type="checkbox"
-            checked={pauseAtStops}
-            onChange={(e) => setPauseAtStops(e.target.checked)}
-          />
-          <span>Pause at stops</span>
-        </label>
       </div>
       <div className="trace-controls__scrub-group">
         <label className="trace-controls__scrub">
@@ -271,9 +304,16 @@ function TraceControls({ stopCount, fractions }: { stopCount: number; fractions:
             type="range"
             min={0}
             max={1}
-            step={0.001}
+            step="any"
             value={progress}
-            onChange={(e) => setProgress(Number(e.target.value))}
+            onChange={(e) => {
+              setTargetStopIdx(null);
+              const t = Number(e.target.value);
+              setProgress(t);
+              let idx = 0;
+              for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) idx = i;
+              setCurrentStopIdx(idx);
+            }}
           />
         </label>
         <span className="trace-controls__count">{currentStop}/{stopCount}</span>
@@ -318,7 +358,16 @@ function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[
               </div>
               <div className="stop-timeline__content">
                 <header className="stop-panel__head">
-                  <h4>{site?.ancientName.en ?? stop.siteId}</h4>
+                  <div>
+                    {stop.title?.en ? (
+                      <>
+                        <h4 className="stop-panel__event-title">{stop.title.en}</h4>
+                        <span className="stop-panel__site-subtitle">{site?.ancientName.en ?? stop.siteId}</span>
+                      </>
+                    ) : (
+                      <h4>{site?.ancientName.en ?? stop.siteId}</h4>
+                    )}
+                  </div>
                   <ConfidenceBadge confidence={stop.confidence} />
                 </header>
                 {site?.modernLocation && <p className="stop-panel__modern">{site.modernLocation.en}</p>}

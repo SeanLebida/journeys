@@ -24,8 +24,15 @@ export function AerialViewButton({ lat, lon, name }: { lat: number; lon: number;
   const [restore, setRestore] = useState<{ center: [number, number]; zoom: number; satellite: boolean } | null>(null);
 
   // If this button unmounts while active (navigating away mid-aerial), clear the
-  // shared marker so it doesn't linger on the map surface.
-  useEffect(() => () => setAerialSite(null), [setAerialSite]);
+  // shared marker and turn satellite mode back off so it doesn't leak to the next stop.
+  useEffect(() => {
+    return () => {
+      setAerialSite(null);
+      if (restore) {
+        setLayerVisible('satellite', restore.satellite);
+      }
+    };
+  }, [setAerialSite, setLayerVisible, restore]);
 
   if (!ready) return null;
   const active = restore !== null;

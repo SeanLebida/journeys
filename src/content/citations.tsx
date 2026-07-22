@@ -26,24 +26,42 @@ export function DisputeNote({ text }: { text?: string }) {
 
 /**
  * Honest per-journey geometry caveat: names every grade the drawn path uses,
- * so a reconstructed corridor or schematic connector is never read as a
- * surveyed road just because it renders as a confident line.
+ * explains the historical/archaeological basis (including water crossings),
+ * and lists route citations.
  */
-export function RouteGeometryNote({ grades }: { grades?: TGeometryGrade[] }) {
+export function RouteGeometryNote({
+  grades,
+  note,
+  citations,
+  bundle,
+}: {
+  grades?: TGeometryGrade[];
+  note?: string;
+  citations?: string[];
+  bundle?: BundleIndex;
+}) {
   const { t } = useTranslation();
   const used = [...new Set(grades ?? [])];
-  if (used.length === 0) return null;
+  if (used.length === 0 && !note && (!citations || citations.length === 0)) return null;
   return (
     <details className="geometry-note">
       <summary>{t('sourcing.geometry.title')}</summary>
-      <ul className="geometry-note__list">
-        {used.map((g) => (
-          <li key={g}>
-            <span className={`geometry geometry--${g}`} />
-            {t(`sourcing.geometry.${g}`)}
-          </li>
-        ))}
-      </ul>
+      <div className="geometry-note__content" style={{ marginTop: '0.4rem' }}>
+        {note && <p className="geometry-note__text" style={{ margin: '0 0 0.4rem', color: 'var(--text-muted)' }}>{note}</p>}
+        {used.length > 0 && (
+          <ul className="geometry-note__list">
+            {used.map((g) => (
+              <li key={g}>
+                <span className={`geometry geometry--${g}`} />
+                {t(`sourcing.geometry.${g}`)}
+              </li>
+            ))}
+          </ul>
+        )}
+        {citations && citations.length > 0 && bundle && (
+          <Citations ids={citations} bundle={bundle} />
+        )}
+      </div>
     </details>
   );
 }

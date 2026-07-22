@@ -94,7 +94,6 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
       window.removeEventListener('resize', sync);
     };
     // settle/applyHeight are stable enough; re-running on mount is sufficient.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const nearestSnap = useCallback((heightPx: number, areaH: number): SheetSnap => {

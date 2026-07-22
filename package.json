@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run build:content && tsc --noEmit && vite build",
     "preview": "vite preview",
     "build:content": "tsx scripts/build-content.ts",
     "typecheck": "tsc --noEmit",

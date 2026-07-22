@@ -108,7 +108,7 @@ export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const sa
 /** Layers that ship OFF by default: the online imagery basemaps plus the
  * historical-boundary overlays (users opt in to see Israel's founding-era
  * outlines drawn over the present-day borders). */
-export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate', 'kingdomIsrael', 'kingdomJudah'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
+export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate', 'kingdomIsrael', 'kingdomJudah', 'conflict'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
 
 // M1 ships a self-contained, offline, no-API-key style: real coastlines/land +
 // country borders (Natural Earth, public domain) + a computed graticule. The
@@ -374,18 +374,21 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         type: 'raster',
         source: 'satellite',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: BASEMAP_LAYERS.streets,
         type: 'raster',
         source: 'streets',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: BASEMAP_LAYERS.ancientMap,
         type: 'raster',
         source: 'ancientMap',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: 'country-shading',

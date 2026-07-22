@@ -291,7 +291,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
             const color = darkRef.current ? feature.properties?.colorDark : feature.properties?.colorLight;
 
             let desc = 'Modern-day international borders.';
-            let displayName = countryName;
+            const displayName = countryName;
 
             if (countryName === 'Israel') {
               desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. Toward the West Bank, the solid purple line of the 2002 security barrier marks the operative boundary Israel defines on the ground; the dashed 1949 armistice (Green) lines are not defined by Israel as international borders.';
