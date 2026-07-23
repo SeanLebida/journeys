@@ -181,6 +181,18 @@ a {
   opacity: 0.7;
 }
 
+/* The traveller dot on a journey. A DOM marker rather than a circle layer so it
+   moves in lockstep with the camera that follows it — see layers/trace.ts. */
+.trace-traveler {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--traveler-color, var(--accent));
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  pointer-events: none; /* never intercept a map click */
+}
+
 /* Custom country border details popup */
 .country-border-popup {
   z-index: 1000;
@@ -580,6 +592,11 @@ a {
   }
   .mode-panel--page {
     position: relative;
+    /* `.mode-panel` sets `bottom: var(--dock-h)` for the absolutely positioned
+       sheet. Left in place here it becomes a *relative* offset and drags the whole
+       card up by the dock's height — the heading ended up above the top of the
+       viewport, with no scroll that could reach it. */
+    inset: auto;
     height: auto;
     max-height: calc(100% - 1.5rem - var(--dock-h));
     width: calc(100% - 2rem);
@@ -1377,6 +1394,11 @@ a {
 .stop-actions {
   display: grid;
   gap: 0.5rem;
+  /* Both of these are `auto`-min-size by default, which lets the nowrap "Continue
+     to <long place name>" button push the whole transport row wider than the
+     sheet and shove the restart button off the right edge. Zeroing the automatic
+     minimum is what actually lets the button's own `min-width: 0` shrink it. */
+  min-width: 0;
 }
 .stop-rail {
   list-style: none;
@@ -1427,6 +1449,7 @@ a {
   display: flex;
   align-items: stretch;
   gap: 0.4rem;
+  min-width: 0;
 }
 .stop-actions__step {
   flex: none;
@@ -2286,9 +2309,23 @@ a {
    desktop side-panel layout, tune the floating panel and give interactive
    controls comfortable tap targets. */
 @media (max-width: 560px) {
+  /* No width override here. The mobile sheet is `left: 0; right: 0` and must span
+     the viewport: a `calc(100% - 1rem)` width left it anchored at the left edge
+     with a 16px strip of bare map down its right side, and clipped whatever sat
+     at the right of its content (the footer transport, the scroll gutter). The
+     Home/Credits card gets its own inset from `.mode-panel--page`. */
   .mode-panel {
-    width: calc(100% - 1rem);
     padding: 1rem;
+    border-radius: var(--r-md) var(--r-md) 0 0;
+  }
+  /* Match the panel's flat 1rem padding — the footer's own `clamp(1rem, 4vw, …)`
+     resolves a fraction of a pixel wider here and bled past the sheet's edge. */
+  .mode-panel__footer {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+  }
+  /* The page card floats clear of every edge, so it keeps all four corners. */
+  .mode-panel--page {
     border-radius: var(--r-md);
   }
   .mode-panel__title {
