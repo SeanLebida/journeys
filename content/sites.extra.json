@@ -30,7 +30,7 @@
    "cit-dth-patmos",
    "cit-dth-john-exiled-to-patmos"
   ],
-  "pleiadesId": "599866"
+  "pleiadesId": "599872"
  },
  {
   "id": "site-hierapolis",
@@ -62,7 +62,7 @@
    "cit-philip-hierapolis",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "638866"
+  "pleiadesId": "638860"
  },
  {
   "id": "site-alexandria",
@@ -128,7 +128,7 @@
    "cit-ot-ur-debate",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "912964",
+  "pleiadesId": "912985",
   "candidates": [
    {
     "label": {
@@ -188,7 +188,7 @@
    "cit-ot-haran",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "658457"
+  "pleiadesId": "658427"
  },
  {
   "id": "site-shechem-ot",
@@ -216,6 +216,7 @@
     "en": "Downgraded from high: coordinate currently rests on a whole-atlas gazetteer backstop without a place-specific gazetteer id or excavation locus. Pin remains useful but not survey-grade."
    }
   },
+  "pleiadesId": "678403",
   "summary": {
    "en": "Abraham's first altar site in Canaan (Genesis 12:6-7) and a recurring covenant place through Jacob and Joshua. The excavated Middle-Bronze city at Tell Balata includes a massive fortress-temple."
   },
@@ -304,14 +305,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "687915",
   "summary": {
    "en": "Abraham bought the cave of Machpelah as a burial place for Sarah (Genesis 23); tradition holds Abraham, Isaac, Jacob and their wives are entombed there, beneath the Herodian-era enclosure still standing today."
   },
   "citations": [
    "cit-ot-machpelah",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "687941"
+  ]
  },
  {
   "id": "site-beersheba-ot",
@@ -336,14 +337,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "687846",
   "summary": {
    "en": "The southern frontier of the patriarchs, associated with Abraham's and Isaac's wells and covenants (Genesis 21, 26); 'from Dan to Beersheba' marked Israel's extent. The Iron-Age town at Tel Be'er Sheva has a famous horned altar."
   },
   "citations": [
    "cit-ot-beersheba",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "687918"
+  ]
  },
  {
   "id": "site-goshen-rameses",
@@ -404,7 +405,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "905314398"
  },
  {
   "id": "site-mount-sinai",
@@ -561,6 +563,7 @@
     "en": "Downgraded from high: coordinate currently rests on a whole-atlas gazetteer backstop without a place-specific gazetteer id or excavation locus. Pin remains useful but not survey-grade."
    }
   },
+  "pleiadesId": "563265622",
   "summary": {
    "en": "The ridge east of the Jordan from which Moses viewed the promised land and where he died (Deuteronomy 34); a Byzantine memorial church with famous mosaics crowns the summit today."
   },
@@ -627,7 +630,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "727082"
  },
  {
   "id": "site-shuruppak",
@@ -642,8 +646,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.76861,
-    "lon": 45.34861
+    "lat": 31.77736,
+    "lon": 45.50976
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -685,7 +689,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "326150788"
  },
  {
   "id": "site-ararat-landing",
@@ -700,8 +705,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 39.70167,
-    "lon": 44.29833
+    "lat": 39.7019,
+    "lon": 44.2983
    },
    "confidence": "disputed",
    "reviewStatus": "self-reviewed",
@@ -721,7 +726,7 @@
     "label": {
      "en": "Greater Mount Ararat (traditional peak, 5,137 m)"
     },
-    "lat": 39.7016,
+    "lat": 39.7019,
     "lon": 44.2983,
     "confidence": "legendary",
     "citations": [
@@ -731,7 +736,7 @@
    },
    {
     "label": {
-     "en": "Durupınar formation, near Üzengili (GPS 39.4406° N, 44.2347° E) — GPR scans 2019, soil analyses 2022–2024"
+     "en": "Durupınar formation on Mount Tendürek, near Üzengili — 29 km south of Ararat (GPS 39.4406° N, 44.2347° E) — GPR scans 2019, soil analyses 2022–2024"
     },
     "lat": 39.4406,
     "lon": 44.2347,
@@ -744,10 +749,10 @@
    },
    {
     "label": {
-     "en": "Mount Cudi (Cudi Dağı) — Syriac, Quranic and early tradition"
+     "en": "Mount Cudi (Cudi Dağı, 2,089 m) — Syriac, Quranic and early tradition"
     },
-    "lat": 37.3639,
-    "lon": 42.4561,
+    "lat": 37.36944,
+    "lon": 42.34417,
     "confidence": "legendary",
     "citations": [
      "cit-mount-judi",
@@ -755,6 +760,7 @@
     ]
    }
   ],
+  "pleiadesId": "660563243",
   "summary": {
    "en": "Where 'the ark rested … upon the mountains of Ararat' (Genesis 8:4). Ararat is biblical Urartu, the mountain country around Lake Van. Tradition since the Middle Ages favors Greater Mount Ararat; the Durupınar formation nearby has drawn recent ground-penetrating-radar and soil studies whose ark claims geologists dispute as a natural syncline; Mount Cudi carries the oldest extra-biblical landing tradition."
   },
@@ -821,7 +827,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "893951"
  },
  {
   "id": "site-nain",
@@ -884,7 +891,7 @@
    "cit-wikipedia-lod",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "687954"
+  "pleiadesId": "687953"
  },
  {
   "id": "site-joppa",
@@ -909,14 +916,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "687931",
   "summary": {
    "en": "The ancient Mediterranean port of Judea (Jonah's embarkation point, Jonah 1:3). In Acts, Peter raised the disciple Tabitha (Dorcas) from death here (Acts 9:36-43), stayed with Simon the tanner, and on the housetop received the vision of the sheet that opened the gospel to the Gentiles (Acts 10). The old city of Jaffa preserves the site."
   },
   "citations": [
    "cit-wikipedia-jaffa",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "687953"
+  ]
  },
  {
   "id": "site-valley-of-siddim",
@@ -1030,7 +1037,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "697662"
  },
  {
   "id": "site-edrei",
@@ -1119,7 +1127,7 @@
    "cit-ot-jericho",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "687949"
+  "pleiadesId": "687917"
  },
  {
   "id": "site-ai",
@@ -1238,14 +1246,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "779967430",
   "summary": {
    "en": "The largest Canaanite city of the land (~80 ha), seat of Jabin, head of the northern coalition crushed at the waters of Merom — 'and he burnt Hazor with fire' (Joshua 11:11-13). The tell's Late Bronze destruction layer, with burned palace and mutilated cult statues, is central to the conquest debate; the city rose again under Solomon (1 Kings 9:15) and fell to Tiglath-pileser III in 732 BC (2 Kings 15:29)."
   },
   "citations": [
    "cit-wikipedia-tel-hazor",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "678184"
+  ]
  },
  {
   "id": "site-mount-tabor",
@@ -1273,6 +1281,7 @@
     "en": "Downgraded from high: coordinate currently rests on a whole-atlas gazetteer backstop without a place-specific gazetteer id or excavation locus. Pin remains useful but not survey-grade."
    }
   },
+  "pleiadesId": "678419",
   "summary": {
    "en": "The dome-shaped mountain where Barak mustered ten thousand of Naphtali and Zebulun at Deborah's word, descending on Sisera's nine hundred iron chariots as the Kishon swept them away (Judges 4-5)."
   },
@@ -1430,7 +1439,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "666067876"
  },
  {
   "id": "site-aphek-ebenezer",
@@ -1810,14 +1820,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "678370",
   "summary": {
    "en": "Capital of the northern kingdom from Omri onward: Ahab's ivory house, Ben-hadad's failed siege (1 Kings 20), Elisha's famine siege lifted overnight (2 Kings 6-7), and at last the three-year Assyrian siege that ended the kingdom of Israel in 722 BC (2 Kings 17). Excavated palace quarter, ivories, and the Samaria ostraca survive."
   },
   "citations": [
    "cit-wikipedia-samaria-city",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "687961"
+  ]
  },
  {
   "id": "site-aphek-golan",
@@ -1909,7 +1919,6 @@
    "cit-wikipedia-tell-qarqur",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "668331",
   "candidates": [
    {
     "label": {
@@ -1935,7 +1944,8 @@
      "cit-ref-sacred-bridge"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "995604669"
  },
  {
   "id": "site-ramoth-gilead",
@@ -2088,14 +2098,14 @@
     "cit-ref-sacred-bridge"
    ]
   },
+  "pleiadesId": "678266",
   "summary": {
    "en": "The chariot city guarding the great trunk road — fortified by Solomon (1 Kings 9:15), and the field where Josiah, intercepting Pharaoh Necho II's march to the Euphrates in 609 BC, was mortally wounded (2 Kings 23:29). Its twenty-plus superimposed cities made 'Har Megiddo' — Armageddon — a byword for battle."
   },
   "citations": [
    "cit-wikipedia-tel-megiddo",
    "cit-ref-sacred-bridge"
-  ],
-  "pleiadesId": "678270"
+  ]
  },
  {
   "id": "site-carchemish",
@@ -2127,7 +2137,7 @@
    "cit-wikipedia-carchemish",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "658415"
+  "pleiadesId": "658465"
  },
  {
   "id": "site-dan",
@@ -2159,7 +2169,7 @@
    "cit-wikipedia-tel-dan",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "678114"
+  "pleiadesId": "678109"
  },
  {
   "id": "site-lachish",
@@ -2191,6 +2201,6 @@
    "cit-wikipedia-lachish",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "687955"
+  "pleiadesId": "687951"
  }
 ]

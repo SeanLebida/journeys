@@ -342,7 +342,7 @@
    "en": "Durupınar site, near Üzengili, Doğubayazıt district, Ağrı Province, Türkiye — GPS 39.4406° N, 44.2347° E"
   },
   "corroborates": {
-   "en": "A boat-shaped formation about 160 m long — close to the ark's 300 cubits (Genesis 6:15). Ground-penetrating-radar surveys in 2019 reported parallel linear reflectors the team reads as possible buried structure, and 2022–2024 soil samples were reported to show elevated organic matter and clay differences inside the formation versus outside. Advocates present these as consistent with a decayed wooden vessel."
+   "en": "A boat-shaped formation about 160 m (538 ft) long, on the flank of Mount Tendürek, its outline loosely echoing the ark's 300 cubits (Genesis 6:15). The independent Noah's Ark Scans team (led by Andrew Jones) reports that ground-penetrating-radar surveys from 2019 onward show linear, right-angled reflectors — with later re-analysis describing angular features to about 6 m depth, three stacked layers read as decks, and a ~13 m central corridor — and that soil samples from 22 points (2022–2024) hold roughly double the organic matter inside the formation versus outside, with pH and potassium shifts the team reads as consistent with decayed wood. Advocates present these as a buried, decayed wooden vessel."
   },
   "dateRange": {
    "startYear": 2019,
@@ -355,10 +355,11 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "disputes": {
-   "en": "None of the survey results are peer-reviewed or independently replicated, and mainstream geologists (Collins & Fasold 1996) identify the formation as a doubly plunging syncline — a natural rock structure — with no petrified wood present. Shown as a documented claim, not an established find."
+   "en": "None of these survey results are peer-reviewed or independently replicated. A 1960 archaeological dig at the site turned up only soil and rock, and mainstream geologists (Collins & Fasold 1996) identify the formation as a doubly plunging syncline — a natural structure whose 'boat ribs' are concentrations of limonite and magnetite in steeply inclined sedimentary beds — with no petrified wood present. Shown as a documented claim, not an established find."
   },
   "citations": [
    "cit-ark-scans",
+   "cit-durupinar-radar",
    "cit-durupinar",
    "cit-durupinar-geology"
   ]

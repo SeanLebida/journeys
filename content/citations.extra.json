@@ -1744,7 +1744,18 @@
   "url": "https://noahsarkscans.com/",
   "kind": "archaeological",
   "note": {
-   "en": "Claims by an independent research team; not peer-reviewed. Presented here as a documented claim, not an established find."
+   "en": "Claims by an independent research team (led by Andrew Jones); not peer-reviewed. Covers the 2019-onward GPR surveys and 2022–2024 soil sampling. Presented here as a documented claim, not an established find."
+  }
+ },
+ {
+  "id": "cit-durupinar-radar",
+  "source": {
+   "en": "Jerusalem Post, 'Durupinar radar scans reveal hidden structures linked to Noah's Ark' (2024)"
+  },
+  "url": "https://www.jpost.com/archaeology/archaeology-around-the-world/article-854083",
+  "kind": "tertiary-popular",
+  "note": {
+   "en": "Popular reporting of the Noah's Ark Scans team's radar re-analysis (angular structures ~6 m deep, a ~13 m central corridor). Not peer-reviewed."
   }
  },
  {
