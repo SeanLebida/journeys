@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSheetStore, type SheetSnap } from '../state/useSheetStore';
 
 /**
  * Draggable bottom-sheet behavior for the mobile mode panel.
@@ -14,8 +15,12 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * (the trace/lesson playback pill) can ride just above the sheet's top edge.
  * Above `lg` the hook is inert — the panel is the fixed desktop sidebar and no
  * inline height/var is written.
+ *
+ * Modes can also drive the sheet through `useSheetStore.requestSnap` (trace does
+ * this to swap between its travelling and arrived layouts); the resting snap is
+ * mirrored back into the same store.
  */
-export type SheetSnap = 'peek' | 'half' | 'full';
+export type { SheetSnap };
 
 const SNAP_FRACTION: Record<SheetSnap, number> = { peek: 0.14, half: 0.5, full: 0.92 };
 const SNAP_ORDER: SheetSnap[] = ['peek', 'half', 'full'];
@@ -71,6 +76,7 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
       const area = areaOf();
       if (!area) return;
       setSnap(next);
+      useSheetStore.getState().setSnap(next);
       area.dataset.sheetSnap = next;
       applyHeight(area.clientHeight * SNAP_FRACTION[next]);
     },
@@ -95,6 +101,19 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
     };
     // settle/applyHeight are stable enough; re-running on mount is sufficient.
   }, []);
+
+  // Obey snap requests from the active mode (trace's travelling/arrived swap).
+  // Keyed on `seq`, not the snap value, so a repeat request still moves a sheet
+  // the reader has since dragged elsewhere.
+  const request = useSheetStore((s) => s.request);
+  const requestRef = useRef(request);
+  requestRef.current = request;
+  const requestSeq = request?.seq ?? 0;
+  useEffect(() => {
+    const req = requestRef.current;
+    if (!isSheet || !req) return;
+    settle(req.snap);
+  }, [requestSeq, isSheet, settle]);
 
   const nearestSnap = useCallback((heightPx: number, areaH: number): SheetSnap => {
     const frac = heightPx / areaH;

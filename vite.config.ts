@@ -19,7 +19,10 @@ export default defineConfig({
       // Bible SQLite DB, and the sql.js wasm. The DB is ~10 MB so the workbox
       // file-size cap is raised accordingly.
       workbox: {
-        globPatterns: ['**/*.{js,css,html,wasm,woff2}', 'dist-content/**/*.{json,sqlite}'],
+        // `pbf` covers the self-hosted map glyph ranges (~1.9 MB) — without them
+        // precached, symbol layers would silently lose their labels offline on
+        // web. Native builds bundle them in the app package regardless.
+        globPatterns: ['**/*.{js,css,html,wasm,woff2,pbf}', 'dist-content/**/*.{json,sqlite}'],
         maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
@@ -65,7 +68,7 @@ export default defineConfig({
       output: {
         // MapLibre is large and stable; isolate it so the app chunk stays small
         // and the map vendor bundle caches across releases.
-        manualChunks: { maplibre: ['maplibre-gl', 'pmtiles'] },
+        manualChunks: { maplibre: ['maplibre-gl'] },
       },
     },
   },

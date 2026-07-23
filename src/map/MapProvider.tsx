@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl';
-import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { applyMapTone, applyMapBorders, buildBaseStyle, BASEMAP_LAYERS } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
@@ -20,12 +19,6 @@ interface MapContextValue {
 }
 
 const MapContext = createContext<MapContextValue | null>(null);
-
-// Register the pmtiles:// protocol once per page so the modern vector basemap
-// (added with its asset) is a drop-in source. Harmless before any pmtiles
-// source exists.
-const pmtilesProtocol = new Protocol();
-maplibregl.addProtocol('pmtiles', pmtilesProtocol.tile);
 
 function prefersReducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

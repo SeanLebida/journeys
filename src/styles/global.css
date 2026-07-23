@@ -63,11 +63,26 @@ a {
   border-radius: var(--r-sm);
 }
 
-/* ---- App shell ---- */
+/* ---- App shell ----
+   The tab bar is an overlay dock, not a flex row: the map area is always the
+   full shell, so stowing the dock during journey travel is a pure transform
+   with no reflow (and therefore no MapLibre container resize mid-animation).
+   `--dock-h` is the room the dock occupies — every bottom-anchored overlay
+   (sheet, playback pills, page cards) offsets itself by it, and it collapses
+   to 0 when the dock is stowed. */
 .app-shell {
+  /* 48px content box comfortably clears a 44px tap target plus its padding;
+     keep this in lockstep with `.tabbar`'s own height. */
+  --dock-h: calc(48px + 0.8rem + var(--safe-bottom));
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 1023px) {
+  .app-shell[data-dock='stowed'] {
+    --dock-h: 0px;
+  }
 }
 
 .skip-link {
@@ -452,23 +467,26 @@ a {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: var(--dock-h);
   z-index: 12;
   pointer-events: auto;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 50%;
-  max-height: 100%;
+  /* Never let the `full` snap run under the notch. */
+  max-height: calc(100% - var(--dock-h) - var(--safe-top) - 0.5rem);
   overflow: hidden;
+  transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1), bottom 0.32s cubic-bezier(0.22, 1, 0.36, 1);
   background: color-mix(in srgb, var(--surface) 96%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border);
   border-radius: var(--r-lg) var(--r-lg) 0 0;
   box-shadow: var(--shadow-2);
-  padding: 0 clamp(1rem, 4vw, 1.5rem) calc(var(--safe-bottom) + 1rem);
-  transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  /* The dock now carries the safe-area inset, so the sheet only needs its own
+     breathing room at the bottom. */
+  padding: 0 clamp(1rem, 4vw, 1.5rem) 0.75rem;
 }
 .mode-panel.is-dragging {
   transition: none; /* follow the finger 1:1 while dragging */
@@ -513,7 +531,7 @@ a {
     position: absolute;
     left: 1.5rem;
     top: calc(var(--safe-top) + 1.5rem);
-    bottom: 1.5rem;
+    bottom: calc(1.5rem + var(--dock-h));
     right: auto;
     margin: 0;
     width: 420px;
@@ -555,14 +573,21 @@ a {
    a backdrop there, so they render as a normal scrolling card on mobile. Desktop
    keeps the shared sidebar layout. */
 @media (max-width: 1023px) {
+  /* Sheet chrome sits on the map; when the dock is stowed the sheet inherits
+     responsibility for clearing the home indicator. */
+  .app-shell[data-dock='stowed'] .mode-panel {
+    padding-bottom: calc(0.75rem + var(--safe-bottom));
+  }
   .mode-panel--page {
     position: relative;
     height: auto;
-    max-height: calc(100% - 1.5rem);
+    max-height: calc(100% - 1.5rem - var(--dock-h));
     width: calc(100% - 2rem);
     max-width: var(--maxw);
     margin: clamp(0.75rem, 2vw, 1.5rem) auto;
     margin-top: calc(var(--safe-top) + clamp(0.75rem, 2vw, 1.5rem));
+    /* Clear the overlay dock — this card is in flow, the dock is not. */
+    margin-bottom: calc(var(--dock-h) + clamp(0.75rem, 2vw, 1.5rem));
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     padding: clamp(1rem, 4vw, 1.5rem);
@@ -573,9 +598,35 @@ a {
 .mode-panel--loading {
   color: var(--text-muted);
 }
+.mode-panel__heading {
+  flex: 0 0 auto;
+}
+.mode-panel__eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+.mode-panel__eyebrow .backlink {
+  margin: 0;
+}
 .mode-panel__title {
   margin: 0 0 0.75rem;
   font-size: 1.5rem;
+  line-height: 1.2;
+}
+/* Pinned under the scrolling body so the primary action never scrolls away. */
+.mode-panel__footer {
+  flex: 0 0 auto;
+  margin: 0 calc(-1 * clamp(1rem, 4vw, 1.5rem));
+  padding: 0.6rem clamp(1rem, 4vw, 1.5rem) 0;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(to top, var(--surface) 70%, transparent);
+}
+@media (min-width: 1024px) {
+  .mode-panel__footer {
+    margin: 0 calc(-1 * clamp(1rem, 1.5vw, 1.75rem));
+    padding-inline: clamp(1rem, 1.5vw, 1.75rem);
+  }
 }
 .mode-panel__body {
   color: var(--text-muted);
@@ -685,21 +736,6 @@ a {
 .confidence--disputed {
   color: var(--c-disputed);
 }
-.stop-panel__event-title {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-heading, var(--text));
-  line-height: 1.3;
-}
-.stop-panel__site-subtitle {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 0.15rem;
-  font-weight: 400;
-}
-
 /* ---- Shared content UI ---- */
 .visually-hidden {
   position: absolute;
@@ -1022,7 +1058,7 @@ a {
 @media (min-width: 1024px) {
   .trace-controls-fixed,
   .lesson-progress-fixed {
-    bottom: 2rem;
+    bottom: calc(2rem + var(--dock-h));
     left: calc(50% + 210px + 0.75rem); /* Centered in map space to the right of the 420px sidebar */
     transform: translateX(-50%);
     /* Shrink-to-fit the content (scrub has a fixed basis, so it can't collapse),
@@ -1038,15 +1074,19 @@ a {
      reachable as the sheet grows and never collides with the description. */
   .trace-controls-fixed,
   .lesson-progress-fixed {
-    bottom: calc(var(--sheet-h, 50%) + 0.6rem);
+    bottom: calc(var(--sheet-h, 50%) + var(--dock-h) + 0.6rem);
     transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
   }
   /* At the full snap the reader is focused on text — retire the pill so it
      doesn't cover the map up near the top of the screen. */
-  .journey-trace-layout[data-sheet-snap='full'] .trace-controls-fixed,
   .lesson-player-layout[data-sheet-snap='full'] .lesson-progress-fixed {
     opacity: 0;
     pointer-events: none;
+  }
+  /* Trace's controls moved into the sheet footer + travel strip on mobile;
+     the pill is desktop-only there. */
+  .trace-controls-fixed {
+    display: none;
   }
 }
 .stop-panel {
@@ -1054,101 +1094,399 @@ a {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
-.stop-timeline {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+/* ---- Trace: travelling / arrived ------------------------------------------
+   The mobile journey UI is a two-phase machine driven by `data-phase` on the
+   layout. Travelling strips the map of every overlay it can spare and hands the
+   screen to the animation (the dock stows in App, the sheet drops to `peek` in
+   TraceMode); arriving brings the stop back up to be read. Desktop keeps the
+   playback pill and ignores all of this. */
+.map-floating-layers {
+  transition: opacity 0.25s ease;
 }
-.stop-timeline__title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.journey-trace-layout[data-phase='travelling'] .map-floating-layers {
+  opacity: 0;
+  pointer-events: none;
 }
-.stop-timeline__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.25rem;
+@media (max-width: 1023px) {
+  /* Cinematic edge falloff while in flight — lets the white HUD text sit on a
+     guaranteed dark ground whatever the basemap underneath is doing. */
+  .journey-trace-layout::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background:
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 22%),
+      linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 26%);
+  }
+  .journey-trace-layout[data-phase='travelling']::after {
+    opacity: 1;
+  }
+  /* Mid-leg the footer's transport is meaningless and the sheet is at `peek`
+     with no room for it — the travel strip is the only control that applies. */
+  .journey-trace-layout[data-phase='travelling'] .mode-panel__footer {
+    display: none;
+  }
+  /* At `peek` the body would show a clipped sliver of the *departed* stop,
+     which reads as breakage next to the strip naming where we're headed. Fade
+     it out and let the peek sheet be just its handle and heading. */
+  .mode-panel__body {
+    transition: opacity 0.2s ease;
+  }
+  .journey-trace-layout[data-phase='travelling'] .mode-panel__body {
+    opacity: 0;
+  }
+  /* Push MapLibre's zoom control clear of the travel strip while it is up. */
+  .maplibregl-ctrl-top-right {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .app-shell[data-dock='stowed'] .maplibregl-ctrl-top-right {
+    transform: translateY(7.5rem);
+  }
+  /* The layer widget is `position: fixed` at z-index 100, so at the `full` snap
+     it floated on top of the text instead of over the map it belongs to. There
+     is no map left to configure at that height — retire it, same as the pill. */
+  .journey-trace-layout[data-sheet-snap='full'] .map-floating-layers,
+  .lesson-player-layout[data-sheet-snap='full'] .map-floating-layers {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
-.stop-timeline__item {
-  display: flex;
-  gap: 1.25rem;
-  position: relative;
-}
-.stop-timeline__indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 28px;
-  flex-shrink: 0;
-}
-.stop-timeline__number {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--surface-raised);
-  border: 2px solid var(--border);
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: all 0.2s ease;
-}
-.stop-timeline__connector {
-  width: 2px;
-  flex-grow: 1;
-  background: var(--border);
-  margin-top: 0.25rem;
-  margin-bottom: -1.5rem;
-  z-index: 1;
-}
-.stop-timeline__content {
-  flex-grow: 1;
-  min-width: 0;
-  padding: 0.8rem 1rem;
+
+/* ---- Travel strip (mobile HUD while a leg is in flight) ----
+   Deliberately light-on-dark in both themes: it is a heads-up display over the
+   map, not a surface of the app's own chrome. */
+.travel-strip {
+  position: absolute;
+  top: calc(var(--safe-top) + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 26;
+  width: calc(100% - 1.6rem);
+  max-width: 460px;
+  pointer-events: auto;
+  padding: 0.6rem 0.85rem 0.55rem;
+  color: #fff;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--r-md);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  transition: all 0.25s ease;
+  box-shadow: var(--shadow-2);
+  animation: travel-strip-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.stop-timeline__item--active .stop-timeline__number {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-contrast);
+@keyframes travel-strip-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
-.stop-timeline__item--active .stop-timeline__content {
-  background: var(--surface-raised);
-  border-color: var(--accent);
-  box-shadow: var(--shadow-1);
+.travel-strip__route {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
 }
-.stop-timeline__item--completed .stop-timeline__number {
-  background: color-mix(in srgb, var(--accent) 15%, var(--surface-raised));
-  border-color: var(--accent);
+.travel-strip__from,
+.travel-strip__to {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.travel-strip__from {
+  color: rgba(255, 255, 255, 0.62);
+}
+.travel-strip__arrow {
+  flex: none;
   color: var(--accent);
 }
-.stop-timeline__details {
-  margin-top: 0.4rem;
-  font-size: 0.88rem;
+.travel-strip__meter {
+  height: 3px;
+  margin: 0.45rem 0 0.4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
 }
-.stop-timeline__details summary {
+.travel-strip__meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.travel-strip__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.travel-strip__mode {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.66);
+}
+/* Only the leg mode is title-cased — capitalizing the whole line turned the
+   stop counter into "2 Of 6". */
+.travel-strip__mode-name {
+  text-transform: capitalize;
+}
+.travel-strip__skip {
+  flex: none;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-height: 32px;
+  padding: 0.25rem 0.7rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
   cursor: pointer;
-  color: var(--link);
-  font-weight: 600;
-  outline: none;
-  font-size: 0.8rem;
 }
-.stop-timeline__details summary:hover {
-  text-decoration: underline;
+.travel-strip__skip:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---- Stop reader (the arrived-at stop, and only it) ---- */
+.stop-reader__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+.stop-reader__index {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.stop-reader__site {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.stop-reader__modern {
+  margin: 0.1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.stop-reader__date {
+  margin: 0.1rem 0 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+.stop-reader__summary {
+  margin: 0.7rem 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* ---- Secondary disclosures under the stop (history, journey context) ---- */
+.journey-so-far,
+.journey-about {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+.journey-so-far > summary,
+.journey-about > summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.journey-so-far > summary:hover,
+.journey-about > summary:hover {
+  color: var(--accent);
+}
+.journey-so-far__list {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.6rem 0 0;
+  padding: 0;
+}
+.journey-so-far__item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.journey-so-far__item:hover {
+  border-color: var(--accent);
+}
+.journey-so-far__item--current {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-raised));
+}
+.journey-so-far__num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.journey-so-far__body {
+  display: grid;
+  min-width: 0;
+}
+.journey-so-far__body strong {
+  font-size: 0.88rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.journey-so-far__date {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* ---- Sheet-footer transport ---- */
+.stop-actions {
+  display: grid;
+  gap: 0.5rem;
+}
+.stop-rail {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stop-rail::-webkit-scrollbar {
+  display: none;
+}
+/* 30×32 keeps every pip over the 24×24 AA target-size minimum (WCAG 2.5.8)
+   without the rail eating the reading area at the `half` snap. */
+.stop-rail__pip {
+  flex: none;
+  display: block;
+  width: 30px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.stop-rail__pip::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 12px auto;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.stop-rail__pip--past::before {
+  background: color-mix(in srgb, var(--accent) 55%, var(--border));
+}
+.stop-rail__pip--current::before {
+  background: var(--accent);
+  transform: scale(1.5);
+}
+.stop-rail__pip:disabled {
+  cursor: default;
+}
+.stop-actions__row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.4rem;
+}
+.stop-actions__step {
+  flex: none;
+  width: 44px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.stop-actions__step:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.stop-actions__step:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.stop-actions__go {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-weight: 500;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.stop-actions__go:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 85%, black);
+}
+.stop-actions__go:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.stop-actions__go--done {
+  color: var(--text);
+  background: var(--surface-raised);
+  border-color: var(--border);
+}
+/* Desktop drives the journey from the floating pill, so the sheet transport and
+   the travel HUD would only duplicate it. Must come *after* the definitions
+   above — same specificity, so source order decides. */
+@media (min-width: 1024px) {
+  .travel-strip,
+  .stop-actions {
+    display: none;
+  }
+  .mode-panel__footer {
+    border-top: none;
+    padding: 0;
+  }
 }
 .stop-panel__head h4 {
   margin: 0;
@@ -1440,18 +1778,33 @@ a {
 
 /* ---- Tab bar ---- */
 .tabbar {
-  flex: 0 0 auto;
   display: flex;
   justify-content: space-around;
   gap: 0.25rem;
   padding: 0.4rem 0.5rem calc(0.4rem + var(--safe-bottom));
   background: var(--surface);
   border-top: 1px solid var(--border);
-  /* The map surface is an absolutely-positioned, viewport-covering layer; the
-     unpositioned tab bar painted BENEATH it (invisible + unclickable). Lift it
-     into its own stacking context above the map. */
-  position: relative;
+  /* Pinned overlay above the map surface (which covers the whole shell). Its
+     own height is fixed rather than read from --dock-h so it keeps full size
+     while translating out of view. */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 20;
+  box-sizing: border-box;
+  height: calc(48px + 0.8rem + var(--safe-bottom)); /* must match --dock-h */
+  overflow: hidden;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Stowed during journey travel — slide it away and drop it out of the tab
+   order once it has left the screen. */
+@media (max-width: 1023px) {
+  .app-shell[data-dock='stowed'] .tabbar {
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.32s;
+  }
 }
 .tabbar__item {
   display: flex;
@@ -1462,11 +1815,15 @@ a {
   flex: 1 1 0;
   min-width: 0;
   min-height: 44px; /* comfortable tap target (WCAG 2.5.5) */
-  padding: 0.35rem 0.15rem;
+  padding: 0.2rem 0.15rem;
   text-decoration: none;
   color: var(--text-muted);
   border-radius: var(--r-sm);
+  /* `font: inherit` first — the theme toggle is a <button>, which otherwise
+     falls back to the UA font family and renders larger than the NavLinks. */
+  font: inherit;
   font-size: clamp(0.62rem, 2.6vw, 0.72rem);
+  line-height: 1.2;
 }
 .tabbar__label {
   max-width: 100%;
@@ -1964,6 +2321,7 @@ a {
   background: none;
   border: 0;
   cursor: pointer;
-  font-family: var(--font-heading);
-  font-size: inherit;
+  /* No font-size here: `inherit` resolved to the nav's 1rem and, being later in
+     the sheet, beat `.tabbar__item`'s clamp — the toggle rendered a size bigger
+     than every tab beside it. */
 }
