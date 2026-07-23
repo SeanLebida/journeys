@@ -241,6 +241,15 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
   }, [activeStopId, stopIds, color, labelsAlwaysOn, elementsRef]);
 }
 
+/**
+ * Ask the mobile bottom sheet to collapse to its peek height so the map + route
+ * animation fill the screen while the journey continues. useSheetDrag listens
+ * for this; it's a no-op on desktop (no sheet) and when nothing is listening.
+ */
+function minimizeSheet() {
+  if (typeof window !== 'undefined') window.dispatchEvent(new Event('sheet:minimize'));
+}
+
 function TraceControls({ stopCount, fractions, stops, bundle }: { stopCount: number; fractions: number[]; stops?: TStop[]; bundle?: BundleIndex }) {
   const { progress, currentStopIdx, targetStopIdx, setCurrentStopIdx, setTargetStopIdx, setProgress, reset } = useJourneyStore();
   const isTravelling = targetStopIdx !== null;
@@ -248,11 +257,13 @@ function TraceControls({ stopCount, fractions, stops, bundle }: { stopCount: num
 
   const goToPrevStop = () => {
     if (currentStopIdx <= 0 || isTravelling) return;
+    minimizeSheet();
     setTargetStopIdx(currentStopIdx - 1);
   };
 
   const goToNextStop = () => {
     if (currentStopIdx >= stopCount - 1 || isTravelling) return;
+    minimizeSheet();
     setTargetStopIdx(currentStopIdx + 1);
   };
 

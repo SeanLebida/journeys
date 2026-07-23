@@ -9,6 +9,16 @@ function reducedMotion(): boolean {
 }
 
 /**
+ * True on phone / small-tablet viewports (matches the bottom-sheet breakpoint in
+ * useSheetDrag). Compact screens make a pan feel proportionally faster and a
+ * mid-travel zoom pulse read as dizzying, so travel there is slowed down and the
+ * elevation change is gentled.
+ */
+function isCompactViewport(): boolean {
+  return typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches;
+}
+
+/**
  * Drives the route trace for the active journey:
  * - Auto-centers the map view on the current waypoint prior to journey start or reset.
  * - When targetStopIdx changes (e.g. Next / Prev clicked):
@@ -110,7 +120,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     const pt = coords[v];
     if (pt && !isUserInteractingRef.current) {
       const zoom = getTargetZoomForStop(currentStopIdx);
-      map.easeTo({ center: pt, zoom, duration: 600 });
+      map.easeTo({ center: pt, zoom, duration: isCompactViewport() ? 900 : 600 });
     }
   }, [currentStopIdx, targetStopIdx, stopIds, setActiveStop, mapRef, ready, path, coords, getTargetZoomForStop]);
 
@@ -139,15 +149,19 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const v = path.stopVertex[toIdx];
       const pt = coords[v];
       const baseZoom = getTargetZoomForStop(toIdx);
-      const durationMs = 450;
+      const compact = isCompactViewport();
+      // Slow, gentle pulse so a same-place event progression reads clearly
+      // without a jolt — longer + shallower on compact screens.
+      const durationMs = compact ? 900 : 650;
+      const pulseAmp = compact ? 0.2 : 0.3;
       let raf = 0;
       const t0 = performance.now();
       const tickCoLocated = (now: number) => {
         const elapsed = now - t0;
         const rawT = Math.min(1, elapsed / durationMs);
         if (!isUserInteractingRef.current && pt) {
-          // Subtle 0.35 elevation pulse out and back in
-          const pulseZoom = baseZoom - 0.35 * Math.sin(rawT * Math.PI);
+          // Subtle elevation pulse out and back in
+          const pulseZoom = baseZoom - pulseAmp * Math.sin(rawT * Math.PI);
           map.jumpTo({ center: pt, zoom: pulseZoom });
         }
         if (rawT >= 1) {
@@ -164,14 +178,21 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       };
     }
 
-    // Duration is proportional to distance: 1200ms floor, up to 4500ms for long hauls
-    const durationMs = Math.min(4500, Math.max(1200, 1200 + distKm * 14));
+    const compact = isCompactViewport();
+    // Duration is proportional to distance, but deliberately unhurried so the eye
+    // can follow the traveller along the waypoints rather than being whipped
+    // across the map. Compact (mobile) viewports are slowed further still — a pan
+    // covers proportionally more of a small screen, so the same speed reads as
+    // dizzying there.
+    const base = Math.min(5200, Math.max(1700, 1600 + distKm * 18));
+    const durationMs = base * (compact ? 1.7 : 1.15);
     const startZoom = map.getZoom();
     const targetZoom = getTargetZoomForStop(toIdx);
 
-    // Subtle elevation lift (capped at 0.4 zoom levels max) so 2D panning remains
-    // the focus and terrain stays close, clear, and grounded.
-    const maxZoomDip = 0.4;
+    // Subtle elevation lift so 2D panning stays the focus and terrain stays close,
+    // clear, and grounded. Kept very shallow on mobile — a mid-travel zoom pulse is
+    // the main source of disorientation on a small screen.
+    const maxZoomDip = compact ? 0.12 : 0.25;
 
     let raf = 0;
     const t0 = performance.now();
