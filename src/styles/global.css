@@ -2540,6 +2540,22 @@ a {
   font-family: var(--font-heading);
 }
 
+/* Position MapLibre's attribution control clear of the bottom tab dock */
+.maplibregl-ctrl-bottom-right {
+  bottom: var(--dock-h, 0px) !important;
+  right: calc(var(--safe-right) + 4px) !important;
+  z-index: 10;
+}
+
+/* Hide map attribution on page-first views (Home & Credits) where full credits
+   live in the app's Credits screen and the map is purely background canvas.
+   This keeps attribution text from peeking out like broken overflow under
+   the Home mode picker card. */
+.app-main:has(.mode-panel--page) .maplibregl-ctrl-bottom-right,
+.app-main:has(.mode-panel--page) .maplibregl-ctrl-attrib {
+  display: none !important;
+}
+
 /* Third+ comparison bar on the witness timeline (e.g. the Quran). */
 .witness-timeline__seg--other {
   background: var(--c-legendary);
