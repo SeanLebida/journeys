@@ -1586,22 +1586,51 @@ a {
   color: var(--text-muted);
 }
 
-/* ---- Floating map layer widget ---- */
+/* ---- Floating map layer widget ----
+   A tab hanging off the top edge of the map rather than a panel parked over it.
+   Closed, it is only as wide as its own label, so it reads as "there is more
+   here" without taking the map away; the chevron is the pull-down affordance.
+   Open, it drops straight down from the tab and scrolls inside a capped height.
+   Top-centre also keeps it clear of MapLibre's zoom control, which is top-right
+   at every breakpoint. */
 .map-floating-layers {
   position: fixed;
-  top: 1.2rem;
-  right: 1.2rem;
+  top: var(--safe-top);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
-  width: 290px;
+  width: max-content;
+  max-width: min(340px, calc(100vw - 1.6rem));
   pointer-events: auto;
 }
-@media (max-width: 1023px) {
-  .map-floating-layers {
-    top: 4.5rem;
-    right: 0.8rem;
-    width: calc(100vw - 1.6rem);
-    max-width: 320px;
-  }
+/* Open, the tab becomes a panel — pin it to a stable width so the checkbox rows
+   are not re-flowed by whichever label happens to be longest. */
+.map-floating-layers:has(.atlas-toggles-expandable[open]) {
+  width: min(340px, calc(100vw - 1.6rem));
+}
+.map-floating-layers .atlas-toggles-expandable {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  /* Flush with the top edge it hangs from. */
+  border-top: 0;
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  /* Never grow past the dock; the content scrolls instead. */
+  max-height: calc(100dvh - var(--safe-top) - var(--dock-h) - 1rem);
+}
+.map-floating-layers .atlas-toggles__summary {
+  flex: none;
+  padding: 0.4rem 0.5rem 0.4rem 0.7rem;
+  font-size: 0.8rem;
+  background: color-mix(in srgb, var(--surface-raised) 92%, var(--accent));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.map-floating-layers .atlas-toggles__content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ---- Atlas controls ---- */
@@ -1639,6 +1668,23 @@ a {
 }
 .atlas-toggles__icon {
   font-size: 1rem;
+}
+.atlas-toggles__summary-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+/* Chevron: down = "pull this open", up = "push it back". */
+.atlas-toggles__chevron {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.atlas-toggles-expandable[open] .atlas-toggles__chevron {
+  transform: translateY(15%) rotate(-135deg);
 }
 .atlas-toggles__badge {
   font-size: 0.75rem;

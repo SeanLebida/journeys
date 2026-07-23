@@ -61,8 +61,13 @@ export function LayerPanel() {
           <span className="atlas-toggles__icon">🗺️</span>
           <strong>Map details &amp; layers</strong>
         </span>
-        <span className="atlas-toggles__badge">
-          {activeCount > 0 ? `${activeCount} active` : 'Default'}
+        <span className="atlas-toggles__summary-right">
+          <span className="atlas-toggles__badge">
+            {activeCount > 0 ? `${activeCount} active` : 'Default'}
+          </span>
+          {/* Purely decorative: the open/closed state is already on the
+              <details>, which is what a screen reader announces. */}
+          <span className="atlas-toggles__chevron" aria-hidden="true" />
         </span>
       </summary>
       <div className="atlas-toggles__content">
