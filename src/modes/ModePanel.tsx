@@ -6,14 +6,23 @@ import { useSheetDrag } from '../components/useSheetDrag';
  * Below the desktop breakpoint it behaves as a draggable bottom sheet (see
  * `useSheetDrag`) so the map + animation stay visible above it; at `lg` and up
  * it is the fixed left sidebar and the sheet behavior is inert.
+ *
+ * `eyebrow` is a small line above the title for context that shouldn't compete
+ * with it (trace puts the journey name there so the title can be the stop).
+ * `footer` is pinned below the scrolling body — the place for the primary
+ * action, so it stays reachable however far the reader has scrolled.
  */
 export function ModePanel({
   title,
+  eyebrow,
   children,
+  footer,
   style,
 }: {
   title: string;
+  eyebrow?: ReactNode;
   children: ReactNode;
+  footer?: ReactNode;
   style?: CSSProperties;
 }) {
   const panelRef = useRef<HTMLElement>(null);
@@ -29,12 +38,16 @@ export function ModePanel({
       <div className="mode-panel__handle" {...handleProps}>
         <span className="mode-panel__grip" aria-hidden="true" />
       </div>
-      <h2 id="mode-title" className="mode-panel__title">
-        {title}
-      </h2>
+      <div className="mode-panel__heading">
+        {eyebrow && <p className="mode-panel__eyebrow">{eyebrow}</p>}
+        <h2 id="mode-title" className="mode-panel__title">
+          {title}
+        </h2>
+      </div>
       <div className="mode-panel__body" ref={bodyRef}>
         {children}
       </div>
+      {footer && <div className="mode-panel__footer">{footer}</div>}
     </section>
   );
 }
