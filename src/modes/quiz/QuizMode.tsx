@@ -345,7 +345,7 @@ function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
   return (
     <>
       {!result && (
-        <button type="button" onClick={() => setArming(true)} disabled={arming}>
+        <button type="button" className="quiz-pin-btn" onClick={() => setArming(true)} disabled={arming}>
           {arming ? 'Tap the map…' : 'Place a pin on the map'}
         </button>
       )}
