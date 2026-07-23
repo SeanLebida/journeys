@@ -33,6 +33,7 @@ const SOURCES = {
   'artifact-cyrus-cylinder': { article: 'Cyrus Cylinder' },
   'artifact-jesus-boat': { file: 'Ancient Boat of Sea of Galilee.jpg' },
   'artifact-babylonian-chronicle': { file: 'ABC 05 Early Years of Nebuchadnezzar chronicle.jpg' },
+  'artifact-durupinar-surveys': { file: "The Structure Claimed to be the Noah's Ark near the Mount Ararat in Turkey.jpg" },
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

@@ -34,7 +34,7 @@
    "cit-dth-the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus",
    "cit-dth-shepherds-fields-near-bethlehem"
   ],
-  "pleiadesId": "687921"
+  "pleiadesId": "687856"
  },
  {
   "id": "site-nazareth",
@@ -66,7 +66,7 @@
    "cit-dth-jesus-nazareth-prophet-rejected-hometown",
    "cit-dth-history-of-the-traditions-and-locations-related-to-the-annunciation"
   ],
-  "pleiadesId": "678306"
+  "pleiadesId": "678299"
  },
  {
   "id": "site-baptism-at-the-jordan",
@@ -153,7 +153,7 @@
    "cit-dth-ancient-capernaum-synagogue-house-peter",
    "cit-dth-capernaum"
   ],
-  "pleiadesId": "678106"
+  "pleiadesId": "678231"
  },
  {
   "id": "site-cana-of-galilee",
@@ -235,6 +235,7 @@
     "en": "Downgraded from high: coordinate currently rests on a whole-atlas gazetteer backstop without a place-specific gazetteer id or excavation locus. Pin remains useful but not survey-grade."
    }
   },
+  "pleiadesId": "678430",
   "summary": {
    "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
   },
@@ -298,7 +299,8 @@
      "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "678065"
  },
  {
   "id": "site-chorazin",
@@ -320,6 +322,7 @@
     "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
    ]
   },
+  "pleiadesId": "678091",
   "summary": {
    "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
   },
@@ -430,7 +433,7 @@
    "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
    "cit-ref-sacred-bridge"
   ],
-  "pleiadesId": "678400"
+  "pleiadesId": "678437"
  },
  {
   "id": "site-caesarea-philippi",
@@ -460,8 +463,7 @@
    "cit-www-bibleplaces-com-caesarea-philippi-banias",
    "cit-dth-caesarea-philippi",
    "cit-dth-peters-confession"
-  ],
-  "pleiadesId": "678094"
+  ]
  },
  {
   "id": "site-samaria",
@@ -604,7 +606,8 @@
      "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
     ]
    }
-  ]
+  ],
+  "pleiadesId": "156668177"
  },
  {
   "id": "site-jerusalem",
@@ -902,7 +905,7 @@
    "cit-www-britannica-com-place-seleucia-pieria",
    "cit-www-bibleplaces-com-seleucia"
   ],
-  "pleiadesId": "658554"
+  "pleiadesId": "658483"
  },
  {
   "id": "site-salamis",
@@ -931,7 +934,7 @@
    "cit-en-wikipedia-org-wiki-salamis-cyprus",
    "cit-dth-ancient-salamis"
   ],
-  "pleiadesId": "707609"
+  "pleiadesId": "707617"
  },
  {
   "id": "site-paphos",
@@ -995,7 +998,7 @@
    "cit-www-britannica-com-place-perga",
    "cit-topostext-org-place-370309pper"
   ],
-  "pleiadesId": "639047"
+  "pleiadesId": "639048"
  },
  {
   "id": "site-pisidian-antioch",
@@ -1027,7 +1030,7 @@
    "cit-www-thegospelcoalition-org-themelios-article-act",
    "cit-dth-pisidian-antioch"
   ],
-  "pleiadesId": "648621"
+  "pleiadesId": "609307"
  },
  {
   "id": "site-iconium",
@@ -1056,7 +1059,7 @@
    "cit-en-wikipedia-org-wiki-konya",
    "cit-www-bibleref-com-acts-14-acts-14-6-html"
   ],
-  "pleiadesId": "648715"
+  "pleiadesId": "648647"
  },
  {
   "id": "site-lystra",
@@ -1068,8 +1071,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.61861,
-    "lon": 32.35583
+    "lat": 37.60194,
+    "lon": 32.33833
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1086,7 +1089,7 @@
    "cit-www-bibleplaces-com-derbelystra",
    "cit-dth-the-miracle-at-lystra"
   ],
-  "pleiadesId": "648749"
+  "pleiadesId": "648699"
  },
  {
   "id": "site-derbe",
@@ -1115,7 +1118,7 @@
    "cit-en-wikipedia-org-wiki-derbe",
    "cit-vici-org-vici-24065"
   ],
-  "pleiadesId": "648661"
+  "pleiadesId": "648620"
  },
  {
   "id": "site-attalia",
@@ -1141,8 +1144,7 @@
   },
   "citations": [
    "cit-www-ephesustoursguide-com-must-see-places-in-tur"
-  ],
-  "pleiadesId": "638753"
+  ]
  },
  {
   "id": "site-syria",
@@ -1164,6 +1166,7 @@
     "cit-src-strabo-14-5-tarsus"
    ]
   },
+  "pleiadesId": "648789",
   "summary": {
    "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
   },
@@ -1201,7 +1204,7 @@
    "cit-en-wikipedia-org-wiki-alexandria-troas",
    "cit-www-bibleplaces-com-acts16"
   ],
-  "pleiadesId": "501416"
+  "pleiadesId": "550434"
  },
  {
   "id": "site-samothrace",
@@ -1343,8 +1346,7 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-veria",
    "cit-www-casualenglishbible-com-resource-location-ber"
-  ],
-  "pleiadesId": "491557"
+  ]
  },
  {
   "id": "site-athens",
@@ -1435,8 +1437,7 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-kechries",
    "cit-www-bibleplaces-com-corintharea"
-  ],
-  "pleiadesId": "570183"
+  ]
  },
  {
   "id": "site-ephesus",
@@ -1498,7 +1499,7 @@
    "cit-dth-caesarea-maritima",
    "cit-dth-paul-at-caesarea-for-two-years"
   ],
-  "pleiadesId": "678406"
+  "pleiadesId": "678401"
  },
  {
   "id": "site-antioch-on-the-orontes",
@@ -1614,7 +1615,7 @@
    "cit-enduringword-com-bible-commentary-acts-20",
    "cit-www-preceptaustin-org-acts-20-commentary"
   ],
-  "pleiadesId": "501635"
+  "pleiadesId": "550434"
  },
  {
   "id": "site-miletus",
@@ -1643,7 +1644,7 @@
    "cit-bible-org-seriespage-pauls-parting-words-acts-20",
    "cit-enduringword-com-bible-commentary-acts-20"
   ],
-  "pleiadesId": "599788"
+  "pleiadesId": "599799"
  },
  {
   "id": "site-caesarea",
@@ -1672,7 +1673,7 @@
    "cit-pleiades-stoa-org-places-678401",
    "cit-missionbibleclass-org-new-testament-part2-acts-f"
   ],
-  "pleiadesId": "678406"
+  "pleiadesId": "678401"
  },
  {
   "id": "site-caesarea-imprisonment",
@@ -1703,7 +1704,7 @@
    "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
    "cit-enduringword-com-bible-commentary-acts-25"
   ],
-  "pleiadesId": "678406"
+  "pleiadesId": "678401"
  },
  {
   "id": "site-sidon",
@@ -1732,7 +1733,7 @@
    "cit-pleiades-stoa-org-places-678393",
    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
   ],
-  "pleiadesId": "678386"
+  "pleiadesId": "678393"
  },
  {
   "id": "site-myra-of-lycia",
@@ -1761,7 +1762,7 @@
    "cit-pleiades-stoa-org-places-639005",
    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
   ],
-  "pleiadesId": "638922"
+  "pleiadesId": "639005"
  },
  {
   "id": "site-cnidus-and-fair-havens",
@@ -1852,8 +1853,7 @@
    "cit-dth-location-of-pauls-shipwreck-on-malta",
    "cit-dth-pauls-ministry-on-malta",
    "cit-dth-melita-the-place-of-refuge"
-  ],
-  "pleiadesId": "462231"
+  ]
  },
  {
   "id": "site-syracuse-rhegium-puteoli",
@@ -2147,6 +2147,6 @@
    "cit-house-ananias",
    "cit-pleiades-gazetteer"
   ],
-  "pleiadesId": "678110"
+  "pleiadesId": "678106"
  }
 ]
