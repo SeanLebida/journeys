@@ -96,6 +96,16 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
     // settle/applyHeight are stable enough; re-running on mount is sufficient.
   }, []);
 
+  // External "minimize" requests collapse the sheet to peek so the map + route
+  // animation take the screen — dispatched e.g. when the reader taps Next/Prev in
+  // the trace controls to continue the journey. Mobile only; a no-op at ≥lg.
+  useEffect(() => {
+    if (!isSheet) return;
+    const onMinimize = () => settle('peek');
+    window.addEventListener('sheet:minimize', onMinimize);
+    return () => window.removeEventListener('sheet:minimize', onMinimize);
+  }, [isSheet, settle]);
+
   const nearestSnap = useCallback((heightPx: number, areaH: number): SheetSnap => {
     const frac = heightPx / areaH;
     let best: SheetSnap = 'peek';
