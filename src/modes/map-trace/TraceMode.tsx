@@ -172,12 +172,13 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
           </Link>
         }
         style={accent}
-        footer={<StopActions stops={stops} bundle={bundle} names={names} onJump={travelTo} />}
+        scrollKey={activeStop?.id ?? journey.id}
+        footer={<StopActions stops={stops} bundle={bundle} onJump={travelTo} />}
       >
         {activeStop && (
           <StopReader stop={activeStop} index={currentStopIdx} total={stops.length} bundle={bundle} />
         )}
-        <JourneySoFar stops={stops} bundle={bundle} upTo={currentStopIdx} onJump={travelTo} />
+        <JourneySoFar stops={stops} bundle={bundle} current={currentStopIdx} onJump={travelTo} />
         <details className="journey-about">
           <summary>About this journey</summary>
           <p className="journey-trace__date">{journey.dateRange.display.en}</p>
@@ -426,42 +427,47 @@ function StopReader({
   );
 }
 
-/** Compact, jumpable history of the stops already reached. */
+/**
+ * The whole itinerary, jumpable in either direction. This replaced the footer's
+ * pip rail: the same reach, minus a row of chrome, and every stop carries its
+ * name and date instead of being an unlabelled dot.
+ */
 function JourneySoFar({
   stops,
   bundle,
-  upTo,
+  current,
   onJump,
 }: {
   stops: TStop[];
   bundle: BundleIndex;
-  upTo: number;
+  current: number;
   onJump: (idx: number) => void;
 }) {
-  if (upTo <= 0) return null;
-  const reached = stops.slice(0, upTo + 1);
   return (
     <details className="journey-so-far">
       <summary>
-        Journey so far ({reached.length} of {stops.length} stops)
+        All stops ({current + 1} of {stops.length} reached)
       </summary>
       <ol className="journey-so-far__list">
-        {reached.map((stop, i) => (
-          <li key={stop.id}>
-            <button
-              type="button"
-              className={`journey-so-far__item${i === upTo ? ' journey-so-far__item--current' : ''}`}
-              aria-current={i === upTo ? 'step' : undefined}
-              onClick={() => onJump(i)}
-            >
-              <span className="journey-so-far__num">{i + 1}</span>
-              <span className="journey-so-far__body">
-                <strong>{stopLabel(stop, bundle)}</strong>
-                <span className="journey-so-far__date">{stop.dateRange.display.en}</span>
-              </span>
-            </button>
-          </li>
-        ))}
+        {stops.map((stop, i) => {
+          const state = i < current ? 'past' : i === current ? 'current' : 'upcoming';
+          return (
+            <li key={stop.id}>
+              <button
+                type="button"
+                className={`journey-so-far__item journey-so-far__item--${state}`}
+                aria-current={i === current ? 'step' : undefined}
+                onClick={() => onJump(i)}
+              >
+                <span className="journey-so-far__num">{i + 1}</span>
+                <span className="journey-so-far__body">
+                  <strong>{stopLabel(stop, bundle)}</strong>
+                  <span className="journey-so-far__date">{stop.dateRange.display.en}</span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
       </ol>
     </details>
   );
@@ -469,18 +475,19 @@ function JourneySoFar({
 
 /**
  * Sheet footer: the whole mobile transport, pinned under the scrolling body so
- * "where do I go next" never scrolls away. A pip rail gives direct access to any
- * stop; the primary button names the next place by name so the tap is a promise.
+ * "where do I go next" never scrolls away. Deliberately one row tall — on a
+ * landscape phone every row of chrome here is a row of the stop's own text that
+ * doesn't fit, so progress is drawn as the footer's own top edge rather than a
+ * rail of its own, and direct access to any stop lives in "All stops" below,
+ * where the stops can carry their names instead of being unlabelled dots.
  */
 function StopActions({
   stops,
   bundle,
-  names,
   onJump,
 }: {
   stops: TStop[];
   bundle: BundleIndex;
-  names: string[];
   onJump: (idx: number) => void;
 }) {
   const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
@@ -491,24 +498,16 @@ function StopActions({
 
   return (
     <div className="stop-actions">
-      <ol className="stop-rail" aria-label="Journey stops">
+      {/* Decorative twin of the "Stop n of m" line the reader already has in the
+          body — announced there, so silent here. */}
+      <div className="stop-actions__meter" aria-hidden="true">
         {stops.map((stop, i) => (
-          <li key={stop.id}>
-            <button
-              type="button"
-              className={
-                'stop-rail__pip' +
-                (i === currentStopIdx ? ' stop-rail__pip--current' : '') +
-                (i < currentStopIdx ? ' stop-rail__pip--past' : '')
-              }
-              aria-current={i === currentStopIdx ? 'step' : undefined}
-              aria-label={`Stop ${i + 1}: ${names[i] ?? stopLabel(stop, bundle)}`}
-              disabled={travelling}
-              onClick={() => onJump(i)}
-            />
-          </li>
+          <span
+            key={stop.id}
+            className={'stop-actions__seg' + (i <= currentStopIdx ? ' stop-actions__seg--done' : '')}
+          />
         ))}
-      </ol>
+      </div>
       <div className="stop-actions__row">
         <button
           type="button"

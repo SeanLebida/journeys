@@ -1363,6 +1363,17 @@ a {
   border-color: var(--accent);
   background: color-mix(in srgb, var(--accent) 10%, var(--surface-raised));
 }
+/* Stops not yet reached are listed too — skipping ahead is allowed, and seeing
+   where the journey is going is half the reason to open this list. Muted so the
+   reached ones still read as the record of where you have been. */
+.journey-so-far__item--upcoming {
+  border-style: dashed;
+  color: var(--text-muted);
+}
+.journey-so-far__item--upcoming .journey-so-far__num {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
+}
 .journey-so-far__num {
   flex: none;
   display: grid;
@@ -1385,9 +1396,15 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* Some stops carry a whole clause here ("boyhood pre-ministry; rejection episode
+   early-mid ministry c. AD 28-30"), which wrapped a jump target into a
+   three-line block. One line, same as the name above it. */
 .journey-so-far__date {
   font-size: 0.74rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* ---- Sheet-footer transport ---- */
@@ -1400,50 +1417,24 @@ a {
      minimum is what actually lets the button's own `min-width: 0` shrink it. */
   min-width: 0;
 }
-.stop-rail {
-  list-style: none;
+/* One segment per stop, filled up to the current one. This is the footer's top
+   edge rather than a row of its own: the old 32px pip rail cost a third of the
+   transport's height to say what three pixels say here, and on a landscape
+   phone that third came straight out of the reading area. */
+.stop-actions__meter {
   display: flex;
-  align-items: center;
-  gap: 0.1rem;
-  margin: 0;
-  padding: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  gap: 2px;
+  height: 3px;
 }
-.stop-rail::-webkit-scrollbar {
-  display: none;
-}
-/* 30×32 keeps every pip over the 24×24 AA target-size minimum (WCAG 2.5.8)
-   without the rail eating the reading area at the `half` snap. */
-.stop-rail__pip {
-  flex: none;
-  display: block;
-  width: 30px;
-  height: 32px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-.stop-rail__pip::before {
-  content: '';
-  display: block;
-  width: 8px;
-  height: 8px;
-  margin: 12px auto;
-  border-radius: 50%;
+.stop-actions__seg {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 999px;
   background: var(--border);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease;
 }
-.stop-rail__pip--past::before {
-  background: color-mix(in srgb, var(--accent) 55%, var(--border));
-}
-.stop-rail__pip--current::before {
+.stop-actions__seg--done {
   background: var(--accent);
-  transform: scale(1.5);
-}
-.stop-rail__pip:disabled {
-  cursor: default;
 }
 .stop-actions__row {
   display: flex;
@@ -1498,6 +1489,116 @@ a {
   background: var(--surface-raised);
   border-color: var(--border);
 }
+/* ---- Mobile landscape: the panel docks as a side rail ---------------------
+   A landscape phone is ~360px tall. As a bottom sheet the panel spends that
+   budget on its own chrome — at `half` the reader gets about three lines of the
+   stop, which is the opposite of the point. Landscape has width to spare
+   instead, so below `lg` the panel takes the left edge at full height and the
+   map keeps the rest. `useSheetDrag` turns the sheet off here (no inline
+   height, no `--sheet-h`, no drag handle), so these rules own the geometry.
+
+   Scoped off `.mode-panel--page`: Home and Credits are reading cards with no map
+   behind them and stay centered. */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .app-main {
+    /* Published for the overlays that must center in the *remaining* map. */
+    --rail-w: min(54vw, 360px);
+  }
+  .mode-panel:not(.mode-panel--page) {
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: var(--dock-h);
+    width: var(--rail-w);
+    max-width: var(--rail-w);
+    height: auto;
+    max-height: none;
+    padding: calc(var(--safe-top) + 0.5rem) 0.9rem 0.55rem;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    border-radius: 0 var(--r-lg) var(--r-lg) 0;
+    transition: none;
+  }
+  .mode-panel:not(.mode-panel--page) .mode-panel__handle {
+    display: none; /* nothing left to resize */
+  }
+  /* Trade heading scale for lines of body text — the stop name is one tap-target
+     row, the stop's story is what the reader came for. */
+  .mode-panel__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .mode-panel__footer {
+    margin-inline: -0.9rem;
+    padding-inline: 0.9rem;
+  }
+  /* Portrait can afford 1.8 leading over a full-width measure. The rail is a
+     ~46-character column on a short screen, where the same leading costs whole
+     paragraphs of what the reader can see at once. */
+  .mode-panel__body {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+  .stop-reader__summary {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+  /* The dock is the other fixed cost on a 360px-tall screen — see the landscape
+     `.tabbar` block, which has to live after the tab bar's own rules. */
+  .app-shell {
+    --dock-h: calc(38px + 0.5rem + var(--safe-bottom));
+  }
+  /* The travelling phase hid the body and footer because the *sheet* dropped to
+     `peek` under them. The rail doesn't move, so hiding them would just blank a
+     column that is still standing. */
+  .journey-trace-layout[data-phase='travelling'] .mode-panel__body {
+    opacity: 1;
+  }
+  .journey-trace-layout[data-phase='travelling'] .mode-panel__footer {
+    display: block;
+  }
+  /* Overlays center in the map to the right of the rail, not the whole shell. */
+  .travel-strip,
+  .lesson-progress-fixed {
+    left: calc(var(--rail-w) + (100% - var(--rail-w)) / 2);
+  }
+  .lesson-progress-fixed {
+    bottom: calc(var(--dock-h) + 0.6rem);
+    width: calc(100% - var(--rail-w) - 2rem);
+  }
+  /* Single-row HUD: route on one line, the meter as the strip's own bottom edge. */
+  .travel-strip {
+    top: calc(var(--safe-top) + 0.5rem);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: calc(100% - var(--rail-w) - 1.6rem);
+    max-width: 420px;
+    padding: 0.4rem 0.7rem 0.5rem;
+  }
+  .travel-strip__route {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+  .travel-strip__foot {
+    flex: none;
+    gap: 0.5rem;
+  }
+  .travel-strip__meter {
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: 0.25rem;
+    height: 2px;
+    margin: 0;
+  }
+  /* Retuned for the flatter strip (the portrait value clears a 3-line HUD). */
+  .app-shell[data-dock='stowed'] .maplibregl-ctrl-top-right {
+    transform: translateY(4rem);
+  }
+}
+
 /* Desktop drives the journey from the floating pill, so the sheet transport and
    the travel HUD would only duplicate it. Must come *after* the definitions
    above — same specificity, so source order decides. */
@@ -1607,6 +1708,16 @@ a {
    are not re-flowed by whichever label happens to be longest. */
 .map-floating-layers:has(.atlas-toggles-expandable[open]) {
   width: min(340px, calc(100vw - 1.6rem));
+}
+/* Landscape docks the mode panel as a left rail (see the side-rail block above),
+   so the tab hangs from the middle of what is left of the map, not the shell.
+   Must live *after* the base rule — same specificity, source order decides. */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .map-floating-layers,
+  .map-floating-layers:has(.atlas-toggles-expandable[open]) {
+    left: calc(var(--rail-w) + (100% - var(--rail-w)) / 2);
+    max-width: min(340px, calc(100vw - var(--rail-w) - 1.6rem));
+  }
 }
 .map-floating-layers .atlas-toggles-expandable {
   display: flex;
@@ -1944,6 +2055,25 @@ a {
 .tabbar__glyph {
   font-size: 1.2rem;
   line-height: 1;
+}
+/* Landscape has the width to set each glyph beside its label instead of above
+   it, which buys the side rail back a third of the dock's height. Keep the
+   height in lockstep with `--dock-h` in the landscape side-rail block — the
+   panel's bottom edge is positioned off that variable, so a mismatch parks the
+   transport row under the dock. */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .tabbar {
+    height: calc(38px + 0.5rem + var(--safe-bottom));
+    padding: 0.25rem 0.5rem calc(0.25rem + var(--safe-bottom));
+  }
+  .tabbar__item {
+    flex-direction: row;
+    gap: 0.35rem;
+    min-height: 38px;
+  }
+  .tabbar__glyph {
+    font-size: 1rem;
+  }
 }
 
 /* ── Site photos (present-day imagery, bundled from Wikimedia Commons) ───── */
