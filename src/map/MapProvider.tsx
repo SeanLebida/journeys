@@ -112,15 +112,6 @@ export function MapProvider({ children }: { children: ReactNode }) {
 
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-    map.addControl(
-      new maplibregl.AttributionControl({
-        compact: true,
-        // Full source credits live on the M9 attribution screen; this keeps the
-        // on-map notice honest about the basemap.
-        customAttribution: 'Journeys · basemap © Natural Earth, Esri, DARE',
-      }),
-      'bottom-right',
-    );
 
     const updateLabelVisibility = () => {
       const { labelsAlwaysOn, borders } = useMapLayersStore.getState();
