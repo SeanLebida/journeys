@@ -1626,11 +1626,48 @@ a {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+/* Chrome and Safari do not make the non-summary children of a <details> direct
+   flex items — they slot them through `::details-content`, which is the real box
+   the flex layout sees. Constraining `.atlas-toggles__content` alone therefore
+   clamped nothing: the panel cropped at its max-height and the layers below the
+   fold became unreachable on a short viewport. Passing the constraint through
+   here is what lets the pane below actually shrink and scroll. Engines without
+   `::details-content` slot the content directly, where the same `flex`/
+   `min-height` on the pane itself already does the job — so both routes work and
+   neither needs a hardcoded summary height. */
+.map-floating-layers .atlas-toggles-expandable::details-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
 .map-floating-layers .atlas-toggles__content {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  /* Scrolling to the end of the layer list must not then start panning the map
+     underneath it. */
+  overscroll-behavior: contain;
+  /* A real scrollbar, not a decorative fade: it survives forced-colors mode and
+     does not wash out the labels it sits over. `stable` keeps the rows from
+     shifting sideways when it appears. */
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  /* Keyboard focus moving into a row near the edge scrolls it clear of the
+     sticky category heading rather than flush under it. */
+  scroll-padding-block: 2.5rem 0.5rem;
+}
+/* Keeps the reader oriented in a list long enough to need scrolling. The base
+   rule's bottom *margin* is transparent, so rows scrolled through it under the
+   pinned heading — the spacing has to be padding for the background to cover. */
+.map-floating-layers .atlas-toggles__group-title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding-block: 0.3rem 0.35rem;
+  margin-block: -0.3rem 0;
+  background: var(--surface);
 }
 
 /* ---- Atlas controls ---- */

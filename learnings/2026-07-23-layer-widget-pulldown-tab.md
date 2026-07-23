@@ -55,3 +55,62 @@ Top-centre rather than top-right is deliberate: MapLibre's zoom control is
 - Atlas mode's inline copy unchanged: `left: 16`, `width: 379.4`, `border-radius:
   12px` on all corners, not inside `.map-floating-layers`.
 - Screenshots of the closed tab, the open drop-down, and Atlas mode.
+
+---
+
+# Follow-up: the height cap cropped instead of scrolling
+
+## What changed
+
+`src/styles/global.css`
+
+- `.map-floating-layers .atlas-toggles-expandable::details-content` is now the
+  flex pass-through: `display: flex; flex-direction: column; min-height: 0;
+  overflow: hidden`.
+- The content pane gains `overscroll-behavior: contain`, `scrollbar-width: thin`,
+  `scrollbar-gutter: stable` and `scroll-padding-block: 2.5rem 0.5rem`.
+- Category headings are `position: sticky; top: 0` inside the scroll pane, with
+  their spacing converted from margin to padding so the background actually
+  covers the rows passing under them.
+
+## Why it mattered
+
+The cap added above clamped the `<details>` box correctly — measured 310.6px in
+a 387px-tall landscape viewport — but the pane inside it never shrank
+(`scrollHeight === clientHeight`, `contentBottom: 599.7` against a panel ending
+at 310.6). The overflow was simply clipped by the base rule's `overflow: hidden`,
+so on any viewport shorter than the full layer list the options below the fold
+were unreachable: no scroll, no indication they existed.
+
+The cause is that **Chrome and Safari do not make a `<details>`'s non-summary
+children direct flex items** — they are slotted through the `::details-content`
+pseudo-element, which is the box flex layout actually sees. `flex: 1 1 auto;
+min-height: 0` on `.atlas-toggles__content` was being applied to a grandchild of
+the flex container, where it means nothing.
+
+Scrolling rather than shrinking is the accessible choice here: the alternative
+(letting the pane compress) trades reachable content for smaller hit targets and
+text, which fails WCAG 2.5.5 and 1.4.4 at the sizes involved. Vertical scrolling
+inside a region satisfies 1.4.10 Reflow, and every row is a focusable checkbox so
+the region is keyboard-reachable without an added tab stop.
+
+## Gotchas / pitfalls
+
+- `::details-content` is Chrome 131+ / Safari 18.4+. Engines without it slot the
+  content as a direct flex child, where the `flex`/`min-height` already on
+  `.atlas-toggles__content` does the same job — so keeping *both* declarations
+  covers both layouts and avoids hardcoding a summary height into a `calc()`.
+- A sticky heading needs its spacing as padding, not margin: margin is
+  transparent, so scrolled rows show through the gap under the pinned text.
+- `overscroll-behavior: contain` matters more than usual here — without it,
+  flicking past the end of the layer list starts panning the map underneath.
+
+## Verification
+
+- Emulated 740 × 360 via CDP `Emulation.setDeviceMetricsOverride`: panel clamps
+  to 283.2px (= 360 − 60.8 dock − 16), pane `scrollHeight` 573 vs `clientHeight`
+  240, `maxScroll` 333. Last checkbox `bottom: 594.3` (outside) before scrolling,
+  `top: 245 / bottom: 261` (inside the 283.2 panel) after.
+- Real landscape on the SM-N975U (788 × 387): `maxScroll` 305, last option
+  reachable, sticky heading opaque mid-scroll.
+- `tsc --noEmit` clean, `vitest run` 59 passed.
