@@ -1,4 +1,4 @@
-import { useRef, type ReactNode, type CSSProperties } from 'react';
+import { useEffect, useRef, type ReactNode, type CSSProperties } from 'react';
 import { useSheetDrag } from '../components/useSheetDrag';
 
 /**
@@ -11,6 +11,11 @@ import { useSheetDrag } from '../components/useSheetDrag';
  * with it (trace puts the journey name there so the title can be the stop).
  * `footer` is pinned below the scrolling body — the place for the primary
  * action, so it stays reachable however far the reader has scrolled.
+ *
+ * `scrollKey` identifies what the body is currently showing. When it changes the
+ * body returns to the top: arriving at a new stop otherwise drops the reader
+ * wherever the *previous* stop's scroll left them, halfway down a section that
+ * no longer exists.
  */
 export function ModePanel({
   title,
@@ -18,15 +23,21 @@ export function ModePanel({
   children,
   footer,
   style,
+  scrollKey,
 }: {
   title: string;
   eyebrow?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
   style?: CSSProperties;
+  scrollKey?: string | number;
 }) {
   const panelRef = useRef<HTMLElement>(null);
   const { bodyRef, handleProps, snap, isSheet } = useSheetDrag(panelRef);
+  useEffect(() => {
+    if (scrollKey === undefined) return;
+    bodyRef.current?.scrollTo({ top: 0 });
+  }, [scrollKey, bodyRef]);
   return (
     <section
       ref={panelRef}

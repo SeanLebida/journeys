@@ -4,17 +4,17 @@ import { useSheetStore, type SheetSnap } from '../state/useSheetStore';
 /**
  * Draggable bottom-sheet behavior for the mobile mode panel.
  *
- * Below the desktop breakpoint the mode panel is a bottom sheet anchored to the
- * bottom of the map area (`.app-main`), so the map + animation stay visible
- * above it. Three snap points let the reader trade map for text:
+ * Below the desktop breakpoint *in portrait* the mode panel is a bottom sheet
+ * anchored to the bottom of the map area (`.app-main`), so the map + animation
+ * stay visible above it. Three snap points let the reader trade map for text:
  *   peek — just the grab handle + title strip
  *   half — a comfortable reading height with the map still prominent
  *   full — description takes most of the screen
  *
  * The live pixel height is published as `--sheet-h` on `.app-main` so siblings
  * (the trace/lesson playback pill) can ride just above the sheet's top edge.
- * Above `lg` the hook is inert — the panel is the fixed desktop sidebar and no
- * inline height/var is written.
+ * Above `lg`, and on landscape phones, the hook is inert — the panel is a fixed
+ * sidebar / side rail and no inline height/var is written.
  *
  * Modes can also drive the sheet through `useSheetStore.requestSnap` (trace does
  * this to swap between its travelling and arrived layouts); the resting snap is
@@ -25,6 +25,11 @@ export type { SheetSnap };
 const SNAP_FRACTION: Record<SheetSnap, number> = { peek: 0.14, half: 0.5, full: 0.92 };
 const SNAP_ORDER: SheetSnap[] = ['peek', 'half', 'full'];
 const LG = 1024; // desktop sidebar breakpoint — sheet is mobile-only
+/* A landscape phone is ~360px tall: a bottom sheet spends its whole budget on
+   chrome there, and half the screen buys three lines of text. Landscape has
+   width to spare instead, so the panel docks as a full-height left rail
+   (see `.mode-panel` in global.css) and this hook stays out of the way. */
+const SHEET_MQ = `(max-width: ${LG - 1}px) and (orientation: portrait)`;
 
 interface SheetDrag {
   /** Attach to the scroll container so it only scrolls when the sheet is tall. */
@@ -85,7 +90,7 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
 
   // Track the breakpoint; write/clear the sheet height as we cross it.
   useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${LG - 1}px)`);
+    const mq = window.matchMedia(SHEET_MQ);
     const sync = () => {
       const active = mq.matches;
       setIsSheet(active);
