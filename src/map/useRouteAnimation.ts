@@ -1,7 +1,14 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useMap } from './MapProvider';
 import { lineLength, lineProgress, stopFractions, type JourneyPath } from './route';
-import { ensureTraceLayers, removeTraceLayers, updateTrace, type TraceStop } from './layers/trace';
+import {
+  ensureTraceLayers,
+  ensureTravelerMarker,
+  removeTraceLayers,
+  updateTraceProgress,
+  updateTraceStatic,
+  type TraceStop,
+} from './layers/trace';
 import { useJourneyStore } from '../state/useJourneyStore';
 
 function reducedMotion(): boolean {
@@ -82,6 +89,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       ensureTraceLayers(map, color);
       const v = path.stopVertex[currentStopIdx] ?? 0;
       const pt = coords[v];
+      if (pt) ensureTravelerMarker(map, color, pt);
       if (pt && !isUserInteractingRef.current) {
         map.jumpTo({
           center: pt,
@@ -94,18 +102,24 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     return () => { removeTraceLayers(map); };
   }, [mapRef, ready, coords, color, path, currentStopIdx, getTargetZoomForStop]);
 
-  // Mirror progress to the map trace line
+  // The route outline and the stop dots only change when the journey or the
+  // reached-so-far count does, so they stay out of the animation loop entirely.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2 || !map.getLayer('trace-progress-line')) return;
-    const prog = lineProgress(coords, progress);
-    updateTrace(
-      map,
-      coords,
-      prog,
-      stops.map((s, i) => ({ ...s, reached: i <= currentStopIdx })),
-    );
-  }, [mapRef, ready, coords, progress, currentStopIdx, stops]);
+    updateTraceStatic(map, coords, stops.map((s, i) => ({ ...s, reached: i <= currentStopIdx })));
+  }, [mapRef, ready, coords, currentStopIdx, stops]);
+
+  // Mirror progress to the drawn line + traveller. While a leg is in flight the
+  // rAF loop below owns both (it writes them in the same frame as the camera
+  // move); driving them from React state as well would only ever paint a stale
+  // position a frame or two behind the camera.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || coords.length < 2 || !map.getLayer('trace-progress-line')) return;
+    if (targetStopIdx !== null) return;
+    updateTraceProgress(map, lineProgress(coords, progress));
+  }, [mapRef, ready, coords, progress, targetStopIdx]);
 
   // Auto-center map on current waypoint when stationary / prior to starting journey
   useEffect(() => {
@@ -189,13 +203,20 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     const startZoom = map.getZoom();
     const targetZoom = getTargetZoomForStop(toIdx);
 
-    // Subtle elevation lift so 2D panning stays the focus and terrain stays close,
-    // clear, and grounded. Kept very shallow on mobile — a mid-travel zoom pulse is
-    // the main source of disorientation on a small screen.
-    const maxZoomDip = compact ? 0.12 : 0.25;
+    // Elevation lift over the leg. Zero on compact screens: a zoom that swells and
+    // settles while the map is also panning is the single biggest source of
+    // "wobble" on a phone, and with the pan alone the motion reads as one clean
+    // glide from stop to stop.
+    const maxZoomDip = compact ? 0 : 0.25;
 
     let raf = 0;
     const t0 = performance.now();
+    // The store drives the React progress bar, not the map, so it does not need a
+    // write per frame — 60 store commits a second is 60 re-renders of the sheet
+    // competing with the animation for the main thread. ~12/s is smooth enough for
+    // a progress bar and leaves the frame budget to the map.
+    const STORE_INTERVAL_MS = 80;
+    let lastStoreWrite = -Infinity;
 
     const tick = (now: number) => {
       const elapsed = now - t0;
@@ -204,22 +225,27 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const easedT = rawT * rawT * (3 - 2 * rawT);
       const currentP = startFraction + (targetFraction - startFraction) * easedT;
 
-      setProgress(currentP);
-
-      if (!isUserInteractingRef.current) {
-        const prog = lineProgress(coords, currentP);
-        // Base linear zoom from startZoom to targetZoom
-        const baseZoom = startZoom + (targetZoom - startZoom) * easedT;
-        // Subtle 0.4 elevation lift midway
-        const currentZoom = baseZoom - maxZoomDip * Math.sin(rawT * Math.PI);
-        map.jumpTo({ center: prog.point, zoom: currentZoom });
-      }
-
       if (rawT >= 1) {
+        updateTraceProgress(map, lineProgress(coords, targetFraction));
         setProgress(targetFraction);
         setCurrentStopIdx(toIdx);
         setTargetStopIdx(null);
         return;
+      }
+
+      // Trace geometry and camera are written in the same frame, in that order,
+      // so the traveller and the view it is centred in never disagree.
+      const prog = lineProgress(coords, currentP);
+      updateTraceProgress(map, prog);
+      if (!isUserInteractingRef.current) {
+        const baseZoom = startZoom + (targetZoom - startZoom) * easedT;
+        const currentZoom = maxZoomDip === 0 ? baseZoom : baseZoom - maxZoomDip * Math.sin(rawT * Math.PI);
+        map.jumpTo({ center: prog.point, zoom: currentZoom });
+      }
+
+      if (now - lastStoreWrite >= STORE_INTERVAL_MS) {
+        lastStoreWrite = now;
+        setProgress(currentP);
       }
 
       raf = requestAnimationFrame(tick);
