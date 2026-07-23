@@ -46,14 +46,16 @@ export function ModePanel({
       style={style}
       data-snap={isSheet ? snap : undefined}
     >
-      <div className="mode-panel__handle" {...handleProps}>
-        <span className="mode-panel__grip" aria-hidden="true" />
-      </div>
-      <div className="mode-panel__heading">
-        {eyebrow && <p className="mode-panel__eyebrow">{eyebrow}</p>}
-        <h2 id="mode-title" className="mode-panel__title">
-          {title}
-        </h2>
+      <div className="mode-panel__header" {...handleProps}>
+        <div className="mode-panel__handle">
+          <span className="mode-panel__grip" aria-hidden="true" />
+        </div>
+        <div className="mode-panel__heading">
+          {eyebrow && <p className="mode-panel__eyebrow">{eyebrow}</p>}
+          <h2 id="mode-title" className="mode-panel__title">
+            {title}
+          </h2>
+        </div>
       </div>
       <div className="mode-panel__body" ref={bodyRef}>
         {children}

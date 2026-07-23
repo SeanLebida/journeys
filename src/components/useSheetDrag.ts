@@ -120,8 +120,34 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
     settle(req.snap);
   }, [requestSeq, isSheet, settle]);
 
-  const nearestSnap = useCallback((heightPx: number, areaH: number): SheetSnap => {
+  const nearestSnap = useCallback((heightPx: number, areaH: number, startSnap: SheetSnap, vy: number): SheetSnap => {
     const frac = heightPx / areaH;
+
+    // Velocity flick gestures: vy > 0.20 px/ms is upward swipe, vy < -0.20 px/ms is downward swipe
+    if (vy > 0.20) {
+      if (startSnap === 'peek') return frac > 0.35 ? 'full' : 'half';
+      return 'full';
+    }
+    if (vy < -0.20) {
+      if (startSnap === 'full') return frac < 0.30 ? 'peek' : 'half';
+      return 'peek';
+    }
+
+    // Directional threshold hysteresis when dragging slowly
+    if (startSnap === 'peek') {
+      if (frac > 0.22) return frac > 0.70 ? 'full' : 'half';
+      return 'peek';
+    }
+    if (startSnap === 'half') {
+      if (frac > 0.62) return 'full';
+      if (frac < 0.36) return 'peek';
+      return 'half';
+    }
+    if (startSnap === 'full') {
+      if (frac < 0.75) return frac < 0.30 ? 'peek' : 'half';
+      return 'full';
+    }
+
     let best: SheetSnap = 'peek';
     let bestDist = Infinity;
     for (const s of SNAP_ORDER) {
@@ -137,27 +163,45 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (!isSheet) return;
+      const target = e.target as HTMLElement;
+      if (target.closest('button, a, input, select, textarea')) return;
+
       const area = areaOf();
       const panel = panelRef.current;
       if (!area || !panel) return;
       e.preventDefault();
-      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+      target.setPointerCapture?.(e.pointerId);
       panel.classList.add('is-dragging'); // suppress the settle transition mid-drag
 
       const areaRect = area.getBoundingClientRect();
       const startY = e.clientY;
+      const startTime = performance.now();
       const startH = panel.getBoundingClientRect().height;
+      const startSnap = snapRef.current;
       let moved = false;
       let liveH = startH;
+
+      let lastY = startY;
+      let lastTime = startTime;
+      let vy = 0; // px/ms, positive = dragging UP
 
       const min = area.clientHeight * SNAP_FRACTION.peek;
       const max = area.clientHeight * SNAP_FRACTION.full;
 
       const onMove = (ev: PointerEvent) => {
-        const dy = startY - ev.clientY; // up = grow
+        const now = performance.now();
+        const dy = startY - ev.clientY; // up = grow (positive)
         if (Math.abs(dy) > 4) moved = true;
+
+        const dt = now - lastTime;
+        if (dt > 0) {
+          const instantV = (lastY - ev.clientY) / dt;
+          vy = vy * 0.4 + instantV * 0.6;
+        }
+        lastY = ev.clientY;
+        lastTime = now;
+
         liveH = Math.min(max, Math.max(min, startH + dy));
-        // Never let the sheet grow past the map area itself.
         liveH = Math.min(liveH, areaRect.height);
         applyHeight(liveH);
       };
@@ -166,11 +210,12 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
         window.removeEventListener('pointerup', onUp);
         panel.classList.remove('is-dragging');
         if (!moved) {
-          // Tap the handle → cycle to the next snap.
-          const i = SNAP_ORDER.indexOf(snapRef.current);
-          settle(SNAP_ORDER[(i + 1) % SNAP_ORDER.length]);
+          // Tap the header -> cycle peek -> half -> full -> half
+          if (startSnap === 'peek') settle('half');
+          else if (startSnap === 'half') settle('full');
+          else settle('half');
         } else {
-          settle(nearestSnap(liveH, area.clientHeight));
+          settle(nearestSnap(liveH, area.clientHeight, startSnap, vy));
         }
       };
       window.addEventListener('pointermove', onMove);
