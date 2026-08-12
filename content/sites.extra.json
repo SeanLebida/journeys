@@ -2202,5 +2202,872 @@
    "cit-ref-sacred-bridge"
   ],
   "pleiadesId": "687951"
+ },
+ {
+  "id": "site-tishbe",
+  "ancientName": {
+   "en": "Tishbe in Gilead"
+  },
+  "modernLocation": {
+   "en": "Ajloun Governorate, Jordan"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.3383,
+    "lon": 35.7275
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-abd"
+   ],
+   "disputes": {
+    "en": "Tishbe is unlocated. The name survives at Listib/el-Istib and Byzantine pilgrims placed it there, but no excavation confirms it, and one reading of the Hebrew text removes the place name entirely."
+   }
+  },
+  "summary": {
+   "en": "Elijah is introduced as 'Elijah the Tishbite, of the inhabitants of Gilead' (1 Kings 17:1) and the town is never described again. Listib, above Wadi al-Yabis, preserves the name and is the usual candidate; the Hebrew can also be read as 'of the sojourners of Gilead', which would leave the prophet's home unnamed altogether."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Listib (el-Istib), Ajloun"
+  }
+ },
+ {
+  "id": "site-brook-cherith",
+  "ancientName": {
+   "en": "The brook Cherith"
+  },
+  "modernLocation": {
+   "en": "Ajloun/Irbid, Jordan"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.3667,
+    "lon": 35.6167
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-abd"
+   ],
+   "disputes": {
+    "en": "Unlocated. The text places Cherith east of the Jordan; Wadi al-Yabis fits the description and lies beside the traditional Tishbe, but any of several Gileadite wadis would suit equally."
+   }
+  },
+  "summary": {
+   "en": "The ravine 'before Jordan' where ravens fed Elijah through the drought (1 Kings 17:2-7). Wadi al-Yabis, running down to the Jordan below Tishbe, is the traditional identification."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Wadi al-Yabis"
+  }
+ },
+ {
+  "id": "site-zarephath",
+  "ancientName": {
+   "en": "Zarephath (Sarepta)"
+  },
+  "modernLocation": {
+   "en": "South Governorate, Lebanon"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 33.4536,
+    "lon": 35.2953
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-sarepta-pritchard",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "Phoenician coastal town 'which belongeth to Sidon', where Elijah lodged with a widow through the famine, her jar of meal and cruse of oil sustaining the household, and where her son was restored to life (1 Kings 17:8-24). Jesus later cites the episode at Nazareth (Luke 4:26)."
+  },
+  "citations": [
+   "cit-exc-sarepta-pritchard",
+   "cit-ref-sacred-bridge"
+  ],
+  "modernName": {
+   "en": "Sarafand"
+  }
+ },
+ {
+  "id": "site-mount-carmel",
+  "ancientName": {
+   "en": "Mount Carmel"
+  },
+  "modernLocation": {
+   "en": "Haifa District, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.7222,
+    "lon": 35.05
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-negev-gibson"
+   ],
+   "disputes": {
+    "en": "The mountain is certain; the spot is not. El-Muhraqa ('the place of burning') at the south-east spur has carried the tradition since the Middle Ages and fits the narrative's line of sight to the Kishon and the sea, but the text names no site and no excavation marks it."
+   }
+  },
+  "summary": {
+   "en": "The wooded headland running north-west to the sea, and the stage for the contest between Elijah and the prophets of Baal, followed by the rain that broke the three-year drought (1 Kings 18). Elisha later kept a base here (2 Kings 4:25)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-negev-gibson"
+  ],
+  "modernName": {
+   "en": "el-Muhraqa, Carmel range"
+  }
+ },
+ {
+  "id": "site-abel-meholah",
+  "ancientName": {
+   "en": "Abel-meholah"
+  },
+  "modernLocation": {
+   "en": "Jordan Valley"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.3167,
+    "lon": 35.5333
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Elisha's home, where Elijah found him ploughing with twelve yoke of oxen and cast his mantle over him (1 Kings 19:16-21); earlier, part of the route of Gideon's rout of the Midianites (Judges 7:22)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Tell Abu Sus / Tell el-Maqlub (disputed)"
+  },
+  "candidates": [
+   {
+    "label": {
+     "en": "Tell Abu Sus, west bank of the Jordan"
+    },
+    "lat": 32.3167,
+    "lon": 35.5333,
+    "confidence": "medium",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-abd"
+    ]
+   },
+   {
+    "label": {
+     "en": "Tell el-Maqlub, Wadi al-Yabis (east bank)"
+    },
+    "lat": 32.3892,
+    "lon": 35.7108,
+    "confidence": "medium",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-sacred-bridge"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "site-dothan",
+  "ancientName": {
+   "en": "Dothan"
+  },
+  "modernLocation": {
+   "en": "Jenin Governorate, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.4103,
+    "lon": 35.2003
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-dothan-free",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "Pasture town on the caravan road north of Shechem where Joseph's brothers sold him to a Midianite caravan bound for Egypt (Genesis 37:17-28), and where the Aramean army sent to seize Elisha was struck blind and led to Samaria (2 Kings 6:13-23)."
+  },
+  "citations": [
+   "cit-exc-dothan-free",
+   "cit-ref-sacred-bridge"
+  ],
+  "modernName": {
+   "en": "Tell Dothan"
+  }
+ },
+ {
+  "id": "site-shunem",
+  "ancientName": {
+   "en": "Shunem"
+  },
+  "modernLocation": {
+   "en": "Northern District, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.6033,
+    "lon": 35.3358
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-negev-gibson"
+   ],
+   "disputes": {
+    "en": "The identification with Sulam rests on the survival of the name and on Eusebius' Onomasticon placing Sulem five miles south of Tabor; the site itself is largely built over and unexcavated."
+   }
+  },
+  "summary": {
+   "en": "Village on the south-west slope of the hill of Moreh, on Elisha's circuit, where a wealthy woman built him a room on the roof and where her son was restored to life (2 Kings 4:8-37). The Philistines camped here before Saul's last battle (1 Samuel 28:4)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-negev-gibson"
+  ],
+  "modernName": {
+   "en": "Sulam"
+  }
+ },
+ {
+  "id": "site-gilgal",
+  "ancientName": {
+   "en": "Gilgal"
+  },
+  "modernLocation": {
+   "en": "Jordan Valley, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.87,
+    "lon": 35.49
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-abd",
+    "cit-ref-negev-gibson"
+   ],
+   "disputes": {
+    "en": "Unlocated despite a century of searching. Khirbet el-Mafjar, Khirbet en-Nitla and Tell el-Jurn have all been proposed near Jericho; the Old Testament also uses 'Gilgal' of more than one place, so not every reference need mean the same site."
+   }
+  },
+  "summary": {
+   "en": "Israel's first camp west of the Jordan, where the twelve stones were set up and the reproach of Egypt rolled away (Joshua 4-5); later a sanctuary on Samuel's yearly circuit (1 Samuel 7:16), the place where Saul was made king (1 Samuel 11:15), and a station of the prophetic guilds under Elisha (2 Kings 4:38)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-abd",
+   "cit-ref-negev-gibson"
+  ],
+  "modernName": {
+   "en": "unlocated, near Jericho"
+  }
+ },
+ {
+  "id": "site-nineveh",
+  "ancientName": {
+   "en": "Nineveh"
+  },
+  "modernLocation": {
+   "en": "Nineveh Governorate, Iraq"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.3597,
+    "lon": 43.1528
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-nineveh-layard",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Capital of the Assyrian empire from Sennacherib onward: the 'exceeding great city' Jonah is sent to, the city Nahum's oracle sees fall, and the seat of the kings whose campaigns against Israel and Judah the books of Kings record. It fell to a Median-Babylonian coalition in 612 BC."
+  },
+  "citations": [
+   "cit-exc-nineveh-layard",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Kuyunjik and Nebi Yunus, Mosul"
+  }
+ },
+ {
+  "id": "site-tarshish",
+  "ancientName": {
+   "en": "Tarshish"
+  },
+  "modernLocation": {
+   "en": "location disputed"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 36.9,
+    "lon": -6.35
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-abd",
+    "cit-ref-sacred-bridge",
+    "cit-ref-bright"
+   ],
+   "disputes": {
+    "en": "Three identifications compete and none is decisive: Tartessos in south-west Spain (the classical reading, and the one that makes Jonah's flight the longest possible), Tarsus in Cilicia, and a Sardinian or wider 'refinery/open sea' sense of the word. The pin is placed at Tartessos as the majority reading; treat it as a direction of travel, not a located port."
+   }
+  },
+  "summary": {
+   "en": "The far-west destination Jonah bought passage for at Joppa, 'from the presence of the LORD' (Jonah 1:3) — in the Hebrew Bible a byword for the edge of the known world, the source of silver, iron, tin and lead (Ezekiel 27:12)."
+  },
+  "citations": [
+   "cit-ref-abd",
+   "cit-ref-sacred-bridge",
+   "cit-ref-bright"
+  ],
+  "modernName": {
+   "en": "unidentified — western Mediterranean or Cilicia"
+  },
+  "candidates": [
+   {
+    "label": {
+     "en": "Tartessos, Guadalquivir estuary, south-west Spain"
+    },
+    "lat": 36.9,
+    "lon": -6.35,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ref-abd",
+     "cit-ref-bright"
+    ]
+   },
+   {
+    "label": {
+     "en": "Tarsus in Cilicia"
+    },
+    "lat": 36.9177,
+    "lon": 34.8917,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ref-abd",
+     "cit-src-strabo-14-5-tarsus"
+    ]
+   },
+   {
+    "label": {
+     "en": "Nora / southern Sardinia"
+    },
+    "lat": 38.9853,
+    "lon": 9.0161,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ref-abd",
+     "cit-ref-sacred-bridge"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "site-babylon",
+  "ancientName": {
+   "en": "Babylon"
+  },
+  "modernLocation": {
+   "en": "Babil Governorate, Iraq"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.5355,
+    "lon": 44.4275
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-babylon-koldewey",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Capital of the Neo-Babylonian empire under Nebuchadnezzar II, destination of the three deportations from Judah, and the setting of Daniel's court narratives. Its fall to Cyrus in 539 BC opened the return."
+  },
+  "citations": [
+   "cit-exc-babylon-koldewey",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Tell Babil, Hillah"
+  }
+ },
+ {
+  "id": "site-susa",
+  "ancientName": {
+   "en": "Shushan (Susa)"
+  },
+  "modernLocation": {
+   "en": "Khuzestan Province, Iran"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.1897,
+    "lon": 48.2568
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-susa-perrot",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Achaemenid royal residence in Elam: the citadel of the book of Esther, the setting of Daniel's vision of the ram and the goat (Daniel 8:2), and the place where Nehemiah, cupbearer to Artaxerxes, heard of Jerusalem's broken walls (Nehemiah 1:1)."
+  },
+  "citations": [
+   "cit-exc-susa-perrot",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Shush"
+  }
+ },
+ {
+  "id": "site-chebar-canal",
+  "ancientName": {
+   "en": "By the river Chebar (Tel-abib)"
+  },
+  "modernLocation": {
+   "en": "Al-Qadisiyyah, Iraq"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.1264,
+    "lon": 45.2331
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-zadok-diaspora",
+    "cit-src-al-yahudu"
+   ],
+   "disputes": {
+    "en": "Tel-abib itself is unlocated. What is documented is the setting: cuneiform archives from al-Yahudu and Našar record deported Judean families farming crown land in exactly this region, which is why the canal, not the village, carries the pin."
+   }
+  },
+  "summary": {
+   "en": "The Judean deportee settlement where Ezekiel lived and received his visions — 'among the captives by the river Chebar' (Ezekiel 1:1-3, 3:15). The Chebar is generally identified with the nāru kabaru, a major canal in the Nippur region named in Babylonian records; the pin sits at that canal system, not at a located village."
+  },
+  "citations": [
+   "cit-ref-zadok-diaspora",
+   "cit-src-al-yahudu"
+  ],
+  "modernName": {
+   "en": "Nippur region canal system"
+  }
+ },
+ {
+  "id": "site-anathoth",
+  "ancientName": {
+   "en": "Anathoth"
+  },
+  "modernLocation": {
+   "en": "Jerusalem Governorate, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.8036,
+    "lon": 35.2569
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Priestly town of Benjamin, three miles north-east of Jerusalem, where Abiathar was banished (1 Kings 2:26) and where Jeremiah was born and bought a field as a sign that houses and lands would be possessed again (Jeremiah 1:1, 32:6-15). His own townsmen plotted against him (Jeremiah 11:21)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Anata / Ras el-Kharrubeh"
+  },
+  "candidates": [
+   {
+    "label": {
+     "en": "Ras el-Kharrubeh (Iron Age remains, 1 km south of Anata)"
+    },
+    "lat": 31.8036,
+    "lon": 35.2569,
+    "confidence": "medium",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-abd"
+    ]
+   },
+   {
+    "label": {
+     "en": "Anata village (preserves the name)"
+    },
+    "lat": 31.8106,
+    "lon": 35.2617,
+    "confidence": "medium",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-sacred-bridge"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "site-tahpanhes",
+  "ancientName": {
+   "en": "Tahpanhes"
+  },
+  "modernLocation": {
+   "en": "Ismailia Governorate, Egypt"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.8664,
+    "lon": 32.165
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-tahpanhes-petrie",
+    "cit-ref-abd"
+   ]
+  },
+  "summary": {
+   "en": "Egyptian frontier fortress in the eastern Delta, the Greek Daphnae. The remnant of Judah fled here after Gedaliah's murder, carrying Jeremiah with them against his counsel; he buried stones at the entry of Pharaoh's house here as a sign of Nebuchadnezzar's coming (Jeremiah 43:7-13)."
+  },
+  "citations": [
+   "cit-exc-tahpanhes-petrie",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Tell Defenneh"
+  }
+ },
+ {
+  "id": "site-tekoa",
+  "ancientName": {
+   "en": "Tekoa"
+  },
+  "modernLocation": {
+   "en": "Bethlehem Governorate, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.6333,
+    "lon": 35.2333
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-negev-gibson"
+   ],
+   "disputes": {
+    "en": "The identification rests on the survival of the name at Khirbet Tequ'a and on Jerome, who lived within sight of it; the mound itself has seen only limited excavation."
+   }
+  },
+  "summary": {
+   "en": "Village on the edge of the Judean wilderness, six miles south of Bethlehem: home of the wise woman Joab sent to David (2 Samuel 14:2), fortified by Rehoboam (2 Chronicles 11:6), and home of Amos, 'among the herdmen of Tekoa' (Amos 1:1), who went north to prophesy at Bethel."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-negev-gibson"
+  ],
+  "modernName": {
+   "en": "Khirbet Tequ'a"
+  }
+ },
+ {
+  "id": "site-moresheth-gath",
+  "ancientName": {
+   "en": "Moresheth-gath"
+  },
+  "modernLocation": {
+   "en": "Judean Shephelah, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.6394,
+    "lon": 34.9139
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-abd"
+   ],
+   "disputes": {
+    "en": "Tell ej-Judeideh is the usual candidate on the strength of position and Eusebius' notice placing Morasthi near Eleutheropolis; the identification is topographic rather than epigraphic."
+   }
+  },
+  "summary": {
+   "en": "Shephelah village of Micah the prophet (Micah 1:1, 1:14), close to Lachish and the Philistine plain — the vantage point of his lament over the towns of the lowlands as Sennacherib's army came up."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Tell ej-Judeideh (Tel Goded)"
+  }
+ },
+ {
+  "id": "site-riblah",
+  "ancientName": {
+   "en": "Riblah"
+  },
+  "modernLocation": {
+   "en": "Homs Governorate, Syria"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 34.45,
+    "lon": 36.5333
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-abd",
+    "cit-ref-sacred-bridge"
+   ],
+   "disputes": {
+    "en": "The modern village of Ribleh on the Orontes preserves the name and suits every notice in Kings and Jeremiah, but the site is unexcavated."
+   }
+  },
+  "summary": {
+   "en": "Staging camp on the Orontes in the land of Hamath, from which first Pharaoh Necho and then Nebuchadnezzar controlled the Levant. Jehoahaz was deposed here (2 Kings 23:33), and here Zedekiah watched his sons killed before being blinded and taken to Babylon (2 Kings 25:6-7)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-abd",
+   "cit-ref-sacred-bridge"
+  ],
+  "modernName": {
+   "en": "Ribleh"
+  }
+ },
+ {
+  "id": "site-shiloh",
+  "ancientName": {
+   "en": "Shiloh"
+  },
+  "modernLocation": {
+   "en": "Nablus Governorate, West Bank"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 32.0561,
+    "lon": 35.2894
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-shiloh-finkelstein",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "Israel's central sanctuary through the period of the judges: the tabernacle stood here, Hannah prayed and Samuel was raised here under Eli (1 Samuel 1-3), and here the ark was taken out to Aphek and lost. Excavation found an Iron I settlement destroyed by fire in the mid-11th century BC — the disaster Jeremiah later invokes against the temple (Jeremiah 7:12)."
+  },
+  "citations": [
+   "cit-exc-shiloh-finkelstein",
+   "cit-ref-sacred-bridge"
+  ],
+  "modernName": {
+   "en": "Khirbet Seilun"
+  }
+ },
+ {
+  "id": "site-en-gedi",
+  "ancientName": {
+   "en": "En-gedi"
+  },
+  "modernLocation": {
+   "en": "Southern District, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.4614,
+    "lon": 35.3925
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-engedi-mazar",
+    "cit-ref-sacred-bridge"
+   ]
+  },
+  "summary": {
+   "en": "Spring-fed oasis on the west shore of the Dead Sea, in 'the strongholds of En-gedi' where David hid from Saul and cut the skirt of his robe in the cave rather than strike him (1 Samuel 24)."
+  },
+  "citations": [
+   "cit-exc-engedi-mazar",
+   "cit-ref-sacred-bridge"
+  ],
+  "modernName": {
+   "en": "Ein Gedi"
+  }
+ },
+ {
+  "id": "site-adullam",
+  "ancientName": {
+   "en": "Adullam"
+  },
+  "modernLocation": {
+   "en": "Judean Shephelah, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.6494,
+    "lon": 34.9803
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-ref-aharoni",
+    "cit-ref-sacred-bridge",
+    "cit-ref-negev-gibson"
+   ],
+   "disputes": {
+    "en": "Khirbet esh-Sheikh Madhkur, above the Elah valley, is the standard identification on position and name; the traditional 'cave of Adullam' shown to pilgrims is a later devotional site."
+   }
+  },
+  "summary": {
+   "en": "Shephelah town with a cave nearby where David took refuge after fleeing Gath, and where 'every one that was in distress, and every one that was in debt' gathered to him — the beginning of his band of four hundred (1 Samuel 22:1-2)."
+  },
+  "citations": [
+   "cit-ref-aharoni",
+   "cit-ref-sacred-bridge",
+   "cit-ref-negev-gibson"
+  ],
+  "modernName": {
+   "en": "Khirbet esh-Sheikh Madhkur"
+  }
+ },
+ {
+  "id": "site-ziklag",
+  "ancientName": {
+   "en": "Ziklag"
+  },
+  "modernLocation": {
+   "en": "Northern Negev, Israel"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 31.5514,
+    "lon": 34.8306
+   },
+   "confidence": "disputed",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-exc-khirbet-a-rai",
+    "cit-ref-aharoni",
+    "cit-ref-abd"
+   ],
+   "disputes": {
+    "en": "At least four tells have been proposed. The excavators of Khirbet a-Ra'i argue for it on the strength of an 11th-10th century Philistine-to-Judahite sequence; others hold to Tell esh-Sharia (Tel Sera') or Tel Halif. No inscription names the town."
+   }
+  },
+  "summary": {
+   "en": "Philistine border town Achish of Gath gave David during his sixteen months as a vassal; it became crown property of the kings of Judah (1 Samuel 27:6). The Amalekites burned it and carried off the families while David was away, and he pursued and recovered them (1 Samuel 30)."
+  },
+  "citations": [
+   "cit-exc-khirbet-a-rai",
+   "cit-ref-aharoni",
+   "cit-ref-abd"
+  ],
+  "modernName": {
+   "en": "Khirbet a-Ra'i / Tell esh-Sharia (disputed)"
+  },
+  "candidates": [
+   {
+    "label": {
+     "en": "Khirbet a-Ra'i, Judean Shephelah"
+    },
+    "lat": 31.5514,
+    "lon": 34.8306,
+    "confidence": "disputed",
+    "citations": [
+     "cit-exc-khirbet-a-rai"
+    ]
+   },
+   {
+    "label": {
+     "en": "Tell esh-Sharia (Tel Sera')"
+    },
+    "lat": 31.3939,
+    "lon": 34.6797,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-abd"
+    ]
+   },
+   {
+    "label": {
+     "en": "Tel Halif (Khirbet Khuweilifeh)"
+    },
+    "lat": 31.3808,
+    "lon": 34.8686,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ref-aharoni",
+     "cit-ref-sacred-bridge"
+    ]
+   }
+  ]
  }
 ]

@@ -296,6 +296,20 @@ async function main(): Promise<void> {
       else if (vStops.find((x) => x.id === sid)?.journeyId !== j.id) err(`journey ${j.id}: stop '${sid}' has mismatched journeyId`);
     });
   });
+  // Person place/date anchors must resolve, or the timeline and the figure
+  // index would silently drop a figure (or draw them at nowhere).
+  vPersons.forEach((p) => {
+    if (p.homeSiteId && !siteIds.has(p.homeSiteId)) err(`person ${p.id}: unknown homeSiteId '${p.homeSiteId}'`);
+    p.siteIds?.forEach((s) => !siteIds.has(s) && err(`person ${p.id}: unknown site '${s}'`));
+    p.journeyIds?.forEach((j) => !journeyIds.has(j) && err(`person ${p.id}: unknown journey '${j}'`));
+    p.contemporaries?.forEach((c) => !personIds.has(c) && err(`person ${p.id}: unknown contemporary '${c}'`));
+    p.books?.forEach((b) => {
+      // Books are display names of canonical books — a typo here would break
+      // the Bible reader's "figures in this book" cross-reference.
+      if (!parseScriptureRef(`${b} 1`)) err(`person ${p.id}: '${b}' is not a canonical book name`);
+    });
+  });
+
   vLessons.forEach((l) => {
     l.steps.forEach((st, i) => {
       if (st.siteId && !siteIds.has(st.siteId)) err(`lesson ${l.id}.steps[${i}]: unknown siteId '${st.siteId}'`);
@@ -395,6 +409,16 @@ async function main(): Promise<void> {
 
   // 6c. Soft gazetteer drift warning: when a site has pleiadesId we cannot
   // fetch live coords offline, but we record coverage for the report.
+  // 6d. Timeline coverage: a figure with no dated span cannot be placed on the
+  // linear timeline. That is allowed (better than inventing a date) but it is
+  // worth reporting so the gap is a decision, not an oversight.
+  const undatedPersons = vPersons.filter((p) => !p.ministryRange && !p.lifeRange);
+  if (undatedPersons.length)
+    warn(
+      `timeline coverage: ${undatedPersons.length}/${vPersons.length} person(s) carry no lifeRange/ministryRange ` +
+        `and will be listed off-axis (${undatedPersons.slice(0, 6).map((p) => p.id).join(', ')}${undatedPersons.length > 6 ? ', …' : ''})`,
+    );
+
   const withPleiades = vSites.filter((s) => s.pleiadesId).length;
   if (withPleiades < 40) warn(`gazetteer coverage: only ${withPleiades}/ ${vSites.length} sites have pleiadesId (target ≥40 well-attested)`);
 
@@ -417,6 +441,10 @@ async function main(): Promise<void> {
   );
   vJourneys.forEach((j) => dateCheck(j.dateRange, `journey ${j.id}`));
   vStops.forEach((st) => dateCheck(st.dateRange, `stop ${st.id}`));
+  vPersons.forEach((p) => {
+    if (p.lifeRange) dateCheck(p.lifeRange, `person ${p.id}.lifeRange`);
+    if (p.ministryRange) dateCheck(p.ministryRange, `person ${p.id}.ministryRange`);
+  });
   vBattles.forEach((b) => {
     dateCheck(b.dateRange, `battle ${b.id}`);
     b.area?.forEach(([lon, lat]) => {

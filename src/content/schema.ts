@@ -24,7 +24,43 @@ export const CitationKind = z.enum([
   'tertiary-popular',
 ]);
 export const LegMode = z.enum(['land', 'sea', 'start', 'turnaround']);
-export const JourneyKind = z.enum(['patriarchal', 'exodus', 'ministry', 'apostolic']);
+/**
+ * Era a journey belongs to. Ordered as the biblical narrative runs — the
+ * trace picker and the timeline both read this as the era spine, so a new
+ * value must also be added to `ERA_ORDER` (TraceMode) and `ERAS`
+ * (src/content/eras.ts).
+ */
+export const JourneyKind = z.enum([
+  'patriarchal',
+  'exodus',
+  'conquest', // Joshua and the judges
+  'monarchy', // Samuel, Saul, David, Solomon and the divided kingdom
+  'prophetic', // a named prophet's own circuit (Elijah, Elisha, Jonah, Jeremiah…)
+  'exile', // deportation to Babylon and the prophets of the exile
+  'return', // Cyrus' decree, Zerubbabel, Ezra, Nehemiah
+  'ministry',
+  'apostolic',
+]);
+/**
+ * How a figure is classified on the timeline and in the figure index. The
+ * major/minor prophet split is the conventional one — length of the book, not
+ * importance — and the app says so where it is shown.
+ */
+export const PersonCategory = z.enum([
+  'patriarch',
+  'matriarch',
+  'prophet-major',
+  'prophet-minor',
+  'prophet', // prophets without a book of their own (Samuel, Elijah, Elisha, Nathan…)
+  'judge',
+  'king',
+  'priest',
+  'apostle',
+  'disciple',
+  'evangelist',
+  'ruler', // foreign kings, governors, and Roman officials
+  'other',
+]);
 /** Per-leg geometry quality for route paths (honest stroke styling + UI caveats). */
 export const GeometryGrade = z.enum([
   'surveyed-road', // snapped to a published surveyed network (e.g. Itiner-e Roman roads)
@@ -148,6 +184,18 @@ export const Stop = z.object({
   citations: z.array(z.string()),
 });
 
+/**
+ * A named figure of the biblical narrative. Beyond the name/role/summary the
+ * app needs to *place* and *date* a figure to draw them on the linear timeline
+ * and to answer "where was this person, and when": `ministryRange` (or
+ * `lifeRange` when a ministry is not the point) is the timeline span,
+ * `homeSiteId`/`siteIds` are the map anchors, and `journeyIds` links the
+ * figure to the journeys they walk.
+ *
+ * Every one of those is optional: a figure the text places only vaguely gets
+ * no coordinates rather than a fabricated pin, and an undated figure is listed
+ * off-axis rather than given false precision.
+ */
 export const Person = z.object({
   id: z.string().min(1),
   name: LocalizedText,
@@ -155,6 +203,25 @@ export const Person = z.object({
   summary: LocalizedText,
   scriptureRefs: z.array(z.string()),
   citations: z.array(z.string()),
+  category: PersonCategory.optional(),
+  /** Realm/audience — e.g. "Kingdom of Judah", "Northern Kingdom (Israel)". */
+  realm: LocalizedText.optional(),
+  /** Books of the Bible traditionally ascribed to the figure (display names). */
+  books: z.array(z.string()).optional(),
+  /** Birth-to-death span, where a scholarly range exists. */
+  lifeRange: DateRange.optional(),
+  /** Active ministry/reign span — the figure's bar on the timeline. */
+  ministryRange: DateRange.optional(),
+  /** Home town / base of operations (Site id). */
+  homeSiteId: z.string().optional(),
+  /** Other mapped places the figure is placed at by the text. */
+  siteIds: z.array(z.string()).optional(),
+  /** Journeys the figure travels (Journey ids). */
+  journeyIds: z.array(z.string()).optional(),
+  /** Figures the text explicitly synchronises this one with. */
+  contemporaries: z.array(z.string()).optional(),
+  /** Where the dating itself is contested, say so rather than picking a side. */
+  datingNote: LocalizedText.optional(),
 });
 
 export const Artifact = z.object({
@@ -397,6 +464,8 @@ export type TJourney = z.infer<typeof Journey>;
 export type TRoutePath = z.infer<typeof RoutePath>;
 export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
+export type TPersonCategory = z.infer<typeof PersonCategory>;
+export type TJourneyKind = z.infer<typeof JourneyKind>;
 export type TArtifact = z.infer<typeof Artifact>;
 export type TWitness = z.infer<typeof Witness>;
 export type TMiracle = z.infer<typeof Miracle>;

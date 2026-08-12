@@ -16,7 +16,7 @@ import { Citations, ConfidenceBadge, DisputeNote, RouteGeometryNote, ScripturePa
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
-import type { TJourney } from '../../content/schema';
+import { ERAS } from '../../content/eras';
 import type { BundleIndex } from '../../content/useBundle';
 import type { TStop } from '../../content/schema';
 
@@ -32,26 +32,23 @@ export default function TraceMode() {
   return <JourneyTrace bundle={bundle} journeyId={journeyId} />;
 }
 
-// Journeys grouped into biblical eras, oldest first, so the picker reads as a
-// timeline from the patriarchs to the apostles.
-const ERA_ORDER: { kind: TJourney['kind']; label: string }[] = [
-  { kind: 'patriarchal', label: 'The Patriarchs' },
-  { kind: 'exodus', label: 'The Exodus' },
-  { kind: 'ministry', label: 'The Life of Jesus' },
-  { kind: 'apostolic', label: 'The Apostolic Age' },
-];
-
 function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   return (
     <ModePanel title={t('modes.trace.title')}>
       <p>Choose a journey to trace — from the patriarchs to the apostles.</p>
-      {ERA_ORDER.map(({ kind, label }) => {
-        const journeys = bundle.journeys.filter((j) => j.kind === kind);
+      <p className="journey-era__hint">
+        <Link to="/timeline">See every journey on one linear timeline →</Link>
+      </p>
+      {/* Grouped by the shared era spine (src/content/eras.ts), oldest first,
+          so the picker reads as the same chronology the timeline draws. */}
+      {ERAS.map((era) => {
+        const journeys = bundle.journeys.filter((j) => era.journeyKinds.includes(j.kind));
         if (journeys.length === 0) return null;
         return (
-          <section key={kind} className="journey-era">
-            <h3 className="journey-era__title">{label}</h3>
+          <section key={era.id} className="journey-era">
+            <h3 className="journey-era__title">{era.label}</h3>
+            <p className="journey-era__range">{era.display}</p>
             <ul className="journey-list">
               {journeys.map((j) => {
                 const firstSiteId = bundle.stop(j.stops[0])?.siteId;

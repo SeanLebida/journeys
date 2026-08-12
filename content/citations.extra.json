@@ -7271,5 +7271,2705 @@
   "note": {
    "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
   }
+ },
+ {
+  "id": "cit-exc-sarepta-pritchard",
+  "source": {
+   "en": "James B. Pritchard, 'Sarepta: A Preliminary Report on the Iron Age' (University Museum, University of Pennsylvania, 1975) — excavation report, Sarafand, Lebanon"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "Excavations at Sarafand identified the Iron Age Phoenician town of Sarepta/Zarephath."
+  }
+ },
+ {
+  "id": "cit-exc-dothan-free",
+  "source": {
+   "en": "Joseph P. Free, 'The Excavation of Dothan' and season reports, Bulletin of the American Schools of Oriental Research 131-160 (1953-1960); Daniel M. Master et al. (eds.), 'Dothan I' (Eisenbrauns, 2005)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "Nine seasons at Tell Dothan fixed the identification of the biblical town."
+  }
+ },
+ {
+  "id": "cit-exc-nineveh-layard",
+  "source": {
+   "en": "Austen Henry Layard, 'Nineveh and Its Remains' (John Murray, 1849) and 'Discoveries in the Ruins of Nineveh and Babylon' (John Murray, 1853) — Kuyunjik excavations"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "The Kuyunjik and Nebi Yunus mounds opposite Mosul, with Sennacherib's palace and the royal library, identify Nineveh beyond dispute."
+  }
+ },
+ {
+  "id": "cit-exc-babylon-koldewey",
+  "source": {
+   "en": "Robert Koldewey, 'The Excavations at Babylon', trans. Agnes S. Johns (Macmillan, 1914) — Deutsche Orient-Gesellschaft excavations 1899-1917"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "Eighteen seasons exposed the Ishtar Gate, the processional way and the Neo-Babylonian city walls."
+  }
+ },
+ {
+  "id": "cit-exc-susa-perrot",
+  "source": {
+   "en": "Jean Perrot (ed.), 'Le palais de Darius à Suse: une résidence royale sur la route de Persépolis à Babylone' (Presses de l'université Paris-Sorbonne, 2010)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "French excavations at Shush (Khuzestan) since 1897 identify Susa and the Achaemenid palace of Esther's setting."
+  }
+ },
+ {
+  "id": "cit-exc-tahpanhes-petrie",
+  "source": {
+   "en": "W. M. Flinders Petrie, 'Tanis II: Nebesheh (Am) and Defenneh (Tahpanhes)' (Egypt Exploration Fund, Fourth Memoir, 1888)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "Tell Defenneh in the eastern Delta, the Greek Daphnae, is the Tahpanhes of Jeremiah 43-44."
+  }
+ },
+ {
+  "id": "cit-exc-shiloh-finkelstein",
+  "source": {
+   "en": "Israel Finkelstein (ed.), 'Shiloh: The Archaeology of a Biblical Site' (Monograph Series 10, Institute of Archaeology, Tel Aviv University, 1993)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "Khirbet Seilun's Iron I settlement and its destruction layer anchor the Shiloh of Samuel's childhood."
+  }
+ },
+ {
+  "id": "cit-exc-engedi-mazar",
+  "source": {
+   "en": "Benjamin Mazar, Trude Dothan & Immanuel Dunayevsky, 'En-Gedi: The First and Second Seasons of Excavations', 'Atiqot 5 (Israel Antiquities Authority, 1966)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "The Chalcolithic temple and Iron Age settlement at the En-gedi oasis, David's refuge from Saul."
+  }
+ },
+ {
+  "id": "cit-exc-khirbet-a-rai",
+  "source": {
+   "en": "Yosef Garfinkel, Saar Ganor & Kyle H. Keimer, 'Khirbet al-Ra'i in the Judean Shephelah: The 2015-2019 Excavation Seasons', Jerusalem Journal of Archaeology 1 (2021)"
+  },
+  "kind": "archaeological",
+  "note": {
+   "en": "The excavators propose Khirbet a-Ra'i as Ziklag; the identification is contested and rival tells remain in play."
+  }
+ },
+ {
+  "id": "cit-src-al-yahudu",
+  "source": {
+   "en": "Laurie E. Pearce & Cornelia Wunsch, 'Documents of Judean Exiles and West Semites in Babylonia in the Collection of David Sofer' (Cornell University Studies in Assyriology and Sumerology 28, CDL Press, 2014)"
+  },
+  "kind": "primary-ancient",
+  "note": {
+   "en": "Cuneiform tablets from al-Yahudu ('the town of Judah') and Našar record deported Judean families by name in the Babylonian countryside — the documented context for Ezekiel's community by the Chebar."
+  }
+ },
+ {
+  "id": "cit-ref-zadok-diaspora",
+  "source": {
+   "en": "Ran Zadok, 'The Earliest Diaspora: Israelites and Judeans in Pre-Hellenistic Mesopotamia' (Diaspora Research Institute, Tel Aviv University, 2002)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Locates the Judean deportee settlements in the Nippur region; the Chebar (nāru kabaru) is a canal there."
+  }
+ },
+ {
+  "id": "cit-ref-blenkinsopp-prophecy",
+  "source": {
+   "en": "Joseph Blenkinsopp, 'A History of Prophecy in Israel', rev. and enl. ed. (Westminster John Knox, 1996)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Standard survey of the prophetic movement, its chronology, and the composition of the prophetic books."
+  }
+ },
+ {
+  "id": "cit-ref-sweeney-twelve",
+  "source": {
+   "en": "Marvin A. Sweeney, 'The Twelve Prophets', 2 vols., Berit Olam (Liturgical Press, 2000)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Commentary on the Book of the Twelve; the basis for the minor prophets' dating and audience here."
+  }
+ },
+ {
+  "id": "cit-ref-petersen-prophetic",
+  "source": {
+   "en": "David L. Petersen, 'The Prophetic Literature: An Introduction' (Westminster John Knox, 2002)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Introduction to the prophetic corpus, including the contested dating of Joel and Obadiah."
+  }
+ },
+ {
+  "id": "cit-src-eusebius-he",
+  "source": {
+   "en": "Eusebius of Caesarea, 'Ecclesiastical History' (Historia Ecclesiastica), 2 vols., trans. Kirsopp Lake & J. E. L. Oulton, Loeb Classical Library 153/265 (Harvard University Press)"
+  },
+  "kind": "primary-ancient",
+  "note": {
+   "en": "Fourth-century collection of the earlier traditions about where each apostle went and died; traditions, not documentation."
+  }
+ },
+ {
+  "id": "cit-scripture-1-corinthians-3-6",
+  "source": {
+   "en": "Holy Scripture: 1 Corinthians 3:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-11-11",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 11:11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-11-29",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 11:29"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-12-14",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 12:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-12-20",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 12:20"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-12-28",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 12:28"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-14-6",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 14:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-16-30",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 16:30"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-16-31",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 16:31"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-17-1",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 17:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-17-2-7",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 17:2-7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-17-8-24",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 17:8-24"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-18-1-19",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 18:1-19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-18-20-40",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 18:20-40"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-18-21",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 18:21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-18-41-46",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 18:41-46"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-1-3",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:1-3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-12",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-19",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-19-21",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:19-21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-3-8",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:3-8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-19-8-18",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 19:8-18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-1-34",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 1:34"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-21-15",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 21:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-21-19",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 21:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-22-17",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 22:17"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-22-27",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 22:27"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-22-34",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 22:34"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-3-9",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 3:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-kings-6-1",
+  "source": {
+   "en": "Holy Scripture: 1 Kings 6:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-10-1",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 10:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-11-14-15",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 11:14-15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-12-1-25",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 12:1-25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-13-14",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 13:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-16-1-13",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 16:1-13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-16-13",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 16:13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-17-1-54",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 17:1-54"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-18-6-16",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 18:6-16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-19-9-12",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 19:9-12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-1-24-28",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 1:24-28"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-22-1-2",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 22:1-2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-24-1-22",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 24:1-22"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-27-5-7",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 27:5-7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-30-1-20",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 30:1-20"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-31-6",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 31:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-3-1-21",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 3:1-21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-3-19",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 3:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-4-1-11",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 4:1-11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-7-15",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 7:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-7-15-17",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 7:15-17"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-7-5-12",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 7:5-12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-1-samuel-8-4-9",
+  "source": {
+   "en": "Holy Scripture: 1 Samuel 8:4-9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-chronicles-11-5",
+  "source": {
+   "en": "Holy Scripture: 2 Chronicles 11:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-chronicles-32-30",
+  "source": {
+   "en": "Holy Scripture: 2 Chronicles 32:30"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-chronicles-34-22",
+  "source": {
+   "en": "Holy Scripture: 2 Chronicles 34:22"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-chronicles-35-22",
+  "source": {
+   "en": "Holy Scripture: 2 Chronicles 35:22"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-chronicles-36-23",
+  "source": {
+   "en": "Holy Scripture: 2 Chronicles 36:23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-10-28",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 10:28"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-14-23",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 14:23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-14-25",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 14:25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-18-5",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 18:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-19-15",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 19:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-22-14",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 22:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-22-2",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 22:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-23-25",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 23:25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-24-1",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 24:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-24-10-16",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 24:10-16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-24-18",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 24:18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-25-6-7",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 25:6-7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-25-7",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 25:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-25-8-12",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 25:8-12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-2-1-12",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 2:1-12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-2-11",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 2:11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-2-13-22",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 2:13-22"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-2-23-25",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 2:23-25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-2-9",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 2:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-4-25",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 4:25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-4-38-44",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 4:38-44"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-4-8-37",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 4:8-37"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-5-14",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 5:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-6-24-33",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 6:24-33"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-6-8-23",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 6:8-23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-7-1-20",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 7:1-20"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-8-7-15",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 8:7-15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-9-1",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 9:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-9-33",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 9:33"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-9-6",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 9:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-12-7",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 12:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-17-24-27",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 17:24-27"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-18-6-15",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 18:6-15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-2-1-4",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 2:1-4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-5-1-5",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 5:1-5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-5-4",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 5:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-6-12-15",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 6:12-15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-7-16",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 7:16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-samuel-7-4",
+  "source": {
+   "en": "Holy Scripture: 2 Samuel 7:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-10-1",
+  "source": {
+   "en": "Holy Scripture: Acts 10:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-10-24-48",
+  "source": {
+   "en": "Holy Scripture: Acts 10:24-48"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-10-44",
+  "source": {
+   "en": "Holy Scripture: Acts 10:44"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-10-9-23",
+  "source": {
+   "en": "Holy Scripture: Acts 10:9-23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-11-1-18",
+  "source": {
+   "en": "Holy Scripture: Acts 11:1-18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-11-18",
+  "source": {
+   "en": "Holy Scripture: Acts 11:18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-12-1-19",
+  "source": {
+   "en": "Holy Scripture: Acts 12:1-19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-12-2",
+  "source": {
+   "en": "Holy Scripture: Acts 12:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-15-6-11",
+  "source": {
+   "en": "Holy Scripture: Acts 15:6-11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-16-14",
+  "source": {
+   "en": "Holy Scripture: Acts 16:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-16-15",
+  "source": {
+   "en": "Holy Scripture: Acts 16:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-16-40",
+  "source": {
+   "en": "Holy Scripture: Acts 16:40"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-18-2",
+  "source": {
+   "en": "Holy Scripture: Acts 18:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-18-26",
+  "source": {
+   "en": "Holy Scripture: Acts 18:26"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-13",
+  "source": {
+   "en": "Holy Scripture: Acts 1:13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-14",
+  "source": {
+   "en": "Holy Scripture: Acts 1:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-18",
+  "source": {
+   "en": "Holy Scripture: Acts 1:18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-23",
+  "source": {
+   "en": "Holy Scripture: Acts 1:23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-26",
+  "source": {
+   "en": "Holy Scripture: Acts 1:26"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-2-1-41",
+  "source": {
+   "en": "Holy Scripture: Acts 2:1-41"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-8-14-25",
+  "source": {
+   "en": "Holy Scripture: Acts 8:14-25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-amos-1-1",
+  "source": {
+   "en": "Holy Scripture: Amos 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-amos-5-24",
+  "source": {
+   "en": "Holy Scripture: Amos 5:24"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-amos-7-14",
+  "source": {
+   "en": "Holy Scripture: Amos 7:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-1-1-7",
+  "source": {
+   "en": "Holy Scripture: Daniel 1:1-7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-1-3-6",
+  "source": {
+   "en": "Holy Scripture: Daniel 1:3-6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-1-6",
+  "source": {
+   "en": "Holy Scripture: Daniel 1:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-2-1",
+  "source": {
+   "en": "Holy Scripture: Daniel 2:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-2-28",
+  "source": {
+   "en": "Holy Scripture: Daniel 2:28"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-2-46-49",
+  "source": {
+   "en": "Holy Scripture: Daniel 2:46-49"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-6-10",
+  "source": {
+   "en": "Holy Scripture: Daniel 6:10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-6-10-23",
+  "source": {
+   "en": "Holy Scripture: Daniel 6:10-23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-8-1-2",
+  "source": {
+   "en": "Holy Scripture: Daniel 8:1-2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-daniel-8-2",
+  "source": {
+   "en": "Holy Scripture: Daniel 8:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-esther-10-3",
+  "source": {
+   "en": "Holy Scripture: Esther 10:3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-esther-2-5",
+  "source": {
+   "en": "Holy Scripture: Esther 2:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-esther-2-7",
+  "source": {
+   "en": "Holy Scripture: Esther 2:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-esther-4-14",
+  "source": {
+   "en": "Holy Scripture: Esther 4:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-esther-9-26",
+  "source": {
+   "en": "Holy Scripture: Esther 9:26"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezekiel-1-1",
+  "source": {
+   "en": "Holy Scripture: Ezekiel 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezekiel-24-2",
+  "source": {
+   "en": "Holy Scripture: Ezekiel 24:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezekiel-37-1-14",
+  "source": {
+   "en": "Holy Scripture: Ezekiel 37:1-14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezekiel-37-4",
+  "source": {
+   "en": "Holy Scripture: Ezekiel 37:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezekiel-3-15",
+  "source": {
+   "en": "Holy Scripture: Ezekiel 3:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-1-1-11",
+  "source": {
+   "en": "Holy Scripture: Ezra 1:1-11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-1-2",
+  "source": {
+   "en": "Holy Scripture: Ezra 1:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-2-64-65",
+  "source": {
+   "en": "Holy Scripture: Ezra 2:64-65"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-3-8",
+  "source": {
+   "en": "Holy Scripture: Ezra 3:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-3-8-13",
+  "source": {
+   "en": "Holy Scripture: Ezra 3:8-13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-6-14-16",
+  "source": {
+   "en": "Holy Scripture: Ezra 6:14-16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-7-10",
+  "source": {
+   "en": "Holy Scripture: Ezra 7:10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-7-6",
+  "source": {
+   "en": "Holy Scripture: Ezra 7:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-7-6-10",
+  "source": {
+   "en": "Holy Scripture: Ezra 7:6-10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-ezra-8-31-32",
+  "source": {
+   "en": "Holy Scripture: Ezra 8:31-32"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-galatians-2-11-14",
+  "source": {
+   "en": "Holy Scripture: Galatians 2:11-14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-habakkuk-1-2",
+  "source": {
+   "en": "Holy Scripture: Habakkuk 1:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-habakkuk-2-4",
+  "source": {
+   "en": "Holy Scripture: Habakkuk 2:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-habakkuk-3-19",
+  "source": {
+   "en": "Holy Scripture: Habakkuk 3:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-haggai-1-1",
+  "source": {
+   "en": "Holy Scripture: Haggai 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-haggai-2-23",
+  "source": {
+   "en": "Holy Scripture: Haggai 2:23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-haggai-2-9",
+  "source": {
+   "en": "Holy Scripture: Haggai 2:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-hosea-11-8",
+  "source": {
+   "en": "Holy Scripture: Hosea 11:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-hosea-1-1",
+  "source": {
+   "en": "Holy Scripture: Hosea 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-isaiah-1-1",
+  "source": {
+   "en": "Holy Scripture: Isaiah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-isaiah-37-6",
+  "source": {
+   "en": "Holy Scripture: Isaiah 37:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-isaiah-45-1",
+  "source": {
+   "en": "Holy Scripture: Isaiah 45:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-isaiah-6-8",
+  "source": {
+   "en": "Holy Scripture: Isaiah 6:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-11-21",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 11:21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-1-1",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-1-1-10",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 1:1-10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-31-31",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 31:31"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-36-1-32",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 36:1-32"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-36-32",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 36:32"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-36-4",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 36:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-38-1-13",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 38:1-13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-38-19",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 38:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-38-6",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 38:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-39-1",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 39:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-40-1-6",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 40:1-6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-40-6-12",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 40:6-12"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-41-1-3",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 41:1-3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-43-5-13",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 43:5-13"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-43-6",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 43:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-45-1",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 45:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jeremiah-7-1-15",
+  "source": {
+   "en": "Holy Scripture: Jeremiah 7:1-15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-joel-1-1",
+  "source": {
+   "en": "Holy Scripture: Joel 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-joel-2-28",
+  "source": {
+   "en": "Holy Scripture: Joel 2:28"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-11-16",
+  "source": {
+   "en": "Holy Scripture: John 11:16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-14-22",
+  "source": {
+   "en": "Holy Scripture: John 14:22"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-14-8",
+  "source": {
+   "en": "Holy Scripture: John 14:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-19-25",
+  "source": {
+   "en": "Holy Scripture: John 19:25"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-19-26",
+  "source": {
+   "en": "Holy Scripture: John 19:26"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-1-29",
+  "source": {
+   "en": "Holy Scripture: John 1:29"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-1-40",
+  "source": {
+   "en": "Holy Scripture: John 1:40"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-1-43",
+  "source": {
+   "en": "Holy Scripture: John 1:43"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-1-47",
+  "source": {
+   "en": "Holy Scripture: John 1:47"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-20-16",
+  "source": {
+   "en": "Holy Scripture: John 20:16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-2-5",
+  "source": {
+   "en": "Holy Scripture: John 2:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-6-5",
+  "source": {
+   "en": "Holy Scripture: John 6:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-6-8",
+  "source": {
+   "en": "Holy Scripture: John 6:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-1-1",
+  "source": {
+   "en": "Holy Scripture: Jonah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-1-1-3",
+  "source": {
+   "en": "Holy Scripture: Jonah 1:1-3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-1-4-16",
+  "source": {
+   "en": "Holy Scripture: Jonah 1:4-16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-2-1-10",
+  "source": {
+   "en": "Holy Scripture: Jonah 2:1-10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-3-1-10",
+  "source": {
+   "en": "Holy Scripture: Jonah 3:1-10"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-3-4",
+  "source": {
+   "en": "Holy Scripture: Jonah 3:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-4-1-11",
+  "source": {
+   "en": "Holy Scripture: Jonah 4:1-11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-jonah-4-11",
+  "source": {
+   "en": "Holy Scripture: Jonah 4:11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-13-24",
+  "source": {
+   "en": "Holy Scripture: Judges 13:24"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-16-30",
+  "source": {
+   "en": "Holy Scripture: Judges 16:30"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-4-4",
+  "source": {
+   "en": "Holy Scripture: Judges 4:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-5-7",
+  "source": {
+   "en": "Holy Scripture: Judges 5:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-6-11",
+  "source": {
+   "en": "Holy Scripture: Judges 6:11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-judges-7-7",
+  "source": {
+   "en": "Holy Scripture: Judges 7:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-1-38",
+  "source": {
+   "en": "Holy Scripture: Luke 1:38"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-2-48",
+  "source": {
+   "en": "Holy Scripture: Luke 2:48"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-3-3",
+  "source": {
+   "en": "Holy Scripture: Luke 3:3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-5-27",
+  "source": {
+   "en": "Holy Scripture: Luke 5:27"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-6-15",
+  "source": {
+   "en": "Holy Scripture: Luke 6:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-6-16",
+  "source": {
+   "en": "Holy Scripture: Luke 6:16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-luke-8-2",
+  "source": {
+   "en": "Holy Scripture: Luke 8:2"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-malachi-1-1",
+  "source": {
+   "en": "Holy Scripture: Malachi 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-malachi-3-1",
+  "source": {
+   "en": "Holy Scripture: Malachi 3:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-malachi-4-5",
+  "source": {
+   "en": "Holy Scripture: Malachi 4:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-1-19",
+  "source": {
+   "en": "Holy Scripture: Mark 1:19"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-1-4",
+  "source": {
+   "en": "Holy Scripture: Mark 1:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-2-14",
+  "source": {
+   "en": "Holy Scripture: Mark 2:14"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-3-18",
+  "source": {
+   "en": "Holy Scripture: Mark 3:18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-5-37",
+  "source": {
+   "en": "Holy Scripture: Mark 5:37"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-10-3",
+  "source": {
+   "en": "Holy Scripture: Matthew 10:3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-10-4",
+  "source": {
+   "en": "Holy Scripture: Matthew 10:4"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-1-24",
+  "source": {
+   "en": "Holy Scripture: Matthew 1:24"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-26-15",
+  "source": {
+   "en": "Holy Scripture: Matthew 26:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-27-5",
+  "source": {
+   "en": "Holy Scripture: Matthew 27:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-3-1",
+  "source": {
+   "en": "Holy Scripture: Matthew 3:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-4-18",
+  "source": {
+   "en": "Holy Scripture: Matthew 4:18"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-4-21",
+  "source": {
+   "en": "Holy Scripture: Matthew 4:21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-matthew-9-9",
+  "source": {
+   "en": "Holy Scripture: Matthew 9:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-micah-1-1",
+  "source": {
+   "en": "Holy Scripture: Micah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-micah-6-8",
+  "source": {
+   "en": "Holy Scripture: Micah 6:8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nahum-1-1",
+  "source": {
+   "en": "Holy Scripture: Nahum 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nahum-3-7",
+  "source": {
+   "en": "Holy Scripture: Nahum 3:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-1-1",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-1-1-11",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 1:1-11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-2-1-8",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 2:1-8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-2-5",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 2:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-6-15",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 6:15"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-6-15-16",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 6:15-16"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-8-1-8",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 8:1-8"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-nehemiah-8-3",
+  "source": {
+   "en": "Holy Scripture: Nehemiah 8:3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-obadiah-1-1",
+  "source": {
+   "en": "Holy Scripture: Obadiah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-obadiah-1-11",
+  "source": {
+   "en": "Holy Scripture: Obadiah 1:11"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-psalms-51-1",
+  "source": {
+   "en": "Holy Scripture: Psalms 51:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-romans-16-3",
+  "source": {
+   "en": "Holy Scripture: Romans 16:3"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-zechariah-1-1",
+  "source": {
+   "en": "Holy Scripture: Zechariah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-zechariah-4-9",
+  "source": {
+   "en": "Holy Scripture: Zechariah 4:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-zechariah-9-9",
+  "source": {
+   "en": "Holy Scripture: Zechariah 9:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-zephaniah-1-1",
+  "source": {
+   "en": "Holy Scripture: Zephaniah 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-zephaniah-3-17",
+  "source": {
+   "en": "Holy Scripture: Zephaniah 3:17"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
  }
 ]
