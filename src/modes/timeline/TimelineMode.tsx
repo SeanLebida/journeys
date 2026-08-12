@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModePanel } from '../ModePanel';
@@ -19,8 +19,10 @@ import {
   TimelineFilters,
   TimelineLaneColumn,
 } from '../../components/timeline/TimelineParts';
+import { useFoldOut, usePrefersReducedMotion } from '../../components/timeline/useFoldOut';
 import { Citations, ConfidenceBadge } from '../../content/citations';
 import { bibleHref } from '../../content/scriptureIndex';
+import { useUiStore } from '../../state/useUiStore';
 
 /**
  * The linear timeline — the app's chronological spine, laid out the way a
@@ -50,6 +52,14 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
   const [lanes, setLanes] = useState<TimelineLaneId[]>(ALL_LANES);
   const [selected, setSelected] = useState<TimelineItem | null>(null);
 
+  // The fold-out effect: on unless the reader has opted out, and always off
+  // under prefers-reduced-motion. See useFoldOut for the readability rules.
+  const foldPref = useUiStore((s) => s.timelineFold);
+  const setFoldPref = useUiStore((s) => s.setTimelineFold);
+  const reducedMotion = usePrefersReducedMotion();
+  const foldEnabled = foldPref && !reducedMotion;
+  const erasRef = useRef<HTMLOListElement>(null);
+
   const toggleLane = (id: string) =>
     setLanes((cur) =>
       cur.includes(id as TimelineLaneId)
@@ -60,6 +70,9 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
   const sections = model.sections
     .map((s) => ({ ...s, lanes: s.lanes.filter((l) => lanes.includes(l.lane.id)) }))
     .filter((s) => s.lanes.length > 0);
+
+  // Rebind the fold listeners whenever the rendered lanes change.
+  useFoldOut(erasRef, foldEnabled, lanes.join(','));
 
   return (
     <section className="mode-panel mode-panel--page mode-panel--wide timeline" aria-labelledby="timeline-title">
@@ -92,7 +105,23 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
         onToggle={toggleLane}
       />
 
-      <ol className="tl-eras">
+      <fieldset className="atlas-toggles tl-filters">
+        <legend>Presentation</legend>
+        <label title="Panels hinge away as they scroll past the edge of a band, like opening a folded chart. Only panels already leaving the view move; whatever you are reading stays flat.">
+          <input
+            type="checkbox"
+            checked={foldPref}
+            disabled={reducedMotion}
+            onChange={(e) => setFoldPref(e.target.checked)}
+          />{' '}
+          Fold-out chart effect
+        </label>
+        {reducedMotion && (
+          <span className="tl-filters__note">off — your system asks for reduced motion</span>
+        )}
+      </fieldset>
+
+      <ol className="tl-eras" ref={erasRef} data-fold={foldEnabled ? 'on' : 'off'}>
         {sections.map((section) => (
           <li className="tl-era" key={section.era.id} id={section.era.id}>
             <EraHeader era={section.era} count={section.itemCount} />

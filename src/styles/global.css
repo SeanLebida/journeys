@@ -2721,10 +2721,20 @@ a {
   text-transform: uppercase;
   color: var(--text-muted);
 }
+.tl-filters label:has(input:disabled) {
+  opacity: 0.6;
+  cursor: default;
+}
+.tl-filters__note {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
 .tl-filters label {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+  /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
   /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
   min-height: 32px;
   cursor: pointer;
@@ -2806,6 +2816,8 @@ a {
   border-radius: 0 0 var(--r-md) var(--r-md);
   background: var(--surface);
   overflow-x: auto;
+  /* The offset chain useFoldOut measures through terminates here. */
+  position: relative;
   /* Reaching the end of a band must not start scrolling the page behind it. */
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
@@ -2820,6 +2832,11 @@ a {
   flex-wrap: nowrap;
   align-items: stretch;
   gap: 0.6rem;
+  /* The depth the fold hinges into. Deliberately shallow: a strong perspective
+     makes near-edge text swim. Only on the lane row, so the sticky year rail
+     (a sibling) is never part of the 3-D scene and stays flat. */
+  perspective: 1800px;
+  perspective-origin: 50% 45%;
   /* Grow to fill the band when the lanes are narrow enough to fit; otherwise
      the parent's overflow-x takes over. */
   flex: 1 0 auto;
@@ -2831,6 +2848,73 @@ a {
 .tl-lane {
   flex: 1 0 calc(var(--tracks, 1) * 8.5rem);
   min-width: calc(var(--tracks, 1) * 5rem);
+
+  /* ── Fold-out chart ──────────────────────────────────────────────────────
+     Each lane is a panel of a folded sheet. `--fold` is written per frame by
+     useFoldOut from scroll position alone: 0 while the panel is fully inside
+     the band, ramping to ±1 as it passes an edge. A panel the reader is
+     actually looking at therefore has NO transform — the hinge only ever acts
+     on content already leaving the view. `--fold-origin` puts the hinge on
+     whichever edge still faces the reader.
+
+     No transition: the angle tracks scroll directly, so it stops dead when
+     scrolling does and there is nothing animating at rest. */
+  position: relative;
+  isolation: isolate;
+  transform: rotateY(calc(var(--fold, 0) * 16deg));
+  transform-origin: var(--fold-origin, center) center;
+  backface-visibility: hidden;
+  /* Focus inside a folded panel scrolls it clear of the sticky year rail,
+     which flattens it — the keyboard path never lands on angled text. */
+  scroll-margin-inline: 5.5rem 1rem;
+}
+/* Crease and fold shading. Both are painted BEHIND the bars (z-index 0 against
+   the track's 1), so the paper effect can never cost text a point of contrast —
+   the one hard rule this effect is built around. */
+.tl-lane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* The crease itself: a soft valley at the panel's leading edge. */
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--text) 7%, transparent), transparent 14px),
+    linear-gradient(270deg, color-mix(in srgb, var(--text) 4%, transparent), transparent 10px);
+}
+.tl-lane::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* Deepens as the panel hinges away, so the fold reads as paper catching the
+     light. Capped low on purpose — it sits behind the bars, and it is gone
+     entirely (--fold-shade: 0) on anything fully in view. */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--text) calc(var(--fold-shade, 0) * 16%), transparent),
+    transparent 70%
+  );
+  opacity: var(--fold-shade, 0);
+}
+.tl-lane__title,
+.tl-lane__track {
+  position: relative;
+  z-index: 1;
+}
+/* Toggled off, or under prefers-reduced-motion: the panels stay square. The
+   static crease texture stays — it is the look, not the motion. */
+.tl-eras[data-fold='off'] .tl-lane {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-lane {
+    transform: none;
+  }
+  .tl-lane::after {
+    opacity: 0;
+  }
 }
 /* Names the lanes the band holds, so a reader on a phone knows there is more
    past the right edge rather than assuming the chart stops at "Prophets". */
@@ -2865,6 +2949,19 @@ a {
   height: var(--band-h, 320px);
   border-right: 2px solid var(--border);
   /* Opaque: bars scroll underneath it. */
+  background: var(--surface);
+}
+/* The rail starts one lane-heading below the band's top edge, which left that
+   top-left strip uncovered — a panel scrolling under the rail showed its
+   heading through the gap. This is the rail's masthead: same background, same
+   sticky context, so the whole left edge is opaque top to bottom. */
+.tl-axis::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-1 * var(--lane-head-h));
+  height: var(--lane-head-h);
   background: var(--surface);
 }
 .tl-axis__tick {
