@@ -21,6 +21,19 @@
    "cit-scripture-genesis-12-1",
    "cit-scripture-genesis-15-6",
    "cit-scripture-genesis-17-5"
+  ],
+  "category": "patriarch",
+  "homeSiteId": "site-hebron-machpelah",
+  "lifeRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000–1800 BC (Middle Bronze Age; dating debated)"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-abraham"
   ]
  },
  {
@@ -43,6 +56,19 @@
    "cit-ref-abd",
    "cit-scripture-genesis-17-15",
    "cit-scripture-genesis-23-2"
+  ],
+  "category": "matriarch",
+  "homeSiteId": "site-hebron-machpelah",
+  "lifeRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000–1800 BC (dating debated)"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-abraham"
   ]
  },
  {
@@ -64,7 +90,17 @@
    "cit-ot-isaac",
    "cit-scripture-genesis-21-3",
    "cit-scripture-genesis-26-3"
-  ]
+  ],
+  "category": "patriarch",
+  "homeSiteId": "site-beersheba-ot",
+  "lifeRange": {
+   "startYear": -1950,
+   "endYear": -1750,
+   "display": {
+    "en": "c. 1950–1750 BC (dating debated)"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-jacob",
@@ -85,7 +121,17 @@
    "cit-ot-jacob",
    "cit-scripture-genesis-28-12",
    "cit-scripture-genesis-32-28"
-  ]
+  ],
+  "category": "patriarch",
+  "homeSiteId": "site-bethel",
+  "lifeRange": {
+   "startYear": -1900,
+   "endYear": -1700,
+   "display": {
+    "en": "c. 1900–1700 BC (dating debated)"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-joseph",
@@ -108,7 +154,17 @@
    "cit-scripture-genesis-37-28",
    "cit-scripture-genesis-41-41",
    "cit-scripture-genesis-50-20"
-  ]
+  ],
+  "category": "patriarch",
+  "homeSiteId": "site-goshen-rameses",
+  "lifeRange": {
+   "startYear": -1880,
+   "endYear": -1750,
+   "display": {
+    "en": "c. 1880–1750 BC (dating debated)"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-moses",
@@ -132,7 +188,30 @@
    "cit-scripture-exodus-3-10",
    "cit-scripture-exodus-20-1",
    "cit-scripture-deuteronomy-34-5"
-  ]
+  ],
+  "category": "prophet",
+  "homeSiteId": "site-mount-sinai",
+  "lifeRange": {
+   "startYear": -1400,
+   "endYear": -1200,
+   "display": {
+    "en": "c. 1400–1200 BC — depends on the exodus date"
+   },
+   "approximate": true
+  },
+  "books": [
+   "Genesis",
+   "Exodus",
+   "Leviticus",
+   "Numbers",
+   "Deuteronomy"
+  ],
+  "journeyIds": [
+   "journey-exodus"
+  ],
+  "datingNote": {
+   "en": "Moses' dates move with the exodus date — c. 1446 BC on the early reading of 1 Kings 6:1, c. 1260 BC on the late reading of Exodus 1:11. The span shown covers both. The ascription of the Pentateuch to Moses is traditional; its composition history is debated."
+  }
  },
  {
   "id": "person-joshua",
@@ -155,6 +234,22 @@
    "cit-scripture-numbers-27-18",
    "cit-scripture-joshua-1-2",
    "cit-scripture-joshua-3-17"
+  ],
+  "category": "judge",
+  "homeSiteId": "site-shiloh",
+  "books": [
+   "Joshua"
+  ],
+  "lifeRange": {
+   "startYear": -1400,
+   "endYear": -1180,
+   "display": {
+    "en": "c. 1400–1180 BC — depends on the exodus date"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-exodus"
   ]
  },
  {
@@ -181,7 +276,15 @@
    "cit-scripture-genesis-6-14-15",
    "cit-scripture-genesis-8-4",
    "cit-scripture-genesis-9-29"
-  ]
+  ],
+  "category": "patriarch",
+  "homeSiteId": "site-shuruppak",
+  "journeyIds": [
+   "journey-noah"
+  ],
+  "datingNote": {
+   "en": "Genesis 1–11 carries no external chronological anchor, so no life range is given rather than a false one."
+  }
  },
  {
   "id": "person-stephen",
@@ -205,7 +308,17 @@
    "cit-scripture-acts-6-5",
    "cit-scripture-acts-6-8",
    "cit-scripture-acts-7-59-60"
-  ]
+  ],
+  "category": "disciple",
+  "homeSiteId": "site-jerusalem",
+  "ministryRange": {
+   "startYear": 33,
+   "endYear": 35,
+   "display": {
+    "en": "c. AD 33–35"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-philip-evangelist",
@@ -231,7 +344,17 @@
    "cit-scripture-acts-8-6-7",
    "cit-scripture-acts-8-26",
    "cit-scripture-acts-21-8-9"
-  ]
+  ],
+  "category": "evangelist",
+  "homeSiteId": "site-caesarea-maritima",
+  "ministryRange": {
+   "startYear": 34,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 34–60"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-ananias-of-damascus",
@@ -255,6 +378,3075 @@
    "cit-scripture-acts-9-10",
    "cit-scripture-acts-9-17-18",
    "cit-scripture-acts-22-12-13"
+  ],
+  "category": "disciple",
+  "homeSiteId": "site-damascus",
+  "ministryRange": {
+   "startYear": 34,
+   "endYear": 36,
+   "display": {
+    "en": "c. AD 34–36"
+   },
+   "approximate": true
+  }
+ },
+ {
+  "id": "person-samuel",
+  "name": {
+   "en": "Samuel"
+  },
+  "role": {
+   "en": "Last of the judges; prophet who anointed Saul and David"
+  },
+  "summary": {
+   "en": "Raised at the sanctuary of Shiloh under Eli, Samuel judged Israel on a yearly circuit between Bethel, Gilgal, Mizpah and his home at Ramah, anointed Saul as Israel's first king, and later anointed David at Bethlehem."
+  },
+  "scriptureRefs": [
+   "1 Samuel 3:19",
+   "1 Samuel 7:15",
+   "1 Samuel 16:13"
+  ],
+  "citations": [
+   "cit-scripture-1-samuel-3-19",
+   "cit-scripture-1-samuel-7-15",
+   "cit-scripture-1-samuel-16-13",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "All Israel, before the monarchy"
+  },
+  "ministryRange": {
+   "startYear": -1100,
+   "endYear": -1010,
+   "display": {
+    "en": "c. 1100–1010 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-ramah",
+  "siteIds": [
+   "site-shiloh",
+   "site-mizpah",
+   "site-gilgal",
+   "site-bethel",
+   "site-bethlehem"
+  ],
+  "journeyIds": [
+   "journey-samuel"
+  ]
+ },
+ {
+  "id": "person-nathan",
+  "name": {
+   "en": "Nathan"
+  },
+  "role": {
+   "en": "Court prophet to David and Solomon"
+  },
+  "summary": {
+   "en": "Delivered the dynastic promise to David, confronted him over Bathsheba and Uriah with the parable of the ewe lamb, and secured Solomon's succession against Adonijah."
+  },
+  "scriptureRefs": [
+   "2 Samuel 7:4",
+   "2 Samuel 12:7",
+   "1 Kings 1:34"
+  ],
+  "citations": [
+   "cit-scripture-2-samuel-7-4",
+   "cit-scripture-2-samuel-12-7",
+   "cit-scripture-1-kings-1-34",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Kingdom of Israel under David and Solomon"
+  },
+  "ministryRange": {
+   "startYear": -1000,
+   "endYear": -965,
+   "display": {
+    "en": "c. 1000–965 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "contemporaries": [
+   "person-david"
+  ]
+ },
+ {
+  "id": "person-ahijah",
+  "name": {
+   "en": "Ahijah the Shilonite"
+  },
+  "role": {
+   "en": "Prophet who announced the division of the kingdom"
+  },
+  "summary": {
+   "en": "Tore his new garment into twelve pieces before Jeroboam to signify that ten tribes would be torn from Solomon's house, and later pronounced judgment on the dynasty he had helped raise."
+  },
+  "scriptureRefs": [
+   "1 Kings 11:29",
+   "1 Kings 14:6"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-11-29",
+   "cit-scripture-1-kings-14-6",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -935,
+   "endYear": -910,
+   "display": {
+    "en": "c. 935–910 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-shiloh"
+ },
+ {
+  "id": "person-elijah",
+  "name": {
+   "en": "Elijah the Tishbite"
+  },
+  "role": {
+   "en": "Prophet of the Northern Kingdom under Ahab and Ahaziah"
+  },
+  "summary": {
+   "en": "Confronted Ahab and Jezebel over the worship of Baal through a three-year drought, the contest on Mount Carmel and the judgment on Naboth's vineyard; fled to Horeb, called Elisha at Abel-meholah, and was taken up beyond the Jordan."
+  },
+  "scriptureRefs": [
+   "1 Kings 17:1",
+   "1 Kings 18:21",
+   "1 Kings 19:12",
+   "2 Kings 2:11"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-17-1",
+   "cit-scripture-1-kings-18-21",
+   "cit-scripture-1-kings-19-12",
+   "cit-scripture-2-kings-2-11",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -875,
+   "endYear": -848,
+   "display": {
+    "en": "c. 875–848 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-tishbe",
+  "siteIds": [
+   "site-brook-cherith",
+   "site-zarephath",
+   "site-mount-carmel",
+   "site-jezreel",
+   "site-mount-sinai"
+  ],
+  "journeyIds": [
+   "journey-elijah"
+  ],
+  "contemporaries": [
+   "person-ahab",
+   "person-jezebel",
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "person-elisha",
+  "name": {
+   "en": "Elisha"
+  },
+  "role": {
+   "en": "Successor of Elijah; prophet through six reigns of Israel"
+  },
+  "summary": {
+   "en": "Called from the plough at Abel-meholah, he received a double portion of Elijah's spirit and worked for half a century across the Northern Kingdom — at Jericho, Shunem, Dothan and Samaria — advising kings, healing Naaman the Syrian, and setting Jehu's revolution in motion."
+  },
+  "scriptureRefs": [
+   "1 Kings 19:19",
+   "2 Kings 2:9",
+   "2 Kings 5:14",
+   "2 Kings 9:1"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-19-19",
+   "cit-scripture-2-kings-2-9",
+   "cit-scripture-2-kings-5-14",
+   "cit-scripture-2-kings-9-1",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -848,
+   "endYear": -797,
+   "display": {
+    "en": "c. 848–797 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-abel-meholah",
+  "siteIds": [
+   "site-jericho-ot",
+   "site-shunem",
+   "site-dothan",
+   "site-samaria-city",
+   "site-damascus"
+  ],
+  "journeyIds": [
+   "journey-elisha"
+  ],
+  "contemporaries": [
+   "person-elijah",
+   "person-jehu"
+  ]
+ },
+ {
+  "id": "person-micaiah",
+  "name": {
+   "en": "Micaiah son of Imlah"
+  },
+  "role": {
+   "en": "Prophet who alone foretold Ahab's death at Ramoth-gilead"
+  },
+  "summary": {
+   "en": "Summoned reluctantly before Ahab and Jehoshaphat, he contradicted four hundred court prophets and was imprisoned for it; Ahab died in the battle exactly as he had said."
+  },
+  "scriptureRefs": [
+   "1 Kings 22:17",
+   "1 Kings 22:27"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-22-17",
+   "cit-scripture-1-kings-22-27",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -860,
+   "endYear": -853,
+   "display": {
+    "en": "c. 860–853 BC"
+   },
+   "approximate": true
+  },
+  "siteIds": [
+   "site-samaria-city",
+   "site-ramoth-gilead"
+  ],
+  "contemporaries": [
+   "person-ahab"
+  ]
+ },
+ {
+  "id": "person-huldah",
+  "name": {
+   "en": "Huldah"
+  },
+  "role": {
+   "en": "Prophetess consulted over the book found in the temple"
+  },
+  "summary": {
+   "en": "When the book of the law was discovered during Josiah's temple repairs, the king's officials took it to Huldah in Jerusalem; her authentication of it set the reform in motion."
+  },
+  "scriptureRefs": [
+   "2 Kings 22:14",
+   "2 Chronicles 34:22"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-22-14",
+   "cit-scripture-2-chronicles-34-22",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -625,
+   "endYear": -620,
+   "display": {
+    "en": "c. 625–620 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "contemporaries": [
+   "person-josiah",
+   "person-jeremiah"
+  ]
+ },
+ {
+  "id": "person-deborah",
+  "name": {
+   "en": "Deborah"
+  },
+  "role": {
+   "en": "Judge and prophetess; the only woman to lead Israel in the judges period"
+  },
+  "summary": {
+   "en": "Judged Israel from beneath a palm between Ramah and Bethel, summoned Barak to face Sisera's chariots at the Kishon below Mount Tabor, and sang the victory song that is among the oldest poetry in the Hebrew Bible."
+  },
+  "scriptureRefs": [
+   "Judges 4:4",
+   "Judges 5:7"
+  ],
+  "citations": [
+   "cit-scripture-judges-4-4",
+   "cit-scripture-judges-5-7",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-ref-provan-history"
+  ],
+  "category": "judge",
+  "realm": {
+   "en": "The northern tribes"
+  },
+  "ministryRange": {
+   "startYear": -1200,
+   "endYear": -1125,
+   "display": {
+    "en": "c. 1200–1125 BC — judges chronology is approximate"
+   },
+   "approximate": true
+  },
+  "siteIds": [
+   "site-mount-tabor",
+   "site-bethel"
+  ],
+  "datingNote": {
+   "en": "The judges' terms are given as round numbers and may overlap regionally rather than run consecutively, so any absolute date for Deborah is a placement within the period, not a fix."
+  }
+ },
+ {
+  "id": "person-gideon",
+  "name": {
+   "en": "Gideon (Jerubbaal)"
+  },
+  "role": {
+   "en": "Judge who broke the Midianite raids"
+  },
+  "summary": {
+   "en": "Threshing wheat in a winepress to hide it from raiders, he was called to tear down his father's altar of Baal and then routed the Midianite camp below the hill of Moreh with three hundred men, torches and trumpets."
+  },
+  "scriptureRefs": [
+   "Judges 6:11",
+   "Judges 7:7"
+  ],
+  "citations": [
+   "cit-scripture-judges-6-11",
+   "cit-scripture-judges-7-7",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "category": "judge",
+  "realm": {
+   "en": "Manasseh and the northern tribes"
+  },
+  "ministryRange": {
+   "startYear": -1191,
+   "endYear": -1144,
+   "display": {
+    "en": "c. 1191–1144 BC — judges chronology is approximate"
+   },
+   "approximate": true
+  },
+  "siteIds": [
+   "site-spring-of-harod",
+   "site-abel-meholah"
+  ],
+  "datingNote": {
+   "en": "Dated only by the internal sequence of Judges, which gives round figures and may run in parallel across regions."
+  }
+ },
+ {
+  "id": "person-samson",
+  "name": {
+   "en": "Samson"
+  },
+  "role": {
+   "en": "Judge of the Danite border against the Philistines"
+  },
+  "summary": {
+   "en": "A Nazirite from birth whose career was a running personal feud along the Philistine frontier, ending at Gaza when he pulled down the temple of Dagon."
+  },
+  "scriptureRefs": [
+   "Judges 13:24",
+   "Judges 16:30"
+  ],
+  "citations": [
+   "cit-scripture-judges-13-24",
+   "cit-scripture-judges-16-30",
+   "cit-ref-provan-history"
+  ],
+  "category": "judge",
+  "realm": {
+   "en": "Dan and the Philistine frontier"
+  },
+  "ministryRange": {
+   "startYear": -1120,
+   "endYear": -1100,
+   "display": {
+    "en": "c. 1120–1100 BC — judges chronology is approximate"
+   },
+   "approximate": true
+  },
+  "siteIds": [
+   "site-beth-shemesh"
+  ],
+  "datingNote": {
+   "en": "Placed late in the judges period by the Philistine setting; the absolute date is not recoverable."
+  }
+ },
+ {
+  "id": "person-john-the-baptist",
+  "name": {
+   "en": "John the Baptist"
+  },
+  "role": {
+   "en": "Prophet of the wilderness; forerunner of Jesus"
+  },
+  "summary": {
+   "en": "Preached repentance and baptized in the Jordan, identified Jesus at his baptism, and was imprisoned and executed by Herod Antipas — an execution Josephus independently records."
+  },
+  "scriptureRefs": [
+   "Matthew 3:1",
+   "Mark 1:4",
+   "Luke 3:3",
+   "John 1:29"
+  ],
+  "citations": [
+   "cit-scripture-matthew-3-1",
+   "cit-scripture-mark-1-4",
+   "cit-scripture-luke-3-3",
+   "cit-scripture-john-1-29",
+   "cit-ref-keener-bbcnt",
+   "cit-wit-josephus-baptist"
+  ],
+  "category": "prophet",
+  "realm": {
+   "en": "Judea and Perea"
+  },
+  "lifeRange": {
+   "startYear": -6,
+   "endYear": 30,
+   "display": {
+    "en": "c. 6 BC – AD 28/30"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 27–29"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-baptism-at-the-jordan",
+  "contemporaries": [
+   "person-jesus"
+  ]
+ },
+ {
+  "id": "person-isaiah",
+  "name": {
+   "en": "Isaiah son of Amoz"
+  },
+  "role": {
+   "en": "Major prophet of Jerusalem, through four reigns of Judah"
+  },
+  "summary": {
+   "en": "Called in the year King Uzziah died, Isaiah advised Ahaz and Hezekiah through the Syro-Ephraimite war and Sennacherib's invasion of 701 BC, insisting that Judah's security lay in trust rather than in alliances with Egypt or Assyria."
+  },
+  "scriptureRefs": [
+   "Isaiah 1:1",
+   "Isaiah 6:8",
+   "Isaiah 37:6"
+  ],
+  "citations": [
+   "cit-scripture-isaiah-1-1",
+   "cit-scripture-isaiah-6-8",
+   "cit-scripture-isaiah-37-6",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet-major",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Isaiah"
+  ],
+  "ministryRange": {
+   "startYear": -740,
+   "endYear": -681,
+   "display": {
+    "en": "c. 740–681 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-lachish"
+  ],
+  "contemporaries": [
+   "person-hezekiah",
+   "person-micah"
+  ],
+  "datingNote": {
+   "en": "Chapters 40–66 address the exile and the return, and most critical scholars assign them to later hands in the same tradition; others read the whole book as the 8th-century prophet's. The ministry dates here cover the figure of chapters 1–39, whose setting is fixed by the reigns named in Isaiah 1:1."
+  }
+ },
+ {
+  "id": "person-jeremiah",
+  "name": {
+   "en": "Jeremiah"
+  },
+  "role": {
+   "en": "Major prophet of Judah's last forty years"
+  },
+  "summary": {
+   "en": "A priest's son from Anathoth, called in Josiah's thirteenth year, who watched the reform fail, the city besieged twice, and the temple burned. Imprisoned, thrown into a cistern, and finally carried into Egypt by the fleeing remnant against his own counsel."
+  },
+  "scriptureRefs": [
+   "Jeremiah 1:1",
+   "Jeremiah 31:31",
+   "Jeremiah 38:6",
+   "Jeremiah 43:6"
+  ],
+  "citations": [
+   "cit-scripture-jeremiah-1-1",
+   "cit-scripture-jeremiah-31-31",
+   "cit-scripture-jeremiah-38-6",
+   "cit-scripture-jeremiah-43-6",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "prophet-major",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Jeremiah",
+   "Lamentations"
+  ],
+  "ministryRange": {
+   "startYear": -627,
+   "endYear": -582,
+   "display": {
+    "en": "c. 627–582 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-anathoth",
+  "siteIds": [
+   "site-jerusalem",
+   "site-ramah",
+   "site-mizpah",
+   "site-tahpanhes"
+  ],
+  "journeyIds": [
+   "journey-jeremiah"
+  ],
+  "contemporaries": [
+   "person-josiah",
+   "person-zedekiah",
+   "person-baruch"
+  ],
+  "datingNote": {
+   "en": "Lamentations is ascribed to Jeremiah by tradition (and by the Septuagint's superscription); the book itself is anonymous."
+  }
+ },
+ {
+  "id": "person-ezekiel",
+  "name": {
+   "en": "Ezekiel"
+  },
+  "role": {
+   "en": "Major prophet of the exile, by the river Chebar"
+  },
+  "summary": {
+   "en": "A priest deported in 597 BC with Jehoiachin, who prophesied to the exile community in Babylonia — first that Jerusalem would certainly fall, then, once it had, of a valley of dry bones raised and a restored temple."
+  },
+  "scriptureRefs": [
+   "Ezekiel 1:1",
+   "Ezekiel 24:2",
+   "Ezekiel 37:4"
+  ],
+  "citations": [
+   "cit-scripture-ezekiel-1-1",
+   "cit-scripture-ezekiel-24-2",
+   "cit-scripture-ezekiel-37-4",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-ref-zadok-diaspora"
+  ],
+  "category": "prophet-major",
+  "realm": {
+   "en": "The Judean exiles in Babylonia"
+  },
+  "books": [
+   "Ezekiel"
+  ],
+  "ministryRange": {
+   "startYear": -593,
+   "endYear": -571,
+   "display": {
+    "en": "c. 593–571 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-chebar-canal",
+  "siteIds": [
+   "site-jerusalem",
+   "site-babylon"
+  ],
+  "journeyIds": [
+   "journey-exile"
+  ],
+  "contemporaries": [
+   "person-jeremiah",
+   "person-daniel"
+  ]
+ },
+ {
+  "id": "person-daniel",
+  "name": {
+   "en": "Daniel"
+  },
+  "role": {
+   "en": "Exile in the Babylonian and Persian courts; visionary"
+  },
+  "summary": {
+   "en": "Taken to Babylon among the young men of the royal seed at the first deportation, he served under Nebuchadnezzar and into the Persian period, and the book bearing his name pairs court narratives with apocalyptic visions of successive empires."
+  },
+  "scriptureRefs": [
+   "Daniel 1:6",
+   "Daniel 2:28",
+   "Daniel 6:10",
+   "Daniel 8:2"
+  ],
+  "citations": [
+   "cit-scripture-daniel-1-6",
+   "cit-scripture-daniel-2-28",
+   "cit-scripture-daniel-6-10",
+   "cit-scripture-daniel-8-2",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic",
+   "cit-ref-bright"
+  ],
+  "category": "prophet-major",
+  "realm": {
+   "en": "The Babylonian and Persian courts"
+  },
+  "books": [
+   "Daniel"
+  ],
+  "ministryRange": {
+   "startYear": -605,
+   "endYear": -536,
+   "display": {
+    "en": "c. 605–536 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-babylon",
+  "siteIds": [
+   "site-susa"
+  ],
+  "journeyIds": [
+   "journey-exile"
+  ],
+  "datingNote": {
+   "en": "The book's own setting is the 6th century. Critical scholarship generally dates its composition, or at least chapters 7–12, to the Maccabean crisis of the 160s BC on the basis of its detailed Hellenistic references; conservative scholarship holds to a 6th-century composition. The dates here are those of the narrative setting."
+  }
+ },
+ {
+  "id": "person-hosea",
+  "name": {
+   "en": "Hosea son of Beeri"
+  },
+  "role": {
+   "en": "Minor prophet to the Northern Kingdom in its last generation"
+  },
+  "summary": {
+   "en": "Prophesied through the collapse of Israel after Jeroboam II, making his own broken marriage the figure of a covenant Israel had abandoned — and of a love that would not let go."
+  },
+  "scriptureRefs": [
+   "Hosea 1:1",
+   "Hosea 11:8"
+  ],
+  "citations": [
+   "cit-scripture-hosea-1-1",
+   "cit-scripture-hosea-11-8",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "books": [
+   "Hosea"
+  ],
+  "ministryRange": {
+   "startYear": -755,
+   "endYear": -715,
+   "display": {
+    "en": "c. 755–715 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-samaria-city",
+  "contemporaries": [
+   "person-amos",
+   "person-isaiah"
+  ]
+ },
+ {
+  "id": "person-joel",
+  "name": {
+   "en": "Joel son of Pethuel"
+  },
+  "role": {
+   "en": "Minor prophet of the day of the LORD"
+  },
+  "summary": {
+   "en": "Reads a locust plague as a summons to repentance and a foreshadowing of the day of the LORD, with the promise of the Spirit poured out on all flesh that Peter quotes at Pentecost."
+  },
+  "scriptureRefs": [
+   "Joel 1:1",
+   "Joel 2:28"
+  ],
+  "citations": [
+   "cit-scripture-joel-1-1",
+   "cit-scripture-joel-2-28",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Joel"
+  ],
+  "ministryRange": {
+   "startYear": -835,
+   "endYear": -400,
+   "display": {
+    "en": "date disputed: 9th century BC or post-exilic (c. 500–400 BC)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "datingNote": {
+   "en": "Joel names no king, which is why its date is the most open in the Twelve. A 9th-century setting under Joash and a post-exilic setting after the temple's rebuilding are both well argued; the span shown covers both rather than choosing."
+  }
+ },
+ {
+  "id": "person-amos",
+  "name": {
+   "en": "Amos of Tekoa"
+  },
+  "role": {
+   "en": "Herdsman of Judah sent to prophesy against Israel"
+  },
+  "summary": {
+   "en": "A sheep-breeder and dresser of sycamore figs from Tekoa in Judah, sent north to the royal sanctuary at Bethel to indict Israel's prosperity for resting on the ruin of the poor — and told by its priest to go home."
+  },
+  "scriptureRefs": [
+   "Amos 1:1",
+   "Amos 5:24",
+   "Amos 7:14"
+  ],
+  "citations": [
+   "cit-scripture-amos-1-1",
+   "cit-scripture-amos-5-24",
+   "cit-scripture-amos-7-14",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "books": [
+   "Amos"
+  ],
+  "ministryRange": {
+   "startYear": -760,
+   "endYear": -750,
+   "display": {
+    "en": "c. 760–750 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-tekoa",
+  "siteIds": [
+   "site-bethel",
+   "site-samaria-city"
+  ],
+  "contemporaries": [
+   "person-hosea",
+   "person-jeroboam-ii"
+  ]
+ },
+ {
+  "id": "person-obadiah",
+  "name": {
+   "en": "Obadiah"
+  },
+  "role": {
+   "en": "Minor prophet; the shortest book in the Hebrew Bible"
+  },
+  "summary": {
+   "en": "Twenty-one verses against Edom for standing by — and joining in — on the day Jerusalem fell."
+  },
+  "scriptureRefs": [
+   "Obadiah 1:1",
+   "Obadiah 1:11"
+  ],
+  "citations": [
+   "cit-scripture-obadiah-1-1",
+   "cit-scripture-obadiah-1-11",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Edom and the survivors of Judah"
+  },
+  "books": [
+   "Obadiah"
+  ],
+  "ministryRange": {
+   "startYear": -586,
+   "endYear": -553,
+   "display": {
+    "en": "c. 586–553 BC (an earlier 9th-century setting is also argued)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "datingNote": {
+   "en": "The natural reading ties the oracle to Edom's conduct at Jerusalem's fall in 586 BC; a minority reads it against the earlier raid of 2 Chronicles 21 and dates it to the 9th century."
+  }
+ },
+ {
+  "id": "person-jonah",
+  "name": {
+   "en": "Jonah son of Amittai"
+  },
+  "role": {
+   "en": "Minor prophet sent to Nineveh"
+  },
+  "summary": {
+   "en": "The one prophet of the Twelve whose book is a narrative about the prophet rather than a collection of his oracles: sent to Assyria's capital, he fled by sea for Tarshish, was brought back, preached, and then resented the mercy that followed. 2 Kings 14:25 places him under Jeroboam II."
+  },
+  "scriptureRefs": [
+   "Jonah 1:1",
+   "Jonah 3:4",
+   "Jonah 4:11",
+   "2 Kings 14:25"
+  ],
+  "citations": [
+   "cit-scripture-jonah-1-1",
+   "cit-scripture-jonah-3-4",
+   "cit-scripture-jonah-4-11",
+   "cit-scripture-2-kings-14-25",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Northern Kingdom (Israel); sent to Assyria"
+  },
+  "books": [
+   "Jonah"
+  ],
+  "ministryRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC (the setting given by 2 Kings 14:25)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-joppa",
+  "siteIds": [
+   "site-nineveh",
+   "site-tarshish"
+  ],
+  "journeyIds": [
+   "journey-jonah"
+  ],
+  "datingNote": {
+   "en": "The prophet is dated by 2 Kings 14:25 to Jeroboam II's reign. The book about him is widely dated later, on linguistic grounds, and read by many as a didactic narrative; that is a question about the book, not about where its events are set."
+  }
+ },
+ {
+  "id": "person-micah",
+  "name": {
+   "en": "Micah of Moresheth"
+  },
+  "role": {
+   "en": "Minor prophet of the Judean lowlands"
+  },
+  "summary": {
+   "en": "A countryman from the Shephelah whose oracles run from the ruin of Samaria and the villages of the lowlands to the promise of a ruler from Bethlehem — and to the summary the tradition remembers best: to do justly, love mercy, and walk humbly."
+  },
+  "scriptureRefs": [
+   "Micah 1:1",
+   "Micah 5:2",
+   "Micah 6:8"
+  ],
+  "citations": [
+   "cit-scripture-micah-1-1",
+   "cit-scripture-micah-5-2",
+   "cit-scripture-micah-6-8",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Micah"
+  ],
+  "ministryRange": {
+   "startYear": -737,
+   "endYear": -690,
+   "display": {
+    "en": "c. 737–690 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-moresheth-gath",
+  "siteIds": [
+   "site-jerusalem",
+   "site-lachish"
+  ],
+  "contemporaries": [
+   "person-isaiah",
+   "person-hezekiah"
+  ]
+ },
+ {
+  "id": "person-nahum",
+  "name": {
+   "en": "Nahum the Elkoshite"
+  },
+  "role": {
+   "en": "Minor prophet of Nineveh's fall"
+  },
+  "summary": {
+   "en": "An oracle against Assyria, whose capital fell to a Median-Babylonian coalition in 612 BC — read in Judah as the end of a century of tribute and terror."
+  },
+  "scriptureRefs": [
+   "Nahum 1:1",
+   "Nahum 3:7"
+  ],
+  "citations": [
+   "cit-scripture-nahum-1-1",
+   "cit-scripture-nahum-3-7",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Kingdom of Judah; against Assyria"
+  },
+  "books": [
+   "Nahum"
+  ],
+  "ministryRange": {
+   "startYear": -663,
+   "endYear": -612,
+   "display": {
+    "en": "c. 663–612 BC (between Thebes' fall and Nineveh's)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-nineveh"
+  ],
+  "datingNote": {
+   "en": "Bracketed by the book itself: it looks back on the sack of Thebes (663 BC) and forward to Nineveh's fall (612 BC). Elkosh, the prophet's town, is unlocated."
+  }
+ },
+ {
+  "id": "person-habakkuk",
+  "name": {
+   "en": "Habakkuk"
+  },
+  "role": {
+   "en": "Minor prophet who argued with God about justice"
+  },
+  "summary": {
+   "en": "Asks why God tolerates violence in Judah, is told the Chaldeans are coming, and asks how that can possibly be an answer — the book is the argument, ending in a psalm of trust without resolution."
+  },
+  "scriptureRefs": [
+   "Habakkuk 1:2",
+   "Habakkuk 2:4",
+   "Habakkuk 3:19"
+  ],
+  "citations": [
+   "cit-scripture-habakkuk-1-2",
+   "cit-scripture-habakkuk-2-4",
+   "cit-scripture-habakkuk-3-19",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Habakkuk"
+  ],
+  "ministryRange": {
+   "startYear": -640,
+   "endYear": -598,
+   "display": {
+    "en": "c. 640–598 BC (Babylon rising, Jerusalem not yet fallen)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem"
+ },
+ {
+  "id": "person-zephaniah",
+  "name": {
+   "en": "Zephaniah"
+  },
+  "role": {
+   "en": "Minor prophet of Josiah's reign"
+  },
+  "summary": {
+   "en": "Announces a day of the LORD against Judah's syncretism and the surrounding nations, in the years of Josiah's reform."
+  },
+  "scriptureRefs": [
+   "Zephaniah 1:1",
+   "Zephaniah 3:17"
+  ],
+  "citations": [
+   "cit-scripture-zephaniah-1-1",
+   "cit-scripture-zephaniah-3-17",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "books": [
+   "Zephaniah"
+  ],
+  "ministryRange": {
+   "startYear": -640,
+   "endYear": -609,
+   "display": {
+    "en": "c. 640–609 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "contemporaries": [
+   "person-josiah",
+   "person-jeremiah"
+  ]
+ },
+ {
+  "id": "person-haggai",
+  "name": {
+   "en": "Haggai"
+  },
+  "role": {
+   "en": "Minor prophet of the temple's rebuilding"
+  },
+  "summary": {
+   "en": "In the second year of Darius he told a discouraged community that the half-built temple was the reason their own affairs went nowhere; the work resumed within a month."
+  },
+  "scriptureRefs": [
+   "Haggai 1:1",
+   "Haggai 2:9"
+  ],
+  "citations": [
+   "cit-scripture-haggai-1-1",
+   "cit-scripture-haggai-2-9",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "The returned community in Judah"
+  },
+  "books": [
+   "Haggai"
+  ],
+  "ministryRange": {
+   "startYear": -520,
+   "endYear": -518,
+   "display": {
+    "en": "520 BC (dated to the month by the book itself)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "journeyIds": [
+   "journey-return"
+  ],
+  "contemporaries": [
+   "person-zerubbabel",
+   "person-zechariah-prophet"
+  ]
+ },
+ {
+  "id": "person-zechariah-prophet",
+  "name": {
+   "en": "Zechariah son of Berechiah"
+  },
+  "role": {
+   "en": "Minor prophet alongside Haggai"
+  },
+  "summary": {
+   "en": "Began two months after Haggai with a series of night visions, urging the same rebuilding and looking beyond it to a cleansed city and a coming king riding on a donkey."
+  },
+  "scriptureRefs": [
+   "Zechariah 1:1",
+   "Zechariah 9:9"
+  ],
+  "citations": [
+   "cit-scripture-zechariah-1-1",
+   "cit-scripture-zechariah-9-9",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "The returned community in Judah"
+  },
+  "books": [
+   "Zechariah"
+  ],
+  "ministryRange": {
+   "startYear": -520,
+   "endYear": -480,
+   "display": {
+    "en": "c. 520–480 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "journeyIds": [
+   "journey-return"
+  ],
+  "contemporaries": [
+   "person-haggai",
+   "person-zerubbabel"
+  ]
+ },
+ {
+  "id": "person-malachi",
+  "name": {
+   "en": "Malachi"
+  },
+  "role": {
+   "en": "Last of the Twelve"
+  },
+  "summary": {
+   "en": "A disputation with a settled, disillusioned community about half-hearted offerings, broken marriages and withheld tithes, closing the Hebrew prophets with the promise of Elijah's return."
+  },
+  "scriptureRefs": [
+   "Malachi 1:1",
+   "Malachi 3:1",
+   "Malachi 4:5"
+  ],
+  "citations": [
+   "cit-scripture-malachi-1-1",
+   "cit-scripture-malachi-3-1",
+   "cit-scripture-malachi-4-5",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-ref-petersen-prophetic"
+  ],
+  "category": "prophet-minor",
+  "realm": {
+   "en": "The returned community in Judah"
+  },
+  "books": [
+   "Malachi"
+  ],
+  "ministryRange": {
+   "startYear": -460,
+   "endYear": -430,
+   "display": {
+    "en": "c. 460–430 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "datingNote": {
+   "en": "'Malachi' means 'my messenger' and may be a title rather than a name; the date rests on the book's setting — a functioning temple, a Persian governor, and the abuses Nehemiah also confronts."
+  }
+ },
+ {
+  "id": "person-saul",
+  "name": {
+   "en": "Saul son of Kish"
+  },
+  "role": {
+   "en": "First king of Israel"
+  },
+  "summary": {
+   "en": "Anointed by Samuel and acclaimed at Gilgal, he broke the Ammonite and Philistine pressure on the hill country but lost Samuel's backing, pursued David for years, and died with his sons on Mount Gilboa."
+  },
+  "scriptureRefs": [
+   "1 Samuel 10:1",
+   "1 Samuel 13:14",
+   "1 Samuel 31:6"
+  ],
+  "citations": [
+   "cit-scripture-1-samuel-10-1",
+   "cit-scripture-1-samuel-13-14",
+   "cit-scripture-1-samuel-31-6",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "United monarchy"
+  },
+  "ministryRange": {
+   "startYear": -1050,
+   "endYear": -1010,
+   "display": {
+    "en": "reigned c. 1050–1010 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-gibeah",
+  "siteIds": [
+   "site-michmash",
+   "site-mount-gilboa"
+  ],
+  "contemporaries": [
+   "person-samuel",
+   "person-david"
+  ]
+ },
+ {
+  "id": "person-david",
+  "name": {
+   "en": "David son of Jesse"
+  },
+  "role": {
+   "en": "King of Judah and then of all Israel"
+  },
+  "summary": {
+   "en": "Anointed at Bethlehem while Saul still reigned, he rose through Saul's court, spent years as a fugitive in the Judean wilderness and a Philistine vassal at Ziklag, was made king at Hebron, took the Jebusite stronghold of Zion for his capital, and brought the ark there. The Tel Dan stele's reference to the 'house of David' is the earliest extra-biblical mention of the dynasty."
+  },
+  "scriptureRefs": [
+   "1 Samuel 16:13",
+   "2 Samuel 5:4",
+   "2 Samuel 7:16",
+   "Psalms 51:1"
+  ],
+  "citations": [
+   "cit-scripture-1-samuel-16-13",
+   "cit-scripture-2-samuel-5-4",
+   "cit-scripture-2-samuel-7-16",
+   "cit-scripture-psalms-51-1",
+   "cit-thiele-chronology",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "United monarchy"
+  },
+  "books": [
+   "Psalms"
+  ],
+  "lifeRange": {
+   "startYear": -1040,
+   "endYear": -970,
+   "display": {
+    "en": "c. 1040–970 BC"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": -1010,
+   "endYear": -970,
+   "display": {
+    "en": "reigned c. 1010–970 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-bethlehem",
+   "site-valley-of-elah",
+   "site-adullam",
+   "site-en-gedi",
+   "site-ziklag",
+   "site-hebron-machpelah",
+   "site-mahanaim"
+  ],
+  "journeyIds": [
+   "journey-david"
+  ],
+  "contemporaries": [
+   "person-samuel",
+   "person-saul",
+   "person-nathan"
+  ],
+  "datingNote": {
+   "en": "Seventy-three psalms carry a Davidic superscription; the superscriptions are ancient but are not themselves part of the psalms, and how much of the Psalter goes back to David is debated."
+  }
+ },
+ {
+  "id": "person-solomon",
+  "name": {
+   "en": "Solomon"
+  },
+  "role": {
+   "en": "King of Israel; builder of the first temple"
+  },
+  "summary": {
+   "en": "Succeeded David after Adonijah's failed bid, built the temple and palace complex in Jerusalem, and presided over the empire's high-water mark — at a cost in forced labour that split the kingdom the moment he died."
+  },
+  "scriptureRefs": [
+   "1 Kings 3:9",
+   "1 Kings 6:1",
+   "1 Kings 11:11"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-3-9",
+   "cit-scripture-1-kings-6-1",
+   "cit-scripture-1-kings-11-11",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "United monarchy"
+  },
+  "books": [
+   "Proverbs",
+   "Ecclesiastes",
+   "Song of Solomon"
+  ],
+  "ministryRange": {
+   "startYear": -970,
+   "endYear": -931,
+   "display": {
+    "en": "reigned c. 970–931 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-megiddo",
+   "site-hazor"
+  ],
+  "datingNote": {
+   "en": "Ascription of Proverbs, Ecclesiastes and the Song to Solomon is traditional; each book's own composition history is debated."
+  }
+ },
+ {
+  "id": "person-rehoboam",
+  "name": {
+   "en": "Rehoboam"
+  },
+  "role": {
+   "en": "First king of Judah after the division"
+  },
+  "summary": {
+   "en": "His refusal at Shechem to lighten his father's levies split the kingdom; he kept Judah and Benjamin and lost the other ten tribes in a day."
+  },
+  "scriptureRefs": [
+   "1 Kings 12:14",
+   "2 Chronicles 11:5"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-12-14",
+   "cit-scripture-2-chronicles-11-5",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -931,
+   "endYear": -913,
+   "display": {
+    "en": "reigned c. 931–913 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-shechem-ot",
+   "site-lachish"
+  ]
+ },
+ {
+  "id": "person-jeroboam-i",
+  "name": {
+   "en": "Jeroboam son of Nebat"
+  },
+  "role": {
+   "en": "First king of the Northern Kingdom"
+  },
+  "summary": {
+   "en": "Solomon's overseer of the forced levy, exiled to Egypt and recalled at the division, he set up golden calves at Bethel and Dan so the northern tribes would not go up to Jerusalem — the sin every later king of Israel is measured against."
+  },
+  "scriptureRefs": [
+   "1 Kings 12:20",
+   "1 Kings 12:28"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-12-20",
+   "cit-scripture-1-kings-12-28",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -931,
+   "endYear": -910,
+   "display": {
+    "en": "reigned c. 931–910 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-shechem-ot",
+  "siteIds": [
+   "site-bethel",
+   "site-dan"
+  ],
+  "contemporaries": [
+   "person-ahijah"
+  ]
+ },
+ {
+  "id": "person-ahab",
+  "name": {
+   "en": "Ahab son of Omri"
+  },
+  "role": {
+   "en": "King of Israel; Elijah's antagonist"
+  },
+  "summary": {
+   "en": "Built Samaria into a regional power and married Jezebel of Sidon, whose Baal cult Elijah spent his ministry opposing. Assyrian records place him at the battle of Qarqar in 853 BC with two thousand chariots — the earliest firm synchronism for an Israelite king."
+  },
+  "scriptureRefs": [
+   "1 Kings 16:30",
+   "1 Kings 21:19",
+   "1 Kings 22:34"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-16-30",
+   "cit-scripture-1-kings-21-19",
+   "cit-scripture-1-kings-22-34",
+   "cit-thiele-chronology",
+   "cit-ref-bright",
+   "cit-ref-anet"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -874,
+   "endYear": -853,
+   "display": {
+    "en": "reigned c. 874–853 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-samaria-city",
+  "siteIds": [
+   "site-jezreel",
+   "site-qarqar",
+   "site-ramoth-gilead"
+  ],
+  "contemporaries": [
+   "person-elijah",
+   "person-jezebel"
+  ]
+ },
+ {
+  "id": "person-jezebel",
+  "name": {
+   "en": "Jezebel"
+  },
+  "role": {
+   "en": "Queen of Israel; daughter of Ethbaal of Sidon"
+  },
+  "summary": {
+   "en": "Brought the Tyrian Baal cult into the Israelite court, had the prophets of the LORD killed and Naboth judicially murdered for his vineyard, and died at Jezreel in Jehu's coup."
+  },
+  "scriptureRefs": [
+   "1 Kings 16:31",
+   "1 Kings 21:15",
+   "2 Kings 9:33"
+  ],
+  "citations": [
+   "cit-scripture-1-kings-16-31",
+   "cit-scripture-1-kings-21-15",
+   "cit-scripture-2-kings-9-33",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -874,
+   "endYear": -841,
+   "display": {
+    "en": "c. 874–841 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-samaria-city",
+  "siteIds": [
+   "site-jezreel",
+   "site-tyre-and-sidon"
+  ],
+  "contemporaries": [
+   "person-ahab",
+   "person-elijah",
+   "person-jehu"
+  ]
+ },
+ {
+  "id": "person-jehu",
+  "name": {
+   "en": "Jehu son of Nimshi"
+  },
+  "role": {
+   "en": "King of Israel; ended the house of Omri"
+  },
+  "summary": {
+   "en": "Anointed at Ramoth-gilead by Elisha's messenger, he killed Joram, Ahaziah and Jezebel and destroyed the Baal temple at Samaria. The Black Obelisk of Shalmaneser III shows him — or his envoy — paying tribute in 841 BC, the only likely contemporary image of an Israelite king."
+  },
+  "scriptureRefs": [
+   "2 Kings 9:6",
+   "2 Kings 10:28"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-9-6",
+   "cit-scripture-2-kings-10-28",
+   "cit-thiele-chronology",
+   "cit-ref-bright",
+   "cit-ref-anet"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -841,
+   "endYear": -814,
+   "display": {
+    "en": "reigned c. 841–814 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-samaria-city",
+  "siteIds": [
+   "site-jezreel",
+   "site-ramoth-gilead"
+  ],
+  "contemporaries": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "person-jeroboam-ii",
+  "name": {
+   "en": "Jeroboam II"
+  },
+  "role": {
+   "en": "King of Israel at its greatest extent"
+  },
+  "summary": {
+   "en": "Restored Israel's borders 'from the entering of Hamath unto the sea of the plain' in a long, prosperous reign — the reign Amos and Hosea address, and the one Jonah is dated to."
+  },
+  "scriptureRefs": [
+   "2 Kings 14:23",
+   "2 Kings 14:25"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-14-23",
+   "cit-scripture-2-kings-14-25",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Northern Kingdom (Israel)"
+  },
+  "ministryRange": {
+   "startYear": -793,
+   "endYear": -753,
+   "display": {
+    "en": "reigned c. 793–753 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-samaria-city",
+  "contemporaries": [
+   "person-amos",
+   "person-hosea",
+   "person-jonah"
+  ]
+ },
+ {
+  "id": "person-hezekiah",
+  "name": {
+   "en": "Hezekiah"
+  },
+  "role": {
+   "en": "King of Judah through Sennacherib's invasion"
+  },
+  "summary": {
+   "en": "Centralized worship in Jerusalem, cut the Siloam tunnel to secure the city's water, and survived the Assyrian siege of 701 BC. Sennacherib's own prism boasts of shutting him up 'like a bird in a cage' — and does not claim to have taken the city."
+  },
+  "scriptureRefs": [
+   "2 Kings 18:5",
+   "2 Kings 19:15",
+   "2 Chronicles 32:30"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-18-5",
+   "cit-scripture-2-kings-19-15",
+   "cit-scripture-2-chronicles-32-30",
+   "cit-thiele-chronology",
+   "cit-ref-bright",
+   "cit-arch-sennacherib-prism-bm",
+   "cit-arch-hezekiah-bulla-mazar"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -715,
+   "endYear": -686,
+   "display": {
+    "en": "reigned c. 715–686 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-lachish"
+  ],
+  "contemporaries": [
+   "person-isaiah",
+   "person-micah"
+  ]
+ },
+ {
+  "id": "person-josiah",
+  "name": {
+   "en": "Josiah"
+  },
+  "role": {
+   "en": "Reforming king of Judah"
+  },
+  "summary": {
+   "en": "Came to the throne as a child, purged the high places, and centralized the Passover on Jerusalem after the book of the law was found during temple repairs. He was killed at Megiddo intercepting Pharaoh Necho in 609 BC."
+  },
+  "scriptureRefs": [
+   "2 Kings 22:2",
+   "2 Kings 23:25",
+   "2 Chronicles 35:22"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-22-2",
+   "cit-scripture-2-kings-23-25",
+   "cit-scripture-2-chronicles-35-22",
+   "cit-thiele-chronology",
+   "cit-ref-bright"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -640,
+   "endYear": -609,
+   "display": {
+    "en": "reigned c. 640–609 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-megiddo",
+   "site-bethel"
+  ],
+  "contemporaries": [
+   "person-jeremiah",
+   "person-huldah",
+   "person-zephaniah"
+  ]
+ },
+ {
+  "id": "person-zedekiah",
+  "name": {
+   "en": "Zedekiah"
+  },
+  "role": {
+   "en": "Last king of Judah"
+  },
+  "summary": {
+   "en": "Installed by Nebuchadnezzar and pushed by his court into revolt, he watched the siege of 588–586 BC end in the burning of the temple; captured near Jericho, he was taken to Riblah, saw his sons killed, was blinded, and was carried to Babylon."
+  },
+  "scriptureRefs": [
+   "2 Kings 24:18",
+   "2 Kings 25:7",
+   "Jeremiah 38:19"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-24-18",
+   "cit-scripture-2-kings-25-7",
+   "cit-scripture-jeremiah-38-19",
+   "cit-thiele-chronology",
+   "cit-ref-bright",
+   "cit-src-livius-abc5"
+  ],
+  "category": "king",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -597,
+   "endYear": -586,
+   "display": {
+    "en": "reigned 597–586 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-riblah",
+   "site-babylon"
+  ],
+  "journeyIds": [
+   "journey-exile"
+  ],
+  "contemporaries": [
+   "person-jeremiah",
+   "person-nebuchadnezzar"
+  ]
+ },
+ {
+  "id": "person-nebuchadnezzar",
+  "name": {
+   "en": "Nebuchadnezzar II"
+  },
+  "role": {
+   "en": "King of Babylon; took Jerusalem"
+  },
+  "summary": {
+   "en": "Broke Egyptian power at Carchemish in 605 BC and took Jerusalem three times — 605, 597 and 586 BC. The Babylonian Chronicle records the capture of 'the city of Judah' in his seventh year to the day, which is why this stretch of the chronology is the firmest in the Old Testament."
+  },
+  "scriptureRefs": [
+   "2 Kings 24:1",
+   "Daniel 2:1",
+   "Jeremiah 39:1"
+  ],
+  "citations": [
+   "cit-scripture-2-kings-24-1",
+   "cit-scripture-daniel-2-1",
+   "cit-scripture-jeremiah-39-1",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "Neo-Babylonian empire"
+  },
+  "ministryRange": {
+   "startYear": -605,
+   "endYear": -562,
+   "display": {
+    "en": "reigned 605–562 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-babylon",
+  "siteIds": [
+   "site-carchemish",
+   "site-jerusalem",
+   "site-riblah"
+  ]
+ },
+ {
+  "id": "person-cyrus",
+  "name": {
+   "en": "Cyrus II of Persia"
+  },
+  "role": {
+   "en": "King who ended the exile"
+  },
+  "summary": {
+   "en": "Took Babylon in 539 BC and authorized subject peoples to return and rebuild their sanctuaries — the policy Ezra 1 records for Judah, and the Cyrus Cylinder states in general terms for Babylonia."
+  },
+  "scriptureRefs": [
+   "2 Chronicles 36:23",
+   "Ezra 1:2",
+   "Isaiah 45:1"
+  ],
+  "citations": [
+   "cit-scripture-2-chronicles-36-23",
+   "cit-scripture-ezra-1-2",
+   "cit-scripture-isaiah-45-1",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "Achaemenid Persian empire"
+  },
+  "ministryRange": {
+   "startYear": -559,
+   "endYear": -530,
+   "display": {
+    "en": "reigned 559–530 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-babylon",
+  "journeyIds": [
+   "journey-return"
+  ]
+ },
+ {
+  "id": "person-zerubbabel",
+  "name": {
+   "en": "Zerubbabel"
+  },
+  "role": {
+   "en": "Governor who led the first return and rebuilt the temple"
+  },
+  "summary": {
+   "en": "Grandson of the exiled king Jehoiachin, he led the first company home under Cyrus' decree, laid the temple's foundation, and — prodded by Haggai and Zechariah — saw it finished in 516 BC."
+  },
+  "scriptureRefs": [
+   "Ezra 3:8",
+   "Haggai 2:23",
+   "Zechariah 4:9"
+  ],
+  "citations": [
+   "cit-scripture-ezra-3-8",
+   "cit-scripture-haggai-2-23",
+   "cit-scripture-zechariah-4-9",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "Yehud under Persian rule"
+  },
+  "ministryRange": {
+   "startYear": -538,
+   "endYear": -515,
+   "display": {
+    "en": "c. 538–515 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-babylon"
+  ],
+  "journeyIds": [
+   "journey-return"
+  ],
+  "contemporaries": [
+   "person-haggai",
+   "person-zechariah-prophet"
+  ]
+ },
+ {
+  "id": "person-ezra",
+  "name": {
+   "en": "Ezra"
+  },
+  "role": {
+   "en": "Priest and scribe who brought the law back to Jerusalem"
+  },
+  "summary": {
+   "en": "Came up from Babylon with a royal commission, a caravan and the law, and read it aloud to the assembled people at the Water Gate — the beginning of a community defined by a text rather than a monarchy."
+  },
+  "scriptureRefs": [
+   "Ezra 7:6",
+   "Ezra 7:10",
+   "Nehemiah 8:3"
+  ],
+  "citations": [
+   "cit-scripture-ezra-7-6",
+   "cit-scripture-ezra-7-10",
+   "cit-scripture-nehemiah-8-3",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "category": "priest",
+  "realm": {
+   "en": "Yehud under Persian rule"
+  },
+  "books": [
+   "Ezra"
+  ],
+  "ministryRange": {
+   "startYear": -458,
+   "endYear": -430,
+   "display": {
+    "en": "c. 458–430 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-babylon"
+  ],
+  "journeyIds": [
+   "journey-return"
+  ],
+  "datingNote": {
+   "en": "Whether Ezra preceded or followed Nehemiah depends on which Artaxerxes his 'seventh year' belongs to; the traditional order (Ezra 458, Nehemiah 445) is followed here, with the reversal noted."
+  }
+ },
+ {
+  "id": "person-nehemiah",
+  "name": {
+   "en": "Nehemiah"
+  },
+  "role": {
+   "en": "Cupbearer to Artaxerxes; rebuilt Jerusalem's walls"
+  },
+  "summary": {
+   "en": "Heard in the citadel at Susa that Jerusalem's walls were still broken, obtained a commission as governor, and rebuilt them in fifty-two days against sustained local opposition."
+  },
+  "scriptureRefs": [
+   "Nehemiah 1:1",
+   "Nehemiah 2:5",
+   "Nehemiah 6:15"
+  ],
+  "citations": [
+   "cit-scripture-nehemiah-1-1",
+   "cit-scripture-nehemiah-2-5",
+   "cit-scripture-nehemiah-6-15",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "Yehud under Persian rule"
+  },
+  "books": [
+   "Nehemiah"
+  ],
+  "ministryRange": {
+   "startYear": -445,
+   "endYear": -420,
+   "display": {
+    "en": "c. 445–420 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-susa"
+  ],
+  "journeyIds": [
+   "journey-return"
+  ],
+  "contemporaries": [
+   "person-ezra"
+  ]
+ },
+ {
+  "id": "person-esther",
+  "name": {
+   "en": "Esther (Hadassah)"
+  },
+  "role": {
+   "en": "Jewish queen of Persia"
+  },
+  "summary": {
+   "en": "A Jewish exile who became queen to Ahasuerus (Xerxes I) and used that position to expose Haman's plot against her people — the origin of the feast of Purim."
+  },
+  "scriptureRefs": [
+   "Esther 2:7",
+   "Esther 4:14",
+   "Esther 9:26"
+  ],
+  "citations": [
+   "cit-scripture-esther-2-7",
+   "cit-scripture-esther-4-14",
+   "cit-scripture-esther-9-26",
+   "cit-exc-susa-perrot",
+   "cit-ref-bright"
+  ],
+  "category": "ruler",
+  "realm": {
+   "en": "The Jewish community of the Persian empire"
+  },
+  "books": [
+   "Esther"
+  ],
+  "ministryRange": {
+   "startYear": -483,
+   "endYear": -473,
+   "display": {
+    "en": "c. 483–473 BC (the reign of Xerxes I)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-susa",
+  "contemporaries": [
+   "person-mordecai"
+  ]
+ },
+ {
+  "id": "person-mordecai",
+  "name": {
+   "en": "Mordecai"
+  },
+  "role": {
+   "en": "Benjaminite of Susa; Esther's guardian"
+  },
+  "summary": {
+   "en": "Sat in the king's gate, refused to bow to Haman, uncovered a plot against the king, and rose to be second in the empire."
+  },
+  "scriptureRefs": [
+   "Esther 2:5",
+   "Esther 10:3"
+  ],
+  "citations": [
+   "cit-scripture-esther-2-5",
+   "cit-scripture-esther-10-3",
+   "cit-exc-susa-perrot"
+  ],
+  "category": "other",
+  "realm": {
+   "en": "The Jewish community of the Persian empire"
+  },
+  "ministryRange": {
+   "startYear": -483,
+   "endYear": -473,
+   "display": {
+    "en": "c. 483–473 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-susa",
+  "contemporaries": [
+   "person-esther"
+  ]
+ },
+ {
+  "id": "person-baruch",
+  "name": {
+   "en": "Baruch son of Neriah"
+  },
+  "role": {
+   "en": "Jeremiah's scribe"
+  },
+  "summary": {
+   "en": "Wrote Jeremiah's oracles on a scroll and read them in the temple; when the king cut it up and burned it piece by piece, he wrote it out again with more added. A bulla bearing a 'Berechiah son of Neriah the scribe' is known, though its provenance is unprovenanced and disputed."
+  },
+  "scriptureRefs": [
+   "Jeremiah 36:4",
+   "Jeremiah 36:32",
+   "Jeremiah 45:1"
+  ],
+  "citations": [
+   "cit-scripture-jeremiah-36-4",
+   "cit-scripture-jeremiah-36-32",
+   "cit-scripture-jeremiah-45-1",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "category": "other",
+  "realm": {
+   "en": "Kingdom of Judah"
+  },
+  "ministryRange": {
+   "startYear": -605,
+   "endYear": -582,
+   "display": {
+    "en": "c. 605–582 BC"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "siteIds": [
+   "site-tahpanhes"
+  ],
+  "journeyIds": [
+   "journey-jeremiah"
+  ],
+  "contemporaries": [
+   "person-jeremiah"
+  ]
+ },
+ {
+  "id": "person-andrew",
+  "name": {
+   "en": "Andrew"
+  },
+  "role": {
+   "en": "Apostle; brother of Simon Peter"
+  },
+  "summary": {
+   "en": "A fisherman of Bethsaida and a disciple of John the Baptist first, he brought his brother Simon to Jesus. Later tradition sends him to Scythia and the Black Sea coast and has him crucified at Patras."
+  },
+  "scriptureRefs": [
+   "Matthew 4:18",
+   "John 1:40",
+   "John 6:8"
+  ],
+  "citations": [
+   "cit-scripture-matthew-4-18",
+   "cit-scripture-john-1-40",
+   "cit-scripture-john-6-8",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee, then (by tradition) Scythia and Achaia"
+  },
+  "lifeRange": {
+   "startYear": -5,
+   "endYear": 70,
+   "display": {
+    "en": "c. 5 BC – c. AD 60/70 (traditional)"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 27–60"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-bethsaida",
+  "siteIds": [
+   "site-capernaum",
+   "site-jerusalem"
+  ],
+  "journeyIds": [
+   "journey-ministry",
+   "journey-apostolic-traditions"
+  ]
+ },
+ {
+  "id": "person-james-zebedee",
+  "name": {
+   "en": "James son of Zebedee"
+  },
+  "role": {
+   "en": "Apostle; first of the Twelve to be killed"
+  },
+  "summary": {
+   "en": "One of the three admitted to the transfiguration and Gethsemane; Herod Agrippa I had him killed with the sword around AD 44, the only apostle whose death the New Testament records."
+  },
+  "scriptureRefs": [
+   "Matthew 4:21",
+   "Mark 5:37",
+   "Acts 12:2"
+  ],
+  "citations": [
+   "cit-scripture-matthew-4-21",
+   "cit-scripture-mark-5-37",
+   "cit-scripture-acts-12-2",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee and Jerusalem"
+  },
+  "lifeRange": {
+   "startYear": -5,
+   "endYear": 44,
+   "display": {
+    "en": "c. 5 BC – c. AD 44"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 44,
+   "display": {
+    "en": "c. AD 27–44"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-capernaum",
+  "siteIds": [
+   "site-sea-of-galilee",
+   "site-jerusalem"
+  ],
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-john-apostle",
+  "name": {
+   "en": "John son of Zebedee"
+  },
+  "role": {
+   "en": "Apostle; the disciple 'whom Jesus loved' in the Fourth Gospel"
+  },
+  "summary": {
+   "en": "Brother of James, one of the inner three, and by long tradition the evangelist of the Fourth Gospel, the three letters, and the Revelation given on Patmos. Tradition places his last years at Ephesus."
+  },
+  "scriptureRefs": [
+   "Mark 1:19",
+   "John 19:26",
+   "Revelation 1:9"
+  ],
+  "citations": [
+   "cit-scripture-mark-1-19",
+   "cit-scripture-john-19-26",
+   "cit-scripture-revelation-1-9",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee, Jerusalem, then (by tradition) Asia Minor"
+  },
+  "books": [
+   "John",
+   "1 John",
+   "2 John",
+   "3 John",
+   "Revelation"
+  ],
+  "lifeRange": {
+   "startYear": -5,
+   "endYear": 100,
+   "display": {
+    "en": "c. 5 BC – c. AD 100 (traditional)"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 100,
+   "display": {
+    "en": "c. AD 27–100"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-capernaum",
+  "siteIds": [
+   "site-jerusalem",
+   "site-ephesus",
+   "site-patmos"
+  ],
+  "journeyIds": [
+   "journey-ministry",
+   "journey-apostolic-traditions"
+  ],
+  "datingNote": {
+   "en": "Authorship of the Johannine books is debated: the Gospel is anonymous, and Revelation names a 'John' on Patmos without identifying him as the apostle. The ascriptions here are the traditional ones, recorded as such."
+  }
+ },
+ {
+  "id": "person-philip-apostle",
+  "name": {
+   "en": "Philip the Apostle"
+  },
+  "role": {
+   "en": "One of the Twelve; from Bethsaida"
+  },
+  "summary": {
+   "en": "Called early and the one who brought Nathanael; tradition sends him to Phrygia and places his death at Hierapolis, where a first-century tomb and a martyrium have been excavated. Not to be confused with Philip the Evangelist, one of the Seven."
+  },
+  "scriptureRefs": [
+   "John 1:43",
+   "John 6:5",
+   "John 14:8"
+  ],
+  "citations": [
+   "cit-scripture-john-1-43",
+   "cit-scripture-john-6-5",
+   "cit-scripture-john-14-8",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee, then (by tradition) Phrygia"
+  },
+  "lifeRange": {
+   "startYear": -5,
+   "endYear": 80,
+   "display": {
+    "en": "c. 5 BC – c. AD 80 (traditional)"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 80,
+   "display": {
+    "en": "c. AD 27–80"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-bethsaida",
+  "siteIds": [
+   "site-hierapolis"
+  ],
+  "journeyIds": [
+   "journey-ministry",
+   "journey-apostolic-traditions"
+  ]
+ },
+ {
+  "id": "person-bartholomew",
+  "name": {
+   "en": "Bartholomew (Nathanael)"
+  },
+  "role": {
+   "en": "One of the Twelve"
+  },
+  "summary": {
+   "en": "Listed among the Twelve in all three synoptic lists and in Acts; generally identified with the Nathanael of the Fourth Gospel, called from under the fig tree. Traditions send him to Armenia and India."
+  },
+  "scriptureRefs": [
+   "Matthew 10:3",
+   "John 1:47",
+   "Acts 1:13"
+  ],
+  "citations": [
+   "cit-scripture-matthew-10-3",
+   "cit-scripture-john-1-47",
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee, then (by tradition) Armenia"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 70,
+   "display": {
+    "en": "c. AD 27–70"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-cana-of-galilee",
+  "journeyIds": [
+   "journey-ministry",
+   "journey-apostolic-traditions"
+  ]
+ },
+ {
+  "id": "person-thomas",
+  "name": {
+   "en": "Thomas (Didymus)"
+  },
+  "role": {
+   "en": "One of the Twelve; 'doubting Thomas'"
+  },
+  "summary": {
+   "en": "Willing to go and die with Jesus at Bethany, absent at the first resurrection appearance and unwilling to believe on report — then the first in the Fourth Gospel to call Jesus God. A strong and early tradition sends him to India, where the Saint Thomas Christians trace their founding to him."
+  },
+  "scriptureRefs": [
+   "John 11:16",
+   "John 20:25",
+   "John 20:28"
+  ],
+  "citations": [
+   "cit-scripture-john-11-16",
+   "cit-scripture-john-20-25",
+   "cit-scripture-john-20-28",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee, then (by tradition) India"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 72,
+   "display": {
+    "en": "c. AD 27–72 (traditional)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-capernaum",
+  "journeyIds": [
+   "journey-ministry",
+   "journey-apostolic-traditions"
+  ]
+ },
+ {
+  "id": "person-matthew",
+  "name": {
+   "en": "Matthew (Levi)"
+  },
+  "role": {
+   "en": "Apostle; tax collector at Capernaum"
+  },
+  "summary": {
+   "en": "Called from the tax booth on the Capernaum road — a customs post on the frontier between Antipas' Galilee and Philip's territory — and by tradition the author of the first Gospel."
+  },
+  "scriptureRefs": [
+   "Matthew 9:9",
+   "Mark 2:14",
+   "Luke 5:27"
+  ],
+  "citations": [
+   "cit-scripture-matthew-9-9",
+   "cit-scripture-mark-2-14",
+   "cit-scripture-luke-5-27",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee"
+  },
+  "books": [
+   "Matthew"
+  ],
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 70,
+   "display": {
+    "en": "c. AD 27–70"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-capernaum",
+  "journeyIds": [
+   "journey-ministry"
+  ],
+  "datingNote": {
+   "en": "The first Gospel is formally anonymous; the ascription to Matthew is second-century and universal in the manuscripts, but it is a tradition rather than a claim the book makes."
+  }
+ },
+ {
+  "id": "person-james-alphaeus",
+  "name": {
+   "en": "James son of Alphaeus"
+  },
+  "role": {
+   "en": "One of the Twelve"
+  },
+  "summary": {
+   "en": "Named in every list of the Twelve and nowhere else in the New Testament; sometimes identified with 'James the less' of Mark 15:40, though the identification is not certain."
+  },
+  "scriptureRefs": [
+   "Matthew 10:3",
+   "Mark 3:18",
+   "Acts 1:13"
+  ],
+  "citations": [
+   "cit-scripture-matthew-10-3",
+   "cit-scripture-mark-3-18",
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee and Jerusalem"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 62,
+   "display": {
+    "en": "c. AD 27–62"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-thaddaeus",
+  "name": {
+   "en": "Thaddaeus (Judas son of James)"
+  },
+  "role": {
+   "en": "One of the Twelve"
+  },
+  "summary": {
+   "en": "Called Thaddaeus in Matthew and Mark and 'Judas not Iscariot' in Luke and John, where he asks at the last supper why Jesus will show himself to the disciples and not to the world."
+  },
+  "scriptureRefs": [
+   "Matthew 10:3",
+   "Luke 6:16",
+   "John 14:22"
+  ],
+  "citations": [
+   "cit-scripture-matthew-10-3",
+   "cit-scripture-luke-6-16",
+   "cit-scripture-john-14-22",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee and Jerusalem"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 65,
+   "display": {
+    "en": "c. AD 27–65"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-simon-zealot",
+  "name": {
+   "en": "Simon the Zealot (the Cananaean)"
+  },
+  "role": {
+   "en": "One of the Twelve"
+  },
+  "summary": {
+   "en": "Distinguished from Simon Peter by an epithet that marks him either as a member of the zealot movement or simply as zealous for the law — with a tax collector among the same twelve."
+  },
+  "scriptureRefs": [
+   "Matthew 10:4",
+   "Luke 6:15",
+   "Acts 1:13"
+  ],
+  "citations": [
+   "cit-scripture-matthew-10-4",
+   "cit-scripture-luke-6-15",
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Galilee and Jerusalem"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 65,
+   "display": {
+    "en": "c. AD 27–65"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-judas-iscariot",
+  "name": {
+   "en": "Judas Iscariot"
+  },
+  "role": {
+   "en": "One of the Twelve; betrayed Jesus"
+  },
+  "summary": {
+   "en": "Kept the common purse and handed Jesus over in Gethsemane for thirty pieces of silver. Matthew and Acts give differing accounts of his death and of the field bought with the money."
+  },
+  "scriptureRefs": [
+   "Matthew 26:15",
+   "Matthew 27:5",
+   "Acts 1:18"
+  ],
+  "citations": [
+   "cit-scripture-matthew-26-15",
+   "cit-scripture-matthew-27-5",
+   "cit-scripture-acts-1-18",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Judea"
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 27–30"
+   },
+   "approximate": true
+  },
+  "siteIds": [
+   "site-gethsemane",
+   "site-jerusalem"
+  ],
+  "journeyIds": [
+   "journey-ministry"
+  ],
+  "datingNote": {
+   "en": "Matthew 27:5 and Acts 1:18 differ on how Judas died and who bought the field; the app reports both rather than harmonizing them."
+  }
+ },
+ {
+  "id": "person-matthias",
+  "name": {
+   "en": "Matthias"
+  },
+  "role": {
+   "en": "Chosen to replace Judas among the Twelve"
+  },
+  "summary": {
+   "en": "Selected by lot from among those who had accompanied Jesus from John's baptism to the ascension, so that the Twelve were complete before Pentecost."
+  },
+  "scriptureRefs": [
+   "Acts 1:23",
+   "Acts 1:26"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-23",
+   "cit-scripture-acts-1-26",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "category": "apostle",
+  "realm": {
+   "en": "Jerusalem"
+  },
+  "ministryRange": {
+   "startYear": 30,
+   "endYear": 65,
+   "display": {
+    "en": "c. AD 30–65"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem",
+  "journeyIds": [
+   "journey-apostolic-traditions"
+  ]
+ },
+ {
+  "id": "person-mary-mother",
+  "name": {
+   "en": "Mary of Nazareth"
+  },
+  "role": {
+   "en": "Mother of Jesus"
+  },
+  "summary": {
+   "en": "Betrothed to Joseph when she conceived, present from Bethlehem to Cana to the cross, and among those gathered in the upper room after the ascension."
+  },
+  "scriptureRefs": [
+   "Luke 1:38",
+   "John 2:5",
+   "Acts 1:14"
+  ],
+  "citations": [
+   "cit-scripture-luke-1-38",
+   "cit-scripture-john-2-5",
+   "cit-scripture-acts-1-14",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "other",
+  "realm": {
+   "en": "Galilee and Judea"
+  },
+  "lifeRange": {
+   "startYear": -20,
+   "endYear": 50,
+   "display": {
+    "en": "c. 20 BC – c. AD 50 (traditional)"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-nazareth",
+  "siteIds": [
+   "site-bethlehem",
+   "site-cana-of-galilee",
+   "site-jerusalem"
+  ],
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-joseph-nazareth",
+  "name": {
+   "en": "Joseph of Nazareth"
+  },
+  "role": {
+   "en": "Carpenter of Nazareth; husband of Mary"
+  },
+  "summary": {
+   "en": "A τέκτων — a builder in wood and stone — who took Mary as his wife, brought the family to Egypt and back, and disappears from the narrative after the Passover visit when Jesus was twelve."
+  },
+  "scriptureRefs": [
+   "Matthew 1:24",
+   "Matthew 2:14",
+   "Luke 2:48"
+  ],
+  "citations": [
+   "cit-scripture-matthew-1-24",
+   "cit-scripture-matthew-2-14",
+   "cit-scripture-luke-2-48",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "other",
+  "realm": {
+   "en": "Galilee"
+  },
+  "lifeRange": {
+   "startYear": -30,
+   "endYear": 25,
+   "display": {
+    "en": "c. 30 BC – before AD 30"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-nazareth",
+  "siteIds": [
+   "site-bethlehem",
+   "site-egypt-refuge"
+  ],
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-mary-magdalene",
+  "name": {
+   "en": "Mary Magdalene"
+  },
+  "role": {
+   "en": "Disciple; first witness of the resurrection"
+  },
+  "summary": {
+   "en": "From Magdala on the Sea of Galilee, healed of seven demons, one of the women who supported the ministry out of their own means, present at the crucifixion, and the first to whom the risen Jesus appeared."
+  },
+  "scriptureRefs": [
+   "Luke 8:2",
+   "John 19:25",
+   "John 20:16"
+  ],
+  "citations": [
+   "cit-scripture-luke-8-2",
+   "cit-scripture-john-19-25",
+   "cit-scripture-john-20-16",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "disciple",
+  "realm": {
+   "en": "Galilee and Judea"
+  },
+  "ministryRange": {
+   "startYear": 28,
+   "endYear": 33,
+   "display": {
+    "en": "c. AD 28–33"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-sea-of-galilee",
+  "siteIds": [
+   "site-golgotha-and-the-tomb",
+   "site-jerusalem"
+  ],
+  "journeyIds": [
+   "journey-ministry"
+  ]
+ },
+ {
+  "id": "person-james-brother-jesus",
+  "name": {
+   "en": "James the brother of Jesus"
+  },
+  "role": {
+   "en": "Leader of the Jerusalem church"
+  },
+  "summary": {
+   "en": "Not a follower during the ministry, but named in the earliest resurrection tradition and, by the council of Acts 15, the presiding voice in Jerusalem. Josephus records his execution by the high priest Ananus in AD 62."
+  },
+  "scriptureRefs": [
+   "Acts 15:13",
+   "1 Corinthians 15:7",
+   "Galatians 1:19"
+  ],
+  "citations": [
+   "cit-scripture-acts-15-13",
+   "cit-scripture-1-corinthians-15-7",
+   "cit-scripture-galatians-1-19",
+   "cit-ref-keener-bbcnt",
+   "cit-wit-josephus-james"
+  ],
+  "category": "disciple",
+  "realm": {
+   "en": "Jerusalem"
+  },
+  "books": [
+   "James"
+  ],
+  "lifeRange": {
+   "startYear": -1,
+   "endYear": 62,
+   "display": {
+    "en": "c. 1 BC – AD 62"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 33,
+   "endYear": 62,
+   "display": {
+    "en": "c. AD 33–62"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-jerusalem"
+ },
+ {
+  "id": "person-cornelius",
+  "name": {
+   "en": "Cornelius"
+  },
+  "role": {
+   "en": "Roman centurion of the Italian band at Caesarea"
+  },
+  "summary": {
+   "en": "A God-fearing officer whose household received the Spirit before baptism — the episode that settled, for Peter and then for Jerusalem, that Gentiles were to be admitted without becoming Jews first."
+  },
+  "scriptureRefs": [
+   "Acts 10:1",
+   "Acts 10:44",
+   "Acts 11:18"
+  ],
+  "citations": [
+   "cit-scripture-acts-10-1",
+   "cit-scripture-acts-10-44",
+   "cit-scripture-acts-11-18",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "other",
+  "realm": {
+   "en": "Roman Judea"
+  },
+  "ministryRange": {
+   "startYear": 37,
+   "endYear": 45,
+   "display": {
+    "en": "c. AD 37–45"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-caesarea-maritima",
+  "journeyIds": [
+   "journey-peter"
+  ]
+ },
+ {
+  "id": "person-lydia",
+  "name": {
+   "en": "Lydia of Thyatira"
+  },
+  "role": {
+   "en": "Dealer in purple at Philippi; first named convert in Europe"
+  },
+  "summary": {
+   "en": "A trader in the expensive purple cloth of her home city, met at the riverside place of prayer outside Philippi; her household was baptized and her house became the first church in Macedonia."
+  },
+  "scriptureRefs": [
+   "Acts 16:14",
+   "Acts 16:15",
+   "Acts 16:40"
+  ],
+  "citations": [
+   "cit-scripture-acts-16-14",
+   "cit-scripture-acts-16-15",
+   "cit-scripture-acts-16-40",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "disciple",
+  "realm": {
+   "en": "Macedonia"
+  },
+  "ministryRange": {
+   "startYear": 49,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 49–60"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-philippi",
+  "journeyIds": [
+   "journey-paul-2"
+  ]
+ },
+ {
+  "id": "person-priscilla-aquila",
+  "name": {
+   "en": "Priscilla and Aquila"
+  },
+  "role": {
+   "en": "Tentmakers; co-workers of Paul"
+  },
+  "summary": {
+   "en": "A married couple expelled from Rome under Claudius' edict, who worked at the same trade as Paul in Corinth, travelled with him to Ephesus, taught Apollos 'the way of God more perfectly', and hosted churches in their house in three cities."
+  },
+  "scriptureRefs": [
+   "Acts 18:2",
+   "Acts 18:26",
+   "Romans 16:3"
+  ],
+  "citations": [
+   "cit-scripture-acts-18-2",
+   "cit-scripture-acts-18-26",
+   "cit-scripture-romans-16-3",
+   "cit-ref-keener-bbcnt",
+   "cit-wit-suetonius"
+  ],
+  "category": "disciple",
+  "realm": {
+   "en": "Rome, Corinth and Ephesus"
+  },
+  "ministryRange": {
+   "startYear": 49,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 49–60"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-corinth",
+  "siteIds": [
+   "site-ephesus",
+   "site-rome"
+  ],
+  "journeyIds": [
+   "journey-paul-2",
+   "journey-paul-3"
+  ]
+ },
+ {
+  "id": "person-apollos",
+  "name": {
+   "en": "Apollos"
+  },
+  "role": {
+   "en": "Alexandrian Jew; eloquent teacher at Ephesus and Corinth"
+  },
+  "summary": {
+   "en": "Knowing only John's baptism, he was instructed by Priscilla and Aquila and became a powerful advocate in Achaia — and, without wanting it, the name of one of the factions Paul rebukes at Corinth."
+  },
+  "scriptureRefs": [
+   "Acts 18:24",
+   "Acts 19:1",
+   "1 Corinthians 3:6"
+  ],
+  "citations": [
+   "cit-scripture-acts-18-24",
+   "cit-scripture-acts-19-1",
+   "cit-scripture-1-corinthians-3-6",
+   "cit-ref-keener-bbcnt"
+  ],
+  "category": "evangelist",
+  "realm": {
+   "en": "Alexandria, Ephesus and Achaia"
+  },
+  "ministryRange": {
+   "startYear": 52,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 52–60"
+   },
+   "approximate": true
+  },
+  "homeSiteId": "site-alexandria",
+  "siteIds": [
+   "site-ephesus",
+   "site-corinth"
+  ],
+  "journeyIds": [
+   "journey-paul-3"
   ]
  }
 ]

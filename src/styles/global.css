@@ -2635,3 +2635,956 @@ a {
      the sheet, beat `.tabbar__item`'s clamp — the toggle rendered a size bigger
      than every tab beside it. */
 }
+
+/* ══ Wide reading screens (timeline, Bible reader) ═══════════════════════════
+   `.mode-panel--page` is the centred reading card Home and Credits use, capped
+   at --maxw (720px). The timeline needs parallel lanes side by side and the
+   reader needs text plus an aside, so both opt into a wider cap. Everything
+   below the cap is fluid — no fixed pixel widths, no horizontal page scroll. */
+.mode-panel--wide {
+  --maxw: 1100px;
+  /* These two screens are documents, not overlays on a map: the translucent
+     sheet chrome makes a chapter of Kings unreadable over coastlines. */
+  background: var(--surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* At `lg` the shared `.mode-panel` rule parks every panel in a 420px left
+   sidebar. That is right for a stop reader beside a live map and wrong for a
+   timeline with seven parallel lanes, so the wide screens take the canvas —
+   still inset, still capped at a readable measure, still clearing the dock. */
+@media (min-width: 1024px) {
+  .mode-panel--page.mode-panel--wide {
+    left: 1.5rem;
+    right: 1.5rem;
+    width: auto;
+    max-width: var(--maxw);
+    margin-inline: auto;
+    overflow: auto;
+  }
+}
+
+/* ══ Timeline ════════════════════════════════════════════════════════════════
+   Time runs DOWN the page. Each era is a band with its own linear scale (a
+   single scale across four millennia would flatten the New Testament), and the
+   lanes inside a band are a fluid grid: side by side where there is room,
+   wrapping to fewer columns as the viewport narrows. Bars are absolutely
+   positioned within their lane by year, so the layout is proportional at every
+   width without a single media query. */
+.tl-scale-note {
+  margin: 0.75rem 0;
+  padding: 0.7rem 0.85rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.tl-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+}
+.tl-jump__link {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--link);
+  font-size: 0.78rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tl-jump__link:hover,
+.tl-jump__link:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.tl-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+  font-size: 0.82rem;
+}
+.tl-filters legend {
+  padding: 0 0.35rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tl-filters label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
+  min-height: 32px;
+  cursor: pointer;
+}
+
+.tl-eras {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+.tl-era {
+  margin-bottom: 1.75rem;
+  /* Anchor jumps land below the sticky nothing — just clear of the top edge. */
+  scroll-margin-top: 1rem;
+}
+.tl-era__head {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--surface-raised);
+}
+.tl-era__titles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.tl-era__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.tl-era__range {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.tl-era__blurb {
+  margin: 0.35rem 0 0;
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+.tl-era__count {
+  margin: 0.3rem 0 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tl-era__dispute {
+  margin-top: 0.45rem;
+}
+
+/* The band itself: a year rail, then the lanes beside it.
+   The lanes must NEVER wrap onto a second row. Wrapping looks tidy and is a
+   lie: a lane pushed below its neighbours no longer lines up with the year rail
+   on its left, so "Kings" and "Prophets" at the same vertical position would be
+   showing different centuries. So the band is a single non-wrapping row that
+   scrolls sideways when the lanes need more width than the viewport has —
+   which is exactly how a printed fold-out chronology chart behaves — with the
+   year rail pinned to the left edge so the scale stays readable throughout. */
+.tl-era__body {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  --band-pad: 0.9rem;
+  /* Fixed height for the lane headings. The year rail has no heading of its
+     own, so it offsets itself by exactly this much — otherwise every track
+     starts one heading lower than the rail and every bar sits below the tick
+     that is supposed to date it. Both sides read the same variable so they
+     cannot drift apart. */
+  --lane-head-h: 1.55rem;
+  /* No horizontal padding on the scrollport itself: `left: 0` pins the sticky
+     rail to the padding box, so any left padding would be an open gutter that
+     bars slide through as a visible sliver. The rail supplies the left inset
+     through its own padding, and the lane row supplies the right one. */
+  padding: 0.9rem 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  background: var(--surface);
+  overflow-x: auto;
+  /* Reaching the end of a band must not start scrolling the page behind it. */
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+/* Lanes are a wrapping flex row rather than an even grid, because they are not
+   equal: a lane whose entries pack onto six sub-tracks needs six times the
+   width of a single-track lane. `--tracks` (set per lane in TimelineParts)
+   drives the basis, and wrapping is the entire responsive story — no
+   breakpoints, no horizontal page scroll. */
+.tl-era__lanes {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 0.6rem;
+  /* Grow to fill the band when the lanes are narrow enough to fit; otherwise
+     the parent's overflow-x takes over. */
+  flex: 1 0 auto;
+  padding-right: var(--band-pad);
+}
+/* `--tracks` (set per lane in TimelineParts) sizes the lane: a lane packed onto
+   six sub-tracks needs six times the room of a single-track lane, or its labels
+   shrink to initials while a one-bar lane sits half empty beside it. */
+.tl-lane {
+  flex: 1 0 calc(var(--tracks, 1) * 8.5rem);
+  min-width: calc(var(--tracks, 1) * 5rem);
+}
+/* Names the lanes the band holds, so a reader on a phone knows there is more
+   past the right edge rather than assuming the chart stops at "Prophets". */
+.tl-era__pan-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+/* Scale-change notch between bands — the honesty marker for the broken scale. */
+.tl-era__scale-break {
+  margin: 0.4rem 0 0;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Year rail. Ticks are evenly spaced because the scale within a band is linear. */
+.tl-axis {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  /* Carries the band's left inset itself (see .tl-era__body) and is opaque, so
+     bars scroll underneath it rather than past its edge. */
+  flex: 0 0 calc(4.5rem + var(--band-pad));
+  padding-left: var(--band-pad);
+  align-self: start;
+  margin-top: var(--lane-head-h);
+  /* Same height source as the lane tracks, so ticks line up with the bars. */
+  height: var(--band-h, 320px);
+  border-right: 2px solid var(--border);
+  /* Opaque: bars scroll underneath it. */
+  background: var(--surface);
+}
+.tl-axis__tick {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  padding-right: 0.35rem;
+  white-space: nowrap;
+}
+.tl-axis__label {
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.tl-lane__title {
+  /* Fixed height, not content height — see --lane-head-h above. */
+  height: var(--lane-head-h);
+  line-height: var(--lane-head-h);
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tl-lane__track {
+  position: relative;
+  height: var(--band-h, 320px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px dashed var(--border);
+}
+.tl-bar__slot {
+  position: absolute;
+  padding: 0 2px;
+  box-sizing: border-box;
+}
+.tl-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.05rem;
+  width: 100%;
+  height: 100%;
+  min-height: 24px; /* keeps a one-year event tappable (WCAG 2.5.5) */
+  padding: 0.2rem 0.3rem;
+  overflow: hidden;
+  border: 1px solid var(--bar-color, var(--border));
+  border-left: 3px solid var(--bar-color, var(--accent));
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--bar-color, var(--accent)) 12%, var(--surface-raised));
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.tl-bar:hover,
+.tl-bar:focus-visible {
+  background: color-mix(in srgb, var(--bar-color, var(--accent)) 24%, var(--surface-raised));
+}
+.tl-bar--selected {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.tl-bar__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.15;
+  /* Two lines, then ellipsis — the full name is in the title/aria-label. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tl-bar__date {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Per-kind accents. Journeys carry their own route colour via --bar-color. */
+.tl-bar--person { --bar-color: var(--sea); }
+.tl-bar--battle { --bar-color: var(--terracotta); }
+.tl-bar--artifact { --bar-color: var(--gold); }
+.tl-bar--witness { --bar-color: var(--violet); }
+
+.tl-detail {
+  margin: 0.75rem 0;
+  border: 1px solid var(--accent);
+}
+.tl-detail__facts {
+  margin: 0.4rem 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.tl-detail__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+}
+.tl-undated {
+  margin-top: 1.5rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+}
+.tl-undated h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+}
+.tl-undated__note,
+.tl-undated li {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Compact single-row strip — the reusable variant of the same scale. */
+.tl-strip {
+  margin: 0.6rem 0;
+}
+.tl-strip__caption {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tl-strip__track {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+}
+.tl-strip__seg {
+  position: absolute;
+  top: 2px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+.tl-strip__seg--person { background: var(--sea); }
+.tl-strip__seg--journey { background: var(--accent); }
+.tl-strip__key {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.tl-strip__key--person { background: var(--sea); }
+.tl-strip__axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.2rem;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+}
+.tl-strip__legend {
+  margin: 0.3rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Narrow screens: a thinner year rail and narrower lanes. The band still scrolls
+   sideways rather than wrapping, so the shared vertical scale survives. */
+@media (max-width: 640px) {
+  .tl-era__body {
+    --band-pad: 0.6rem;
+    padding: 0.7rem 0 0.8rem;
+  }
+  .tl-axis {
+    flex-basis: calc(3.4rem + var(--band-pad));
+  }
+  .tl-axis__label {
+    font-size: 0.62rem;
+  }
+  /* Narrower lanes on a phone; the band scrolls sideways rather than wrapping,
+     so every lane still reads against the same year rail. */
+  .tl-lane {
+    flex-basis: calc(var(--tracks, 1) * 7rem);
+    min-width: calc(var(--tracks, 1) * 4.5rem);
+  }
+}
+
+/* ══ Bible reader ════════════════════════════════════════════════════════════
+   Text column plus an aside (notes editor + atlas cross-references). The aside
+   sits beside the text where there is room and below it where there is not —
+   one `grid-template-columns` and one breakpoint, no duplicated markup. */
+.bible__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.bible__translation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible__translation select {
+  min-height: 36px;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.bible__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.6rem 0 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.bible__tab {
+  min-height: 40px;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.bible__tab--active {
+  border-color: var(--border);
+  background: var(--surface-raised);
+  color: var(--accent);
+  font-weight: 600;
+  /* Sit on top of the tab strip's own border so the active tab reads as open. */
+  margin-bottom: -1px;
+  padding-bottom: calc(0.4rem + 1px);
+}
+
+.bible__reader {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .bible__reader {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.bible__chapter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.bible__chapter-title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+.bible__translation-tag {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.bible__nav {
+  min-height: 40px;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+  color: var(--link);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.bible__nav:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.bible__chapter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.8rem;
+}
+.bible__bookmark {
+  min-height: 36px;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.bible__bookmark--on {
+  border-color: var(--gold);
+  color: var(--gold-ink);
+}
+.bible__mapped-count {
+  color: var(--text-muted);
+}
+.bible__error {
+  color: var(--c-disputed);
+}
+
+/* The text itself. Measure is capped so long chapters stay readable on a wide
+   screen even though the panel is 1100px. */
+.bible__text {
+  max-width: 38rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.bible-verse {
+  margin: 0 0 0.5rem;
+  padding: 0.15rem 0.25rem;
+  border-radius: var(--r-sm);
+  scroll-margin-top: 4rem;
+}
+.bible-verse--active {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+/* Highlight colours are tinted against the surface so they stay legible in
+   both themes rather than shouting in dark mode. */
+.bible-verse[data-highlight='gold'] { background: color-mix(in srgb, var(--gold) 24%, transparent); }
+.bible-verse[data-highlight='sea'] { background: color-mix(in srgb, var(--sea) 24%, transparent); }
+.bible-verse[data-highlight='terracotta'] { background: color-mix(in srgb, var(--terracotta) 20%, transparent); }
+.bible-verse[data-highlight='violet'] { background: color-mix(in srgb, var(--violet) 22%, transparent); }
+.bible-verse__num {
+  min-width: 1.9rem;
+  min-height: 1.9rem;
+  margin-right: 0.3rem;
+  padding: 0 0.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  vertical-align: super;
+  cursor: pointer;
+}
+.bible-verse__num:hover,
+.bible-verse__num:focus-visible {
+  border-color: var(--accent);
+}
+.bible-verse__flag {
+  margin-left: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.bible-verse__flag--map {
+  color: var(--sea);
+}
+
+.bible__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* Follows the reader down a long chapter on a wide screen; the media query
+     above collapses the grid before stickiness could trap anything. */
+  position: sticky;
+  top: 0.5rem;
+}
+@media (max-width: 860px) {
+  .bible__aside {
+    position: static;
+  }
+}
+
+.bible-note {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+}
+.bible-note__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.bible-note__head h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.bible-note__close {
+  min-width: 32px;
+  min-height: 32px;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.bible-note__colors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+.bible-note__swatch {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bible-note__swatch--on {
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px var(--surface-raised), 0 0 0 4px var(--accent);
+}
+.bible-note__swatch--gold { background: var(--gold); }
+.bible-note__swatch--sea { background: var(--sea); }
+.bible-note__swatch--terracotta { background: var(--terracotta); }
+.bible-note__swatch--violet { background: var(--violet); }
+.bible-note__clear,
+.bible-note__save,
+.bible-note__delete {
+  min-height: 36px;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.bible-note__save {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+.bible-note__delete {
+  color: var(--c-disputed);
+}
+.bible-note__label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible-note__area {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+.bible-note__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bible-xrefs {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+}
+.bible-xrefs__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible-xrefs__empty {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.bible-xrefs__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.bible-xrefs__item {
+  padding: 0.5rem 0.6rem;
+  border-left: 3px solid var(--border);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: var(--surface);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+.bible-xrefs__item--stop { border-left-color: var(--accent); }
+.bible-xrefs__item--miracle { border-left-color: var(--sea); }
+.bible-xrefs__item--battle { border-left-color: var(--terracotta); }
+.bible-xrefs__item--person { border-left-color: var(--gold); }
+.bible-xrefs__item--lesson { border-left-color: var(--violet); }
+.bible-xrefs__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin: 0 0 0.15rem;
+}
+.bible-xrefs__kind {
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible-xrefs__verses {
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+}
+.bible-xrefs__detail {
+  color: var(--text-muted);
+}
+.bible-xrefs__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+}
+
+/* Book and chapter grids — fluid, no fixed column counts. */
+.bible-books__title {
+  margin: 0.9rem 0 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible-books__grid,
+.bible-chapters__grid {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bible-books__grid {
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+}
+.bible-chapters__grid {
+  grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+}
+.bible-books__item,
+.bible-chapters__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 100%;
+  min-height: 40px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+.bible-books__item {
+  justify-content: space-between;
+  text-align: left;
+}
+.bible-books__item--active,
+.bible-chapters__item--active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface-raised));
+  color: var(--accent);
+  font-weight: 600;
+}
+.bible-chapters__item--mapped {
+  /* A mapped chapter is marked by a border, not by colour alone (WCAG 1.4.1);
+     the button's title says so too. */
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sea);
+}
+.bible-books__dot {
+  font-size: 0.55rem;
+  color: var(--sea);
+}
+
+.bible__notes-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.bible-notes-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.6rem;
+}
+.bible-notes-list li {
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+}
+.bible-notes-list li[data-highlight='gold'] { border-left: 4px solid var(--gold); }
+.bible-notes-list li[data-highlight='sea'] { border-left: 4px solid var(--sea); }
+.bible-notes-list li[data-highlight='terracotta'] { border-left: 4px solid var(--terracotta); }
+.bible-notes-list li[data-highlight='violet'] { border-left: 4px solid var(--violet); }
+.bible-notes-list__ref {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.bible-notes-list__jump {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.bible-notes-list__text {
+  margin: 0 0 0.4rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.bible__search-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.bible__search-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+}
+.bible__search-count {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.bible__search-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.bible__search-list li {
+  padding: 0.5rem 0.6rem;
+  border-left: 3px solid var(--border);
+  background: var(--surface-raised);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.bible__search-list p {
+  margin: 0.2rem 0 0;
+}
+.bible__sourcing {
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+/* "open in the reader →" beside a quoted passage's citation line. */
+.scripture__open {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  font-style: normal;
+  white-space: nowrap;
+}

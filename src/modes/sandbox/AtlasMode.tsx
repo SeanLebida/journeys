@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl, { type MapLayerMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
@@ -46,6 +47,7 @@ export default function AtlasMode() {
 
 function Atlas({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
+  const [params] = useSearchParams();
   const { mapRef, ready } = useMap();
   const [showSites, setShowSites] = useState(true);
   const [showRoutes, setShowRoutes] = useState(true);
@@ -54,6 +56,15 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const [maxYear, setMaxYear] = useState(YEAR_MAX);
   const [selected, setSelected] = useState<string | null>(null);
   const [selectedBattle, setSelectedBattle] = useState<string | null>(null);
+
+  // `/atlas?site=…` is how the timeline and the Bible reader hand a place over
+  // to the map. Unknown ids are ignored rather than blanking the panel.
+  const linkedSite = params.get('site');
+  useEffect(() => {
+    if (!linkedSite || !bundle.site(linkedSite)) return;
+    setSelected(linkedSite);
+    setSelectedBattle(null);
+  }, [linkedSite, bundle]);
 
   // Add layers + click handler once the map is ready.
   useEffect(() => {

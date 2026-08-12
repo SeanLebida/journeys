@@ -22,6 +22,27 @@
    "cit-scripture-luke-3-23",
    "cit-scripture-mark-1-14",
    "cit-scripture-john-1-14"
+  ],
+  "category": "other",
+  "homeSiteId": "site-nazareth",
+  "lifeRange": {
+   "startYear": -6,
+   "endYear": 33,
+   "display": {
+    "en": "c. 6/4 BC – AD 30 (or 33)"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 33,
+   "display": {
+    "en": "c. AD 27–30 (or to 33)"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-ministry"
   ]
  },
  {
@@ -46,6 +67,30 @@
    "cit-scripture-acts-9-1",
    "cit-scripture-acts-13-9",
    "cit-scripture-galatians-1-1"
+  ],
+  "category": "apostle",
+  "homeSiteId": "site-antioch-on-the-orontes",
+  "lifeRange": {
+   "startYear": 5,
+   "endYear": 67,
+   "display": {
+    "en": "c. AD 5 – c. 62/67"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 34,
+   "endYear": 62,
+   "display": {
+    "en": "c. AD 34–62"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-1",
+   "journey-paul-2",
+   "journey-paul-3",
+   "journey-rome"
   ]
  },
  {
@@ -70,6 +115,19 @@
    "cit-scripture-acts-4-36",
    "cit-scripture-acts-13-2",
    "cit-scripture-acts-15-36"
+  ],
+  "category": "apostle",
+  "homeSiteId": "site-salamis",
+  "ministryRange": {
+   "startYear": 45,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 45–60"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-1"
   ]
  },
  {
@@ -92,6 +150,22 @@
    "cit-ref-abd",
    "cit-scripture-acts-13-13",
    "cit-scripture-acts-15-37"
+  ],
+  "category": "evangelist",
+  "homeSiteId": "site-jerusalem",
+  "books": [
+   "Mark"
+  ],
+  "ministryRange": {
+   "startYear": 45,
+   "endYear": 68,
+   "display": {
+    "en": "c. AD 45–68"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-1"
   ]
  },
  {
@@ -114,6 +188,19 @@
    "cit-ref-abd",
    "cit-scripture-acts-15-40",
    "cit-scripture-acts-16-25"
+  ],
+  "category": "disciple",
+  "homeSiteId": "site-jerusalem",
+  "ministryRange": {
+   "startYear": 49,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 49–60"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-2"
   ]
  },
  {
@@ -136,6 +223,20 @@
    "cit-ref-abd",
    "cit-scripture-acts-16-1",
    "cit-scripture-1-corinthians-4-17"
+  ],
+  "category": "disciple",
+  "homeSiteId": "site-lystra",
+  "ministryRange": {
+   "startYear": 49,
+   "endYear": 65,
+   "display": {
+    "en": "c. AD 49–65"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-2",
+   "journey-paul-3"
   ]
  },
  {
@@ -158,6 +259,25 @@
    "cit-ref-abd",
    "cit-scripture-colossians-4-14",
    "cit-scripture-acts-16-10"
+  ],
+  "category": "evangelist",
+  "homeSiteId": "site-antioch-on-the-orontes",
+  "books": [
+   "Luke",
+   "Acts"
+  ],
+  "ministryRange": {
+   "startYear": 49,
+   "endYear": 85,
+   "display": {
+    "en": "c. AD 49–85"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-paul-2",
+   "journey-paul-3",
+   "journey-rome"
   ]
  },
  {
@@ -182,6 +302,33 @@
    "cit-scripture-matthew-16-16",
    "cit-scripture-acts-2-14",
    "cit-scripture-acts-15-7"
+  ],
+  "category": "apostle",
+  "homeSiteId": "site-capernaum",
+  "books": [
+   "1 Peter",
+   "2 Peter"
+  ],
+  "lifeRange": {
+   "startYear": -5,
+   "endYear": 68,
+   "display": {
+    "en": "c. 5 BC – c. AD 64/68"
+   },
+   "approximate": true
+  },
+  "ministryRange": {
+   "startYear": 27,
+   "endYear": 67,
+   "display": {
+    "en": "c. AD 27–64/67"
+   },
+   "approximate": true
+  },
+  "journeyIds": [
+   "journey-ministry",
+   "journey-peter",
+   "journey-apostolic-traditions"
   ]
  },
  {
@@ -202,7 +349,17 @@
    "cit-sergius-paulus",
    "cit-biblearchaeology-org-research-chronological-cate",
    "cit-scripture-acts-13-7"
-  ]
+  ],
+  "category": "ruler",
+  "homeSiteId": "site-paphos",
+  "ministryRange": {
+   "startYear": 46,
+   "endYear": 48,
+   "display": {
+    "en": "proconsul c. AD 46–48"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-gallio",
@@ -223,7 +380,17 @@
    "cit-gallio-inscription",
    "cit-ref-abd",
    "cit-scripture-acts-18-12"
-  ]
+  ],
+  "category": "ruler",
+  "homeSiteId": "site-corinth",
+  "ministryRange": {
+   "startYear": 51,
+   "endYear": 52,
+   "display": {
+    "en": "proconsul of Achaia AD 51–52"
+   },
+   "approximate": true
+  }
  },
  {
   "id": "person-pontius-pilate",
@@ -246,6 +413,16 @@
    "cit-ref-abd",
    "cit-scripture-mark-15-15",
    "cit-scripture-john-19-16"
-  ]
+  ],
+  "category": "ruler",
+  "homeSiteId": "site-caesarea-maritima",
+  "ministryRange": {
+   "startYear": 26,
+   "endYear": 36,
+   "display": {
+    "en": "prefect of Judea AD 26–36"
+   },
+   "approximate": true
+  }
  }
 ]
