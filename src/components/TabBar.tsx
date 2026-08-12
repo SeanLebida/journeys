@@ -15,6 +15,8 @@ const TABS: Tab[] = [
   { to: '/', key: 'home', end: true, glyph: '⌂' },
   { to: '/trace', key: 'trace', glyph: '⟿', labelKey: 'nav.traceShort' },
   { to: '/atlas', key: 'atlas', glyph: '◍' },
+  { to: '/timeline', key: 'timeline', glyph: '≣' },
+  { to: '/bible', key: 'bible', glyph: '▤' },
   { to: '/lessons', key: 'lessons', glyph: '❖' },
   { to: '/quiz', key: 'quiz', glyph: '?' },
 ];

@@ -8,6 +8,8 @@ import { isNative } from './platform/bridge';
 // Heavy mode screens are code-split so the initial shell + map load fast.
 const TraceMode = lazy(() => import('./modes/map-trace/TraceMode'));
 const AtlasMode = lazy(() => import('./modes/sandbox/AtlasMode'));
+const TimelineMode = lazy(() => import('./modes/timeline/TimelineMode'));
+const BibleMode = lazy(() => import('./modes/bible/BibleMode'));
 const LessonMode = lazy(() => import('./modes/lesson/LessonMode'));
 const QuizMode = lazy(() => import('./modes/quiz/QuizMode'));
 
@@ -20,6 +22,8 @@ const routes: RouteObject[] = [
       { path: 'trace', element: <TraceMode /> },
       { path: 'trace/:journeyId', element: <TraceMode /> },
       { path: 'atlas', element: <AtlasMode /> },
+      { path: 'timeline', element: <TimelineMode /> },
+      { path: 'bible', element: <BibleMode /> },
       { path: 'lessons', element: <LessonMode /> },
       { path: 'lessons/:lessonId', element: <LessonMode /> },
       { path: 'quiz', element: <QuizMode /> },
