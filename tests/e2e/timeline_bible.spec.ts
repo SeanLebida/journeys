@@ -15,12 +15,82 @@ test('timeline lays out eras with parallel lanes against one year rail', async (
   // The lanes share one vertical scale, which only holds if they are laid out
   // side by side rather than wrapped onto separate rows: every lane track must
   // start at the same y as the year rail.
-  const axisBox = await monarchy.locator('.tl-axis').boundingBox();
-  const trackBoxes = await monarchy.locator('.tl-lane__track').evaluateAll((els) =>
-    els.map((el) => el.getBoundingClientRect().top),
+  //
+  // Measured with layout offsets, not painted rects: the fold-out effect
+  // rotates edge panels in 3-D, which changes their bounding box without
+  // changing the layout this invariant is actually about.
+  const tops = await monarchy.locator('.tl-era__body').evaluate((band) => {
+    const offsetTop = (el: HTMLElement) => {
+      let y = 0;
+      for (let n: HTMLElement | null = el; n && n !== band; n = n.offsetParent as HTMLElement | null) y += n.offsetTop;
+      return y;
+    };
+    const axis = band.querySelector<HTMLElement>('.tl-axis')!;
+    const tracks = Array.from(band.querySelectorAll<HTMLElement>('.tl-lane__track'));
+    return { axis: offsetTop(axis), tracks: tracks.map(offsetTop) };
+  });
+  expect(tops.tracks.length).toBeGreaterThan(1);
+  for (const top of tops.tracks) expect(Math.abs(top - tops.axis)).toBeLessThan(2);
+});
+
+/**
+ * A lane with no fold still computes a transform — `rotateY(calc(0 * 16deg))`
+ * resolves to the identity matrix, not to `none`. Flatness is what the
+ * readability rule is actually about, so that is what these assert.
+ */
+const FLAT = ['none', 'matrix(1, 0, 0, 1, 0, 0)'];
+
+test('fold-out effect flattens whatever is in view, and can be turned off', async ({ page }) => {
+  await page.goto('/timeline');
+  const monarchy = page.locator('#era-monarchy');
+  await monarchy.scrollIntoViewIfNeeded();
+  const band = monarchy.locator('.tl-era__body');
+
+  // At rest the leading panel is fully inside the band, so it is square.
+  const leadTransform = () =>
+    monarchy.locator('.tl-lane').first().evaluate((el) => getComputedStyle(el).transform);
+  expect(FLAT).toContain(await leadTransform());
+
+  // Scrolling sideways hinges the panels that leave the view…
+  await band.evaluate((el) => { el.scrollLeft = 400; });
+  await page.waitForTimeout(200);
+  expect(FLAT).not.toContain(await leadTransform());
+
+  // …while every panel still fully in view stays square. This is the whole
+  // readability contract: the fold only ever touches the periphery.
+  const flatCount = await monarchy.locator('.tl-lane').evaluateAll(
+    (els, flat) => els.filter((el) => flat.includes(getComputedStyle(el).transform)).length,
+    FLAT,
   );
-  expect(trackBoxes.length).toBeGreaterThan(1);
-  for (const top of trackBoxes) expect(Math.abs(top - axisBox!.y)).toBeLessThan(2);
+  expect(flatCount).toBeGreaterThan(0);
+
+  // The opt-out squares everything back up.
+  await page.getByRole('checkbox', { name: /Fold-out chart effect/ }).uncheck();
+  await page.waitForTimeout(200);
+  const anyFolded = await monarchy.locator('.tl-lane').evaluateAll(
+    (els, flat) => els.some((el) => !flat.includes(getComputedStyle(el).transform)),
+    FLAT,
+  );
+  expect(anyFolded).toBe(false);
+});
+
+test('reduced motion disables the fold without disabling the timeline', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  await page.goto('/timeline');
+  const monarchy = page.locator('#era-monarchy');
+  await monarchy.scrollIntoViewIfNeeded();
+  await monarchy.locator('.tl-era__body').evaluate((el) => { el.scrollLeft = 400; });
+  await page.waitForTimeout(200);
+
+  const anyFolded = await monarchy.locator('.tl-lane').evaluateAll(
+    (els, flat) => els.some((el) => !flat.includes(getComputedStyle(el).transform)),
+    FLAT,
+  );
+  expect(anyFolded).toBe(false);
+  // The chart itself is untouched — still scrollable, still populated.
+  await expect(monarchy.getByRole('button', { name: /Elijah the Tishbite/ })).toBeVisible();
+  await ctx.close();
 });
 
 test('timeline entry opens a detail card inside its own era band', async ({ page }) => {

@@ -141,8 +141,6 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   // ── Leg Travel & Co-located Elevation Pulse Animation Loop ───────────────
   useEffect(() => {
     if (targetStopIdx === null || targetStopIdx === currentStopIdx) return;
-    const map = mapRef.current;
-    if (!map || !ready) return;
 
     const fromIdx = currentStopIdx;
     const toIdx = targetStopIdx;
@@ -150,6 +148,20 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     const targetFraction = fractions[toIdx] ?? 0;
     const distFraction = Math.abs(targetFraction - startFraction);
     const distKm = distFraction * totalPathKm;
+
+    // Arriving is the app's job; the fly-over is the map's. If there is no map
+    // to fly with — WebGL unavailable, the style still loading, or a basemap
+    // that failed outright — bailing out here used to leave `targetStopIdx` set
+    // forever: the status stuck on "Travelling…" and every transport control
+    // disabled, with no way forward but a reload. Land the reader at the stop
+    // instead. They lose the animation, not the journey.
+    const map = mapRef.current;
+    if (!map || !ready) {
+      setProgress(targetFraction);
+      setCurrentStopIdx(toIdx);
+      setTargetStopIdx(null);
+      return;
+    }
 
     // Co-located stops (same physical location, e.g. Golgotha -> Tomb, Upper Room 1 -> Upper Room 2)
     // Perform a gentle 450ms elevation pulse so the user senses visual progress without panning.
