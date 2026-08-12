@@ -9,7 +9,9 @@
     "traceShort": "Trace",
     "atlas": "Atlas",
     "lessons": "Lessons",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "timeline": "Timeline",
+    "bible": "Bible"
   },
   "modes": {
     "trace": {
@@ -27,6 +29,14 @@
     "quiz": {
       "title": "Quizzes",
       "placeholder": "Quizzes and challenges arrive in milestone M6."
+    },
+    "timeline": {
+      "title": "Timeline",
+      "tagline": "Every journey, figure, battle and find on one linear chronology — the way a study Bible lays it out."
+    },
+    "bible": {
+      "title": "Bible",
+      "tagline": "Read the bundled public-domain text, keep your own notes, and see what the atlas maps to each chapter."
     }
   },
   "home": {

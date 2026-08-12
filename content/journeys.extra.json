@@ -1,141 +1,436 @@
 [
-  {
-    "id": "journey-apostolic-traditions",
-    "title": {
-      "en": "Traditions of the Other Apostles"
-    },
-    "kind": "apostolic",
-    "dateRange": {
-      "startYear": 44,
-      "endYear": 100,
-      "display": {
-        "en": "c. AD 44–100 (traditions)"
-      },
-      "approximate": true
-    },
-    "summary": {
-      "en": "Where the other apostles are said to have gone after Acts. Most of this rests on later church tradition rather than the New Testament, so these stops are marked 'legendary' and dated only loosely. Routes outside the Mediterranean (e.g. Thomas in India) are noted in the sources but not mapped here."
-    },
-    "color": "#6b4a8f",
-    "stops": [
-      "stop-apostolic-antioch-peter-0",
-      "stop-apostolic-rome-peter-1",
-      "stop-apostolic-ephesus-john-2",
-      "stop-apostolic-patmos-john-3",
-      "stop-apostolic-hierapolis-philip-4",
-      "stop-apostolic-alexandria-mark-5"
-    ],
-    "citations": [
-      "cit-simon-peter",
-      "cit-john-ephesus",
-      "cit-patmos",
-      "cit-philip-hierapolis",
-      "cit-mark-alexandria",
-      "cit-ref-sacred-bridge"
-    ]
+ {
+  "id": "journey-apostolic-traditions",
+  "title": {
+   "en": "Traditions of the Other Apostles"
   },
-  {
-    "id": "journey-abraham",
-    "title": {
-      "en": "Abraham's Migration to Canaan"
-    },
-    "kind": "patriarchal",
-    "dateRange": {
-      "startYear": -2000,
-      "endYear": -1800,
-      "display": {
-        "en": "c. 2000-1800 BC (Middle Bronze Age; dating debated)"
-      },
-      "approximate": true
-    },
-    "summary": {
-      "en": "The patriarchal migration from Mesopotamia to the land of promise: Ur and Haran to Shechem, Bethel, Hebron and Beersheba. The route follows the Genesis narrative; its historicity and date are debated by scholars."
-    },
-    "chronologyNotes": {
-      "en": "The 'patriarchal age' is conventionally set in the Middle Bronze Age (c. 2000-1800 BC), but many scholars regard the narratives as later literary compositions; treat the chronology as traditional, not fixed."
-    },
-    "color": "#8a6d10",
-    "stops": [
-      "journey-abraham-0",
-      "journey-abraham-1",
-      "journey-abraham-2",
-      "journey-abraham-3",
-      "journey-abraham-4",
-      "journey-abraham-5"
-    ],
-    "citations": [
-      "cit-ot-abraham",
-      "cit-ot-patriarchal-dating",
-      "cit-scripture-genesis-11-31",
-      "cit-scripture-genesis-12-1",
-      "cit-ref-kitchen"
-    ]
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 44,
+   "endYear": 100,
+   "display": {
+    "en": "c. AD 44–100 (traditions)"
+   },
+   "approximate": true
   },
-  {
-    "id": "journey-exodus",
-    "title": {
-      "en": "The Exodus and Wilderness Journey"
-    },
-    "kind": "exodus",
-    "dateRange": {
-      "startYear": -1446,
-      "endYear": -1250,
-      "display": {
-        "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
-      },
-      "approximate": true
-    },
-    "summary": {
-      "en": "Israel's journey from Egypt to the edge of Canaan: from Rameses in Goshen to Mount Sinai, Kadesh-barnea, Mount Nebo, and the Jordan crossing near Jericho. Both the date and the route are debated; the itinerary follows the biblical text."
-    },
-    "chronologyNotes": {
-      "en": "Scholars divide between an 'early' Exodus (c. 1446 BC, from 1 Kings 6:1) and a 'late' Exodus (c. 1260 BC, Ramesside); the wilderness itinerary cannot be securely mapped."
-    },
-    "color": "#8f3a20",
-    "stops": [
-      "journey-exodus-0",
-      "journey-exodus-1",
-      "journey-exodus-2",
-      "journey-exodus-3",
-      "journey-exodus-4"
-    ],
-    "citations": [
-      "cit-ot-exodus",
-      "cit-ot-exodus-route",
-      "cit-ref-sacred-bridge"
-    ]
+  "summary": {
+   "en": "Where the other apostles are said to have gone after Acts. Most of this rests on later church tradition rather than the New Testament, so these stops are marked 'legendary' and dated only loosely. Routes outside the Mediterranean (e.g. Thomas in India) are noted in the sources but not mapped here."
   },
-  {
-    "id": "journey-noah",
-    "title": {
-      "en": "Noah's Ark and the Flood"
-    },
-    "kind": "patriarchal",
-    "dateRange": {
-      "startYear": -2900,
-      "endYear": -2300,
-      "display": {
-        "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
-      },
-      "approximate": true
-    },
-    "summary": {
-      "en": "The Flood narrative of Genesis 6-9 traced geographically: the ark tradition is rooted in the Mesopotamian river plain (Shuruppak, city of the Sumerian flood hero, with its excavated flood layer), the ark 'rested upon the mountains of Ararat' — the mountain country of Urartu, with GPS-mapped candidates at Greater Mount Ararat, the Durupınar formation and Mount Cudi — and the post-Flood generations descended to the plain of Shinar. Recent Durupınar surveys (GPR 2019, soil analyses 2022-2024) are shown as documented but disputed claims."
-    },
-    "chronologyNotes": {
-      "en": "No historical date can be assigned to the Flood; the traditional Ussher date is 2348 BC, and Mesopotamian flood strata cluster around 2900 BC. The route drawn between stops is schematic — Scripture records no path for a drifting ark."
-    },
-    "color": "#2c6e8a",
-    "stops": [
-      "journey-noah-0",
-      "journey-noah-1",
-      "journey-noah-2"
-    ],
-    "citations": [
-      "cit-flood-narrative",
-      "cit-ararat-region",
-      "cit-shuruppak",
-      "cit-ref-sacred-bridge"
-    ]
+  "color": "#6b4a8f",
+  "stops": [
+   "stop-apostolic-antioch-peter-0",
+   "stop-apostolic-rome-peter-1",
+   "stop-apostolic-ephesus-john-2",
+   "stop-apostolic-patmos-john-3",
+   "stop-apostolic-hierapolis-philip-4",
+   "stop-apostolic-alexandria-mark-5"
+  ],
+  "citations": [
+   "cit-simon-peter",
+   "cit-john-ephesus",
+   "cit-patmos",
+   "cit-philip-hierapolis",
+   "cit-mark-alexandria",
+   "cit-ref-sacred-bridge"
+  ]
+ },
+ {
+  "id": "journey-abraham",
+  "title": {
+   "en": "Abraham's Migration to Canaan"
+  },
+  "kind": "patriarchal",
+  "dateRange": {
+   "startYear": -2000,
+   "endYear": -1800,
+   "display": {
+    "en": "c. 2000-1800 BC (Middle Bronze Age; dating debated)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The patriarchal migration from Mesopotamia to the land of promise: Ur and Haran to Shechem, Bethel, Hebron and Beersheba. The route follows the Genesis narrative; its historicity and date are debated by scholars."
+  },
+  "chronologyNotes": {
+   "en": "The 'patriarchal age' is conventionally set in the Middle Bronze Age (c. 2000-1800 BC), but many scholars regard the narratives as later literary compositions; treat the chronology as traditional, not fixed."
+  },
+  "color": "#8a6d10",
+  "stops": [
+   "journey-abraham-0",
+   "journey-abraham-1",
+   "journey-abraham-2",
+   "journey-abraham-3",
+   "journey-abraham-4",
+   "journey-abraham-5"
+  ],
+  "citations": [
+   "cit-ot-abraham",
+   "cit-ot-patriarchal-dating",
+   "cit-scripture-genesis-11-31",
+   "cit-scripture-genesis-12-1",
+   "cit-ref-kitchen"
+  ]
+ },
+ {
+  "id": "journey-exodus",
+  "title": {
+   "en": "The Exodus and Wilderness Journey"
+  },
+  "kind": "exodus",
+  "dateRange": {
+   "startYear": -1446,
+   "endYear": -1250,
+   "display": {
+    "en": "c. 1446 BC (early date) or c. 1260 BC (late date) — debated"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Israel's journey from Egypt to the edge of Canaan: from Rameses in Goshen to Mount Sinai, Kadesh-barnea, Mount Nebo, and the Jordan crossing near Jericho. Both the date and the route are debated; the itinerary follows the biblical text."
+  },
+  "chronologyNotes": {
+   "en": "Scholars divide between an 'early' Exodus (c. 1446 BC, from 1 Kings 6:1) and a 'late' Exodus (c. 1260 BC, Ramesside); the wilderness itinerary cannot be securely mapped."
+  },
+  "color": "#8f3a20",
+  "stops": [
+   "journey-exodus-0",
+   "journey-exodus-1",
+   "journey-exodus-2",
+   "journey-exodus-3",
+   "journey-exodus-4"
+  ],
+  "citations": [
+   "cit-ot-exodus",
+   "cit-ot-exodus-route",
+   "cit-ref-sacred-bridge"
+  ]
+ },
+ {
+  "id": "journey-noah",
+  "title": {
+   "en": "Noah's Ark and the Flood"
+  },
+  "kind": "patriarchal",
+  "dateRange": {
+   "startYear": -2900,
+   "endYear": -2300,
+   "display": {
+    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The Flood narrative of Genesis 6-9 traced geographically: the ark tradition is rooted in the Mesopotamian river plain (Shuruppak, city of the Sumerian flood hero, with its excavated flood layer), the ark 'rested upon the mountains of Ararat' — the mountain country of Urartu, with GPS-mapped candidates at Greater Mount Ararat, the Durupınar formation and Mount Cudi — and the post-Flood generations descended to the plain of Shinar. Recent Durupınar surveys (GPR 2019, soil analyses 2022-2024) are shown as documented but disputed claims."
+  },
+  "chronologyNotes": {
+   "en": "No historical date can be assigned to the Flood; the traditional Ussher date is 2348 BC, and Mesopotamian flood strata cluster around 2900 BC. The route drawn between stops is schematic — Scripture records no path for a drifting ark."
+  },
+  "color": "#2c6e8a",
+  "stops": [
+   "journey-noah-0",
+   "journey-noah-1",
+   "journey-noah-2"
+  ],
+  "citations": [
+   "cit-flood-narrative",
+   "cit-ararat-region",
+   "cit-shuruppak",
+   "cit-ref-sacred-bridge"
+  ]
+ },
+ {
+  "id": "journey-samuel",
+  "title": {
+   "en": "Samuel — Shiloh to the anointing of kings"
+  },
+  "kind": "monarchy",
+  "dateRange": {
+   "startYear": -1100,
+   "endYear": -1010,
+   "display": {
+    "en": "c. 1100–1010 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The last of the judges, from the sanctuary at Shiloh where he was raised, around the yearly circuit he judged from — Bethel, Gilgal, Mizpah and home to Ramah — to the two anointings that ended the period of the judges."
+  },
+  "color": "#7d6b3a",
+  "stops": [
+   "stop-samuel-0",
+   "stop-samuel-1",
+   "stop-samuel-2",
+   "stop-samuel-3",
+   "stop-samuel-4",
+   "stop-samuel-5"
+  ],
+  "citations": [
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "journey-david",
+  "title": {
+   "en": "David — from Bethlehem to Jerusalem"
+  },
+  "kind": "monarchy",
+  "dateRange": {
+   "startYear": -1025,
+   "endYear": -970,
+   "display": {
+    "en": "c. 1025–970 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The rise of the second king: anointed as a shepherd boy, celebrated after the Elah valley, hunted through the Judean wilderness, a Philistine vassal at Ziklag, crowned at Hebron, and finally master of the Jebusite stronghold he made his capital."
+  },
+  "color": "#8a4300",
+  "stops": [
+   "stop-david-0",
+   "stop-david-1",
+   "stop-david-2",
+   "stop-david-3",
+   "stop-david-4",
+   "stop-david-5",
+   "stop-david-6",
+   "stop-david-7",
+   "stop-david-8"
+  ],
+  "citations": [
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "journey-elijah",
+  "title": {
+   "en": "Elijah — drought, Carmel, and Horeb"
+  },
+  "kind": "prophetic",
+  "dateRange": {
+   "startYear": -875,
+   "endYear": -848,
+   "display": {
+    "en": "c. 875–848 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The circuit of the prophet who confronted Ahab and Jezebel: out of Gilead to a hidden wadi, to a Phoenician widow's house through the famine, back to the contest on Carmel, then south to the desert and Horeb, and finally beyond the Jordan."
+  },
+  "color": "#b35400",
+  "stops": [
+   "stop-elijah-0",
+   "stop-elijah-1",
+   "stop-elijah-2",
+   "stop-elijah-3",
+   "stop-elijah-4",
+   "stop-elijah-5",
+   "stop-elijah-6",
+   "stop-elijah-7",
+   "stop-elijah-8",
+   "stop-elijah-9"
+  ],
+  "citations": [
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "journey-elisha",
+  "title": {
+   "en": "Elisha — half a century in the Northern Kingdom"
+  },
+  "kind": "prophetic",
+  "dateRange": {
+   "startYear": -848,
+   "endYear": -797,
+   "display": {
+    "en": "c. 848–797 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Elijah's successor worked in public for fifty years across Israel — at the prophetic guilds of Jericho, Bethel and Gilgal, in a Shunammite household, at Dothan with the Aramean army outside, in besieged Samaria, and as far as Damascus."
+  },
+  "color": "#2f6f6b",
+  "stops": [
+   "stop-elisha-0",
+   "stop-elisha-1",
+   "stop-elisha-2",
+   "stop-elisha-3",
+   "stop-elisha-4",
+   "stop-elisha-5",
+   "stop-elisha-6",
+   "stop-elisha-7",
+   "stop-elisha-8",
+   "stop-elisha-9"
+  ],
+  "citations": [
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ]
+ },
+ {
+  "id": "journey-jonah",
+  "title": {
+   "en": "Jonah — Joppa, the sea, and Nineveh"
+  },
+  "kind": "prophetic",
+  "dateRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The prophet sent east who bought a ticket west. 2 Kings 14:25 places Jonah son of Amittai under Jeroboam II; the book about him traces a flight toward Tarshish, a return he did not choose, and a preaching mission to Assyria's capital that succeeded and left him furious."
+  },
+  "color": "#1c4b48",
+  "stops": [
+   "stop-jonah-0",
+   "stop-jonah-1",
+   "stop-jonah-2",
+   "stop-jonah-3"
+  ],
+  "citations": [
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "chronologyNotes": {
+   "en": "The prophet is dated by 2 Kings 14:25 to Jeroboam II's reign (c. 793–753 BC). The book about him is commonly dated later on linguistic grounds and read by many scholars as a didactic narrative; that is a question about the book's composition, not about where its scenes are set."
   }
+ },
+ {
+  "id": "journey-jeremiah",
+  "title": {
+   "en": "Jeremiah — Anathoth to Egypt"
+  },
+  "kind": "prophetic",
+  "dateRange": {
+   "startYear": -627,
+   "endYear": -582,
+   "display": {
+    "en": "c. 627–582 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Forty-five years spanning the end of Judah: called at Anathoth in Josiah's thirteenth year, preaching in the temple courts through two sieges, released from the deportation chain-gang at Ramah, left with the governor at Mizpah, and finally carried into Egypt against his own advice."
+  },
+  "color": "#6b4a8f",
+  "stops": [
+   "stop-jeremiah-0",
+   "stop-jeremiah-1",
+   "stop-jeremiah-2",
+   "stop-jeremiah-3",
+   "stop-jeremiah-4"
+  ],
+  "citations": [
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ]
+ },
+ {
+  "id": "journey-exile",
+  "title": {
+   "en": "The exile — Jerusalem to Babylon"
+  },
+  "kind": "exile",
+  "dateRange": {
+   "startYear": -605,
+   "endYear": -538,
+   "display": {
+    "en": "605–538 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Three deportations, the road north to Riblah and east to Babylonia, and the two prophets of the exile — Ezekiel among the deportee settlements on the Chebar canal, Daniel in the courts of Babylon and Persia. This stretch of the chronology is the firmest in the Old Testament: the Babylonian Chronicle dates the capture of Jerusalem in Nebuchadnezzar's seventh year to the day."
+  },
+  "color": "#4a4a6b",
+  "stops": [
+   "stop-exile-0",
+   "stop-exile-1",
+   "stop-exile-2",
+   "stop-exile-3",
+   "stop-exile-4"
+  ],
+  "citations": [
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ]
+ },
+ {
+  "id": "journey-return",
+  "title": {
+   "en": "The return — Cyrus' decree to Nehemiah's wall"
+  },
+  "kind": "return",
+  "dateRange": {
+   "startYear": -538,
+   "endYear": -432,
+   "display": {
+    "en": "538–432 BC"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "A century of coming back: Cyrus' decree and the first company under Zerubbabel, a temple finished in 516 BC under Haggai's and Zechariah's prodding, Ezra's caravan with the law, and Nehemiah leaving the Persian court at Susa to rebuild Jerusalem's walls in fifty-two days."
+  },
+  "color": "#8a6d10",
+  "stops": [
+   "stop-return-0",
+   "stop-return-1",
+   "stop-return-2",
+   "stop-return-3",
+   "stop-return-4"
+  ],
+  "citations": [
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "chronologyNotes": {
+   "en": "Whether Ezra preceded Nehemiah depends on which Artaxerxes his 'seventh year' belongs to. The traditional order — Ezra in 458, Nehemiah in 445 — is followed here; a substantial minority reverses them, putting Ezra in 398 under Artaxerxes II."
+  }
+ },
+ {
+  "id": "journey-peter",
+  "title": {
+   "en": "Peter — Jerusalem to Caesarea, and the road to Rome"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 67,
+   "display": {
+    "en": "c. AD 30–64/67"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "The apostle's own itinerary, distinct from Paul's: Pentecost in Jerusalem, the confirmation of the Samaritan mission, the coastal circuit through Lydda and Joppa, the household of Cornelius at Caesarea that opened the door to Gentiles, the council in Jerusalem, a confrontation at Antioch — and, by early and widespread tradition, a martyrdom at Rome under Nero."
+  },
+  "color": "#c9a227",
+  "stops": [
+   "stop-peter-0",
+   "stop-peter-1",
+   "stop-peter-2",
+   "stop-peter-3",
+   "stop-peter-4",
+   "stop-peter-5",
+   "stop-peter-6",
+   "stop-peter-7"
+  ],
+  "citations": [
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ]
+ }
 ]

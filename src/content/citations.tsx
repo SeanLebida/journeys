@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { bibleHref } from './scriptureIndex';
 import type { BundleIndex } from './useBundle';
 import { useScripture } from './useBible';
 import { useUiStore } from '../state/useUiStore';
@@ -111,6 +113,11 @@ export function ScripturePassage({ raw }: { raw: string }) {
       </p>
       <cite className="scripture__ref">
         {raw} ({translation})
+        {/* The way out of a quoted fragment and into the chapter around it —
+            the reader opens on this passage with the verse scrolled to. */}
+        <Link className="scripture__open" to={bibleHref(raw)}>
+          open in the reader →
+        </Link>
       </cite>
     </blockquote>
   );
