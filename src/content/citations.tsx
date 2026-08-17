@@ -4,13 +4,39 @@ import { bibleHref } from './scriptureIndex';
 import type { BundleIndex } from './useBundle';
 import { useScripture } from './useBible';
 import { useUiStore } from '../state/useUiStore';
-import type { TConfidence, TGeometryGrade } from './schema';
+import type { TConfidence, TGeometryGrade, TReviewStatus } from './schema';
 
 export function ConfidenceBadge({ confidence }: { confidence: TConfidence }) {
   const { t } = useTranslation();
   return (
     <span className={`confidence confidence--${confidence}`} title={t(`sourcing.confidence.${confidence}`)}>
       {confidence}
+    </span>
+  );
+}
+
+/** Self-reviewed vs scholar-approved — the status the release gate actually checks. */
+export function ReviewBadge({ status }: { status: TReviewStatus }) {
+  const { t } = useTranslation();
+  return (
+    <span className={`review review--${status}`} title={t(`sourcing.review.${status}`)}>
+      {t(`sourcing.reviewLabel.${status}`)}
+    </span>
+  );
+}
+
+/** Confidence + review status as one honesty cluster. */
+export function ClaimMeta({
+  confidence,
+  reviewStatus,
+}: {
+  confidence: TConfidence;
+  reviewStatus?: TReviewStatus;
+}) {
+  return (
+    <span className="claim-meta">
+      <ConfidenceBadge confidence={confidence} />
+      {reviewStatus ? <ReviewBadge status={reviewStatus} /> : null}
     </span>
   );
 }

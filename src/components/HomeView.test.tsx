@@ -30,5 +30,7 @@ describe('HomeView', () => {
   it('exposes the "How we source" disclosure for the accuracy stance', () => {
     renderHome();
     expect(screen.getByText('How we source')).toBeInTheDocument();
+    expect(screen.getByText('Self-reviewed')).toBeInTheDocument();
+    expect(screen.getByText(/not scholar-approved/i)).toBeInTheDocument();
   });
 });

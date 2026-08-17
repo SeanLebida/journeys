@@ -10,6 +10,7 @@ import {
   ATLAS_LAYERS,
   ROUTE_LAYER_IDS,
   atlasBattleLabels,
+  atlasCandidateLabels,
   atlasSiteLabels,
   ensureAtlasLayers,
   removeAtlasLayers,
@@ -18,9 +19,10 @@ import {
   setSelectedBattleArea,
   siteIdFromFeature,
 } from '../../map/layers/atlas';
-import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteCandidates } from '../../components/SiteCandidates';
 import { BattleCard, SiteExtras } from '../../components/SiteExtras';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
@@ -56,6 +58,8 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const [maxYear, setMaxYear] = useState(YEAR_MAX);
   const [selected, setSelected] = useState<string | null>(null);
   const [selectedBattle, setSelectedBattle] = useState<string | null>(null);
+  // When the reader clicked a rival pin, fly there instead of the working pin.
+  const [focus, setFocus] = useState<{ lon: number; lat: number } | null>(null);
 
   // `/atlas?site=…` is how the timeline and the Bible reader hand a place over
   // to the map. Unknown ids are ignored rather than blanking the panel.
@@ -64,6 +68,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     if (!linkedSite || !bundle.site(linkedSite)) return;
     setSelected(linkedSite);
     setSelectedBattle(null);
+    setFocus(null);
   }, [linkedSite, bundle]);
 
   // Add layers + click handler once the map is ready.
@@ -75,8 +80,16 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     else map.once('load', add);
 
     const onClick = (e: MapLayerMouseEvent) => {
-      const id = e.features?.[0] && siteIdFromFeature(e.features[0]);
+      const feat = e.features?.[0];
+      const id = feat && siteIdFromFeature(feat);
       if (id) {
+        const geom = feat.geometry;
+        if (geom.type === 'Point') {
+          const [lon, lat] = geom.coordinates as [number, number];
+          setFocus({ lon, lat });
+        } else {
+          setFocus(null);
+        }
         setSelected(id);
         setSelectedBattle(null);
       }
@@ -84,12 +97,18 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     const onEnter = () => (map.getCanvas().style.cursor = 'pointer');
     const onLeave = () => (map.getCanvas().style.cursor = '');
     map.on('click', ATLAS_LAYERS.sites, onClick);
+    map.on('click', ATLAS_LAYERS.candidates, onClick);
     map.on('mouseenter', ATLAS_LAYERS.sites, onEnter);
+    map.on('mouseenter', ATLAS_LAYERS.candidates, onEnter);
     map.on('mouseleave', ATLAS_LAYERS.sites, onLeave);
+    map.on('mouseleave', ATLAS_LAYERS.candidates, onLeave);
     return () => {
       map.off('click', ATLAS_LAYERS.sites, onClick);
+      map.off('click', ATLAS_LAYERS.candidates, onClick);
       map.off('mouseenter', ATLAS_LAYERS.sites, onEnter);
+      map.off('mouseenter', ATLAS_LAYERS.candidates, onEnter);
       map.off('mouseleave', ATLAS_LAYERS.sites, onLeave);
+      map.off('mouseleave', ATLAS_LAYERS.candidates, onLeave);
       removeAtlasLayers(map);
     };
   }, [mapRef, ready, bundle]);
@@ -99,6 +118,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     const map = mapRef.current;
     if (!map || !map.getLayer(ATLAS_LAYERS.sites)) return;
     setLayerVisible(map, ATLAS_LAYERS.sites, showSites);
+    setLayerVisible(map, ATLAS_LAYERS.candidates, showSites);
     for (const id of ROUTE_LAYER_IDS) setLayerVisible(map, id, showRoutes);
     for (const id of [ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine, ATLAS_LAYERS.battleAreaSelected])
       setLayerVisible(map, id, showBattles);
@@ -149,6 +169,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         el.textContent = s.name;
         el.setAttribute('aria-label', `Show details for ${s.name}`);
         el.addEventListener('click', () => {
+          setFocus({ lon: s.lon, lat: s.lat });
           setSelected(s.id);
           setSelectedBattle(null);
         });
@@ -156,6 +177,29 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       });
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showSites, conf, maxYear]);
+
+  // Rival names only for the open site — otherwise the atlas sprouts dozens of
+  // extra labels for identifications the reader has not asked about.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !showSites || !selected) return;
+    const markers = atlasCandidateLabels(bundle, selected)
+      .filter((c) => c.ymax >= YEAR_MIN && c.ymin <= maxYear && conf.includes(c.parentConfidence))
+      .map((c) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'site-label site-label--candidate';
+        el.textContent = c.name;
+        el.setAttribute('aria-label', `Rival identification: ${c.name}`);
+        el.addEventListener('click', () => {
+          setFocus({ lon: c.lon, lat: c.lat });
+          setSelected(c.parentId);
+          setSelectedBattle(null);
+        });
+        return new maplibregl.Marker({ element: el, anchor: 'left', offset: [10, 0] }).setLngLat([c.lon, c.lat]).addTo(map);
+      });
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, bundle, showSites, conf, maxYear, selected]);
 
   // Center map on selected site (or selected battle's site) in Atlas mode
   useEffect(() => {
@@ -165,13 +209,15 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     if (!siteId) return;
     const site = bundle.site(siteId);
     if (site) {
+      const lon = focus?.lon ?? site.coordinates.value.lon;
+      const lat = focus?.lat ?? site.coordinates.value.lat;
       map.easeTo({
-        center: [site.coordinates.value.lon, site.coordinates.value.lat],
+        center: [lon, lat],
         zoom: Math.max(map.getZoom(), 7),
         duration: 800,
       });
     }
-  }, [mapRef, ready, selected, selectedBattle, bundle]);
+  }, [mapRef, ready, selected, selectedBattle, bundle, focus]);
 
   const site = selected ? bundle.site(selected) : undefined;
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];
@@ -254,7 +300,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         <article className="stop-panel" aria-live="polite">
           <header className="stop-panel__head">
             <h3>{site.ancientName.en}</h3>
-            <ConfidenceBadge confidence={site.coordinates.confidence} />
+            <ClaimMeta
+              confidence={site.coordinates.confidence}
+              reviewStatus={site.coordinates.reviewStatus}
+            />
           </header>
           {site.modernName && <p className="stop-panel__modern">{site.modernName.en}</p>}
           <p className="stop-panel__modern">{site.modernLocation.en}</p>
@@ -265,7 +314,9 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
             name={site.ancientName.en}
           />
           <p>{site.summary.en}</p>
-          <Citations ids={site.citations} bundle={bundle} />
+          <DisputeNote text={site.coordinates.disputes?.en} />
+          <SiteCandidates site={site} bundle={bundle} />
+          <Citations ids={[...new Set([...site.citations, ...site.coordinates.citations])]} bundle={bundle} />
           <SiteExtras siteId={site.id} bundle={bundle} />
 
           {stopsHere.map((stop) => {
@@ -276,7 +327,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                   <h4>
                     {journey?.title.en ?? stop.journeyId} — {stop.dateRange.display.en}
                   </h4>
-                  <ConfidenceBadge confidence={stop.confidence} />
+                  <ClaimMeta confidence={stop.confidence} reviewStatus={stop.reviewStatus} />
                 </header>
                 <p>{stop.eventSummary.en}</p>
 
@@ -308,7 +359,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                       return (
                         <li key={aid}>
                           <strong>{artifact.name.en}</strong>
-                          <ConfidenceBadge confidence={artifact.confidence} />
+                          <ClaimMeta confidence={artifact.confidence} reviewStatus={artifact.reviewStatus} />
                           <p>{artifact.corroborates.en}</p>
                           <DisputeNote text={artifact.disputes?.en} />
                           <Citations ids={artifact.citations} bundle={bundle} />

@@ -18,7 +18,8 @@ the map), **guided lessons**, and **quizzes**.
 - Every factual claim carries **citations** and a **confidence level** (`high` / `medium` / `legendary` / `disputed`).
 - **Tertiary sources are orienting links, never the sole authority.** Wikipedia, popular encyclopedias, study-Bible maps and devotional sites all count as tertiary. Every cited claim is also backed by a **concrete source** — a primary text (Scripture itself, ANET, the Context of Scripture, the Babylonian Chronicles, Josephus, Tacitus, Strabo), a standard scholarly work (the Anchor Bible Dictionary, Bright, Kitchen, Keener), an excavation report, or a gazetteer (Pleiades, DARE, Aharoni, the Sacred Bridge atlas). `build:content` **fails** on any claim resting on tertiary sources alone.
 - **Every claim carries ≥1 citation** — `high` confidence is not a free pass. A `high` coordinate must further rest on a *place-specific* cite or a `pleiadesId`/`dareId`; a whole-atlas backstop alone fails the build.
-- **Ambiguity is shown, not hidden.** `medium`/`disputed` coordinates must carry ≥2 rival `candidates` or an explicit disputes note.
+- **Ambiguity is shown, not hidden.** `medium`/`disputed` coordinates must carry ≥2 rival `candidates` or an explicit disputes note. The atlas draws those rivals as hollow markers and lists them in the site panel — a single filled pin is never the whole story.
+- **Review status is visible.** Every claim shows whether it is `draft`, `self-reviewed`, or `scholar-approved`. This build is **self-reviewed, not scholar-approved**.
 - **Route strokes are graded.** Each leg declares `surveyed-road`, `reconstructed-land`, `sea-lane`, or `schematic`, and the map draws each differently so a reconstruction never reads as a survey.
 - Dates are shown as **scholarly ranges**, never false single-year precision.
 - Where scholars or traditions disagree, the app **says so**.
@@ -64,7 +65,7 @@ The full plan lives at `~/.claude/plans/parallel-doodling-glade.md`.
 Milestones M0–M9 track scaffold → map → content/Bible DB → the four modes → offline hardening →
 content completion + OTA → store release.
 
-## Status — v0.2.0 (M0–M9 complete)
+## Status — v0.3.3 (M0–M9 complete)
 
 All milestones delivered and verified:
 
@@ -80,7 +81,7 @@ All milestones delivered and verified:
 
 **Timeline & reader.** `src/content/eras.ts` is the one era spine the trace picker and the timeline both group by. The timeline draws each era to its *own* linear scale — one scale from 3000 BC to AD 100 would leave the New Testament a few pixels tall — and says so at every boundary; within a band, spans are strictly proportional. The Bible reader indexes every `scriptureRef` in the bundle backwards (`src/content/scriptureIndex.ts`), so opening 1 Kings 18 tells you the contest on Carmel is mapped and links straight to it. Highlights and notes key off `book:chapter:verse` (never off content ids, so a content update cannot orphan them), persist through the same platform seam as every other preference, never leave the device, and export as Markdown.
 
-**Verified:** `typecheck` · `lint` · 95 unit tests · production build · 15 Playwright E2E (incl. scripture
+**Verified:** `typecheck` · `lint` · 106 unit tests · production build · Playwright E2E (incl. scripture
 from the bundled DB, quiz scoring, WebGL map, **offline reload**, timeline lane/year-rail alignment,
 the fold-out effect's readability contract under `prefers-reduced-motion`, and Bible-reader note
 persistence across a reload).

@@ -733,7 +733,7 @@ a {
 }
 .sourcing__row {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 8.5rem 1fr;
   gap: 0.5rem;
   align-items: baseline;
 }
@@ -758,6 +758,89 @@ a {
 }
 .confidence--disputed {
   color: var(--c-disputed);
+}
+.claim-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.45rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+.review {
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.review--self-reviewed {
+  color: var(--text-muted);
+}
+.review--scholar-approved {
+  color: var(--c-high);
+}
+.review--draft {
+  color: var(--c-medium);
+}
+.site-candidates {
+  margin: 0.75rem 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--c-disputed) 6%, transparent);
+}
+.site-candidates h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.88rem;
+}
+.site-candidates__intro {
+  margin: 0 0 0.55rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.site-candidates__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+.site-candidates__item {
+  display: grid;
+  grid-template-columns: 0.75rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+.site-candidates__pin {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-top: 0.25rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  background: transparent;
+}
+.site-candidates__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.55rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.site-candidates__coords {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.site-label--candidate {
+  display: inline-block;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 0.68rem;
+  opacity: 0.88;
 }
 /* ---- Shared content UI ---- */
 .visually-hidden {
@@ -2327,6 +2410,7 @@ a {
 }
 .extra-card__head {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
