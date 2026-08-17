@@ -787,7 +787,7 @@ a {
 }
 .site-candidates {
   margin: 0.75rem 0;
-  padding: 0.65rem 0.75rem;
+  padding: var(--card-inset);
   border: 1px dashed var(--border);
   border-radius: var(--r-sm);
   background: color-mix(in srgb, var(--c-disputed) 6%, transparent);
@@ -1994,14 +1994,21 @@ a {
   opacity: 0.5;
   cursor: not-allowed;
 }
+.lesson-step {
+  padding: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+}
 .lesson-step__body {
+  margin: 0;
   line-height: 1.65;
 }
 
 /* ---- Quiz ---- */
 .quiz-question {
   margin: 1rem 0;
-  padding: 1rem;
+  padding: var(--card-inset);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   background: var(--surface-raised);
@@ -2037,9 +2044,10 @@ a {
 }
 .quiz-explanation {
   margin-top: 0.7rem;
+  padding: 0.55rem var(--card-inset-inline) 0.15rem;
   font-size: 0.9rem;
+  line-height: 1.6;
   border-left: 3px solid var(--gold);
-  padding-left: 0.7rem;
 }
 .quiz-score {
   font-size: 1.1rem;
@@ -2383,7 +2391,7 @@ a {
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   background: var(--surface);
-  padding: 0.7rem 0.8rem;
+  padding: var(--card-inset);
 }
 .extra-card__figure {
   margin: 0 0 0.5rem;
@@ -2757,7 +2765,7 @@ a {
    width without a single media query. */
 .tl-scale-note {
   margin: 0.75rem 0;
-  padding: 0.7rem 0.85rem;
+  padding: var(--card-inset);
   border-left: 3px solid var(--accent);
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
   background: color-mix(in srgb, var(--accent) 7%, transparent);
@@ -3221,8 +3229,24 @@ a {
 .tl-bar--witness { --bar-color: var(--violet); }
 
 .tl-detail {
-  margin: 0.75rem 0;
+  /* A real card, not a hairline under a flush paragraph. `.stop-panel` only
+     adds a top rule; without its own inset the event copy sat on the accent
+     stroke — the year, the summary, the citations. */
+  margin: 0.85rem 0 0.35rem;
+  padding: var(--card-inset);
   border: 1px solid var(--accent);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+  box-sizing: border-box;
+}
+.tl-detail.stop-panel {
+  padding-top: var(--card-inset-block);
+  border-top-color: var(--accent);
+}
+.tl-detail > p,
+.tl-detail__body > p {
+  margin: 0.55rem 0 0;
+  line-height: 1.65;
 }
 .tl-detail__facts {
   margin: 0.4rem 0;
@@ -3239,7 +3263,7 @@ a {
 }
 .tl-undated {
   margin-top: 1.5rem;
-  padding: 0.8rem 0.9rem;
+  padding: var(--card-inset);
   border: 1px dashed var(--border);
   border-radius: var(--r-md);
 }
@@ -3333,6 +3357,13 @@ a {
   .tl-era__scroll-cue {
     padding: 0.45rem 0.7rem;
     font-size: 0.76rem;
+  }
+  .tl-detail,
+  .lesson-step,
+  .extra-card,
+  .quiz-question {
+    --card-inset-inline: 0.95rem;
+    --card-inset-block: 0.9rem;
   }
 }
 
@@ -3538,7 +3569,7 @@ a {
 }
 
 .bible-note {
-  padding: 0.75rem 0.85rem;
+  padding: var(--card-inset);
   border: 1px solid var(--accent);
   border-radius: var(--r-md);
   background: var(--surface-raised);
@@ -3633,7 +3664,7 @@ a {
 }
 
 .bible-xrefs {
-  padding: 0.75rem 0.85rem;
+  padding: var(--card-inset);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   background: var(--surface-raised);
