@@ -49,11 +49,44 @@ export function EraHeader({ era, count }: { era: Era; count: number }) {
 export function EraAxis({ era }: { era: Era }) {
   return (
     <div className="tl-axis" aria-hidden="true">
-      {eraTicks(era).map((t) => (
-        <span className="tl-axis__tick" key={t.pct} style={{ top: `${t.pct}%` }}>
-          <span className="tl-axis__label">{formatYear(t.year)}</span>
-        </span>
-      ))}
+      {/* Inset scale: overflow-x on the band also clips overflow-y, so a tick
+          at 0%/100% with translateY(-50%) would lose half the year label. */}
+      <div className="tl-axis__scale">
+        {eraTicks(era).map((t) => (
+          <span className="tl-axis__tick" key={t.pct} style={{ top: `${t.pct}%` }}>
+            <span className="tl-axis__label">{formatYear(t.year)}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Cartographic continuation mark: this chart keeps going past the gutter. */
+export function ChartScrollCue({ lanes }: { lanes: string[] }) {
+  if (lanes.length < 2) return null;
+  return (
+    <p className="tl-era__scroll-cue">
+      <span className="tl-era__scroll-cue-mark" aria-hidden="true">
+        <svg viewBox="0 0 28 12" width="28" height="12" focusable="false">
+          <path d="M1 2.5h7M1 9.5h7" />
+          <path d="M12 1.5l4.5 4.5L12 10.5M18.5 1.5L23 6l-4.5 4.5" />
+        </svg>
+      </span>
+      <span>
+        {lanes.join(' · ')} share this year rail. If the chart runs past the
+        edge, swipe sideways.
+      </span>
+    </p>
+  );
+}
+
+/** Sticky right-edge fade + "more lanes" plate. Hidden when the band fits or
+ *  the reader has already panned to the end (`data-overflow` on the body). */
+export function ChartOverflowEdge() {
+  return (
+    <div className="tl-era__edge" aria-hidden="true">
+      <span className="tl-era__edge-label">more lanes</span>
     </div>
   );
 }

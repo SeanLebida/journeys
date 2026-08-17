@@ -13,6 +13,8 @@ import {
 } from '../../content/timeline';
 import { formatYearSpan } from '../../content/eras';
 import {
+  ChartOverflowEdge,
+  ChartScrollCue,
   EraAxis,
   EraHeader,
   TimelineDetailCard,
@@ -20,6 +22,7 @@ import {
   TimelineLaneColumn,
 } from '../../components/timeline/TimelineParts';
 import { useFoldOut, usePrefersReducedMotion } from '../../components/timeline/useFoldOut';
+import { useScrollOverflow } from '../../components/timeline/useScrollOverflow';
 import { Citations, ConfidenceBadge } from '../../content/citations';
 import { bibleHref } from '../../content/scriptureIndex';
 import { useUiStore } from '../../state/useUiStore';
@@ -73,6 +76,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
   // Rebind the fold listeners whenever the rendered lanes change.
   useFoldOut(erasRef, foldEnabled, lanes.join(','));
+  useScrollOverflow(erasRef, lanes.join(','));
 
   return (
     <section className="mode-panel mode-panel--page mode-panel--wide timeline" aria-labelledby="timeline-title">
@@ -125,11 +129,19 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
         {sections.map((section) => (
           <li className="tl-era" key={section.era.id} id={section.era.id}>
             <EraHeader era={section.era} count={section.itemCount} />
+            <ChartScrollCue lanes={section.lanes.map((l) => l.lane.label)} />
             <div
               className="tl-era__body"
               // The band's height is data-driven (see eraBandHeight): the axis
               // and every lane track read it, so ticks and bars stay aligned.
               style={{ '--band-h': `${eraBandHeight(section)}px` } as React.CSSProperties}
+              role="region"
+              tabIndex={0}
+              aria-label={
+                section.lanes.length > 1
+                  ? `${section.era.label} chart. ${section.lanes.length} lanes. Scroll sideways for lanes past the edge.`
+                  : `${section.era.label} chart`
+              }
             >
               <EraAxis era={section.era} />
               <div className="tl-era__lanes">
@@ -145,6 +157,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
                   />
                 ))}
               </div>
+              <ChartOverflowEdge />
             </div>
             {/* The detail card belongs to the band it was opened from, not to
                 the top of the page: a reader who taps Jeremiah after scrolling
@@ -155,8 +168,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
             )}
             {section.lanes.length > 1 && (
               <p className="tl-era__pan-hint">
-                {section.lanes.map((l) => l.lane.label).join(' · ')} — scroll the band sideways for the lanes past the
-                edge; every lane reads against the same year rail on the left.
+                Year rail stays put on the left. The lanes past the edge are on this same chart.
               </p>
             )}
             <p className="tl-era__scale-break" aria-hidden="true">
