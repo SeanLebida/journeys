@@ -131,6 +131,17 @@ test('timeline entry opens a detail card inside its own era band', async ({ page
   await expect(card).toBeVisible();
   await expect(card.getByRole('heading', { name: 'Elijah the Tishbite' })).toBeVisible();
   await expect(card.getByRole('link', { name: /Trace this journey/ })).toBeVisible();
+
+  // Description copy must sit inside the card, not on the stroke.
+  const inset = await card.evaluate((el) => {
+    const prose = el.querySelector('p');
+    if (!prose) return { left: 0, right: 0 };
+    const c = el.getBoundingClientRect();
+    const p = prose.getBoundingClientRect();
+    return { left: p.left - c.left, right: c.right - p.right };
+  });
+  expect(inset.left).toBeGreaterThanOrEqual(12);
+  expect(inset.right).toBeGreaterThanOrEqual(12);
 });
 
 test('bible reader opens a deep-linked passage with its atlas cross-references', async ({ page }) => {
