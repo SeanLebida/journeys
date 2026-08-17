@@ -2906,6 +2906,10 @@ a {
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
 }
+.tl-era__body:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
 /* Lanes are a wrapping flex row rather than an even grid, because they are not
    equal: a lane whose entries pack onto six sub-tracks needs six times the
    width of a single-track lane. `--tracks` (set per lane in TimelineParts)
@@ -3008,6 +3012,63 @@ a {
   line-height: 1.45;
   color: var(--text-muted);
 }
+/* Sits between the era title and the chart, where a reader actually looks
+   before panning. The mark is a plate-gutter: a short rule plus two chevrons,
+   the way a folded chronology chart tells you the sheet continues. */
+.tl-era__scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-block: 0;
+  background: color-mix(in srgb, var(--gold) 9%, var(--surface-raised));
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+.tl-era__scroll-cue-mark {
+  flex: none;
+  color: var(--accent);
+}
+.tl-era__scroll-cue-mark svg {
+  display: block;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  fill: none;
+}
+/* Sticky right gutter. Lives at the end of the flex row so `position: sticky;
+   right: 0` pins the fade to the visible edge while there is still more chart
+   past it. Hidden unless `data-overflow` includes `end`. */
+.tl-era__edge {
+  display: none;
+  flex: 0 0 2.75rem;
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  align-self: stretch;
+  margin-left: -2.75rem;
+  pointer-events: none;
+  background: linear-gradient(to left, var(--surface) 38%, transparent);
+}
+.tl-era__body[data-overflow~='end'] .tl-era__edge {
+  display: block;
+}
+.tl-era__edge-label {
+  position: absolute;
+  top: calc(var(--lane-head-h) + 0.35rem);
+  right: 0.35rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
 /* Scale-change notch between bands — the honesty marker for the broken scale. */
 .tl-era__scale-break {
   margin: 0.4rem 0 0;
@@ -3022,18 +3083,27 @@ a {
 .tl-axis {
   position: sticky;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   /* Carries the band's left inset itself (see .tl-era__body) and is opaque, so
      bars scroll underneath it rather than past its edge. */
-  flex: 0 0 calc(4.5rem + var(--band-pad));
+  flex: 0 0 calc(4.75rem + var(--band-pad));
   padding-left: var(--band-pad);
   align-self: start;
   margin-top: var(--lane-head-h);
   /* Same height source as the lane tracks, so ticks line up with the bars. */
-  height: var(--band-h, 320px);
+  height: var(--band-h, 400px);
   border-right: 2px solid var(--border);
   /* Opaque: bars scroll underneath it. */
   background: var(--surface);
+}
+/* Tick percentages live in this inset box so a 0% / 100% label is not halved
+   by the band's overflow-x (which forces overflow-y to clip as well). */
+.tl-axis__scale {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.55rem;
+  bottom: 0.55rem;
 }
 /* The rail starts one lane-heading below the band's top edge, which left that
    top-left strip uncovered — a panel scrolling under the rail showed its
@@ -3077,7 +3147,7 @@ a {
 }
 .tl-lane__track {
   position: relative;
-  height: var(--band-h, 320px);
+  height: var(--band-h, 400px);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -3092,12 +3162,15 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.05rem;
+  gap: 0.12rem;
   width: 100%;
   height: 100%;
-  min-height: 24px; /* keeps a one-year event tappable (WCAG 2.5.5) */
-  padding: 0.2rem 0.3rem;
+  /* Title + year must both fit. 24px was tappable but clipped "c. 2900 BC"
+     under a two-line find name. */
+  min-height: 2.7rem;
+  padding: 0.22rem 0.35rem 0.28rem;
   overflow: hidden;
+  container-type: size;
   border: 1px solid var(--bar-color, var(--border));
   border-left: 3px solid var(--bar-color, var(--accent));
   border-radius: var(--r-sm);
@@ -3126,11 +3199,20 @@ a {
   overflow: hidden;
 }
 .tl-bar__date {
+  flex: none;
   font-size: 0.62rem;
+  line-height: 1.2;
   color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+/* Short bars (a flood layer, a one-year battle): one line of title so the
+   year is not the thing that gets clipped. */
+@container (max-height: 3.2rem) {
+  .tl-bar__label {
+    -webkit-line-clamp: 1;
+  }
 }
 /* Per-kind accents. Journeys carry their own route colour via --bar-color. */
 .tl-bar--person { --bar-color: var(--sea); }
@@ -3225,20 +3307,32 @@ a {
    sideways rather than wrapping, so the shared vertical scale survives. */
 @media (max-width: 640px) {
   .tl-era__body {
-    --band-pad: 0.6rem;
-    padding: 0.7rem 0 0.8rem;
+    --band-pad: 0.55rem;
+    padding: 0.7rem 0 0.85rem;
   }
   .tl-axis {
-    flex-basis: calc(3.4rem + var(--band-pad));
+    flex-basis: calc(3.85rem + var(--band-pad));
   }
   .tl-axis__label {
     font-size: 0.62rem;
   }
   /* Narrower lanes on a phone; the band scrolls sideways rather than wrapping,
-     so every lane still reads against the same year rail. */
+     so every lane still reads against the same year rail. A hair wider than
+     before so a year like "c. 2900 BC" is not ellipsized on the bar. */
   .tl-lane {
-    flex-basis: calc(var(--tracks, 1) * 7rem);
-    min-width: calc(var(--tracks, 1) * 4.5rem);
+    flex-basis: calc(var(--tracks, 1) * 7.4rem);
+    min-width: calc(var(--tracks, 1) * 5.1rem);
+  }
+  .tl-bar {
+    min-height: 2.85rem;
+    padding: 0.2rem 0.32rem 0.26rem;
+  }
+  .tl-bar__label {
+    -webkit-line-clamp: 1;
+  }
+  .tl-era__scroll-cue {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.76rem;
   }
 }
 
