@@ -94,6 +94,13 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
         content was authored with, never a single year the app inferred.
       </p>
 
+      <p className="tl-scale-note">
+        <strong>Where the zero is.</strong> The BC/AD scale on every band is reckoned from the Incarnation — Dionysius
+        Exiguus set it in 525 to fix the date of Easter, and Bede carried it into common use. The anchor is a few years
+        off its own event: Herod the Great died in 4 BC, so the Nativity falls c. 6–4 BC and this timeline draws the life
+        of Jesus from 6 BC. The eras before and after it are counted from that point, not from a neutral origin.
+      </p>
+
       <nav className="tl-jump" aria-label="Jump to an era">
         {model.sections.map((s) => (
           <a key={s.era.id} className="tl-jump__link" href={`#${s.era.id}`}>
