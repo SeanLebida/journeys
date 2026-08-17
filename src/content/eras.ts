@@ -3,11 +3,12 @@ import type { TJourneyKind } from './schema';
 /**
  * The era spine of the whole app.
  *
- * A printed study Bible puts one linear chart at the front — primeval history,
- * patriarchs, Egypt, conquest, judges, monarchy, exile, return, Jesus,
- * apostles — and every date in the book hangs off it. This module is that
- * chart, in one place, so the trace picker, the timeline and the Bible reader
- * all group by the *same* periodization instead of three private ones.
+ * A printed study Bible puts one linear chart at the front — from Creation
+ * (“In the beginning”), through the patriarchs, Egypt, conquest, judges,
+ * monarchy, exile, return, Jesus, apostles — and every date in the book hangs
+ * off it. This module is that chart, in one place, so the trace picker, the
+ * timeline and the Bible reader all group by the *same* periodization instead
+ * of three private ones.
  *
  * The ranges are conventional scholarly periodizations, not claims of precise
  * dating. Where the dating itself is contested — most sharply for the
@@ -37,17 +38,17 @@ const CHRONOLOGY_REFS = ['cit-ref-bright', 'cit-ref-kitchen', 'cit-ref-provan-hi
 
 export const ERAS: readonly Era[] = [
   {
-    id: 'era-primeval',
-    label: 'Primeval history',
-    startYear: -3000,
+    id: 'era-beginning',
+    label: 'In the beginning',
+    startYear: -4004,
     endYear: -2100,
-    display: 'Genesis 1–11 — dated from Scripture’s genealogies; no external synchronism',
+    display: 'Genesis 1–11 — Creation 4004 BC; Earth about six thousand years old',
     blurb:
-      'Creation, the flood and the dispersal of the nations. Scripture dates these chapters itself: the genealogies of Genesis 5 and 11 give father-to-son intervals that run from Adam to Abraham, which is how Ussher reached a 4004 BC creation and a 2348 BC flood. What is missing is not a date but a cross-check — no king list, eclipse or excavation layer touches this stretch.',
+      'In the beginning God created the heaven and the earth (Genesis 1:1). The father-to-son intervals of Genesis 5 and 11 run from Adam to Abraham; added up they place Creation in 4004 BC and the Flood in 2348 BC on the Masoretic numbers Ussher used, so the Earth is about six thousand years old on this reckoning. Archaeology does not date the planet — it dates the human layers that follow. Flood silt at Shuruppak, Kish and Ur (c. 2900 BC on the ceramic scale) sits in that same window and is drawn here as the material setting of the Flood account, not as a second clock.',
     journeyKinds: [],
     dispute:
-      'The biblical chronology is explicit, but the manuscript traditions do not agree on its numbers: the Masoretic genealogies put the flood near 2348 BC, while the Septuagint’s longer figures push creation and flood roughly a millennium earlier, and the Samaritan Pentateuch differs again. Nothing external decides between them — Genesis 1–11 cannot be fixed against a king list, eclipse or excavation layer, and the Mesopotamian flood traditions are parallels, not synchronisms. The years drawn on this band follow the traditional Masoretic placement.',
-    citations: CHRONOLOGY_REFS,
+      'The chronology is Scripture’s own, but the manuscripts do not agree on every number: the Masoretic text yields a 2348 BC Flood and a Creation about six thousand years before today; the Septuagint’s longer figures push both events roughly a millennium earlier; the Samaritan Pentateuch differs again. Nothing outside the text decides between them — no king list or eclipse names Adam or Noah. The Mesopotamian flood layers are real and complementary as setting (catastrophic flooding on the same plain, in the same general age); they are not a synchronism that locks 2348 versus 2900. This band follows the traditional Masoretic placement.',
+    citations: [...CHRONOLOGY_REFS, 'cit-ussher-annals', 'cit-scripture-genesis-1-1'],
   },
   {
     id: 'era-patriarchs',

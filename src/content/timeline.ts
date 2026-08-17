@@ -335,10 +335,12 @@ export function spanWithinEra(
 export function eraBandHeight(section: TimelineEraSection): number {
   const perColumn = section.lanes.map((l) => Math.ceil(l.items.length / Math.max(1, l.trackCount)));
   const busiest = Math.max(1, ...perColumn);
-  // 400px floor: a ~100-year find in a 900-year primeval band is ~11% of the
-  // height. At 320px that is 35px — too short for a title plus its year once
-  // padding is applied. 400px keeps the date on the bar.
-  return Math.min(1200, Math.max(400, busiest * 72));
+  // A ~100-year find (the Shuruppak flood silt) in the Creation-to-Abraham
+  // band (~1900 years) is only ~5% of the height. Floor the band so that
+  // find stays ~40px — enough for its title and year once padding is applied.
+  const spanYears = Math.max(1, section.era.endYear - section.era.startYear);
+  const shortFindFloor = Math.ceil((40 * spanYears) / 100);
+  return Math.min(1200, Math.max(400, shortFindFloor, busiest * 72));
 }
 
 /** Evenly spaced year gridlines for an era band, as percentages. */

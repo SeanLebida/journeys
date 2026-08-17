@@ -100,10 +100,13 @@ test('short find bars keep their year visible and overflow is signed', async ({ 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/timeline');
 
-  const primeval = page.locator('#era-primeval');
-  await primeval.scrollIntoViewIfNeeded();
+  const beginning = page.locator('#era-beginning');
+  await beginning.scrollIntoViewIfNeeded();
+  await expect(beginning.getByRole('heading', { name: 'In the beginning' })).toBeVisible();
+  await expect(page.getByText(/about six thousand years/i).first()).toBeVisible();
+  await expect(page.getByText(/Primeval/i)).toHaveCount(0);
 
-  const flood = primeval.getByRole('button', { name: /Flood deposit layer/ });
+  const flood = beginning.getByRole('button', { name: /Flood deposit layer/ });
   await flood.scrollIntoViewIfNeeded();
   await expect(flood.getByText('c. 2900 BC')).toBeVisible();
   const dateBox = await flood.locator('.tl-bar__date').evaluate((el) => {

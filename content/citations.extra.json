@@ -9971,5 +9971,94 @@
   "note": {
    "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
   }
+ },
+ {
+  "id": "cit-ussher-annals",
+  "source": {
+   "en": "James Ussher, 'Annales Veteris Testamenti' (1650); English 'Annals of the World' (1658) — Creation 23 October 4004 BC, Flood 2348 BC, from the Masoretic Genesis 5 and 11 intervals"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-mallowan-flood",
+  "source": {
+   "en": "M. E. L. Mallowan, 'Noah's Flood Reconsidered', Iraq 26.1 (1964), 62–82 — flood silt at Shuruppak, Kish and related sites around the Jemdet Nasr / Early Dynastic transition"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-iaa-siloam-dam-2025",
+  "source": {
+   "en": "Israel Antiquities Authority / City of David, Siloam Pool excavation (Nahshon Szanton, Itamar Berko, Filip Vukosavović); Weizmann Institute radiocarbon (Johanna Regev, Elisabetta Boaretto et al.), announced August 2025 — dam construction c. 805–795 BC"
+  },
+  "kind": "archaeological"
+ },
+ {
+  "id": "cit-bar-siloam-dam-2025",
+  "source": {
+   "en": "Nathan Steinmeyer, 'Monumental Dam from Time of Biblical Kings Uncovered', Biblical Archaeology Society / Bible History Daily (29 August 2025)"
+  },
+  "url": "https://www.biblicalarchaeology.org/daily/ancient-cultures/ancient-israel/monumental-dam-from-time-of-biblical-kings-uncovered/",
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-scripture-genesis-1-1",
+  "source": {
+   "en": "Holy Scripture: Genesis 1:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-genesis-1-26-27",
+  "source": {
+   "en": "Holy Scripture: Genesis 1:26-27"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-genesis-2-7",
+  "source": {
+   "en": "Holy Scripture: Genesis 2:7"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-genesis-5-5",
+  "source": {
+   "en": "Holy Scripture: Genesis 5:5"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-genesis-7-6",
+  "source": {
+   "en": "Holy Scripture: Genesis 7:6"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-2-kings-12-1",
+  "source": {
+   "en": "Holy Scripture: 2 Kings 12:1"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
  }
 ]
