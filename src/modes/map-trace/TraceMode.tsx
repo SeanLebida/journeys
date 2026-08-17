@@ -12,9 +12,10 @@ import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
-import { Citations, ConfidenceBadge, DisputeNote, RouteGeometryNote, ScripturePassage } from '../../content/citations';
+import { Citations, ClaimMeta, DisputeNote, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteCandidates } from '../../components/SiteCandidates';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
 import { ERAS } from '../../content/eras';
 import type { BundleIndex } from '../../content/useBundle';
@@ -392,7 +393,7 @@ function StopReader({
         <span className="stop-reader__index">
           Stop {index + 1} of {total}
         </span>
-        <ConfidenceBadge confidence={stop.confidence} />
+        <ClaimMeta confidence={stop.confidence} reviewStatus={stop.reviewStatus} />
       </div>
       {/* The panel title already carries the event name when there is one, so
           only then does the site name need repeating underneath it. */}
@@ -410,6 +411,8 @@ function StopReader({
         />
       )}
       <p className="stop-reader__summary">{stop.eventSummary.en}</p>
+      {site && <SiteCandidates site={site} bundle={bundle} />}
+      {site?.coordinates.disputes && <DisputeNote text={site.coordinates.disputes.en} />}
       {stop.disputes && <DisputeNote text={stop.disputes.en} />}
       {stop.scriptureRefs.length > 0 && (
         <div className="stop-panel__scripture">

@@ -5,6 +5,7 @@ import { hasLiveStyle } from '../lifecycle';
 
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
+  candidates: 'atlas-sites-candidates',
   routes: 'atlas-routes-line',
   routesReconstructed: 'atlas-routes-line-reconstructed',
   routesSea: 'atlas-routes-line-sea',
@@ -29,7 +30,13 @@ export const ROUTE_GRADE_STYLE = [
 
 /** Every route stroke layer, so callers can toggle "journey routes" as one unit. */
 export const ROUTE_LAYER_IDS = ROUTE_GRADE_STYLE.map((s) => s.layer);
-const SRC = { sites: 'atlas-sites', routes: 'atlas-routes', battles: 'atlas-battles', battleAreas: 'atlas-battle-areas' };
+const SRC = {
+  sites: 'atlas-sites',
+  candidates: 'atlas-candidates',
+  routes: 'atlas-routes',
+  battles: 'atlas-battles',
+  battleAreas: 'atlas-battle-areas',
+};
 
 const CONF_COLOR = ['match', ['get', 'confidence'], 'high', '#2f6f6b', 'medium', '#c9a227', 'legendary', '#6b4a8f', 'disputed', '#c75b39', '#888888'];
 // Battles carry one martial crimson across markers and area sweeps, so they
@@ -88,6 +95,67 @@ export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
       ymax,
     };
   });
+}
+
+export interface AtlasCandidateLabel {
+  parentId: string;
+  name: string;
+  lon: number;
+  lat: number;
+  confidence: string;
+  parentConfidence: string;
+  ymin: number;
+  ymax: number;
+}
+
+/**
+ * Rival pins for sites that carry `candidates[]`. Filtered by the *parent*
+ * site's date span and confidence so a disputed working pin never appears
+ * without the hollow rivals that justify the badge.
+ */
+export function atlasCandidatesFC(bundle: BundleIndex): FeatureCollection {
+  const span = computeSiteSpans(bundle);
+  const features: Feature[] = [];
+  for (const s of bundle.sites) {
+    if (!s.candidates?.length) continue;
+    const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
+    s.candidates.forEach((c, i) => {
+      features.push({
+        type: 'Feature',
+        properties: {
+          id: s.id,
+          parentId: s.id,
+          candidateIndex: i,
+          name: c.label.en,
+          confidence: c.confidence,
+          parentConfidence: s.coordinates.confidence,
+          ymin,
+          ymax,
+        },
+        geometry: { type: 'Point', coordinates: [c.lon, c.lat] },
+      });
+    });
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+/** DOM labels for rival pins — only the selected site's candidates, so the
+ * atlas does not sprout 80 extra names at once. */
+export function atlasCandidateLabels(bundle: BundleIndex, parentId: string): AtlasCandidateLabel[] {
+  const site = bundle.sites.find((s) => s.id === parentId);
+  if (!site?.candidates?.length) return [];
+  const span = computeSiteSpans(bundle);
+  const [ymin, ymax] = span.get(site.id) ?? [-10, 70];
+  return site.candidates.map((c) => ({
+    parentId: site.id,
+    name: c.label.en,
+    lon: c.lon,
+    lat: c.lat,
+    confidence: c.confidence,
+    parentConfidence: site.coordinates.confidence,
+    ymin,
+    ymax,
+  }));
 }
 
 /** Battle markers: one point per battle at its anchor site, with the battle's
@@ -209,6 +277,7 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
   if (map.getLayer(ATLAS_LAYERS.sites)) return;
   if (!map.getSource(SRC.routes)) map.addSource(SRC.routes, { type: 'geojson', data: atlasRoutesFC(bundle) });
   if (!map.getSource(SRC.sites)) map.addSource(SRC.sites, { type: 'geojson', data: atlasSitesFC(bundle) });
+  if (!map.getSource(SRC.candidates)) map.addSource(SRC.candidates, { type: 'geojson', data: atlasCandidatesFC(bundle) });
   if (!map.getSource(SRC.battles)) map.addSource(SRC.battles, { type: 'geojson', data: atlasBattlesFC(bundle) });
   if (!map.getSource(SRC.battleAreas)) map.addSource(SRC.battleAreas, { type: 'geojson', data: atlasBattleAreasFC(bundle) });
   // Area sweeps go in first so routes/sites/markers draw above them.
@@ -256,6 +325,22 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
       'circle-color': CONF_COLOR as never,
       'circle-stroke-width': 1.5,
       'circle-stroke-color': '#ffffff',
+    },
+  });
+  // Hollow rivals: no fill, confidence-coloured stroke. A candidate that
+  // coincides with the working pin becomes a ring around it — that is the
+  // honest reading ("this identification is one of several").
+  map.addLayer({
+    id: ATLAS_LAYERS.candidates,
+    type: 'circle',
+    source: SRC.candidates,
+    paint: {
+      'circle-radius': 7,
+      'circle-color': CONF_COLOR as never,
+      'circle-opacity': 0,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': CONF_COLOR as never,
+      'circle-stroke-opacity': 0.9,
     },
   });
   map.addLayer({
@@ -319,6 +404,16 @@ export function setAtlasFilter(map: MapLibreMap, minYear: number, maxYear: numbe
   ] as never;
   for (const id of [ATLAS_LAYERS.sites, ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine]) {
     if (map.getLayer(id)) map.setFilter(id, filter);
+  }
+  // Candidates follow the parent site's visibility, not their own confidence,
+  // so hiding "medium" cannot orphan the rivals of a visible disputed pin.
+  if (map.getLayer(ATLAS_LAYERS.candidates)) {
+    map.setFilter(ATLAS_LAYERS.candidates, [
+      'all',
+      ['>=', ['get', 'ymax'], minYear],
+      ['<=', ['get', 'ymin'], maxYear],
+      ['in', ['get', 'parentConfidence'], ['literal', confidences]],
+    ] as never);
   }
 }
 

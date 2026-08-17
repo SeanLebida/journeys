@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { BundleIndex } from '../content/useBundle';
 import type { TArtifact, TBattle, TBattleKind, TMiracle, TMiracleKind, TVideo, TWitness } from '../content/schema';
-import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ScripturePassage } from '../content/citations';
 import artifactImages from '../content/artifactImages.json';
 
 interface ArtifactImageMeta {
@@ -39,7 +39,7 @@ export function ArtifactCard({ artifact, bundle }: { artifact: TArtifact; bundle
       )}
       <header className="extra-card__head">
         <h5>{artifact.name.en}</h5>
-        <ConfidenceBadge confidence={artifact.confidence} />
+        <ClaimMeta confidence={artifact.confidence} reviewStatus={artifact.reviewStatus} />
       </header>
       {artifact.modernLocation && <p className="extra-card__meta">{artifact.modernLocation.en}</p>}
       <p>{artifact.corroborates.en}</p>
@@ -115,7 +115,7 @@ export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: Bu
     <article className="extra-card">
       <header className="extra-card__head">
         <h5>{witness.title.en}</h5>
-        <ConfidenceBadge confidence={witness.confidence} />
+        <ClaimMeta confidence={witness.confidence} reviewStatus={witness.reviewStatus} />
       </header>
       <p className="extra-card__meta">
         {witness.author.en} · {witness.work.en} · {witness.era.en}
@@ -163,7 +163,7 @@ export function MiracleCard({ miracle, bundle }: { miracle: TMiracle; bundle: Bu
     <article className="extra-card">
       <header className="extra-card__head">
         <h5>{miracle.title.en}</h5>
-        <ConfidenceBadge confidence={miracle.confidence} />
+        <ClaimMeta confidence={miracle.confidence} reviewStatus={miracle.reviewStatus} />
       </header>
       <p className="extra-card__meta">
         {miracle.performerLabel.en} · {MIRACLE_KIND_LABEL[miracle.kind]} · {miracle.scriptureRefs.join('; ')}
@@ -202,7 +202,7 @@ export function BattleCard({ battle, bundle }: { battle: TBattle; bundle: Bundle
     <article className="extra-card">
       <header className="extra-card__head">
         <h5>⚔ {battle.title.en}</h5>
-        <ConfidenceBadge confidence={battle.confidence} />
+        <ClaimMeta confidence={battle.confidence} reviewStatus={battle.reviewStatus} />
       </header>
       <p className="extra-card__meta">
         {BATTLE_KIND_LABEL[battle.kind]} · {battle.dateRange.display.en}
