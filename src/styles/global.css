@@ -3039,6 +3039,14 @@ a {
   line-height: 1.4;
   color: var(--text-muted);
 }
+/* Both sideways cues are claims about the reader's viewport, not about the
+   data: on a wide screen the band often fits and "scroll sideways" is then a
+   lie. `useScrollOverflow` marks the band `data-overflow~="x"` only when it
+   really overflows, so gate the copy on that. */
+.tl-era:not(:has(.tl-era__body[data-overflow~='x'])) .tl-era__scroll-cue,
+.tl-era:not(:has(.tl-era__body[data-overflow~='x'])) .tl-era__pan-hint {
+  display: none;
+}
 .tl-era__scroll-cue-mark {
   flex: none;
   color: var(--accent);

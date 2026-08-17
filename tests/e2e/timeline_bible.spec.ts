@@ -99,7 +99,6 @@ test('short find bars keep their year visible and overflow is signed', async ({ 
 
   const primeval = page.locator('#era-primeval');
   await primeval.scrollIntoViewIfNeeded();
-  await expect(primeval.getByText(/swipe sideways/i)).toBeVisible();
 
   const flood = primeval.getByRole('button', { name: /Flood deposit layer/ });
   await flood.scrollIntoViewIfNeeded();
@@ -119,6 +118,26 @@ test('short find bars keep their year visible and overflow is signed', async ({ 
   const band = monarchy.locator('.tl-era__body');
   await expect.poll(async () => band.getAttribute('data-overflow')).toContain('end');
   await expect(band.locator('.tl-era__edge-label')).toBeVisible();
+  // The sideways copy is gated on the band actually overflowing, so it must
+  // appear exactly where `data-overflow` says there is more chart.
+  await expect(monarchy.getByText(/scroll sideways/i).first()).toBeVisible();
+});
+
+test('a band that fits does not tell the reader to scroll sideways', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/timeline');
+
+  const eras = page.locator('.tl-era');
+  const count = await eras.count();
+  for (let i = 0; i < count; i++) {
+    const era = eras.nth(i);
+    await era.scrollIntoViewIfNeeded();
+    const band = era.locator('.tl-era__body');
+    const overflow = (await band.getAttribute('data-overflow')) ?? '';
+    if (overflow.includes('x')) continue;
+    await expect(era.locator('.tl-era__scroll-cue')).toBeHidden();
+    await expect(era.locator('.tl-era__pan-hint')).toBeHidden();
+  }
 });
 
 test('timeline entry opens a detail card inside its own era band', async ({ page }) => {
