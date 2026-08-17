@@ -18,6 +18,15 @@
   "(Ussher: 2348 BC; no external synchronism)".
 - Version 0.3.8 → 0.3.9, Android `versionCode` 7 → 8.
 
+### Follow-up (0.3.10)
+
+Added a second `.tl-scale-note` above the era jump-links stating where the
+scale's zero is: BC/AD is reckoned from the Incarnation (Dionysius Exiguus,
+525, to fix Easter; carried into use by Bede), and the anchor sits a few years
+off its own event — Herod the Great died in 4 BC, so the Nativity falls
+c. 6–4 BC, which is why `era-jesus` starts at `-6`. E2E asserts the note is on
+the page. `versionCode` 8 → 9.
+
 ## Why it mattered
 
 "Undatable historically" reads as *no date exists*, which is not what the
