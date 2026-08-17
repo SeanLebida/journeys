@@ -26,11 +26,12 @@ import { SiteCandidates } from '../../components/SiteCandidates';
 import { BattleCard, SiteExtras } from '../../components/SiteExtras';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
-// Span the whole biblical timeline: the patriarchs (c. 2000 BC) through the
-// apostolic age (late 1st c. AD), so Old-Testament sites appear on the atlas.
-const YEAR_MIN = -2100;
+// Span the whole biblical timeline: Creation (4004 BC) through the
+// apostolic age (late 1st c. AD), so Genesis 1–11 sites appear on the atlas.
+const YEAR_MIN = -4004;
 const YEAR_MAX = 100;
 const ERA_TICKS = [
+  { year: -4004, label: 'Creation' },
   { year: -2000, label: 'Patriarchs' },
   { year: -1300, label: 'Exodus' },
   { year: -1000, label: 'Kingdom' },

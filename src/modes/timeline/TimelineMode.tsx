@@ -89,8 +89,8 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
       <p className="tl-scale-note">
         <strong>How to read this.</strong> Time runs down the page. Within an era the scale is linear — a bar twice as
-        long covers twice as many years — but <em>each era is drawn to its own scale</em>, because one scale from the
-        patriarchs to the apostles would compress the New Testament to a sliver. Every date shown is the range the
+        long covers twice as many years — but <em>each era is drawn to its own scale</em>, because one scale from
+        Creation to the apostles would compress the New Testament to a sliver. Every date shown is the range the
         content was authored with, never a single year the app inferred.
       </p>
 
@@ -99,6 +99,12 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
         Exiguus set it in 525 to fix the date of Easter, and Bede carried it into common use. The anchor is a few years
         off its own event: Herod the Great died in 4 BC, so the Nativity falls c. 6–4 BC and this timeline draws the life
         of Jesus from 6 BC. The eras before and after it are counted from that point, not from a neutral origin.
+      </p>
+
+      <p className="tl-scale-note">
+        <strong>Where the chart begins.</strong> The first band opens at Creation (Genesis 1:1). Its years are those of
+        Scripture’s genealogies — Ussher’s Masoretic sum is 4004 BC, so the Earth is about six thousand years old on
+        this reckoning. Archaeology dates the human layers in that story, not the forming of the planet.
       </p>
 
       <nav className="tl-jump" aria-label="Jump to an era">
@@ -192,8 +198,9 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
         <section className="tl-undated">
           <h3>Not on the axis</h3>
           <p className="tl-undated__note">
-            The content dates these figures nowhere, so they are listed rather than given an invented position —
-            Genesis 1–11 in particular carries no external chronological anchor.
+            The content dates these figures nowhere, so they are listed rather than given an invented position.
+            Genesis 1–11 is dated from Scripture’s genealogies; a name appears here only when that span was not
+            authored.
           </p>
           <ul>
             {model.undated.map((u) => (

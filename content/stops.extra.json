@@ -630,12 +630,12 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; no external synchronism)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
   "eventSummary": {
-   "en": "Noah is commanded to build the ark — gopher wood, three decks, 300 cubits (~137 m) long (Genesis 6:14-16) — and enters it with his family and the animals as the fountains of the great deep break open (Genesis 7:11-12). Scripture does not name the building site; the Mesopotamian flood tradition centers on Shuruppak, whose excavated flood layer anchors the setting."
+   "en": "Noah is commanded to build the ark — gopher wood, three decks, 300 cubits (~137 m) long (Genesis 6:14-16) — and enters it with his family and the animals as the fountains of the great deep break open (Genesis 7:11-12). Scripture does not name the building site; the Mesopotamian flood tradition centers on Shuruppak, whose excavated flood silt (c. 2900 BC) sits in the same window as Ussher's 2348 BC date and anchors the setting."
   },
   "scriptureRefs": [
    "Genesis 6:14-16",
@@ -647,6 +647,9 @@
   ],
   "artifacts": [
    "artifact-shuruppak-flood-layer"
+  ],
+  "terms": [
+   "term-biblical-chronology"
   ],
   "confidence": "legendary",
   "reviewStatus": "self-reviewed",
@@ -670,7 +673,7 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; no external synchronism)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
@@ -714,7 +717,7 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; no external synchronism)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
