@@ -147,7 +147,7 @@
    "en": "Tunnel in the City of David; inscription in the Istanbul Archaeology Museums"
   },
   "corroborates": {
-   "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30)."
+   "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30). It belongs with the earlier Siloam dam (exposed 2025; radiocarbon c. 805–795 BC, Joash and Amaziah): two generations of Judah's kings shaping the same spring-and-pool system the Gospels later name."
   },
   "dateRange": {
    "startYear": -701,
@@ -161,7 +161,36 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-arch-siloam-tunnel",
-   "cit-arch-siloam-tunnel-sayce"
+   "cit-arch-siloam-tunnel-sayce",
+   "cit-iaa-siloam-dam-2025"
+  ]
+ },
+ {
+  "id": "artifact-siloam-dam-joash",
+  "name": {
+   "en": "Siloam dam of Joash and Amaziah (2025)"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Southern mouth of the Tyropoeon Valley, City of David / Pool of Siloam, Jerusalem"
+  },
+  "corroborates": {
+   "en": "The largest dam yet found in ancient Israel: about 12 m high, 8 m wide, 21 m of length exposed. IAA excavators (Szanton, Berko, Vukosavović) and Weizmann radiocarbon (Regev, Boaretto and colleagues, 2025) date its construction to c. 805–795 BC, the reigns of Joash and Amaziah of Judah (2 Kings 12–14). It impounded Gihon overflow and valley runoff to form the earliest Pool of Siloam — the same water system Hezekiah later tunnelled, and the pool John 9 names."
+  },
+  "dateRange": {
+   "startYear": -805,
+   "endYear": -795,
+   "display": {
+    "en": "c. 805–795 BC (Joash / Amaziah)"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-iaa-siloam-dam-2025",
+   "cit-bar-siloam-dam-2025",
+   "cit-scripture-2-kings-12-1"
   ]
  },
  {
@@ -374,7 +403,7 @@
    "en": "Tell Fara, southern Iraq"
   },
   "corroborates": {
-   "en": "Excavations at Shuruppak — and at Kish and Ur — exposed river-flood silt strata from around the Jemdet Nasr / Early Dynastic transition (c. 2900 BC), showing catastrophic flooding was a lived reality of early Mesopotamia, the world in which the flood tradition of Ziusudra and Utnapishtim, paralleled in Genesis 6-9, took shape."
+   "en": "Excavations at Shuruppak — and at Kish and Ur — exposed river-flood silt strata from around the Jemdet Nasr / Early Dynastic transition (c. 2900 BC). That is the same window as the biblical Flood (Ussher: 2348 BC, from the Genesis 5 intervals): catastrophic flooding on the same plain, complementary as the material setting of Genesis 6-9, not a second clock."
   },
   "dateRange": {
    "startYear": -2950,
@@ -387,12 +416,14 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "disputes": {
-   "en": "The flood strata at the several cities date to different episodes and are read by archaeologists as local river floods, not a single universal deluge."
+   "en": "Archaeologists read the silts at the several cities as local river floods of more than one episode, not as a single universal deluge, and the ceramic date (~2900 BC) is not a synchronism that locks Ussher's 2348 BC. Shown as complementary setting — the same plain, the same age — not as a year-lock."
   },
   "citations": [
    "cit-shuruppak",
    "cit-ziusudra",
-   "cit-ref-negev-gibson"
+   "cit-mallowan-flood",
+   "cit-ref-negev-gibson",
+   "cit-ussher-annals"
   ]
  },
  {

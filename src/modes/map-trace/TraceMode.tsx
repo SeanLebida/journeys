@@ -37,7 +37,7 @@ function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   return (
     <ModePanel title={t('modes.trace.title')}>
-      <p>Choose a journey to trace — from the patriarchs to the apostles.</p>
+      <p>Choose a journey to trace — from Creation to the apostles.</p>
       <p className="journey-era__hint">
         <Link to="/timeline">See every journey on one linear timeline →</Link>
       </p>

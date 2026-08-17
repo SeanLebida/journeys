@@ -115,15 +115,15 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; no external synchronism)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
   "summary": {
-   "en": "The Flood narrative of Genesis 6-9 traced geographically: the ark tradition is rooted in the Mesopotamian river plain (Shuruppak, city of the Sumerian flood hero, with its excavated flood layer), the ark 'rested upon the mountains of Ararat' — the mountain country of Urartu, with GPS-mapped candidates at Greater Mount Ararat, the Durupınar formation and Mount Cudi — and the post-Flood generations descended to the plain of Shinar. Recent Durupınar surveys (GPR 2019, soil analyses 2022-2024) are shown as documented but disputed claims."
+   "en": "The Flood of Genesis 6-9 traced geographically: Scripture dates it from the Genesis 5 intervals (Ussher: 2348 BC). The ark tradition is rooted in the Mesopotamian river plain (Shuruppak, city of the Sumerian flood hero, with its excavated flood silt in the same window), the ark 'rested upon the mountains of Ararat' — the mountain country of Urartu, with GPS-mapped candidates at Greater Mount Ararat, the Durupınar formation and Mount Cudi — and the post-Flood generations descended to the plain of Shinar. Recent Durupınar surveys (GPR 2019, soil analyses 2022-2024) are shown as documented but disputed claims."
   },
   "chronologyNotes": {
-   "en": "No historical date can be assigned to the Flood; the traditional Ussher date is 2348 BC, and Mesopotamian flood strata cluster around 2900 BC. The route drawn between stops is schematic — Scripture records no path for a drifting ark."
+   "en": "Scripture dates the Flood from the Genesis 5 intervals: Ussher's Masoretic sum is 2348 BC. Excavated flood silt at Shuruppak, Kish and Ur clusters around 2900 BC on the ceramic scale — the same window, the same plain, complementary as setting rather than a second date. The route drawn between stops is schematic; Scripture records no path for a drifting ark."
   },
   "color": "#2c6e8a",
   "stops": [
@@ -135,6 +135,8 @@
    "cit-flood-narrative",
    "cit-ararat-region",
    "cit-shuruppak",
+   "cit-ussher-annals",
+   "cit-mallowan-flood",
    "cit-ref-sacred-bridge"
   ]
  },

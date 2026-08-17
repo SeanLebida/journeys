@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ERAS, eraForYear, formatYear, formatYearSpan } from './eras';
-import { buildTimeline, spanWithinEra, eraTicks, TIMELINE_LANES } from './timeline';
+import { buildTimeline, spanWithinEra, eraTicks, eraBandHeight, TIMELINE_LANES } from './timeline';
 import type { BundleIndex } from './useBundle';
 
 const dr = (a: number, b: number, display: string) => ({
@@ -32,6 +32,7 @@ function fakeBundle(over: Partial<BundleIndex> = {}): BundleIndex {
 
 describe('eras', () => {
   it('covers the biblical narrative without gaps inside a period', () => {
+    expect(eraForYear(-4004)?.id).toBe('era-beginning');
     expect(eraForYear(-1000)?.id).toBe('era-monarchy');
     expect(eraForYear(-586)?.id).toBe('era-monarchy'); // boundary belongs to the earlier band
     expect(eraForYear(30)?.id).toBe('era-jesus');
@@ -54,6 +55,14 @@ describe('eras', () => {
   it('lists every era in chronological order', () => {
     const starts = ERAS.map((e) => e.startYear);
     expect([...starts].sort((a, b) => a - b)).toEqual(starts);
+  });
+
+  it('names the first age from Genesis 1:1, not as primeval history', () => {
+    const first = ERAS[0];
+    expect(first.id).toBe('era-beginning');
+    expect(first.label).toBe('In the beginning');
+    expect(first.startYear).toBe(-4004);
+    expect(first.label + first.display + first.blurb).not.toMatch(/primeval/i);
   });
 });
 
@@ -225,5 +234,18 @@ describe('eraTicks', () => {
     expect(ticks[0].year).toBe(era.startYear);
     expect(ticks[4].year).toBe(era.endYear);
     expect(ticks[4].pct).toBe(100);
+  });
+});
+
+describe('eraBandHeight', () => {
+  it('keeps a century-long find readable in the Creation-to-Abraham band', () => {
+    const era = ERAS.find((e) => e.id === 'era-beginning')!;
+    const height = eraBandHeight({
+      era,
+      lanes: [{ lane: TIMELINE_LANES[0], items: [], trackCount: 1 }],
+      itemCount: 0,
+    });
+    const barPx = (100 / (era.endYear - era.startYear)) * height;
+    expect(barPx).toBeGreaterThanOrEqual(40);
   });
 });
