@@ -21,6 +21,14 @@
   (`31.8354°S, 35.5492°W`) instead of hardcoding `°N, °E`.
 - Version 0.3.6 → 0.3.7, Android `versionCode` 5 → 6.
 
+### Follow-up (0.3.8)
+
+`useScrollOverflow` now returns the overflow state as data (`Record<eraId,
+string>`) as well as writing `data-overflow`, and the band's `aria-label` reads
+it. The CSS gate had left the accessible name still promising "Scroll sideways
+for lanes past the edge" on a band that fits — the sighted cue was honest and
+the screen-reader one was not. `versionCode` 6 → 7.
+
 ## Why it mattered
 
 Three commits shipped today on a red pipeline and none of them could have been
