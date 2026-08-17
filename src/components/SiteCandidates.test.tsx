@@ -29,6 +29,16 @@ describe('SiteCandidates', () => {
     expect(names.some((n) => /Qasr el-Yahud/.test(n))).toBe(true);
   });
 
+  it('labels the hemisphere from the sign, not from the Levant', () => {
+    const site = sites.find((s) => s.id === 'site-baptism-at-the-jordan')!;
+    const southWest: TSite = {
+      ...site,
+      candidates: [{ ...site.candidates![0], lat: -31.8354, lon: -35.5492 }],
+    };
+    render(<SiteCandidates site={southWest} bundle={stub} />);
+    expect(screen.getByText('31.8354°S, 35.5492°W')).toBeInTheDocument();
+  });
+
   it('renders nothing when the site has a single pin', () => {
     const site = sites.find((s) => s.id === 'site-capernaum');
     expect(site).toBeTruthy();
