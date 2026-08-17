@@ -4,6 +4,9 @@ test('timeline lays out eras with parallel lanes against one year rail', async (
   await page.goto('/timeline');
   await expect(page.getByRole('heading', { level: 1, name: 'Timeline' })).toBeVisible();
 
+  // The scale's own origin is stated, not assumed.
+  await expect(page.getByText(/reckoned from the Incarnation/i)).toBeVisible();
+
   const monarchy = page.locator('#era-monarchy');
   await monarchy.scrollIntoViewIfNeeded();
   await expect(monarchy.getByRole('heading', { name: 'The monarchy' })).toBeVisible();
