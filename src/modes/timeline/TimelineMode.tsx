@@ -76,7 +76,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
   // Rebind the fold listeners whenever the rendered lanes change.
   useFoldOut(erasRef, foldEnabled, lanes.join(','));
-  useScrollOverflow(erasRef, lanes.join(','));
+  const overflow = useScrollOverflow(erasRef, lanes.join(','));
 
   return (
     <section className="mode-panel mode-panel--page mode-panel--wide timeline" aria-labelledby="timeline-title">
@@ -137,8 +137,10 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
               style={{ '--band-h': `${eraBandHeight(section)}px` } as React.CSSProperties}
               role="region"
               tabIndex={0}
+              // Says what the visible cues say: the sideways instruction is
+              // only true while this band actually overflows.
               aria-label={
-                section.lanes.length > 1
+                overflow[section.era.id]?.includes('x')
                   ? t('modes.timeline.chart.regionLabelLanes', {
                       era: section.era.label,
                       laneCount: section.lanes.length,
