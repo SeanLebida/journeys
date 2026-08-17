@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Era } from '../../content/eras';
 import { formatYear, formatYearSpan } from '../../content/eras';
 import {
@@ -62,8 +63,11 @@ export function EraAxis({ era }: { era: Era }) {
   );
 }
 
-/** Cartographic continuation mark: this chart keeps going past the gutter. */
+/** Cartographic continuation mark: this chart keeps going past the gutter.
+ *  CSS hides it unless the band really overflows, so a chart that fits on a
+ *  wide screen never tells the reader to scroll. */
 export function ChartScrollCue({ lanes }: { lanes: string[] }) {
+  const { t } = useTranslation();
   if (lanes.length < 2) return null;
   return (
     <p className="tl-era__scroll-cue">
@@ -73,10 +77,7 @@ export function ChartScrollCue({ lanes }: { lanes: string[] }) {
           <path d="M12 1.5l4.5 4.5L12 10.5M18.5 1.5L23 6l-4.5 4.5" />
         </svg>
       </span>
-      <span>
-        {lanes.join(' · ')} share this year rail. If the chart runs past the
-        edge, swipe sideways.
-      </span>
+      <span>{t('modes.timeline.chart.scrollCue', { lanes: lanes.join(' · ') })}</span>
     </p>
   );
 }
@@ -84,9 +85,10 @@ export function ChartScrollCue({ lanes }: { lanes: string[] }) {
 /** Sticky right-edge fade + "more lanes" plate. Hidden when the band fits or
  *  the reader has already panned to the end (`data-overflow` on the body). */
 export function ChartOverflowEdge() {
+  const { t } = useTranslation();
   return (
     <div className="tl-era__edge" aria-hidden="true">
-      <span className="tl-era__edge-label">more lanes</span>
+      <span className="tl-era__edge-label">{t('modes.timeline.chart.moreLanes')}</span>
     </div>
   );
 }

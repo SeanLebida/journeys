@@ -32,7 +32,14 @@
     },
     "timeline": {
       "title": "Timeline",
-      "tagline": "Every journey, figure, battle and find on one linear chronology — the way a study Bible lays it out."
+      "tagline": "Every journey, figure, battle and find on one linear chronology — the way a study Bible lays it out.",
+      "chart": {
+        "scrollCue": "{{lanes}} share this year rail. If the chart runs past the edge, scroll sideways.",
+        "moreLanes": "more lanes",
+        "panHint": "Year rail stays put on the left. The lanes past the edge are on this same chart.",
+        "regionLabel": "{{era}} chart",
+        "regionLabelLanes": "{{era}} chart. {{laneCount}} lanes. Scroll sideways for lanes past the edge."
+      }
     },
     "bible": {
       "title": "Bible",
