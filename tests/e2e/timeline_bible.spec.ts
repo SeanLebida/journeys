@@ -121,6 +121,8 @@ test('short find bars keep their year visible and overflow is signed', async ({ 
   // The sideways copy is gated on the band actually overflowing, so it must
   // appear exactly where `data-overflow` says there is more chart.
   await expect(monarchy.getByText(/scroll sideways/i).first()).toBeVisible();
+  // Screen readers hear the same claim the sighted cue makes.
+  await expect(band).toHaveAttribute('aria-label', /scroll sideways/i);
 });
 
 test('a band that fits does not tell the reader to scroll sideways', async ({ page }) => {
@@ -137,6 +139,9 @@ test('a band that fits does not tell the reader to scroll sideways', async ({ pa
     if (overflow.includes('x')) continue;
     await expect(era.locator('.tl-era__scroll-cue')).toBeHidden();
     await expect(era.locator('.tl-era__pan-hint')).toBeHidden();
+    // The band's accessible name must not promise lanes past an edge that is
+    // not there either.
+    await expect(band).not.toHaveAttribute('aria-label', /scroll sideways/i);
   }
 });
 
