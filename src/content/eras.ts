@@ -41,12 +41,12 @@ export const ERAS: readonly Era[] = [
     label: 'Primeval history',
     startYear: -3000,
     endYear: -2100,
-    display: 'Genesis 1–11 — undatable historically',
+    display: 'Genesis 1–11 — dated from Scripture’s genealogies; no external synchronism',
     blurb:
-      'Creation, the flood and the dispersal of the nations. These chapters carry no external chronological anchor; the years shown are a conventional placement, not a dating.',
+      'Creation, the flood and the dispersal of the nations. Scripture dates these chapters itself: the genealogies of Genesis 5 and 11 give father-to-son intervals that run from Adam to Abraham, which is how Ussher reached a 4004 BC creation and a 2348 BC flood. What is missing is not a date but a cross-check — no king list, eclipse or excavation layer touches this stretch.',
     journeyKinds: [],
     dispute:
-      'Genesis 1–11 cannot be fixed against any king list, eclipse or excavation layer. Traditional schemes (Ussher’s 2348 BC flood) and the Mesopotamian flood traditions are placements, not synchronisms.',
+      'The biblical chronology is explicit, but the manuscript traditions do not agree on its numbers: the Masoretic genealogies put the flood near 2348 BC, while the Septuagint’s longer figures push creation and flood roughly a millennium earlier, and the Samaritan Pentateuch differs again. Nothing external decides between them — Genesis 1–11 cannot be fixed against a king list, eclipse or excavation layer, and the Mesopotamian flood traditions are parallels, not synchronisms. The years drawn on this band follow the traditional Masoretic placement.',
     citations: CHRONOLOGY_REFS,
   },
   {
