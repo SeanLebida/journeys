@@ -9,6 +9,13 @@
       content="An accurate, cited, offline interactive atlas of the missionary journeys of Jesus and the apostles."
     />
     <title>Journeys</title>
+    <!-- The two faces that carry first paint: Ubuntu 400 is the app chrome,
+         EB Garamond 400 is the Scripture body. Both are @font-face'd from
+         global.css, which the browser only discovers after the CSS parses —
+         with `font-display: swap` that costs a visible reflow on the reading
+         surface. The other weights can swap in late without being noticed. -->
+    <link rel="preload" href="/fonts/ubuntu-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>

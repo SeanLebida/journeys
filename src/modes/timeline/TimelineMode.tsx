@@ -139,8 +139,11 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
               tabIndex={0}
               aria-label={
                 section.lanes.length > 1
-                  ? `${section.era.label} chart. ${section.lanes.length} lanes. Scroll sideways for lanes past the edge.`
-                  : `${section.era.label} chart`
+                  ? t('modes.timeline.chart.regionLabelLanes', {
+                      era: section.era.label,
+                      laneCount: section.lanes.length,
+                    })
+                  : t('modes.timeline.chart.regionLabel', { era: section.era.label })
               }
             >
               <EraAxis era={section.era} />
@@ -167,9 +170,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
               <TimelineEntryDetail item={selected} bundle={bundle} onClose={() => setSelected(null)} />
             )}
             {section.lanes.length > 1 && (
-              <p className="tl-era__pan-hint">
-                Year rail stays put on the left. The lanes past the edge are on this same chart.
-              </p>
+              <p className="tl-era__pan-hint">{t('modes.timeline.chart.panHint')}</p>
             )}
             <p className="tl-era__scale-break" aria-hidden="true">
               scale changes ▾
