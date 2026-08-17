@@ -148,9 +148,11 @@ test('bible reader opens a deep-linked passage with its atlas cross-references',
   await page.goto('/bible?ref=1%20Kings%2018%3A21');
 
   // Verse text comes from the bundled SQLite, not from a network call.
-  await expect(page.getByText(/How long (go|halt) ye limping|halt ye between two opinions/i).first()).toBeVisible({
-    timeout: 15_000,
-  });
+  const verse = page.getByText(/How long (go|halt) ye limping|halt ye between two opinions/i).first();
+  await expect(verse).toBeVisible({ timeout: 15_000 });
+  await expect.poll(async () =>
+    verse.evaluate((el) => getComputedStyle(el).fontFamily),
+  ).toMatch(/EB Garamond/i);
 
   // The cross-reference panel is the bridge back to the map.
   const xrefs = page.locator('.bible-xrefs');

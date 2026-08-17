@@ -39,11 +39,18 @@ export function CreditsView() {
           (Pleiades, AWMC, ORBIS) and basemap tiles are integrated as they are licensed for redistribution.
         </li>
         <li>
-          Map labels use{' '}
+          Interface type is{' '}
           <a href="https://design.ubuntu.com/font" target="_blank" rel="noopener noreferrer">
             Ubuntu
           </a>{' '}
           — <span className="credits-list__license">Ubuntu Font Licence 1.0</span>
+        </li>
+        <li>
+          Scripture and book-face labels use{' '}
+          <a href="https://github.com/octaviopardo/EBGaramond12" target="_blank" rel="noopener noreferrer">
+            EB Garamond
+          </a>{' '}
+          — <span className="credits-list__license">SIL Open Font Licence 1.1</span>
         </li>
       </ul>
 

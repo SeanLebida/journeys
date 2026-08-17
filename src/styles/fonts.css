@@ -1,7 +1,7 @@
-/* Self-hosted webfont — bundled for offline use (no Google Fonts / gstatic
-   calls), matching the authentic.how brand: Ubuntu across the whole app.
-   Latin subset only; three real weights (400 body, 500 medium, 700 bold) carry
-   the visual hierarchy. woff2 in public/fonts. */
+/* Self-hosted webfonts — bundled for offline use (no Google Fonts / gstatic
+   calls). Ubuntu is the chrome; EB Garamond is the book face for Scripture
+   and the other `--font-serif` surfaces. Latin subset only. woff2 in
+   public/fonts. */
 
 @font-face {
   font-family: 'Ubuntu';
@@ -23,4 +23,26 @@
   font-weight: 700;
   font-display: swap;
   src: url('/fonts/ubuntu-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/eb-garamond-500.woff2') format('woff2');
 }
