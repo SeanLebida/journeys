@@ -49,14 +49,13 @@
   --c-legendary: var(--violet);
   --c-disputed: var(--terracotta-ink);
 
-  /* Type — Ubuntu throughout, self-hosted, matching the authentic.how brand.
-     One typeface across the whole app; hierarchy comes from weight (400 body /
-     500 medium / 700 bold), size, and color, not a second family. The
-     --font-heading/body/serif/sans names are kept as aliases so every existing
-     rule resolves to Ubuntu. */
+  /* Type — Ubuntu for chrome, EB Garamond for the book. Hierarchy in the
+     UI still comes from Ubuntu weight (400 / 500 / 700). Scripture and the
+     other `--font-serif` surfaces are the one place a second family earns
+     its keep (CRAP contrast). */
   --font-heading: 'Ubuntu', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   --font-body: var(--font-heading);
-  --font-serif: var(--font-heading);
+  --font-serif: 'EB Garamond', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
   --font-sans: var(--font-heading);
 
   /* Spacing / shape */

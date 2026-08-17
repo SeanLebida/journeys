@@ -24,9 +24,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Single-typeface hierarchy: titles are heavy (700) and tightly tracked so
-   they read as distinct from the 400-weight body even though both are Ubuntu.
-   Section labels add color (accent) and letter-spacing on top of weight. */
+/* Chrome hierarchy: titles are Ubuntu 700, tightly tracked, so they stay
+   distinct from the 400-weight UI even before size and color step in.
+   Scripture uses EB Garamond via `--font-serif`, not these heading rules. */
 h1,
 h2,
 h3,
@@ -258,12 +258,12 @@ a {
   transition: color 0.2s ease;
 }
 
-/* Water body labels: italicized serif text centered on major bodies of water */
+/* Water body labels: italicized book face centered on major bodies of water */
 .water-body-label {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--map-water-color);
   pointer-events: none;
   white-space: nowrap;
@@ -924,7 +924,9 @@ a {
 .scripture__text {
   margin: 0;
   font-family: var(--font-serif);
-  line-height: 1.6;
+  font-size: 1.12rem;
+  font-weight: 400;
+  line-height: 1.7;
 }
 .scripture__num {
   color: var(--text-muted);
@@ -934,6 +936,7 @@ a {
 .scripture__ref {
   display: block;
   margin-top: 0.35rem;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   color: var(--text-muted);
   font-style: normal;
@@ -3505,8 +3508,10 @@ a {
    screen even though the panel is 1100px. */
 .bible__text {
   max-width: 38rem;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.75;
 }
 .bible-verse {
   margin: 0 0 0.5rem;
@@ -3878,6 +3883,9 @@ a {
 }
 .bible__search-list p {
   margin: 0.2rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 .bible__sourcing {
   margin-top: 1.25rem;
