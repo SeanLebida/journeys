@@ -335,7 +335,10 @@ export function spanWithinEra(
 export function eraBandHeight(section: TimelineEraSection): number {
   const perColumn = section.lanes.map((l) => Math.ceil(l.items.length / Math.max(1, l.trackCount)));
   const busiest = Math.max(1, ...perColumn);
-  return Math.min(1200, Math.max(320, busiest * 70));
+  // 400px floor: a ~100-year find in a 900-year primeval band is ~11% of the
+  // height. At 320px that is 35px — too short for a title plus its year once
+  // padding is applied. 400px keeps the date on the bar.
+  return Math.min(1200, Math.max(400, busiest * 72));
 }
 
 /** Evenly spaced year gridlines for an era band, as percentages. */
