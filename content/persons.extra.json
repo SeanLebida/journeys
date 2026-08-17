@@ -253,6 +253,42 @@
   ]
  },
  {
+  "id": "person-adam",
+  "name": {
+   "en": "Adam"
+  },
+  "role": {
+   "en": "The first man; beginning of the genealogy that dates the Earth"
+  },
+  "summary": {
+   "en": "Formed by God on the sixth day (Genesis 1:26-27; 2:7). Genesis 5 gives his age at Seth's birth (130 years) and his whole life (930 years). Those intervals are the first step in the chronology that places Creation at 4004 BC and makes the Earth about six thousand years old."
+  },
+  "scriptureRefs": [
+   "Genesis 1:26-27",
+   "Genesis 2:7",
+   "Genesis 5:5"
+  ],
+  "citations": [
+   "cit-scripture-genesis-1-26-27",
+   "cit-scripture-genesis-2-7",
+   "cit-scripture-genesis-5-5",
+   "cit-ussher-annals",
+   "cit-ref-abd"
+  ],
+  "category": "patriarch",
+  "lifeRange": {
+   "startYear": -4004,
+   "endYear": -3074,
+   "display": {
+    "en": "Ussher: 4004–3074 BC (930 years; Genesis 5:5)"
+   },
+   "approximate": true
+  },
+  "datingNote": {
+   "en": "Years from the Genesis 5 genealogy on the Masoretic numbers (Ussher). The Septuagint's longer figures place Adam's creation roughly a millennium earlier. Archaeology does not assign Adam a year; the date is Scripture's."
+  }
+ },
+ {
   "id": "person-noah",
   "name": {
    "en": "Noah"
@@ -261,29 +297,40 @@
    "en": "Patriarch of the Flood; builder of the ark"
   },
   "summary": {
-   "en": "The righteous man of Genesis 6-9, warned of the coming Flood and commanded to build an ark of gopher wood, 300 cubits long (Genesis 6:14-15). He preserved his family and the animals through the deluge, landed on the mountains of Ararat, and received the rainbow covenant. The nations of Genesis 10 descend from his sons Shem, Ham and Japheth."
+   "en": "The righteous man of Genesis 6-9, warned of the coming Flood and commanded to build an ark of gopher wood, 300 cubits long (Genesis 6:14-15). He preserved his family and the animals through the deluge, landed on the mountains of Ararat, and received the rainbow covenant. The nations of Genesis 10 descend from his sons Shem, Ham and Japheth. Genesis 5 and 7 date him: 600 years old at the Flood, 950 years in all — 2948–1998 BC on Ussher's Masoretic sum."
   },
   "scriptureRefs": [
    "Genesis 6:9",
    "Genesis 6:14-15",
+   "Genesis 7:6",
    "Genesis 8:4",
    "Genesis 9:29"
   ],
   "citations": [
    "cit-flood-narrative",
    "cit-ref-abd",
+   "cit-ussher-annals",
    "cit-scripture-genesis-6-9",
    "cit-scripture-genesis-6-14-15",
+   "cit-scripture-genesis-7-6",
    "cit-scripture-genesis-8-4",
    "cit-scripture-genesis-9-29"
   ],
   "category": "patriarch",
   "homeSiteId": "site-shuruppak",
+  "lifeRange": {
+   "startYear": -2948,
+   "endYear": -1998,
+   "display": {
+    "en": "Ussher: 2948–1998 BC (950 years; Flood at 600)"
+   },
+   "approximate": true
+  },
   "journeyIds": [
    "journey-noah"
   ],
   "datingNote": {
-   "en": "Genesis 1–11 carries no external chronological anchor, so no life range is given rather than a false one."
+   "en": "Years from the Genesis 5 and 11 genealogies on the Masoretic numbers (Ussher). Noah is 600 at the Flood (Genesis 7:6) and lives 950 years (Genesis 9:29). The Septuagint's longer figures shift the whole span earlier by about a thousand years. The excavated flood silt at Shuruppak (c. 2900 BC) is the material setting, not a rival birth year."
   }
  },
  {
