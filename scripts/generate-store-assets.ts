@@ -9,8 +9,56 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const storeDir = path.join(rootDir, 'docs', 'store-assets');
 
-if (!fs.existsSync(storeDir)) {
-  fs.mkdirSync(storeDir, { recursive: true });
+// Subdirectories for each Google Play device form factor
+const dirs = {
+  branding: path.join(storeDir, 'branding'),
+  phone: path.join(storeDir, 'phone'),
+  tablet7: path.join(storeDir, 'tablet-7inch'),
+  tablet10: path.join(storeDir, 'tablet-10inch'),
+  chromebook: path.join(storeDir, 'chromebook'),
+};
+
+for (const dir of Object.values(dirs)) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+async function copyBrandingAssets() {
+  console.log('Copying logo, icon, and branding visual assets...');
+  
+  // 1. App Icon (512x512)
+  fs.copyFileSync(
+    path.join(rootDir, 'public', 'icon.png'),
+    path.join(dirs.branding, 'icon-512x512.png')
+  );
+  // Also keep root copy in storeDir for backwards convenience
+  fs.copyFileSync(
+    path.join(rootDir, 'public', 'icon.png'),
+    path.join(storeDir, 'icon-512x512.png')
+  );
+
+  // 2. Vector Logos
+  fs.copyFileSync(
+    path.join(rootDir, 'public', 'icon.svg'),
+    path.join(dirs.branding, 'logo.svg')
+  );
+  fs.copyFileSync(
+    path.join(rootDir, 'assets', 'icon-only.svg'),
+    path.join(dirs.branding, 'logo-mark.svg')
+  );
+
+  // 3. Splash Screens
+  fs.copyFileSync(
+    path.join(rootDir, 'public', 'splash.svg'),
+    path.join(dirs.branding, 'splash.svg')
+  );
+  fs.copyFileSync(
+    path.join(rootDir, 'public', 'splash.png'),
+    path.join(dirs.branding, 'splash-1080x1920.png')
+  );
+
+  console.log('Branding assets copied to docs/store-assets/branding/');
 }
 
 async function generateFeatureGraphic(browser: Browser) {
@@ -36,7 +84,6 @@ async function generateFeatureGraphic(browser: Browser) {
     overflow: hidden;
   }
 
-  /* Decorative map grid & graticule */
   .grid-overlay {
     position: absolute;
     inset: 0;
@@ -47,7 +94,6 @@ async function generateFeatureGraphic(browser: Browser) {
     opacity: 0.7;
   }
 
-  /* Ancient Compass / Astrolabe Graphic on right */
   .compass-circle {
     position: absolute;
     right: -40px;
@@ -78,14 +124,12 @@ async function generateFeatureGraphic(browser: Browser) {
     line-height: 1;
   }
 
-  /* Route path wave */
   .route-svg {
     position: absolute;
     inset: 0;
     pointer-events: none;
   }
 
-  /* Content branding container */
   .content {
     position: relative;
     z-index: 10;
@@ -192,96 +236,41 @@ async function generateFeatureGraphic(browser: Browser) {
 </html>`;
 
   await page.setContent(featureHtml);
-  // Wait for Google web fonts to load
   await page.waitForTimeout(1000);
 
-  const featurePath = path.join(storeDir, 'feature-graphic-1024x500.png');
-  await page.screenshot({ path: featurePath });
-  console.log(`Generated: ${featurePath}`);
+  const outBranding = path.join(dirs.branding, 'feature-graphic-1024x500.png');
+  const outRoot = path.join(storeDir, 'feature-graphic-1024x500.png');
+  await page.screenshot({ path: outBranding });
+  fs.copyFileSync(outBranding, outRoot);
+  console.log(`Generated: ${outBranding}`);
   await page.close();
 }
 
-async function captureScreenshots(browser: Browser, port: number) {
-  console.log('Capturing Phone Screenshots (1080x1920)...');
+async function captureSet(
+  browser: Browser,
+  port: number,
+  category: string,
+  targetDir: string,
+  viewport: { width: number; height: number },
+  screens: Array<{ name: string; urlPath: string; waitSelector?: string; delay?: number }>
+) {
+  console.log(`\nCapturing ${category} screenshots (${viewport.width}x${viewport.height})...`);
   const page = await browser.newPage();
-  
-  // Configure standard phone resolution for Play Store (1080 x 1920, 9:16 ratio)
-  await page.setViewportSize({ width: 1080, height: 1920 });
-
-  const screens = [
-    {
-      name: 'screenshot-1-home-atlas.png',
-      url: `http://localhost:${port}/`,
-      waitSelector: 'h1',
-      action: async () => {
-        await page.waitForTimeout(1500);
-      }
-    },
-    {
-      name: 'screenshot-2-route-trace.png',
-      url: `http://localhost:${port}/trace/journey-paul-1`,
-      waitSelector: 'text=Paul',
-      action: async () => {
-        await page.waitForTimeout(2000);
-      }
-    },
-    {
-      name: 'screenshot-3-timeline.png',
-      url: `http://localhost:${port}/timeline`,
-      waitSelector: '#main',
-      action: async () => {
-        await page.waitForTimeout(2000);
-      }
-    },
-    {
-      name: 'screenshot-4-bible-reader.png',
-      url: `http://localhost:${port}/bible`,
-      waitSelector: '#main',
-      action: async () => {
-        await page.waitForTimeout(2000);
-      }
-    },
-    {
-      name: 'screenshot-5-lesson-mode.png',
-      url: `http://localhost:${port}/lessons/lesson-galilean-ministry`,
-      waitSelector: '#main',
-      action: async () => {
-        await page.waitForTimeout(2000);
-      }
-    },
-    {
-      name: 'screenshot-6-quiz-mode.png',
-      url: `http://localhost:${port}/quiz/quiz-foundations`,
-      waitSelector: '#main',
-      action: async () => {
-        await page.waitForTimeout(1500);
-      }
-    },
-    {
-      name: 'screenshot-7-sandbox-atlas.png',
-      url: `http://localhost:${port}/atlas`,
-      waitSelector: '#main',
-      action: async () => {
-        await page.waitForTimeout(2000);
-      }
-    }
-  ];
+  await page.setViewportSize(viewport);
 
   for (const s of screens) {
     try {
-      console.log(`Navigating to ${s.url}...`);
-      await page.goto(s.url, { waitUntil: 'networkidle', timeout: 20000 });
+      const fullUrl = `http://localhost:${port}${s.urlPath}`;
+      console.log(`  [${category}] -> ${s.name}`);
+      await page.goto(fullUrl, { waitUntil: 'networkidle', timeout: 20000 });
       if (s.waitSelector) {
-        await page.waitForSelector(s.waitSelector, { timeout: 10000 }).catch(() => {});
+        await page.waitForSelector(s.waitSelector, { timeout: 8000 }).catch(() => {});
       }
-      if (s.action) {
-        await s.action();
-      }
-      const outPath = path.join(storeDir, s.name);
+      await page.waitForTimeout(s.delay ?? 1500);
+      const outPath = path.join(targetDir, s.name);
       await page.screenshot({ path: outPath });
-      console.log(`Captured: ${outPath}`);
     } catch (err) {
-      console.warn(`Failed capturing ${s.name}:`, err);
+      console.warn(`  Failed capturing ${s.name}:`, err);
     }
   }
 
@@ -289,31 +278,71 @@ async function captureScreenshots(browser: Browser, port: number) {
 }
 
 async function main() {
-  const port = 4192;
+  const port = 4193;
   console.log(`Starting preview server on port ${port}...`);
   const server = spawn('npm', ['run', 'preview', '--', '--port', String(port)], {
     cwd: rootDir,
     stdio: 'ignore'
   });
 
-  // Give server time to spin up
   await new Promise(res => setTimeout(res, 2000));
 
   const browser = await chromium.launch();
   try {
-    // 1. Copy icon to docs/store-assets/
-    const iconSrc = path.join(rootDir, 'public', 'icon.png');
-    const iconDest = path.join(storeDir, 'icon-512x512.png');
-    fs.copyFileSync(iconSrc, iconDest);
-    console.log(`Copied store icon to: ${iconDest}`);
+    // 1. Copy Logo, Splash & Icons into docs/store-assets/branding/
+    await copyBrandingAssets();
 
-    // 2. Generate Feature Graphic
+    // 2. Generate Play Store Feature Graphic (1024x500)
     await generateFeatureGraphic(browser);
 
-    // 3. Capture Screenshots
-    await captureScreenshots(browser, port);
+    // 3. Phone Screenshots (1080x1920)
+    const phoneScreens = [
+      { name: 'screenshot-1-home-atlas.png', urlPath: '/', waitSelector: 'h1' },
+      { name: 'screenshot-2-route-trace.png', urlPath: '/trace/journey-paul-1', waitSelector: 'text=Paul' },
+      { name: 'screenshot-3-timeline.png', urlPath: '/timeline', waitSelector: '#main' },
+      { name: 'screenshot-4-bible-reader.png', urlPath: '/bible', waitSelector: '#main' },
+      { name: 'screenshot-5-lesson-mode.png', urlPath: '/lessons/lesson-galilean-ministry', waitSelector: '#main' },
+      { name: 'screenshot-6-quiz-mode.png', urlPath: '/quiz/quiz-foundations', waitSelector: '#main' },
+      { name: 'screenshot-7-sandbox-atlas.png', urlPath: '/atlas', waitSelector: '#main' },
+    ];
+    await captureSet(browser, port, 'Phone', dirs.phone, { width: 1080, height: 1920 }, phoneScreens);
 
-    console.log('\nAll Google Play Store assets successfully generated in: docs/store-assets/');
+    // Also copy to root of store-assets for backwards compatibility
+    for (const s of phoneScreens) {
+      const src = path.join(dirs.phone, s.name);
+      const dest = path.join(storeDir, s.name);
+      if (fs.existsSync(src)) fs.copyFileSync(src, dest);
+    }
+
+    // 4. 7-inch Tablet Screenshots (1200x1920 portrait)
+    const tablet7Screens = [
+      { name: 'tablet-7-1-atlas.png', urlPath: '/atlas', waitSelector: '#main' },
+      { name: 'tablet-7-2-route-trace.png', urlPath: '/trace/journey-paul-1', waitSelector: 'text=Paul' },
+      { name: 'tablet-7-3-timeline.png', urlPath: '/timeline', waitSelector: '#main' },
+      { name: 'tablet-7-4-bible.png', urlPath: '/bible', waitSelector: '#main' },
+      { name: 'tablet-7-5-lesson.png', urlPath: '/lessons/lesson-galilean-ministry', waitSelector: '#main' },
+    ];
+    await captureSet(browser, port, '7-inch Tablet', dirs.tablet7, { width: 1200, height: 1920 }, tablet7Screens);
+
+    // 5. 10-inch Tablet Screenshots (1920x1200 widescreen landscape)
+    const tablet10Screens = [
+      { name: 'tablet-10-1-atlas-widescreen.png', urlPath: '/atlas', waitSelector: '#main' },
+      { name: 'tablet-10-2-route-trace.png', urlPath: '/trace/journey-paul-1', waitSelector: 'text=Paul' },
+      { name: 'tablet-10-3-timeline-panoramic.png', urlPath: '/timeline', waitSelector: '#main' },
+      { name: 'tablet-10-4-bible-reader.png', urlPath: '/bible', waitSelector: '#main' },
+    ];
+    await captureSet(browser, port, '10-inch Tablet', dirs.tablet10, { width: 1920, height: 1200 }, tablet10Screens);
+
+    // 6. Chromebook / Desktop Screenshots (1920x1080 16:9 landscape)
+    const chromebookScreens = [
+      { name: 'chromebook-1-atlas.png', urlPath: '/atlas', waitSelector: '#main' },
+      { name: 'chromebook-2-route-trace.png', urlPath: '/trace/journey-paul-1', waitSelector: 'text=Paul' },
+      { name: 'chromebook-3-timeline.png', urlPath: '/timeline', waitSelector: '#main' },
+      { name: 'chromebook-4-bible.png', urlPath: '/bible', waitSelector: '#main' },
+    ];
+    await captureSet(browser, port, 'Chromebook', dirs.chromebook, { width: 1920, height: 1080 }, chromebookScreens);
+
+    console.log('\nAll multi-device Play Store assets generated successfully in docs/store-assets/!');
   } finally {
     await browser.close();
     server.kill();
