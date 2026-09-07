@@ -18,7 +18,8 @@
     "cap:sync": "cap sync",
     "android:version:bump": "node scripts/bump-android-version.mjs",
     "android:release:notes": "node scripts/generate-release-notes.mjs",
-    "android:build:release": "npm run build && npm run cap:sync && npm run android:release:notes && npm run android:version:bump && cd android && ./gradlew bundleRelease"
+    "android:build:release": "npm run build && npm run cap:sync && npm run android:release:notes && npm run android:version:bump && cd android && ./gradlew bundleRelease",
+    "assets:store": "tsx scripts/generate-store-assets.ts"
   },
   "dependencies": {
     "@capacitor/android": "^6.2.1",
