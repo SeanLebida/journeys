@@ -135,7 +135,7 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: org.journeys.atlas
+          packageName: how.authentic.journeys
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
           track: ${{ github.event.inputs.track || 'internal' }}
           status: ${{ github.event.inputs.status || 'completed' }}
@@ -153,7 +153,7 @@ jobs:
             Automated signed release build.
             - **Version Code:** ${{ steps.version.outputs.version_code }}
             - **Version Name:** ${{ steps.version.outputs.version_name }}
-            - **Package Name:** `org.journeys.atlas`
+            - **Package Name:** `how.authentic.journeys`
             - **Track:** ${{ github.event.inputs.track || 'internal' }}
           files: |
             android/app/build/outputs/bundle/release/app-release.aab
@@ -166,7 +166,7 @@ jobs:
           echo "### 🚀 Android Release Summary" >> $GITHUB_STEP_SUMMARY
           echo "- **Version Name:** \`${{ steps.version.outputs.version_name }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Version Code:** \`${{ steps.version.outputs.version_code }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Package Name:** \`org.journeys.atlas\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package Name:** \`how.authentic.journeys\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Target Track:** \`${{ github.event.inputs.track || 'internal' }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Release Status:** \`${{ github.event.inputs.status || 'completed' }}\`" >> $GITHUB_STEP_SUMMARY
           if [ -n "$PLAY_SERVICE_ACCOUNT_JSON" ]; then
