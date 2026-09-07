@@ -6,7 +6,7 @@ This guide walks you through distributing **Journeys — Atlas of the Apostles**
 
 ## 1. Overview & Architecture
 
-- **Application ID**: `org.journeys.atlas`
+- **Application ID**: `how.authentic.journeys`
 - **Current Version**: `0.3.12` (versionCode `100+`)
 - **Package Format**: Android App Bundle (`.aab`) signed with RSA 4096-bit upload key.
 - **Recommended Distribution Track**: **Internal Testing**

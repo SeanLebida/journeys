@@ -1,4 +1,4 @@
-package org.journeys.atlas;
+package how.authentic.journeys;
 
 import com.getcapacitor.BridgeActivity;
 
