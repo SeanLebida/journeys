@@ -1,6 +1,6 @@
 {
   "name": "journeys",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "private": true,
   "type": "module",
   "description": "Biblically, geographically, historically and archaeologically accurate interactive atlas of the missionary journeys of Jesus and the apostles.",
@@ -15,7 +15,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "cap:sync": "cap sync"
+    "cap:sync": "cap sync",
+    "android:version:bump": "node scripts/bump-android-version.mjs",
+    "android:release:notes": "node scripts/generate-release-notes.mjs",
+    "android:build:release": "npm run build && npm run cap:sync && npm run android:release:notes && npm run android:version:bump && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@capacitor/android": "^6.2.1",

@@ -36,3 +36,10 @@ content/bible-src/raw/
 .vscode/*
 !.vscode/extensions.json
 *.log
+
+# Keystores and release outputs
+*.keystore
+*.jks
+.env*
+android/release-notes/
+
