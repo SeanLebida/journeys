@@ -12,10 +12,25 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Preserve line numbers for readable stack traces in Play Console crash reports
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Capacitor & WebView JavaScript Interface Rules
+-keepattributes *Annotation*
+-keepattributes JavascriptInterface
+
+-keep public class * extends com.getcapacitor.Plugin
+-keep public class * extends com.getcapacitor.BridgeActivity
+-keepclassmembers class * extends com.getcapacitor.Plugin {
+    @com.getcapacitor.PluginMethod public *;
+}
+-keep class com.getcapacitor.** { *; }
+
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+
+# Keep Cordova plugins
+-keep public class * extends org.apache.cordova.CordovaPlugin
+
