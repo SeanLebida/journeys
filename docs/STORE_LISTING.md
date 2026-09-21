@@ -96,8 +96,8 @@ Discover the ancient world as it was traveled. Explore Journeys today!
 |---|---|
 | **Developer Name** | Authentic How |
 | **Support Email** | `auth@authentic.how` |
-| **Website (Optional)** | `https://github.com/Seanl686/journeys` |
-| **Privacy Policy URL** | `https://raw.githubusercontent.com/Seanl686/journeys/development/PRIVACY.md` |
+| **Website (Optional)** | `https://github.com/SeanLebida/journeys` |
+| **Privacy Policy URL** | `https://raw.githubusercontent.com/SeanLebida/journeys/development/PRIVACY.md` |
 
 ---
 
@@ -106,7 +106,7 @@ Discover the ancient world as it was traveled. Explore Journeys today!
 Navigate to **Policy > App content** in Google Play Console and complete each section:
 
 ### Privacy Policy
-- URL: `https://raw.githubusercontent.com/Seanl686/journeys/development/PRIVACY.md`
+- URL: `https://raw.githubusercontent.com/SeanLebida/journeys/development/PRIVACY.md`
 
 ### App Access
 - Select: **All functionality is available without special access**
