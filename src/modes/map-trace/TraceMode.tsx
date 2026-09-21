@@ -12,7 +12,7 @@ import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
-import { Citations, ClaimMeta, DisputeNote, RouteGeometryNote, ScripturePassage } from '../../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ReferenceStack, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
@@ -180,14 +180,16 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
         <details className="journey-about">
           <summary>About this journey</summary>
           <p className="journey-trace__date">{journey.dateRange.display.en}</p>
-          <p>{journey.summary.en}</p>
-          {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
-          <RouteGeometryNote
-            grades={legGrades}
-            note={route?.note?.en}
-            citations={route?.citations}
-            bundle={bundle}
-          />
+          <p className="claim-prose">{journey.summary.en}</p>
+          <ReferenceStack>
+            {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+            <RouteGeometryNote
+              grades={legGrades}
+              note={route?.note?.en}
+              citations={route?.citations}
+              bundle={bundle}
+            />
+          </ReferenceStack>
           {bundle.videosForJourney(journey.id).map((v) => (
             <VideoEmbed key={v.id} video={v} />
           ))}
@@ -397,11 +399,13 @@ function StopReader({
       </div>
       {/* The panel title already carries the event name when there is one, so
           only then does the site name need repeating underneath it. */}
-      {hasEventTitle && site && <p className="stop-reader__site">{site.ancientName.en}</p>}
-      {site?.modernLocation && <p className="stop-reader__modern">{site.modernLocation.en}</p>}
-      <p className="stop-reader__date">
-        {stop.dateRange.display.en} · {stop.legMode}
-      </p>
+      <div className="claim-identity">
+        {hasEventTitle && site && <p className="stop-reader__site">{site.ancientName.en}</p>}
+        {site?.modernLocation && <p className="stop-reader__modern">{site.modernLocation.en}</p>}
+        <p className="stop-reader__date">
+          {stop.dateRange.display.en} · {stop.legMode}
+        </p>
+      </div>
       <SitePhoto siteId={stop.siteId} />
       {site && (
         <SiteViews
@@ -410,10 +414,7 @@ function StopReader({
           name={site.ancientName.en}
         />
       )}
-      <p className="stop-reader__summary">{stop.eventSummary.en}</p>
-      {site && <SiteCandidates site={site} bundle={bundle} />}
-      {site?.coordinates.disputes && <DisputeNote text={site.coordinates.disputes.en} />}
-      {stop.disputes && <DisputeNote text={stop.disputes.en} />}
+      <p className="stop-reader__summary claim-prose">{stop.eventSummary.en}</p>
       {stop.scriptureRefs.length > 0 && (
         <div className="stop-panel__scripture">
           {stop.scriptureRefs.map((r) => (
@@ -421,7 +422,12 @@ function StopReader({
           ))}
         </div>
       )}
-      <Citations ids={stop.citations} bundle={bundle} />
+      <ReferenceStack>
+        {site?.coordinates.disputes && <DisputeNote text={site.coordinates.disputes.en} />}
+        {stop.disputes && <DisputeNote text={stop.disputes.en} />}
+        <Citations ids={stop.citations} bundle={bundle} />
+      </ReferenceStack>
+      {site && <SiteCandidates site={site} bundle={bundle} />}
       <SiteExtras siteId={stop.siteId} bundle={bundle} />
     </article>
   );

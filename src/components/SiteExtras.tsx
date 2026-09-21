@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { BundleIndex } from '../content/useBundle';
 import type { TArtifact, TBattle, TBattleKind, TMiracle, TMiracleKind, TVideo, TWitness } from '../content/schema';
-import { Citations, ClaimMeta, DisputeNote, ScripturePassage } from '../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ReferenceStack, ScripturePassage } from '../content/citations';
 import artifactImages from '../content/artifactImages.json';
 
 interface ArtifactImageMeta {
@@ -42,9 +42,11 @@ export function ArtifactCard({ artifact, bundle }: { artifact: TArtifact; bundle
         <ClaimMeta confidence={artifact.confidence} reviewStatus={artifact.reviewStatus} />
       </header>
       {artifact.modernLocation && <p className="extra-card__meta">{artifact.modernLocation.en}</p>}
-      <p>{artifact.corroborates.en}</p>
-      <DisputeNote text={artifact.disputes?.en} />
-      <Citations ids={artifact.citations} bundle={bundle} />
+      <p className="claim-prose">{artifact.corroborates.en}</p>
+      <ReferenceStack>
+        <DisputeNote text={artifact.disputes?.en} />
+        <Citations ids={artifact.citations} bundle={bundle} />
+      </ReferenceStack>
     </article>
   );
 }
@@ -120,10 +122,12 @@ export function WitnessCard({ witness, bundle }: { witness: TWitness; bundle: Bu
       <p className="extra-card__meta">
         {witness.author.en} · {witness.work.en} · {witness.era.en}
       </p>
-      <p>{witness.attests.en}</p>
+      <p className="claim-prose">{witness.attests.en}</p>
       <WitnessTimeline witness={witness} />
-      <DisputeNote text={witness.disputes?.en} />
-      <Citations ids={witness.citations} bundle={bundle} />
+      <ReferenceStack>
+        <DisputeNote text={witness.disputes?.en} />
+        <Citations ids={witness.citations} bundle={bundle} />
+      </ReferenceStack>
     </article>
   );
 }
@@ -168,11 +172,13 @@ export function MiracleCard({ miracle, bundle }: { miracle: TMiracle; bundle: Bu
       <p className="extra-card__meta">
         {miracle.performerLabel.en} · {MIRACLE_KIND_LABEL[miracle.kind]} · {miracle.scriptureRefs.join('; ')}
       </p>
-      <p>{miracle.summary.en}</p>
-      {miracle.locationNote && <p className="extra-card__meta">📍 {miracle.locationNote.en}</p>}
+      {miracle.locationNote && <p className="extra-card__meta">{miracle.locationNote.en}</p>}
+      <p className="claim-prose">{miracle.summary.en}</p>
       <ScriptureToggle refs={miracle.scriptureRefs} />
-      <DisputeNote text={miracle.disputes?.en} />
-      <Citations ids={miracle.citations} bundle={bundle} />
+      <ReferenceStack>
+        <DisputeNote text={miracle.disputes?.en} />
+        <Citations ids={miracle.citations} bundle={bundle} />
+      </ReferenceStack>
     </article>
   );
 }
@@ -209,22 +215,24 @@ export function BattleCard({ battle, bundle }: { battle: TBattle; bundle: Bundle
         {battle.scriptureRefs.length > 0 && <> · {battle.scriptureRefs.join('; ')}</>}
       </p>
       <p className="extra-card__meta">{battle.combatants.en}</p>
-      <p>{battle.summary.en}</p>
-      <p>
+      {battle.locationNote && <p className="extra-card__meta">{battle.locationNote.en}</p>}
+      <p className="claim-prose">{battle.summary.en}</p>
+      <p className="claim-prose">
         <strong>Outcome:</strong> {battle.outcome.en}
       </p>
-      {battle.locationNote && <p className="extra-card__meta">📍 {battle.locationNote.en}</p>}
       <ScriptureToggle refs={battle.scriptureRefs} />
       {finds.length > 0 && (
-        <details className="citations">
+        <details className="citations corroborating-finds">
           <summary>Corroborating finds ({finds.length})</summary>
           {finds.map((a) => (
             <ArtifactCard key={a.id} artifact={a} bundle={bundle} />
           ))}
         </details>
       )}
-      <DisputeNote text={battle.disputes?.en} />
-      <Citations ids={battle.citations} bundle={bundle} />
+      <ReferenceStack>
+        <DisputeNote text={battle.disputes?.en} />
+        <Citations ids={battle.citations} bundle={bundle} />
+      </ReferenceStack>
     </article>
   );
 }
@@ -243,7 +251,7 @@ export function VideoEmbed({ video }: { video: TVideo }) {
         <h5>{video.title.en}</h5>
         {video.dateRange && <span className="video-card__era">{video.dateRange.display.en}</span>}
       </div>
-      <p>{video.summary.en}</p>
+      <p className="claim-prose">{video.summary.en}</p>
       {open ? (
         <div className="video-card__frame">
           <iframe
