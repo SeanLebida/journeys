@@ -49,7 +49,7 @@ Before publishing to any track (even internal testing), Google Play requires bas
 
 1. In the left navigation, go to **Policy > App content**.
 2. Complete each checklist item:
-   - **Privacy Policy**: Provide URL to your privacy policy (e.g. your hosted `PRIVACY.md` or GitHub raw link: `https://raw.githubusercontent.com/Seanl686/journeys/development/PRIVACY.md`).
+   - **Privacy Policy**: Provide URL to your privacy policy (e.g. your hosted `PRIVACY.md` or GitHub raw link: `https://raw.githubusercontent.com/SeanLebida/journeys/development/PRIVACY.md`).
    - **App access**: Select *All functionality is available without special access* (no user login required).
    - **Ads**: Select *No, my app does not contain ads*.
    - **Content ratings**: Start questionnaire:
