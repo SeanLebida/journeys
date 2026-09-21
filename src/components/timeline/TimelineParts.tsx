@@ -63,22 +63,143 @@ export function EraAxis({ era }: { era: Era }) {
   );
 }
 
+/** Measured legend for the chronology: time down, a ruler per era, lanes aside. */
+export function ChartKey() {
+  const { t } = useTranslation();
+  return (
+    <figure className="tl-key">
+      <figcaption className="tl-key__title">{t('modes.timeline.chart.keyTitle')}</figcaption>
+      <div className="tl-key__row">
+        <div className="tl-key__item">
+          <svg className="tl-key__fig" viewBox="0 0 88 104" aria-hidden="true">
+            <path className="tl-key__ink" d="M16 8v78M10 80l6 12 6-12" />
+            <path className="tl-key__ink" d="M12 24h8M12 48h8M12 72h8" />
+            <rect className="tl-key__sea" x="32" y="36" width="16" height="18" rx="1.5" />
+            <rect className="tl-key__clay" x="54" y="28" width="16" height="44" rx="1.5" />
+            <path className="tl-key__ink" d="M78 28v44M74 32l4-4 4 4M74 68l4 4 4-4" />
+          </svg>
+          <p>{t('modes.timeline.chart.keyDown')}</p>
+        </div>
+        <div className="tl-key__item">
+          <svg className="tl-key__fig" viewBox="0 0 104 104" aria-hidden="true">
+            <path className="tl-key__ink" d="M18 10v78M14 22h8M14 34h8M14 46h8M14 58h8M14 70h8M14 82h8" />
+            <path className="tl-key__ink" d="M86 10v78M82 28h8M82 52h8M82 76h8" />
+            <rect className="tl-key__clay" x="30" y="46" width="12" height="22" rx="1.5" />
+            <rect className="tl-key__sea" x="62" y="46" width="12" height="22" rx="1.5" />
+            <path className="tl-key__ink" d="M46 90l6 8 6-8" />
+          </svg>
+          <p>{t('modes.timeline.chart.keyScale')}</p>
+        </div>
+        <div className="tl-key__item">
+          <svg className="tl-key__fig" viewBox="0 0 120 104" aria-hidden="true">
+            <path className="tl-key__ink" d="M8 18h96M98 14l8 4-8 4" />
+            <rect className="tl-key__gold" x="8" y="32" width="10" height="62" rx="1" />
+            <rect className="tl-key__clay" x="26" y="32" width="28" height="62" rx="1.5" />
+            <rect className="tl-key__sea" x="60" y="32" width="28" height="62" rx="1.5" />
+            <rect className="tl-key__fade" x="94" y="32" width="22" height="62" rx="1.5" />
+          </svg>
+          <p>{t('modes.timeline.chart.keyLanes')}</p>
+        </div>
+      </div>
+    </figure>
+  );
+}
+
+function bandOf(eraId: string): HTMLElement | null {
+  return document.getElementById(eraId)?.querySelector<HTMLElement>('.tl-era__body') ?? null;
+}
+
+function scrollBand(eraId: string, dir: -1 | 1) {
+  const body = bandOf(eraId);
+  if (!body) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  body.scrollBy({
+    left: dir * Math.max(180, body.clientWidth * 0.72),
+    behavior: reduce ? 'auto' : 'smooth',
+  });
+}
+
+function jumpMeter(eraId: string, meter: HTMLElement, clientX: number) {
+  const body = bandOf(eraId);
+  if (!body) return;
+  const rect = meter.getBoundingClientRect();
+  const ratio = rect.width ? Math.min(1, Math.max(0, (clientX - rect.left) / rect.width)) : 0;
+  body.scrollLeft = ratio * Math.max(0, body.scrollWidth - body.clientWidth);
+}
+
 /** Cartographic continuation mark: this chart keeps going past the gutter.
  *  CSS hides it unless the band really overflows, so a chart that fits on a
- *  wide screen never tells the reader to scroll. */
-export function ChartScrollCue({ lanes }: { lanes: string[] }) {
+ *  wide screen never tells the reader to scroll. Arrows and the meter are
+ *  the how; they page the band and show how much of it is in view. */
+export function ChartScrollCue({
+  eraId,
+  lanes,
+  overflow,
+}: {
+  eraId: string;
+  lanes: string[];
+  overflow: string;
+}) {
   const { t } = useTranslation();
   if (lanes.length < 2) return null;
+  const atStart = !overflow.includes('start');
+  const atEnd = !overflow.includes('end');
   return (
-    <p className="tl-era__scroll-cue">
-      <span className="tl-era__scroll-cue-mark" aria-hidden="true">
-        <svg viewBox="0 0 28 12" width="28" height="12" focusable="false">
-          <path d="M1 2.5h7M1 9.5h7" />
-          <path d="M12 1.5l4.5 4.5L12 10.5M18.5 1.5L23 6l-4.5 4.5" />
-        </svg>
-      </span>
-      <span>{t('modes.timeline.chart.scrollCue', { lanes: lanes.join(' · ') })}</span>
-    </p>
+    <div className="tl-era__scroll-cue">
+      <p className="tl-era__scroll-cue-text">
+        <span className="tl-era__scroll-cue-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 12" width="28" height="12" focusable="false">
+            <path d="M1 2.5h7M1 9.5h7" />
+            <path d="M12 1.5l4.5 4.5L12 10.5M18.5 1.5L23 6l-4.5 4.5" />
+          </svg>
+        </span>
+        <span>{t('modes.timeline.chart.scrollCue', { lanes: lanes.join(' · ') })}</span>
+      </p>
+      <div className="tl-scroll">
+        <button
+          type="button"
+          className="tl-scroll__btn"
+          aria-label={t('modes.timeline.chart.scrollBack')}
+          disabled={atStart}
+          onClick={() => scrollBand(eraId, -1)}
+        >
+          <svg viewBox="0 0 12 20" width="12" height="20" aria-hidden="true">
+            <path d="M10 2L2 10l8 8" />
+          </svg>
+        </button>
+        <div
+          className="tl-scroll__meter"
+          aria-hidden="true"
+          onPointerDown={(e) => {
+            if (e.button !== 0) return;
+            const meter = e.currentTarget;
+            meter.setPointerCapture(e.pointerId);
+            jumpMeter(eraId, meter, e.clientX);
+          }}
+          onPointerMove={(e) => {
+            if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+            jumpMeter(eraId, e.currentTarget, e.clientX);
+          }}
+        >
+          <span className="tl-scroll__thumb" />
+        </div>
+        <button
+          type="button"
+          className="tl-scroll__btn"
+          aria-label={t('modes.timeline.chart.scrollOn')}
+          disabled={atEnd}
+          onClick={() => scrollBand(eraId, 1)}
+        >
+          <svg viewBox="0 0 12 20" width="12" height="20" aria-hidden="true">
+            <path d="M2 2l8 8-8 8" />
+          </svg>
+        </button>
+      </div>
+      <p className="tl-scroll__how">
+        <span className="tl-scroll__how-touch">{t('modes.timeline.chart.howTouch')}</span>
+        <span className="tl-scroll__how-desk">{t('modes.timeline.chart.howDesk')}</span>
+      </p>
+    </div>
   );
 }
 
@@ -88,6 +209,9 @@ export function ChartOverflowEdge() {
   const { t } = useTranslation();
   return (
     <div className="tl-era__edge" aria-hidden="true">
+      <svg className="tl-era__edge-arrow" viewBox="0 0 12 20" width="12" height="20" focusable="false">
+        <path d="M2 2l8 8-8 8" />
+      </svg>
       <span className="tl-era__edge-label">{t('modes.timeline.chart.moreLanes')}</span>
     </div>
   );

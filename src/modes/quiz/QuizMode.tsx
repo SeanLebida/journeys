@@ -7,7 +7,7 @@ import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { haversine } from '../../map/route';
-import { Citations } from '../../content/citations';
+import { Citations, ReferenceStack } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { useQuizStore } from '../../state/useQuizStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
@@ -106,9 +106,11 @@ function Explanation({ q, bundle }: { q: TQuizQuestion; bundle: BundleIndex }) {
   // mounts after the question is resolved), so it never gives anything away.
   return (
     <div className="quiz-explanation">
-      <p>{q.explanation.en}</p>
+      <p className="claim-prose">{q.explanation.en}</p>
       {q.answerSiteId && <SitePhoto siteId={q.answerSiteId} />}
-      <Citations ids={q.citations} bundle={bundle} />
+      <ReferenceStack>
+        <Citations ids={q.citations} bundle={bundle} />
+      </ReferenceStack>
     </div>
   );
 }

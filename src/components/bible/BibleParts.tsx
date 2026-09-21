@@ -138,17 +138,19 @@ export function VerseRowView({
       >
         {row.verse}
       </button>
-      <span className="bible-verse__text">{row.text}</span>
-      {note?.text && (
-        <span className="bible-verse__flag" title={note.text} aria-label="has a note">
-          ✎
-        </span>
-      )}
-      {mapped && (
-        <span className="bible-verse__flag bible-verse__flag--map" aria-label="mapped in the atlas" title="Mapped in the atlas">
-          ◍
-        </span>
-      )}
+      <span className="bible-verse__text">
+        {row.text}
+        {note?.text && (
+          <span className="bible-verse__flag" title={note.text} aria-label="has a note">
+            ✎
+          </span>
+        )}
+        {mapped && (
+          <span className="bible-verse__flag bible-verse__flag--map" aria-label="mapped in the atlas" title="Mapped in the atlas">
+            ◍
+          </span>
+        )}
+      </span>
     </p>
   );
 }
@@ -275,8 +277,8 @@ export function CrossRefPanel({ refs, chapterLabel }: { refs: CrossRef[]; chapte
                 {r.raw}
               </a>
             </p>
-            <strong>{r.label}</strong>
-            {r.detail && <span className="bible-xrefs__detail"> — {r.detail}</span>}
+            <p className="bible-xrefs__claim">{r.label}</p>
+            {r.detail && <p className="bible-xrefs__detail">{r.detail}</p>}
             <span className="bible-xrefs__links">
               {r.journeyId && <Link to={`/trace/${r.journeyId}`}>Trace →</Link>}
               {r.siteId && <Link to={`/atlas?site=${r.siteId}`}>Map →</Link>}

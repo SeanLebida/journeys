@@ -652,8 +652,8 @@ a {
   }
 }
 .mode-panel__body {
-  color: var(--text-muted);
-  line-height: 1.8;
+  color: var(--text);
+  line-height: var(--prose-leading);
 }
 
 /* ---- Home ---- */
@@ -762,19 +762,31 @@ a {
 .claim-meta {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.3rem 0.45rem;
+  gap: var(--space-hair) 0.4rem;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
+/* A review mark is a limit on who checked the claim, not a seal. No pill. */
 .review {
-  font-weight: 600;
-  font-size: 0.68rem;
-  letter-spacing: 0.01em;
-  padding: 0.08rem 0.4rem;
-  border-radius: 999px;
-  border: 1px solid currentColor;
-  white-space: nowrap;
-  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
+}
+.review::before {
+  content: '';
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  box-sizing: border-box;
+  border: 1.5px dashed currentColor;
+  border-radius: 50%;
+}
+.review__gloss {
+  display: none;
 }
 .review--self-reviewed {
   color: var(--text-muted);
@@ -782,11 +794,71 @@ a {
 .review--scholar-approved {
   color: var(--c-high);
 }
+.review--scholar-approved::before {
+  border-style: solid;
+  background: currentColor;
+}
 .review--draft {
   color: var(--c-medium);
 }
+.review--draft::before {
+  border-style: solid;
+  border-radius: 2px;
+}
+/* On the claim you are reading, the limit gets its own line and its sentence. */
+.stop-reader__meta .claim-meta,
+.stop-panel__head .claim-meta {
+  display: contents;
+}
+.stop-reader__meta .review,
+.stop-panel__head .review {
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+.stop-reader__meta .review__label,
+.stop-panel__head .review__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.stop-reader__meta .review__label::before,
+.stop-panel__head .review__label::before {
+  content: '';
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  box-sizing: border-box;
+  border: 1.5px dashed currentColor;
+  border-radius: 50%;
+}
+.stop-panel__head .review--scholar-approved .review__label::before,
+.stop-reader__meta .review--scholar-approved .review__label::before {
+  border-style: solid;
+  background: currentColor;
+}
+.stop-panel__head .review--draft .review__label::before,
+.stop-reader__meta .review--draft .review__label::before {
+  border-style: solid;
+  border-radius: 2px;
+}
+.stop-reader__meta .review::before,
+.stop-panel__head .review::before {
+  content: none;
+}
+.stop-reader__meta .review__gloss,
+.stop-panel__head .review__gloss {
+  display: block;
+  max-width: var(--measure);
+  font-weight: 400;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
+}
 .site-candidates {
-  margin: 0.75rem 0;
+  margin: var(--space-apart) 0 0;
   padding: var(--card-inset);
   border: 1px dashed var(--border);
   border-radius: var(--r-sm);
@@ -823,11 +895,7 @@ a {
   background: transparent;
 }
 .site-candidates__head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.55rem;
-  align-items: baseline;
-  justify-content: space-between;
+  margin: 0;
 }
 .site-candidates__coords {
   margin: 0.15rem 0 0;
@@ -860,8 +928,10 @@ a {
 .dispute,
 .citations,
 .geometry-note {
-  margin: 0.6rem 0;
-  font-size: 0.85rem;
+  margin: var(--space-hair) 0 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
 }
 .dispute > summary,
 .citations > summary,
@@ -870,8 +940,15 @@ a {
   color: var(--link);
   font-weight: 600;
 }
+.geometry-note__content {
+  margin-top: var(--space-hair);
+}
+.geometry-note__text {
+  margin: 0 0 var(--space-hair);
+  color: var(--text-muted);
+}
 .geometry-note__list {
-  margin: 0.4rem 0 0;
+  margin: var(--space-hair) 0 0;
   padding: 0;
   list-style: none;
   color: var(--text-muted);
@@ -907,7 +984,7 @@ a {
   padding-left: 0.6rem;
 }
 .citations__list {
-  margin: 0.4rem 0 0;
+  margin: var(--space-hair) 0 0;
   padding-left: 1.1rem;
 }
 .citations__kind {
@@ -915,11 +992,14 @@ a {
   font-size: 0.75rem;
 }
 .scripture {
-  margin: 0.5rem 0;
-  padding: 0.6rem 0.8rem;
+  margin: var(--space-near) 0 0;
+  padding: 0.65rem 0.85rem;
   border-left: 3px solid var(--gold);
   background: color-mix(in srgb, var(--gold) 8%, transparent);
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+.scripture + .scripture {
+  margin-top: var(--space-apart);
 }
 .scripture__text {
   margin: 0;
@@ -934,10 +1014,14 @@ a {
   margin-right: 0.1em;
 }
 .scripture__ref {
-  display: block;
-  margin-top: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-hair) 0.75rem;
+  margin-top: var(--space-near);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
   font-style: normal;
 }
@@ -1370,10 +1454,11 @@ a {
 /* ---- Stop reader (the arrived-at stop, and only it) ---- */
 .stop-reader__meta {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: var(--space-hair) 0.65rem;
+  margin-bottom: var(--space-near);
 }
 .stop-reader__index {
   font-size: 0.72rem;
@@ -1388,21 +1473,20 @@ a {
   font-weight: 500;
   color: var(--text);
 }
-.stop-reader__modern {
-  margin: 0.1rem 0 0;
-  font-size: 0.82rem;
+.stop-reader__modern,
+.stop-reader__date {
+  margin: 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
 }
 .stop-reader__date {
-  margin: 0.1rem 0 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
   text-transform: capitalize;
 }
 .stop-reader__summary {
-  margin: 0.7rem 0;
+  margin: var(--space-apart) 0 0;
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: var(--prose-leading);
   color: var(--text);
 }
 
@@ -1704,33 +1788,38 @@ a {
     padding: 0;
   }
 }
+.stop-panel__head h4,
+.stop-panel__head h3,
+.extra-card__head h5,
+.video-card__head h5 {
+  flex: 0 1 auto;
+}
 .stop-panel__head h4 {
   margin: 0;
   font-size: 0.95rem;
   font-family: var(--font-serif);
   line-height: 1.3;
-  flex: 1;
   min-width: 0;
   word-wrap: break-word;
 }
 .stop-panel__head {
   display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-hair) 0.65rem;
+  justify-content: flex-start;
 }
 .stop-panel__head h3 {
   margin: 0;
 }
-.stop-panel__modern {
-  margin: 0.1rem 0;
-  font-size: 0.82rem;
+.stop-panel__modern,
+.stop-panel__date {
+  margin: 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
 }
 .stop-panel__date {
-  margin: 0.1rem 0 0.5rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
   text-transform: capitalize;
 }
 .stop-visit {
@@ -1740,9 +1829,10 @@ a {
 }
 .stop-visit__head {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-hair) 0.65rem;
+  justify-content: flex-start;
 }
 .stop-visit__head h4 {
   margin: 0;
@@ -1762,21 +1852,29 @@ a {
   border-left: 2px solid var(--border);
   padding-left: 0.6rem;
 }
+.stop-visit__person {
+  margin: 0;
+}
 .stop-visit__people p,
 .stop-visit__artifacts p {
-  margin: 0.2rem 0;
-  font-size: 0.88rem;
+  margin: var(--space-hair) 0 0;
+  font-size: 0.92rem;
 }
 .stop-visit__terms {
-  margin: 0.5rem 0;
-  font-size: 0.85rem;
+  margin: var(--space-apart) 0 0;
+  font-size: 0.92rem;
+}
+.stop-visit__terms > div + div {
+  margin-top: var(--space-apart);
 }
 .stop-visit__terms dt {
   font-weight: 600;
 }
 .stop-visit__terms dd {
-  margin: 0 0 0.4rem;
-  color: var(--text-muted);
+  margin: var(--space-hair) 0 0;
+  max-width: var(--measure);
+  line-height: var(--prose-leading);
+  color: var(--text);
 }
 
 /* ---- Floating map layer widget ----
@@ -2046,10 +2144,10 @@ a {
   background: color-mix(in srgb, var(--c-disputed) 14%, transparent);
 }
 .quiz-explanation {
-  margin-top: 0.7rem;
-  padding: 0.55rem var(--card-inset-inline) 0.15rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  margin-top: var(--space-apart);
+  padding: var(--space-near) var(--card-inset-inline) var(--card-inset-block);
+  font-size: 0.95rem;
+  line-height: var(--prose-leading);
   border-left: 3px solid var(--gold);
 }
 .quiz-score {
@@ -2354,13 +2452,30 @@ a {
 .journey-list__item--thumbed {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.8rem;
 }
 .journey-list__body {
   display: grid;
-  gap: 0.2rem;
+  gap: 0.05rem;
+  align-items: start;
   min-width: 0;
+}
+.journey-list__date {
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+.journey-list__summary {
+  margin-top: var(--space-hair);
+  font-size: 0.92rem;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.journey-era__range {
+  margin: var(--space-hair) 0 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
 }
 .home__mode-card .site-thumb {
   width: 100%;
@@ -2371,15 +2486,15 @@ a {
 
 /* ── Site extras: archaeological finds, witnesses, videos ────────────────── */
 .site-extras {
-  margin-top: 1rem;
+  margin-top: var(--space-apart);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-apart);
 }
 .site-extras__group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: var(--space-near);
 }
 .site-extras__title {
   font-family: var(--font-heading);
@@ -2419,12 +2534,15 @@ a {
 .extra-card__figure figcaption a {
   color: inherit;
 }
-.extra-card__head {
+.extra-card__head,
+.video-card__head,
+.site-candidates__head {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: flex-start;
+  column-gap: 0.65rem;
+  row-gap: var(--space-hair);
 }
 .extra-card__head h5 {
   font-family: var(--font-heading);
@@ -2433,13 +2551,16 @@ a {
   margin: 0;
 }
 .extra-card__meta {
-  font-size: 0.78rem;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
-  margin: 0.15rem 0 0.4rem;
+  margin: var(--space-hair) 0 0;
+  max-width: var(--measure);
 }
-.extra-card p {
-  font-size: 0.9rem;
-  margin: 0.3rem 0;
+.extra-card .claim-prose,
+.video-card .claim-prose {
+  font-size: 0.95rem;
+  margin: var(--space-near) 0 0;
 }
 
 /* Miracle card: lazy scripture expansion */
@@ -2463,12 +2584,6 @@ a {
   padding: 0.7rem 0.8rem;
   margin: 0.5rem 0;
 }
-.video-card__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
 .video-card__head h5 {
   font-family: var(--font-heading);
   font-size: 0.95rem;
@@ -2479,10 +2594,6 @@ a {
   font-size: 0.72rem;
   color: var(--text-muted);
   white-space: nowrap;
-}
-.video-card p {
-  font-size: 0.88rem;
-  margin: 0.3rem 0;
 }
 .video-card__play {
   border: 1px solid var(--accent);
@@ -2510,7 +2621,9 @@ a {
   border: 0;
 }
 .video-card__credit {
-  font-size: 0.7rem;
+  margin-top: var(--space-near);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
 }
 
@@ -2525,7 +2638,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--accent);
-  margin: 0 0 0.5rem;
+  margin: 0;
 }
 .atlas-period__eras {
   display: flex;
@@ -3028,16 +3141,23 @@ a {
    the way a folded chronology chart tells you the sheet continues. */
 .tl-era__scroll-cue {
   display: flex;
-  align-items: center;
-  gap: 0.55rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-near);
   margin: 0;
-  padding: 0.4rem 0.85rem;
+  padding: 0.55rem 0.85rem 0.65rem;
   border: 1px solid var(--border);
   border-block: 0;
   background: color-mix(in srgb, var(--gold) 9%, var(--surface-raised));
-  font-size: 0.78rem;
-  line-height: 1.4;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
   color: var(--text-muted);
+}
+.tl-era__scroll-cue-text {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
 }
 /* Both sideways cues are claims about the reader's viewport, not about the
    data: on a wide screen the band often fits and "scroll sideways" is then a
@@ -3076,10 +3196,20 @@ a {
 .tl-era__body[data-overflow~='end'] .tl-era__edge {
   display: block;
 }
+.tl-era__edge-arrow {
+  position: absolute;
+  top: 42%;
+  right: 0.45rem;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
 .tl-era__edge-label {
   position: absolute;
-  top: calc(var(--lane-head-h) + 0.35rem);
-  right: 0.35rem;
+  bottom: 0.85rem;
+  right: 0.2rem;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 0.62rem;
@@ -3522,8 +3652,12 @@ a {
   line-height: 1.75;
 }
 .bible-verse {
-  margin: 0 0 0.5rem;
-  padding: 0.15rem 0.25rem;
+  display: grid;
+  grid-template-columns: 2.15rem minmax(0, 1fr);
+  column-gap: 0.55rem;
+  align-items: baseline;
+  margin: 0 0 0.85rem;
+  padding: 0.08rem 0.15rem;
   border-radius: var(--r-sm);
   scroll-margin-top: 4rem;
 }
@@ -3538,28 +3672,35 @@ a {
 .bible-verse[data-highlight='terracotta'] { background: color-mix(in srgb, var(--terracotta) 20%, transparent); }
 .bible-verse[data-highlight='violet'] { background: color-mix(in srgb, var(--violet) 22%, transparent); }
 .bible-verse__num {
-  min-width: 1.9rem;
-  min-height: 1.9rem;
-  margin-right: 0.3rem;
-  padding: 0 0.25rem;
+  grid-column: 1;
+  justify-self: end;
+  min-width: 1.6rem;
+  min-height: 1.6rem;
+  margin: 0;
+  padding: 0 0.15rem;
   border: 1px solid transparent;
   border-radius: var(--r-sm);
   background: none;
   color: var(--accent);
   font: inherit;
-  font-size: 0.72rem;
+  font-size: var(--ref-size);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  vertical-align: super;
+  line-height: 1.2;
   cursor: pointer;
+}
+.bible-verse__text {
+  grid-column: 2;
+  min-width: 0;
 }
 .bible-verse__num:hover,
 .bible-verse__num:focus-visible {
   border-color: var(--accent);
 }
 .bible-verse__flag {
-  margin-left: 0.3rem;
-  font-size: 0.75rem;
+  margin-left: 0.35rem;
+  font-family: var(--font-body);
+  font-size: var(--ref-size);
   color: var(--text-muted);
 }
 .bible-verse__flag--map {
@@ -3719,9 +3860,9 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 0.4rem;
-  margin: 0 0 0.15rem;
+  justify-content: flex-start;
+  gap: var(--space-hair) 0.6rem;
+  margin: 0;
 }
 .bible-xrefs__kind {
   font-size: 0.66rem;
@@ -3733,15 +3874,24 @@ a {
   font-size: 0.74rem;
   font-variant-numeric: tabular-nums;
 }
+.bible-xrefs__claim {
+  margin: var(--space-hair) 0 0;
+  color: var(--text);
+  font-weight: 600;
+}
 .bible-xrefs__detail {
+  margin: 0;
   color: var(--text-muted);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
 }
 .bible-xrefs__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
+  align-items: baseline;
+  gap: var(--space-hair) 0.75rem;
+  margin-top: var(--space-near);
+  font-size: var(--ref-size);
 }
 
 /* Book and chapter grids — fluid, no fixed column counts. */
@@ -3880,20 +4030,29 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-apart);
 }
 .bible__search-list li {
-  padding: 0.5rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-hair);
+  padding: var(--space-near) 0.7rem;
   border-left: 3px solid var(--border);
   background: var(--surface-raised);
-  font-size: 0.88rem;
-  line-height: 1.5;
+}
+.bible__search-list .backlink {
+  margin: 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
 }
 .bible__search-list p {
-  margin: 0.2rem 0 0;
+  margin: 0;
+  max-width: var(--measure);
   font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: var(--prose-leading);
+  color: var(--text);
 }
 .bible__sourcing {
   margin-top: 1.25rem;
@@ -3905,8 +4064,389 @@ a {
 }
 /* "open in the reader →" beside a quoted passage's citation line. */
 .scripture__open {
-  margin-left: 0.5rem;
-  font-size: 0.75rem;
+  margin-left: 0;
+  font-size: inherit;
   font-style: normal;
   white-space: nowrap;
+}
+
+/* ══ Proximity: dense claims, light references ══════════════════════════════
+   A paragraph is the claim. Dates, places, confidence, citations, and
+   disputes are the notes on that claim: smaller, quieter, and closer to it
+   than the next claim is. Everything in a claim shares the left edge. */
+.claim-prose {
+  margin: var(--space-near) 0 0;
+  max-width: var(--measure);
+  color: var(--text);
+  line-height: var(--prose-leading);
+}
+.claim-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.05rem;
+  margin: var(--space-hair) 0 0;
+  max-width: var(--measure);
+}
+.claim-aside {
+  color: var(--text-muted);
+  font-size: var(--ref-size);
+  font-weight: 400;
+  line-height: var(--ref-leading);
+}
+.ref-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-hair);
+  margin-top: var(--space-near);
+  padding-top: var(--space-near);
+  border-top: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+}
+.ref-stack:not(:has(*)) {
+  display: none;
+}
+.ref-stack > :where(.citations, .dispute, .geometry-note) {
+  margin: 0;
+}
+.extra-card > .ref-stack,
+.lesson-step > .ref-stack,
+.quiz-explanation > .ref-stack,
+.video-card > .ref-stack {
+  margin-bottom: 0;
+}
+.corroborating-finds {
+  margin-top: var(--space-apart);
+  font-size: 0.9rem;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.corroborating-finds > .extra-card {
+  margin-top: var(--space-near);
+}
+
+.home__intro,
+.sourcing__body > p,
+.credits-note,
+.quiz-explanation .claim-prose,
+.lesson-step__body {
+  max-width: var(--measure);
+}
+.home__intro {
+  margin: 0;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.sourcing__body > p {
+  margin: 0;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.sourcing__confidence {
+  margin: var(--space-apart) 0 0;
+  gap: var(--space-near);
+}
+.sourcing__row {
+  grid-template-columns: minmax(7.5rem, 10rem) minmax(0, 1fr);
+  gap: var(--space-hair) 0.75rem;
+}
+.sourcing__row dd {
+  margin: 0;
+  color: var(--text);
+  line-height: var(--prose-leading);
+}
+@media (max-width: 420px) {
+  .sourcing__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.credits-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-near);
+  max-width: var(--measure);
+  line-height: var(--prose-leading);
+}
+.credits-list__license {
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+.credits-note {
+  margin-top: var(--space-apart);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+
+.site-photo {
+  margin: var(--space-near) 0 0;
+}
+.site-photo figcaption {
+  margin-top: var(--space-hair);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+.site-view-links {
+  margin: var(--space-hair) 0 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+
+.witness-timeline {
+  margin: var(--space-apart) 0 0;
+}
+.witness-timeline__legend {
+  margin: var(--space-near) 0 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
+}
+.witness-timeline__gap {
+  margin: var(--space-near) 0 0;
+  max-width: var(--measure);
+  font-size: 0.92rem;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+
+.tl-scale-note {
+  margin: 0;
+  max-width: var(--measure);
+  border-radius: 0;
+}
+.home__header + .tl-scale-note {
+  margin-top: var(--space-near);
+  border-radius: 0 var(--r-sm) 0 0;
+}
+.tl-scale-note + .tl-scale-note {
+  margin-top: 0;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+.tl-scale-note:has(+ .tl-jump) {
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+}
+@media (min-width: 1024px) {
+  /* Home and Credits are documents in the sidebar. The sheet's overflow:hidden
+     would clip the modes and the sourcing note with no way to scroll to them. */
+  .mode-panel--page {
+    overflow: auto;
+  }
+}
+.tl-jump {
+  margin-top: var(--space-apart);
+}
+.tl-detail .claim-prose {
+  margin-top: var(--space-near);
+}
+.tl-detail__facts {
+  margin: var(--space-near) 0 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+.ref-stack .tl-detail__links {
+  margin: 0;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+
+.quiz-explanation .claim-prose {
+  margin-top: 0;
+}
+.lesson-step__body {
+  color: var(--text);
+  line-height: var(--prose-leading);
+}
+.lesson-step .scripture:first-of-type,
+.lesson-step .site-photo {
+  margin-top: var(--space-apart);
+}
+
+.bible__sourcing {
+  max-width: var(--measure);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+}
+.bible-xrefs__list {
+  gap: var(--space-near);
+}
+.bible-notes-list {
+  gap: var(--space-apart);
+}
+.bible-notes-list__text {
+  margin: var(--space-hair) 0 0;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.journey-trace__date {
+  margin: 0 0 var(--space-hair);
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
+}
+
+/* Chart legend: one measured drawing per reading rule, then the dating notes. */
+.tl-guide {
+  margin-top: var(--space-near);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+.tl-guide .tl-scale-note {
+  margin: 0;
+  max-width: var(--measure);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+.tl-key {
+  margin: 0;
+  padding: var(--card-inset);
+}
+.tl-key__title {
+  margin: 0 0 var(--space-near);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: var(--prose-leading);
+  color: var(--text);
+}
+.tl-key__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-apart);
+  align-items: start;
+}
+.tl-key__item p {
+  margin: var(--space-hair) 0 0;
+  max-width: 36ch;
+  font-size: var(--ref-size);
+  line-height: var(--ref-leading);
+  color: var(--text-muted);
+}
+.tl-key__fig {
+  display: block;
+  width: 100%;
+  max-width: 8.5rem;
+  height: auto;
+}
+.tl-key__ink {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.tl-key__clay {
+  fill: color-mix(in srgb, var(--terracotta) 55%, var(--surface));
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+.tl-key__sea {
+  fill: color-mix(in srgb, var(--sea) 42%, var(--surface));
+  stroke: var(--sea);
+  stroke-width: 1.2;
+}
+.tl-key__gold {
+  fill: color-mix(in srgb, var(--gold) 70%, var(--surface));
+  stroke: var(--gold);
+  stroke-width: 1.2;
+}
+.tl-key__fade {
+  fill: color-mix(in srgb, var(--text) 8%, var(--surface));
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 2.5 2;
+}
+@media (max-width: 720px) {
+  .tl-key__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sideways control. The thumb width and offset come from the band's scroll. */
+.tl-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.tl-scroll__btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+}
+.tl-scroll__btn svg {
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.tl-scroll__btn:hover:not(:disabled),
+.tl-scroll__btn:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.tl-scroll__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.tl-scroll__meter {
+  position: relative;
+  flex: 1 1 auto;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--border) 85%, transparent);
+  cursor: ew-resize;
+  touch-action: none;
+}
+.tl-scroll__thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--tl-pos, 0) * (100% - var(--tl-thumb, 1) * 100%));
+  width: calc(var(--tl-thumb, 1) * 100%);
+  min-width: 1.25rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.tl-scroll__how {
+  margin: 0;
+}
+.tl-scroll__how-desk {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tl-scroll__how-touch {
+    display: none;
+  }
+  .tl-scroll__how-desk {
+    display: inline;
+  }
+}
+@media (max-width: 560px) {
+  .tl-scroll__btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+/* A rival's coordinate and its citations are both notes on that pin.
+   The stack hairline is for the gap under a prose claim. */
+.site-candidates__list {
+  gap: var(--space-apart);
+}
+.site-candidates .ref-stack {
+  margin-top: var(--space-hair);
+  padding-top: 0;
+  border-top: 0;
 }
