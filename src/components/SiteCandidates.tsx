@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { ClaimMeta, Citations } from '../content/citations';
+import { Citations, ClaimMeta, ReferenceStack } from '../content/citations';
 import type { TSite } from '../content/schema';
 import type { BundleIndex } from '../content/useBundle';
 
@@ -34,7 +34,9 @@ export function SiteCandidates({ site, bundle }: { site: TSite; bundle: BundleIn
                 <ClaimMeta confidence={c.confidence} />
               </div>
               <p className="site-candidates__coords">{formatCoords(c.lat, c.lon)}</p>
-              <Citations ids={c.citations} bundle={bundle} />
+              <ReferenceStack>
+                <Citations ids={c.citations} bundle={bundle} />
+              </ReferenceStack>
             </div>
           </li>
         ))}

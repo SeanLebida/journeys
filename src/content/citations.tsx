@@ -1,3 +1,4 @@
+import { Children, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { bibleHref } from './scriptureIndex';
@@ -15,14 +16,31 @@ export function ConfidenceBadge({ confidence }: { confidence: TConfidence }) {
   );
 }
 
-/** Self-reviewed vs scholar-approved — the status the release gate actually checks. */
+/**
+ * Who checked the claim. This is a limit on authenticity, not a seal:
+ * "self-reviewed" means this project checked it and a specialist has not
+ * signed it. The words say that. The longer sentence is the gloss.
+ */
 export function ReviewBadge({ status }: { status: TReviewStatus }) {
   const { t } = useTranslation();
+  const label = t(`sourcing.reviewLabel.${status}`);
+  const meaning = t(`sourcing.review.${status}`);
   return (
-    <span className={`review review--${status}`} title={t(`sourcing.review.${status}`)}>
-      {t(`sourcing.reviewLabel.${status}`)}
+    <span className={`review review--${status}`} title={meaning} aria-label={`${label}. ${meaning}`}>
+      <span className="review__label">{label}</span>
+      <span className="review__gloss">{meaning}</span>
     </span>
   );
+}
+
+/**
+ * Light notes that belong to the claim above them (a dispute, the citations,
+ * a geometry caveat). Components that render nothing leave no box: an empty
+ * stack is hidden in CSS via `:not(:has(*))`.
+ */
+export function ReferenceStack({ children }: { children: ReactNode }) {
+  if (Children.toArray(children).length === 0) return null;
+  return <div className="ref-stack">{children}</div>;
 }
 
 /** Confidence + review status as one honesty cluster. */
@@ -74,8 +92,8 @@ export function RouteGeometryNote({
   return (
     <details className="geometry-note">
       <summary>{t('sourcing.geometry.title')}</summary>
-      <div className="geometry-note__content" style={{ marginTop: '0.4rem' }}>
-        {note && <p className="geometry-note__text" style={{ margin: '0 0 0.4rem', color: 'var(--text-muted)' }}>{note}</p>}
+      <div className="geometry-note__content">
+        {note && <p className="geometry-note__text">{note}</p>}
         {used.length > 0 && (
           <ul className="geometry-note__list">
             {used.map((g) => (
@@ -138,7 +156,9 @@ export function ScripturePassage({ raw }: { raw: string }) {
         ))}
       </p>
       <cite className="scripture__ref">
-        {raw} ({translation})
+        <span>
+          {raw} ({translation})
+        </span>
         {/* The way out of a quoted fragment and into the chapter around it —
             the reader opens on this passage with the verse scrolled to. */}
         <Link className="scripture__open" to={bibleHref(raw)}>

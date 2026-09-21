@@ -19,7 +19,7 @@ import {
   setSelectedBattleArea,
   siteIdFromFeature,
 } from '../../map/layers/atlas';
-import { Citations, ClaimMeta, DisputeNote, ScripturePassage } from '../../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ReferenceStack, ScripturePassage } from '../../content/citations';
 import { SitePhoto } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
@@ -306,18 +306,22 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
               reviewStatus={site.coordinates.reviewStatus}
             />
           </header>
-          {site.modernName && <p className="stop-panel__modern">{site.modernName.en}</p>}
-          <p className="stop-panel__modern">{site.modernLocation.en}</p>
+          <div className="claim-identity">
+            {site.modernName && <p className="stop-panel__modern">{site.modernName.en}</p>}
+            <p className="stop-panel__modern">{site.modernLocation.en}</p>
+          </div>
           <SitePhoto siteId={site.id} />
           <SiteViews
             lat={site.coordinates.value.lat}
             lon={site.coordinates.value.lon}
             name={site.ancientName.en}
           />
-          <p>{site.summary.en}</p>
-          <DisputeNote text={site.coordinates.disputes?.en} />
+          <p className="claim-prose">{site.summary.en}</p>
+          <ReferenceStack>
+            <DisputeNote text={site.coordinates.disputes?.en} />
+            <Citations ids={[...new Set([...site.citations, ...site.coordinates.citations])]} bundle={bundle} />
+          </ReferenceStack>
           <SiteCandidates site={site} bundle={bundle} />
-          <Citations ids={[...new Set([...site.citations, ...site.coordinates.citations])]} bundle={bundle} />
           <SiteExtras siteId={site.id} bundle={bundle} />
 
           {stopsHere.map((stop) => {
@@ -330,7 +334,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                   </h4>
                   <ClaimMeta confidence={stop.confidence} reviewStatus={stop.reviewStatus} />
                 </header>
-                <p>{stop.eventSummary.en}</p>
+                <p className="claim-prose">{stop.eventSummary.en}</p>
 
                 {stop.scriptureRefs.map((r) => (
                   <ScripturePassage key={r} raw={r} />
@@ -343,9 +347,14 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                       if (!person) return null;
                       return (
                         <li key={pid}>
-                          <strong>{person.name.en}</strong> — {person.role.en}
-                          <p>{person.summary.en}</p>
-                          <Citations ids={person.citations} bundle={bundle} />
+                          <p className="stop-visit__person">
+                            <strong>{person.name.en}</strong>
+                            <span className="claim-aside"> — {person.role.en}</span>
+                          </p>
+                          <p className="claim-prose">{person.summary.en}</p>
+                          <ReferenceStack>
+                            <Citations ids={person.citations} bundle={bundle} />
+                          </ReferenceStack>
                         </li>
                       );
                     })}
@@ -359,11 +368,15 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                       if (!artifact) return null;
                       return (
                         <li key={aid}>
-                          <strong>{artifact.name.en}</strong>
-                          <ClaimMeta confidence={artifact.confidence} reviewStatus={artifact.reviewStatus} />
-                          <p>{artifact.corroborates.en}</p>
-                          <DisputeNote text={artifact.disputes?.en} />
-                          <Citations ids={artifact.citations} bundle={bundle} />
+                          <div className="stop-visit__head">
+                            <strong>{artifact.name.en}</strong>
+                            <ClaimMeta confidence={artifact.confidence} reviewStatus={artifact.reviewStatus} />
+                          </div>
+                          <p className="claim-prose">{artifact.corroborates.en}</p>
+                          <ReferenceStack>
+                            <DisputeNote text={artifact.disputes?.en} />
+                            <Citations ids={artifact.citations} bundle={bundle} />
+                          </ReferenceStack>
                         </li>
                       );
                     })}
@@ -385,8 +398,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                   </dl>
                 )}
 
-                <DisputeNote text={stop.disputes?.en} />
-                <Citations ids={stop.citations} bundle={bundle} />
+                <ReferenceStack>
+                  <DisputeNote text={stop.disputes?.en} />
+                  <Citations ids={stop.citations} bundle={bundle} />
+                </ReferenceStack>
               </section>
             );
           })}
