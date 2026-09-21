@@ -67,6 +67,16 @@
   --card-inset-block: 0.85rem;
   --card-inset-inline: 1rem;
   --card-inset: var(--card-inset-block) var(--card-inset-inline);
+  /* Proximity: a claim and the light notes that annotate it sit closer
+     together than two claims do. Hair is inside a note cluster, near is
+     claim-to-note, apart is claim-to-claim. */
+  --space-hair: 0.2rem;
+  --space-near: 0.45rem;
+  --space-apart: 1.2rem;
+  --prose-leading: 1.62;
+  --ref-size: 0.78rem;
+  --ref-leading: 1.4;
+  --measure: 68ch;
   --shadow-1: 0 1px 2px rgba(11, 16, 32, 0.12), 0 4px 16px rgba(11, 16, 32, 0.1);
   --shadow-2: 0 8px 40px rgba(11, 16, 32, 0.28);
   --maxw: 720px;

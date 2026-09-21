@@ -37,9 +37,14 @@ export function useScrollOverflow(rootRef: RefObject<HTMLElement | null>, deps: 
       const next: OverflowMap = {};
       for (const band of bands()) {
         const eraId = band.closest('.tl-era')?.id;
+        const era = band.closest<HTMLElement>('.tl-era');
         const extra = band.scrollWidth - band.clientWidth;
-        if (extra <= 2) {
+        // The lane row keeps a right gutter. A few dozen pixels of overflow is
+        // that gutter, not a lane past the edge — don't tell the reader to scroll.
+        if (extra <= 40) {
           delete band.dataset.overflow;
+          era?.style.removeProperty('--tl-pos');
+          era?.style.removeProperty('--tl-thumb');
           if (eraId) next[eraId] = '';
           continue;
         }
@@ -47,6 +52,10 @@ export function useScrollOverflow(rootRef: RefObject<HTMLElement | null>, deps: 
         if (band.scrollLeft > 2) parts.push('start');
         if (band.scrollLeft < extra - 2) parts.push('end');
         band.dataset.overflow = parts.join(' ');
+        // The meter reads these every scroll frame. They stay off React state
+        // so a drag does not re-render the whole chart.
+        era?.style.setProperty('--tl-pos', String(band.scrollLeft / extra));
+        era?.style.setProperty('--tl-thumb', String(band.clientWidth / band.scrollWidth));
         if (eraId) next[eraId] = parts.join(' ');
       }
       publish(next);
