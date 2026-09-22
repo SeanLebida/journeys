@@ -54,18 +54,55 @@ test('fold-out effect flattens whatever is in view, and can be turned off', asyn
     monarchy.locator('.tl-lane').first().evaluate((el) => getComputedStyle(el).transform);
   expect(FLAT).toContain(await leadTransform());
 
-  // Scrolling sideways hinges the panels that leave the view…
-  await band.evaluate((el) => { el.scrollLeft = 400; });
+  // Bring a later lane that can sit entirely in the band up against the year
+  // rail. A fixed jump can land on a wide panel (a lane with many tracks) where
+  // nothing is fully in view, and then there is no flat panel to count.
+  await band.evaluate((el) => {
+    const lanes = Array.from(el.querySelectorAll<HTMLElement>('.tl-lane'));
+    const rail = el.querySelector<HTMLElement>('.tl-axis');
+    const railW = rail ? rail.offsetWidth : 0;
+    const offsetLeft = (node: HTMLElement) => {
+      let x = 0;
+      for (let n: HTMLElement | null = node; n && n !== el; n = n.offsetParent as HTMLElement | null) {
+        x += n.offsetLeft;
+      }
+      return x;
+    };
+    const target = lanes.find((lane, i) => i > 0 && lane.offsetWidth + railW + 16 <= el.clientWidth);
+    if (!target) return;
+    el.scrollLeft = Math.max(0, offsetLeft(target) - railW - 8);
+  });
   await page.waitForTimeout(200);
   expect(FLAT).not.toContain(await leadTransform());
 
-  // …while every panel still fully in view stays square. This is the whole
-  // readability contract: the fold only ever touches the periphery.
-  const flatCount = await monarchy.locator('.tl-lane').evaluateAll(
-    (els, flat) => els.filter((el) => flat.includes(getComputedStyle(el).transform)).length,
-    FLAT,
-  );
-  expect(flatCount).toBeGreaterThan(0);
+  // Every panel still fully in view stays square. The fold only touches a
+  // panel that is already crossing an edge.
+  const posture = await monarchy.locator('.tl-lane').evaluateAll((els, flat) => {
+    const bandEl = els[0]?.closest('.tl-era__body') as HTMLElement | null;
+    if (!bandEl) return { insideFlat: 0, insideFolded: 0 };
+    const rail = bandEl.querySelector<HTMLElement>('.tl-axis');
+    const railW = rail ? rail.offsetWidth : 0;
+    const offsetLeft = (node: HTMLElement) => {
+      let x = 0;
+      for (let n: HTMLElement | null = node; n && n !== bandEl; n = n.offsetParent as HTMLElement | null) {
+        x += n.offsetLeft;
+      }
+      return x;
+    };
+    let insideFlat = 0;
+    let insideFolded = 0;
+    for (const el of els) {
+      const left = offsetLeft(el as HTMLElement) - bandEl.scrollLeft;
+      const right = left + (el as HTMLElement).offsetWidth;
+      const inside = left >= railW + 2 && right <= bandEl.clientWidth - 2;
+      if (!inside) continue;
+      if ((flat as string[]).includes(getComputedStyle(el).transform)) insideFlat += 1;
+      else insideFolded += 1;
+    }
+    return { insideFlat, insideFolded };
+  }, FLAT);
+  expect(posture.insideFlat).toBeGreaterThan(0);
+  expect(posture.insideFolded).toBe(0);
 
   // The opt-out squares everything back up.
   await page.getByRole('checkbox', { name: /Fold-out chart effect/ }).uncheck();
@@ -75,6 +112,94 @@ test('fold-out effect flattens whatever is in view, and can be turned off', asyn
     FLAT,
   );
   expect(anyFolded).toBe(false);
+});
+
+test('a wide lane stays square while its labels fill the band', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/timeline');
+  const era = page.locator('#era-apostolic');
+  await era.scrollIntoViewIfNeeded();
+  const band = era.locator('.tl-era__body');
+  const apostles = era.locator('.tl-lane', { hasText: 'Apostles & disciples' });
+
+  const place = (mode: 'middle' | 'sliver') =>
+    band.evaluate((el, mode) => {
+      const lane = Array.from(el.querySelectorAll<HTMLElement>('.tl-lane')).find((n) =>
+        n.querySelector('.tl-lane__title')?.textContent?.includes('Apostles'),
+      );
+      const rail = el.querySelector<HTMLElement>('.tl-axis');
+      if (!lane || !rail) return;
+      let x = 0;
+      for (let n: HTMLElement | null = lane; n && n !== el; n = n.offsetParent as HTMLElement | null) {
+        x += n.offsetLeft;
+      }
+      const railW = rail.offsetWidth;
+      el.scrollLeft =
+        mode === 'middle'
+          ? x - railW + lane.offsetWidth / 2 - (el.clientWidth - railW) / 2
+          : x + lane.offsetWidth - railW - 24;
+    }, mode);
+
+  const transform = () => apostles.evaluate((el) => getComputedStyle(el).transform);
+
+  // Twenty-two apostle columns are wider than a desktop band. Panning across
+  // the middle of them must not hinge the labels.
+  await place('middle');
+  await page.waitForTimeout(200);
+  expect(FLAT).toContain(await transform());
+
+  // Once only a sliver is left, the panel may hinge. It has left the view.
+  await place('sliver');
+  await page.waitForTimeout(200);
+  expect(FLAT).not.toContain(await transform());
+});
+
+test('the more-lanes mark stays on the right edge while the band pans', async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto('/timeline');
+  const monarchy = page.locator('#era-monarchy');
+  await monarchy.scrollIntoViewIfNeeded();
+  const body = monarchy.locator('.tl-era__body');
+  await expect.poll(async () => body.getAttribute('data-overflow')).toContain('end');
+
+  const gaps = await body.evaluate(async (el) => {
+    const frame = el.parentElement as HTMLElement;
+    const edge = frame.querySelector('.tl-era__edge') as HTMLElement;
+    const max = el.scrollWidth - el.clientWidth;
+    const sample = () => {
+      const shown = getComputedStyle(edge).display !== 'none';
+      const fr = frame.getBoundingClientRect();
+      const er = edge.getBoundingClientRect();
+      return { shown, gap: fr.right - er.right };
+    };
+    const marks = [0, max * 0.25, max * 0.55, Math.max(0, max - 80)];
+    const out: number[] = [];
+    for (const left of marks) {
+      el.scrollLeft = left;
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const s = sample();
+      if (s.shown) out.push(s.gap);
+    }
+    const start = performance.now();
+    await new Promise<void>((resolve) => {
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / 700);
+        el.scrollLeft = max * 0.15 + t * max * 0.5;
+        const s = sample();
+        if (s.shown) out.push(s.gap);
+        if (t < 1) requestAnimationFrame(step);
+        else resolve();
+      };
+      requestAnimationFrame(step);
+    });
+    el.scrollLeft = el.scrollWidth;
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    return { out, hiddenAtEnd: getComputedStyle(edge).display === 'none' };
+  });
+
+  expect(gaps.out.length).toBeGreaterThan(4);
+  for (const gap of gaps.out) expect(Math.abs(gap - 1)).toBeLessThan(2);
+  expect(gaps.hiddenAtEnd).toBe(true);
 });
 
 test('reduced motion disables the fold without disabling the timeline', async ({ browser }) => {
@@ -123,7 +248,7 @@ test('short find bars keep their year visible and overflow is signed', async ({ 
   await monarchy.scrollIntoViewIfNeeded();
   const band = monarchy.locator('.tl-era__body');
   await expect.poll(async () => band.getAttribute('data-overflow')).toContain('end');
-  await expect(band.locator('.tl-era__edge-label')).toBeVisible();
+  await expect(monarchy.locator('.tl-era__edge-label')).toBeVisible();
   // The sideways copy is gated on the band actually overflowing, so it must
   // appear exactly where `data-overflow` says there is more chart.
   await expect(monarchy.getByText(/scroll sideways/i).first()).toBeVisible();
@@ -172,6 +297,69 @@ test('timeline entry opens a detail card inside its own era band', async ({ page
   });
   expect(inset.left).toBeGreaterThanOrEqual(12);
   expect(inset.right).toBeGreaterThanOrEqual(12);
+});
+
+test('close battles stay selectable, and the life of Jesus is listed', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/timeline');
+  await page.getByRole('checkbox', { name: /Fold-out chart effect/ }).uncheck();
+
+  const monarchy = page.locator('#era-monarchy');
+  await monarchy.scrollIntoViewIfNeeded();
+  const overlaps = await monarchy.locator('.tl-lane__track').evaluateAll((tracks) => {
+    const hits: string[] = [];
+    for (const track of tracks) {
+      const slots = Array.from(track.querySelectorAll<HTMLElement>('.tl-bar__slot'));
+      for (let i = 0; i < slots.length; i++) {
+        for (let j = i + 1; j < slots.length; j++) {
+          const a = slots[i];
+          const b = slots[j];
+          const y =
+            Math.min(a.offsetTop + a.offsetHeight, b.offsetTop + b.offsetHeight) -
+            Math.max(a.offsetTop, b.offsetTop);
+          const x =
+            Math.min(a.offsetLeft + a.offsetWidth, b.offsetLeft + b.offsetWidth) -
+            Math.max(a.offsetLeft, b.offsetLeft);
+          if (y > 1 && x > 1) {
+            const name = (el: HTMLElement) => el.querySelector('.tl-bar__label')?.textContent ?? '';
+            hits.push(`${name(a)} / ${name(b)}`);
+          }
+        }
+      }
+    }
+    return hits;
+  });
+  expect(overlaps).toEqual([]);
+
+  // A battle that used to sit under its neighbour must take its own click.
+  const ramoth = monarchy.getByRole('button', { name: /Ramoth-gilead/ });
+  await ramoth.scrollIntoViewIfNeeded();
+  await ramoth.click();
+  await expect(monarchy.locator('.tl-detail').getByRole('heading', { name: /Ramoth-gilead/ })).toBeVisible();
+
+  const jesus = page.locator('#era-jesus');
+  await jesus.scrollIntoViewIfNeeded();
+  await expect(jesus.getByRole('heading', { name: 'Birth and boyhood' })).toBeVisible();
+  await expect(jesus.getByRole('heading', { name: 'Ministry', exact: true })).toBeVisible();
+  const life = jesus.locator('.tl-life');
+  await expect(life.getByRole('button', { name: /Birth of Jesus in Bethlehem/ })).toBeVisible();
+  await expect(life.getByRole('button', { name: /Return from Egypt to Nazareth/ })).toBeVisible();
+  await life.getByRole('button', { name: /The Last Supper/ }).click();
+  await expect(jesus.locator('.tl-detail').getByRole('heading', { name: /The Last Supper/ })).toBeVisible();
+  // The current event's accent bar has to leave a gutter before the title.
+  const beatGutter = await jesus.locator('.tl-beats__item--current').evaluate((el) => {
+    const title = el.querySelector('.tl-beats__title');
+    if (!title) return 0;
+    return title.getBoundingClientRect().left - el.getBoundingClientRect().left;
+  });
+  expect(beatGutter).toBeGreaterThanOrEqual(14);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await jesus.scrollIntoViewIfNeeded();
+  const birthRow = jesus.locator('.tl-life__row', { hasText: 'Birth of Jesus in Bethlehem' });
+  await expect(birthRow).toBeVisible();
+  const rowBox = await birthRow.boundingBox();
+  expect(rowBox?.height ?? 0).toBeGreaterThanOrEqual(44);
 });
 
 test('bible reader opens a deep-linked passage with its atlas cross-references', async ({ page }) => {

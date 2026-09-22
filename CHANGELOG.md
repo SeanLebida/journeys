@@ -2,6 +2,12 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.13] - 2026-09-22
+
+• Timeline lists the birth of Jesus (Bethlehem, Egypt, the return, the temple at age twelve) and the ministry through the Ascension, with patriarchs and Old Testament battles.
+• Battles that fall close together no longer cover one another, so each one can be opened.
+• Store listing for the next closed test describes that whole record.
+
 ## [0.3.12] - 2026-09-07
 
 Initial testing release of Journeys — Atlas of the Apostles:

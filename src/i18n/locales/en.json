@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "Journeys",
-    "tagline": "An accurate, cited atlas of the journeys of Jesus and the apostles"
+    "tagline": "An accurate, cited atlas of biblical history, from the patriarchs to the apostles"
   },
   "nav": {
     "home": "Home",
@@ -32,7 +32,7 @@
     },
     "timeline": {
       "title": "Timeline",
-      "tagline": "From Creation to the apostles — every journey, figure, battle and find on one linear chronology, the way a study Bible lays it out.",
+      "tagline": "From Creation to the apostles — patriarchs, Old Testament battles, the birth and ministry of Jesus, and the finds, on one chronology.",
       "chart": {
         "scrollCue": "{{lanes}} share this year rail. If the chart runs past the edge, scroll sideways.",
         "moreLanes": "more lanes",
@@ -55,7 +55,7 @@
     }
   },
   "home": {
-    "intro": "Follow the missionary journeys across the ancient Mediterranean — every place, date and claim is cited, and contested points are shown as such.",
+    "intro": "Follow the biblical record across the ancient world — patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles. Every place, date and claim is cited, and contested points are shown as such.",
     "sourcing": "How we source",
     "pickMode": "Choose a way to explore"
   },

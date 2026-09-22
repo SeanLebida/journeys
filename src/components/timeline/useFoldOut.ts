@@ -11,10 +11,10 @@ import { useEffect, useState, type RefObject } from 'react';
  * Readability is the constraint the whole design is built around, not a caveat
  * bolted on afterwards:
  *
- * - **Only panels crossing an edge fold.** A lane fully inside the band always
- *   has `--fold: 0` and therefore no transform at all — whatever a reader is
- *   actually looking at is flat, square and pixel-crisp. The effect lives
- *   entirely in the periphery, on content that is already half out of view.
+ * - **Only a sliver that has already left the band folds.** A lane the reader
+ *   is in has no transform at all, even when it is wider than the band and
+ *   hangs off one edge. Hinging that lane would make its labels lag the
+ *   scroll and catch at the edges. The effect lives on the periphery.
  * - **The paper texture never sits over text.** The crease and shading are
  *   painted *behind* the bars (see the z-index rules in global.css), so the
  *   effect cannot cost a single point of text contrast.
@@ -45,8 +45,11 @@ export function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-/** How much of a panel's own width may hinge before it is fully folded. */
-const FOLD_RAMP = 0.9;
+/**
+ * A panel hinges only once less than this much of it is still in the band.
+ * Wider than that, the reader is still on the panel, and it stays square.
+ */
+const FOLD_SLIVER_PX = 72;
 
 /**
  * Horizontal layout offset of `el` inside `root`, summed through the offset
@@ -87,25 +90,38 @@ function updateBand(band: HTMLElement): void {
   }));
 
   // …then write, so no lane's style change forces a reflow for the next read.
+  const viewSpan = Math.max(1, viewRight - railWidth);
+  const sliver = Math.min(FOLD_SLIVER_PX, viewSpan * 0.22);
+  const center = railWidth + viewSpan / 2;
+
   for (const { lane, left, width } of measured) {
-    const ramp = Math.max(1, width * FOLD_RAMP);
-    const hiddenLeft = railWidth - left;
-    const hiddenRight = left + width - viewRight;
+    const right = left + width;
+    const visible = Math.max(0, Math.min(right, viewRight) - Math.max(left, railWidth));
+    const fullyInside = left >= railWidth - 0.5 && right <= viewRight + 0.5;
 
     let fold = 0;
     let origin = 'center';
-    if (hiddenLeft > 0) {
-      // Hinges on its right edge — the edge still facing the reader.
-      fold = -Math.min(1, hiddenLeft / ramp);
-      origin = 'right';
-    } else if (hiddenRight > 0) {
-      fold = Math.min(1, hiddenRight / ramp);
-      origin = 'left';
+    // More tracks mean a wider panel. It hangs off the desktop the whole time
+    // you pan across its labels. Folding it there makes those labels stick.
+    if (!fullyInside && visible <= sliver) {
+      const leavingLeft = right < center;
+      const t = visible <= 0 ? 1 : 1 - visible / sliver;
+      fold = (leavingLeft ? -1 : 1) * t;
+      origin = leavingLeft ? 'right' : 'left';
     }
 
     lane.style.setProperty('--fold', fold.toFixed(3));
     lane.style.setProperty('--fold-shade', Math.abs(fold).toFixed(3));
     lane.style.setProperty('--fold-origin', origin);
+    // `rotateY(0deg)` is still a transform, and a transformed panel under
+    // perspective is what makes the labels lag. A flat panel is `none`.
+    if (fold === 0) {
+      lane.style.transform = 'none';
+      lane.style.removeProperty('backface-visibility');
+    } else {
+      lane.style.removeProperty('transform');
+      lane.style.backfaceVisibility = 'hidden';
+    }
   }
 }
 
@@ -114,6 +130,8 @@ function clearBand(band: HTMLElement): void {
     lane.style.removeProperty('--fold');
     lane.style.removeProperty('--fold-shade');
     lane.style.removeProperty('--fold-origin');
+    lane.style.removeProperty('transform');
+    lane.style.removeProperty('backface-visibility');
   }
 }
 
