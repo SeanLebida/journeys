@@ -144,7 +144,6 @@ jobs:
           status: ${{ github.event.inputs.status || 'completed' }}
           mappingFile: android/app/build/outputs/mapping/release/mapping.txt
           whatsNewDirectory: android/release-notes
-          changesNotSentForReview: true
 
       - name: Create release draft
         uses: softprops/action-gh-release@v2
