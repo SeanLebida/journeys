@@ -1,6 +1,6 @@
 # Moving Journeys to Google Play Store Testers
 
-This guide walks you through distributing **Journeys — Atlas of the Apostles** to testers on Android devices via Google Play.
+This guide walks you through distributing **Journeys: Biblical Atlas** to testers on Android devices via Google Play. The title, short description, and full description to paste for the next closed test are in [`STORE_LISTING.md`](STORE_LISTING.md).
 
 ---
 
@@ -37,7 +37,7 @@ An upload keystore has been generated on your machine:
 1. Navigate to [Google Play Console](https://play.google.com/console).
 2. Click **Create app** (top right).
 3. Fill in basic details:
-   - **App name**: `Journeys — Atlas of the Apostles`
+   - **App name**: `Journeys: Biblical Atlas` (see `STORE_LISTING.md` for the short and full descriptions)
    - **Default language**: `English (United States) - en-US`
    - **App or game**: `App`
    - **Free or paid**: `Free`

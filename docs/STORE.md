@@ -18,9 +18,11 @@ Generate native icons/splash from `public/icon.svg` with `@capacitor/assets`
 
 ## Listing
 
-- **Name:** Journeys — Atlas of the Apostles
+- **Name:** Journeys: Biblical Atlas
 - **Category:** Education / Reference
-- **Short description:** An accurate, cited, offline interactive atlas of the missionary journeys of Jesus and the apostles.
+- **Short description:** Cited offline Bible atlas: patriarchs, OT battles, Jesus' birth and ministry.
+
+Paste-ready title, short description, and full description for the next Google Play closed test are in `docs/STORE_LISTING.md`.
 
 ## Compliance checklist
 
