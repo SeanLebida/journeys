@@ -9,10 +9,9 @@ Complete, copy-paste-ready information and asset specifications for publishing *
 ### App Name (Title)
 > Google Play strictly enforces a **30-character limit**.
 
-- **Option 1 (Recommended):** `Journeys: Atlas of Apostles` *(28 characters)*
-- **Option 2:** `Journeys - Atlas of Apostles` *(29 characters)*
-- **Option 3:** `Journeys - Biblical Atlas` *(25 characters)*
-- **Option 4:** `Journeys: Bible Atlas` *(21 characters)*
+- **Option 1 (Recommended):** `Journeys: Biblical Atlas` *(24 characters)*
+- **Option 2:** `Journeys: Bible Atlas` *(21 characters)*
+- **Option 3:** `Journeys: Atlas of Apostles` *(28 characters)* — earlier title; the description below is wider than the apostles alone
 
 ---
 
@@ -20,9 +19,9 @@ Complete, copy-paste-ready information and asset specifications for publishing *
 > Google Play strictly enforces an **80-character limit**.
 
 ```text
-Accurate, cited, offline interactive atlas of the journeys of Jesus & apostles.
+Cited offline Bible atlas: patriarchs, OT battles, Jesus' birth and ministry.
 ```
-*(79 characters)*
+*(77 characters)*
 
 ---
 
@@ -30,20 +29,24 @@ Accurate, cited, offline interactive atlas of the journeys of Jesus & apostles.
 > Google Play limit: **4,000 characters**. Formatted with clean headings and bullets for maximum store conversion.
 
 ```text
-Journeys is an accurate, cited, offline interactive atlas of the missionary journeys of Jesus and the apostles — biblically, geographically, historically, and archaeologically grounded, with a denominationally neutral stance.
+Journeys is an accurate, cited, offline atlas of the historical record in the Bible. The timeline runs from Creation through the patriarchs, the exodus and conquest, the kings and prophets, the battles of the Old Testament, the birth and ministry of Jesus, and on to the apostles. It is biblically, geographically, historically, and archaeologically grounded, with a denominationally neutral stance.
 
-Whether you are studying the New Testament, teaching a class, or exploring ancient history, Journeys transforms biblical geography from flat paper maps into an interactive, cited, living exploration.
+Whether you are studying Scripture, teaching a class, or exploring ancient history, Journeys turns that record from a flat paper map into an interactive, cited exploration.
 
 ◆ SIX WAYS TO EXPLORE
 
 1. ROUTE TRACING
-Follow animated missionary journeys on the ancient map. Trace the footsteps of Paul (First, Second, Third Missionary Journeys, Journey to Rome) and the ministry routes of Jesus across Galilee and Judea. View terrain elevations, travel legs, and stop-by-stop historical accounts.
+Follow animated journeys on the ancient map. Trace the patriarchs, the exodus, the conquest, the kings, and the ministry routes of Jesus across Galilee and Judea, then Paul (First, Second, Third Missionary Journeys, and the journey to Rome). View terrain, travel legs, and stop-by-stop historical accounts.
 
 2. SANDBOX ATLAS
-Freely explore the ancient Mediterranean with toggleable historical layers. Inspect Roman roads, trade lanes, province borders, and ancient settlements with rich topographical context.
+Freely explore the ancient Mediterranean and the lands of the biblical narrative with toggleable historical layers. Inspect Roman roads, trade lanes, province borders, and ancient settlements with rich topographical context.
 
 3. BIBLICAL TIMELINE
-Explore biblical history along an intuitive linear timeline, from Creation through the Roman Imperial period. View parallel lanes for major figures, empires, prophetic books, and archaeology.
+One chronology of the biblical historical record, from Creation through the apostolic age. Each era has its own scale, so the patriarchs are not squeezed onto the same ruler as Passion week. Parallel lanes show who was alive at the same moment: journeys, patriarchs and other figures, prophets, kings, apostles, the battles and conquests of the Old Testament, and archaeological finds.
+
+The life of Jesus is listed on that chart, not folded into a single bar:
+• Birth and boyhood — Bethlehem (c. 6–4 BC), the flight to Egypt, the return to Nazareth after Herod's death, and the temple visit at age twelve.
+• The ministry — baptism, the Galilean ministry, the journey to Jerusalem, and Passion week through the resurrection appearances and the Ascension, in the order the Gospels record. Events that share a year window are listed one by one. The crucifixion stays AD 30 or AD 33, and both are shown.
 
 4. EMBEDDED BIBLE READER
 Read Scripture alongside the map. Journeys bundles complete public-domain texts (King James Version and American Standard Version) in a fast, on-device SQLite database. Tap place names in Scripture to jump straight to their location on the map.
@@ -166,7 +169,7 @@ All visual assets are pre-generated and stored in [`docs/store-assets/`](file://
 ## 6. How to Upload in Google Play Console
 
 1. In Google Play Console, open your app.
-2. Go to **Grow users > Store presence > Main store listing**.
+2. Go to **Grow users > Store presence > Main store listing**. Paste this listing before you roll the next **closed testing** release, so that track shows the patriarchs, the Old Testament battles, and the birth and ministry of Jesus.
 3. Paste the **App name**, **Short description**, and **Full description**.
 4. In the **Graphics** section:
    - Upload `docs/store-assets/icon-512x512.png` under **App icon**.

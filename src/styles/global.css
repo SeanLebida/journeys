@@ -2996,6 +2996,12 @@ a {
   margin-top: 0.45rem;
 }
 
+/* Frame around the scrollport. The "more lanes" plate is positioned on this,
+   not inside the scroller: a sticky flex item in the scrollport catches on
+   lane boundaries and parks itself mid-chart. */
+.tl-era__frame {
+  position: relative;
+}
 /* The band itself: a year rail, then the lanes beside it.
    The lanes must NEVER wrap onto a second row. Wrapping looks tidy and is a
    lie: a lane pushed below its neighbours no longer lines up with the year rail
@@ -3063,19 +3069,22 @@ a {
 
   /* ── Fold-out chart ──────────────────────────────────────────────────────
      Each lane is a panel of a folded sheet. `--fold` is written per frame by
-     useFoldOut from scroll position alone: 0 while the panel is fully inside
-     the band, ramping to ±1 as it passes an edge. A panel the reader is
-     actually looking at therefore has NO transform — the hinge only ever acts
-     on content already leaving the view. `--fold-origin` puts the hinge on
+     useFoldOut from scroll position alone: 0 while the panel is still in the
+     band, including a wide panel that hangs off one edge, ramping to ±1 only
+     once a sliver is leaving. A panel the reader is looking at has NO
+     transform — the hinge only acts on content already leaving the view.
+     `--fold-origin` puts the hinge on
      whichever edge still faces the reader.
 
      No transition: the angle tracks scroll directly, so it stops dead when
      scrolling does and there is nothing animating at rest. */
   position: relative;
   isolation: isolate;
+  /* Angle comes from useFoldOut. A panel being read gets inline
+     `transform: none` — rotateY(0) would still be a transformed layer, and
+     that layer is what makes a wide lane's labels stick while scrolling. */
   transform: rotateY(calc(var(--fold, 0) * 16deg));
   transform-origin: var(--fold-origin, center) center;
-  backface-visibility: hidden;
   /* Focus inside a folded panel scrolls it clear of the sticky year rail,
      which flattens it — the keyboard path never lands on angled text. */
   scroll-margin-inline: 5.5rem 1rem;
@@ -3179,21 +3188,22 @@ a {
   stroke-linejoin: miter;
   fill: none;
 }
-/* Sticky right gutter. Lives at the end of the flex row so `position: sticky;
-   right: 0` pins the fade to the visible edge while there is still more chart
-   past it. Hidden unless `data-overflow` includes `end`. */
+/* Right gutter, painted on the frame so it cannot scroll with the lanes.
+   Hidden unless `data-overflow` includes `end`. Inset 1px so it sits inside
+   the band's border. */
 .tl-era__edge {
   display: none;
-  flex: 0 0 2.75rem;
-  position: sticky;
-  right: 0;
-  z-index: 2;
-  align-self: stretch;
-  margin-left: -2.75rem;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 2.75rem;
+  z-index: 4;
   pointer-events: none;
+  border-radius: 0 0 calc(var(--r-md) - 1px) 0;
   background: linear-gradient(to left, var(--surface) 38%, transparent);
 }
-.tl-era__body[data-overflow~='end'] .tl-era__edge {
+.tl-era__frame:has(.tl-era__body[data-overflow~='end']) .tl-era__edge {
   display: block;
 }
 .tl-era__edge-arrow {
@@ -3306,6 +3316,15 @@ a {
   position: absolute;
   padding: 0 2px;
   box-sizing: border-box;
+  /* The label's min-height must not paint outside the slot and steal the
+     click from the battle underneath. The packer sizes the slot to fit it. */
+  overflow: hidden;
+  z-index: 1;
+}
+.tl-bar__slot:hover,
+.tl-bar__slot:focus-within,
+.tl-bar__slot--selected {
+  z-index: 4;
 }
 .tl-bar {
   display: flex;
@@ -3314,8 +3333,10 @@ a {
   gap: 0.12rem;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   /* Title + year must both fit. 24px was tappable but clipped "c. 2900 BC"
-     under a two-line find name. */
+     under a two-line find name. The slot is at least this tall; overflow on
+     the slot keeps a shortfall from covering the next bar. */
   min-height: 2.7rem;
   padding: 0.22rem 0.35rem 0.28rem;
   overflow: hidden;
@@ -3366,8 +3387,90 @@ a {
 /* Per-kind accents. Journeys carry their own route colour via --bar-color. */
 .tl-bar--person { --bar-color: var(--sea); }
 .tl-bar--battle { --bar-color: var(--terracotta); }
+.tl-bar--life { --bar-color: var(--gold-ink); }
 .tl-bar--artifact { --bar-color: var(--gold); }
 .tl-bar--witness { --bar-color: var(--violet); }
+
+.tl-life {
+  margin: 0.85rem 0 0.35rem;
+  padding: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.tl-life__note {
+  margin: 0 0 var(--space-apart);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: var(--prose-leading);
+}
+.tl-life__heading {
+  margin: var(--space-apart) 0 var(--space-near);
+  font-size: 0.95rem;
+}
+.tl-life section:first-of-type .tl-life__heading {
+  margin-top: 0;
+}
+.tl-life__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tl-life__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.05rem;
+  width: 100%;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.4rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.tl-life__list li:first-child .tl-life__row {
+  border-top: 0;
+}
+.tl-life__row--selected {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.tl-life__label {
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tl-life__date {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: var(--ref-leading);
+}
+.tl-beats {
+  margin: var(--space-near) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tl-beats__item {
+  margin: 0;
+  padding: var(--space-apart) 0 0 var(--card-inset-inline);
+  border-top: 1px solid var(--border);
+}
+.tl-beats__item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+/* The accent sits in that left inset. Without it the bar is drawn under the
+   first letters of the event. */
+.tl-beats__item--current {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.tl-beats__title {
+  margin: 0;
+  font-size: 1rem;
+}
 
 .tl-detail {
   /* A real card, not a hairline under a flush paragraph. `.stop-panel` only

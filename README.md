@@ -1,6 +1,6 @@
 # Journeys
 
-An **accurate, cited, offline** interactive atlas of the missionary journeys of **Jesus and the apostles** —
+An **accurate, cited, offline** atlas of the **biblical historical record** — patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles —
 biblically, geographically, historically, and archaeologically grounded, with a denominationally neutral stance.
 
 One TypeScript codebase ships three ways:
