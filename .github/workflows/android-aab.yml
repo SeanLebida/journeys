@@ -70,6 +70,9 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # "tools" package was removed from sdkmanager; installing it fails CI.
+          packages: platform-tools
 
       - name: Install dependencies
         run: npm ci
