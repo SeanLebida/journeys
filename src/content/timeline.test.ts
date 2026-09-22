@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { ERAS, eraForYear, formatYear, formatYearSpan } from './eras';
-import { buildTimeline, spanWithinEra, eraTicks, eraBandHeight, TIMELINE_LANES } from './timeline';
+import {
+  buildTimeline,
+  spanWithinEra,
+  eraTicks,
+  eraBandHeight,
+  lifeGroup,
+  lifeRows,
+  TIMELINE_LANES,
+} from './timeline';
 import type { BundleIndex } from './useBundle';
 
 const dr = (a: number, b: number, display: string) => ({
@@ -142,13 +150,125 @@ describe('buildTimeline', () => {
       .flatMap((s) => s.lanes)
       .find((l) => l.lane.id === 'prophets');
     expect(lane).toBeDefined();
-    expect(lane!.trackCount).toBe(2);
-    const tracks = lane!.items.map((i) => i.track);
-    // The two genuinely overlapping bars must not share a track.
     const a = lane!.items.find((i) => i.label === 'a')!;
     const b = lane!.items.find((i) => i.label === 'b')!;
+    const c = lane!.items.find((i) => i.label === 'c')!;
+    // The two genuinely overlapping bars must not share a track. c starts as
+    // a ends, but a short bar paints taller than its years, so c cannot sit
+    // in a's column either.
     expect(a.track).not.toBe(b.track);
-    expect(Math.max(...tracks)).toBeLessThan(lane!.trackCount);
+    expect(a.track).not.toBe(c.track);
+    expect(b.track).not.toBe(c.track);
+    expect(lane!.trackCount).toBe(3);
+  });
+
+  it('separates one-year battles whose labels would cover each other', () => {
+    const battle = (id: string, year: number) => ({
+      id,
+      title: { en: id },
+      kind: 'battle',
+      combatants: { en: '' },
+      outcome: { en: '' },
+      siteId: 'site-x',
+      dateRange: dr(year, year, `${-year} BC`),
+      summary: { en: '' },
+      scriptureRefs: [],
+      confidence: 'high',
+      reviewStatus: 'self-reviewed',
+      citations: ['c1'],
+    });
+    const model = buildTimeline(
+      fakeBundle({
+        battles: [battle('qarqar', -853), battle('ramoth', -852), battle('jehu', -841)],
+      } as unknown as Partial<BundleIndex>),
+    );
+    const section = model.sections.find((s) => s.era.id === 'era-monarchy')!;
+    const lane = section.lanes.find((l) => l.lane.id === 'events')!;
+    const boxes = lane.items.map((item) => {
+      const pos = spanWithinEra(item, section.era, section.bandPx);
+      const width = 100 / lane.trackCount;
+      return {
+        track: item.track,
+        top: parseFloat(pos.top),
+        bottom: parseFloat(pos.top) + parseFloat(pos.height),
+        left: item.track * width,
+        right: (item.track + 1) * width,
+      };
+    });
+    for (let i = 0; i < boxes.length; i++) {
+      for (let j = i + 1; j < boxes.length; j++) {
+        const y = Math.min(boxes[i].bottom, boxes[j].bottom) - Math.max(boxes[i].top, boxes[j].top);
+        const x = Math.min(boxes[i].right, boxes[j].right) - Math.max(boxes[i].left, boxes[j].left);
+        expect(y > 0.2 && x > 0.2).toBe(false);
+      }
+    }
+    const qarqar = lane.items.find((i) => i.label === 'qarqar')!;
+    const ramoth = lane.items.find((i) => i.label === 'ramoth')!;
+    expect(qarqar.track).not.toBe(ramoth.track);
+  });
+
+  it('lists the birth and the ministry, and keeps a shared window on one bar', () => {
+    const stop = (
+      id: string,
+      order: number,
+      a: number,
+      b: number,
+      title: string,
+      display: string,
+    ) => ({
+      id,
+      journeyId: 'journey-ministry',
+      order,
+      siteId: 'site-x',
+      title: { en: title },
+      legMode: 'land',
+      dateRange: dr(a, b, display),
+      eventSummary: { en: `${title} summary` },
+      scriptureRefs: ['Matthew 2:1'],
+      confidence: 'medium',
+      reviewStatus: 'self-reviewed',
+      citations: ['c1'],
+    });
+    const model = buildTimeline(
+      fakeBundle({
+        journeys: [
+          {
+            id: 'journey-ministry',
+            title: { en: 'The Ministry of Jesus' },
+            kind: 'ministry',
+            dateRange: dr(27, 33, 'c. AD 27–33'),
+            summary: { en: '' },
+            stops: [],
+            citations: ['c1'],
+            color: '#c75b39',
+          },
+        ],
+        stops: [
+          stop('stop-ministry-bethlehem-0', 0, -6, -4, 'Birth of Jesus in Bethlehem', 'birth c. 6-4 BC'),
+          stop('stop-ministry-flight-to-egypt', 1, -5, -4, 'Flight to Egypt', 'infancy, c. 5-4 BC'),
+          stop('stop-ministry-baptism', 4, 27, 29, 'Baptism of Jesus at the Jordan', 'start of ministry'),
+          stop('supper', 17, 30, 33, 'The Last Supper', 'Thursday evening'),
+          stop('cross', 20, 30, 33, 'Crucifixion', 'Friday'),
+        ],
+      } as unknown as Partial<BundleIndex>),
+    );
+    const jesus = model.sections.find((s) => s.era.id === 'era-jesus')!;
+    const life = jesus.lanes.find((l) => l.lane.id === 'life')!;
+    expect(life.items.some((i) => i.label === 'Birth of Jesus in Bethlehem')).toBe(true);
+    expect(life.items.some((i) => i.label === 'Return from Egypt to Nazareth')).toBe(true);
+    const passion = life.items.find((i) => i.label.startsWith('Passion through the Ascension'))!;
+    expect(passion.beats?.map((b) => b.label)).toEqual(['The Last Supper', 'Crucifixion']);
+    const rows = lifeRows(jesus);
+    expect(rows.map((r) => r.beat.label)).toEqual([
+      'Birth of Jesus in Bethlehem',
+      'Flight to Egypt',
+      'Return from Egypt to Nazareth',
+      'Baptism of Jesus at the Jordan',
+      'The Last Supper',
+      'Crucifixion',
+    ]);
+    expect(lifeGroup(rows[0].beat)).toBe('birth');
+    expect(lifeGroup(rows[3].beat)).toBe('ministry');
   });
 
   it('lists undated figures instead of inventing a position for them', () => {

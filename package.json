@@ -1,9 +1,9 @@
 {
   "name": "journeys",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "private": true,
   "type": "module",
-  "description": "Biblically, geographically, historically and archaeologically accurate interactive atlas of the missionary journeys of Jesus and the apostles.",
+  "description": "Cited offline atlas of the biblical historical record: patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles.",
   "license": "MIT",
   "scripts": {
     "dev": "vite",

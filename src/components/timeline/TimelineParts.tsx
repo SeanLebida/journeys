@@ -4,7 +4,10 @@ import type { Era } from '../../content/eras';
 import { formatYear, formatYearSpan } from '../../content/eras';
 import {
   eraTicks,
+  lifeGroup,
   spanWithinEra,
+  type LifeGroup,
+  type TimelineBeat,
   type TimelineItem,
   type TimelineLane,
 } from '../../content/timeline';
@@ -203,8 +206,9 @@ export function ChartScrollCue({
   );
 }
 
-/** Sticky right-edge fade + "more lanes" plate. Hidden when the band fits or
- *  the reader has already panned to the end (`data-overflow` on the body). */
+/** Right-edge fade + "more lanes" plate. The frame pins it; it is not a
+ *  child of the scroller. Hidden when the band fits or the reader has already
+ *  panned to the end (`data-overflow` on the body). */
 export function ChartOverflowEdge() {
   const { t } = useTranslation();
   return (
@@ -227,6 +231,7 @@ export function TimelineLaneColumn({
   era,
   items,
   trackCount,
+  bandPx,
   selectedId,
   onSelect,
 }: {
@@ -234,6 +239,7 @@ export function TimelineLaneColumn({
   era: Era;
   items: TimelineItem[];
   trackCount: number;
+  bandPx: number;
   selectedId: string | null;
   onSelect: (item: TimelineItem) => void;
 }) {
@@ -252,6 +258,7 @@ export function TimelineLaneColumn({
             item={item}
             era={era}
             trackCount={trackCount}
+            bandPx={bandPx}
             selected={selectedId === item.id}
             onSelect={onSelect}
           />
@@ -270,20 +277,23 @@ export function TimelineBar({
   item,
   era,
   trackCount,
+  bandPx,
   selected,
   onSelect,
 }: {
   item: TimelineItem;
   era: Era;
   trackCount: number;
+  bandPx: number;
   selected: boolean;
   onSelect: (item: TimelineItem) => void;
 }) {
-  const { top, height } = spanWithinEra(item, era);
+  const { top, height } = spanWithinEra(item, era, bandPx);
   const width = 100 / trackCount;
+  const names = item.beats && item.beats.length > 1 ? item.beats.map((b) => b.label).join(', ') : item.label;
   return (
     <li
-      className="tl-bar__slot"
+      className={`tl-bar__slot${selected ? ' tl-bar__slot--selected' : ''}`}
       style={{ top, height, left: `${item.track * width}%`, width: `${width}%` }}
     >
       <button
@@ -292,12 +302,66 @@ export function TimelineBar({
         style={item.color ? ({ '--bar-color': item.color } as React.CSSProperties) : undefined}
         onClick={() => onSelect(item)}
         aria-pressed={selected}
-        title={`${item.label} — ${item.display}`}
+        title={`${names} — ${item.display}`}
       >
         <span className="tl-bar__label">{item.label}</span>
         <span className="tl-bar__date">{item.display}</span>
       </button>
     </li>
+  );
+}
+
+const LIFE_HEADINGS: { id: LifeGroup; label: string }[] = [
+  { id: 'birth', label: 'Birth and boyhood' },
+  { id: 'ministry', label: 'Ministry' },
+  { id: 'later', label: 'Later visions' },
+];
+
+/**
+ * The readable list of the life-of-Jesus bars. Shared year windows are one bar
+ * on the chart; here every stop keeps its own name and the date it was given.
+ */
+export function LifeListing({
+  rows,
+  selectedBeatId,
+  onSelect,
+}: {
+  rows: { item: TimelineItem; beat: TimelineBeat }[];
+  selectedBeatId: string | null;
+  onSelect: (item: TimelineItem, beatId: string) => void;
+}) {
+  if (rows.length === 0) return null;
+  const groups = LIFE_HEADINGS.map((g) => ({
+    ...g,
+    rows: rows.filter((r) => lifeGroup(r.beat) === g.id),
+  })).filter((g) => g.rows.length > 0);
+  return (
+    <div className="tl-life">
+      <p className="tl-life__note">
+        Each line is an event from the ministry journey, with the date it was given. Events that share a year
+        window share one bar on the chart.
+      </p>
+      {groups.map((g) => (
+        <section key={g.id} aria-label={g.label}>
+          <h3 className="tl-life__heading">{g.label}</h3>
+          <ol className="tl-life__list">
+            {g.rows.map(({ item, beat }) => (
+              <li key={beat.id}>
+                <button
+                  type="button"
+                  className={`tl-life__row${selectedBeatId === beat.id ? ' tl-life__row--selected' : ''}`}
+                  aria-pressed={selectedBeatId === beat.id}
+                  onClick={() => onSelect(item, beat.id)}
+                >
+                  <span className="tl-life__label">{beat.label}</span>
+                  <span className="tl-life__date">{beat.display}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
   );
 }
 
@@ -387,7 +451,7 @@ export function TimelineDetailCard({
   children: ReactNode;
 }) {
   return (
-    <article className="stop-panel tl-detail" aria-live="polite">
+    <article id="tl-open-detail" className="stop-panel tl-detail" aria-live="polite">
       <header className="stop-panel__head">
         <h3>{title}</h3>
       </header>

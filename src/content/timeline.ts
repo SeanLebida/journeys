@@ -1,4 +1,4 @@
-import { ERAS, type Era } from './eras';
+import { ERAS, formatYearSpan, type Era } from './eras';
 import type { BundleIndex } from './useBundle';
 import type { TConfidence, TDateRange } from './schema';
 
@@ -20,6 +20,7 @@ import type { TConfidence, TDateRange } from './schema';
 
 export type TimelineLaneId =
   | 'journeys'
+  | 'life'
   | 'prophets'
   | 'rulers'
   | 'figures'
@@ -36,6 +37,11 @@ export interface TimelineLane {
 
 export const TIMELINE_LANES: readonly TimelineLane[] = [
   { id: 'journeys', label: 'Journeys', hint: 'Traceable routes — tap to open the animated trace' },
+  {
+    id: 'life',
+    label: 'Life of Jesus',
+    hint: 'Birth, boyhood, and the ministry. Events that share one authored window share a bar; the list under the era names each one',
+  },
   { id: 'prophets', label: 'Prophets', hint: 'Major and minor prophets, and the prophets without books' },
   { id: 'rulers', label: 'Kings & rulers', hint: 'Kings of Israel and Judah, and the foreign rulers who date them' },
   { id: 'figures', label: 'Other figures', hint: 'Patriarchs, judges, priests and the rest' },
@@ -44,7 +50,29 @@ export const TIMELINE_LANES: readonly TimelineLane[] = [
   { id: 'finds', label: 'Finds & witnesses', hint: 'Dated archaeological finds and extra-biblical sources' },
 ] as const;
 
-export type TimelineItemKind = 'journey' | 'person' | 'battle' | 'artifact' | 'witness';
+export type TimelineItemKind = 'journey' | 'person' | 'battle' | 'artifact' | 'witness' | 'life';
+
+/**
+ * One authored event inside a bar. Several ministry stops share a year window
+ * (Passion week is AD 30 or AD 33 on every one of them). They stay one bar so
+ * the chart does not pretend they occupied different years, and the list under
+ * the era names each stop in journey order.
+ */
+export interface TimelineBeat {
+  id: string;
+  label: string;
+  detail?: string;
+  display: string;
+  startYear: number;
+  endYear: number;
+  confidence?: TConfidence;
+  siteId?: string;
+  scriptureRef?: string;
+  citations: string[];
+  /** Journey-stop order, so the list follows the route rather than the title. */
+  order: number;
+  datingNote?: string;
+}
 
 export interface TimelineItem {
   id: string;
@@ -73,6 +101,11 @@ export interface TimelineItem {
   datingNote?: string;
   /** Sub-track index within the lane, assigned by the packer (0-based). */
   track: number;
+  /**
+   * Events drawn as this one bar. A single stop is a one-element list; a shared
+   * year window (the Galilean ministry, Passion week) holds every stop in it.
+   */
+  beats?: TimelineBeat[];
 }
 
 export interface TimelineEraSection {
@@ -80,6 +113,11 @@ export interface TimelineEraSection {
   /** Lanes that actually have entries in this era, in TIMELINE_LANES order. */
   lanes: { lane: TimelineLane; items: TimelineItem[]; trackCount: number }[];
   itemCount: number;
+  /**
+   * Pixel height the packer used. The chart must use this same number: a
+   * shorter band would let the minimum bar height cover the next event.
+   */
+  bandPx?: number;
 }
 
 export interface TimelineModel {
@@ -127,23 +165,179 @@ export const PERSON_CATEGORY_LABEL: Record<string, string> = {
 };
 
 /**
- * Greedy interval packing: put each entry on the first sub-track whose last
- * entry has already ended. This is what stops two prophets with overlapping
- * ministries from being drawn on top of each other.
+ * Matches `.tl-bar { min-height: 2.7rem }` plus a couple of pixels so two
+ * bars that only touch still have separate hit targets. A one-year battle in
+ * a 400-year band is a few pixels tall on the year scale; the label needs
+ * this much ink, and that ink must not cover the next battle.
  */
-function packTracks(items: TimelineItem[]): number {
+export const MIN_BAR_PX = 46;
+
+/** Fraction of an era band that one bar occupies at minimum. */
+export function visualMinFraction(bandPx: number): number {
+  const px = Math.max(MIN_BAR_PX, bandPx);
+  return Math.max(0.04, MIN_BAR_PX / px);
+}
+
+/**
+ * Greedy interval packing on the ink each bar actually paints, not only on
+ * the authored years. A battle that ends in 853 BC and the next that starts
+ * in 853 BC do not overlap as numbers (`end <= start`), but both paint a
+ * label-tall block, so they cannot share a column.
+ */
+function packTracks(items: TimelineItem[], era: Era, bandPx: number): number {
+  const span = Math.max(1, era.endYear - era.startYear);
+  const minYears = visualMinFraction(bandPx) * span;
   const ends: number[] = [];
-  for (const item of [...items].sort((a, b) => a.startYear - b.startYear || a.endYear - b.endYear)) {
+  const sorted = [...items].sort(
+    (a, b) => a.startYear - b.startYear || a.endYear - b.endYear || a.label.localeCompare(b.label),
+  );
+  for (const item of sorted) {
+    const duration = Math.max(0, item.endYear - item.startYear);
+    const visualEnd = item.startYear + Math.max(duration, minYears);
     let track = ends.findIndex((end) => end <= item.startYear);
     if (track === -1) {
       track = ends.length;
-      ends.push(item.endYear);
+      ends.push(visualEnd);
     } else {
-      ends[track] = item.endYear;
+      ends[track] = visualEnd;
     }
     item.track = track;
   }
   return Math.max(1, ends.length);
+}
+
+function packLanes(eraItems: TimelineItem[], era: Era, bandPx: number) {
+  return TIMELINE_LANES.map((lane) => {
+    const laneItems = eraItems.filter((i) => i.lane === lane.id);
+    return {
+      lane,
+      items: laneItems,
+      trackCount: laneItems.length > 0 ? packTracks(laneItems, era, bandPx) : 0,
+    };
+  }).filter((l) => l.items.length > 0);
+}
+
+/**
+ * How tall to draw an era band, in pixels.
+ *
+ * Crowding is not about how many entries an era has — the track packer spreads
+ * those sideways — it is about how many end up stacked *on top of each other*
+ * in the busiest lane. Thirty battles packed onto three tracks means ten bars
+ * down one column, and ten bars need ten bars' worth of height or the labels
+ * collapse into initials. So: size the band by the fullest column, floor it so
+ * a two-entry era still reads as a band, and cap it so no single era becomes an
+ * endless scroll.
+ */
+function computeBandPx(
+  era: Era,
+  lanes: { items: TimelineItem[]; trackCount: number }[],
+): number {
+  const perColumn = lanes.map((l) => Math.ceil(l.items.length / Math.max(1, l.trackCount)));
+  const busiest = Math.max(1, ...perColumn);
+  // A ~100-year find (the Shuruppak flood silt) in the Creation-to-Abraham
+  // band (~1900 years) is only ~5% of the height. Floor the band so that
+  // find stays ~40px — enough for its title and year once padding is applied.
+  const spanYears = Math.max(1, era.endYear - era.startYear);
+  const shortFindFloor = Math.ceil((40 * spanYears) / 100);
+  return Math.min(1200, Math.max(400, shortFindFloor, busiest * 72));
+}
+
+const LIFE_JOURNEY = 'journey-ministry';
+
+/** Name for a shared year window. The dates stay the stops' own; this only titles the bar. */
+function phaseLabel(start: number, end: number, count: number): string {
+  if (start === 30 && end === 33) return `Passion through the Ascension · ${count} events`;
+  if (start === 28 && end === 30) return `Galilean ministry · ${count} events`;
+  if (start === 28 && end === 29) return `Early ministry · ${count} events`;
+  if (start === 27 && end === 29) return `Opening of the ministry · ${count} events`;
+  return `${count} events`;
+}
+
+/**
+ * The ministry journey's stops, one beat each. Stops that were authored with
+ * the same year window share a bar. The return from Egypt is not its own stop
+ * (the Nazareth stop is dated to the later rejection); Matthew 2:19-23 is the
+ * close of the flight stop, so it is listed at the end of that window.
+ */
+function appendLifeOfJesus(bundle: BundleIndex, items: TimelineItem[]) {
+  const stops = (bundle.stops ?? []).filter((s) => s.journeyId === LIFE_JOURNEY && s.title?.en);
+  if (stops.length === 0) return;
+  const color = bundle.journeys.find((j) => j.id === LIFE_JOURNEY)?.color;
+
+  const drafts: TimelineBeat[] = stops.map((s) => ({
+    id: `life:${s.id}`,
+    label: s.title!.en,
+    detail: s.eventSummary.en,
+    display: s.dateRange.display.en,
+    startYear: s.dateRange.startYear,
+    endYear: s.dateRange.endYear,
+    confidence: s.confidence,
+    siteId: s.siteId,
+    scriptureRef: s.scriptureRefs[0],
+    citations: s.citations,
+    order: s.order,
+  }));
+
+  const flight = stops.find((s) => s.id === 'stop-ministry-flight-to-egypt');
+  const birth = stops.find((s) => s.id === 'stop-ministry-bethlehem-0');
+  if (flight) {
+    drafts.push({
+      id: 'life:return-from-egypt',
+      label: 'Return from Egypt to Nazareth',
+      detail:
+        "After Herod's death Joseph brought the child back from Egypt and settled in Nazareth (Matthew 2:19-23). The year is the end of the flight stop's authored window, not a separate calculation.",
+      display: "after Herod's death, c. 4 BC",
+      startYear: -4,
+      endYear: -4,
+      confidence: 'medium',
+      siteId: 'site-nazareth',
+      scriptureRef: 'Matthew 2:19',
+      citations: [...new Set([...(birth?.citations ?? []), ...flight.citations])],
+      order: flight.order + 0.5,
+      datingNote:
+        "Matthew 2:19-23 places the return after Herod died. This chart uses c. 4 BC, the death date already given on the birth stop, at the end of the flight stop's own window. It is not a separate mapped leg.",
+    });
+  }
+
+  const groups = new Map<string, TimelineBeat[]>();
+  for (const beat of drafts) {
+    const key = `${beat.startYear}:${beat.endYear}`;
+    const list = groups.get(key);
+    if (list) list.push(beat);
+    else groups.set(key, [beat]);
+  }
+
+  for (const beats of groups.values()) {
+    beats.sort((a, b) => a.order - b.order);
+    const first = beats[0];
+    const one = beats.length === 1;
+    const sharedDisplay = beats.every((b) => b.display === first.display);
+    items.push({
+      id: one ? first.id : `life:${first.startYear}:${first.endYear}`,
+      kind: 'life',
+      lane: 'life',
+      label: one ? first.label : phaseLabel(first.startYear, first.endYear, beats.length),
+      detail: one
+        ? first.detail
+        : `${beats.length} events share this authored window. They are listed in journey order under this era.`,
+      display: one
+        ? first.display
+        : sharedDisplay
+          ? `${first.display} · ${beats.length} events`
+          : `${formatYearSpan(first.startYear, first.endYear)} · ${beats.length} events`,
+      startYear: first.startYear,
+      endYear: first.endYear,
+      confidence: one ? first.confidence : undefined,
+      color,
+      journeyId: LIFE_JOURNEY,
+      siteId: one ? first.siteId : undefined,
+      scriptureRef: one ? first.scriptureRef : undefined,
+      citations: one ? first.citations : [],
+      datingNote: one ? first.datingNote : undefined,
+      track: 0,
+      beats,
+    });
+  }
 }
 
 /**
@@ -271,6 +465,8 @@ export function buildTimeline(bundle: BundleIndex): TimelineModel {
     });
   }
 
+  appendLifeOfJesus(bundle, items);
+
   const unplaced: TimelineItem[] = [];
   const byEra = new Map<string, TimelineItem[]>();
   for (const item of items) {
@@ -288,11 +484,18 @@ export function buildTimeline(bundle: BundleIndex): TimelineModel {
   for (const era of ERAS) {
     const eraItems = byEra.get(era.id) ?? [];
     if (eraItems.length === 0) continue;
-    const lanes = TIMELINE_LANES.map((lane) => {
-      const laneItems = eraItems.filter((i) => i.lane === lane.id);
-      return { lane, items: laneItems, trackCount: packTracks(laneItems) };
-    }).filter((l) => l.items.length > 0);
-    sections.push({ era, lanes, itemCount: eraItems.length });
+    // Grow the band until the packer's minimum ink fits. Never shrink it
+    // afterward: a shorter band would make those same bars overlap again.
+    let bandPx = 400;
+    let lanes = packLanes(eraItems, era, bandPx);
+    for (let pass = 0; pass < 5; pass++) {
+      const next = computeBandPx(era, lanes);
+      if (next <= bandPx) break;
+      bandPx = next;
+      lanes = packLanes(eraItems, era, bandPx);
+    }
+    const itemCount = eraItems.reduce((n, item) => n + (item.beats?.length ? item.beats.length : 1), 0);
+    sections.push({ era, lanes, itemCount, bandPx });
   }
 
   const undated = bundle.persons
@@ -310,37 +513,45 @@ export function buildTimeline(bundle: BundleIndex): TimelineModel {
 export function spanWithinEra(
   item: { startYear: number; endYear: number },
   era: Era,
+  bandPx = 400,
 ): { top: string; height: string } {
   const span = Math.max(1, era.endYear - era.startYear);
   const start = Math.max(era.startYear, Math.min(item.startYear, era.endYear));
   const end = Math.min(era.endYear, Math.max(item.endYear, era.startYear));
   const top = ((start - era.startYear) / span) * 100;
-  // A minimum height keeps single-year events tappable (WCAG target size) and
-  // keeps a one-year battle from vanishing next to a 400-year era.
-  const height = Math.max(4, ((end - start) / span) * 100);
-  return { top: `${Math.min(top, 100 - height)}%`, height: `${height}%` };
+  // The same minimum the packer reserved, so the painted bar is not taller
+  // than the column slot it was given.
+  const minPct = visualMinFraction(bandPx) * 100;
+  const height = Math.min(100, Math.max(minPct, ((end - start) / span) * 100));
+  const clampedTop = Math.min(top, Math.max(0, 100 - height));
+  return { top: `${clampedTop}%`, height: `${height}%` };
 }
 
-/**
- * How tall to draw an era band, in pixels.
- *
- * Crowding is not about how many entries an era has — the track packer spreads
- * those sideways — it is about how many end up stacked *on top of each other*
- * in the busiest lane. Thirty battles packed onto three tracks means ten bars
- * down one column, and ten bars need ten bars' worth of height or the labels
- * collapse into initials. So: size the band by the fullest column, floor it so
- * a two-entry era still reads as a band, and cap it so no single era becomes an
- * endless scroll.
- */
+/** Pixel height of an era band. Uses the height the packer already settled on. */
 export function eraBandHeight(section: TimelineEraSection): number {
-  const perColumn = section.lanes.map((l) => Math.ceil(l.items.length / Math.max(1, l.trackCount)));
-  const busiest = Math.max(1, ...perColumn);
-  // A ~100-year find (the Shuruppak flood silt) in the Creation-to-Abraham
-  // band (~1900 years) is only ~5% of the height. Floor the band so that
-  // find stays ~40px — enough for its title and year once padding is applied.
-  const spanYears = Math.max(1, section.era.endYear - section.era.startYear);
-  const shortFindFloor = Math.ceil((40 * spanYears) / 100);
-  return Math.min(1200, Math.max(400, shortFindFloor, busiest * 72));
+  if (section.bandPx && section.bandPx > 0) return section.bandPx;
+  return computeBandPx(section.era, section.lanes);
+}
+
+export type LifeGroup = 'birth' | 'ministry' | 'later';
+
+/** Which list a life-of-Jesus beat belongs in. The cut is the authored year, not a new date. */
+export function lifeGroup(beat: TimelineBeat): LifeGroup {
+  if (beat.endYear < 15) return 'birth';
+  if (beat.startYear >= 40) return 'later';
+  return 'ministry';
+}
+
+/** Every life-of-Jesus beat in an era, in journey order. */
+export function lifeRows(section: TimelineEraSection): { item: TimelineItem; beat: TimelineBeat }[] {
+  const lane = section.lanes.find((l) => l.lane.id === 'life');
+  if (!lane) return [];
+  const rows: { item: TimelineItem; beat: TimelineBeat }[] = [];
+  for (const item of lane.items) {
+    for (const beat of item.beats ?? []) rows.push({ item, beat });
+  }
+  rows.sort((a, b) => a.beat.startYear - b.beat.startYear || a.beat.order - b.beat.order);
+  return rows;
 }
 
 /** Evenly spaced year gridlines for an era band, as percentages. */

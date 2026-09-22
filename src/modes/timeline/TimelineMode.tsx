@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModePanel } from '../ModePanel';
@@ -6,8 +6,10 @@ import { useBundle, type BundleIndex } from '../../content/useBundle';
 import {
   buildTimeline,
   eraBandHeight,
+  lifeRows,
   PERSON_CATEGORY_LABEL,
   TIMELINE_LANES,
+  type TimelineBeat,
   type TimelineItem,
   type TimelineLaneId,
 } from '../../content/timeline';
@@ -18,6 +20,7 @@ import {
   ChartScrollCue,
   EraAxis,
   EraHeader,
+  LifeListing,
   TimelineDetailCard,
   TimelineFilters,
   TimelineLaneColumn,
@@ -55,6 +58,16 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
   const model = useMemo(() => buildTimeline(bundle), [bundle]);
   const [lanes, setLanes] = useState<TimelineLaneId[]>(ALL_LANES);
   const [selected, setSelected] = useState<TimelineItem | null>(null);
+  const [beatId, setBeatId] = useState<string | null>(null);
+
+  const selectItem = (item: TimelineItem) => {
+    setSelected(item);
+    setBeatId(item.beats?.length === 1 ? item.beats[0].id : null);
+  };
+  const selectBeat = (item: TimelineItem, id: string) => {
+    setSelected(item);
+    setBeatId(id);
+  };
 
   // The fold-out effect: on unless the reader has opted out, and always off
   // under prefers-reduced-motion. See useFoldOut for the readability rules.
@@ -147,38 +160,43 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
               lanes={section.lanes.map((l) => l.lane.label)}
               overflow={overflow[section.era.id] ?? ''}
             />
-            <div
-              className="tl-era__body"
-              // The band's height is data-driven (see eraBandHeight): the axis
-              // and every lane track read it, so ticks and bars stay aligned.
-              style={{ '--band-h': `${eraBandHeight(section)}px` } as React.CSSProperties}
-              role="region"
-              tabIndex={0}
-              // Says what the visible cues say: the sideways instruction is
-              // only true while this band actually overflows.
-              aria-label={
-                overflow[section.era.id]?.includes('x')
-                  ? t('modes.timeline.chart.regionLabelLanes', {
-                      era: section.era.label,
-                      laneCount: section.lanes.length,
-                    })
-                  : t('modes.timeline.chart.regionLabel', { era: section.era.label })
-              }
-            >
-              <EraAxis era={section.era} />
-              <div className="tl-era__lanes">
-                {section.lanes.map((l) => (
-                  <TimelineLaneColumn
-                    key={l.lane.id}
-                    lane={l.lane}
-                    era={section.era}
-                    items={l.items}
-                    trackCount={l.trackCount}
-                    selectedId={selected?.id ?? null}
-                    onSelect={setSelected}
-                  />
-                ))}
+            <div className="tl-era__frame">
+              <div
+                className="tl-era__body"
+                // The band's height is the one the packer reserved (see eraBandHeight):
+                // the axis and every lane track read it, so ticks and bars stay aligned.
+                style={{ '--band-h': `${eraBandHeight(section)}px` } as React.CSSProperties}
+                role="region"
+                tabIndex={0}
+                // Says what the visible cues say: the sideways instruction is
+                // only true while this band actually overflows.
+                aria-label={
+                  overflow[section.era.id]?.includes('x')
+                    ? t('modes.timeline.chart.regionLabelLanes', {
+                        era: section.era.label,
+                        laneCount: section.lanes.length,
+                      })
+                    : t('modes.timeline.chart.regionLabel', { era: section.era.label })
+                }
+              >
+                <EraAxis era={section.era} />
+                <div className="tl-era__lanes">
+                  {section.lanes.map((l) => (
+                    <TimelineLaneColumn
+                      key={l.lane.id}
+                      lane={l.lane}
+                      era={section.era}
+                      items={l.items}
+                      trackCount={l.trackCount}
+                      bandPx={eraBandHeight(section)}
+                      selectedId={selected?.id ?? null}
+                      onSelect={selectItem}
+                    />
+                  ))}
+                </div>
               </div>
+              {/* Outside the scrollport. A sticky flex item inside it catches
+                  on lane boundaries instead of staying on the visible edge. */}
               <ChartOverflowEdge />
             </div>
             {/* The detail card belongs to the band it was opened from, not to
@@ -186,8 +204,17 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
                 through four eras should not be thrown back to the header to
                 read about him. */}
             {selected && section.lanes.some((l) => l.items.some((i) => i.id === selected.id)) && (
-              <TimelineEntryDetail item={selected} bundle={bundle} onClose={() => setSelected(null)} />
+              <TimelineEntryDetail
+                item={selected}
+                beatId={beatId}
+                bundle={bundle}
+                onClose={() => {
+                  setSelected(null);
+                  setBeatId(null);
+                }}
+              />
             )}
+            <LifeListing rows={lifeRows(section)} selectedBeatId={beatId} onSelect={selectBeat} />
             {section.lanes.length > 1 && (
               <p className="tl-era__pan-hint">{t('modes.timeline.chart.panHint')}</p>
             )}
@@ -238,6 +265,50 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
  * 'house of bread'; Ephrathah)" — which belong in the site panel, not in the
  * middle of a link. Keep the name, drop the parenthetical.
  */
+function LifeBeat({
+  beat,
+  bundle,
+  current,
+}: {
+  beat: TimelineBeat;
+  bundle: BundleIndex;
+  current: boolean;
+}) {
+  const site = beat.siteId ? bundle.site(beat.siteId) : undefined;
+  return (
+    <li id={`tl-beat-${beat.id}`} className={current ? 'tl-beats__item tl-beats__item--current' : 'tl-beats__item'}>
+      <h4 className="tl-beats__title">{beat.label}</h4>
+      <p className="tl-life__date">
+        {beat.display}
+        {beat.confidence ? (
+          <>
+            {' '}
+            <ConfidenceBadge confidence={beat.confidence} />
+          </>
+        ) : null}
+      </p>
+      {beat.detail && <p className="claim-prose">{beat.detail}</p>}
+      <ReferenceStack>
+        {beat.datingNote && (
+          <details className="dispute">
+            <summary>About this dating</summary>
+            <p>{beat.datingNote}</p>
+          </details>
+        )}
+        {(site || beat.scriptureRef) && (
+          <div className="tl-detail__links">
+            {site && (
+              <Link to={`/atlas?site=${site.id}`}>Show {shortSiteName(site.ancientName.en)} on the atlas →</Link>
+            )}
+            {beat.scriptureRef && <Link to={bibleHref(beat.scriptureRef)}>Read {beat.scriptureRef} →</Link>}
+          </div>
+        )}
+        <Citations ids={beat.citations} bundle={bundle} />
+      </ReferenceStack>
+    </li>
+  );
+}
+
 function shortSiteName(ancientName: string): string {
   return ancientName.split(' (')[0];
 }
@@ -252,16 +323,24 @@ function plottedSpanNeeded(item: TimelineItem): boolean {
 /** The card for a tapped bar: what it is, when, and every way out of it. */
 function TimelineEntryDetail({
   item,
+  beatId,
   bundle,
   onClose,
 }: {
   item: TimelineItem;
+  beatId: string | null;
   bundle: BundleIndex;
   onClose: () => void;
 }) {
   const person = item.personId ? bundle.person(item.personId) : undefined;
   const site = item.siteId ? bundle.site(item.siteId) : undefined;
   const journey = item.journeyId ? bundle.journey(item.journeyId) : undefined;
+  const beats = item.beats && item.beats.length > 1 ? item.beats : null;
+
+  useEffect(() => {
+    const el = (beatId && document.getElementById(`tl-beat-${beatId}`)) || document.getElementById('tl-open-detail');
+    el?.scrollIntoView({ block: 'nearest' });
+  }, [item.id, beatId]);
 
   return (
     <TimelineDetailCard
@@ -283,47 +362,67 @@ function TimelineEntryDetail({
         </>
       }
     >
-      {item.detail && <p className="claim-prose">{item.detail}</p>}
-      {person && <p className="claim-prose">{person.summary.en}</p>}
-
-      {person && (
-        <ul className="tl-detail__facts">
-          {person.category && (
-            <li>
-              <strong>{PERSON_CATEGORY_LABEL[person.category] ?? person.category}</strong>
-            </li>
+      {beats ? (
+        <>
+          {item.detail && <p className="claim-prose">{item.detail}</p>}
+          <ol className="tl-beats">
+            {beats.map((beat) => (
+              <LifeBeat key={beat.id} beat={beat} bundle={bundle} current={beat.id === beatId} />
+            ))}
+          </ol>
+          {journey && (
+            <div className="tl-detail__links">
+              <Link to={`/trace/${journey.id}`}>Trace this journey →</Link>
+            </div>
           )}
-          {person.realm && <li>{person.realm.en}</li>}
-          {person.books && person.books.length > 0 && <li>Book(s): {person.books.join(', ')}</li>}
-          {site && <li>Based at {shortSiteName(site.ancientName.en)}</li>}
-        </ul>
-      )}
+        </>
+      ) : (
+        <>
+          {item.detail && <p className="claim-prose">{item.detail}</p>}
+          {person && <p className="claim-prose">{person.summary.en}</p>}
 
-      <ReferenceStack>
-        {item.datingNote && (
-          <details className="dispute">
-            <summary>About this dating</summary>
-            <p>{item.datingNote}</p>
-          </details>
-        )}
-        {(journey || site || item.scriptureRef || (person?.journeyIds?.length ?? 0) > 1) && (
-          <div className="tl-detail__links">
-            {journey && <Link to={`/trace/${journey.id}`}>Trace this journey →</Link>}
-            {site && <Link to={`/atlas?site=${site.id}`}>Show {shortSiteName(site.ancientName.en)} on the atlas →</Link>}
-            {item.scriptureRef && <Link to={bibleHref(item.scriptureRef)}>Read {item.scriptureRef} →</Link>}
-            {person?.journeyIds
-              ?.slice(1)
-              .map((jid) => bundle.journey(jid))
-              .filter((j): j is NonNullable<typeof j> => Boolean(j))
-              .map((j) => (
-                <Link key={j.id} to={`/trace/${j.id}`}>
-                  Also: {j.title.en} →
-                </Link>
-              ))}
-          </div>
-        )}
-        <Citations ids={item.citations} bundle={bundle} />
-      </ReferenceStack>
+          {person && (
+            <ul className="tl-detail__facts">
+              {person.category && (
+                <li>
+                  <strong>{PERSON_CATEGORY_LABEL[person.category] ?? person.category}</strong>
+                </li>
+              )}
+              {person.realm && <li>{person.realm.en}</li>}
+              {person.books && person.books.length > 0 && <li>Book(s): {person.books.join(', ')}</li>}
+              {site && <li>Based at {shortSiteName(site.ancientName.en)}</li>}
+            </ul>
+          )}
+
+          <ReferenceStack>
+            {item.datingNote && (
+              <details className="dispute">
+                <summary>About this dating</summary>
+                <p>{item.datingNote}</p>
+              </details>
+            )}
+            {(journey || site || item.scriptureRef || (person?.journeyIds?.length ?? 0) > 1) && (
+              <div className="tl-detail__links">
+                {journey && <Link to={`/trace/${journey.id}`}>Trace this journey →</Link>}
+                {site && (
+                  <Link to={`/atlas?site=${site.id}`}>Show {shortSiteName(site.ancientName.en)} on the atlas →</Link>
+                )}
+                {item.scriptureRef && <Link to={bibleHref(item.scriptureRef)}>Read {item.scriptureRef} →</Link>}
+                {person?.journeyIds
+                  ?.slice(1)
+                  .map((jid) => bundle.journey(jid))
+                  .filter((j): j is NonNullable<typeof j> => Boolean(j))
+                  .map((j) => (
+                    <Link key={j.id} to={`/trace/${j.id}`}>
+                      Also: {j.title.en} →
+                    </Link>
+                  ))}
+              </div>
+            )}
+            <Citations ids={item.citations} bundle={bundle} />
+          </ReferenceStack>
+        </>
+      )}
 
       <button type="button" className="miracle-card__read" onClick={onClose}>
         Close
