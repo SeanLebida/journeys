@@ -20,9 +20,54 @@ export const CitationKind = z.enum([
   'secondary-scholarly',
   'archaeological',
   'gazetteer',
+  /** Popular encyclopedias, study-Bible maps, blogs — orienting only, never sole concrete source. */
+  'tertiary-popular',
 ]);
 export const LegMode = z.enum(['land', 'sea', 'start', 'turnaround']);
-export const JourneyKind = z.enum(['patriarchal', 'exodus', 'ministry', 'apostolic']);
+/**
+ * Era a journey belongs to. Ordered as the biblical narrative runs — the
+ * trace picker and the timeline both read this as the era spine, so a new
+ * value must also be added to `ERA_ORDER` (TraceMode) and `ERAS`
+ * (src/content/eras.ts).
+ */
+export const JourneyKind = z.enum([
+  'patriarchal',
+  'exodus',
+  'conquest', // Joshua and the judges
+  'monarchy', // Samuel, Saul, David, Solomon and the divided kingdom
+  'prophetic', // a named prophet's own circuit (Elijah, Elisha, Jonah, Jeremiah…)
+  'exile', // deportation to Babylon and the prophets of the exile
+  'return', // Cyrus' decree, Zerubbabel, Ezra, Nehemiah
+  'ministry',
+  'apostolic',
+]);
+/**
+ * How a figure is classified on the timeline and in the figure index. The
+ * major/minor prophet split is the conventional one — length of the book, not
+ * importance — and the app says so where it is shown.
+ */
+export const PersonCategory = z.enum([
+  'patriarch',
+  'matriarch',
+  'prophet-major',
+  'prophet-minor',
+  'prophet', // prophets without a book of their own (Samuel, Elijah, Elisha, Nathan…)
+  'judge',
+  'king',
+  'priest',
+  'apostle',
+  'disciple',
+  'evangelist',
+  'ruler', // foreign kings, governors, and Roman officials
+  'other',
+]);
+/** Per-leg geometry quality for route paths (honest stroke styling + UI caveats). */
+export const GeometryGrade = z.enum([
+  'surveyed-road', // snapped to a published surveyed network (e.g. Itiner-e Roman roads)
+  'reconstructed-land', // curated historical corridor, not survey-grade
+  'sea-lane', // sail-lane reconstruction from ancient notices
+  'schematic', // connector only; no claim of a travelled road
+]);
 
 export const DateRange = z
   .object({
@@ -42,20 +87,17 @@ export const Citation = z.object({
   license: z.string().optional(),
 });
 
-/** A neutrality-aware claim wrapper. */
+/** A neutrality-aware claim wrapper. Every claim needs citations; `high` is not a free pass. */
 const claimOf = <T extends z.ZodTypeAny>(value: T) =>
   z
     .object({
       value,
       confidence: Confidence,
       reviewStatus: ReviewStatus,
-      citations: z.array(z.string()),
+      citations: z.array(z.string()).min(1),
       disputes: LocalizedText.optional(),
     })
     .superRefine((c, ctx) => {
-      if (c.confidence !== 'high' && c.citations.length < 1) {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'non-`high` claim needs >=1 citation' });
-      }
       if (c.confidence === 'disputed' && !c.disputes) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: '`disputed` claim needs a `disputes` note' });
       }
@@ -80,7 +122,10 @@ export const Site = z.object({
       }),
     )
     .optional(),
+  /** Pleiades gazetteer place id (https://pleiades.stoa.org/places/<id>). */
   pleiadesId: z.string().optional(),
+  /** Digital Atlas of the Roman Empire place id, when distinct from Pleiades. */
+  dareId: z.string().optional(),
   summary: LocalizedText,
   citations: z.array(z.string()),
 });
@@ -98,6 +143,12 @@ export const RoutePath = z.object({
   journeyId: z.string().min(1),
   /** legs[k] joins stop k to stop k+1; each an array of [lon, lat] incl. both endpoints. */
   legs: z.array(z.array(z.tuple([z.number(), z.number()])).min(2)).min(1),
+  /**
+   * Geometry quality per leg (same length as `legs` when present). Surveyed
+   * Roman-road snaps vs reconstructed land corridors vs sea lanes vs schematic
+   * connectors — drives map stroke style and the trace-panel caveat.
+   */
+  legGrades: z.array(GeometryGrade).optional(),
   note: LocalizedText.optional(),
   citations: z.array(z.string()),
 });
@@ -119,6 +170,7 @@ export const Stop = z.object({
   journeyId: z.string(),
   order: z.number().int().nonnegative(),
   siteId: z.string(),
+  title: LocalizedText.optional(),
   legMode: LegMode,
   dateRange: DateRange,
   eventSummary: LocalizedText,
@@ -132,6 +184,18 @@ export const Stop = z.object({
   citations: z.array(z.string()),
 });
 
+/**
+ * A named figure of the biblical narrative. Beyond the name/role/summary the
+ * app needs to *place* and *date* a figure to draw them on the linear timeline
+ * and to answer "where was this person, and when": `ministryRange` (or
+ * `lifeRange` when a ministry is not the point) is the timeline span,
+ * `homeSiteId`/`siteIds` are the map anchors, and `journeyIds` links the
+ * figure to the journeys they walk.
+ *
+ * Every one of those is optional: a figure the text places only vaguely gets
+ * no coordinates rather than a fabricated pin, and an undated figure is listed
+ * off-axis rather than given false precision.
+ */
 export const Person = z.object({
   id: z.string().min(1),
   name: LocalizedText,
@@ -139,6 +203,25 @@ export const Person = z.object({
   summary: LocalizedText,
   scriptureRefs: z.array(z.string()),
   citations: z.array(z.string()),
+  category: PersonCategory.optional(),
+  /** Realm/audience — e.g. "Kingdom of Judah", "Northern Kingdom (Israel)". */
+  realm: LocalizedText.optional(),
+  /** Books of the Bible traditionally ascribed to the figure (display names). */
+  books: z.array(z.string()).optional(),
+  /** Birth-to-death span, where a scholarly range exists. */
+  lifeRange: DateRange.optional(),
+  /** Active ministry/reign span — the figure's bar on the timeline. */
+  ministryRange: DateRange.optional(),
+  /** Home town / base of operations (Site id). */
+  homeSiteId: z.string().optional(),
+  /** Other mapped places the figure is placed at by the text. */
+  siteIds: z.array(z.string()).optional(),
+  /** Journeys the figure travels (Journey ids). */
+  journeyIds: z.array(z.string()).optional(),
+  /** Figures the text explicitly synchronises this one with. */
+  contemporaries: z.array(z.string()).optional(),
+  /** Where the dating itself is contested, say so rather than picking a side. */
+  datingNote: LocalizedText.optional(),
 });
 
 export const Artifact = z.object({
@@ -372,13 +455,17 @@ export const Bundle = z.object({
 
 export type TConfidence = z.infer<typeof Confidence>;
 export type TReviewStatus = z.infer<typeof ReviewStatus>;
+export type TGeometryGrade = z.infer<typeof GeometryGrade>;
 export type TDateRange = z.infer<typeof DateRange>;
 export type TCitation = z.infer<typeof Citation>;
+export type TCitationKind = z.infer<typeof CitationKind>;
 export type TSite = z.infer<typeof Site>;
 export type TJourney = z.infer<typeof Journey>;
 export type TRoutePath = z.infer<typeof RoutePath>;
 export type TStop = z.infer<typeof Stop>;
 export type TPerson = z.infer<typeof Person>;
+export type TPersonCategory = z.infer<typeof PersonCategory>;
+export type TJourneyKind = z.infer<typeof JourneyKind>;
 export type TArtifact = z.infer<typeof Artifact>;
 export type TWitness = z.infer<typeof Witness>;
 export type TMiracle = z.infer<typeof Miracle>;

@@ -119,7 +119,7 @@
    "en": "City of David, Jerusalem (excavated from 2004)"
   },
   "corroborates": {
-   "en": "A monumental Second Temple-period stepped pool at the south of the City of David, matching the site where John 9:7 says Jesus sent a blind man to wash. Excavation confirmed a 1st-century public pool fed by the Siloam channel."
+   "en": "A monumental Second Temple-period stepped pool at the south of the City of David, matching the site where John 9:7 says Jesus sent a blind man to wash. Excavation confirmed a 1st-century public pool fed by the Siloam channel. In 2025 the IAA and City of David team exposed the earlier dam that formed this reservoir — a 12 m wall dated by radiocarbon to c. 805–795 BC, the reigns of Joash and Amaziah of Judah — so the pool Jesus used sits on royal waterworks already described for Judah's kings."
   },
   "dateRange": {
    "startYear": -10,
@@ -134,7 +134,9 @@
   "citations": [
    "cit-pool-of-siloam",
    "cit-dth-pool-of-siloam",
-   "cit-dth-jesus-pool-siloam-rivers-living-water"
+   "cit-dth-jesus-pool-siloam-rivers-living-water",
+   "cit-iaa-siloam-dam-2025",
+   "cit-bar-siloam-dam-2025"
   ],
   "siteId": "site-jerusalem"
  },

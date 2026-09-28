@@ -15,6 +15,8 @@ const TABS: Tab[] = [
   { to: '/', key: 'home', end: true, glyph: '⌂' },
   { to: '/trace', key: 'trace', glyph: '⟿', labelKey: 'nav.traceShort' },
   { to: '/atlas', key: 'atlas', glyph: '◍' },
+  { to: '/timeline', key: 'timeline', glyph: '≣' },
+  { to: '/bible', key: 'bible', glyph: '▤' },
   { to: '/lessons', key: 'lessons', glyph: '❖' },
   { to: '/quiz', key: 'quiz', glyph: '?' },
 ];
@@ -45,6 +47,12 @@ function ThemeToggle() {
   );
 }
 
+/**
+ * Bottom dock. It overlays the map rather than sitting in the shell's flex flow,
+ * so `App` can stow it during journey travel with a pure transform — no reflow,
+ * no MapLibre resize while a camera move is playing. `visibility: hidden` at the
+ * end of the slide is what takes the stowed links out of the tab order.
+ */
 export function TabBar() {
   const { t } = useTranslation();
   return (
