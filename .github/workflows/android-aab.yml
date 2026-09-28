@@ -14,8 +14,8 @@ name: Android Release AAB (Signed & Play Store)
 # If PLAY_SERVICE_ACCOUNT_JSON is not provided, the workflow still builds the signed AAB,
 # uploads the artifact, and drafts a GitHub release for 1-click manual upload to Play Console.
 #
-# Run this from development. That branch has the release scripts. main and
-# production do not, and this workflow file is not on those branches.
+# Run this from production. That is the line that ships. development and main
+# carry the same workflow file once those branches are synced.
 
 on:
   workflow_dispatch:

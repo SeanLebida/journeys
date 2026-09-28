@@ -120,7 +120,7 @@ In your GitHub repository, navigate to **Settings > Secrets and variables > Acti
 ### Step 5.2: Trigger a Release
 
 1. Go to **Actions > Android Release AAB (Signed & Play Store)**.
-2. Click **Run workflow** and select the `development` branch. That branch has this workflow and the Android release scripts. `main` and `production` do not.
+2. Click **Run workflow** and select the `production` branch. That is the line this repo ships.
 3. Set:
    - **Google Play track**: `internal`
    - **Rollout status**: `completed`
