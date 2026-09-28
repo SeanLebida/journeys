@@ -5,10 +5,14 @@ import { SiteThumb } from './SitePhoto';
 
 // Each mode card carries a representative bundled site photo (offline, credited
 // on the site's own detail panel): the Appian Way for route tracing, Ephesus
-// for the atlas, the Sea of Galilee for lessons, the Areopagus for quizzes.
+// for the atlas, Megiddo for the timeline (a tell whose layers *are* a
+// chronology), Patmos for the reader, the Sea of Galilee for lessons, the
+// Areopagus for quizzes.
 const MODES = [
   { to: '/trace', key: 'trace', glyph: '⟿', thumbSite: 'site-rome' },
   { to: '/atlas', key: 'atlas', glyph: '◍', thumbSite: 'site-ephesus' },
+  { to: '/timeline', key: 'timeline', glyph: '≣', thumbSite: 'site-megiddo' },
+  { to: '/bible', key: 'bible', glyph: '▤', thumbSite: 'site-patmos' },
   { to: '/lessons', key: 'lessons', glyph: '❖', thumbSite: 'site-sea-of-galilee' },
   { to: '/quiz', key: 'quiz', glyph: '?', thumbSite: 'site-athens' },
 ] as const;

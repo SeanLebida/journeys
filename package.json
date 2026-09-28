@@ -1,13 +1,13 @@
 {
   "name": "journeys",
-  "version": "0.2.1",
+  "version": "0.3.13",
   "private": true,
   "type": "module",
-  "description": "Biblically, geographically, historically and archaeologically accurate interactive atlas of the missionary journeys of Jesus and the apostles.",
+  "description": "Cited offline atlas of the biblical historical record: patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles.",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run build:content && tsc --noEmit && vite build",
     "preview": "vite preview",
     "build:content": "tsx scripts/build-content.ts",
     "typecheck": "tsc --noEmit",
@@ -15,9 +15,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "cap:sync": "cap sync"
+    "cap:sync": "cap sync",
+    "android:version:bump": "node scripts/bump-android-version.mjs",
+    "android:release:notes": "node scripts/generate-release-notes.mjs",
+    "android:build:release": "npm run build && npm run cap:sync && npm run android:release:notes && npm run android:version:bump && cd android && ./gradlew bundleRelease",
+    "assets:store": "tsx scripts/generate-store-assets.ts"
   },
   "dependencies": {
+    "@capacitor/android": "^6.2.1",
     "@capacitor/app": "^6.0.2",
     "@capacitor/core": "^6.2.0",
     "@capacitor/preferences": "^6.0.3",
@@ -26,7 +31,6 @@
     "@turf/length": "^7.1.0",
     "i18next": "^23.16.8",
     "maplibre-gl": "^4.7.1",
-    "pmtiles": "^3.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.1.4",
@@ -36,6 +40,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^6.2.0",
     "@eslint/js": "^9.17.0",
     "@playwright/test": "^1.49.1",
@@ -44,18 +49,19 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@types/sql.js": "^1.4.9",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.17.0",
     "globals": "^15.14.0",
     "jsdom": "^25.0.1",
-    "@types/sql.js": "^1.4.9",
+    "sharp": "^0.35.3",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
-    "zod-to-json-schema": "^3.24.1",
     "typescript-eslint": "^8.18.1",
     "vite": "^6.0.5",
     "vite-plugin-pwa": "^0.21.1",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "zod-to-json-schema": "^3.24.1"
   },
   "engines": {
     "node": ">=20"

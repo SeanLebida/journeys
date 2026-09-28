@@ -49,20 +49,34 @@
   --c-legendary: var(--violet);
   --c-disputed: var(--terracotta-ink);
 
-  /* Type — Ubuntu throughout, self-hosted, matching the authentic.how brand.
-     One typeface across the whole app; hierarchy comes from weight (400 body /
-     500 medium / 700 bold), size, and color, not a second family. The
-     --font-heading/body/serif/sans names are kept as aliases so every existing
-     rule resolves to Ubuntu. */
+  /* Type — Ubuntu for chrome, EB Garamond for the book. Hierarchy in the
+     UI still comes from Ubuntu weight (400 / 500 / 700). Scripture and the
+     other `--font-serif` surfaces are the one place a second family earns
+     its keep (CRAP contrast). */
   --font-heading: 'Ubuntu', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   --font-body: var(--font-heading);
-  --font-serif: var(--font-heading);
+  --font-serif: 'EB Garamond', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
   --font-sans: var(--font-heading);
 
   /* Spacing / shape */
   --r-sm: 6px;
   --r-md: 12px;
   --r-lg: 20px;
+  /* Inner inset for boxed descriptions (timeline event cards, extras, notes).
+     Text must never sit on the stroke of its own card. */
+  --card-inset-block: 0.85rem;
+  --card-inset-inline: 1rem;
+  --card-inset: var(--card-inset-block) var(--card-inset-inline);
+  /* Proximity: a claim and the light notes that annotate it sit closer
+     together than two claims do. Hair is inside a note cluster, near is
+     claim-to-note, apart is claim-to-claim. */
+  --space-hair: 0.2rem;
+  --space-near: 0.45rem;
+  --space-apart: 1.2rem;
+  --prose-leading: 1.62;
+  --ref-size: 0.78rem;
+  --ref-leading: 1.4;
+  --measure: 68ch;
   --shadow-1: 0 1px 2px rgba(11, 16, 32, 0.12), 0 4px 16px rgba(11, 16, 32, 0.1);
   --shadow-2: 0 8px 40px rgba(11, 16, 32, 0.28);
   --maxw: 720px;
@@ -70,6 +84,8 @@
   /* Safe areas (notches / home indicators on native) */
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 }
 
 /* ── Dark theme ──────────────────────────────────────────────────────────

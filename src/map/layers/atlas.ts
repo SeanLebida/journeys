@@ -1,16 +1,42 @@
 import type { Map as MapLibreMap, MapGeoJSONFeature } from 'maplibre-gl';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { BundleIndex } from '../../content/useBundle';
+import { hasLiveStyle } from '../lifecycle';
 
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
+  candidates: 'atlas-sites-candidates',
   routes: 'atlas-routes-line',
+  routesReconstructed: 'atlas-routes-line-reconstructed',
+  routesSea: 'atlas-routes-line-sea',
+  routesSchematic: 'atlas-routes-line-schematic',
   battles: 'atlas-battles-circle',
   battleAreas: 'atlas-battle-areas-fill',
   battleAreasLine: 'atlas-battle-areas-line',
   battleAreaSelected: 'atlas-battle-area-selected',
 } as const;
-const SRC = { sites: 'atlas-sites', routes: 'atlas-routes', battles: 'atlas-battles', battleAreas: 'atlas-battle-areas' };
+
+/**
+ * Stroke styling per geometry grade. `line-dasharray` is not data-driven in
+ * MapLibre, so each grade gets its own filtered layer: solid = surveyed road,
+ * progressively sparser dashes = progressively weaker geometric claim.
+ */
+export const ROUTE_GRADE_STYLE = [
+  { layer: ATLAS_LAYERS.routes, grade: 'surveyed-road', width: 5.0, opacity: 0.7, dash: undefined },
+  { layer: ATLAS_LAYERS.routesReconstructed, grade: 'reconstructed-land', width: 4.0, opacity: 0.6, dash: [4, 2] },
+  { layer: ATLAS_LAYERS.routesSea, grade: 'sea-lane', width: 3.5, opacity: 0.55, dash: [2, 3] },
+  { layer: ATLAS_LAYERS.routesSchematic, grade: 'schematic', width: 3.0, opacity: 0.4, dash: [1, 4] },
+] as const;
+
+/** Every route stroke layer, so callers can toggle "journey routes" as one unit. */
+export const ROUTE_LAYER_IDS = ROUTE_GRADE_STYLE.map((s) => s.layer);
+const SRC = {
+  sites: 'atlas-sites',
+  candidates: 'atlas-candidates',
+  routes: 'atlas-routes',
+  battles: 'atlas-battles',
+  battleAreas: 'atlas-battle-areas',
+};
 
 const CONF_COLOR = ['match', ['get', 'confidence'], 'high', '#2f6f6b', 'medium', '#c9a227', 'legendary', '#6b4a8f', 'disputed', '#c75b39', '#888888'];
 // Battles carry one martial crimson across markers and area sweeps, so they
@@ -69,6 +95,67 @@ export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
       ymax,
     };
   });
+}
+
+export interface AtlasCandidateLabel {
+  parentId: string;
+  name: string;
+  lon: number;
+  lat: number;
+  confidence: string;
+  parentConfidence: string;
+  ymin: number;
+  ymax: number;
+}
+
+/**
+ * Rival pins for sites that carry `candidates[]`. Filtered by the *parent*
+ * site's date span and confidence so a disputed working pin never appears
+ * without the hollow rivals that justify the badge.
+ */
+export function atlasCandidatesFC(bundle: BundleIndex): FeatureCollection {
+  const span = computeSiteSpans(bundle);
+  const features: Feature[] = [];
+  for (const s of bundle.sites) {
+    if (!s.candidates?.length) continue;
+    const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
+    s.candidates.forEach((c, i) => {
+      features.push({
+        type: 'Feature',
+        properties: {
+          id: s.id,
+          parentId: s.id,
+          candidateIndex: i,
+          name: c.label.en,
+          confidence: c.confidence,
+          parentConfidence: s.coordinates.confidence,
+          ymin,
+          ymax,
+        },
+        geometry: { type: 'Point', coordinates: [c.lon, c.lat] },
+      });
+    });
+  }
+  return { type: 'FeatureCollection', features };
+}
+
+/** DOM labels for rival pins — only the selected site's candidates, so the
+ * atlas does not sprout 80 extra names at once. */
+export function atlasCandidateLabels(bundle: BundleIndex, parentId: string): AtlasCandidateLabel[] {
+  const site = bundle.sites.find((s) => s.id === parentId);
+  if (!site?.candidates?.length) return [];
+  const span = computeSiteSpans(bundle);
+  const [ymin, ymax] = span.get(site.id) ?? [-10, 70];
+  return site.candidates.map((c) => ({
+    parentId: site.id,
+    name: c.label.en,
+    lon: c.lon,
+    lat: c.lat,
+    confidence: c.confidence,
+    parentConfidence: site.coordinates.confidence,
+    ymin,
+    ymax,
+  }));
 }
 
 /** Battle markers: one point per battle at its anchor site, with the battle's
@@ -147,27 +234,42 @@ export function atlasBattleLabels(bundle: BundleIndex): AtlasBattleLabel[] {
     .filter((x): x is AtlasBattleLabel => x !== null);
 }
 
-/** One LineString per journey, carrying its route color. */
+/**
+ * One LineString per *leg*, carrying its journey color and geometry grade.
+ * Splitting per leg is what lets the map draw a surveyed Roman-road snap
+ * differently from a reconstructed corridor or a bare schematic connector —
+ * a single merged line per journey would claim uniform survey quality.
+ * Journeys without authored legs fall back to one straight `schematic` line.
+ */
 export function atlasRoutesFC(bundle: BundleIndex): FeatureCollection {
-  const features: Feature[] = bundle.journeys.map((j) => {
+  const features: Feature[] = [];
+  for (const j of bundle.journeys) {
     const stopCoords = bundle
       .stopsFor(j.id)
       .map((s) => bundle.site(s.siteId))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
       .map((s) => [s.coordinates.value.lon, s.coordinates.value.lat] as [number, number]);
-    // Draw the authored historical path (roads / caravan arcs / sail lanes)
-    // when one exists; otherwise the straight stop-to-stop fallback.
+    const color = j.color ?? '#c75b39';
+    const base = { journeyId: j.id, color, title: j.title.en };
     const route = bundle.routeForJourney(j.id);
-    const coords =
-      route && route.legs.length === stopCoords.length - 1
-        ? [stopCoords[0], ...route.legs.flatMap((leg) => leg.slice(1))]
-        : stopCoords;
-    return {
-      type: 'Feature',
-      properties: { journeyId: j.id, color: j.color ?? '#c75b39', title: j.title.en },
-      geometry: { type: 'LineString', coordinates: coords },
-    };
-  });
+
+    if (route && route.legs.length === stopCoords.length - 1) {
+      route.legs.forEach((leg, i) => {
+        if (leg.length < 2) return;
+        features.push({
+          type: 'Feature',
+          properties: { ...base, leg: i, grade: route.legGrades?.[i] ?? 'schematic' },
+          geometry: { type: 'LineString', coordinates: leg },
+        });
+      });
+    } else if (stopCoords.length >= 2) {
+      features.push({
+        type: 'Feature',
+        properties: { ...base, leg: 0, grade: 'schematic' },
+        geometry: { type: 'LineString', coordinates: stopCoords },
+      });
+    }
+  }
   return { type: 'FeatureCollection', features };
 }
 
@@ -175,6 +277,7 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
   if (map.getLayer(ATLAS_LAYERS.sites)) return;
   if (!map.getSource(SRC.routes)) map.addSource(SRC.routes, { type: 'geojson', data: atlasRoutesFC(bundle) });
   if (!map.getSource(SRC.sites)) map.addSource(SRC.sites, { type: 'geojson', data: atlasSitesFC(bundle) });
+  if (!map.getSource(SRC.candidates)) map.addSource(SRC.candidates, { type: 'geojson', data: atlasCandidatesFC(bundle) });
   if (!map.getSource(SRC.battles)) map.addSource(SRC.battles, { type: 'geojson', data: atlasBattlesFC(bundle) });
   if (!map.getSource(SRC.battleAreas)) map.addSource(SRC.battleAreas, { type: 'geojson', data: atlasBattleAreasFC(bundle) });
   // Area sweeps go in first so routes/sites/markers draw above them.
@@ -198,13 +301,21 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
     filter: ['==', ['get', 'battleId'], ''],
     paint: { 'fill-color': BATTLE_COLOR, 'fill-opacity': 0.28 },
   });
-  map.addLayer({
-    id: ATLAS_LAYERS.routes,
-    type: 'line',
-    source: SRC.routes,
-    layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': ['get', 'color'], 'line-width': 5.0, 'line-opacity': 0.6 },
-  });
+  for (const s of ROUTE_GRADE_STYLE) {
+    map.addLayer({
+      id: s.layer,
+      type: 'line',
+      source: SRC.routes,
+      filter: ['==', ['get', 'grade'], s.grade],
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: {
+        'line-color': ['get', 'color'],
+        'line-width': s.width,
+        'line-opacity': s.opacity,
+        ...(s.dash ? { 'line-dasharray': [...s.dash] } : {}),
+      },
+    });
+  }
   map.addLayer({
     id: ATLAS_LAYERS.sites,
     type: 'circle',
@@ -214,6 +325,22 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
       'circle-color': CONF_COLOR as never,
       'circle-stroke-width': 1.5,
       'circle-stroke-color': '#ffffff',
+    },
+  });
+  // Hollow rivals: no fill, confidence-coloured stroke. A candidate that
+  // coincides with the working pin becomes a ring around it — that is the
+  // honest reading ("this identification is one of several").
+  map.addLayer({
+    id: ATLAS_LAYERS.candidates,
+    type: 'circle',
+    source: SRC.candidates,
+    paint: {
+      'circle-radius': 7,
+      'circle-color': CONF_COLOR as never,
+      'circle-opacity': 0,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': CONF_COLOR as never,
+      'circle-stroke-opacity': 0.9,
     },
   });
   map.addLayer({
@@ -235,8 +362,36 @@ export function setSelectedBattleArea(map: MapLibreMap, battleId: string | null)
   map.setFilter(ATLAS_LAYERS.battleAreaSelected, ['==', ['get', 'battleId'], battleId ?? ''] as never);
 }
 
+const RASTER_TARGET_OPACITY: Record<string, number> = {
+  'topography-raster': 0.35,
+  'satellite-raster': 1.0,
+  'streets-raster': 1.0,
+  'ancient-map-raster': 1.0,
+};
+
 export function setLayerVisible(map: MapLibreMap, layerId: string, visible: boolean): void {
-  if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
+  if (!map.getLayer(layerId)) return;
+  const type = map.getLayer(layerId)?.type;
+
+  if (type === 'raster') {
+    const targetOpacity = RASTER_TARGET_OPACITY[layerId] ?? 1.0;
+    if (visible) {
+      map.setLayoutProperty(layerId, 'visibility', 'visible');
+      map.setPaintProperty(layerId, 'raster-opacity-transition', { duration: 500 });
+      map.setPaintProperty(layerId, 'raster-opacity', targetOpacity);
+    } else {
+      map.setPaintProperty(layerId, 'raster-opacity-transition', { duration: 500 });
+      map.setPaintProperty(layerId, 'raster-opacity', 0);
+      setTimeout(() => {
+        if (map.getLayer(layerId) && map.getPaintProperty(layerId, 'raster-opacity') === 0) {
+          map.setLayoutProperty(layerId, 'visibility', 'none');
+        }
+      }, 500);
+    }
+    return;
+  }
+
+  map.setLayoutProperty(layerId, 'visibility', visible ? 'visible' : 'none');
 }
 
 /** Filter sites + battles to those whose date span overlaps [min,max] and confidence is allowed. */
@@ -250,9 +405,20 @@ export function setAtlasFilter(map: MapLibreMap, minYear: number, maxYear: numbe
   for (const id of [ATLAS_LAYERS.sites, ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine]) {
     if (map.getLayer(id)) map.setFilter(id, filter);
   }
+  // Candidates follow the parent site's visibility, not their own confidence,
+  // so hiding "medium" cannot orphan the rivals of a visible disputed pin.
+  if (map.getLayer(ATLAS_LAYERS.candidates)) {
+    map.setFilter(ATLAS_LAYERS.candidates, [
+      'all',
+      ['>=', ['get', 'ymax'], minYear],
+      ['<=', ['get', 'ymin'], maxYear],
+      ['in', ['get', 'parentConfidence'], ['literal', confidences]],
+    ] as never);
+  }
 }
 
 export function removeAtlasLayers(map: MapLibreMap): void {
+  if (!hasLiveStyle(map)) return;
   for (const id of Object.values(ATLAS_LAYERS)) if (map.getLayer(id)) map.removeLayer(id);
   for (const id of Object.values(SRC)) if (map.getSource(id)) map.removeSource(id);
 }

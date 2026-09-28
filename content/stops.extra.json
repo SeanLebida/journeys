@@ -29,7 +29,8 @@
   },
   "citations": [
    "cit-simon-peter",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-galatians-2-11"
   ]
  },
  {
@@ -62,7 +63,8 @@
   },
   "citations": [
    "cit-simon-peter",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-1-peter-5-13"
   ]
  },
  {
@@ -93,7 +95,8 @@
   },
   "citations": [
    "cit-john-ephesus",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-revelation-1-11"
   ]
  },
  {
@@ -124,7 +127,8 @@
   },
   "citations": [
    "cit-patmos",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-revelation-1-9"
   ]
  },
  {
@@ -154,7 +158,8 @@
   },
   "citations": [
    "cit-philip-hierapolis",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-8-5"
   ]
  },
  {
@@ -187,7 +192,8 @@
   },
   "citations": [
    "cit-mark-alexandria",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-12-25"
   ]
  },
  {
@@ -214,7 +220,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-ur",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-11-31"
   ]
  },
  {
@@ -242,7 +249,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-haran",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-1",
+   "cit-scripture-genesis-12-4"
   ]
  },
  {
@@ -270,7 +279,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-shechem",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-6",
+   "cit-scripture-genesis-12-7"
   ]
  },
  {
@@ -298,7 +309,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-bethel",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-12-8",
+   "cit-scripture-genesis-28-19"
   ]
  },
  {
@@ -326,7 +339,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-machpelah",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-13-18",
+   "cit-scripture-genesis-23-19"
   ]
  },
  {
@@ -354,7 +369,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-beersheba",
-   "cit-ot-abraham"
+   "cit-ot-abraham",
+   "cit-scripture-genesis-21-31",
+   "cit-scripture-genesis-26-33"
   ]
  },
  {
@@ -383,7 +400,9 @@
   "citations": [
    "cit-ot-exodus",
    "cit-ot-pi-ramesses",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-exodus-1-11",
+   "cit-scripture-exodus-12-37"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -415,7 +434,9 @@
   "citations": [
    "cit-ot-mount-sinai",
    "cit-ot-exodus",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-exodus-19-1",
+   "cit-scripture-exodus-20-1"
   ],
   "disputes": {
    "en": "Both the Exodus date and the identity of Mount Sinai are disputed; the traditional Jebel Musa is used with alternatives noted on the site."
@@ -447,7 +468,9 @@
   "citations": [
    "cit-ot-kadesh-barnea",
    "cit-ot-exodus-route",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-numbers-13-26",
+   "cit-scripture-numbers-20-1"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -479,7 +502,9 @@
   "citations": [
    "cit-ot-mount-nebo",
    "cit-ot-exodus",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-deuteronomy-34-1",
+   "cit-scripture-deuteronomy-34-5"
   ],
   "disputes": {
    "en": "The Exodus route and its date (early c. 1446 BC vs late c. 1260 BC) are debated, and the wilderness stations cannot be securely mapped; the geography here follows the biblical itinerary, not confirmed archaeology."
@@ -510,7 +535,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ot-joshua",
-   "cit-ot-jericho"
+   "cit-ot-jericho",
+   "cit-scripture-joshua-3-17",
+   "cit-scripture-joshua-6-20"
   ],
   "disputes": {
    "en": "The archaeology of Jericho's fall (dating of the destruction at Tell es-Sultan) is much debated and does not cleanly fit either Exodus date."
@@ -543,10 +570,17 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-flight-into-egypt",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-matthew-2-13",
+   "cit-scripture-matthew-2-14",
+   "cit-scripture-matthew-2-15",
+   "cit-scripture-hosea-11-1"
   ],
   "disputes": {
    "en": "The flight into Egypt is attested only in Matthew and its route and Egyptian location are traditional; the mapped point (Old Cairo) is one of several Coptic-tradition sites, not an archaeologically fixed spot."
+  },
+  "title": {
+   "en": "Flight to Egypt"
   }
  },
  {
@@ -576,8 +610,15 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-finding-in-the-temple",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-luke-2-41",
+   "cit-scripture-luke-2-46",
+   "cit-scripture-luke-2-49",
+   "cit-scripture-luke-2-52"
+  ],
+  "title": {
+   "en": "Boy Jesus in the Temple (Age 12)"
+  }
  },
  {
   "id": "journey-noah-0",
@@ -589,12 +630,12 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
   "eventSummary": {
-   "en": "Noah is commanded to build the ark — gopher wood, three decks, 300 cubits (~137 m) long (Genesis 6:14-16) — and enters it with his family and the animals as the fountains of the great deep break open (Genesis 7:11-12). Scripture does not name the building site; the Mesopotamian flood tradition centers on Shuruppak, whose excavated flood layer anchors the setting."
+   "en": "Noah is commanded to build the ark — gopher wood, three decks, 300 cubits (~137 m) long (Genesis 6:14-16) — and enters it with his family and the animals as the fountains of the great deep break open (Genesis 7:11-12). Scripture does not name the building site; the Mesopotamian flood tradition centers on Shuruppak, whose excavated flood silt (c. 2900 BC) sits in the same window as Ussher's 2348 BC date and anchors the setting."
   },
   "scriptureRefs": [
    "Genesis 6:14-16",
@@ -607,13 +648,19 @@
   "artifacts": [
    "artifact-shuruppak-flood-layer"
   ],
+  "terms": [
+   "term-biblical-chronology"
+  ],
   "confidence": "legendary",
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-shuruppak",
    "cit-ziusudra",
    "cit-flood-narrative",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-genesis-6-14-16",
+   "cit-scripture-genesis-6-22",
+   "cit-scripture-genesis-7-11-12"
   ]
  },
  {
@@ -626,12 +673,12 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
   "eventSummary": {
-   "en": "'And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat' (Genesis 8:4). Noah releases the raven and the dove, leaves the ark, builds an altar (Genesis 8:18-20), and receives the rainbow covenant (Genesis 9:12-17). Candidates for the landing carry precise GPS points — Greater Ararat 39.7016° N 44.2983° E, Durupınar 39.4406° N 44.2347° E, Mount Cudi 37.3639° N 42.4561° E."
+   "en": "'And the ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat' (Genesis 8:4). Noah releases the raven and the dove, leaves the ark, builds an altar (Genesis 8:18-20), and receives the rainbow covenant (Genesis 9:12-17). Candidates for the landing carry precise GPS points — Greater Ararat 39.7019° N 44.2983° E, Durupınar 39.4406° N 44.2347° E, Mount Cudi 37.3694° N 42.3442° E."
   },
   "scriptureRefs": [
    "Genesis 8:4",
@@ -654,7 +701,10 @@
    "cit-durupinar",
    "cit-ark-scans",
    "cit-durupinar-geology",
-   "cit-mount-judi"
+   "cit-mount-judi",
+   "cit-scripture-genesis-8-4",
+   "cit-scripture-genesis-8-18-20",
+   "cit-scripture-genesis-9-12-17"
   ]
  },
  {
@@ -667,7 +717,7 @@
    "startYear": -2900,
    "endYear": -2300,
    "display": {
-    "en": "traditionally c. 2900–2300 BC (Ussher: 2348 BC; undatable historically)"
+    "en": "Scripture: 2348 BC (Ussher); flood silt at Shuruppak c. 2900 BC"
    },
    "approximate": true
   },
@@ -685,7 +735,2261 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-flood-narrative",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-genesis-9-28",
+   "cit-scripture-genesis-11-2-4"
   ]
+ },
+ {
+  "id": "stop-samuel-0",
+  "journeyId": "journey-samuel",
+  "order": 0,
+  "siteId": "site-shiloh",
+  "title": {
+   "en": "Raised at the sanctuary"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -1100,
+   "endYear": -1080,
+   "display": {
+    "en": "c. 1100–1080 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Hannah brought the child to Eli at the house of the LORD in Shiloh, and there Samuel received the word that would end Eli's house."
+  },
+  "scriptureRefs": [
+   "1 Samuel 1:24-28",
+   "1 Samuel 3:1-21"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-1-24-28",
+   "cit-scripture-1-samuel-3-1-21",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel"
+  ]
+ },
+ {
+  "id": "stop-samuel-1",
+  "journeyId": "journey-samuel",
+  "order": 1,
+  "siteId": "site-aphek-ebenezer",
+  "title": {
+   "en": "The ark taken"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1080,
+   "endYear": -1070,
+   "display": {
+    "en": "c. 1080–1070 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Israel took the ark out of Shiloh into battle against the Philistines at Aphek and lost it, with Eli's sons killed and Eli dead at the news. Shiloh's burnt destruction layer belongs to about this generation."
+  },
+  "scriptureRefs": [
+   "1 Samuel 4:1-11"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-4-1-11",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel"
+  ]
+ },
+ {
+  "id": "stop-samuel-2",
+  "journeyId": "journey-samuel",
+  "order": 2,
+  "siteId": "site-mizpah",
+  "title": {
+   "en": "Israel gathered; the Philistines routed"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1070,
+   "endYear": -1050,
+   "display": {
+    "en": "c. 1070–1050 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Samuel gathered the nation at Mizpah to put away foreign gods, and the Philistine attack on the assembly broke; he set up the stone he named Ebenezer."
+  },
+  "scriptureRefs": [
+   "1 Samuel 7:5-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-7-5-12",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel"
+  ]
+ },
+ {
+  "id": "stop-samuel-3",
+  "journeyId": "journey-samuel",
+  "order": 3,
+  "siteId": "site-ramah",
+  "title": {
+   "en": "The circuit and the demand for a king"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1060,
+   "endYear": -1040,
+   "display": {
+    "en": "c. 1060–1040 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Samuel judged Israel year by year from Bethel to Gilgal to Mizpah and back to Ramah, where his house was — and where the elders came demanding a king like the nations."
+  },
+  "scriptureRefs": [
+   "1 Samuel 7:15-17",
+   "1 Samuel 8:4-9"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-7-15-17",
+   "cit-scripture-1-samuel-8-4-9",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel"
+  ]
+ },
+ {
+  "id": "stop-samuel-4",
+  "journeyId": "journey-samuel",
+  "order": 4,
+  "siteId": "site-gilgal",
+  "title": {
+   "en": "Saul made king"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1050,
+   "endYear": -1045,
+   "display": {
+    "en": "c. 1050 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After the relief of Jabesh-gilead the people renewed the kingdom at Gilgal and made Saul king before the LORD; Samuel gave his farewell address there."
+  },
+  "scriptureRefs": [
+   "1 Samuel 11:14-15",
+   "1 Samuel 12:1-25"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-11-14-15",
+   "cit-scripture-1-samuel-12-1-25",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel",
+   "person-saul"
+  ],
+  "disputes": {
+   "en": "Gilgal is unlocated — several tells near Jericho have been proposed and none confirmed."
+  }
+ },
+ {
+  "id": "stop-samuel-5",
+  "journeyId": "journey-samuel",
+  "order": 5,
+  "siteId": "site-bethlehem",
+  "title": {
+   "en": "David anointed"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1025,
+   "endYear": -1020,
+   "display": {
+    "en": "c. 1025 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sent to Jesse's house with a horn of oil, Samuel passed over seven sons before the youngest was called in from the sheep and anointed in the midst of his brothers."
+  },
+  "scriptureRefs": [
+   "1 Samuel 16:1-13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-16-1-13",
+   "cit-ref-provan-history",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-samuel",
+   "person-david"
+  ]
+ },
+ {
+  "id": "stop-david-0",
+  "journeyId": "journey-david",
+  "order": 0,
+  "siteId": "site-bethlehem",
+  "title": {
+   "en": "Anointed among his brothers"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -1025,
+   "endYear": -1020,
+   "display": {
+    "en": "c. 1025 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The youngest son of Jesse, keeping sheep, was anointed by Samuel while Saul still reigned."
+  },
+  "scriptureRefs": [
+   "1 Samuel 16:1-13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-16-1-13",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david",
+   "person-samuel"
+  ]
+ },
+ {
+  "id": "stop-david-1",
+  "journeyId": "journey-david",
+  "order": 1,
+  "siteId": "site-valley-of-elah",
+  "title": {
+   "en": "The Philistine champion"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1020,
+   "endYear": -1015,
+   "display": {
+    "en": "c. 1020 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The armies faced each other across the Elah valley between Socoh and Azekah, and the shepherd who had come with provisions for his brothers went out to the champion with a sling."
+  },
+  "scriptureRefs": [
+   "1 Samuel 17:1-54"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-17-1-54",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david",
+   "person-saul"
+  ]
+ },
+ {
+  "id": "stop-david-2",
+  "journeyId": "journey-david",
+  "order": 2,
+  "siteId": "site-gibeah",
+  "title": {
+   "en": "Saul's court, and flight from it"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1018,
+   "endYear": -1013,
+   "display": {
+    "en": "c. 1018–1013 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Brought into the king's household and given command, David's success turned Saul's favour to suspicion, and he escaped through a window by night."
+  },
+  "scriptureRefs": [
+   "1 Samuel 18:6-16",
+   "1 Samuel 19:9-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-18-6-16",
+   "cit-scripture-1-samuel-19-9-12",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david",
+   "person-saul"
+  ]
+ },
+ {
+  "id": "stop-david-3",
+  "journeyId": "journey-david",
+  "order": 3,
+  "siteId": "site-adullam",
+  "title": {
+   "en": "The cave, and four hundred men"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1013,
+   "endYear": -1011,
+   "display": {
+    "en": "c. 1013 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "At the cave of Adullam in the Shephelah his family came down to him, and everyone in distress, in debt or discontented gathered to him — about four hundred men."
+  },
+  "scriptureRefs": [
+   "1 Samuel 22:1-2"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-22-1-2",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david"
+  ]
+ },
+ {
+  "id": "stop-david-4",
+  "journeyId": "journey-david",
+  "order": 4,
+  "siteId": "site-en-gedi",
+  "title": {
+   "en": "Sparing Saul at the strongholds"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1012,
+   "endYear": -1011,
+   "display": {
+    "en": "c. 1012 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "In a cave among the strongholds of En-gedi, with Saul within reach, David cut off the skirt of his robe and would not raise his hand against the anointed king."
+  },
+  "scriptureRefs": [
+   "1 Samuel 24:1-22"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-24-1-22",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david",
+   "person-saul"
+  ]
+ },
+ {
+  "id": "stop-david-5",
+  "journeyId": "journey-david",
+  "order": 5,
+  "siteId": "site-ziklag",
+  "title": {
+   "en": "Sixteen months as a Philistine vassal"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1011,
+   "endYear": -1010,
+   "display": {
+    "en": "c. 1011–1010 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Achish of Gath gave him Ziklag as a border holding; while he was away with the Philistine muster, Amalekite raiders burned the town and carried off the families, and he pursued and recovered them all."
+  },
+  "scriptureRefs": [
+   "1 Samuel 27:5-7",
+   "1 Samuel 30:1-20"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-samuel-27-5-7",
+   "cit-scripture-1-samuel-30-1-20",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david"
+  ],
+  "disputes": {
+   "en": "Ziklag's location is contested — Khirbet a-Ra'i, Tell esh-Sharia and Tel Halif are all argued, and no inscription names the town."
+  }
+ },
+ {
+  "id": "stop-david-6",
+  "journeyId": "journey-david",
+  "order": 6,
+  "siteId": "site-hebron-machpelah",
+  "title": {
+   "en": "King over Judah"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1010,
+   "endYear": -1003,
+   "display": {
+    "en": "c. 1010–1003 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After Saul's death on Gilboa, the men of Judah anointed David king at Hebron, where he reigned seven and a half years before the northern tribes came to him."
+  },
+  "scriptureRefs": [
+   "2 Samuel 2:1-4",
+   "2 Samuel 5:1-5"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-samuel-2-1-4",
+   "cit-scripture-2-samuel-5-1-5",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david"
+  ]
+ },
+ {
+  "id": "stop-david-7",
+  "journeyId": "journey-david",
+  "order": 7,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "The stronghold of Zion"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -1003,
+   "endYear": -970,
+   "display": {
+    "en": "c. 1003–970 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "David took the Jebusite stronghold, made it the city of David, and brought the ark up into it — a capital belonging to neither Judah nor the northern tribes by inheritance."
+  },
+  "scriptureRefs": [
+   "2 Samuel 5:6-10",
+   "2 Samuel 6:12-15"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-samuel-5-6-10",
+   "cit-scripture-2-samuel-6-12-15",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david",
+   "person-nathan"
+  ]
+ },
+ {
+  "id": "stop-david-8",
+  "journeyId": "journey-david",
+  "order": 8,
+  "siteId": "site-mahanaim",
+  "title": {
+   "en": "Flight from Absalom"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -980,
+   "endYear": -975,
+   "display": {
+    "en": "c. 980–975 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Driven out of his own capital by his son's revolt, David crossed the Jordan to Mahanaim in Gilead, where the decisive battle was fought in the forest of Ephraim."
+  },
+  "scriptureRefs": [
+   "2 Samuel 17:24-27",
+   "2 Samuel 18:6-15"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-samuel-17-24-27",
+   "cit-scripture-2-samuel-18-6-15",
+   "cit-ref-provan-history",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-david"
+  ]
+ },
+ {
+  "id": "stop-elijah-0",
+  "journeyId": "journey-elijah",
+  "order": 0,
+  "siteId": "site-tishbe",
+  "title": {
+   "en": "Elijah the Tishbite"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -875,
+   "endYear": -870,
+   "display": {
+    "en": "c. 875 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He appears without introduction before Ahab: 'As the LORD God of Israel liveth… there shall not be dew nor rain these years, but according to my word.'"
+  },
+  "scriptureRefs": [
+   "1 Kings 17:1"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-17-1",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah",
+   "person-ahab"
+  ],
+  "disputes": {
+   "en": "Tishbe is unlocated; Listib in Gilead preserves the name, and one reading of the Hebrew removes the place name altogether."
+  }
+ },
+ {
+  "id": "stop-elijah-1",
+  "journeyId": "journey-elijah",
+  "order": 1,
+  "siteId": "site-brook-cherith",
+  "title": {
+   "en": "Fed by ravens"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -874,
+   "endYear": -872,
+   "display": {
+    "en": "c. 874–872 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Hidden by the brook Cherith before Jordan through the first of the drought years, until the brook itself dried up."
+  },
+  "scriptureRefs": [
+   "1 Kings 17:2-7"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-17-2-7",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah"
+  ],
+  "disputes": {
+   "en": "The wadi is unlocated. Wadi al-Yabis fits the description and lies below the traditional Tishbe, but the text names no more than 'before Jordan'."
+  }
+ },
+ {
+  "id": "stop-elijah-2",
+  "journeyId": "journey-elijah",
+  "order": 2,
+  "siteId": "site-zarephath",
+  "title": {
+   "en": "The widow's jar of meal"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -872,
+   "endYear": -869,
+   "display": {
+    "en": "c. 872–869 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sent out of Israel entirely, to a Phoenician town belonging to Sidon — Jezebel's own country — where a widow's meal and oil did not fail and her son was restored to life."
+  },
+  "scriptureRefs": [
+   "1 Kings 17:8-24"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-17-8-24",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah"
+  ]
+ },
+ {
+  "id": "stop-elijah-3",
+  "journeyId": "journey-elijah",
+  "order": 3,
+  "siteId": "site-samaria-city",
+  "title": {
+   "en": "Obadiah, and the meeting with Ahab"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -869,
+   "endYear": -868,
+   "display": {
+    "en": "c. 869 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "In the third year, sent back to show himself to Ahab. Obadiah, the king's steward hiding a hundred prophets in caves, brought word, and the king met him with 'Art thou he that troubleth Israel?'"
+  },
+  "scriptureRefs": [
+   "1 Kings 18:1-19"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-18-1-19",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah",
+   "person-ahab"
+  ]
+ },
+ {
+  "id": "stop-elijah-4",
+  "journeyId": "journey-elijah",
+  "order": 4,
+  "siteId": "site-mount-carmel",
+  "title": {
+   "en": "The contest with the prophets of Baal"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -869,
+   "endYear": -868,
+   "display": {
+    "en": "c. 869 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Four hundred and fifty prophets of Baal against one, an altar of twelve stones, water poured into the trench, and the fire that fell — then the slaughter at the brook Kishon."
+  },
+  "scriptureRefs": [
+   "1 Kings 18:20-40"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-18-20-40",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah"
+  ],
+  "disputes": {
+   "en": "The mountain is certain; the spot is not. El-Muhraqa has carried the tradition since the Middle Ages, but the text names no site."
+  }
+ },
+ {
+  "id": "stop-elijah-5",
+  "journeyId": "journey-elijah",
+  "order": 5,
+  "siteId": "site-jezreel",
+  "title": {
+   "en": "Rain, and the run before the chariot"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -869,
+   "endYear": -868,
+   "display": {
+    "en": "c. 869 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A cloud the size of a man's hand rose out of the sea, the drought broke, and Elijah ran before Ahab's chariot to the entrance of Jezreel — where Jezebel's message sent him running again."
+  },
+  "scriptureRefs": [
+   "1 Kings 18:41-46",
+   "1 Kings 19:1-3"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-18-41-46",
+   "cit-scripture-1-kings-19-1-3",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah",
+   "person-ahab",
+   "person-jezebel"
+  ]
+ },
+ {
+  "id": "stop-elijah-6",
+  "journeyId": "journey-elijah",
+  "order": 6,
+  "siteId": "site-beersheba-ot",
+  "title": {
+   "en": "A day's journey into the wilderness"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -868,
+   "endYear": -867,
+   "display": {
+    "en": "c. 868 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He left his servant at Beersheba, went a day's journey into the wilderness, sat down under a juniper tree and asked to die; an angel fed him twice for the road ahead."
+  },
+  "scriptureRefs": [
+   "1 Kings 19:3-8"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-19-3-8",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah"
+  ]
+ },
+ {
+  "id": "stop-elijah-7",
+  "journeyId": "journey-elijah",
+  "order": 7,
+  "siteId": "site-mount-sinai",
+  "title": {
+   "en": "Horeb — the still small voice"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -868,
+   "endYear": -867,
+   "display": {
+    "en": "c. 868 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Forty days to the mount of God, and there the wind, the earthquake and the fire, and after them a still small voice — and the commission to anoint Hazael, Jehu and Elisha."
+  },
+  "scriptureRefs": [
+   "1 Kings 19:8-18"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-19-8-18",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah"
+  ],
+  "disputes": {
+   "en": "Horeb/Sinai's location is itself disputed; the traditional Jebel Musa is a Byzantine identification and several northern and Midianite candidates are argued."
+  }
+ },
+ {
+  "id": "stop-elijah-8",
+  "journeyId": "journey-elijah",
+  "order": 8,
+  "siteId": "site-abel-meholah",
+  "title": {
+   "en": "Casting the mantle over Elisha"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -867,
+   "endYear": -866,
+   "display": {
+    "en": "c. 867 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He found Elisha ploughing with twelve yoke of oxen, threw his mantle over him in passing, and the young man burned his plough, boiled the oxen, and followed."
+  },
+  "scriptureRefs": [
+   "1 Kings 19:19-21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-19-19-21",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah",
+   "person-elisha"
+  ],
+  "disputes": {
+   "en": "Abel-meholah is placed by rival candidates on either bank of the Jordan."
+  }
+ },
+ {
+  "id": "stop-elijah-9",
+  "journeyId": "journey-elijah",
+  "order": 9,
+  "siteId": "site-jericho-ot",
+  "title": {
+   "en": "Taken up beyond Jordan"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -852,
+   "endYear": -848,
+   "display": {
+    "en": "c. 852–848 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "From Gilgal to Bethel to Jericho and over a parted Jordan, with Elisha refusing to be left behind — then the chariot of fire, and the mantle that fell."
+  },
+  "scriptureRefs": [
+   "2 Kings 2:1-12"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-2-1-12",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elijah",
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-0",
+  "journeyId": "journey-elisha",
+  "order": 0,
+  "siteId": "site-abel-meholah",
+  "title": {
+   "en": "Called from the plough"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -867,
+   "endYear": -866,
+   "display": {
+    "en": "c. 867 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Ploughing his father's land when Elijah's mantle fell on him; he asked leave to kiss his parents goodbye, then destroyed his own means of going back."
+  },
+  "scriptureRefs": [
+   "1 Kings 19:19-21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-kings-19-19-21",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha",
+   "person-elijah"
+  ]
+ },
+ {
+  "id": "stop-elisha-1",
+  "journeyId": "journey-elisha",
+  "order": 1,
+  "siteId": "site-jericho-ot",
+  "title": {
+   "en": "The mantle, and the spring healed"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -848,
+   "endYear": -845,
+   "display": {
+    "en": "c. 848 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He took up the mantle that fell, parted the Jordan with it, and the prophets at Jericho said the spirit of Elijah rested on him; he healed the town's bad water with salt."
+  },
+  "scriptureRefs": [
+   "2 Kings 2:13-22"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-2-13-22",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-2",
+  "journeyId": "journey-elisha",
+  "order": 2,
+  "siteId": "site-bethel",
+  "title": {
+   "en": "The road up to Bethel"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -848,
+   "endYear": -845,
+   "display": {
+    "en": "c. 848 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Going up from Jericho to Bethel — a royal sanctuary of the northern kingdom — he was mocked by a crowd of youths, and two she-bears came out of the wood."
+  },
+  "scriptureRefs": [
+   "2 Kings 2:23-25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-2-23-25",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-3",
+  "journeyId": "journey-elisha",
+  "order": 3,
+  "siteId": "site-mount-carmel",
+  "title": {
+   "en": "The prophet's base on Carmel"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -845,
+   "endYear": -840,
+   "display": {
+    "en": "c. 845–840 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Carmel, where Elijah's contest had been fought, became a place Elisha kept and where those in trouble knew to look for him."
+  },
+  "scriptureRefs": [
+   "2 Kings 4:25"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-4-25",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-4",
+  "journeyId": "journey-elisha",
+  "order": 4,
+  "siteId": "site-shunem",
+  "title": {
+   "en": "The Shunammite's son"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -845,
+   "endYear": -840,
+   "display": {
+    "en": "c. 845–840 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A well-off woman built a small walled chamber on the roof for the prophet's circuit; the son promised to her died of sunstroke in the harvest field, and she rode to Carmel to fetch Elisha."
+  },
+  "scriptureRefs": [
+   "2 Kings 4:8-37"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-4-8-37",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-5",
+  "journeyId": "journey-elisha",
+  "order": 5,
+  "siteId": "site-gilgal",
+  "title": {
+   "en": "Death in the pot"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -845,
+   "endYear": -838,
+   "display": {
+    "en": "c. 845–838 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A famine year at the prophetic guild in Gilgal: wild gourds shredded into the stew, and meal thrown in to make it edible; then twenty barley loaves that fed a hundred with some left."
+  },
+  "scriptureRefs": [
+   "2 Kings 4:38-44"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-4-38-44",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ],
+  "disputes": {
+   "en": "Gilgal is unlocated, and the Old Testament uses the name of more than one place."
+  }
+ },
+ {
+  "id": "stop-elisha-6",
+  "journeyId": "journey-elisha",
+  "order": 6,
+  "siteId": "site-dothan",
+  "title": {
+   "en": "Horses and chariots of fire"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -843,
+   "endYear": -838,
+   "display": {
+    "en": "c. 843–838 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The king of Aram sent a force by night to take the prophet whose warnings kept spoiling his raids; the servant saw the town surrounded, and the army that came for Elisha was struck blind and led into Samaria."
+  },
+  "scriptureRefs": [
+   "2 Kings 6:8-23"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-6-8-23",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-7",
+  "journeyId": "journey-elisha",
+  "order": 7,
+  "siteId": "site-samaria-city",
+  "title": {
+   "en": "The siege lifted"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -843,
+   "endYear": -838,
+   "display": {
+    "en": "c. 843–838 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Samaria besieged and starving, with a donkey's head selling for eighty pieces of silver — and four lepers at the gate who found the Aramean camp abandoned overnight."
+  },
+  "scriptureRefs": [
+   "2 Kings 6:24-33",
+   "2 Kings 7:1-20"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-6-24-33",
+   "cit-scripture-2-kings-7-1-20",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-8",
+  "journeyId": "journey-elisha",
+  "order": 8,
+  "siteId": "site-damascus",
+  "title": {
+   "en": "Hazael and the king of Aram"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -843,
+   "endYear": -841,
+   "display": {
+    "en": "c. 843–841 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Ben-hadad sent Hazael to ask the Israelite prophet whether he would recover; Elisha wept as he told Hazael what he would do to Israel, and Hazael went home and took the throne."
+  },
+  "scriptureRefs": [
+   "2 Kings 8:7-15"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-8-7-15",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha"
+  ]
+ },
+ {
+  "id": "stop-elisha-9",
+  "journeyId": "journey-elisha",
+  "order": 9,
+  "siteId": "site-ramoth-gilead",
+  "title": {
+   "en": "Jehu anointed"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -841,
+   "endYear": -840,
+   "display": {
+    "en": "841 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Elisha sent one of the sons of the prophets with a box of oil to the army camp at Ramoth-gilead; the coup that followed ended the house of Omri, and Assyrian records date Jehu's tribute to 841 BC."
+  },
+  "scriptureRefs": [
+   "2 Kings 9:1-13"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-9-1-13",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-thiele-chronology"
+  ],
+  "persons": [
+   "person-elisha",
+   "person-jehu"
+  ]
+ },
+ {
+  "id": "stop-jonah-0",
+  "journeyId": "journey-jonah",
+  "order": 0,
+  "siteId": "site-joppa",
+  "title": {
+   "en": "Passage to Tarshish"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Sent to Nineveh, he went down to Joppa, found a ship going to Tarshish, paid the fare and went aboard 'from the presence of the LORD'."
+  },
+  "scriptureRefs": [
+   "Jonah 1:1-3"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jonah-1-1-3",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "persons": [
+   "person-jonah"
+  ]
+ },
+ {
+  "id": "stop-jonah-1",
+  "journeyId": "journey-jonah",
+  "order": 1,
+  "siteId": "site-tarshish",
+  "title": {
+   "en": "The ship that never arrived"
+  },
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The intended destination — in the Hebrew Bible the far west, the edge of the known world. The storm, the lots and the sailors' reluctant decision ended the voyage well short of it."
+  },
+  "scriptureRefs": [
+   "Jonah 1:4-16"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jonah-1-4-16",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "persons": [
+   "person-jonah"
+  ],
+  "disputes": {
+   "en": "Tarshish is unidentified: Tartessos in south-west Spain, Tarsus in Cilicia and a Sardinian identification are all argued. Read the pin as a direction of travel, not a located port."
+  }
+ },
+ {
+  "id": "stop-jonah-2",
+  "journeyId": "journey-jonah",
+  "order": 2,
+  "siteId": "site-joppa",
+  "title": {
+   "en": "Cast upon the dry land"
+  },
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Three days and nights in the fish, a prayer from inside it, and a return to the Levantine coast — the text names no landing place, so the pin returns to the port he sailed from."
+  },
+  "scriptureRefs": [
+   "Jonah 2:1-10"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jonah-2-1-10",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "persons": [
+   "person-jonah"
+  ],
+  "disputes": {
+   "en": "The place he was put ashore is not named. The stop is anchored back at Joppa for the map's sake, not because the text locates it there."
+  }
+ },
+ {
+  "id": "stop-jonah-3",
+  "journeyId": "journey-jonah",
+  "order": 3,
+  "siteId": "site-nineveh",
+  "title": {
+   "en": "Forty days, and a city that repented"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -785,
+   "endYear": -760,
+   "display": {
+    "en": "c. 785–760 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A day's walk into the great city with a five-word sermon, and from the king down the city turned — then Jonah sat east of it under a withering gourd, angry that it had."
+  },
+  "scriptureRefs": [
+   "Jonah 3:1-10",
+   "Jonah 4:1-11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jonah-3-1-10",
+   "cit-scripture-jonah-4-1-11",
+   "cit-ref-sweeney-twelve",
+   "cit-ref-blenkinsopp-prophecy"
+  ],
+  "persons": [
+   "person-jonah"
+  ]
+ },
+ {
+  "id": "stop-jeremiah-0",
+  "journeyId": "journey-jeremiah",
+  "order": 0,
+  "siteId": "site-anathoth",
+  "title": {
+   "en": "Called at Anathoth"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -627,
+   "endYear": -620,
+   "display": {
+    "en": "627 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A priest's son from the Benjaminite town three miles from Jerusalem: 'Before I formed thee in the belly I knew thee.' His own townsmen later plotted against his life."
+  },
+  "scriptureRefs": [
+   "Jeremiah 1:1-10",
+   "Jeremiah 11:21"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jeremiah-1-1-10",
+   "cit-scripture-jeremiah-11-21",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ],
+  "persons": [
+   "person-jeremiah"
+  ],
+  "disputes": {
+   "en": "Anathoth is placed either at the village of Anata, which preserves the name, or at Ras el-Kharrubeh a kilometre south, which has the Iron Age remains."
+  }
+ },
+ {
+  "id": "stop-jeremiah-1",
+  "journeyId": "journey-jeremiah",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "The temple sermon, and the burned scroll"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -609,
+   "endYear": -586,
+   "display": {
+    "en": "c. 609–586 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He stood in the gate of the LORD's house and told Judah that the temple was no charm — Shiloh had been a sanctuary too. The scroll Baruch wrote was cut up and burned column by column, and rewritten with more added; Jeremiah himself was let down into a cistern in the court of the guard."
+  },
+  "scriptureRefs": [
+   "Jeremiah 7:1-15",
+   "Jeremiah 36:1-32",
+   "Jeremiah 38:1-13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jeremiah-7-1-15",
+   "cit-scripture-jeremiah-36-1-32",
+   "cit-scripture-jeremiah-38-1-13",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ],
+  "persons": [
+   "person-jeremiah",
+   "person-baruch",
+   "person-zedekiah"
+  ]
+ },
+ {
+  "id": "stop-jeremiah-2",
+  "journeyId": "journey-jeremiah",
+  "order": 2,
+  "siteId": "site-ramah",
+  "title": {
+   "en": "Released from the chain-gang"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -586,
+   "endYear": -585,
+   "display": {
+    "en": "586 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Taken in chains with the deportees as far as Ramah, the staging point for the march to Babylon, and there singled out by Nebuzaradan and given the choice of going or staying."
+  },
+  "scriptureRefs": [
+   "Jeremiah 40:1-6"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jeremiah-40-1-6",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ],
+  "persons": [
+   "person-jeremiah"
+  ]
+ },
+ {
+  "id": "stop-jeremiah-3",
+  "journeyId": "journey-jeremiah",
+  "order": 3,
+  "siteId": "site-mizpah",
+  "title": {
+   "en": "With Gedaliah at Mizpah"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -586,
+   "endYear": -582,
+   "display": {
+    "en": "c. 586–582 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "He went to Gedaliah, the governor Babylon installed over the remnant at Mizpah — until Gedaliah was assassinated at a meal and the survivors panicked."
+  },
+  "scriptureRefs": [
+   "Jeremiah 40:6-12",
+   "Jeremiah 41:1-3"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jeremiah-40-6-12",
+   "cit-scripture-jeremiah-41-1-3",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ],
+  "persons": [
+   "person-jeremiah"
+  ]
+ },
+ {
+  "id": "stop-jeremiah-4",
+  "journeyId": "journey-jeremiah",
+  "order": 4,
+  "siteId": "site-tahpanhes",
+  "title": {
+   "en": "Carried into Egypt"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -582,
+   "endYear": -580,
+   "display": {
+    "en": "c. 582 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Against his explicit counsel the remnant fled to Egypt and took him with them. At Tahpanhes he hid stones in the clay pavement at the entry of Pharaoh's house, and said Nebuchadnezzar would set his throne on them."
+  },
+  "scriptureRefs": [
+   "Jeremiah 43:5-13"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-jeremiah-43-5-13",
+   "cit-ref-blenkinsopp-prophecy",
+   "cit-src-livius-abc5"
+  ],
+  "persons": [
+   "person-jeremiah",
+   "person-baruch"
+  ]
+ },
+ {
+  "id": "stop-exile-0",
+  "journeyId": "journey-exile",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "Three deportations"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -605,
+   "endYear": -586,
+   "display": {
+    "en": "605, 597 and 586 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "First the young men of the royal seed in 605, then the king, the craftsmen and the smiths with Ezekiel in 597, and finally the city itself in 586 — walls broken down, the temple burned, and the vessels carried away."
+  },
+  "scriptureRefs": [
+   "Daniel 1:1-7",
+   "2 Kings 24:10-16",
+   "2 Kings 25:8-12"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-daniel-1-1-7",
+   "cit-scripture-2-kings-24-10-16",
+   "cit-scripture-2-kings-25-8-12",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-daniel",
+   "person-ezekiel",
+   "person-zedekiah",
+   "person-nebuchadnezzar"
+  ]
+ },
+ {
+  "id": "stop-exile-1",
+  "journeyId": "journey-exile",
+  "order": 1,
+  "siteId": "site-riblah",
+  "title": {
+   "en": "Zedekiah before Nebuchadnezzar"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -586,
+   "endYear": -585,
+   "display": {
+    "en": "586 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Taken fleeing near Jericho, the last king of Judah was brought to Nebuchadnezzar's headquarters on the Orontes; his sons were killed in front of him, and that was the last thing he saw."
+  },
+  "scriptureRefs": [
+   "2 Kings 25:6-7"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-2-kings-25-6-7",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-zedekiah",
+   "person-nebuchadnezzar"
+  ],
+  "disputes": {
+   "en": "Ribleh on the Orontes preserves the name and suits every notice in Kings and Jeremiah, but the site is unexcavated."
+  }
+ },
+ {
+  "id": "stop-exile-2",
+  "journeyId": "journey-exile",
+  "order": 2,
+  "siteId": "site-babylon",
+  "title": {
+   "en": "Daniel in the court"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -605,
+   "endYear": -536,
+   "display": {
+    "en": "605–536 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Trained for three years in the language and learning of the Chaldeans, Daniel served through the reigns from Nebuchadnezzar to Cyrus — the interpreted dreams, the furnace, the writing on the wall, and the lions' den."
+  },
+  "scriptureRefs": [
+   "Daniel 1:3-6",
+   "Daniel 2:46-49",
+   "Daniel 6:10-23"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-daniel-1-3-6",
+   "cit-scripture-daniel-2-46-49",
+   "cit-scripture-daniel-6-10-23",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-daniel",
+   "person-nebuchadnezzar"
+  ]
+ },
+ {
+  "id": "stop-exile-3",
+  "journeyId": "journey-exile",
+  "order": 3,
+  "siteId": "site-chebar-canal",
+  "title": {
+   "en": "Ezekiel among the captives"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -593,
+   "endYear": -571,
+   "display": {
+    "en": "593–571 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "'As I was among the captives by the river of Chebar, the heavens were opened.' He sat seven days astonished among them at Tel-abib, and prophesied for twenty-two years — first that the city would fall, then, once word came that it had, of dry bones and a restored temple."
+  },
+  "scriptureRefs": [
+   "Ezekiel 1:1-3",
+   "Ezekiel 3:15",
+   "Ezekiel 37:1-14"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-ezekiel-1-1-3",
+   "cit-scripture-ezekiel-3-15",
+   "cit-scripture-ezekiel-37-1-14",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-ezekiel"
+  ],
+  "disputes": {
+   "en": "Tel-abib itself is unlocated. The Chebar is generally identified with the nāru kabaru canal in the Nippur region, where cuneiform archives from al-Yahudu record deported Judean families by name — so the pin marks the documented setting, not a located village."
+  }
+ },
+ {
+  "id": "stop-exile-4",
+  "journeyId": "journey-exile",
+  "order": 4,
+  "siteId": "site-susa",
+  "title": {
+   "en": "Daniel's vision at Shushan"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -551,
+   "endYear": -536,
+   "display": {
+    "en": "c. 551–536 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "'I saw in a vision… I was at Shushan in the palace, which is in the province of Elam' — the ram and the he-goat, and the empires read off them."
+  },
+  "scriptureRefs": [
+   "Daniel 8:1-2"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-daniel-8-1-2",
+   "cit-src-livius-abc5",
+   "cit-ref-grayson-chronicles",
+   "cit-ref-bright"
+  ],
+  "persons": [
+   "person-daniel"
+  ]
+ },
+ {
+  "id": "stop-return-0",
+  "journeyId": "journey-return",
+  "order": 0,
+  "siteId": "site-babylon",
+  "title": {
+   "en": "Cyrus' decree; the first company"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": -538,
+   "endYear": -537,
+   "display": {
+    "en": "538 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "In the first year of Cyrus, permission to go up and build — and about fifty thousand went, with the temple vessels Nebuchadnezzar had taken, under Zerubbabel and Jeshua the priest."
+  },
+  "scriptureRefs": [
+   "Ezra 1:1-11",
+   "Ezra 2:64-65"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-ezra-1-1-11",
+   "cit-scripture-ezra-2-64-65",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "persons": [
+   "person-cyrus",
+   "person-zerubbabel"
+  ]
+ },
+ {
+  "id": "stop-return-1",
+  "journeyId": "journey-return",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "Foundation laid, and a temple finished"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -536,
+   "endYear": -515,
+   "display": {
+    "en": "536–516 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The foundation was laid to shouting and to the weeping of those old enough to remember the first house; the work then stalled for sixteen years until Haggai and Zechariah restarted it, and the temple was finished in the sixth year of Darius."
+  },
+  "scriptureRefs": [
+   "Ezra 3:8-13",
+   "Ezra 6:14-16"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-ezra-3-8-13",
+   "cit-scripture-ezra-6-14-16",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "persons": [
+   "person-zerubbabel",
+   "person-haggai",
+   "person-zechariah-prophet"
+  ]
+ },
+ {
+  "id": "stop-return-2",
+  "journeyId": "journey-return",
+  "order": 2,
+  "siteId": "site-babylon",
+  "title": {
+   "en": "Ezra's caravan sets out"
+  },
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": -458,
+   "endYear": -457,
+   "display": {
+    "en": "458 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A priest and scribe 'ready in the law of Moses' came up with a royal commission, a second company, and silver and gold for the house — refusing an escort, because he had told the king that God's hand was on them."
+  },
+  "scriptureRefs": [
+   "Ezra 7:6-10",
+   "Ezra 8:31-32"
+  ],
+  "confidence": "medium",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-ezra-7-6-10",
+   "cit-scripture-ezra-8-31-32",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "persons": [
+   "person-ezra"
+  ]
+ },
+ {
+  "id": "stop-return-3",
+  "journeyId": "journey-return",
+  "order": 3,
+  "siteId": "site-susa",
+  "title": {
+   "en": "Nehemiah hears about the walls"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -446,
+   "endYear": -445,
+   "display": {
+    "en": "446–445 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Cupbearer to Artaxerxes in the citadel at Susa, he heard that the survivors were in distress and the wall broken down, and asked the king for timber and a commission."
+  },
+  "scriptureRefs": [
+   "Nehemiah 1:1-11",
+   "Nehemiah 2:1-8"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-nehemiah-1-1-11",
+   "cit-scripture-nehemiah-2-1-8",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "persons": [
+   "person-nehemiah"
+  ]
+ },
+ {
+  "id": "stop-return-4",
+  "journeyId": "journey-return",
+  "order": 4,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "The wall in fifty-two days"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": -445,
+   "endYear": -432,
+   "display": {
+    "en": "445–432 BC"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A night ride around the ruined circuit, the work parcelled out family by family with a weapon in one hand, and the wall finished in fifty-two days — then Ezra reading the law aloud at the Water Gate from morning until midday."
+  },
+  "scriptureRefs": [
+   "Nehemiah 6:15-16",
+   "Nehemiah 8:1-8"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-nehemiah-6-15-16",
+   "cit-scripture-nehemiah-8-1-8",
+   "cit-arch-cyrus-cylinder-bm",
+   "cit-ref-bright",
+   "cit-ref-provan-history"
+  ],
+  "persons": [
+   "person-nehemiah",
+   "person-ezra"
+  ]
+ },
+ {
+  "id": "stop-peter-0",
+  "journeyId": "journey-peter",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "Pentecost, and the first preaching"
+  },
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 33,
+   "display": {
+    "en": "c. AD 30–33"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The fisherman who had denied him stood up with the eleven and preached the first sermon of the church, quoting Joel on the Spirit poured out on all flesh."
+  },
+  "scriptureRefs": [
+   "Acts 2:1-41",
+   "Acts 3:1-10"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-scripture-acts-3-1-10",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter",
+   "person-john-apostle"
+  ]
+ },
+ {
+  "id": "stop-peter-1",
+  "journeyId": "journey-peter",
+  "order": 1,
+  "siteId": "site-samaria",
+  "title": {
+   "en": "Confirming the Samaritan mission"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 33,
+   "endYear": 36,
+   "display": {
+    "en": "c. AD 33–36"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "When Jerusalem heard that Samaria had received the word, Peter and John were sent down — the first extension of the church past the boundary that mattered most."
+  },
+  "scriptureRefs": [
+   "Acts 8:14-25"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-8-14-25",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter",
+   "person-john-apostle"
+  ]
+ },
+ {
+  "id": "stop-peter-2",
+  "journeyId": "journey-peter",
+  "order": 2,
+  "siteId": "site-lydda",
+  "title": {
+   "en": "Aeneas at Lydda"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 36,
+   "endYear": 40,
+   "display": {
+    "en": "c. AD 36–40"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "On a circuit through the coastal plain he found a man eight years bedridden with palsy, and the towns of Lydda and Sharon turned to the Lord."
+  },
+  "scriptureRefs": [
+   "Acts 9:32-35"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-9-32-35",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "stop-peter-3",
+  "journeyId": "journey-peter",
+  "order": 3,
+  "siteId": "site-joppa",
+  "title": {
+   "en": "Tabitha, and the vision on the roof"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 36,
+   "endYear": 40,
+   "display": {
+    "en": "c. AD 36–40"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Tabitha, the disciple full of good works, was raised in the upper room at Joppa; and on the roof of Simon the tanner's house by the sea Peter saw the sheet let down and was told to call nothing common."
+  },
+  "scriptureRefs": [
+   "Acts 9:36-43",
+   "Acts 10:9-23"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-9-36-43",
+   "cit-scripture-acts-10-9-23",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter"
+  ]
+ },
+ {
+  "id": "stop-peter-4",
+  "journeyId": "journey-peter",
+  "order": 4,
+  "siteId": "site-caesarea-maritima",
+  "title": {
+   "en": "The household of Cornelius"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 37,
+   "endYear": 41,
+   "display": {
+    "en": "c. AD 37–41"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "A Roman centurion's household received the Spirit before they were baptized, and the argument about Gentiles was settled by an event rather than a ruling — 'Can any man forbid water?'"
+  },
+  "scriptureRefs": [
+   "Acts 10:24-48",
+   "Acts 11:1-18"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-10-24-48",
+   "cit-scripture-acts-11-1-18",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter",
+   "person-cornelius"
+  ]
+ },
+ {
+  "id": "stop-peter-5",
+  "journeyId": "journey-peter",
+  "order": 5,
+  "siteId": "site-jerusalem",
+  "title": {
+   "en": "Prison, and the council"
+  },
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 44,
+   "endYear": 50,
+   "display": {
+    "en": "c. AD 44–50"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Arrested by Herod Agrippa I in the days of unleavened bread and released overnight; and at the council of Acts 15 he argued that Gentiles should not be burdened with the law."
+  },
+  "scriptureRefs": [
+   "Acts 12:1-19",
+   "Acts 15:6-11"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-12-1-19",
+   "cit-scripture-acts-15-6-11",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter",
+   "person-james-brother-jesus"
+  ]
+ },
+ {
+  "id": "stop-peter-6",
+  "journeyId": "journey-peter",
+  "order": 6,
+  "siteId": "site-antioch-on-the-orontes",
+  "title": {
+   "en": "Withdrawing from the Gentile table"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 48,
+   "endYear": 52,
+   "display": {
+    "en": "c. AD 48–52"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Paul's own account: Peter ate with Gentile believers at Antioch until men came from James, then drew back — and was rebuked to his face for it."
+  },
+  "scriptureRefs": [
+   "Galatians 2:11-14"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-galatians-2-11-14",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter",
+   "person-paul"
+  ]
+ },
+ {
+  "id": "stop-peter-7",
+  "journeyId": "journey-peter",
+  "order": 7,
+  "siteId": "site-rome",
+  "title": {
+   "en": "'She that is at Babylon'"
+  },
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 60,
+   "endYear": 67,
+   "display": {
+    "en": "c. AD 60–64/67 (tradition)"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "1 Peter closes with greetings from 'the church that is at Babylon' — read since antiquity as Rome. Clement, Ignatius, Irenaeus and Eusebius attest a martyrdom there under Nero, and a first-century memorial under St Peter's marks where the tradition was already located by the mid-second century."
+  },
+  "scriptureRefs": [
+   "1 Peter 5:13"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-1-peter-5-13",
+   "cit-ref-keener-bbcnt",
+   "cit-src-eusebius-he"
+  ],
+  "persons": [
+   "person-peter"
+  ],
+  "disputes": {
+   "en": "That Peter died at Rome is early, widespread and uncontradicted in the ancient sources, but it is tradition rather than documentation: no first-century text states it outright, and the identification of the bones found beneath the basilica is disputed."
+  }
  }
 ]

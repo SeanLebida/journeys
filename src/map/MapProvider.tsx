@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import maplibregl, { type Map as MapLibreMap } from 'maplibre-gl';
-import { Protocol } from 'pmtiles';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { applyMapTone, applyMapBorders, buildBaseStyle, BASEMAP_LAYERS } from './style';
 import { MEDITERRANEAN_BBOX } from './graticule';
@@ -20,12 +19,6 @@ interface MapContextValue {
 }
 
 const MapContext = createContext<MapContextValue | null>(null);
-
-// Register the pmtiles:// protocol once per page so the modern vector basemap
-// (added with its asset) is a drop-in source. Harmless before any pmtiles
-// source exists.
-const pmtilesProtocol = new Protocol();
-maplibregl.addProtocol('pmtiles', pmtilesProtocol.tile);
 
 function prefersReducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -119,15 +112,6 @@ export function MapProvider({ children }: { children: ReactNode }) {
 
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-    map.addControl(
-      new maplibregl.AttributionControl({
-        compact: true,
-        // Full source credits live on the M9 attribution screen; this keeps the
-        // on-map notice honest about the basemap.
-        customAttribution: 'Journeys · basemap © Natural Earth, Esri, DARE',
-      }),
-      'bottom-right',
-    );
 
     const updateLabelVisibility = () => {
       const { labelsAlwaysOn, borders } = useMapLayersStore.getState();
@@ -291,7 +275,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
             const color = darkRef.current ? feature.properties?.colorDark : feature.properties?.colorLight;
 
             let desc = 'Modern-day international borders.';
-            let displayName = countryName;
+            const displayName = countryName;
 
             if (countryName === 'Israel') {
               desc = 'Borders shown as Israel defines them: the Golan Heights (Golan Heights Law, 1981) and a united Jerusalem (Jerusalem Law, 1980) are inside Israel. Toward the West Bank, the solid purple line of the 2002 security barrier marks the operative boundary Israel defines on the ground; the dashed 1949 armistice (Green) lines are not defined by Israel as international borders.';

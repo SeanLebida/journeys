@@ -21,6 +21,10 @@ test-results/
 # Generated content artifacts (produced by `npm run build:content`)
 public/dist-content/
 
+# Redownloadable font sources for scripts/build-glyphs.py (the generated
+# public/fonts/<stack>/*.pbf ranges ARE committed; these TTFs are just a cache)
+scratch/fonts-src/
+
 # Large raw source data (compiled into dist-content/)
 content/bible-src/
 content/bible-src/*.zip
@@ -32,3 +36,10 @@ content/bible-src/raw/
 .vscode/*
 !.vscode/extensions.json
 *.log
+
+# Keystores and release outputs
+*.keystore
+*.jks
+.env*
+android/release-notes/
+
