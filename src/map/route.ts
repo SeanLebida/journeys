@@ -123,6 +123,28 @@ export function stopFractions(path: JourneyPath): number[] {
 /** Index of the stop most recently reached at fraction `t` (fractions from stopFractions). */
 export function activeStopFromFractions(fractions: number[], t: number): number {
   let idx = 0;
-  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-9) idx = i;
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) idx = i;
   return idx;
+}
+
+/**
+ * The inclusive range of stop indices sitting at fraction `t`.
+ *
+ * Consecutive stops can share a location — Golgotha and the resurrection
+ * appearances are the same tomb; the two Upper Room stops are the same room —
+ * so they share a progress fraction *exactly*. A single index cannot address
+ * them, and taking the last of the tie (as `activeStopFromFractions` does)
+ * silently skips every stop before it. Playback walks this range with a dwell
+ * instead, so each co-located stop gets its own moment.
+ */
+export function stopRangeAtFraction(fractions: number[], t: number): [first: number, last: number] {
+  let last = 0;
+  for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) last = i;
+  // Group only the stops sitting *at* this exact fraction. Once progress moves past it,
+  // those co-located stops are behind us: return single stop `last` so we do not
+  // re-enter the tie walk or drop tieOffset back to first.
+  if (t > fractions[last] + 1e-7 || Math.abs(fractions[last] - t) > 1e-7) return [last, last];
+  let first = last;
+  while (first > 0 && Math.abs(fractions[first - 1] - fractions[last]) <= 1e-7) first--;
+  return [first, last];
 }

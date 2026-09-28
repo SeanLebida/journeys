@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Journeys</string>
+    <string name="title_activity_main">Journeys</string>
+    <string name="package_name">how.authentic.journeys</string>
+    <string name="custom_url_scheme">how.authentic.journeys</string>
+</resources>

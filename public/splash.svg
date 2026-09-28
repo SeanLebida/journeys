@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="100%" height="100%" role="img" aria-label="Journeys — An accurate, cited atlas of the journeys of Jesus and the apostles">
+  <defs>
+    <!-- Background: Deep obsidian night sky to ancient indigo parchment -->
+    <linearGradient id="splashBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#070a10"/>
+      <stop offset="40%" stop-color="#0f1522"/>
+      <stop offset="75%" stop-color="#141a29"/>
+      <stop offset="100%" stop-color="#080b12"/>
+    </linearGradient>
+
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d77f"/>
+      <stop offset="50%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#8a6d10"/>
+    </linearGradient>
+
+    <!-- Light Gold Facet for 3D Compass Star -->
+    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf1c2"/>
+      <stop offset="100%" stop-color="#d4aa29"/>
+    </linearGradient>
+
+    <!-- Dark Gold Facet for 3D Compass Star -->
+    <linearGradient id="goldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a88219"/>
+      <stop offset="100%" stop-color="#69510c"/>
+    </linearGradient>
+
+    <!-- Terracotta / Burnt Orange Route Gradient -->
+    <linearGradient id="terracottaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f07833"/>
+      <stop offset="50%" stop-color="#b35400"/>
+      <stop offset="100%" stop-color="#8a4300"/>
+    </linearGradient>
+
+    <!-- Mediterranean Sea Teal Accent Gradient -->
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5ec9c2"/>
+      <stop offset="100%" stop-color="#2f6f6b"/>
+    </linearGradient>
+
+    <!-- Ambient Center Gold Glow -->
+    <radialGradient id="centerGlow" cx="50%" cy="42%" r="45%">
+      <stop offset="0%" stop-color="#c9a227" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#c9a227" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    
+    <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#b35400" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1080" height="1920" fill="url(#splashBg)"/>
+  
+  <!-- Outer Parchment Border Frame -->
+  <rect x="24" y="24" width="1032" height="1872" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-opacity="0.25"/>
+  <rect x="36" y="36" width="1008" height="1848" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="8 6" stroke-opacity="0.15"/>
+
+  <!-- Ambient Radiance around Emblem -->
+  <circle cx="540" cy="780" r="460" fill="url(#centerGlow)"/>
+
+  <!-- ==================== CARTOGRAPHIC GRATICULE RINGS ==================== -->
+  <g fill="none" stroke="url(#goldGrad)" stroke-opacity="0.18" stroke-width="2">
+    <!-- Concentric Latitude/Longitude Circles -->
+    <circle cx="540" cy="780" r="420" stroke-dasharray="6 6"/>
+    <circle cx="540" cy="780" r="320"/>
+    <circle cx="540" cy="780" r="220" stroke-dasharray="4 4"/>
+    
+    <!-- Crosshair Grid Lines -->
+    <line x1="540" y1="200" x2="540" y2="1360" stroke-dasharray="4 8"/>
+    <line x1="100" y1="780" x2="980" y2="780" stroke-dasharray="4 8"/>
+  </g>
+
+  <!-- Astrolabe Degree Ticks -->
+  <g stroke="url(#goldGrad)" stroke-width="3" stroke-opacity="0.4" stroke-linecap="round">
+    <line x1="540" y1="360" x2="540" y2="390"/>
+    <line x1="540" y1="1170" x2="540" y2="1200"/>
+    <line x1="120" y1="780" x2="150" y2="780"/>
+    <line x1="930" y1="780" x2="960" y2="780"/>
+    
+    <line x1="243" y1="483" x2="264" y2="504"/>
+    <line x1="837" y1="483" x2="816" y2="504"/>
+    <line x1="243" y1="1077" x2="264" y2="1056"/>
+    <line x1="837" y1="1077" x2="816" y2="1056"/>
+  </g>
+
+  <!-- Stippled Navigation Stars Backdrop -->
+  <g fill="#f5d77f" opacity="0.35">
+    <circle cx="220" cy="420" r="2.5"/>
+    <circle cx="860" cy="460" r="3"/>
+    <circle cx="920" cy="1020" r="2.5"/>
+    <circle cx="180" cy="1100" r="3"/>
+    <circle cx="780" cy="1180" r="2"/>
+    <circle cx="310" cy="1220" r="2.5"/>
+  </g>
+
+  <!-- ==================== JOURNEY ROUTE PATH ==================== -->
+  <!-- Background Sea Lane Route (Teal Dotted) -->
+  <path d="M 230 1030 C 340 960, 320 790, 540 780 C 760 770, 745 600, 850 530"
+        fill="none" stroke="url(#seaGrad)" stroke-width="22" stroke-linecap="round" stroke-dasharray="3 28" opacity="0.75"/>
+
+  <!-- Primary Overland Journey Route (Terracotta & Gold) -->
+  <path d="M 230 1030 C 340 960, 320 790, 540 780 C 760 770, 745 600, 850 530"
+        fill="none" stroke="url(#terracottaGrad)" stroke-width="18" stroke-linecap="round" stroke-dasharray="24 14" filter="url(#routeGlow)"/>
+
+  <!-- Journey Waypoint Nodes -->
+  <!-- Node 1: Jerusalem (Origin - Bottom Left) -->
+  <g filter="url(#shadow)">
+    <circle cx="230" cy="1030" r="32" fill="#0f1522" stroke="url(#goldGrad)" stroke-width="6"/>
+    <circle cx="230" cy="1030" r="14" fill="url(#terracottaGrad)"/>
+    <circle cx="230" cy="1030" r="5" fill="#ffffff"/>
+  </g>
+
+  <!-- Node 2: Intermediate Waypoint (Antioch) -->
+  <g filter="url(#shadow)">
+    <circle cx="390" cy="875" r="20" fill="#0f1522" stroke="url(#goldGrad)" stroke-width="5"/>
+    <circle cx="390" cy="875" r="8" fill="url(#seaGrad)"/>
+  </g>
+
+  <!-- Node 3: Intermediate Waypoint (Ephesus) -->
+  <g filter="url(#shadow)">
+    <circle cx="670" cy="685" r="20" fill="#0f1522" stroke="url(#goldGrad)" stroke-width="5"/>
+    <circle cx="670" cy="685" r="8" fill="url(#seaGrad)"/>
+  </g>
+
+  <!-- Node 4: Rome (Destination - Top Right Star Waypoint) -->
+  <g filter="url(#shadow)">
+    <circle cx="850" cy="530" r="36" fill="#0f1522" stroke="url(#goldGrad)" stroke-width="6"/>
+    <path d="M 850 500 L 857 523 L 880 530 L 857 537 L 850 560 L 843 537 L 820 530 L 843 523 Z" fill="url(#goldLight)"/>
+    <circle cx="850" cy="530" r="5" fill="#ffffff"/>
+  </g>
+
+  <!-- ==================== CENTRAL EMBLEM: CHI-RHO COMPASS STAR ==================== -->
+  <g transform="translate(540, 780)" filter="url(#shadow)">
+    <!-- Astrolabe Center Ring -->
+    <circle cx="0" cy="0" r="105" fill="#0f1522" stroke="url(#goldGrad)" stroke-width="7"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="4 8" stroke-opacity="0.6"/>
+
+    <!-- 8-Point Faceted Compass Star -->
+    <!-- Primary North Point -->
+    <polygon points="0,0 0,-156 18,-44" fill="url(#goldLight)"/>
+    <polygon points="0,0 0,-156 -18,-44" fill="url(#goldDark)"/>
+    
+    <!-- Primary South Point -->
+    <polygon points="0,0 0,156 -18,44" fill="url(#goldLight)"/>
+    <polygon points="0,0 0,156 18,44" fill="url(#goldDark)"/>
+    
+    <!-- Primary East Point -->
+    <polygon points="0,0 156,0 44,18" fill="url(#goldLight)"/>
+    <polygon points="0,0 156,0 44,-18" fill="url(#goldDark)"/>
+    
+    <!-- Primary West Point -->
+    <polygon points="0,0 -156,0 -44,-18" fill="url(#goldLight)"/>
+    <polygon points="0,0 -156,0 -44,18" fill="url(#goldDark)"/>
+
+    <!-- Diagonal Secondary Points -->
+    <!-- NE -->
+    <polygon points="0,0 96,-96 36,-12" fill="url(#goldLight)"/>
+    <polygon points="0,0 96,-96 12,-36" fill="url(#goldDark)"/>
+    <!-- SE -->
+    <polygon points="0,0 96,96 12,36" fill="url(#goldLight)"/>
+    <polygon points="0,0 96,96 36,12" fill="url(#goldDark)"/>
+    <!-- SW -->
+    <polygon points="0,0 -96,96 -36,12" fill="url(#goldLight)"/>
+    <polygon points="0,0 -96,96 -12,36" fill="url(#goldDark)"/>
+    <!-- NW -->
+    <polygon points="0,0 -96,-96 -12,-36" fill="url(#goldLight)"/>
+    <polygon points="0,0 -96,-96 -36,-12" fill="url(#goldDark)"/>
+
+    <!-- CHI-RHO (XP) Central Sacred Geometry overlay -->
+    <!-- Diagonal Cross (Chi / X) Lines -->
+    <line x1="-36" y1="-36" x2="36" y2="36" stroke="url(#goldLight)" stroke-width="8" stroke-linecap="round"/>
+    <line x1="36" y1="-36" x2="-36" y2="36" stroke="url(#goldLight)" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Vertical Stave & Rho (P) Loop -->
+    <line x1="0" y1="-56" x2="0" y2="56" stroke="url(#goldLight)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 0 -56 C 28 -56, 28 -24, 0 -24" fill="none" stroke="url(#goldLight)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Center Jewel (The Focal Anchor) -->
+    <circle cx="0" cy="0" r="18" fill="url(#goldGrad)"/>
+    <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+  </g>
+
+  <!-- ==================== TYPOGRAPHY & TAGLINE SECTION ==================== -->
+  <g text-anchor="middle" filter="url(#shadow)">
+    <!-- App Main Title -->
+    <text x="540" y="1410"
+          font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif"
+          font-size="78"
+          font-weight="700"
+          letter-spacing="0.22em"
+          fill="url(#goldGrad)">JOURNEYS</text>
+
+    <!-- Decorative Divider Line with Diamond Centerpiece -->
+    <g stroke="url(#goldGrad)" stroke-width="2" stroke-opacity="0.5">
+      <line x1="240" y1="1455" x2="480" y2="1455"/>
+      <line x1="600" y1="1455" x2="840" y2="1455"/>
+    </g>
+    <polygon points="540,1445 550,1455 540,1465 530,1455" fill="url(#goldLight)"/>
+
+    <!-- Subtitle / Main Category -->
+    <text x="540" y="1515"
+          font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif"
+          font-size="28"
+          font-weight="600"
+          letter-spacing="0.28em"
+          fill="#e66722">ATLAS OF THE APOSTLES</text>
+
+    <!-- Official App Tagline -->
+    <text x="540" y="1585"
+          font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif"
+          font-size="30"
+          font-weight="400"
+          letter-spacing="0.03em"
+          fill="#f4ecd8"
+          opacity="0.92">An accurate, cited atlas of the journeys</text>
+
+    <text x="540" y="1632"
+          font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif"
+          font-size="30"
+          font-weight="400"
+          letter-spacing="0.03em"
+          fill="#f4ecd8"
+          opacity="0.92">of Jesus and the apostles</text>
+
+    <!-- Bottom Badge / Principles Footer -->
+    <g transform="translate(540, 1750)">
+      <rect x="-240" y="-22" width="480" height="44" rx="22" fill="#121826" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.4"/>
+      <text x="0" y="7"
+            font-family="'Ubuntu', 'Segoe UI', system-ui, sans-serif"
+            font-size="18"
+            font-weight="600"
+            letter-spacing="0.22em"
+            fill="#c9a227">BIBLICAL · GEOGRAPHIC · CITABLE</text>
+    </g>
+  </g>
+</svg>

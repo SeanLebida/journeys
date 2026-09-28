@@ -9,8 +9,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.70444,
-    "lon": 35.20639
+    "lat": 31.70431,
+    "lon": 35.2076
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -18,7 +18,10 @@
     "cit-www-britannica-com-topic-when-was-jesus-born",
     "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
     "cit-www-holylandsite-com-bethlehem-nativity-church"
-   ]
+   ],
+   "disputes": {
+    "en": "Church of the Nativity marks the traditional grotto; the exact 1st-century house site is not archaeologically fixed."
+   }
   },
   "summary": {
    "en": "Matthew and Luke place Jesus' birth in Bethlehem, the city of David, before the death of Herod the Great. Luke ties it to a census under Quirinius; Matthew records the magi and the flight to Egypt. The Church of the Nativity (built under Constantine/Justinian over a cave venerated from at least the 2nd c., per Justin Martyr and Origen) marks the traditional grotto. Scholarly birth window is c. 6-4 BC, set by Herod's death (securely c. spring 4 BC via Josephus' lunar-eclipse note of 13 March 4 BC and reign calculations)."
@@ -30,7 +33,8 @@
    "cit-dth-birthplace-of-jesus",
    "cit-dth-the-church-of-the-nativity-and-the-location-of-the-birth-of-jesus",
    "cit-dth-shepherds-fields-near-bethlehem"
-  ]
+  ],
+  "pleiadesId": "687856"
  },
  {
   "id": "site-nazareth",
@@ -42,8 +46,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.70194,
-    "lon": 35.30333
+    "lat": 32.70208,
+    "lon": 35.29778
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -61,7 +65,8 @@
    "cit-dth-church-of-the-annunciation-in-nazareth",
    "cit-dth-jesus-nazareth-prophet-rejected-hometown",
    "cit-dth-history-of-the-traditions-and-locations-related-to-the-annunciation"
-  ]
+  ],
+  "pleiadesId": "678299"
  },
  {
   "id": "site-baptism-at-the-jordan",
@@ -73,8 +78,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8372,
-    "lon": 35.545
+    "lat": 31.8374,
+    "lon": 35.5503
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -89,6 +94,30 @@
    "cit-whc-unesco-org-en-list-1446",
    "cit-dth-john-the-baptist",
    "cit-dth-john-the-baptizer-prepares-the-way"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Al-Maghtas (Bethany beyond the Jordan, Jordan) — UNESCO; early Christian remains"
+    },
+    "lat": 31.8374,
+    "lon": 35.5503,
+    "confidence": "medium",
+    "citations": [
+     "cit-whc-unesco-org-en-list-1446"
+    ]
+   },
+   {
+    "label": {
+     "en": "Qasr el-Yahud (West Bank) — traditional western bank baptistery"
+    },
+    "lat": 31.83833,
+    "lon": 35.54639,
+    "confidence": "medium",
+    "citations": [
+     "cit-whc-unesco-org-en-list-1446"
+    ]
+   }
   ]
  },
  {
@@ -101,8 +130,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.88111,
-    "lon": 35.575
+    "lat": 32.88062,
+    "lon": 35.57585
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -123,7 +152,8 @@
    "cit-arch-capernaum-house",
    "cit-dth-ancient-capernaum-synagogue-house-peter",
    "cit-dth-capernaum"
-  ]
+  ],
+  "pleiadesId": "678231"
  },
  {
   "id": "site-cana-of-galilee",
@@ -135,8 +165,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.82,
-    "lon": 35.31
+    "lat": 32.8465,
+    "lon": 35.3378
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -153,6 +183,32 @@
    "cit-www-biblicalarchaeology-org-daily-people-culture",
    "cit-dth-the-village-of-cana-in-galilee",
    "cit-dth-stone-jars-ritual-washing-water-wine-miracle-cana"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Kafr Kanna — traditional pilgrim site"
+    },
+    "lat": 32.8465,
+    "lon": 35.3378,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-cana",
+     "cit-www-biblicalarchaeology-org-daily-people-culture"
+    ]
+   },
+   {
+    "label": {
+     "en": "Khirbet Qana — preferred by many modern archaeologists"
+    },
+    "lat": 32.82222,
+    "lon": 35.33806,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-cana",
+     "cit-www-biblicalarchaeology-org-daily-people-culture"
+    ]
+   }
   ]
  },
  {
@@ -168,14 +224,18 @@
     "lat": 32.8167,
     "lon": 35.5833
    },
-   "confidence": "high",
+   "confidence": "medium",
    "reviewStatus": "self-reviewed",
    "citations": [
     "cit-en-wikipedia-org-wiki-sea-of-galilee",
     "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
     "cit-ref-sacred-bridge"
-   ]
+   ],
+   "disputes": {
+    "en": "Downgraded from high: coordinate currently rests on a whole-atlas gazetteer backstop without a place-specific gazetteer id or excavation locus. Pin remains useful but not survey-grade."
+   }
   },
+  "pleiadesId": "678430",
   "summary": {
    "en": "The freshwater lake (~21 km x 13 km, surface ~210 m below sea level) is the geographic heart of the Galilean ministry: calling of fishermen, teaching from boats, stilling of the storm, walking on water, and miraculous catches. A 1st-c. wooden boat ('the Jesus Boat', the Migdal/Ginosar boat) excavated in 1986 is dated c. 100 BC-AD 100 and exemplifies the craft of the period."
   },
@@ -197,8 +257,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.91,
-    "lon": 35.63
+    "lat": 32.91083,
+    "lon": 35.63056
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -213,7 +273,34 @@
   "citations": [
    "cit-www-biblicalarchaeology-org-daily-biblical-sites",
    "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
-  ]
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "et-Tell — longstanding identification as Bethsaida-Julias"
+    },
+    "lat": 32.91083,
+    "lon": 35.63056,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+     "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
+    ]
+   },
+   {
+    "label": {
+     "en": "el-Araj — lakeshore dig; strong recent case for NT Bethsaida"
+    },
+    "lat": 32.89417,
+    "lon": 35.63306,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-biblicalarchaeology-org-daily-biblical-sites",
+     "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
+    ]
+   }
+  ],
+  "pleiadesId": "678065"
  },
  {
   "id": "site-chorazin",
@@ -225,8 +312,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.91137,
-    "lon": 35.56378
+    "lat": 32.9114,
+    "lon": 35.5638
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -235,6 +322,7 @@
     "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
    ]
   },
+  "pleiadesId": "678091",
   "summary": {
    "en": "Chorazin is one of the three towns Jesus condemned for unbelief despite his mighty works (Matthew 11:21; Luke 10:13). The visible basalt town and synagogue (with a carved 'Seat of Moses') are mainly 3rd-4th c., but recent excavation reported 1st-c. pottery and coins beneath the synagogue floor, suggesting an earlier public building of Jesus' era."
   },
@@ -253,8 +341,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.82609,
-    "lon": 35.65038
+    "lat": 32.82611,
+    "lon": 35.65039
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -271,6 +359,47 @@
    "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
    "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
    "cit-dth-the-decapolis-region"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Kursi / Gergesa — traditional lakeshore site of the swine miracle"
+    },
+    "lat": 32.8258,
+    "lon": 35.6503,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+     "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+     "cit-ref-sacred-bridge"
+    ]
+   },
+   {
+    "label": {
+     "en": "Gadara (Umm Qais) — Decapolis city named in some MSS"
+    },
+    "lat": 32.6564,
+    "lon": 35.6778,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+     "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+     "cit-ref-sacred-bridge"
+    ]
+   },
+   {
+    "label": {
+     "en": "Gerasa (Jerash) — Decapolis city; farther inland"
+    },
+    "lat": 32.2806,
+    "lon": 35.8914,
+    "confidence": "disputed",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+     "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
+     "cit-ref-sacred-bridge"
+    ]
+   }
   ]
  },
  {
@@ -303,7 +432,8 @@
    "cit-en-wikipedia-org-wiki-sidon",
    "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
    "cit-ref-sacred-bridge"
-  ]
+  ],
+  "pleiadesId": "678437"
  },
  {
   "id": "site-caesarea-philippi",
@@ -315,7 +445,7 @@
   },
   "coordinates": {
    "value": {
-    "lat": 33.24861,
+    "lat": 33.24833,
     "lon": 35.69444
    },
    "confidence": "high",
@@ -345,8 +475,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.2103,
-    "lon": 35.2847
+    "lat": 32.20964,
+    "lon": 35.28381
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -362,6 +492,32 @@
    "cit-www-seetheholyland-net-jacobs-well",
    "cit-www-holylandsite-com-shechem-jacobs-well",
    "cit-dth-jacob-well-in-samaria"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Jacob's Well at Nablus / Askar (Sychar tradition)"
+    },
+    "lat": 32.2097,
+    "lon": 35.2853,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-seetheholyland-net-jacobs-well",
+     "cit-www-holylandsite-com-shechem-jacobs-well"
+    ]
+   },
+   {
+    "label": {
+     "en": "Broader Shechem / Mount Gerizim approaches"
+    },
+    "lat": 32.213,
+    "lon": 35.281,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-seetheholyland-net-jacobs-well",
+     "cit-www-holylandsite-com-shechem-jacobs-well"
+    ]
+   }
   ]
  },
  {
@@ -374,8 +530,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8561,
-    "lon": 35.46
+    "lat": 31.85194,
+    "lon": 35.43889
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -393,7 +549,8 @@
    "cit-dth-jericho-and-jesus",
    "cit-dth-jesus-in-jericho",
    "cit-dth-zacchaeus-the-tax-collector"
-  ]
+  ],
+  "pleiadesId": "687949"
  },
  {
   "id": "site-bethany-and-bethphage",
@@ -405,8 +562,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7717,
-    "lon": 35.2569
+    "lat": 31.77083,
+    "lon": 35.25972
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -423,7 +580,34 @@
    "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
    "cit-dth-the-village-of-bethphage",
    "cit-dth-jesus-and-the-raising-of-lazarus"
-  ]
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "el-Azariyeh (traditional Bethany of Lazarus)"
+    },
+    "lat": 31.77,
+    "lon": 35.261,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-seetheholyland-net-bethany",
+     "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+    ]
+   },
+   {
+    "label": {
+     "en": "Bethphage ridge approaches to the Mount of Olives"
+    },
+    "lat": 31.777,
+    "lon": 35.25,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-seetheholyland-net-bethany",
+     "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+    ]
+   }
+  ],
+  "pleiadesId": "156668177"
  },
  {
   "id": "site-jerusalem",
@@ -435,8 +619,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.778,
-    "lon": 35.2354
+    "lat": 31.77611,
+    "lon": 35.2346
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -447,7 +631,7 @@
    ]
   },
   "summary": {
-   "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. The Temple was destroyed by Rome in AD 70."
+   "en": "Jerusalem is the destination of Jesus' pilgrim journeys (John records multiple festival visits) and the locus of Passion Week: the cleansing of the Temple, daily teaching in the courts, eschatological discourse, and confrontations with authorities. Herod the Great's vastly expanded Temple platform is archaeologically attested by massive ashlar courses (Western Wall), monumental staircases, and the Trumpeting-Place inscription. In the City of David beneath it, Judah's kings left the same water system the Gospels name: the 2025 Siloam dam of Joash and Amaziah (c. 805–795 BC) and Hezekiah's tunnel. The Temple was destroyed by Rome in AD 70."
   },
   "citations": [
    "cit-en-wikipedia-org-wiki-temple-mount",
@@ -455,8 +639,10 @@
    "cit-dth-the-temple-in-jerusalem",
    "cit-dth-destruction-of-jerusalem-and-the-temple",
    "cit-dth-history-of-jerusalem",
-   "cit-dth-the-golden-gate"
-  ]
+   "cit-dth-the-golden-gate",
+   "cit-iaa-siloam-dam-2025"
+  ],
+  "pleiadesId": "687928"
  },
  {
   "id": "site-last-supper",
@@ -468,8 +654,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7717,
-    "lon": 35.2294
+    "lat": 31.77172,
+    "lon": 35.22934
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -485,6 +671,32 @@
    "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
    "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
    "cit-dth-the-upper-room"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Traditional Cenacle on Mount Zion"
+    },
+    "lat": 31.7717,
+    "lon": 35.229,
+    "confidence": "medium",
+    "citations": [
+     "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+     "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
+    ]
+   },
+   {
+    "label": {
+     "en": "Essene Quarter / other upper-city proposals"
+    },
+    "lat": 31.773,
+    "lon": 35.228,
+    "confidence": "disputed",
+    "citations": [
+     "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+     "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
+    ]
+   }
   ]
  },
  {
@@ -497,8 +709,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7794,
-    "lon": 35.2397
+    "lat": 31.77917,
+    "lon": 35.23961
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -514,6 +726,32 @@
    "cit-en-wikipedia-org-wiki-mount-of-olives",
    "cit-dth-garden-of-gethsemane",
    "cit-dth-jesus-prays-garden-gethsemane"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Church of All Nations olive grove (traditional)"
+    },
+    "lat": 31.7794,
+    "lon": 35.2396,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-mount-of-olives",
+     "cit-ref-sacred-bridge"
+    ]
+   },
+   {
+    "label": {
+     "en": "Broader Kidron / lower Olivet slope (region)"
+    },
+    "lat": 31.778,
+    "lon": 35.2405,
+    "confidence": "medium",
+    "citations": [
+     "cit-en-wikipedia-org-wiki-mount-of-olives",
+     "cit-ref-sacred-bridge"
+    ]
+   }
   ]
  },
  {
@@ -526,8 +764,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7765,
-    "lon": 35.2278
+    "lat": 31.77617,
+    "lon": 35.22775
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -545,6 +783,32 @@
    "cit-dth-the-praetorium-of-pilate",
    "cit-dth-jesus-before-caiaphas",
    "cit-dth-the-trial-of-jesus"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Herod's Palace (western hill) — majority current view for the praetorium"
+    },
+    "lat": 31.776,
+    "lon": 35.2285,
+    "confidence": "medium",
+    "citations": [
+     "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+     "cit-en-wikipedia-org-wiki-pilate-stone"
+    ]
+   },
+   {
+    "label": {
+     "en": "Antonia Fortress (NW Temple Mount) — traditional Via Dolorosa start"
+    },
+    "lat": 31.7803,
+    "lon": 35.2345,
+    "confidence": "legendary",
+    "citations": [
+     "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
+     "cit-en-wikipedia-org-wiki-pilate-stone"
+    ]
+   }
   ]
  },
  {
@@ -557,8 +821,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7784,
-    "lon": 35.2297
+    "lat": 31.77844,
+    "lon": 35.22975
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -592,8 +856,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.2,
-    "lon": 36.16
+    "lat": 36.20806,
+    "lon": 36.17778
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -610,7 +874,8 @@
    "cit-www-livius-org-articles-place-antioch-antakya",
    "cit-topostext-org-place-362362pant",
    "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
-  ]
+  ],
+  "pleiadesId": "658381"
  },
  {
   "id": "site-seleucia-pieria",
@@ -622,8 +887,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.1239,
-    "lon": 35.9219
+    "lat": 36.12139,
+    "lon": 35.92389
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -640,7 +905,8 @@
    "cit-en-wikipedia-org-wiki-seleucia-pieria",
    "cit-www-britannica-com-place-seleucia-pieria",
    "cit-www-bibleplaces-com-seleucia"
-  ]
+  ],
+  "pleiadesId": "658483"
  },
  {
   "id": "site-salamis",
@@ -652,8 +918,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 35.1814,
-    "lon": 33.9
+    "lat": 35.18528,
+    "lon": 33.90306
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -668,7 +934,8 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-salamis-cyprus",
    "cit-dth-ancient-salamis"
-  ]
+  ],
+  "pleiadesId": "707617"
  },
  {
   "id": "site-paphos",
@@ -680,8 +947,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 34.7571,
-    "lon": 32.4065
+    "lat": 34.75639,
+    "lon": 32.40694
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -700,7 +967,8 @@
    "cit-www-britannica-com-place-paphos",
    "cit-dth-ancient-paphos",
    "cit-dth-legacy-of-barnabas-on-cyprus"
-  ]
+  ],
+  "pleiadesId": "707586"
  },
  {
   "id": "site-perga",
@@ -712,8 +980,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.9614,
-    "lon": 30.8539
+    "lat": 36.96139,
+    "lon": 30.8525
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -730,7 +998,8 @@
    "cit-en-wikipedia-org-wiki-perga",
    "cit-www-britannica-com-place-perga",
    "cit-topostext-org-place-370309pper"
-  ]
+  ],
+  "pleiadesId": "639048"
  },
  {
   "id": "site-pisidian-antioch",
@@ -742,8 +1011,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 38.3062,
-    "lon": 31.1899
+    "lat": 38.30472,
+    "lon": 31.18944
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -761,7 +1030,8 @@
    "cit-www-biblicalarchaeology-org-daily-biblical-topic",
    "cit-www-thegospelcoalition-org-themelios-article-act",
    "cit-dth-pisidian-antioch"
-  ]
+  ],
+  "pleiadesId": "609307"
  },
  {
   "id": "site-iconium",
@@ -773,8 +1043,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.8714,
-    "lon": 32.4846
+    "lat": 37.87222,
+    "lon": 32.49306
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -789,7 +1059,8 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-konya",
    "cit-www-bibleref-com-acts-14-acts-14-6-html"
-  ]
+  ],
+  "pleiadesId": "648647"
  },
  {
   "id": "site-lystra",
@@ -801,8 +1072,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.6019,
-    "lon": 32.3383
+    "lat": 37.60194,
+    "lon": 32.33833
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -818,7 +1089,8 @@
    "cit-en-wikipedia-org-wiki-lystra",
    "cit-www-bibleplaces-com-derbelystra",
    "cit-dth-the-miracle-at-lystra"
-  ]
+  ],
+  "pleiadesId": "648699"
  },
  {
   "id": "site-derbe",
@@ -830,8 +1102,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.3493,
-    "lon": 33.3617
+    "lat": 37.34694,
+    "lon": 33.36139
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -846,7 +1118,8 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-derbe",
    "cit-vici-org-vici-24065"
-  ]
+  ],
+  "pleiadesId": "648620"
  },
  {
   "id": "site-attalia",
@@ -858,8 +1131,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.8841,
-    "lon": 30.7056
+    "lat": 36.88528,
+    "lon": 30.70833
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -884,20 +1157,25 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.9177,
-    "lon": 34.8947
+    "lat": 36.91694,
+    "lon": 34.89528
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
    "citations": [
-    "cit-www-esv-org-resources-esv-global-study-bible-map"
+    "cit-www-esv-org-resources-esv-global-study-bible-map",
+    "cit-src-strabo-14-5-tarsus"
    ]
   },
+  "pleiadesId": "648789",
   "summary": {
    "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
   },
   "citations": [
-   "cit-www-esv-org-resources-esv-global-study-bible-map"
+   "cit-www-esv-org-resources-esv-global-study-bible-map",
+   "cit-scripture-acts-15-41",
+   "cit-scripture-acts-21-39",
+   "cit-src-strabo-14-5-tarsus"
   ]
  },
  {
@@ -910,8 +1188,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 39.7517,
-    "lon": 26.1586
+    "lat": 39.75222,
+    "lon": 26.15417
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -926,7 +1204,8 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-alexandria-troas",
    "cit-www-bibleplaces-com-acts16"
-  ]
+  ],
+  "pleiadesId": "550434"
  },
  {
   "id": "site-samothrace",
@@ -938,8 +1217,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 40.45,
-    "lon": 25.53
+    "lat": 40.50028,
+    "lon": 25.53028
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -964,8 +1243,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 40.9369,
-    "lon": 24.4122
+    "lat": 40.93333,
+    "lon": 24.41444
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -990,8 +1269,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 41.0131,
-    "lon": 24.2864
+    "lat": 41.01333,
+    "lon": 24.28583
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1009,7 +1288,8 @@
    "cit-dth-philippi-of-macedonia",
    "cit-dth-lydias-conversion-at-philippi",
    "cit-dth-paul-and-silas-in-prison-at-philippi"
-  ]
+  ],
+  "pleiadesId": "501482"
  },
  {
   "id": "site-thessalonica",
@@ -1021,8 +1301,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 40.6403,
-    "lon": 22.9356
+    "lat": 40.63806,
+    "lon": 22.94583
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1038,7 +1318,8 @@
    "cit-en-wikipedia-org-wiki-thessaloniki",
    "cit-catholic-resources-org-bible-geography-roman-pro",
    "cit-dth-thessalonica-thessalonike"
-  ]
+  ],
+  "pleiadesId": "491741"
  },
  {
   "id": "site-berea",
@@ -1050,8 +1331,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 40.5244,
-    "lon": 22.2024
+    "lat": 40.52361,
+    "lon": 22.20472
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1078,8 +1359,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.9715,
-    "lon": 23.7257
+    "lat": 37.97222,
+    "lon": 23.72361
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1094,7 +1375,8 @@
    "cit-latitude-to-articles-by-country-gr-greece-853-ac",
    "cit-dth-athens",
    "cit-dth-paul-at-the-areopagus-of-athens"
-  ]
+  ],
+  "pleiadesId": "579885"
  },
  {
   "id": "site-corinth",
@@ -1106,8 +1388,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.9061,
-    "lon": 22.8792
+    "lat": 37.90565,
+    "lon": 22.87968
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1127,7 +1409,8 @@
    "cit-dth-corinth",
    "cit-dth-paul-before-the-proconsul-at-corinth",
    "cit-dth-the-isthmian-games"
-  ]
+  ],
+  "pleiadesId": "570182"
  },
  {
   "id": "site-cenchreae",
@@ -1139,8 +1422,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.8847,
-    "lon": 22.9889
+    "lat": 37.88417,
+    "lon": 22.99056
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1167,8 +1450,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.9498,
-    "lon": 27.3639
+    "lat": 37.94111,
+    "lon": 27.34194
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1185,7 +1468,8 @@
    "cit-dth-ephesus",
    "cit-dth-the-temple-of-artemis-at-ephesus",
    "cit-dth-magic-in-the-marketplace-of-ephesus"
-  ]
+  ],
+  "pleiadesId": "599612"
  },
  {
   "id": "site-caesarea-maritima",
@@ -1197,8 +1481,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5021,
-    "lon": 34.8917
+    "lat": 32.50184,
+    "lon": 34.89245
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1215,7 +1499,8 @@
    "cit-www-esv-org-resources-esv-global-study-bible-map",
    "cit-dth-caesarea-maritima",
    "cit-dth-paul-at-caesarea-for-two-years"
-  ]
+  ],
+  "pleiadesId": "678401"
  },
  {
   "id": "site-antioch-on-the-orontes",
@@ -1227,14 +1512,15 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.2,
-    "lon": 36.16
+    "lat": 36.20806,
+    "lon": 36.17778
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
    "citations": [
     "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-    "cit-www-gotquestions-org-paul-third-missionary-journ"
+    "cit-www-gotquestions-org-paul-third-missionary-journ",
+    "cit-pleiades-stoa-org-places-658381"
    ]
   },
   "summary": {
@@ -1242,8 +1528,10 @@
   },
   "citations": [
    "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-   "cit-www-gotquestions-org-paul-third-missionary-journ"
-  ]
+   "cit-www-gotquestions-org-paul-third-missionary-journ",
+   "cit-pleiades-stoa-org-places-658381"
+  ],
+  "pleiadesId": "658381"
  },
  {
   "id": "site-galatia-and-phrygia",
@@ -1255,8 +1543,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 38.31,
-    "lon": 31.18
+    "lat": 38.30472,
+    "lon": 31.18944
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1283,8 +1571,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 41.01,
-    "lon": 24.29
+    "lat": 41.01333,
+    "lon": 24.28583
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1311,8 +1599,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 39.75,
-    "lon": 26.16
+    "lat": 39.75222,
+    "lon": 26.15417
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1327,7 +1615,8 @@
   "citations": [
    "cit-enduringword-com-bible-commentary-acts-20",
    "cit-www-preceptaustin-org-acts-20-commentary"
-  ]
+  ],
+  "pleiadesId": "550434"
  },
  {
   "id": "site-miletus",
@@ -1339,8 +1628,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 37.53,
-    "lon": 27.28
+    "lat": 37.53083,
+    "lon": 27.27833
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1355,7 +1644,8 @@
   "citations": [
    "cit-bible-org-seriespage-pauls-parting-words-acts-20",
    "cit-enduringword-com-bible-commentary-acts-20"
-  ]
+  ],
+  "pleiadesId": "599799"
  },
  {
   "id": "site-caesarea",
@@ -1367,8 +1657,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5018388,
-    "lon": 34.8924472
+    "lat": 32.50184,
+    "lon": 34.89245
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1383,7 +1673,8 @@
   "citations": [
    "cit-pleiades-stoa-org-places-678401",
    "cit-missionbibleclass-org-new-testament-part2-acts-f"
-  ]
+  ],
+  "pleiadesId": "678401"
  },
  {
   "id": "site-caesarea-imprisonment",
@@ -1395,8 +1686,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.5018388,
-    "lon": 34.8924472
+    "lat": 32.50184,
+    "lon": 34.89245
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1413,7 +1704,8 @@
    "cit-executableoutlines-com-topical-series-harmony-li",
    "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
    "cit-enduringword-com-bible-commentary-acts-25"
-  ]
+  ],
+  "pleiadesId": "678401"
  },
  {
   "id": "site-sidon",
@@ -1425,8 +1717,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 33.5606,
-    "lon": 35.3758
+    "lat": 33.56722,
+    "lon": 35.37139
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1441,7 +1733,8 @@
   "citations": [
    "cit-pleiades-stoa-org-places-678393",
    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-  ]
+  ],
+  "pleiadesId": "678393"
  },
  {
   "id": "site-myra-of-lycia",
@@ -1453,8 +1746,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 36.26,
-    "lon": 29.98
+    "lat": 36.25944,
+    "lon": 29.98472
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1469,7 +1762,8 @@
   "citations": [
    "cit-pleiades-stoa-org-places-639005",
    "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
-  ]
+  ],
+  "pleiadesId": "639005"
  },
  {
   "id": "site-cnidus-and-fair-havens",
@@ -1481,8 +1775,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 34.9297,
-    "lon": 24.8003
+    "lat": 34.92972,
+    "lon": 24.80028
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1511,8 +1805,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 35.1866,
-    "lon": 24.3467
+    "lat": 35.18667,
+    "lon": 24.08333
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1539,8 +1833,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 35.9483,
-    "lon": 14.4017
+    "lat": 35.96639,
+    "lon": 14.40056
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1572,8 +1866,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 40.8259,
-    "lon": 14.1253
+    "lat": 40.82583,
+    "lon": 14.12139
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1600,8 +1894,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 41.8919,
-    "lon": 12.5113
+    "lat": 41.8925,
+    "lon": 12.48528
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1619,7 +1913,8 @@
    "cit-dth-ancient-rome",
    "cit-dth-paul-and-the-roman-christians",
    "cit-dth-nero-and-the-burning-of-rome"
-  ]
+  ],
+  "pleiadesId": "423025"
  },
  {
   "id": "site-emmaus",
@@ -1631,8 +1926,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.8389,
-    "lon": 34.9889
+    "lat": 31.83889,
+    "lon": 34.98889
    },
    "confidence": "medium",
    "reviewStatus": "self-reviewed",
@@ -1650,6 +1945,47 @@
    "cit-emmaus-qubeibeh",
    "cit-pleiades-gazetteer",
    "cit-dth-the-road-to-emmaus"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Emmaus-Nicopolis (Amwas/Latrun) — strongest ancient attestation (Eusebius); ~160 stadia"
+    },
+    "lat": 31.8389,
+    "lon": 34.9889,
+    "confidence": "medium",
+    "citations": [
+     "cit-emmaus-nicopolis",
+     "cit-emmaus-qubeibeh",
+     "cit-pleiades-gazetteer"
+    ]
+   },
+   {
+    "label": {
+     "en": "el-Qubeibeh — Franciscan tradition; ~60-stadia reading"
+    },
+    "lat": 31.84,
+    "lon": 35.136,
+    "confidence": "legendary",
+    "citations": [
+     "cit-emmaus-nicopolis",
+     "cit-emmaus-qubeibeh",
+     "cit-pleiades-gazetteer"
+    ]
+   },
+   {
+    "label": {
+     "en": "Motza / Colonia — Josephus 'Ammaus'; ~60 stadia W of Jerusalem"
+    },
+    "lat": 31.7936,
+    "lon": 35.1631,
+    "confidence": "disputed",
+    "citations": [
+     "cit-emmaus-nicopolis",
+     "cit-emmaus-qubeibeh",
+     "cit-pleiades-gazetteer"
+    ]
+   }
   ]
  },
  {
@@ -1662,8 +1998,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.8731,
-    "lon": 35.5464
+    "lat": 32.87306,
+    "lon": 35.54639
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1692,8 +2028,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 32.8817,
-    "lon": 35.5556
+    "lat": 32.88167,
+    "lon": 35.55556
    },
    "confidence": "disputed",
    "disputes": {
@@ -1711,6 +2047,44 @@
   "citations": [
    "cit-galilee-mountain",
    "cit-pleiades-gazetteer"
+  ],
+  "candidates": [
+   {
+    "label": {
+     "en": "Mount Tabor — traditional association"
+    },
+    "lat": 32.6863,
+    "lon": 35.3903,
+    "confidence": "legendary",
+    "citations": [
+     "cit-galilee-mountain",
+     "cit-pleiades-gazetteer"
+    ]
+   },
+   {
+    "label": {
+     "en": "Mount Arbel / Horns of Hattin region — alternate proposals"
+    },
+    "lat": 32.823,
+    "lon": 35.501,
+    "confidence": "disputed",
+    "citations": [
+     "cit-galilee-mountain",
+     "cit-pleiades-gazetteer"
+    ]
+   },
+   {
+    "label": {
+     "en": "Unspecified highland above the lake — text leaves the mountain unnamed"
+    },
+    "lat": 32.85,
+    "lon": 35.5,
+    "confidence": "disputed",
+    "citations": [
+     "cit-galilee-mountain",
+     "cit-pleiades-gazetteer"
+    ]
+   }
   ]
  },
  {
@@ -1723,8 +2097,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 31.7783,
-    "lon": 35.245
+    "lat": 31.77889,
+    "lon": 35.24472
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1755,8 +2129,8 @@
   },
   "coordinates": {
    "value": {
-    "lat": 33.513,
-    "lon": 36.31
+    "lat": 33.50972,
+    "lon": 36.31556
    },
    "confidence": "high",
    "reviewStatus": "self-reviewed",
@@ -1773,6 +2147,7 @@
    "cit-damascus-straight-street",
    "cit-house-ananias",
    "cit-pleiades-gazetteer"
-  ]
+  ],
+  "pleiadesId": "678106"
  }
 ]

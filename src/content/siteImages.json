@@ -838,5 +838,581 @@
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Citadel_of_Qaitbay,_Alexandria,_Egypt.jpg"
       }
     ]
+  },
+  "site-emmaus": {
+    "images": [
+      {
+        "src": "images/sites/site-emmaus.jpg",
+        "caption": "The Byzantine basilica ruins at Emmaus Nicopolis (Amwas) today",
+        "commonsFile": "Emmaus_Nicopolis_basilica.JPG",
+        "author": "Emmaus",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emmaus_Nicopolis_basilica.JPG"
+      }
+    ]
+  },
+  "site-tabgha": {
+    "images": [
+      {
+        "src": "images/sites/site-tabgha.jpg",
+        "caption": "The Church of the Multiplication at Tabgha today",
+        "commonsFile": "Tabgha - Church of the Multiplication 1.jpg",
+        "author": "Croberto68",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tabgha_-_Church_of_the_Multiplication_1.jpg"
+      }
+    ]
+  },
+  "site-galilee-mountain": {
+    "images": [
+      {
+        "src": "images/sites/site-galilee-mountain.jpg",
+        "caption": "The Mount of Beatitudes ridge above the Sea of Galilee",
+        "commonsFile": "Berg_der_Seligpreisungen_BW_5.JPG",
+        "author": "Berthold Werner",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berg_der_Seligpreisungen_BW_5.JPG"
+      }
+    ]
+  },
+  "site-mount-of-olives-ascension": {
+    "images": [
+      {
+        "src": "images/sites/site-mount-of-olives-ascension.jpg",
+        "caption": "The Chapel of the Ascension on the summit of the Mount of Olives",
+        "commonsFile": "5035-20080122-jerusalem-mt-olives-ascension-edicule.jpg",
+        "author": "en:user:adriatikus",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:5035-20080122-jerusalem-mt-olives-ascension-edicule.jpg"
+      }
+    ]
+  },
+  "site-damascus": {
+    "images": [
+      {
+        "src": "images/sites/site-damascus.jpg",
+        "caption": "Damascus, Syria — the Via Recta (Straight Street) of Acts 9 runs through the Old City",
+        "commonsFile": "Damascus,_Syria,_Panoramic_view_of_Damascus.jpg",
+        "author": "Vyacheslav Argenberg",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Damascus,_Syria,_Panoramic_view_of_Damascus.jpg"
+      }
+    ]
+  },
+  "site-ur": {
+    "images": [
+      {
+        "src": "images/sites/site-ur.jpg",
+        "caption": "The Great Ziggurat of Ur (Tell el-Muqayyar), southern Iraq",
+        "commonsFile": "Ancient ziggurat at Ali Air Base Iraq 2005.jpg",
+        "author": "en:User:Hardnfast",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ancient_ziggurat_at_Ali_Air_Base_Iraq_2005.jpg"
+      }
+    ]
+  },
+  "site-haran": {
+    "images": [
+      {
+        "src": "images/sites/site-haran.jpg",
+        "caption": "The beehive houses and ruins of Harran, southeastern Turkey",
+        "commonsFile": "Harran_2015.jpg",
+        "author": "Hamdigumus",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harran_2015.jpg"
+      }
+    ]
+  },
+  "site-shechem-ot": {
+    "images": [
+      {
+        "src": "images/sites/site-shechem-ot.jpg",
+        "caption": "The excavated ruins of Tell Balata (Shechem) at modern Nablus",
+        "commonsFile": "Tell_Balata.jpg",
+        "author": "TrickyH",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tell_Balata.jpg"
+      }
+    ]
+  },
+  "site-bethel": {
+    "images": [
+      {
+        "src": "images/sites/site-bethel.jpg",
+        "caption": "The village of Beitin, traditional site of Bethel, in the West Bank hills",
+        "commonsFile": "Beitin-3824.jpg",
+        "author": "Bukvoed",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beitin-3824.jpg"
+      }
+    ]
+  },
+  "site-hebron-machpelah": {
+    "images": [
+      {
+        "src": "images/sites/site-hebron-machpelah.jpg",
+        "caption": "The Herodian enclosure over the Cave of Machpelah in Hebron",
+        "commonsFile": "Hebron_Cave_of_the_Patriarchs.jpg",
+        "author": "Utilisateur:Djampa - User:Djampa",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hebron_Cave_of_the_Patriarchs.jpg"
+      }
+    ]
+  },
+  "site-beersheba-ot": {
+    "images": [
+      {
+        "src": "images/sites/site-beersheba-ot.jpg",
+        "caption": "The excavated Iron Age town of Tel Be'er Sheva",
+        "commonsFile": "Tel_Be'er_Sheva_Overview_2007041.JPG",
+        "author": "gugganij",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tel_Be%27er_Sheva_Overview_2007041.JPG"
+      }
+    ]
+  },
+  "site-goshen-rameses": {
+    "images": [
+      {
+        "src": "images/sites/site-goshen-rameses.jpg",
+        "caption": "Remains at Qantir / Pi-Ramesses in the eastern Nile Delta",
+        "commonsFile": "Kolossalstatue_Qantir.JPG",
+        "author": "Iri-en-achti",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kolossalstatue_Qantir.JPG"
+      }
+    ]
+  },
+  "site-mount-sinai": {
+    "images": [
+      {
+        "src": "images/sites/site-mount-sinai.jpg",
+        "caption": "Jebel Musa (traditional Mount Sinai), southern Sinai Peninsula",
+        "commonsFile": "Mount_Sinai_from_the_southwest.jpg",
+        "author": "Gerd Eichmann",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Sinai_from_the_southwest.jpg"
+      }
+    ]
+  },
+  "site-mount-nebo": {
+    "images": [
+      {
+        "src": "images/sites/site-mount-nebo.jpg",
+        "caption": "The Moses memorial church and outlook on Mount Nebo, Jordan",
+        "commonsFile": "Mount_Nebo_BW_6.JPG",
+        "author": "Berthold Werner",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Nebo_BW_6.JPG"
+      }
+    ]
+  },
+  "site-ararat-landing": {
+    "images": [
+      {
+        "src": "images/sites/site-ararat-landing.jpg",
+        "caption": "Greater Mount Ararat, traditional resting place of the ark (Genesis 8:4)",
+        "commonsFile": "Mount_Ararat_and_the_Yerevan_skyline_in_spring_(50mm).jpg",
+        "author": "Սէրուժ Ուրիշեան (Serouj Ourishian)",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Yerevan_skyline_in_spring_(50mm).jpg"
+      }
+    ]
+  },
+  "site-shinar-plain": {
+    "images": [
+      {
+        "src": "images/sites/site-shinar-plain.jpg",
+        "caption": "The reconstructed ruins of Babylon on the plain of Shinar",
+        "commonsFile": "Ishtar_Gate.jpg",
+        "author": "David Stanley",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ishtar_Gate.jpg"
+      }
+    ]
+  },
+  "site-nain": {
+    "images": [
+      {
+        "src": "images/sites/site-nain.jpg",
+        "caption": "The village of Nein on the slope of the Hill of Moreh, Lower Galilee",
+        "commonsFile": "Kfarnin_(cropped).jpg",
+        "author": "Almog",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kfarnin_(cropped).jpg"
+      }
+    ]
+  },
+  "site-lydda": {
+    "images": [
+      {
+        "src": "images/sites/site-lydda.jpg",
+        "caption": "The Church of St George at Lod (ancient Lydda), Israel",
+        "commonsFile": "LodJune132022_01.jpg",
+        "author": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:LodJune132022_01.jpg"
+      }
+    ]
+  },
+  "site-joppa": {
+    "images": [
+      {
+        "src": "images/sites/site-joppa.jpg",
+        "caption": "The old harbour of Jaffa (ancient Joppa) on the Tel Aviv coast",
+        "commonsFile": "ISR-2013-Aerial-Jaffa-Port_of_Jaffa.jpg",
+        "author": "Godot13",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:ISR-2013-Aerial-Jaffa-Port_of_Jaffa.jpg"
+      }
+    ]
+  },
+  "site-valley-of-siddim": {
+    "images": [
+      {
+        "src": "images/sites/site-valley-of-siddim.jpg",
+        "caption": "The southern basin of the Dead Sea, traditional Valley of Siddim",
+        "commonsFile": "Dead_Sea_beach_00.JPG",
+        "author": "لا روسا",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dead_Sea_beach_00.JPG"
+      }
+    ]
+  },
+  "site-heshbon": {
+    "images": [
+      {
+        "src": "images/sites/site-heshbon.jpg",
+        "caption": "The excavated mound of Tell Hisban (Heshbon), Jordan",
+        "commonsFile": "Tell_Hesban_(Column).jpg",
+        "author": "Bashar Tabbah",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tell_Hesban_(Column).jpg"
+      }
+    ]
+  },
+  "site-edrei": {
+    "images": [
+      {
+        "src": "images/sites/site-edrei.jpg",
+        "caption": "Daraa (ancient Edrei), southern Syria",
+        "commonsFile": "الحي_الشرقي_-_panoramio.jpg",
+        "author": "Mohammad AL yakoub",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%AD%D9%8A_%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A_-_panoramio.jpg"
+      }
+    ]
+  },
+  "site-ai": {
+    "images": [
+      {
+        "src": "images/sites/site-ai.jpg",
+        "caption": "The ruins of et-Tell, majority identification for Ai",
+        "commonsFile": "Et-Tell (Ai) ruins.jpg",
+        "author": "Alex Ostrovski",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Et-Tell_(Ai)_ruins.jpg"
+      }
+    ]
+  },
+  "site-gibeon": {
+    "images": [
+      {
+        "src": "images/sites/site-gibeon.png",
+        "caption": "The village of el-Jib, ancient Gibeon, and its great pool",
+        "commonsFile": "Gibeon.png",
+        "author": "Natritmeyer",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gibeon.png"
+      }
+    ]
+  },
+  "site-hazor": {
+    "images": [
+      {
+        "src": "images/sites/site-hazor.jpg",
+        "caption": "The excavations of Tel Hazor, Upper Galilee",
+        "commonsFile": "Hatzor-HouseofPillars.jpg",
+        "author": "The Neolithic ram",
+        "license": "CC BY-SA 2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hatzor-HouseofPillars.jpg"
+      }
+    ]
+  },
+  "site-mount-tabor": {
+    "images": [
+      {
+        "src": "images/sites/site-mount-tabor.jpg",
+        "caption": "Mount Tabor rising from the Jezreel valley, crowned by the Transfiguration church",
+        "commonsFile": "הר_תבור_במבט_מדרום_מערב.jpg",
+        "author": "Noamdahary",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D7%94%D7%A8_%D7%AA%D7%91%D7%95%D7%A8_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%93%D7%A8%D7%95%D7%9D_%D7%9E%D7%A2%D7%A8%D7%91.jpg"
+      }
+    ]
+  },
+  "site-spring-of-harod": {
+    "images": [
+      {
+        "src": "images/sites/site-spring-of-harod.jpg",
+        "caption": "The spring of Harod at the foot of Mount Gilboa",
+        "commonsFile": "Maayan_harod.jpg",
+        "author": "Almog",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maayan_harod.jpg"
+      }
+    ]
+  },
+  "site-gibeah": {
+    "images": [
+      {
+        "src": "images/sites/site-gibeah.jpg",
+        "caption": "The mound of Tell el-Ful, candidate for Gibeah of Saul, north of Jerusalem",
+        "commonsFile": "RoyalPalaceHusseinTellElFulDec032022_03.jpg",
+        "author": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:RoyalPalaceHusseinTellElFulDec032022_03.jpg"
+      }
+    ]
+  },
+  "site-mizpah": {
+    "images": [
+      {
+        "src": "images/sites/site-mizpah.jpg",
+        "caption": "The mound of Tell en-Nasbeh (Mizpah of Benjamin)",
+        "commonsFile": "Tel_a-Nasba.jpg",
+        "author": "דניאל צבי",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tel_a-Nasba.jpg"
+      }
+    ]
+  },
+  "site-aphek-ebenezer": {
+    "images": [
+      {
+        "src": "images/sites/site-aphek-ebenezer.jpg",
+        "caption": "The Ottoman fortress on Tel Afek (Aphek/Antipatris) at the Yarkon springs",
+        "commonsFile": "Afek_IMG_8217.JPG",
+        "author": "Deror avi",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Afek_IMG_8217.JPG"
+      }
+    ]
+  },
+  "site-valley-of-elah": {
+    "images": [
+      {
+        "src": "images/sites/site-valley-of-elah.jpg",
+        "caption": "The Valley of Elah, overlooked by Khirbet Qeiyafa",
+        "commonsFile": "Valley_of_Elah_from_Tel_Azeka.jpg",
+        "author": "Wilson44691",
+        "license": "CC0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Valley_of_Elah_from_Tel_Azeka.jpg"
+      }
+    ]
+  },
+  "site-mount-gilboa": {
+    "images": [
+      {
+        "src": "images/sites/site-mount-gilboa.jpg",
+        "caption": "The Gilboa ridge above the Jezreel valley",
+        "commonsFile": "Gilboa_096.jpg",
+        "author": "Beivushtang at en.wikipedia",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gilboa_096.jpg"
+      }
+    ]
+  },
+  "site-rabbah-ammon": {
+    "images": [
+      {
+        "src": "images/sites/site-rabbah-ammon.jpg",
+        "caption": "The Citadel (Jabal al-Qal'a) of Amman, ancient Rabbah of the Ammonites",
+        "commonsFile": "Amman_Citadel.jpg",
+        "author": "David Bjorgen",
+        "license": "CC BY 2.5",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amman_Citadel.jpg"
+      }
+    ]
+  },
+  "site-mahanaim": {
+    "images": [
+      {
+        "src": "images/sites/site-mahanaim.jpg",
+        "caption": "The twin tells of Tulul adh-Dhahab on the Jabbok, candidate for Mahanaim",
+        "commonsFile": "Tulul_adh-Dhahab_in_spring.jpg",
+        "author": "E. Rehfeld",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tulul_adh-Dhahab_in_spring.jpg"
+      }
+    ]
+  },
+  "site-samaria-city": {
+    "images": [
+      {
+        "src": "images/sites/site-samaria-city.jpg",
+        "caption": "The Roman-era ruins on the acropolis of Samaria (Sebastia)",
+        "commonsFile": "Sabastia7856_d55.JPG",
+        "author": "יעקב",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sabastia7856_d55.JPG"
+      }
+    ]
+  },
+  "site-aphek-golan": {
+    "images": [
+      {
+        "src": "images/sites/site-aphek-golan.jpg",
+        "caption": "The eastern shore of the Sea of Galilee below the Golan, near ancient Aphek",
+        "commonsFile": "EinGev056a.jpg",
+        "author": "Own work",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:EinGev056a.jpg"
+      }
+    ]
+  },
+  "site-qarqar": {
+    "images": [
+      {
+        "src": "images/sites/site-qarqar.jpg",
+        "caption": "The excavation mound of Tell Qarqur in the Orontes valley",
+        "commonsFile": "Qarquruppertell.jpg",
+        "author": "User:PongoPygmaeus",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Qarquruppertell.jpg"
+      }
+    ]
+  },
+  "site-jezreel": {
+    "images": [
+      {
+        "src": "images/sites/site-jezreel.jpg",
+        "caption": "Tel Jezreel, royal winter seat of the Omride kings",
+        "commonsFile": "TelIzrael006.jpg",
+        "author": "Ori~",
+        "license": "Attribution",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:TelIzrael006.jpg"
+      }
+    ]
+  },
+  "site-kir-hareseth": {
+    "images": [
+      {
+        "src": "images/sites/site-kir-hareseth.jpg",
+        "caption": "Al-Karak, ancient Kir-hareseth of Moab, beneath its Crusader castle",
+        "commonsFile": "Kerak_BW_1.JPG",
+        "author": "Berthold Werner",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kerak_BW_1.JPG"
+      }
+    ]
+  },
+  "site-megiddo": {
+    "images": [
+      {
+        "src": "images/sites/site-megiddo.jpg",
+        "caption": "Tel Megiddo commanding the Aruna pass into the Jezreel valley",
+        "commonsFile": "TEL_MEGIDO_AERIAL_C.JPG",
+        "author": "AVRAMGR",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:TEL_MEGIDO_AERIAL_C.JPG"
+      }
+    ]
+  },
+  "site-carchemish": {
+    "images": [
+      {
+        "src": "images/sites/site-carchemish.jpg",
+        "caption": "The god Atarluhas and lions from the Royal Gate at Carchemish (Karkamış)",
+        "commonsFile": "Karkamış. Standbeeld van de God Atarluhas en twee leeuwen Aan de Koninklijke Poort, GD006254.jpg",
+        "author": "Unknown",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karkam%C4%B1%C5%9F._Standbeeld_van_de_God_Atarluhas_en_twee_leeuwen_Aan_de_Koninklijke_Poort,_GD006254.jpg"
+      }
+    ]
+  },
+  "site-dan": {
+    "images": [
+      {
+        "src": "images/sites/site-dan.jpg",
+        "caption": "The Bronze Age gate and springs of Tel Dan below Mount Hermon",
+        "commonsFile": "Tel_Dan_Canaanite_Gate_1.jpg",
+        "author": "Hanay",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tel_Dan_Canaanite_Gate_1.jpg"
+      }
+    ]
+  },
+  "site-lachish": {
+    "images": [
+      {
+        "src": "images/sites/site-lachish.jpg",
+        "caption": "Tel Lachish in the Shephelah of Judah",
+        "commonsFile": "LachishFrontGate.jpg",
+        "author": "Wilson44691",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:LachishFrontGate.jpg"
+      }
+    ]
+  },
+  "site-egypt-refuge": {
+    "images": [
+      {
+        "src": "images/sites/site-egypt-refuge.jpg",
+        "caption": "Abu Serga church in Old Cairo, a traditional Holy Family refuge site",
+        "commonsFile": "Church of Abu Serga-Cairo.JPG",
+        "author": "Faris knight",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Church_of_Abu_Serga-Cairo.JPG"
+      }
+    ]
+  },
+  "site-shuruppak": {
+    "images": [
+      {
+        "src": "images/sites/site-shuruppak.jpg",
+        "caption": "Painted pottery jar excavated at Tell Fara (Shuruppak), now in the Iraq Museum",
+        "commonsFile": "Large pottery jar. Pear-shaped with 2 handles. Painted near the mouth with geometric motifs. From Tell Fara (Shuruppak), Iraq. 5th millennium BCE. Iraq Museum, Baghdad.jpg",
+        "author": "Osama Shukir Muhammed Amin FRCP(Glasg)",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Large_pottery_jar._Pear-shaped_with_2_handles._Painted_near_the_mouth_with_geometric_motifs._From_Tell_Fara_(Shuruppak),_Iraq._5th_millennium_BCE._Iraq_Museum,_Baghdad.jpg"
+      }
+    ]
+  },
+  "site-jericho-ot": {
+    "images": [
+      {
+        "src": "images/sites/site-jericho-ot.jpg",
+        "caption": "Tell es-Sultan, the mound of Old Testament Jericho",
+        "commonsFile": "Tell es-Sultan, Jericho, Palestine2.jpg",
+        "author": "Diego Delso",
+        "license": "CC BY-SA 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tell_es-Sultan,_Jericho,_Palestine2.jpg"
+      }
+    ]
+  },
+  "site-michmash": {
+    "images": [
+      {
+        "src": "images/sites/site-michmash.jpg",
+        "caption": "The village of Mukhmas (Michmash) above the Wadi Suweinit pass",
+        "commonsFile": "Mukhmas 2.jpg",
+        "author": "מסתכלים לכיבוש בעיניים",
+        "license": "CC BY 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mukhmas_2.jpg"
+      }
+    ]
+  },
+  "site-beth-shemesh": {
+    "images": [
+      {
+        "src": "images/sites/site-beth-shemesh.jpg",
+        "caption": "The excavated north wall of Tel Beth Shemesh in the Sorek valley",
+        "commonsFile": "PikiWiki Israel 64670 beth shemesh - excavations of north wall.jpg",
+        "author": "Unnkown",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_64670_beth_shemesh_-_excavations_of_north_wall.jpg"
+      }
+    ]
   }
 }

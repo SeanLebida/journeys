@@ -122,11 +122,12 @@
    "en": "Septuagint (LXX)"
   },
   "definition": {
-   "en": "The Greek translation of the Hebrew Scriptures used widely in the Diaspora and quoted throughout the New Testament; it made the Jewish Scriptures accessible to Greek-speaking Gentiles."
+   "en": "The Greek translation of the Hebrew Scriptures used widely in the Diaspora and quoted throughout the New Testament; it made the Jewish Scriptures accessible to Greek-speaking Gentiles. Its Genesis 5 and 11 figures are longer than the Hebrew Masoretic text, so a chronology read from the Greek puts Creation and the Flood roughly a thousand years earlier than Ussher's 4004 BC / 2348 BC."
   },
   "citations": [
    "cit-septuagint",
-   "cit-ref-abd"
+   "cit-ref-abd",
+   "cit-ussher-annals"
   ]
  },
  {
@@ -179,6 +180,21 @@
   "citations": [
    "cit-nisan",
    "cit-ref-abd"
+  ]
+ },
+ {
+  "id": "term-biblical-chronology",
+  "term": {
+   "en": "The age of the Earth (Genesis 5 and 11)"
+  },
+  "definition": {
+   "en": "Scripture never writes 'the Earth is N years old' in a single verse. It gives father-to-son intervals in Genesis 5 (Adam to Noah) and Genesis 11 (Shem to Abraham). On the Masoretic numbers those intervals are 1,656 years from Adam to the Flood; Ussher placed Creation on 23 October 4004 BC and the Flood in 2348 BC, so the Earth is about six thousand years old on this reckoning. The Septuagint's longer figures push Creation and Flood roughly a millennium earlier; the Samaritan Pentateuch differs again. Archaeology dates the human layers that follow — flood silt, early cities, Judah's waterworks — not the forming of the planet, and those layers sit in the same story rather than as a rival clock."
+  },
+  "citations": [
+   "cit-scripture-genesis-1-1",
+   "cit-scripture-genesis-5-5",
+   "cit-ussher-annals",
+   "cit-ref-bright"
   ]
  }
 ]
