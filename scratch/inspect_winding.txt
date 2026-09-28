@@ -1,2 +1,0 @@
-Polygon 0 winding order: clockwise
-Polygon 1 winding order: clockwise

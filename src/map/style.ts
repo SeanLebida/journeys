@@ -1,6 +1,7 @@
 import type { FilterSpecification, StyleSpecification } from 'maplibre-gl';
 import type { FeatureCollection } from 'geojson';
 import { generateGraticule } from './graticule';
+import { getGlyphsUrl } from '../platform/assets';
 import land from './basemap/land.json';
 import countries from './basemap/countries.json';
 import lakes from './basemap/lakes.json';
@@ -108,15 +109,13 @@ export const IMAGERY_LAYERS = ['satellite', 'streets', 'ancientMap'] as const sa
 /** Layers that ship OFF by default: the online imagery basemaps plus the
  * historical-boundary overlays (users opt in to see Israel's founding-era
  * outlines drawn over the present-day borders). */
-export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate', 'kingdomIsrael', 'kingdomJudah'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
+export const DEFAULT_OFF_LAYERS = [...IMAGERY_LAYERS, 'borders1949', 'mandate', 'kingdomIsrael', 'kingdomJudah', 'conflict'] as const satisfies readonly (keyof typeof BASEMAP_LAYERS)[];
 
-// M1 ships a self-contained, offline, no-API-key style: real coastlines/land +
-// country borders (Natural Earth, public domain) + a computed graticule. The
-// full-detail basemaps wire in once their assets exist:
-//   - ancient: AWMC/CAWM raster tiles (getAncientTileUrl)
-//   - modern:  Protomaps PMTiles vector (getPmtilesUrl)
-// Both sources are added in the asset-acquisition step; the pmtiles:// protocol
-// is already registered by MapProvider so the modern source is drop-in.
+// A self-contained, offline, no-API-key baseline style: real coastlines/land +
+// country borders (Natural Earth, public domain), a computed graticule, and
+// self-hosted glyphs. The full-detail basemaps are the online-only imagery
+// overlays below (satellite/streets/ancientMap, all default OFF) — the ancient
+// basemap is DARE's live raster service rather than a bundled tile pyramid.
 // Dark tones follow the authentic.how neutral-black theme (warm blacks, not
 // indigo); water keeps a desaturated blue so it still reads as water.
 const SEA = { light: '#dceaea', dark: '#0d0f12' } as const;
@@ -279,9 +278,12 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
   return {
     version: 8,
     name: 'journeys-base',
-    // glyphs intentionally omitted until self-hosted fonts ship (M1 assets);
-    // no symbol/label layers are used yet — reference city names are rendered
-    // as DOM markers instead (see reference-cities.ts).
+    // Self-hosted Ubuntu SDF ranges (scripts/build-glyphs.py) — matches the UI
+    // face and needs no network. No symbol layers exist yet (reference city
+    // names are DOM markers, see reference-cities.ts), so this is what any
+    // future `text-field` layer resolves against; stacks available are
+    // "Ubuntu Regular" / "Ubuntu Medium" / "Ubuntu Bold".
+    glyphs: getGlyphsUrl(),
     sources: {
       land: { type: 'geojson', data: land as FeatureCollection },
       countries: { type: 'geojson', data: enrichedCountriesGeoJSON as FeatureCollection },
@@ -374,18 +376,21 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
         type: 'raster',
         source: 'satellite',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: BASEMAP_LAYERS.streets,
         type: 'raster',
         source: 'streets',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: BASEMAP_LAYERS.ancientMap,
         type: 'raster',
         source: 'ancientMap',
         layout: { visibility: 'none' },
+        paint: { 'raster-opacity': 0 },
       },
       {
         id: 'country-shading',

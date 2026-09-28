@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
 const CONFIDENCE_KEYS = ['high', 'medium', 'legendary', 'disputed'] as const;
+const REVIEW_KEYS = ['scholar-approved', 'self-reviewed', 'draft'] as const;
 
 /**
  * The standing "How we source" disclosure. The accuracy decision is "cited,
  * reviewed — not definitive", so this is always reachable and explains the
- * confidence levels and dispute handling honestly.
+ * confidence levels, review status, and dispute handling honestly.
  */
 export function SourcingDisclosure() {
   const { t } = useTranslation();
@@ -19,6 +20,14 @@ export function SourcingDisclosure() {
             <div key={k} className="sourcing__row">
               <dt className={`confidence confidence--${k}`}>{k}</dt>
               <dd>{t(`sourcing.confidence.${k}`)}</dd>
+            </div>
+          ))}
+        </dl>
+        <dl className="sourcing__confidence">
+          {REVIEW_KEYS.map((k) => (
+            <div key={k} className="sourcing__row">
+              <dt className={`review review--${k}`}>{t(`sourcing.reviewLabel.${k}`)}</dt>
+              <dd>{t(`sourcing.review.${k}`)}</dd>
             </div>
           ))}
         </dl>

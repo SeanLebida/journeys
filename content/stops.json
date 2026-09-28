@@ -28,8 +28,16 @@
   "citations": [
    "cit-www-britannica-com-topic-when-was-jesus-born",
    "cit-byustudies-byu-edu-article-dating-the-birth-of-c",
-   "cit-www-holylandsite-com-bethlehem-nativity-church"
-  ]
+   "cit-www-holylandsite-com-bethlehem-nativity-church",
+   "cit-scripture-matthew-2-1",
+   "cit-scripture-matthew-2-13",
+   "cit-scripture-luke-2-1",
+   "cit-scripture-micah-5-2",
+   "cit-scripture-john-7-42"
+  ],
+  "title": {
+   "en": "Birth of Jesus in Bethlehem"
+  }
  },
  {
   "id": "stop-ministry-nazareth-1",
@@ -61,8 +69,18 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-bibleinterp-arizona-edu-articles-archaeology-naz",
-   "cit-biblearchaeologyreport-com-2018-08-09-did-first-"
-  ]
+   "cit-biblearchaeologyreport-com-2018-08-09-did-first-",
+   "cit-scripture-luke-1-26",
+   "cit-scripture-matthew-2-23",
+   "cit-scripture-luke-2-39",
+   "cit-scripture-luke-4-16",
+   "cit-scripture-mark-6-1",
+   "cit-scripture-matthew-13-54",
+   "cit-scripture-john-1-46"
+  ],
+  "title": {
+   "en": "Return to Nazareth"
+  }
  },
  {
   "id": "stop-ministry-baptism-at-the-jordan-2",
@@ -91,8 +109,16 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-whc-unesco-org-en-list-1446"
-  ]
+   "cit-whc-unesco-org-en-list-1446",
+   "cit-scripture-mark-1-9",
+   "cit-scripture-matthew-3-13",
+   "cit-scripture-luke-3-21",
+   "cit-scripture-luke-4-1",
+   "cit-scripture-john-1-28"
+  ],
+  "title": {
+   "en": "Baptism of Jesus at the Jordan"
+  }
  },
  {
   "id": "stop-ministry-capernaum-3",
@@ -126,8 +152,19 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-capernaum",
    "cit-www-bibleplaces-com-capernaum",
-   "cit-dannythedigger-com-capernaum-synagogue"
-  ]
+   "cit-dannythedigger-com-capernaum-synagogue",
+   "cit-scripture-matthew-4-13",
+   "cit-scripture-matthew-8-5",
+   "cit-scripture-matthew-9-1",
+   "cit-scripture-matthew-11-23",
+   "cit-scripture-mark-1-21",
+   "cit-scripture-mark-2-1",
+   "cit-scripture-luke-4-31",
+   "cit-scripture-john-6-24"
+  ],
+  "title": {
+   "en": "Ministry Headquarters at Capernaum"
+  }
  },
  {
   "id": "stop-ministry-cana-of-galilee-4",
@@ -155,8 +192,14 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-cana",
-   "cit-www-biblicalarchaeology-org-daily-people-culture"
-  ]
+   "cit-www-biblicalarchaeology-org-daily-people-culture",
+   "cit-scripture-john-2-1",
+   "cit-scripture-john-4-46",
+   "cit-scripture-john-21-2"
+  ],
+  "title": {
+   "en": "The Wedding at Cana of Galilee"
+  }
  },
  {
   "id": "stop-ministry-sea-of-galilee-5",
@@ -188,8 +231,17 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-sea-of-galilee",
    "cit-en-wikipedia-org-wiki-sea-of-galilee-boat",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-1-16",
+   "cit-scripture-mark-4-35",
+   "cit-scripture-mark-6-45",
+   "cit-scripture-matthew-14-22",
+   "cit-scripture-luke-5-1",
+   "cit-scripture-john-21-1"
+  ],
+  "title": {
+   "en": "Stilling the Storm on the Sea of Galilee"
+  }
  },
  {
   "id": "stop-ministry-bethsaida-6",
@@ -220,8 +272,17 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-biblicalarchaeology-org-daily-biblical-sites",
-   "cit-biblearchaeologyreport-com-2019-09-11-biblical-s"
-  ]
+   "cit-biblearchaeologyreport-com-2019-09-11-biblical-s",
+   "cit-scripture-john-1-44",
+   "cit-scripture-mark-6-45",
+   "cit-scripture-mark-8-22",
+   "cit-scripture-luke-9-10",
+   "cit-scripture-matthew-11-21",
+   "cit-scripture-luke-10-13"
+  ],
+  "title": {
+   "en": "Feeding of the Five Thousand at Bethsaida"
+  }
  },
  {
   "id": "stop-ministry-chorazin-7",
@@ -248,8 +309,13 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-chorazin",
-   "cit-www-biblicalarchaeology-org-daily-biblical-sites-2"
-  ]
+   "cit-www-biblicalarchaeology-org-daily-biblical-sites-2",
+   "cit-scripture-matthew-11-21",
+   "cit-scripture-luke-10-13"
+  ],
+  "title": {
+   "en": "Preaching & Mighty Works at Chorazin"
+  }
  },
  {
   "id": "stop-ministry-decapolis-8",
@@ -280,8 +346,16 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
    "cit-en-wikipedia-org-wiki-exorcism-of-the-gerasene-d",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-5-1",
+   "cit-scripture-matthew-8-28",
+   "cit-scripture-luke-8-26",
+   "cit-scripture-mark-7-31",
+   "cit-scripture-matthew-4-25"
+  ],
+  "title": {
+   "en": "Healing of the Gerasene Demoniac in Decapolis"
+  }
  },
  {
   "id": "stop-ministry-tyre-and-sidon-9",
@@ -313,8 +387,16 @@
    "cit-en-wikipedia-org-wiki-tyre-lebanon",
    "cit-en-wikipedia-org-wiki-sidon",
    "cit-en-wikipedia-org-wiki-exorcism-of-the-syrophoeni",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-7-24",
+   "cit-scripture-mark-7-31",
+   "cit-scripture-matthew-15-21",
+   "cit-scripture-luke-6-17",
+   "cit-scripture-matthew-11-21"
+  ],
+  "title": {
+   "en": "Excursion to Tyre and Sidon"
+  }
  },
  {
   "id": "stop-ministry-caesarea-philippi-10",
@@ -344,8 +426,16 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-caesarea-philippi",
-   "cit-www-bibleplaces-com-caesarea-philippi-banias"
-  ]
+   "cit-www-bibleplaces-com-caesarea-philippi-banias",
+   "cit-scripture-matthew-16-13",
+   "cit-scripture-mark-8-27",
+   "cit-scripture-matthew-17-1",
+   "cit-scripture-mark-9-2",
+   "cit-scripture-luke-9-18"
+  ],
+  "title": {
+   "en": "Peter's Confession at Caesarea Philippi"
+  }
  },
  {
   "id": "stop-ministry-samaria-11",
@@ -373,8 +463,14 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-seetheholyland-net-jacobs-well",
-   "cit-www-holylandsite-com-shechem-jacobs-well"
-  ]
+   "cit-www-holylandsite-com-shechem-jacobs-well",
+   "cit-scripture-john-4-1",
+   "cit-scripture-luke-9-51",
+   "cit-scripture-luke-17-11"
+  ],
+  "title": {
+   "en": "The Woman at Jacob's Well (Samaria)"
+  }
  },
  {
   "id": "stop-ministry-final-journey-jericho-12",
@@ -403,8 +499,15 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-jericho",
-   "cit-www-jerusalemperspective-com-1402"
-  ]
+   "cit-www-jerusalemperspective-com-1402",
+   "cit-scripture-mark-10-46",
+   "cit-scripture-luke-18-35",
+   "cit-scripture-luke-19-1",
+   "cit-scripture-matthew-20-29"
+  ],
+  "title": {
+   "en": "Encounter with Zacchaeus & Healing at Jericho"
+  }
  },
  {
   "id": "stop-ministry-bethany-and-bethphage-13",
@@ -435,8 +538,17 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-seetheholyland-net-bethany",
-   "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
-  ]
+   "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
+   "cit-scripture-john-11-1",
+   "cit-scripture-john-12-1",
+   "cit-scripture-mark-11-1",
+   "cit-scripture-matthew-21-1",
+   "cit-scripture-luke-19-28",
+   "cit-scripture-mark-14-3"
+  ],
+  "title": {
+   "en": "Raising of Lazarus at Bethany"
+  }
  },
  {
   "id": "stop-ministry-jerusalem-14",
@@ -468,8 +580,17 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-temple-mount",
    "cit-en-wikipedia-org-wiki-second-temple",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-11-15",
+   "cit-scripture-matthew-21-12",
+   "cit-scripture-luke-19-45",
+   "cit-scripture-john-2-13",
+   "cit-scripture-mark-13-1",
+   "cit-scripture-john-7-1"
+  ],
+  "title": {
+   "en": "Triumphal Entry & Cleansing of the Temple"
+  }
  },
  {
   "id": "stop-ministry-last-supper-15",
@@ -499,8 +620,16 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
-   "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass"
-  ]
+   "cit-taylormarshall-com-2025-03-did-jesus-die-on-pass",
+   "cit-scripture-mark-14-12",
+   "cit-scripture-matthew-26-17",
+   "cit-scripture-luke-22-7",
+   "cit-scripture-john-13-1",
+   "cit-scripture-1-corinthians-11-23"
+  ],
+  "title": {
+   "en": "The Last Supper in the Upper Room"
+  }
  },
  {
   "id": "stop-ministry-gethsemane-16",
@@ -529,8 +658,15 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-mount-of-olives",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-14-32",
+   "cit-scripture-matthew-26-36",
+   "cit-scripture-luke-22-39",
+   "cit-scripture-john-18-1"
+  ],
+  "title": {
+   "en": "Agony in the Garden of Gethsemane"
+  }
  },
  {
   "id": "stop-ministry-trial-before-pilate-17",
@@ -559,8 +695,15 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-biblearchaeologyreport-com-2022-04-14-behold-the",
-   "cit-en-wikipedia-org-wiki-pilate-stone"
-  ]
+   "cit-en-wikipedia-org-wiki-pilate-stone",
+   "cit-scripture-mark-15-1",
+   "cit-scripture-matthew-27-11",
+   "cit-scripture-luke-23-1",
+   "cit-scripture-john-18-28"
+  ],
+  "title": {
+   "en": "The Trial Before Pontius Pilate"
+  }
  },
  {
   "id": "stop-ministry-golgotha-and-the-tomb-18",
@@ -593,8 +736,18 @@
   "citations": [
    "cit-www-biblicalarchaeology-org-daily-biblical-sites-3",
    "cit-archaeologymag-com-2025-04-ancient-garden-found-",
-   "cit-en-wikipedia-org-wiki-crucifixion-of-jesus"
-  ]
+   "cit-en-wikipedia-org-wiki-crucifixion-of-jesus",
+   "cit-scripture-mark-15-21",
+   "cit-scripture-matthew-27-32",
+   "cit-scripture-luke-23-26",
+   "cit-scripture-john-19-16",
+   "cit-scripture-mark-16-1",
+   "cit-scripture-john-20-1",
+   "cit-scripture-1-corinthians-15-3"
+  ],
+  "title": {
+   "en": "Crucifixion, Death & Burial of Jesus"
+  }
  },
  {
   "id": "stop-paul-1-antioch-0",
@@ -611,7 +764,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
+   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split \u2014 Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
   },
   "scriptureRefs": [
    "Acts 13:1",
@@ -625,7 +778,12 @@
   "citations": [
    "cit-www-livius-org-articles-place-antioch-antakya",
    "cit-topostext-org-place-362362pant",
-   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+   "cit-scripture-acts-13-1",
+   "cit-scripture-acts-11-19",
+   "cit-scripture-acts-14-26",
+   "cit-scripture-acts-15-35",
+   "cit-scripture-acts-18-22"
   ]
  },
  {
@@ -653,7 +811,8 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-seleucia-pieria",
    "cit-www-britannica-com-place-seleucia-pieria",
-   "cit-www-bibleplaces-com-seleucia"
+   "cit-www-bibleplaces-com-seleucia",
+   "cit-scripture-acts-13-4"
   ]
  },
  {
@@ -680,7 +839,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-salamis-cyprus",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-13-4"
   ]
  },
  {
@@ -708,7 +868,8 @@
   "citations": [
    "cit-biblearchaeologyreport-com-2019-11-15-sergius-pa",
    "cit-biblearchaeology-org-research-chronological-cate",
-   "cit-www-britannica-com-place-paphos"
+   "cit-www-britannica-com-place-paphos",
+   "cit-scripture-acts-13-6"
   ]
  },
  {
@@ -726,7 +887,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) — Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
+   "en": "First mainland Asia-Minor stop. 'When Paul and his companions had sailed from Paphos, they came to Perga in Pamphylia. There John left them and returned to Jerusalem' (Acts 13:13) \u2014 Mark's departure later triggers the Journey-2 split. No preaching is recorded on the outbound visit; on the RETURN leg they 'spoke the word in Perga' before going to Attalia (Acts 14:25). LEG: SEA arrival (landing near the Cestrus/Kestros river port); then LAND ascent north into the highlands toward Pisidian Antioch."
   },
   "scriptureRefs": [
    "Acts 13:13",
@@ -737,7 +898,9 @@
   "citations": [
    "cit-en-wikipedia-org-wiki-perga",
    "cit-www-britannica-com-place-perga",
-   "cit-topostext-org-place-370309pper"
+   "cit-topostext-org-place-370309pper",
+   "cit-scripture-acts-13-13",
+   "cit-scripture-acts-14-24"
   ]
  },
  {
@@ -767,7 +930,10 @@
   "citations": [
    "cit-vici-org-vici-2325-lang-en",
    "cit-www-biblicalarchaeology-org-daily-biblical-topic",
-   "cit-www-thegospelcoalition-org-themelios-article-act"
+   "cit-www-thegospelcoalition-org-themelios-article-act",
+   "cit-scripture-acts-13-14",
+   "cit-scripture-acts-14-21",
+   "cit-scripture-2-timothy-3-11"
   ]
  },
  {
@@ -796,7 +962,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-konya",
-   "cit-www-bibleref-com-acts-14-acts-14-6-html"
+   "cit-www-bibleref-com-acts-14-acts-14-6-html",
+   "cit-scripture-acts-14-1",
+   "cit-scripture-acts-14-21",
+   "cit-scripture-2-timothy-3-11"
   ]
  },
  {
@@ -826,7 +995,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-lystra",
-   "cit-www-bibleplaces-com-derbelystra"
+   "cit-www-bibleplaces-com-derbelystra",
+   "cit-scripture-acts-14-6",
+   "cit-scripture-acts-14-21",
+   "cit-scripture-acts-16-1",
+   "cit-scripture-2-timothy-3-11"
   ]
  },
  {
@@ -844,7 +1017,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) — no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
+   "en": "The farthest point of Journey 1. Paul and Barnabas 'preached the gospel to that city and made many disciples' (Acts 14:20-21) \u2014 no persecution is recorded here. From Derbe they RETRACED their steps (Lystra-Iconium-Antioch-Perga-Attalia) rather than continuing east, strengthening the new churches and appointing elders. Derbe is also the start of the Journey-2 overland approach (Paul came 'to Derbe and to Lystra', Acts 16:1). Hometown of Gaius (Acts 20:4). LEG: LAND (turnaround point)."
   },
   "scriptureRefs": [
    "Acts 14:6",
@@ -856,7 +1029,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-derbe",
-   "cit-vici-org-vici-24065"
+   "cit-vici-org-vici-24065",
+   "cit-scripture-acts-14-6",
+   "cit-scripture-acts-14-20",
+   "cit-scripture-acts-16-1",
+   "cit-scripture-acts-20-4"
   ]
  },
  {
@@ -882,7 +1059,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-ephesustoursguide-com-must-see-places-in-tur"
+   "cit-www-ephesustoursguide-com-must-see-places-in-tur",
+   "cit-scripture-acts-14-25"
   ]
  },
  {
@@ -900,7 +1078,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split — Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
+   "en": "Sending church for BOTH journeys. JOURNEY 1: After prophets/teachers (incl. Barnabas, Simeon Niger, Lucius of Cyrene, Manaen, Saul) fast and pray, the Holy Spirit sets apart Barnabas and Saul (Acts 13:1-3); they are sent off. JOURNEY 2: Begins here after the Jerusalem Council and the 'sharp disagreement' (paroxysmos) between Paul and Barnabas over John Mark, causing them to split \u2014 Barnabas takes Mark to Cyprus, Paul takes Silas overland (Acts 15:36-40). Antioch was the third-largest city of the Roman Empire and capital of the province of Syria, where believers were first called 'Christians' ("
   },
   "scriptureRefs": [
    "Acts 13:1",
@@ -914,7 +1092,12 @@
   "citations": [
    "cit-www-livius-org-articles-place-antioch-antakya",
    "cit-topostext-org-place-362362pant",
-   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an"
+   "cit-www-asor-org-anetoday-2016-12-antioch-orontes-an",
+   "cit-scripture-acts-13-1",
+   "cit-scripture-acts-11-19",
+   "cit-scripture-acts-14-26",
+   "cit-scripture-acts-15-35",
+   "cit-scripture-acts-18-22"
   ]
  },
  {
@@ -932,7 +1115,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) — an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
+   "en": "Paul and Silas 'went through Syria and Cilicia, strengthening the churches' (Acts 15:41) \u2014 an overland route (likely via the Syrian Gates / Amanus and Tarsus, Paul's home city) before re-entering Lycaonia at Derbe and Lystra. LEG: LAND."
   },
   "scriptureRefs": [
    "Acts 15:40",
@@ -941,7 +1124,9 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-esv-org-resources-esv-global-study-bible-map"
+   "cit-www-esv-org-resources-esv-global-study-bible-map",
+   "cit-scripture-acts-15-40",
+   "cit-scripture-acts-16-1"
   ]
  },
  {
@@ -971,7 +1156,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-lystra",
-   "cit-www-bibleplaces-com-derbelystra"
+   "cit-www-bibleplaces-com-derbelystra",
+   "cit-scripture-acts-14-6",
+   "cit-scripture-acts-14-21",
+   "cit-scripture-acts-16-1",
+   "cit-scripture-2-timothy-3-11"
   ]
  },
  {
@@ -1000,7 +1189,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-alexandria-troas",
-   "cit-www-bibleplaces-com-acts16"
+   "cit-www-bibleplaces-com-acts16",
+   "cit-scripture-acts-16-8",
+   "cit-scripture-2-corinthians-2-12",
+   "cit-scripture-acts-20-5"
   ]
  },
  {
@@ -1018,7 +1210,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop — a navigational waypoint. LEG: SEA."
+   "en": "Island where the ship from Troas put in for the night en route to Macedonia: 'we made a straight course to Samothrace, and the day following to Neapolis' (Acts 16:11). Not a preaching stop \u2014 a navigational waypoint. LEG: SEA."
   },
   "scriptureRefs": [
    "Acts 16:11"
@@ -1026,7 +1218,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas"
+   "cit-www-magdala-org-pilgrimage-of-paul-ancient-troas",
+   "cit-scripture-acts-16-11"
   ]
  },
  {
@@ -1052,7 +1245,8 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-padfield-com-2002-neapolis-kavala-greece-htm"
+   "cit-www-padfield-com-2002-neapolis-kavala-greece-htm",
+   "cit-scripture-acts-16-11"
   ]
  },
  {
@@ -1081,7 +1275,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-philippi",
-   "cit-www-padfield-com-2005-philippi-html"
+   "cit-www-padfield-com-2005-philippi-html",
+   "cit-scripture-acts-16-12",
+   "cit-scripture-philippians-1-1",
+   "cit-scripture-1-thessalonians-2-2"
   ]
  },
  {
@@ -1111,7 +1308,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-thessaloniki",
-   "cit-catholic-resources-org-bible-geography-roman-pro"
+   "cit-catholic-resources-org-bible-geography-roman-pro",
+   "cit-scripture-acts-17-1",
+   "cit-scripture-1-thessalonians-1-1",
+   "cit-scripture-2-thessalonians-1-1",
+   "cit-scripture-philippians-4-16"
   ]
  },
  {
@@ -1139,7 +1340,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-veria",
-   "cit-www-casualenglishbible-com-resource-location-ber"
+   "cit-www-casualenglishbible-com-resource-location-ber",
+   "cit-scripture-acts-17-10",
+   "cit-scripture-acts-20-4"
   ]
  },
  {
@@ -1157,7 +1360,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed — some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
+   "en": "Provoked by the city 'full of idols,' Paul disputed in the synagogue and the agora; Epicurean and Stoic philosophers brought him to the Areopagus, where he delivered his famous address citing the altar 'To an unknown god' and Greek poets (Acts 17:16-31). Responses were mixed \u2014 some mocked the resurrection, but Dionysius the Areopagite and a woman named Damaris believed (Acts 17:32-34). LEG: arrived by SEA from the Macedonian coast; departed by LAND/short SEA to Corinth."
   },
   "scriptureRefs": [
    "Acts 17:16",
@@ -1166,7 +1369,9 @@
   "confidence": "high",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-latitude-to-articles-by-country-gr-greece-853-ac"
+   "cit-latitude-to-articles-by-country-gr-greece-853-ac",
+   "cit-scripture-acts-17-16",
+   "cit-scripture-1-thessalonians-3-1"
   ]
  },
  {
@@ -1197,7 +1402,11 @@
   "citations": [
    "cit-biblearchaeologyreport-com-2019-10-31-gallio-an-",
    "cit-holylandphotos-org-photos-gctcdlar14",
-   "cit-latitude-to-map-gr-greece-cities-corinth"
+   "cit-latitude-to-map-gr-greece-cities-corinth",
+   "cit-scripture-acts-18-1",
+   "cit-scripture-1-corinthians-1-1",
+   "cit-scripture-2-corinthians-1-1",
+   "cit-scripture-romans-16-1"
   ]
  },
  {
@@ -1225,7 +1434,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-kechries",
-   "cit-www-bibleplaces-com-corintharea"
+   "cit-www-bibleplaces-com-corintharea",
+   "cit-scripture-acts-18-18",
+   "cit-scripture-romans-16-1"
   ]
  },
  {
@@ -1243,7 +1454,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) — setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
+   "en": "On the homeward voyage Paul reasoned briefly in the Ephesian synagogue, left Priscilla and Aquila there, and declined to stay, promising 'I will return to you if God wills' (Acts 18:19-21) \u2014 setting up the extended Ephesus ministry of Journey 3 (Acts 19). LEG: SEA arrival; SEA departure to Caesarea."
   },
   "scriptureRefs": [
    "Acts 18:19",
@@ -1254,7 +1465,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-sel-c3-a7uk",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-18-19",
+   "cit-scripture-acts-19-1",
+   "cit-scripture-1-corinthians-16-8"
   ]
  },
  {
@@ -1272,7 +1486,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' — ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
+   "en": "Paul landed at Caesarea, 'went up and greeted the church' (widely taken as Jerusalem), then 'went down to Antioch' \u2014 ending Journey 2 (Acts 18:22). Journey 3 then begins overland through Galatia and Phrygia (Acts 18:23). LEG: SEA to Caesarea; LAND up to Jerusalem and back to Antioch."
   },
   "scriptureRefs": [
    "Acts 18:22"
@@ -1281,7 +1495,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-catholic-resources-org-bible-nt-geography-htm",
-   "cit-www-esv-org-resources-esv-global-study-bible-map"
+   "cit-www-esv-org-resources-esv-global-study-bible-map",
+   "cit-scripture-acts-18-22"
   ]
  },
  {
@@ -1308,7 +1523,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-esv-org-resources-esv-global-study-bible-map-2",
-   "cit-www-gotquestions-org-paul-third-missionary-journ"
+   "cit-www-gotquestions-org-paul-third-missionary-journ",
+   "cit-scripture-acts-18-22"
   ]
  },
  {
@@ -1326,7 +1542,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalvaç) as a representative point."
+   "en": "Paul travelled overland through the Galatian and Phrygian region 'strengthening all the disciples' (Acts 18:23), revisiting the inland churches he had founded on the first journey (Derbe, Lystra, Iconium, Pisidian Antioch) and revisited on the second. The coordinates given are for Pisidian Antioch (Yalva\u00e7) as a representative point."
   },
   "scriptureRefs": [
    "Acts 18:23"
@@ -1335,7 +1551,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-biblestudy-org-maps-apostle-paul-third-missi",
-   "cit-www-esv-org-resources-esv-global-study-bible-map-2"
+   "cit-www-esv-org-resources-esv-global-study-bible-map-2",
+   "cit-scripture-acts-18-23"
   ]
  },
  {
@@ -1366,7 +1583,11 @@
   "citations": [
    "cit-pleiades-stoa-org-places-599612",
    "cit-www-jesuswalk-com-paul-07-ephesus-htm",
-   "cit-denverjournal-denverseminary-edu-the-denver-jour"
+   "cit-denverjournal-denverseminary-edu-the-denver-jour",
+   "cit-scripture-acts-18-24",
+   "cit-scripture-acts-19-1",
+   "cit-scripture-acts-20-31",
+   "cit-scripture-1-corinthians-16-8"
   ]
  },
  {
@@ -1396,7 +1617,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-enduringword-com-bible-commentary-acts-20",
-   "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm"
+   "cit-ccel-org-bible-phillips-cn245actspaulsreturn-htm",
+   "cit-scripture-acts-20-1",
+   "cit-scripture-1-corinthians-16-5",
+   "cit-scripture-2-corinthians-2-12",
+   "cit-scripture-2-corinthians-7-5"
   ]
  },
  {
@@ -1424,7 +1649,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-enduringword-com-bible-commentary-acts-20",
-   "cit-www-preceptaustin-org-acts-20-commentary"
+   "cit-www-preceptaustin-org-acts-20-commentary",
+   "cit-scripture-acts-20-4",
+   "cit-scripture-2-corinthians-2-12"
   ]
  },
  {
@@ -1451,7 +1678,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-bible-org-seriespage-pauls-parting-words-acts-20",
-   "cit-enduringword-com-bible-commentary-acts-20"
+   "cit-enduringword-com-bible-commentary-acts-20",
+   "cit-scripture-acts-20-15"
   ]
  },
  {
@@ -1478,7 +1706,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-pleiades-stoa-org-places-678401",
-   "cit-missionbibleclass-org-new-testament-part2-acts-f"
+   "cit-missionbibleclass-org-new-testament-part2-acts-f",
+   "cit-scripture-acts-21-8"
   ]
  },
  {
@@ -1505,7 +1734,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-brentwoodbaptist-com-acts-204-2335",
-   "cit-www-ccel-org-bible-phillips-cn341actspaularrest-"
+   "cit-www-ccel-org-bible-phillips-cn341actspaularrest-",
+   "cit-scripture-acts-21-17"
   ]
  },
  {
@@ -1535,7 +1765,10 @@
   "citations": [
    "cit-executableoutlines-com-topical-series-harmony-li",
    "cit-thirdmill-org-articles-der-thomas-der-thomas-act",
-   "cit-enduringword-com-bible-commentary-acts-25"
+   "cit-enduringword-com-bible-commentary-acts-25",
+   "cit-scripture-acts-23-31",
+   "cit-scripture-acts-24-27",
+   "cit-scripture-acts-25-11"
   ]
  },
  {
@@ -1562,7 +1795,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-pleiades-stoa-org-places-678393",
-   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+   "cit-scripture-acts-27-1"
   ]
  },
  {
@@ -1589,7 +1823,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-pleiades-stoa-org-places-639005",
-   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+   "cit-scripture-acts-27-4"
   ]
  },
  {
@@ -1617,7 +1852,8 @@
   "citations": [
    "cit-www-bibleplaces-com-fair-havens",
    "cit-en-wikipedia-org-wiki-kaloi-limenes",
-   "cit-en-wikipedia-org-wiki-knidos"
+   "cit-en-wikipedia-org-wiki-knidos",
+   "cit-scripture-acts-27-7"
   ]
  },
  {
@@ -1644,7 +1880,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-biblicalarchaeology-org-daily-biblical-topic-2",
-   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt"
+   "cit-tyndalehouse-com-2026-04-16-pauls-voyage-to-malt",
+   "cit-scripture-acts-27-12"
   ]
  },
  {
@@ -1672,7 +1909,8 @@
   "citations": [
    "cit-www-bibleplaces-com-st-pauls-bay-malta",
    "cit-en-wikipedia-org-wiki-st-paul-27s-bay",
-   "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa"
+   "cit-holylandphotos-wordpress-com-2021-12-20-saint-pa",
+   "cit-scripture-acts-27-27"
   ]
  },
  {
@@ -1699,7 +1937,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-topostext-org-place-408141pdik",
-   "cit-pleiades-stoa-org-places-432815"
+   "cit-pleiades-stoa-org-places-432815",
+   "cit-scripture-acts-28-11"
   ]
  },
  {
@@ -1726,7 +1965,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-www-ccel-org-bible-phillips-cn250actspaultorome-",
-   "cit-enduringword-com-bible-commentary-acts-27"
+   "cit-enduringword-com-bible-commentary-acts-27",
+   "cit-scripture-acts-28-14"
   ]
  },
  {
@@ -1744,7 +1984,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus — mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb')."
+   "en": "Early Sunday morning, Mary Magdalene and other women came to anoint the body and found the stone rolled away, the tomb empty, and angels announcing the resurrection. Mary Magdalene, remaining at the tomb weeping, encountered the risen Jesus \u2014 mistaking him for the gardener until he said her name, 'Mary!' (John 20:11-18). He told her, 'Do not cling to me, for I have not yet ascended to the Father.' As the women hurried to tell the disciples, Jesus met them; they clasped his feet and worshiped (Matthew 28:9-10). The same day, the Lord also appeared to Peter alone (Luke 24:34; 1 Corinthians 15:5), though no narrative details are given. The 2016-2017 restoration of the Edicule by the National Technical University of Athens confirmed the original 1st-c. limestone burial bench is intact. Sapienza University excavations found ancient olive-tree and grapevine traces beneath the floor, consistent with John 19:41 ('in the place where he was crucified there was a garden, and in the garden a new tomb')."
   },
   "scriptureRefs": [
    "John 20:1",
@@ -1764,8 +2004,19 @@
    "cit-edicule-restoration",
    "cit-archaeology-crucifixion-tzaferis",
    "cit-primary-josephus-antiquities",
-   "cit-primary-tacitus-annals"
-  ]
+   "cit-primary-tacitus-annals",
+   "cit-scripture-john-20-1",
+   "cit-scripture-john-20-11",
+   "cit-scripture-matthew-28-1",
+   "cit-scripture-matthew-28-9",
+   "cit-scripture-mark-16-1",
+   "cit-scripture-luke-24-1",
+   "cit-scripture-luke-24-34",
+   "cit-scripture-1-corinthians-15-5"
+  ],
+  "title": {
+   "en": "Resurrection & Empty Tomb Appearances"
+  }
  },
  {
   "id": "stop-ministry-road-to-emmaus-20",
@@ -1782,7 +2033,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Two disciples — one named Cleopas, the other unnamed — walked from Jerusalem to Emmaus (~60 stadia / ~11 km in most manuscripts; ~160 stadia / ~30 km in Codex Sinaiticus). A stranger joined them and, beginning with Moses and all the Prophets, explained 'the things concerning himself' in all the Scriptures. At supper in Emmaus, 'he took the bread and blessed and broke it and gave it to them. And their eyes were opened, and they recognized him. And he vanished from their sight' (Luke 24:30-31). They exclaimed, 'Did not our hearts burn within us while he talked to us on the road, while he opened to us the Scriptures?' and returned immediately to Jerusalem to tell the Eleven. The Emmaus-Nicopolis identification (Amwas/Latrun) has Byzantine basilica ruins and attestation by Eusebius (c. AD 330); el-Qubeibeh is the Franciscan traditional site since the 15th century."
+   "en": "Two disciples \u2014 one named Cleopas, the other unnamed \u2014 walked from Jerusalem to Emmaus (~60 stadia / ~11 km in most manuscripts; ~160 stadia / ~30 km in Codex Sinaiticus). A stranger joined them and, beginning with Moses and all the Prophets, explained 'the things concerning himself' in all the Scriptures. At supper in Emmaus, 'he took the bread and blessed and broke it and gave it to them. And their eyes were opened, and they recognized him. And he vanished from their sight' (Luke 24:30-31). They exclaimed, 'Did not our hearts burn within us while he talked to us on the road, while he opened to us the Scriptures?' and returned immediately to Jerusalem to tell the Eleven. The Emmaus-Nicopolis identification (Amwas/Latrun) has Byzantine basilica ruins and attestation by Eusebius (c. AD 330); el-Qubeibeh is the Franciscan traditional site since the 15th century."
   },
   "scriptureRefs": [
    "Luke 24:13",
@@ -1793,8 +2044,14 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-emmaus-nicopolis",
-   "cit-emmaus-qubeibeh"
-  ]
+   "cit-emmaus-qubeibeh",
+   "cit-scripture-luke-24-13",
+   "cit-scripture-luke-24-30",
+   "cit-scripture-mark-16-12"
+  ],
+  "title": {
+   "en": "Appearance on the Road to Emmaus"
+  }
  },
  {
   "id": "stop-ministry-upper-room-easter-21",
@@ -1822,8 +2079,15 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
-  ]
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+   "cit-scripture-luke-24-36",
+   "cit-scripture-john-20-19",
+   "cit-scripture-john-20-25",
+   "cit-scripture-1-corinthians-15-5"
+  ],
+  "title": {
+   "en": "Easter Evening Appearance in the Upper Room"
+  }
  },
  {
   "id": "stop-ministry-upper-room-thomas-22",
@@ -1840,7 +2104,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Eight days later (the following Sunday), the disciples were again in the locked room, this time with Thomas present. Jesus appeared, stood among them, and said to Thomas, 'Put your finger here, and see my hands; and put out your hand, and place it in my side. Do not disbelieve, but believe.' Thomas exclaimed, 'My Lord and my God!' (Greek: ho kyrios mou kai ho theos mou) — the highest christological declaration in the Gospels. Jesus replied, 'Have you believed because you have seen me? Blessed are those who have not seen and yet have believed' (John 20:26-29). This bridges to all subsequent faith beyond the eyewitness generation."
+   "en": "Eight days later (the following Sunday), the disciples were again in the locked room, this time with Thomas present. Jesus appeared, stood among them, and said to Thomas, 'Put your finger here, and see my hands; and put out your hand, and place it in my side. Do not disbelieve, but believe.' Thomas exclaimed, 'My Lord and my God!' (Greek: ho kyrios mou kai ho theos mou) \u2014 the highest christological declaration in the Gospels. Jesus replied, 'Have you believed because you have seen me? Blessed are those who have not seen and yet have believed' (John 20:26-29). This bridges to all subsequent faith beyond the eyewitness generation."
   },
   "scriptureRefs": [
    "John 20:26",
@@ -1850,8 +2114,14 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo"
-  ]
+   "cit-www-biola-edu-blogs-good-book-blog-2015-chronolo",
+   "cit-scripture-john-20-26",
+   "cit-scripture-john-20-28",
+   "cit-scripture-john-20-29"
+  ],
+  "title": {
+   "en": "Appearance to Thomas Eight Days Later"
+  }
  },
  {
   "id": "stop-ministry-sea-of-galilee-appearance-23",
@@ -1868,7 +2138,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples — Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed — fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia — the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' — one restoration for each denial — and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period."
+   "en": "John 21 records Jesus' third appearance to the disciples as a group, at the Sea of Tiberias (Galilee). Seven disciples \u2014 Peter, Thomas, Nathanael of Cana, James and John (sons of Zebedee), and two unnamed \u2014 fished all night and caught nothing. At dawn, Jesus stood on the shore (unrecognized) and told them to cast on the right side; they caught 153 large fish and could not haul the net in. The 'disciple whom Jesus loved' recognized Jesus; Peter jumped into the water and swam to shore. Jesus had a charcoal fire (Greek: anthrakia \u2014 the same word as at Peter's denial, John 18:18) with fish and bread ready. After breakfast, Jesus three times asked Peter, 'Do you love me?' \u2014 one restoration for each denial \u2014 and commissioned him: 'Feed my sheep.' He also prophesied Peter's martyrdom (John 21:18-19). The Church of the Primacy of St. Peter at Tabgha preserves the Mensa Christi (flat rock) over 4th-c. Byzantine foundations. The 1st-c. 'Jesus Boat' from nearby Ginosar exemplifies the fishing craft of the period."
   },
   "scriptureRefs": [
    "John 21:1",
@@ -1881,8 +2151,16 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-tabgha-primacy",
-   "cit-jesus-boat"
-  ]
+   "cit-jesus-boat",
+   "cit-scripture-john-21-1",
+   "cit-scripture-john-21-6",
+   "cit-scripture-john-21-11",
+   "cit-scripture-john-21-15",
+   "cit-scripture-john-21-18"
+  ],
+  "title": {
+   "en": "Miraculous Catch of 153 Fish at Galilee"
+  }
  },
  {
   "id": "stop-ministry-galilee-mountain-commission-24",
@@ -1899,7 +2177,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "The Eleven went to the mountain in Galilee 'to which Jesus had directed them' (Matthew 28:16). When they saw him, they worshiped, though 'some doubted.' Jesus declared: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age' (Matthew 28:18-20). Many scholars associate the appearance to 'more than 500 brothers at one time, most of whom are still alive' (1 Corinthians 15:6) with this Galilean mountain gathering, as it is the only large-scale outdoor post-resurrection event. Paul wrote c. AD 53-55; his note about surviving witnesses is an implicit invitation to verify. The 1 Corinthians 15:3-8 creed is dated by virtually all critical scholars — including skeptics Gerd Lüdemann and Bart Ehrman — to within 3-6 years of the crucifixion, making it the earliest datable testimony to the resurrection appearances."
+   "en": "The Eleven went to the mountain in Galilee 'to which Jesus had directed them' (Matthew 28:16). When they saw him, they worshiped, though 'some doubted.' Jesus declared: 'All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age' (Matthew 28:18-20). Many scholars associate the appearance to 'more than 500 brothers at one time, most of whom are still alive' (1 Corinthians 15:6) with this Galilean mountain gathering, as it is the only large-scale outdoor post-resurrection event. Paul wrote c. AD 53-55; his note about surviving witnesses is an implicit invitation to verify. The 1 Corinthians 15:3-8 creed is dated by virtually all critical scholars \u2014 including skeptics Gerd L\u00fcdemann and Bart Ehrman \u2014 to within 3-6 years of the crucifixion, making it the earliest datable testimony to the resurrection appearances."
   },
   "scriptureRefs": [
    "Matthew 28:16",
@@ -1916,8 +2194,16 @@
   "citations": [
    "cit-galilee-mountain",
    "cit-1cor15-creed",
-   "cit-history-early-creed-luedemann"
-  ]
+   "cit-history-early-creed-luedemann",
+   "cit-scripture-matthew-28-16",
+   "cit-scripture-matthew-28-18",
+   "cit-scripture-matthew-28-19",
+   "cit-scripture-matthew-28-20",
+   "cit-scripture-1-corinthians-15-6"
+  ],
+  "title": {
+   "en": "The Great Commission on the Mountain"
+  }
  },
  {
   "id": "stop-ministry-appearance-to-james-25",
@@ -1934,7 +2220,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "Paul's creedal summary records that Jesus 'appeared to James, then to all the apostles' (1 Corinthians 15:7). No narrative details are given in the New Testament. James — the brother of Jesus, not James son of Zebedee — was skeptical during the ministry ('not even his brothers believed in him', John 7:5) but became the leader of the Jerusalem church (Acts 15; Galatians 1:19; 2:9). This transformation from skeptic to martyr-leader is most naturally explained by a post-resurrection appearance. The lost Gospel of the Hebrews (quoted by Jerome) preserves a tradition that James had vowed not to eat until he saw the risen Lord. Josephus independently records the execution of 'James, the brother of Jesus who was called Christ' in AD 62 (Antiquities 20.9.1), confirming both James's existence and his identification as Jesus's brother. The location of this appearance is not specified; Jerusalem is assumed as the base of James's subsequent ministry."
+   "en": "Paul's creedal summary records that Jesus 'appeared to James, then to all the apostles' (1 Corinthians 15:7). No narrative details are given in the New Testament. James \u2014 the brother of Jesus, not James son of Zebedee \u2014 was skeptical during the ministry ('not even his brothers believed in him', John 7:5) but became the leader of the Jerusalem church (Acts 15; Galatians 1:19; 2:9). This transformation from skeptic to martyr-leader is most naturally explained by a post-resurrection appearance. The lost Gospel of the Hebrews (quoted by Jerome) preserves a tradition that James had vowed not to eat until he saw the risen Lord. Josephus independently records the execution of 'James, the brother of Jesus who was called Christ' in AD 62 (Antiquities 20.9.1), confirming both James's existence and his identification as Jesus's brother. The location of this appearance is not specified; Jerusalem is assumed as the base of James's subsequent ministry."
   },
   "scriptureRefs": [
    "1 Corinthians 15:7",
@@ -1948,8 +2234,15 @@
    "cit-1cor15-creed",
    "cit-wit-josephus-james",
    "cit-history-early-creed-luedemann",
-   "cit-primary-josephus-antiquities"
-  ]
+   "cit-primary-josephus-antiquities",
+   "cit-scripture-1-corinthians-15-7",
+   "cit-scripture-john-7-5",
+   "cit-scripture-galatians-1-19",
+   "cit-scripture-acts-15-13"
+  ],
+  "title": {
+   "en": "Appearance to James in Jerusalem"
+  }
  },
  {
   "id": "stop-ministry-ascension-26",
@@ -1982,8 +2275,19 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-ascension-chapel",
-   "cit-mount-olives"
-  ]
+   "cit-mount-olives",
+   "cit-scripture-luke-24-50",
+   "cit-scripture-luke-24-51",
+   "cit-scripture-acts-1-3",
+   "cit-scripture-acts-1-8",
+   "cit-scripture-acts-1-9",
+   "cit-scripture-acts-1-11",
+   "cit-scripture-acts-1-12",
+   "cit-scripture-mark-16-19"
+  ],
+  "title": {
+   "en": "The Ascension from Mount Olivet"
+  }
  },
  {
   "id": "stop-ministry-stephens-vision-27",
@@ -2000,7 +2304,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "During his trial before the Sanhedrin, Stephen — the first Christian martyr — 'full of the Holy Spirit, gazed into heaven and saw the glory of God, and Jesus standing at the right hand of God' (Acts 7:55). Notably, Jesus is described as standing (not seated, as in other passages), possibly signifying welcome or advocacy. Stephen reported the vision aloud; the council rushed him, dragged him outside the city, and stoned him. As he died, he prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' Saul of Tarsus (later Paul) watched, approving the execution (Acts 7:58; 8:1). This is a vision rather than a bodily appearance. The traditional stoning site is near St. Stephen's Gate (Lions' Gate) on Jerusalem's eastern wall; the 5th-c. Basilica of St. Stephen (now Saint-Étienne, within the École Biblique grounds) commemorates the northern tradition."
+   "en": "During his trial before the Sanhedrin, Stephen \u2014 the first Christian martyr \u2014 'full of the Holy Spirit, gazed into heaven and saw the glory of God, and Jesus standing at the right hand of God' (Acts 7:55). Notably, Jesus is described as standing (not seated, as in other passages), possibly signifying welcome or advocacy. Stephen reported the vision aloud; the council rushed him, dragged him outside the city, and stoned him. As he died, he prayed, 'Lord Jesus, receive my spirit' and 'Lord, do not hold this sin against them.' Saul of Tarsus (later Paul) watched, approving the execution (Acts 7:58; 8:1). This is a vision rather than a bodily appearance. The traditional stoning site is near St. Stephen's Gate (Lions' Gate) on Jerusalem's eastern wall; the 5th-c. Basilica of St. Stephen (now Saint-\u00c9tienne, within the \u00c9cole Biblique grounds) commemorates the northern tradition."
   },
   "scriptureRefs": [
    "Acts 7:55",
@@ -2014,8 +2318,17 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-en-wikipedia-org-wiki-temple-mount",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-7-55",
+   "cit-scripture-acts-7-56",
+   "cit-scripture-acts-7-58",
+   "cit-scripture-acts-7-59",
+   "cit-scripture-acts-7-60",
+   "cit-scripture-acts-8-1"
+  ],
+  "title": {
+   "en": "Stephen's Vision & Martyrdom in Jerusalem"
+  }
  },
  {
   "id": "stop-ministry-damascus-road-paul-28",
@@ -2050,8 +2363,21 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-damascus-straight-street",
-   "cit-house-ananias"
-  ]
+   "cit-house-ananias",
+   "cit-scripture-acts-9-1",
+   "cit-scripture-acts-9-3",
+   "cit-scripture-acts-9-11",
+   "cit-scripture-acts-9-25",
+   "cit-scripture-acts-22-6",
+   "cit-scripture-acts-26-12",
+   "cit-scripture-1-corinthians-9-1",
+   "cit-scripture-1-corinthians-15-8",
+   "cit-scripture-galatians-1-15",
+   "cit-scripture-2-corinthians-11-33"
+  ],
+  "title": {
+   "en": "Paul's Vision on the Damascus Road"
+  }
  },
  {
   "id": "stop-ministry-patmos-john-29",
@@ -2068,7 +2394,7 @@
    "approximate": true
   },
   "eventSummary": {
-   "en": "John, exiled to Patmos 'because of the word of God and the testimony of Jesus' (Revelation 1:9), was 'in the Spirit on the Lord's day' when he heard a loud voice and, turning, saw the risen Christ glorified among seven golden lampstands: 'one like a son of man, clothed with a long robe... his eyes were like a flame of fire, his feet were like burnished bronze... and his voice was like the roar of many waters' (Revelation 1:12-16). John fell at his feet 'as though dead,' but Jesus laid his right hand on him and said, 'Fear not, I am the first and the last, and the living one. I died, and behold I am alive forevermore, and I have the keys of Death and Hades' (Revelation 1:17-18). He commanded John to write the visions and dictated seven letters to the churches of Asia (Revelation 2-3). The Domitianic dating rests on Irenaeus (Against Heresies 5.30.3, c. AD 180). The Cave of the Apocalypse and the Monastery of St. John the Theologian (founded AD 1088) are UNESCO World Heritage Sites (inscribed 1999). The identity of 'John' — apostle, elder, or another figure — is itself debated."
+   "en": "John, exiled to Patmos 'because of the word of God and the testimony of Jesus' (Revelation 1:9), was 'in the Spirit on the Lord's day' when he heard a loud voice and, turning, saw the risen Christ glorified among seven golden lampstands: 'one like a son of man, clothed with a long robe... his eyes were like a flame of fire, his feet were like burnished bronze... and his voice was like the roar of many waters' (Revelation 1:12-16). John fell at his feet 'as though dead,' but Jesus laid his right hand on him and said, 'Fear not, I am the first and the last, and the living one. I died, and behold I am alive forevermore, and I have the keys of Death and Hades' (Revelation 1:17-18). He commanded John to write the visions and dictated seven letters to the churches of Asia (Revelation 2-3). The Domitianic dating rests on Irenaeus (Against Heresies 5.30.3, c. AD 180). The Cave of the Apocalypse and the Monastery of St. John the Theologian (founded AD 1088) are UNESCO World Heritage Sites (inscribed 1999). The identity of 'John' \u2014 apostle, elder, or another figure \u2014 is itself debated."
   },
   "scriptureRefs": [
    "Revelation 1:9",
@@ -2080,7 +2406,14 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-patmos",
-   "cit-ref-keener-bbcnt"
-  ]
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-revelation-1-9",
+   "cit-scripture-revelation-1-12",
+   "cit-scripture-revelation-1-17",
+   "cit-scripture-revelation-1-18"
+  ],
+  "title": {
+   "en": "John's Vision of Christ on Patmos"
+  }
  }
 ]

@@ -147,7 +147,7 @@
    "en": "Tunnel in the City of David; inscription in the Istanbul Archaeology Museums"
   },
   "corroborates": {
-   "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30)."
+   "en": "An 8th-c. BC water tunnel and its paleo-Hebrew inscription recording the diggers' meeting — matching Hezekiah's works before Sennacherib's siege (2 Kings 20:20; 2 Chronicles 32:30). It belongs with the earlier Siloam dam (exposed 2025; radiocarbon c. 805–795 BC, Joash and Amaziah): two generations of Judah's kings shaping the same spring-and-pool system the Gospels later name."
   },
   "dateRange": {
    "startYear": -701,
@@ -161,7 +161,36 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-arch-siloam-tunnel",
-   "cit-arch-siloam-tunnel-sayce"
+   "cit-arch-siloam-tunnel-sayce",
+   "cit-iaa-siloam-dam-2025"
+  ]
+ },
+ {
+  "id": "artifact-siloam-dam-joash",
+  "name": {
+   "en": "Siloam dam of Joash and Amaziah (2025)"
+  },
+  "siteId": "site-jerusalem",
+  "modernLocation": {
+   "en": "Southern mouth of the Tyropoeon Valley, City of David / Pool of Siloam, Jerusalem"
+  },
+  "corroborates": {
+   "en": "The largest dam yet found in ancient Israel: about 12 m high, 8 m wide, 21 m of length exposed. IAA excavators (Szanton, Berko, Vukosavović) and Weizmann radiocarbon (Regev, Boaretto and colleagues, 2025) date its construction to c. 805–795 BC, the reigns of Joash and Amaziah of Judah (2 Kings 12–14). It impounded Gihon overflow and valley runoff to form the earliest Pool of Siloam — the same water system Hezekiah later tunnelled, and the pool John 9 names."
+  },
+  "dateRange": {
+   "startYear": -805,
+   "endYear": -795,
+   "display": {
+    "en": "c. 805–795 BC (Joash / Amaziah)"
+   },
+   "approximate": true
+  },
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-iaa-siloam-dam-2025",
+   "cit-bar-siloam-dam-2025",
+   "cit-scripture-2-kings-12-1"
   ]
  },
  {
@@ -342,7 +371,7 @@
    "en": "Durupınar site, near Üzengili, Doğubayazıt district, Ağrı Province, Türkiye — GPS 39.4406° N, 44.2347° E"
   },
   "corroborates": {
-   "en": "A boat-shaped formation about 160 m long — close to the ark's 300 cubits (Genesis 6:15). Ground-penetrating-radar surveys in 2019 reported parallel linear reflectors the team reads as possible buried structure, and 2022–2024 soil samples were reported to show elevated organic matter and clay differences inside the formation versus outside. Advocates present these as consistent with a decayed wooden vessel."
+   "en": "A boat-shaped formation about 160 m (538 ft) long, on the flank of Mount Tendürek, its outline loosely echoing the ark's 300 cubits (Genesis 6:15). The independent Noah's Ark Scans team (led by Andrew Jones) reports that ground-penetrating-radar surveys from 2019 onward show linear, right-angled reflectors — with later re-analysis describing angular features to about 6 m depth, three stacked layers read as decks, and a ~13 m central corridor — and that soil samples from 22 points (2022–2024) hold roughly double the organic matter inside the formation versus outside, with pH and potassium shifts the team reads as consistent with decayed wood. Advocates present these as a buried, decayed wooden vessel."
   },
   "dateRange": {
    "startYear": 2019,
@@ -355,10 +384,11 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "disputes": {
-   "en": "None of the survey results are peer-reviewed or independently replicated, and mainstream geologists (Collins & Fasold 1996) identify the formation as a doubly plunging syncline — a natural rock structure — with no petrified wood present. Shown as a documented claim, not an established find."
+   "en": "None of these survey results are peer-reviewed or independently replicated. A 1960 archaeological dig at the site turned up only soil and rock, and mainstream geologists (Collins & Fasold 1996) identify the formation as a doubly plunging syncline — a natural structure whose 'boat ribs' are concentrations of limonite and magnetite in steeply inclined sedimentary beds — with no petrified wood present. Shown as a documented claim, not an established find."
   },
   "citations": [
    "cit-ark-scans",
+   "cit-durupinar-radar",
    "cit-durupinar",
    "cit-durupinar-geology"
   ]
@@ -373,7 +403,7 @@
    "en": "Tell Fara, southern Iraq"
   },
   "corroborates": {
-   "en": "Excavations at Shuruppak — and at Kish and Ur — exposed river-flood silt strata from around the Jemdet Nasr / Early Dynastic transition (c. 2900 BC), showing catastrophic flooding was a lived reality of early Mesopotamia, the world in which the flood tradition of Ziusudra and Utnapishtim, paralleled in Genesis 6-9, took shape."
+   "en": "Excavations at Shuruppak — and at Kish and Ur — exposed river-flood silt strata from around the Jemdet Nasr / Early Dynastic transition (c. 2900 BC). That is the same window as the biblical Flood (Ussher: 2348 BC, from the Genesis 5 intervals): catastrophic flooding on the same plain, complementary as the material setting of Genesis 6-9, not a second clock."
   },
   "dateRange": {
    "startYear": -2950,
@@ -386,12 +416,14 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "disputes": {
-   "en": "The flood strata at the several cities date to different episodes and are read by archaeologists as local river floods, not a single universal deluge."
+   "en": "Archaeologists read the silts at the several cities as local river floods of more than one episode, not as a single universal deluge, and the ceramic date (~2900 BC) is not a synchronism that locks Ussher's 2348 BC. Shown as complementary setting — the same plain, the same age — not as a year-lock."
   },
   "citations": [
    "cit-shuruppak",
    "cit-ziusudra",
-   "cit-ref-negev-gibson"
+   "cit-mallowan-flood",
+   "cit-ref-negev-gibson",
+   "cit-ussher-annals"
   ]
  },
  {

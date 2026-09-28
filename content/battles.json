@@ -31,7 +31,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-vale-of-siddim",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-genesis-14-1-16",
+   "cit-scripture-genesis-14-17-20"
   ],
   "locationNote": {
    "en": "The vale is placed by the text at the Salt Sea; the pursuit ran the length of the land to Dan and beyond Damascus."
@@ -67,7 +69,8 @@
   "confidence": "disputed",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-exodus-17-8-16"
   ],
   "locationNote": {
    "en": "Rephidim lay one stage before Sinai (Exodus 19:2); anchored to the traditional Mount Sinai, with the site itself unidentified."
@@ -108,7 +111,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-heshbon",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-numbers-21-21-31",
+   "cit-scripture-deuteronomy-2-24-36"
   ],
   "locationNote": {
    "en": "Jahaz itself is unidentified (candidates on the Moabite plateau); anchored at Sihon's capital, Heshbon."
@@ -149,7 +154,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-daraa-edrei",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-numbers-21-33-35",
+   "cit-scripture-deuteronomy-3-1-11"
   ],
   "disputes": {
    "en": "The date of the conquest is a standing scholarly dispute: the 'early' chronology (1 Kings 6:1 taken at face value) places it c. 1406 BC; the 'late' chronology (Ramesside-era destructions, the Merneptah Stele's terminus) c. 1230-1200 BC; and minimalist reconstructions read the accounts as later composition. The entry reports the narrative with both anchor dates."
@@ -187,7 +194,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-jericho",
-   "cit-abr-jericho-walls"
+   "cit-abr-jericho-walls",
+   "cit-scripture-joshua-6-1-21",
+   "cit-scripture-joshua-6-24-25"
   ],
   "artifactIds": [
    "artifact-jericho-fallen-walls"
@@ -228,7 +237,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-ai-canaan",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-joshua-7-2-5",
+   "cit-scripture-joshua-8-1-28"
   ],
   "disputes": {
    "en": "Beyond the conquest-date debate, Ai's very site is contested: et-Tell, the majority identification, was unoccupied in the Late Bronze Age; Khirbet el-Maqatir is the principal proposed alternative. The entry anchors to et-Tell as the standard identification."
@@ -266,7 +277,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-of-gibeon",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-joshua-10-1-15",
+   "cit-scripture-joshua-10-28-43"
   ],
   "locationNote": {
    "en": "Area highlight is an approximate sweep of the Joshua 10 campaign (Gibeon and the Aijalon descent through the Shephelah cities to Hebron and Debir), not a surveyed boundary."
@@ -344,7 +357,8 @@
   "citations": [
    "cit-wikipedia-waters-of-merom",
    "cit-wikipedia-tel-hazor",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-joshua-11-1-15"
   ],
   "locationNote": {
    "en": "The waters of Merom are usually placed in the upland basin west of Hazor; area highlight approximates the Joshua 11 northern sweep."
@@ -418,7 +432,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-battle-mount-tabor",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-judges-4-4-16",
+   "cit-scripture-judges-5-19-21"
   ],
   "locationNote": {
    "en": "Fought in the Jezreel valley between Tabor and 'Taanach by the waters of Megiddo' (Judges 5:19); area highlight approximates the battle plain."
@@ -483,7 +499,9 @@
   "citations": [
    "cit-wikipedia-gideon",
    "cit-wikipedia-maayan-harod",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-judges-7-1-8",
+   "cit-scripture-judges-7-16-25"
   ]
  },
  {
@@ -520,7 +538,10 @@
   "citations": [
    "cit-wikipedia-battle-of-gibeah",
    "cit-wikipedia-gibeah",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-judges-19-22-30",
+   "cit-scripture-judges-20-1-48",
+   "cit-scripture-judges-21-1-23"
   ]
  },
  {
@@ -557,7 +578,10 @@
   "citations": [
    "cit-wikipedia-battle-of-aphek",
    "cit-wikipedia-antipatris",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-samuel-4-1-18",
+   "cit-scripture-1-samuel-5-1-2",
+   "cit-scripture-1-samuel-6-10-15"
   ]
  },
  {
@@ -591,7 +615,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-tell-en-nasbeh",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-samuel-7-5-14"
   ]
  },
  {
@@ -627,7 +652,9 @@
   "citations": [
    "cit-wikipedia-battle-of-michmash",
    "cit-wikipedia-michmash",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-samuel-13-16-23",
+   "cit-scripture-1-samuel-14-1-23"
   ]
  },
  {
@@ -664,7 +691,9 @@
    "cit-wikipedia-goliath",
    "cit-wikipedia-valley-of-elah",
    "cit-wikipedia-khirbet-qeiyafa",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-samuel-17-1-11",
+   "cit-scripture-1-samuel-17-38-53"
   ],
   "artifactIds": [
    "artifact-khirbet-qeiyafa"
@@ -704,7 +733,10 @@
   "citations": [
    "cit-wikipedia-battle-mount-gilboa",
    "cit-wikipedia-mount-gilboa",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-samuel-28-4-19",
+   "cit-scripture-1-samuel-31-1-13",
+   "cit-scripture-2-samuel-1-17-27"
   ]
  },
  {
@@ -738,7 +770,9 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-2-samuel-5-6-10",
+   "cit-scripture-1-chronicles-11-4-9"
   ],
   "artifactIds": [
    "artifact-tel-dan-stele"
@@ -774,7 +808,8 @@
   "confidence": "medium",
   "reviewStatus": "self-reviewed",
   "citations": [
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-2-samuel-5-17-25"
   ],
   "locationNote": {
    "en": "The Valley of Rephaim runs southwest from Jerusalem toward Bethlehem; Baal-perazim itself is unidentified."
@@ -814,7 +849,11 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-amman-citadel",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-samuel-10-6-14",
+   "cit-scripture-2-samuel-11-1",
+   "cit-scripture-2-samuel-11-14-17",
+   "cit-scripture-2-samuel-12-26-31"
   ]
  },
  {
@@ -850,7 +889,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-mahanaim",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-samuel-17-24-26",
+   "cit-scripture-2-samuel-18-1-17",
+   "cit-scripture-2-samuel-18-33"
   ],
   "locationNote": {
    "en": "The 'wood of Ephraim' lay in Gilead near Mahanaim, east of the Jordan; the forest itself is unidentified."
@@ -888,7 +930,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-mount-zemaraim",
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-2-chronicles-13-3-20",
+   "cit-scripture-1-kings-15-6-7"
   ]
  },
  {
@@ -923,7 +967,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-ramah-benjamin",
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-1-kings-15-16-22",
+   "cit-scripture-2-chronicles-16-1-10"
   ]
  },
  {
@@ -958,7 +1004,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-beth-shemesh",
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-2-kings-14-8-14",
+   "cit-scripture-2-chronicles-25-17-24"
   ]
  },
  {
@@ -994,7 +1042,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-syro-ephraimite-war",
-   "cit-thiele-chronology"
+   "cit-thiele-chronology",
+   "cit-scripture-2-kings-16-5-9",
+   "cit-scripture-isaiah-7-1-16",
+   "cit-scripture-2-chronicles-28-5-15"
   ]
  },
  {
@@ -1028,7 +1079,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-samaria-city",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-kings-20-1-21"
   ]
  },
  {
@@ -1063,7 +1115,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-samaria-city",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-kings-20-22-34",
+   "cit-scripture-1-kings-20-35-43"
   ],
   "locationNote": {
    "en": "The eastern Aphek is not securely identified; anchored near 'Afiq in the Golan above En Gev."
@@ -1138,7 +1192,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-ramoth-gilead",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-1-kings-22-1-38",
+   "cit-scripture-2-chronicles-18-28-34"
   ]
  },
  {
@@ -1175,7 +1231,9 @@
    "cit-wikipedia-mesha-stele",
    "cit-wikipedia-kir-of-moab",
    "cit-ref-cos",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-1-1",
+   "cit-scripture-2-kings-3-4-27"
   ],
   "artifactIds": [
    "artifact-mesha-stele"
@@ -1216,7 +1274,10 @@
    "cit-wikipedia-jehu",
    "cit-wikipedia-tel-jezreel",
    "cit-ref-anet",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-9-1-13",
+   "cit-scripture-2-kings-9-14-37",
+   "cit-scripture-2-kings-10-1-11"
   ],
   "artifactIds": [
    "artifact-tel-dan-stele",
@@ -1261,7 +1322,10 @@
    "cit-wikipedia-syro-ephraimite-war",
    "cit-wikipedia-tel-hazor",
    "cit-ref-anet",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-15-29",
+   "cit-scripture-1-chronicles-5-26",
+   "cit-scripture-isaiah-9-1-2"
   ],
   "locationNote": {
    "en": "Area highlight approximates the annexed Galilee-Naphtali region; Gilead across the Jordan was taken in the same campaigns."
@@ -1332,7 +1396,10 @@
    "cit-wikipedia-sargon-ii",
    "cit-wikipedia-samaria-city",
    "cit-ref-anet",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-17-1-6",
+   "cit-scripture-2-kings-17-22-24",
+   "cit-scripture-2-kings-18-9-12"
   ],
   "locationNote": {
    "en": "Area highlight approximates the northern kingdom's Samarian heartland annexed as the Assyrian province of Samerina."
@@ -1406,7 +1473,10 @@
    "cit-wikipedia-siege-of-lachish",
    "cit-wikipedia-sennacherib-campaign",
    "cit-ref-anet",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-18-13-17",
+   "cit-scripture-2-chronicles-32-9",
+   "cit-scripture-micah-1-13"
   ],
   "locationNote": {
    "en": "Area highlight approximates the Shephelah swath of Sennacherib's 701 BC campaign against Judah's fortified cities."
@@ -1481,7 +1551,11 @@
   "citations": [
    "cit-wikipedia-sennacherib-campaign",
    "cit-ref-anet",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-18-17-37",
+   "cit-scripture-2-kings-19-32-37",
+   "cit-scripture-isaiah-37-33-38",
+   "cit-scripture-2-chronicles-32-1-23"
   ],
   "artifactIds": [
    "artifact-sennacherib-prism",
@@ -1525,7 +1599,9 @@
   "citations": [
    "cit-wikipedia-megiddo-609",
    "cit-wikipedia-tel-megiddo",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-23-29-30",
+   "cit-scripture-2-chronicles-35-20-27"
   ]
  },
  {
@@ -1564,7 +1640,10 @@
    "cit-wikipedia-carchemish",
    "cit-src-livius-abc4",
    "cit-src-livius-abc5",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-jeremiah-46-1-12",
+   "cit-scripture-2-kings-24-7",
+   "cit-scripture-daniel-1-1-4"
   ],
   "artifactIds": [
    "artifact-babylonian-chronicle"
@@ -1604,7 +1683,10 @@
   "citations": [
    "cit-wikipedia-siege-jerusalem-597",
    "cit-src-livius-abc5",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-24-10-17",
+   "cit-scripture-2-chronicles-36-9-10",
+   "cit-scripture-ezekiel-1-1-3"
   ],
   "artifactIds": [
    "artifact-babylonian-chronicle",
@@ -1646,7 +1728,11 @@
   "citations": [
    "cit-wikipedia-siege-jerusalem-587",
    "cit-ref-grayson-chronicles",
-   "cit-ref-bright"
+   "cit-ref-bright",
+   "cit-scripture-2-kings-25-1-21",
+   "cit-scripture-jeremiah-39-1-10",
+   "cit-scripture-jeremiah-52-4-27",
+   "cit-scripture-lamentations-2-1-9"
   ],
   "locationNote": {
    "en": "Area highlight approximates the kingdom of Judah extinguished in the 588-586 BC campaign."

@@ -1,20 +1,24 @@
 name: CI
 
+# Quality gate for the production line. Pushes to development or main do not
+# run this. Use workflow_dispatch on a feature branch, or open a pull request
+# into production.
 on:
   push:
-    branches: [development, main]
+    branches: [production]
   pull_request:
-    branches: [development]
+    branches: [production]
+  workflow_dispatch:
 
 jobs:
   web:
     name: typecheck · lint · test · build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22.x
           cache: npm
       - run: npm ci
       - run: npm run typecheck

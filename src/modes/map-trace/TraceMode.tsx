@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl from 'maplibre-gl';
@@ -7,14 +7,17 @@ import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
 import { useJourneyStore } from '../../state/useJourneyStore';
+import { useMapLayersStore } from '../../state/useMapLayersStore';
+import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
-import { activeStopFromFractions, expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
+import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
-import { Citations, ConfidenceBadge, DisputeNote, ScripturePassage } from '../../content/citations';
+import { Citations, ClaimMeta, DisputeNote, ReferenceStack, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
+import { SiteCandidates } from '../../components/SiteCandidates';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
-import type { TJourney } from '../../content/schema';
+import { ERAS } from '../../content/eras';
 import type { BundleIndex } from '../../content/useBundle';
 import type { TStop } from '../../content/schema';
 
@@ -30,26 +33,23 @@ export default function TraceMode() {
   return <JourneyTrace bundle={bundle} journeyId={journeyId} />;
 }
 
-// Journeys grouped into biblical eras, oldest first, so the picker reads as a
-// timeline from the patriarchs to the apostles.
-const ERA_ORDER: { kind: TJourney['kind']; label: string }[] = [
-  { kind: 'patriarchal', label: 'The Patriarchs' },
-  { kind: 'exodus', label: 'The Exodus' },
-  { kind: 'ministry', label: 'The Life of Jesus' },
-  { kind: 'apostolic', label: 'The Apostolic Age' },
-];
-
 function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   return (
     <ModePanel title={t('modes.trace.title')}>
-      <p>Choose a journey to trace — from the patriarchs to the apostles.</p>
-      {ERA_ORDER.map(({ kind, label }) => {
-        const journeys = bundle.journeys.filter((j) => j.kind === kind);
+      <p>Choose a journey to trace — from Creation to the apostles.</p>
+      <p className="journey-era__hint">
+        <Link to="/timeline">See every journey on one linear timeline →</Link>
+      </p>
+      {/* Grouped by the shared era spine (src/content/eras.ts), oldest first,
+          so the picker reads as the same chronology the timeline draws. */}
+      {ERAS.map((era) => {
+        const journeys = bundle.journeys.filter((j) => era.journeyKinds.includes(j.kind));
         if (journeys.length === 0) return null;
         return (
-          <section key={kind} className="journey-era">
-            <h3 className="journey-era__title">{label}</h3>
+          <section key={era.id} className="journey-era">
+            <h3 className="journey-era__title">{era.label}</h3>
+            <p className="journey-era__range">{era.display}</p>
             <ul className="journey-list">
               {journeys.map((j) => {
                 const firstSiteId = bundle.stop(j.stops[0])?.siteId;
@@ -78,12 +78,30 @@ function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   );
 }
 
+/** Display name for a stop: its event title if it has one, else the ancient site name. */
+function stopLabel(stop: TStop | undefined, bundle: BundleIndex): string {
+  if (!stop) return '';
+  return stop.title?.en ?? bundle.site(stop.siteId)?.ancientName.en ?? stop.siteId;
+}
+
+function siteName(stop: TStop | undefined, bundle: BundleIndex): string {
+  if (!stop) return '';
+  return bundle.site(stop.siteId)?.ancientName.en ?? stop.siteId;
+}
+
 function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: string }) {
   const { t } = useTranslation();
   const journey = bundle.journey(journeyId);
   const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
+  const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
+  const targetStopIdx = useJourneyStore((s) => s.targetStopIdx);
+  const setTargetStopIdx = useJourneyStore((s) => s.setTargetStopIdx);
+  const requestSnap = useSheetStore((s) => s.requestSnap);
+  const travelling = targetStopIdx !== null;
 
   const stops = useMemo(() => (journey ? bundle.stopsFor(journey.id) : []), [bundle, journey]);
+  const route = useMemo(() => (journey ? bundle.routeForJourney(journey.id) : undefined), [bundle, journey]);
+  const legGrades = route?.legGrades;
   const { path, fractions, stopCoords, stopIds, traceStops, names } = useMemo(() => {
     const c: LngLat[] = [];
     const ids: string[] = [];
@@ -100,48 +118,102 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
     });
     // Expand along the authored historical route (Roman roads, caravan arcs,
     // sail lanes); journeys without route data keep straight segments.
-    const route = journey ? bundle.routeForJourney(journey.id) : undefined;
     const p = expandJourneyPath(c, route?.legs as LngLat[][] | undefined);
     return { path: p, fractions: stopFractions(p), stopCoords: c, stopIds: ids, traceStops: ts, names: n };
-  }, [bundle, stops, journey]);
+  }, [bundle, stops, route]);
 
   useEffect(() => {
     setActiveJourney(journeyId);
   }, [journeyId, setActiveJourney]);
+
+  // Two-phase mobile UI. Starting a leg drops the sheet to `peek` so the camera
+  // move plays over a near-full-bleed map; arriving raises it to `full` so the
+  // stop is immediately readable. Only the *transitions* fire a request, so a
+  // reader who drags the sheet mid-leg keeps their position until the next one.
+  const wasTravelling = useRef(false);
+  useEffect(() => {
+    if (travelling !== wasTravelling.current) {
+      requestSnap(travelling ? 'peek' : 'full');
+      wasTravelling.current = travelling;
+    }
+  }, [travelling, requestSnap]);
+
+  // Opening a different journey starts over at its first stop, sheet at rest.
+  useEffect(() => {
+    wasTravelling.current = false;
+  }, [journeyId]);
+
+  const travelTo = useCallback(
+    (idx: number) => {
+      if (travelling || idx === currentStopIdx || idx < 0 || idx >= stops.length) return;
+      setTargetStopIdx(idx);
+    },
+    [travelling, currentStopIdx, stops.length, setTargetStopIdx],
+  );
 
   useRouteAnimation(path, journey?.color ?? '#c75b39', traceStops, stopIds);
   useStopLabels(stopCoords, fractions, names, stopIds, journey?.color ?? '#c75b39');
 
   if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
 
+  const activeStop = stops[currentStopIdx];
+  const accent = { '--accent': journey.color } as React.CSSProperties;
+
   return (
-    <div className="journey-trace-layout">
-      <ModePanel title={journey.title.en} style={{ '--accent': journey.color } as React.CSSProperties}>
-        <Link to="/trace" className="backlink">
-          ← {t('nav.trace')}
-        </Link>
-        <p className="journey-trace__date">{journey.dateRange.display.en}</p>
-        <p>{journey.summary.en}</p>
-        {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
-        {bundle.videosForJourney(journey.id).map((v) => (
-          <VideoEmbed key={v.id} video={v} />
-        ))}
-        <LayerPanel />
-        <ActiveStopPanel bundle={bundle} stops={stops} />
+    <div className="journey-trace-layout" data-phase={travelling ? 'travelling' : 'arrived'} style={accent}>
+      <TravelStrip stops={stops} bundle={bundle} fractions={fractions} />
+      <ModePanel
+        title={stopLabel(activeStop, bundle) || journey.title.en}
+        eyebrow={
+          <Link to="/trace" className="backlink">
+            ← {journey.title.en}
+          </Link>
+        }
+        style={accent}
+        scrollKey={activeStop?.id ?? journey.id}
+        footer={<StopActions stops={stops} bundle={bundle} onJump={travelTo} />}
+      >
+        {activeStop && (
+          <StopReader stop={activeStop} index={currentStopIdx} total={stops.length} bundle={bundle} />
+        )}
+        <JourneySoFar stops={stops} bundle={bundle} current={currentStopIdx} onJump={travelTo} />
+        <details className="journey-about">
+          <summary>About this journey</summary>
+          <p className="journey-trace__date">{journey.dateRange.display.en}</p>
+          <p className="claim-prose">{journey.summary.en}</p>
+          <ReferenceStack>
+            {journey.chronologyNotes && <DisputeNote text={journey.chronologyNotes.en} />}
+            <RouteGeometryNote
+              grades={legGrades}
+              note={route?.note?.en}
+              citations={route?.citations}
+              bundle={bundle}
+            />
+          </ReferenceStack>
+          {bundle.videosForJourney(journey.id).map((v) => (
+            <VideoEmbed key={v.id} video={v} />
+          ))}
+        </details>
       </ModePanel>
-      <div className="trace-controls-fixed" style={{ '--accent': journey.color } as React.CSSProperties}>
-        <TraceControls stopCount={stops.length} fractions={fractions} />
+      <div className="map-floating-layers">
+        <LayerPanel />
+      </div>
+      {/* Desktop playback pill. On mobile the same controls live in the sheet
+          footer (StopActions) and the travel strip, so it is hidden by CSS. */}
+      <div className="trace-controls-fixed" style={accent}>
+        <TraceControls stopCount={stops.length} fractions={fractions} stops={stops} bundle={bundle} />
       </div>
     </div>
   );
 }
 
-/** Name label at every stop on the traced route; clicking one scrubs straight to it. */
+/** Name label at every stop on the traced route; clicking one jumps straight to it. */
 function useStopLabels(coords: LngLat[], fractions: number[], names: string[], stopIds: string[], color: string): void {
   const { mapRef, ready } = useMap();
   const setProgress = useJourneyStore((s) => s.setProgress);
-  const pause = useJourneyStore((s) => s.pause);
+  const setCurrentStopIdx = useJourneyStore((s) => s.setCurrentStopIdx);
   const activeStopId = useJourneyStore((s) => s.activeStopId);
+  const labelsAlwaysOn = useMapLayersStore((s) => s.labelsAlwaysOn);
 
   // Keep references to all label button elements.
   const elementsRef = useMemo(() => ({ current: [] as HTMLButtonElement[] }), []);
@@ -158,34 +230,38 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       el.textContent = `${i + 1}. ${names[i] ?? ''}`;
       el.setAttribute('aria-label', `Jump to stop ${i + 1}: ${names[i]}`);
       el.addEventListener('click', () => {
-        pause();
-        // Scrub to this stop's fraction along the detailed historical path.
+        setCurrentStopIdx(i);
         setProgress(fractions[i] ?? 0);
       });
       elementsRef.current.push(el);
       return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
     });
 
-    // Initial active class, style, and visibility application
+    // Sequentially reveal waypoint name labels as the journey progresses, or show all if labelsAlwaysOn is true
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
-      
-      // Match the display value CSS expects: the active label uses -webkit-box so
-      // its two-line clamp applies; others are a single inline-block badge.
-      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
+      const isVisible = labelsAlwaysOn || isReached;
+
+      el.style.display = !isVisible ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
+      el.classList.toggle('reached', isReached);
+
       if (isActive) {
         el.style.backgroundColor = color;
         el.style.borderColor = color;
         el.style.color = '#ffffff';
         el.style.boxShadow = `0 0 8px ${color}80`;
+        el.style.opacity = '1';
+        el.style.zIndex = '10';
       } else {
         el.style.backgroundColor = '';
         el.style.borderColor = '';
         el.style.color = '';
         el.style.boxShadow = '';
+        el.style.opacity = '0.9';
+        el.style.zIndex = '2';
       }
     });
 
@@ -193,74 +269,346 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       markers.forEach((m) => m.remove());
       elementsRef.current = [];
     };
-  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, pause, color, activeStopId, elementsRef]);
+  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, setCurrentStopIdx, color, activeStopId, labelsAlwaysOn, elementsRef]);
 
-  // Update active class, styles, and visibility when activeStopId changes
+  // Update active class, styles, and visibility when activeStopId or labelsAlwaysOn changes
   useEffect(() => {
     const activeIdx = stopIds.indexOf(activeStopId || '');
     elementsRef.current.forEach((el, idx) => {
       const isReached = idx <= activeIdx;
       const isActive = idx === activeIdx;
-      
-      // Match the display value CSS expects: the active label uses -webkit-box so
-      // its two-line clamp applies; others are a single inline-block badge.
-      el.style.display = !isReached ? 'none' : isActive ? '-webkit-box' : 'inline-block';
+      const isVisible = labelsAlwaysOn || isReached;
+
+      el.style.display = !isVisible ? 'none' : isActive ? '-webkit-box' : 'inline-block';
       el.classList.toggle('active', isActive);
+      el.classList.toggle('reached', isReached);
+
       if (isActive) {
         el.style.backgroundColor = color;
         el.style.borderColor = color;
         el.style.color = '#ffffff';
         el.style.boxShadow = `0 0 8px ${color}80`;
+        el.style.opacity = '1';
+        el.style.zIndex = '10';
       } else {
         el.style.backgroundColor = '';
         el.style.borderColor = '';
         el.style.color = '';
         el.style.boxShadow = '';
+        el.style.opacity = '0.9';
+        el.style.zIndex = '2';
       }
     });
-  }, [activeStopId, stopIds, color, elementsRef]);
+  }, [activeStopId, stopIds, color, labelsAlwaysOn, elementsRef]);
 }
 
-function TraceControls({ stopCount, fractions }: { stopCount: number; fractions: number[] }) {
-  const { progress, playing, play, pause, setProgress, reset, playbackSpeed, setPlaybackSpeed, pauseAtStops, setPauseAtStops } = useJourneyStore();
-  // Match the on-map active-stop label exactly: derive the index from the same
-  // path-length fractions, not a linear `progress * (stopCount-1)` guess (stops
-  // aren't evenly spaced along the route, so the linear version drifts).
-  const currentStop = activeStopFromFractions(fractions, progress) + 1;
+/**
+ * Mobile travel HUD. Replaces the full playback pill while a leg is in flight,
+ * when Prev/scrub are meaningless — all the reader needs is where they are
+ * going, how far along they are, and a way out of the animation.
+ */
+function TravelStrip({
+  stops,
+  bundle,
+  fractions,
+}: {
+  stops: TStop[];
+  bundle: BundleIndex;
+  fractions: number[];
+}) {
+  const progress = useJourneyStore((s) => s.progress);
+  const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
+  const targetStopIdx = useJourneyStore((s) => s.targetStopIdx);
+  const setProgress = useJourneyStore((s) => s.setProgress);
+  const setCurrentStopIdx = useJourneyStore((s) => s.setCurrentStopIdx);
+  const setTargetStopIdx = useJourneyStore((s) => s.setTargetStopIdx);
+
+  if (targetStopIdx === null) return null;
+
+  const from = stops[currentStopIdx];
+  const to = stops[targetStopIdx];
+  const fromF = fractions[currentStopIdx] ?? 0;
+  const toF = fractions[targetStopIdx] ?? 1;
+  const span = toF - fromF;
+  // Co-located stops share a fraction; show a full bar rather than dividing by 0.
+  const legProgress = span === 0 ? 1 : Math.min(1, Math.max(0, (progress - fromF) / span));
+  // Travelling backwards retraces the leg we arrived by, which belongs to `from`.
+  const mode = (targetStopIdx > currentStopIdx ? to : from)?.legMode;
+
+  const skip = () => {
+    setProgress(toF);
+    setCurrentStopIdx(targetStopIdx);
+    setTargetStopIdx(null);
+  };
+
+  return (
+    <div className="travel-strip" role="status" aria-live="polite">
+      <p className="travel-strip__route">
+        <span className="travel-strip__from">{siteName(from, bundle)}</span>
+        <span className="travel-strip__arrow" aria-hidden="true">
+          →
+        </span>
+        <strong className="travel-strip__to">{siteName(to, bundle)}</strong>
+      </p>
+      <div className="travel-strip__meter" aria-hidden="true">
+        <span style={{ transform: `scaleX(${legProgress})` }} />
+      </div>
+      <div className="travel-strip__foot">
+        <span className="travel-strip__mode">
+          {mode && (
+            <>
+              <span className="travel-strip__mode-name">{mode}</span>
+              {' · '}
+            </>
+          )}
+          {targetStopIdx + 1} of {stops.length}
+        </span>
+        <button type="button" className="travel-strip__skip" onClick={skip}>
+          Skip ⏭
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The active stop, and only the active stop. Previous stops are one disclosure
+ * away (JourneySoFar) rather than stacked above this — on a phone the thing you
+ * just travelled to should be the first thing under your thumb, not the sixth.
+ */
+function StopReader({
+  stop,
+  index,
+  total,
+  bundle,
+}: {
+  stop: TStop;
+  index: number;
+  total: number;
+  bundle: BundleIndex;
+}) {
+  const site = bundle.site(stop.siteId);
+  const hasEventTitle = Boolean(stop.title?.en);
+  return (
+    <article className="stop-reader">
+      <div className="stop-reader__meta">
+        <span className="stop-reader__index">
+          Stop {index + 1} of {total}
+        </span>
+        <ClaimMeta confidence={stop.confidence} reviewStatus={stop.reviewStatus} />
+      </div>
+      {/* The panel title already carries the event name when there is one, so
+          only then does the site name need repeating underneath it. */}
+      <div className="claim-identity">
+        {hasEventTitle && site && <p className="stop-reader__site">{site.ancientName.en}</p>}
+        {site?.modernLocation && <p className="stop-reader__modern">{site.modernLocation.en}</p>}
+        <p className="stop-reader__date">
+          {stop.dateRange.display.en} · {stop.legMode}
+        </p>
+      </div>
+      <SitePhoto siteId={stop.siteId} />
+      {site && (
+        <SiteViews
+          lat={site.coordinates.value.lat}
+          lon={site.coordinates.value.lon}
+          name={site.ancientName.en}
+        />
+      )}
+      <p className="stop-reader__summary claim-prose">{stop.eventSummary.en}</p>
+      {stop.scriptureRefs.length > 0 && (
+        <div className="stop-panel__scripture">
+          {stop.scriptureRefs.map((r) => (
+            <ScripturePassage key={r} raw={r} />
+          ))}
+        </div>
+      )}
+      <ReferenceStack>
+        {site?.coordinates.disputes && <DisputeNote text={site.coordinates.disputes.en} />}
+        {stop.disputes && <DisputeNote text={stop.disputes.en} />}
+        <Citations ids={stop.citations} bundle={bundle} />
+      </ReferenceStack>
+      {site && <SiteCandidates site={site} bundle={bundle} />}
+      <SiteExtras siteId={stop.siteId} bundle={bundle} />
+    </article>
+  );
+}
+
+/**
+ * The whole itinerary, jumpable in either direction. This replaced the footer's
+ * pip rail: the same reach, minus a row of chrome, and every stop carries its
+ * name and date instead of being an unlabelled dot.
+ */
+function JourneySoFar({
+  stops,
+  bundle,
+  current,
+  onJump,
+}: {
+  stops: TStop[];
+  bundle: BundleIndex;
+  current: number;
+  onJump: (idx: number) => void;
+}) {
+  return (
+    <details className="journey-so-far">
+      <summary>
+        All stops ({current + 1} of {stops.length} reached)
+      </summary>
+      <ol className="journey-so-far__list">
+        {stops.map((stop, i) => {
+          const state = i < current ? 'past' : i === current ? 'current' : 'upcoming';
+          return (
+            <li key={stop.id}>
+              <button
+                type="button"
+                className={`journey-so-far__item journey-so-far__item--${state}`}
+                aria-current={i === current ? 'step' : undefined}
+                onClick={() => onJump(i)}
+              >
+                <span className="journey-so-far__num">{i + 1}</span>
+                <span className="journey-so-far__body">
+                  <strong>{stopLabel(stop, bundle)}</strong>
+                  <span className="journey-so-far__date">{stop.dateRange.display.en}</span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </details>
+  );
+}
+
+/**
+ * Sheet footer: the whole mobile transport, pinned under the scrolling body so
+ * "where do I go next" never scrolls away. Deliberately one row tall — on a
+ * landscape phone every row of chrome here is a row of the stop's own text that
+ * doesn't fit, so progress is drawn as the footer's own top edge rather than a
+ * rail of its own, and direct access to any stop lives in "All stops" below,
+ * where the stops can carry their names instead of being unlabelled dots.
+ */
+function StopActions({
+  stops,
+  bundle,
+  onJump,
+}: {
+  stops: TStop[];
+  bundle: BundleIndex;
+  onJump: (idx: number) => void;
+}) {
+  const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
+  const targetStopIdx = useJourneyStore((s) => s.targetStopIdx);
+  const reset = useJourneyStore((s) => s.reset);
+  const travelling = targetStopIdx !== null;
+  const next = stops[currentStopIdx + 1];
+
+  return (
+    <div className="stop-actions">
+      {/* Decorative twin of the "Stop n of m" line the reader already has in the
+          body — announced there, so silent here. */}
+      <div className="stop-actions__meter" aria-hidden="true">
+        {stops.map((stop, i) => (
+          <span
+            key={stop.id}
+            className={'stop-actions__seg' + (i <= currentStopIdx ? ' stop-actions__seg--done' : '')}
+          />
+        ))}
+      </div>
+      <div className="stop-actions__row">
+        <button
+          type="button"
+          className="stop-actions__step"
+          onClick={() => onJump(currentStopIdx - 1)}
+          disabled={currentStopIdx <= 0 || travelling}
+          aria-label="Previous stop"
+          title="Previous stop"
+        >
+          ←
+        </button>
+        {next ? (
+          <button
+            type="button"
+            className="stop-actions__go"
+            onClick={() => onJump(currentStopIdx + 1)}
+            disabled={travelling}
+          >
+            Continue to {stopLabel(next, bundle)} <span aria-hidden="true">→</span>
+          </button>
+        ) : (
+          <button type="button" className="stop-actions__go stop-actions__go--done" onClick={reset}>
+            ↺ Journey complete — trace it again
+          </button>
+        )}
+        <button
+          type="button"
+          className="stop-actions__step"
+          onClick={reset}
+          disabled={travelling}
+          aria-label="Restart journey"
+          title="Restart journey"
+        >
+          ↺
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function TraceControls({ stopCount, fractions, stops, bundle }: { stopCount: number; fractions: number[]; stops?: TStop[]; bundle?: BundleIndex }) {
+  const { progress, currentStopIdx, targetStopIdx, setCurrentStopIdx, setTargetStopIdx, setProgress, reset } = useJourneyStore();
+  const isTravelling = targetStopIdx !== null;
+  const currentStop = (targetStopIdx ?? currentStopIdx) + 1;
+
+  const goToPrevStop = () => {
+    if (currentStopIdx <= 0 || isTravelling) return;
+    setTargetStopIdx(currentStopIdx - 1);
+  };
+
+  const goToNextStop = () => {
+    if (currentStopIdx >= stopCount - 1 || isTravelling) return;
+    setTargetStopIdx(currentStopIdx + 1);
+  };
+
+  const activeStop = stops?.[targetStopIdx ?? currentStopIdx];
+  const activeSiteName = activeStop && bundle ? bundle.site(activeStop.siteId)?.ancientName.en : undefined;
+  const activeStopTitle = activeStop?.title?.en ?? activeSiteName ?? `Stop ${currentStop}`;
+
+  const statusMessage = isTravelling
+    ? `🚶 Travelling to ${activeStopTitle}…`
+    : currentStopIdx >= stopCount - 1
+    ? `✓ Journey Complete (${stopCount}/${stopCount})`
+    : `📍 ${activeStopTitle} (${currentStop} of ${stopCount})`;
+
   return (
     <div className="trace-controls">
+      <div className="trace-controls__status-bar">
+        <span className={`trace-status-badge ${isTravelling ? 'trace-status-badge--animating' : ''}`}>
+          {statusMessage}
+        </span>
+      </div>
       <div className="trace-controls__main">
         <button
           type="button"
-          onClick={() => (playing ? pause() : play())}
-          aria-pressed={playing}
-          className="trace-controls__play"
+          onClick={goToPrevStop}
+          disabled={currentStopIdx <= 0 || isTravelling}
+          title="Previous Stop"
+          aria-label="Previous stop"
         >
-          {playing ? '⏸ Pause' : '▶ Play'}
+          ⏮ Prev
+        </button>
+        <button
+          type="button"
+          onClick={goToNextStop}
+          disabled={currentStopIdx >= stopCount - 1 || isTravelling}
+          title="Next Stop"
+          aria-label="Next stop"
+          className="trace-controls__next"
+        >
+          Next ⏭
         </button>
         <button type="button" onClick={reset}>
           ↺ Reset
         </button>
-        <select
-          value={playbackSpeed}
-          onChange={(e) => setPlaybackSpeed(Number(e.target.value))}
-          className="trace-controls__speed"
-          aria-label="Playback speed"
-        >
-          <option value={0.25}>0.25x</option>
-          <option value={0.5}>0.5x</option>
-          <option value={1}>1.0x (Default)</option>
-          <option value={1.5}>1.5x</option>
-          <option value={2}>2.0x</option>
-        </select>
-        <label className="trace-controls__pause-stops">
-          <input
-            type="checkbox"
-            checked={pauseAtStops}
-            onChange={(e) => setPauseAtStops(e.target.checked)}
-          />
-          <span>Pause at stops</span>
-        </label>
       </div>
       <div className="trace-controls__scrub-group">
         <label className="trace-controls__scrub">
@@ -269,102 +617,19 @@ function TraceControls({ stopCount, fractions }: { stopCount: number; fractions:
             type="range"
             min={0}
             max={1}
-            step={0.001}
+            step="any"
             value={progress}
-            onChange={(e) => setProgress(Number(e.target.value))}
+            onChange={(e) => {
+              setTargetStopIdx(null);
+              const t = Number(e.target.value);
+              setProgress(t);
+              let idx = 0;
+              for (let i = 0; i < fractions.length; i++) if (fractions[i] <= t + 1e-7) idx = i;
+              setCurrentStopIdx(idx);
+            }}
           />
         </label>
         <span className="trace-controls__count">{currentStop}/{stopCount}</span>
-      </div>
-    </div>
-  );
-}
-
-function ActiveStopPanel({ bundle, stops }: { bundle: BundleIndex; stops: TStop[] }) {
-  const activeStopId = useJourneyStore((s) => s.activeStopId);
-  const activeIdx = activeStopId ? stops.findIndex((s) => s.id === activeStopId) : -1;
-  const listRef = useRef<HTMLDivElement>(null);
-
-  // Scroll the active (latest) stop into view when it changes
-  useEffect(() => {
-    const activeEl = listRef.current?.querySelector('.stop-timeline__item--active');
-    if (activeEl) {
-      activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }, [activeStopId]);
-
-  if (activeIdx === -1) return null;
-
-  // Get all reached stops up to activeIdx
-  const reachedStops = stops.slice(0, activeIdx + 1);
-
-  return (
-    <div className="stop-timeline" ref={listRef} aria-live="polite">
-      <h3 className="stop-timeline__title">Stops Reached ({reachedStops.length} of {stops.length})</h3>
-      <div className="stop-timeline__list">
-        {reachedStops.map((stop, index) => {
-          const site = bundle.site(stop.siteId);
-          const isActive = index === activeIdx;
-          return (
-            <article
-              key={stop.id}
-              className={`stop-timeline__item ${isActive ? 'stop-timeline__item--active' : 'stop-timeline__item--completed'}`}
-            >
-              <div className="stop-timeline__indicator">
-                <span className="stop-timeline__number">{index + 1}</span>
-                {index < reachedStops.length - 1 && <div className="stop-timeline__connector" />}
-              </div>
-              <div className="stop-timeline__content">
-                <header className="stop-panel__head">
-                  <h4>{site?.ancientName.en ?? stop.siteId}</h4>
-                  <ConfidenceBadge confidence={stop.confidence} />
-                </header>
-                {site?.modernLocation && <p className="stop-panel__modern">{site.modernLocation.en}</p>}
-                <p className="stop-panel__date">
-                  {stop.dateRange.display.en} · {stop.legMode}
-                </p>
-                {isActive ? (
-                  <>
-                    <SitePhoto siteId={stop.siteId} />
-                    {site && (
-                      <SiteViews
-                        lat={site.coordinates.value.lat}
-                        lon={site.coordinates.value.lon}
-                        name={site.ancientName.en}
-                      />
-                    )}
-                    <p className="stop-panel__summary">{stop.eventSummary.en}</p>
-                    {stop.disputes && <DisputeNote text={stop.disputes.en} />}
-                    {stop.scriptureRefs.length > 0 && (
-                      <div className="stop-panel__scripture">
-                        {stop.scriptureRefs.map((r) => (
-                          <ScripturePassage key={r} raw={r} />
-                        ))}
-                      </div>
-                    )}
-                    <Citations ids={stop.citations} bundle={bundle} />
-                    <SiteExtras siteId={stop.siteId} bundle={bundle} />
-                  </>
-                ) : (
-                  <details className="stop-timeline__details">
-                    <summary>View details</summary>
-                    <SitePhoto siteId={stop.siteId} />
-                    <p className="stop-panel__summary">{stop.eventSummary.en}</p>
-                    {stop.disputes && <DisputeNote text={stop.disputes.en} />}
-                    {stop.scriptureRefs.length > 0 && (
-                      <div className="stop-panel__scripture">
-                        {stop.scriptureRefs.map((r) => (
-                          <ScripturePassage key={r} raw={r} />
-                        ))}
-                      </div>
-                    )}
-                    <Citations ids={stop.citations} bundle={bundle} />
-                  </details>
-                )}
-              </div>
-            </article>
-          );
-        })}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
-import { Citations, ScripturePassage } from '../../content/citations';
+import { Citations, ReferenceStack, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
@@ -134,9 +134,12 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
           {step.scriptureRefs?.map((r) => (
             <ScripturePassage key={r} raw={r} />
           ))}
+          <ReferenceStack>
+            <Citations ids={consolidatedCitationIds} bundle={bundle} />
+          </ReferenceStack>
         </div>
 
-        <Citations ids={consolidatedCitationIds} bundle={bundle} />
+        {currentSiteId && <SiteExtras siteId={currentSiteId} bundle={bundle} />}
       </ModePanel>
       <div className="lesson-progress-fixed">
         <div className="lesson-progress">
@@ -182,7 +185,6 @@ function LessonStepViews({ bundle, step }: { bundle: BundleIndex; step: { siteId
           name={site.ancientName.en}
         />
       )}
-      <SiteExtras siteId={siteId} bundle={bundle} />
     </>
   );
 }

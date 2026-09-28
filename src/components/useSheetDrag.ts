@@ -1,25 +1,35 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSheetStore, type SheetSnap } from '../state/useSheetStore';
 
 /**
  * Draggable bottom-sheet behavior for the mobile mode panel.
  *
- * Below the desktop breakpoint the mode panel is a bottom sheet anchored to the
- * bottom of the map area (`.app-main`), so the map + animation stay visible
- * above it. Three snap points let the reader trade map for text:
+ * Below the desktop breakpoint *in portrait* the mode panel is a bottom sheet
+ * anchored to the bottom of the map area (`.app-main`), so the map + animation
+ * stay visible above it. Three snap points let the reader trade map for text:
  *   peek — just the grab handle + title strip
  *   half — a comfortable reading height with the map still prominent
  *   full — description takes most of the screen
  *
  * The live pixel height is published as `--sheet-h` on `.app-main` so siblings
  * (the trace/lesson playback pill) can ride just above the sheet's top edge.
- * Above `lg` the hook is inert — the panel is the fixed desktop sidebar and no
- * inline height/var is written.
+ * Above `lg`, and on landscape phones, the hook is inert — the panel is a fixed
+ * sidebar / side rail and no inline height/var is written.
+ *
+ * Modes can also drive the sheet through `useSheetStore.requestSnap` (trace does
+ * this to swap between its travelling and arrived layouts); the resting snap is
+ * mirrored back into the same store.
  */
-export type SheetSnap = 'peek' | 'half' | 'full';
+export type { SheetSnap };
 
 const SNAP_FRACTION: Record<SheetSnap, number> = { peek: 0.14, half: 0.5, full: 0.92 };
 const SNAP_ORDER: SheetSnap[] = ['peek', 'half', 'full'];
 const LG = 1024; // desktop sidebar breakpoint — sheet is mobile-only
+/* A landscape phone is ~360px tall: a bottom sheet spends its whole budget on
+   chrome there, and half the screen buys three lines of text. Landscape has
+   width to spare instead, so the panel docks as a full-height left rail
+   (see `.mode-panel` in global.css) and this hook stays out of the way. */
+const SHEET_MQ = `(max-width: ${LG - 1}px) and (orientation: portrait)`;
 
 interface SheetDrag {
   /** Attach to the scroll container so it only scrolls when the sheet is tall. */
@@ -71,6 +81,7 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
       const area = areaOf();
       if (!area) return;
       setSnap(next);
+      useSheetStore.getState().setSnap(next);
       area.dataset.sheetSnap = next;
       applyHeight(area.clientHeight * SNAP_FRACTION[next]);
     },
@@ -79,7 +90,7 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
 
   // Track the breakpoint; write/clear the sheet height as we cross it.
   useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${LG - 1}px)`);
+    const mq = window.matchMedia(SHEET_MQ);
     const sync = () => {
       const active = mq.matches;
       setIsSheet(active);
@@ -94,11 +105,49 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
       window.removeEventListener('resize', sync);
     };
     // settle/applyHeight are stable enough; re-running on mount is sufficient.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const nearestSnap = useCallback((heightPx: number, areaH: number): SheetSnap => {
+  // Obey snap requests from the active mode (trace's travelling/arrived swap).
+  // Keyed on `seq`, not the snap value, so a repeat request still moves a sheet
+  // the reader has since dragged elsewhere.
+  const request = useSheetStore((s) => s.request);
+  const requestRef = useRef(request);
+  requestRef.current = request;
+  const requestSeq = request?.seq ?? 0;
+  useEffect(() => {
+    const req = requestRef.current;
+    if (!isSheet || !req) return;
+    settle(req.snap);
+  }, [requestSeq, isSheet, settle]);
+
+  const nearestSnap = useCallback((heightPx: number, areaH: number, startSnap: SheetSnap, vy: number): SheetSnap => {
     const frac = heightPx / areaH;
+
+    // Velocity flick gestures: vy > 0.20 px/ms is upward swipe, vy < -0.20 px/ms is downward swipe
+    if (vy > 0.20) {
+      if (startSnap === 'peek') return frac > 0.35 ? 'full' : 'half';
+      return 'full';
+    }
+    if (vy < -0.20) {
+      if (startSnap === 'full') return frac < 0.30 ? 'peek' : 'half';
+      return 'peek';
+    }
+
+    // Directional threshold hysteresis when dragging slowly
+    if (startSnap === 'peek') {
+      if (frac > 0.22) return frac > 0.70 ? 'full' : 'half';
+      return 'peek';
+    }
+    if (startSnap === 'half') {
+      if (frac > 0.62) return 'full';
+      if (frac < 0.36) return 'peek';
+      return 'half';
+    }
+    if (startSnap === 'full') {
+      if (frac < 0.75) return frac < 0.30 ? 'peek' : 'half';
+      return 'full';
+    }
+
     let best: SheetSnap = 'peek';
     let bestDist = Infinity;
     for (const s of SNAP_ORDER) {
@@ -114,27 +163,45 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (!isSheet) return;
+      const target = e.target as HTMLElement;
+      if (target.closest('button, a, input, select, textarea')) return;
+
       const area = areaOf();
       const panel = panelRef.current;
       if (!area || !panel) return;
       e.preventDefault();
-      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+      target.setPointerCapture?.(e.pointerId);
       panel.classList.add('is-dragging'); // suppress the settle transition mid-drag
 
       const areaRect = area.getBoundingClientRect();
       const startY = e.clientY;
+      const startTime = performance.now();
       const startH = panel.getBoundingClientRect().height;
+      const startSnap = snapRef.current;
       let moved = false;
       let liveH = startH;
+
+      let lastY = startY;
+      let lastTime = startTime;
+      let vy = 0; // px/ms, positive = dragging UP
 
       const min = area.clientHeight * SNAP_FRACTION.peek;
       const max = area.clientHeight * SNAP_FRACTION.full;
 
       const onMove = (ev: PointerEvent) => {
-        const dy = startY - ev.clientY; // up = grow
+        const now = performance.now();
+        const dy = startY - ev.clientY; // up = grow (positive)
         if (Math.abs(dy) > 4) moved = true;
+
+        const dt = now - lastTime;
+        if (dt > 0) {
+          const instantV = (lastY - ev.clientY) / dt;
+          vy = vy * 0.4 + instantV * 0.6;
+        }
+        lastY = ev.clientY;
+        lastTime = now;
+
         liveH = Math.min(max, Math.max(min, startH + dy));
-        // Never let the sheet grow past the map area itself.
         liveH = Math.min(liveH, areaRect.height);
         applyHeight(liveH);
       };
@@ -143,11 +210,12 @@ export function useSheetDrag(panelRef: React.RefObject<HTMLElement>): SheetDrag 
         window.removeEventListener('pointerup', onUp);
         panel.classList.remove('is-dragging');
         if (!moved) {
-          // Tap the handle → cycle to the next snap.
-          const i = SNAP_ORDER.indexOf(snapRef.current);
-          settle(SNAP_ORDER[(i + 1) % SNAP_ORDER.length]);
+          // Tap the header -> cycle peek -> half -> full -> half
+          if (startSnap === 'peek') settle('half');
+          else if (startSnap === 'half') settle('full');
+          else settle('half');
         } else {
-          settle(nearestSnap(liveH, area.clientHeight));
+          settle(nearestSnap(liveH, area.clientHeight, startSnap, vy));
         }
       };
       window.addEventListener('pointermove', onMove);

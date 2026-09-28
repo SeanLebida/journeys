@@ -20,7 +20,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-john-2-1-11"
   ],
   "performerIds": [
    "person-jesus"
@@ -47,7 +48,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-john-4-46-54"
   ],
   "performerIds": [
    "person-jesus"
@@ -78,7 +80,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-1-21-28",
+   "cit-scripture-luke-4-31-37"
   ],
   "performerIds": [
    "person-jesus"
@@ -107,7 +111,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-1-29-31",
+   "cit-scripture-matthew-8-14-15",
+   "cit-scripture-luke-4-38-39"
   ],
   "performerIds": [
    "person-jesus"
@@ -134,7 +141,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-5-1-11"
   ],
   "performerIds": [
    "person-jesus"
@@ -163,7 +171,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-1-40-45",
+   "cit-scripture-matthew-8-1-4",
+   "cit-scripture-luke-5-12-16"
   ],
   "performerIds": [
    "person-jesus"
@@ -194,7 +205,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-8-5-13",
+   "cit-scripture-luke-7-1-10"
   ],
   "performerIds": [
    "person-jesus"
@@ -223,7 +236,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-2-1-12",
+   "cit-scripture-matthew-9-1-8",
+   "cit-scripture-luke-5-17-26"
   ],
   "performerIds": [
    "person-jesus"
@@ -252,7 +268,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-3-1-6",
+   "cit-scripture-matthew-12-9-14",
+   "cit-scripture-luke-6-6-11"
   ],
   "performerIds": [
    "person-jesus"
@@ -282,7 +301,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-7-11-17"
   ],
   "performerIds": [
    "person-jesus"
@@ -311,7 +331,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-4-35-41",
+   "cit-scripture-matthew-8-23-27",
+   "cit-scripture-luke-8-22-25"
   ],
   "performerIds": [
    "person-jesus"
@@ -342,7 +365,10 @@
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
    "cit-wikipedia-gerasene-demoniac",
-   "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee"
+   "cit-en-wikipedia-org-wiki-kursi-sea-of-galilee",
+   "cit-scripture-mark-5-1-20",
+   "cit-scripture-matthew-8-28-34",
+   "cit-scripture-luke-8-26-39"
   ],
   "performerIds": [
    "person-jesus"
@@ -374,7 +400,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-5-21-43",
+   "cit-scripture-matthew-9-18-26",
+   "cit-scripture-luke-8-40-56"
   ],
   "performerIds": [
    "person-jesus"
@@ -403,7 +432,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-5-25-34",
+   "cit-scripture-matthew-9-20-22",
+   "cit-scripture-luke-8-43-48"
   ],
   "performerIds": [
    "person-jesus"
@@ -430,7 +462,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-9-27-31"
   ],
   "performerIds": [
    "person-jesus"
@@ -457,7 +490,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-9-32-34"
   ],
   "performerIds": [
    "person-jesus"
@@ -485,7 +519,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-12-22-28",
+   "cit-scripture-luke-11-14"
   ],
   "performerIds": [
    "person-jesus"
@@ -516,7 +552,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-6-53-56",
+   "cit-scripture-matthew-14-34-36"
   ],
   "performerIds": [
    "person-jesus"
@@ -550,7 +588,11 @@
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
-   "cit-tabgha-primacy"
+   "cit-tabgha-primacy",
+   "cit-scripture-mark-6-30-44",
+   "cit-scripture-matthew-14-13-21",
+   "cit-scripture-luke-9-10-17",
+   "cit-scripture-john-6-1-14"
   ],
   "performerIds": [
    "person-jesus"
@@ -582,7 +624,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-6-45-52",
+   "cit-scripture-matthew-14-22-33",
+   "cit-scripture-john-6-16-21"
   ],
   "performerIds": [
    "person-jesus"
@@ -610,7 +655,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-7-24-30",
+   "cit-scripture-matthew-15-21-28"
   ],
   "performerIds": [
    "person-jesus"
@@ -637,7 +684,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-7-31-37"
   ],
   "performerIds": [
    "person-jesus"
@@ -665,7 +713,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-8-1-10",
+   "cit-scripture-matthew-15-32-39"
   ],
   "performerIds": [
    "person-jesus"
@@ -692,7 +742,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-8-22-26"
   ],
   "performerIds": [
    "person-jesus"
@@ -721,7 +772,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-9-14-29",
+   "cit-scripture-matthew-17-14-21",
+   "cit-scripture-luke-9-37-43"
   ],
   "performerIds": [
    "person-jesus"
@@ -751,7 +805,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-17-24-27"
   ],
   "performerIds": [
    "person-jesus"
@@ -779,7 +834,8 @@
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
-   "cit-arch-bethesda"
+   "cit-arch-bethesda",
+   "cit-scripture-john-5-1-15"
   ],
   "performerIds": [
    "person-jesus"
@@ -807,7 +863,8 @@
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
-   "cit-pool-of-siloam"
+   "cit-pool-of-siloam",
+   "cit-scripture-john-9-1-12"
   ],
   "performerIds": [
    "person-jesus"
@@ -834,7 +891,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-13-10-17"
   ],
   "performerIds": [
    "person-jesus"
@@ -867,7 +925,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-14-1-6"
   ],
   "performerIds": [
    "person-jesus"
@@ -900,7 +959,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-17-11-19"
   ],
   "performerIds": [
    "person-jesus"
@@ -931,7 +991,8 @@
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
-   "cit-en-wikipedia-org-wiki-tomb-of-lazarus"
+   "cit-en-wikipedia-org-wiki-tomb-of-lazarus",
+   "cit-scripture-john-11-1-44"
   ],
   "performerIds": [
    "person-jesus"
@@ -960,7 +1021,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-10-46-52",
+   "cit-scripture-matthew-20-29-34",
+   "cit-scripture-luke-18-35-43"
   ],
   "performerIds": [
    "person-jesus"
@@ -989,7 +1053,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-11-12-14",
+   "cit-scripture-mark-11-20-25",
+   "cit-scripture-matthew-21-18-22"
   ],
   "performerIds": [
    "person-jesus"
@@ -1017,7 +1084,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-luke-22-50-51",
+   "cit-scripture-john-18-10-11"
   ],
   "performerIds": [
    "person-jesus"
@@ -1045,7 +1114,8 @@
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
    "cit-blb-miracles-of-jesus",
-   "cit-tabgha-primacy"
+   "cit-tabgha-primacy",
+   "cit-scripture-john-21-1-14"
   ],
   "performerIds": [
    "person-jesus"
@@ -1076,7 +1146,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-mark-6-1-6",
+   "cit-scripture-matthew-13-53-58"
   ],
   "performerIds": [
    "person-jesus"
@@ -1105,7 +1177,10 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-mark-6-7-13",
+   "cit-scripture-luke-9-1-6",
+   "cit-scripture-matthew-10-1"
   ],
   "locationNote": {
    "en": "Itinerant through the villages of Galilee; anchored to Capernaum, the mission's home base."
@@ -1132,7 +1207,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-miracles-of-jesus",
-   "cit-blb-miracles-of-jesus"
+   "cit-blb-miracles-of-jesus",
+   "cit-scripture-matthew-14-28-31"
   ],
   "performerIds": [
    "person-peter"
@@ -1163,7 +1239,9 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-luke-10-1-9",
+   "cit-scripture-luke-10-17-20"
   ],
   "locationNote": {
    "en": "Itinerant through the towns of the travel narrative toward Jerusalem; the region, not a single site, is the anchor."
@@ -1190,7 +1268,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-2-43"
   ]
  },
  {
@@ -1214,7 +1293,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-3-1-10"
   ],
   "performerIds": [
    "person-peter"
@@ -1241,7 +1321,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-5-1-11"
   ],
   "performerIds": [
    "person-peter"
@@ -1268,7 +1349,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-5-12-16"
   ],
   "performerIds": [
    "person-peter"
@@ -1295,7 +1377,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-5-17-25"
   ]
  },
  {
@@ -1320,7 +1403,8 @@
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
    "cit-wikipedia-saint-stephen",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-6-8"
   ],
   "performerIds": [
    "person-stephen"
@@ -1349,7 +1433,9 @@
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
    "cit-wikipedia-philip-the-evangelist",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-8-4-8",
+   "cit-scripture-acts-8-13"
   ],
   "performerIds": [
    "person-philip-evangelist"
@@ -1377,7 +1463,8 @@
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
    "cit-wikipedia-ananias-of-damascus",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-9-10-19"
   ],
   "performerIds": [
    "person-ananias-of-damascus"
@@ -1404,7 +1491,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-9-32-35"
   ],
   "performerIds": [
    "person-peter"
@@ -1431,7 +1519,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-9-36-43"
   ],
   "performerIds": [
    "person-peter"
@@ -1458,7 +1547,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-12-5-11"
   ],
   "performerIds": [
    "person-peter"
@@ -1485,7 +1575,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-13-6-12"
   ],
   "performerIds": [
    "person-paul"
@@ -1512,7 +1603,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-14-3"
   ],
   "performerIds": [
    "person-paul",
@@ -1540,7 +1632,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-dth-the-miracle-at-lystra"
+   "cit-dth-the-miracle-at-lystra",
+   "cit-scripture-acts-14-8-10"
   ],
   "performerIds": [
    "person-paul"
@@ -1567,7 +1660,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-16-16-18"
   ],
   "performerIds": [
    "person-paul"
@@ -1594,7 +1688,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-16-25-34"
   ],
   "performerIds": [
    "person-paul",
@@ -1622,7 +1717,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-19-11-12"
   ],
   "performerIds": [
    "person-paul"
@@ -1649,7 +1745,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-20-7-12"
   ],
   "performerIds": [
    "person-paul"
@@ -1676,7 +1773,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-28-3-6"
   ],
   "performerIds": [
    "person-paul"
@@ -1703,7 +1801,8 @@
   "reviewStatus": "self-reviewed",
   "citations": [
    "cit-wikipedia-acts-of-the-apostles",
-   "cit-ref-keener-bbcnt"
+   "cit-ref-keener-bbcnt",
+   "cit-scripture-acts-28-7-9"
   ],
   "performerIds": [
    "person-paul"

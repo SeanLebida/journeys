@@ -6,7 +6,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 // wrapper and breaks offline. Use `cap run ios|android -l --external` for dev
 // live-reload instead of hardcoding `server` here.
 const config: CapacitorConfig = {
-  appId: 'org.journeys.atlas',
+  appId: 'how.authentic.journeys',
   appName: 'Journeys',
   webDir: 'dist',
   backgroundColor: '#0b1020',

@@ -1,0 +1,181 @@
+name: Android Release AAB (Signed & Play Store)
+
+# Automated, signed Play Store release bundle (.aab).
+# Supports automatic deployment directly to Google Play testing tracks (internal, alpha, etc.)
+#
+# Required repository secrets (Settings > Secrets and variables > Actions):
+#   RELEASE_KEYSTORE_BASE64   - upload keystore, base64-encoded (`base64 -w0 ~/.android/journeys-upload.keystore`)
+#   RELEASE_STORE_PASSWORD    - keystore password
+#   RELEASE_KEY_ALIAS         - key alias (default: journeys-upload)
+#   RELEASE_KEY_PASSWORD      - key password
+#   PLAY_SERVICE_ACCOUNT_JSON - (Optional for automated publishing) GCP Service Account JSON key
+#                               with permissions to edit/manage Google Play releases.
+#
+# If PLAY_SERVICE_ACCOUNT_JSON is not provided, the workflow still builds the signed AAB,
+# uploads the artifact, and drafts a GitHub release for 1-click manual upload to Play Console.
+#
+# Run this from production. That is the line that ships. development and main
+# carry the same workflow file once those branches are synced.
+
+on:
+  workflow_dispatch:
+    inputs:
+      track:
+        description: 'Google Play track to publish to'
+        required: true
+        default: 'internal'
+        type: choice
+        options:
+          - internal
+          - alpha
+          - beta
+          - production
+      status:
+        description: 'Release rollout status'
+        required: true
+        default: 'completed'
+        type: choice
+        options:
+          - completed
+          - draft
+          - inProgress
+      version_code:
+        description: 'Override versionCode (leave empty to use git commit count)'
+        required: false
+        type: string
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy Release AAB
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    env:
+      RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+      PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      - name: Setup Java (Temurin 21)
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          # "tools" package was removed from sdkmanager; installing it fails CI.
+          packages: platform-tools
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web bundle & content
+        run: npm run build
+
+      - name: Sync Capacitor Android
+        run: npm run cap:sync
+
+      - name: Decode signing keystore
+        id: keystore
+        if: ${{ env.RELEASE_KEYSTORE_BASE64 != '' }}
+        run: |
+          echo "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+          echo "store_file=$RUNNER_TEMP/release.keystore" >> "$GITHUB_OUTPUT"
+
+      - name: Generate Play Store release notes
+        run: npm run android:release:notes
+
+      - name: Prepare Android version
+        env:
+          ANDROID_VERSION_CODE: ${{ github.event.inputs.version_code }}
+        run: npm run android:version:bump
+
+      - name: Build Release AAB
+        working-directory: android
+        env:
+          RELEASE_STORE_FILE: ${{ steps.keystore.outputs.store_file }}
+          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS || 'journeys-upload' }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew bundleRelease --stacktrace
+
+      - name: Extract version metadata
+        id: version
+        run: |
+          VERSION_CODE=$(grep -m1 'versionCode' android/app/build.gradle | sed -E 's/[^0-9]*([0-9]+).*/\1/')
+          VERSION_NAME=$(grep -m1 'versionName' android/app/build.gradle | sed -E 's/.*"([^"]+)".*/\1/')
+          echo "version_code=$VERSION_CODE" >> "$GITHUB_OUTPUT"
+          echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+
+      - name: Upload mapping file (R8)
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: mapping-txt
+          path: android/app/build/outputs/mapping/release/mapping.txt
+          if-no-files-found: ignore
+
+      - name: Publish to Google Play
+        id: play_publish
+        if: ${{ env.PLAY_SERVICE_ACCOUNT_JSON != '' }}
+        uses: r0adkll/upload-google-play@v1.1.5
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: how.authentic.journeys
+          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          tracks: ${{ github.event.inputs.track || 'internal' }}
+          status: ${{ github.event.inputs.status || 'completed' }}
+          mappingFile: android/app/build/outputs/mapping/release/mapping.txt
+          whatsNewDirectory: android/release-notes
+
+      - name: Create release draft
+        uses: softprops/action-gh-release@v3
+        with:
+          draft: true
+          tag_name: android-v${{ steps.version.outputs.version_name }}-${{ steps.version.outputs.version_code }}
+          name: Android ${{ steps.version.outputs.version_name }} (code ${{ steps.version.outputs.version_code }})
+          body: |
+            Automated signed release build.
+            - **Version Code:** ${{ steps.version.outputs.version_code }}
+            - **Version Name:** ${{ steps.version.outputs.version_name }}
+            - **Package Name:** `how.authentic.journeys`
+            - **Track:** ${{ github.event.inputs.track || 'internal' }}
+          files: |
+            android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/mapping/release/mapping.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deployment Summary
+        run: |
+          echo "### 🚀 Android Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version Name:** \`${{ steps.version.outputs.version_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version Code:** \`${{ steps.version.outputs.version_code }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package Name:** \`how.authentic.journeys\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target Track:** \`${{ github.event.inputs.track || 'internal' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release Status:** \`${{ github.event.inputs.status || 'completed' }}\`" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$PLAY_SERVICE_ACCOUNT_JSON" ]; then
+            echo "- **Google Play Upload:** ✅ Published directly to Google Play (${{ github.event.inputs.track || 'internal' }} track)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Google Play Upload:** ⚠️ Skipped direct upload (\`PLAY_SERVICE_ACCOUNT_JSON\` secret not configured). Download the attached AAB artifact to upload manually." >> $GITHUB_STEP_SUMMARY
+          fi

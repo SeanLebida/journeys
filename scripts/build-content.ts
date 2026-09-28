@@ -39,6 +39,11 @@ import {
   type TStop,
 } from '../src/content/schema';
 import { parseScriptureRef } from '../src/content/scriptureRef';
+import {
+  GENERIC_BACKSTOP_IDS,
+  isTertiaryCitation,
+  onlyGenericBackstops,
+} from '../src/content/accuracy';
 import { WORLD_BBOX } from '../src/map/graticule';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
@@ -205,17 +210,16 @@ async function main(): Promise<void> {
   vLessons.forEach((l) => checkCites(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => checkCites(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
-  // 4b. Constitutional sourcing invariant: no claim rests on Wikipedia alone.
-  // Wikipedia is a useful orienting link but a TERTIARY source; every cited
-  // claim must also carry >=1 concrete source — a primary text, a standard
-  // scholarly work, an excavation report, or a gazetteer. An uncited claim is
-  // not leaning on Wikipedia, so only non-empty citation lists are checked.
+  // 4b. Constitutional sourcing: no claim rests on tertiary sources alone
+  // (Wikipedia, popular encyclopedias, study-Bible maps, blogs). Every cited
+  // claim needs ≥1 concrete source — primary text, scholarship, excavation,
+  // or gazetteer. Uncited claims are not leaning on tertiary, so only
+  // non-empty lists are checked here.
   const citById = new Map(vCitations.map((c) => [c.id, c]));
-  const isTertiary = (id: string) => (citById.get(id)?.url ?? '').includes('wikipedia.org');
   const requireConcrete = (ids: string[] | undefined, where: string) => {
     const present = (ids ?? []).filter((id) => citIds.has(id));
-    if (present.length > 0 && !present.some((id) => !isTertiary(id)))
-      err(`${where}: cited only to Wikipedia — needs >=1 concrete (primary/scholarly/archaeological/gazetteer) source`);
+    if (present.length > 0 && !present.some((id) => !isTertiaryCitation(citById.get(id))))
+      err(`${where}: cited only to tertiary/popular sources — needs ≥1 concrete (primary/scholarly/archaeological/gazetteer) source`);
   };
   vSites.forEach((s) => {
     requireConcrete(s.citations, `site ${s.id}`);
@@ -234,9 +238,42 @@ async function main(): Promise<void> {
   vLessons.forEach((l) => requireConcrete(l.citations, `lesson ${l.id}`));
   vQuizzes.forEach((q) => q.questions.forEach((qq) => requireConcrete(qq.citations, `quiz ${q.id}.${qq.id}`)));
 
-  // 5. Neutrality invariants on stops + artifacts (zod covers Claim wrappers).
+  // 4c. High coordinates may not rest solely on whole-atlas backstops unless
+  // the site carries a place-specific gazetteer id (Pleiades/DARE).
+  vSites.forEach((s) => {
+    if (s.coordinates.confidence !== 'high') return;
+    if (s.pleiadesId || s.dareId) return;
+    if (onlyGenericBackstops(s.coordinates.citations, citById))
+      err(
+        `site ${s.id}.coordinates: high confidence rests only on generic gazetteer/scholarly backstops ` +
+          `(${[...GENERIC_BACKSTOP_IDS].filter((id) => s.coordinates.citations.includes(id)).join(', ') || 'generic'}) ` +
+          `— add a place-specific cite or pleiadesId/dareId, or downgrade confidence`,
+      );
+  });
+
+  // 4d. Medium/disputed coordinates must show ambiguity: ≥2 candidates OR a disputes note.
+  vSites.forEach((s) => {
+    const conf = s.coordinates.confidence;
+    if (conf !== 'medium' && conf !== 'disputed') return;
+    const nCand = s.candidates?.length ?? 0;
+    if (nCand < 2 && !s.coordinates.disputes)
+      err(`site ${s.id}.coordinates: ${conf} needs candidates (≥2) or a disputes note`);
+  });
+
+  // 4e. Narrative entities with scriptureRefs should cite primary-scripture.
+  const requirePrimaryScripture = (refs: string[] | undefined, cites: string[] | undefined, where: string) => {
+    if (!refs?.length) return;
+    const has = (cites ?? []).some((id) => citById.get(id)?.kind === 'primary-scripture');
+    if (!has) err(`${where}: has scriptureRefs but no primary-scripture citation`);
+  };
+  vStops.forEach((s) => requirePrimaryScripture(s.scriptureRefs, s.citations, `stop ${s.id}`));
+  vPersons.forEach((p) => requirePrimaryScripture(p.scriptureRefs, p.citations, `person ${p.id}`));
+  vMiracles.forEach((mi) => requirePrimaryScripture(mi.scriptureRefs, mi.citations, `miracle ${mi.id}`));
+  vBattles.forEach((b) => requirePrimaryScripture(b.scriptureRefs, b.citations, `battle ${b.id}`));
+
+  // 5. Neutrality invariants — every claim needs ≥1 citation; disputed needs a note.
   const neutralityCheck = (e: { confidence: string; reviewStatus: string; citations: string[]; disputes?: unknown; id: string }, kind: string) => {
-    if (e.confidence !== 'high' && e.citations.length < 1) err(`${kind} ${e.id}: non-'high' confidence needs >=1 citation`);
+    if (e.citations.length < 1) err(`${kind} ${e.id}: every claim needs ≥1 citation`);
     if (e.confidence === 'disputed' && !e.disputes) err(`${kind} ${e.id}: 'disputed' needs a disputes note`);
   };
   vStops.forEach((s) => neutralityCheck(s, 'stop'));
@@ -259,6 +296,20 @@ async function main(): Promise<void> {
       else if (vStops.find((x) => x.id === sid)?.journeyId !== j.id) err(`journey ${j.id}: stop '${sid}' has mismatched journeyId`);
     });
   });
+  // Person place/date anchors must resolve, or the timeline and the figure
+  // index would silently drop a figure (or draw them at nowhere).
+  vPersons.forEach((p) => {
+    if (p.homeSiteId && !siteIds.has(p.homeSiteId)) err(`person ${p.id}: unknown homeSiteId '${p.homeSiteId}'`);
+    p.siteIds?.forEach((s) => !siteIds.has(s) && err(`person ${p.id}: unknown site '${s}'`));
+    p.journeyIds?.forEach((j) => !journeyIds.has(j) && err(`person ${p.id}: unknown journey '${j}'`));
+    p.contemporaries?.forEach((c) => !personIds.has(c) && err(`person ${p.id}: unknown contemporary '${c}'`));
+    p.books?.forEach((b) => {
+      // Books are display names of canonical books — a typo here would break
+      // the Bible reader's "figures in this book" cross-reference.
+      if (!parseScriptureRef(`${b} 1`)) err(`person ${p.id}: '${b}' is not a canonical book name`);
+    });
+  });
+
   vLessons.forEach((l) => {
     l.steps.forEach((st, i) => {
       if (st.siteId && !siteIds.has(st.siteId)) err(`lesson ${l.id}.steps[${i}]: unknown siteId '${st.siteId}'`);
@@ -315,6 +366,11 @@ async function main(): Promise<void> {
     const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a[1])) * Math.cos(toRad(b[1])) * Math.sin(dLon / 2) ** 2;
     return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
   };
+  const lineLengthKm = (pts: [number, number][]) => {
+    let t = 0;
+    for (let i = 1; i < pts.length; i++) t += distKm(pts[i - 1], pts[i]);
+    return t;
+  };
   const siteById = new Map(vSites.map((x) => [x.id, x]));
   const stopById = new Map(vStops.map((x) => [x.id, x]));
   vRoutes.forEach((r) => {
@@ -322,18 +378,49 @@ async function main(): Promise<void> {
     if (!j) return err(`route ${r.id}: unknown journeyId '${r.journeyId}'`);
     if (r.legs.length !== j.stops.length - 1)
       return err(`route ${r.id}: ${r.legs.length} legs for ${j.stops.length} stops (need ${j.stops.length - 1})`);
+    if (r.legGrades && r.legGrades.length !== r.legs.length)
+      err(`route ${r.id}: legGrades length ${r.legGrades.length} != legs length ${r.legs.length}`);
     r.legs.forEach((leg, k) => {
       const sa = siteById.get(stopById.get(j.stops[k])?.siteId ?? '');
       const sb = siteById.get(stopById.get(j.stops[k + 1])?.siteId ?? '');
       if (!sa || !sb) return;
       const a: [number, number] = [sa.coordinates.value.lon, sa.coordinates.value.lat];
       const b: [number, number] = [sb.coordinates.value.lon, sb.coordinates.value.lat];
-      // Generators emit EXACT stop coordinates as leg endpoints; 5 km guards
-      // against hand-edit drift without blocking legitimate coordinate updates.
-      if (distKm(leg[0] as [number, number], a) > 5) err(`route ${r.id}.legs[${k}]: start is ${Math.round(distKm(leg[0] as [number, number], a))} km from stop ${j.stops[k]}`);
-      if (distKm(leg[leg.length - 1] as [number, number], b) > 5) err(`route ${r.id}.legs[${k}]: end is ${Math.round(distKm(leg[leg.length - 1] as [number, number], b))} km from stop ${j.stops[k + 1]}`);
+      // Generators emit EXACT stop coordinates as leg endpoints. The tolerance
+      // must scale with the leg: a flat 5 km is meaningless for a 0.9 km walk
+      // across Jerusalem, and once let eight Passion-week legs through that
+      // were verbatim copies of the Bethany->Jerusalem segment — every one of
+      // them "within 5 km" of stops that are themselves ~1 km apart.
+      const spanKm = distKm(a, b);
+      const tol = Math.max(0.05, Math.min(5, 0.25 * spanKm));
+      const startOff = distKm(leg[0] as [number, number], a);
+      const endOff = distKm(leg[leg.length - 1] as [number, number], b);
+      if (startOff > tol)
+        err(`route ${r.id}.legs[${k}]: start is ${startOff.toFixed(2)} km from stop ${j.stops[k]} (tolerance ${tol.toFixed(2)} km on a ${spanKm.toFixed(2)} km leg)`);
+      if (endOff > tol)
+        err(`route ${r.id}.legs[${k}]: end is ${endOff.toFixed(2)} km from stop ${j.stops[k + 1]} (tolerance ${tol.toFixed(2)} km on a ${spanKm.toFixed(2)} km leg)`);
+      // A leg that carries no length while its stops are genuinely apart makes
+      // the stop unreachable on the animated timeline — it collapses to the
+      // same progress fraction as its neighbour and gets skipped.
+      if (spanKm > 0.05 && lineLengthKm(leg as [number, number][]) < 0.5 * spanKm)
+        err(`route ${r.id}.legs[${k}]: geometry is ${lineLengthKm(leg as [number, number][]).toFixed(2)} km for a ${spanKm.toFixed(2)} km leg — degenerate, stop would be skipped in playback`);
     });
   });
+
+  // 6c. Soft gazetteer drift warning: when a site has pleiadesId we cannot
+  // fetch live coords offline, but we record coverage for the report.
+  // 6d. Timeline coverage: a figure with no dated span cannot be placed on the
+  // linear timeline. That is allowed (better than inventing a date) but it is
+  // worth reporting so the gap is a decision, not an oversight.
+  const undatedPersons = vPersons.filter((p) => !p.ministryRange && !p.lifeRange);
+  if (undatedPersons.length)
+    warn(
+      `timeline coverage: ${undatedPersons.length}/${vPersons.length} person(s) carry no lifeRange/ministryRange ` +
+        `and will be listed off-axis (${undatedPersons.slice(0, 6).map((p) => p.id).join(', ')}${undatedPersons.length > 6 ? ', …' : ''})`,
+    );
+
+  const withPleiades = vSites.filter((s) => s.pleiadesId).length;
+  if (withPleiades < 40) warn(`gazetteer coverage: only ${withPleiades}/ ${vSites.length} sites have pleiadesId (target ≥40 well-attested)`);
 
   // 7. Geo sanity + date discipline.
   const [w, s, e, n] = WORLD_BBOX;
@@ -354,6 +441,10 @@ async function main(): Promise<void> {
   );
   vJourneys.forEach((j) => dateCheck(j.dateRange, `journey ${j.id}`));
   vStops.forEach((st) => dateCheck(st.dateRange, `stop ${st.id}`));
+  vPersons.forEach((p) => {
+    if (p.lifeRange) dateCheck(p.lifeRange, `person ${p.id}.lifeRange`);
+    if (p.ministryRange) dateCheck(p.ministryRange, `person ${p.id}.ministryRange`);
+  });
   vBattles.forEach((b) => {
     dateCheck(b.dateRange, `battle ${b.id}`);
     b.area?.forEach(([lon, lat]) => {

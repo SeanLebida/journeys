@@ -30,5 +30,7 @@ describe('HomeView', () => {
   it('exposes the "How we source" disclosure for the accuracy stance', () => {
     renderHome();
     expect(screen.getByText('How we source')).toBeInTheDocument();
+    expect(screen.getByText('Not specialist-signed')).toBeInTheDocument();
+    expect(screen.getByText(/not yet signed them off/i)).toBeInTheDocument();
   });
 });
