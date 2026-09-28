@@ -120,11 +120,12 @@ In your GitHub repository, navigate to **Settings > Secrets and variables > Acti
 ### Step 5.2: Trigger a Release
 
 1. Go to **Actions > Android Release AAB (Signed & Play Store)**.
-2. Click **Run workflow**:
+2. Click **Run workflow** and select the `development` branch. That branch has this workflow and the Android release scripts. `main` and `production` do not.
+3. Set:
    - **Google Play track**: `internal`
    - **Rollout status**: `completed`
-3. Click **Run workflow**.
-4. GitHub Actions builds the bundle, signs it, and either drafts a GitHub release with the attached `.aab` or automatically uploads it directly to Google Play Internal Testing.
+4. Click **Run workflow**.
+5. GitHub Actions builds the bundle, signs it, and either drafts a GitHub release with the attached `.aab` or automatically uploads it directly to Google Play Internal Testing.
 
 ---
 

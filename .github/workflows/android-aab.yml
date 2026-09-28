@@ -13,6 +13,9 @@ name: Android Release AAB (Signed & Play Store)
 #
 # If PLAY_SERVICE_ACCOUNT_JSON is not provided, the workflow still builds the signed AAB,
 # uploads the artifact, and drafts a GitHub release for 1-click manual upload to Play Console.
+#
+# Run this from development. That branch has the release scripts. main and
+# production do not, and this workflow file is not on those branches.
 
 on:
   workflow_dispatch:
@@ -44,7 +47,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build & Deploy Release AAB
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
@@ -52,24 +55,24 @@ jobs:
       PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 20.x
+          node-version: 22.x
           cache: 'npm'
 
       - name: Setup Java (Temurin 21)
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           distribution: 'temurin'
           java-version: '21'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           # "tools" package was removed from sdkmanager; installing it fails CI.
           packages: platform-tools
@@ -118,7 +121,7 @@ jobs:
           echo "version_name=$VERSION_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Upload AAB artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: app-release-aab
           path: android/app/build/outputs/bundle/release/app-release.aab
@@ -126,7 +129,7 @@ jobs:
 
       - name: Upload mapping file (R8)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mapping-txt
           path: android/app/build/outputs/mapping/release/mapping.txt
@@ -135,18 +138,18 @@ jobs:
       - name: Publish to Google Play
         id: play_publish
         if: ${{ env.PLAY_SERVICE_ACCOUNT_JSON != '' }}
-        uses: r0adkll/upload-google-play@v1
+        uses: r0adkll/upload-google-play@v1.1.5
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: how.authentic.journeys
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
-          track: ${{ github.event.inputs.track || 'internal' }}
+          tracks: ${{ github.event.inputs.track || 'internal' }}
           status: ${{ github.event.inputs.status || 'completed' }}
           mappingFile: android/app/build/outputs/mapping/release/mapping.txt
           whatsNewDirectory: android/release-notes
 
       - name: Create release draft
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           draft: true
           tag_name: android-v${{ steps.version.outputs.version_name }}-${{ steps.version.outputs.version_code }}
