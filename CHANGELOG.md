@@ -2,6 +2,14 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.14] - 2026-10-01
+
+• Tap a rival identification to find that location on the map.
+• Place sheets keep the site centered in the visible map area (sheet / rail / sidebar offset), not under the description.
+• Quiz “place a pin” peeks the sheet so the map is tappable.
+• External map links open on Android via the system browser.
+• PWA install metas and a web/Android/iOS platform checklist.
+
 ## [0.3.13] - 2026-09-22
 
 • Timeline lists the birth of Jesus (Bethlehem, Egypt, the return, the temple at age twelve) and the ministry through the Ascension, with patriarchs and Old Testament battles.
