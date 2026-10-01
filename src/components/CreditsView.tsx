@@ -3,10 +3,25 @@ import { useTranslation } from 'react-i18next';
 import { useBundle } from '../content/useBundle';
 import { SourcingDisclosure } from './SourcingDisclosure';
 
+function isWikiCredit(a: { name: string; url?: string }): boolean {
+  const blob = `${a.url ?? ''} ${a.name}`.toLowerCase();
+  return blob.includes('wikipedia') || blob.includes('wikimedia');
+}
+
+/** Scholarly / primary data credits above Wikipedia/Wikimedia in the list. */
+function sortAttributionsForDisplay<T extends { name: string; url?: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    const wa = isWikiCredit(a) ? 1 : 0;
+    const wb = isWikiCredit(b) ? 1 : 0;
+    if (wa !== wb) return wa - wb;
+    return 0; // keep relative order among non-wiki / among wiki
+  });
+}
+
 export function CreditsView() {
   const { t } = useTranslation();
   const { bundle } = useBundle();
-  const attributions = bundle?.attributions ?? [];
+  const attributions = sortAttributionsForDisplay(bundle?.attributions ?? []);
   return (
     <section className="mode-panel mode-panel--page" aria-labelledby="credits-title">
       <Link to="/" className="backlink">

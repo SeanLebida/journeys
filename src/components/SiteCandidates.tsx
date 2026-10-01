@@ -16,8 +16,19 @@ function formatCoords(lat: number, lon: number): string {
  * Rival identifications for an ambiguous site. The schema already stores
  * `candidates[]`; this is the panel that stops a single working pin from
  * reading as the only pin.
+ *
+ * Each rival exposes a "Find on map" control so tapping actually focuses that
+ * coordinate. Citations stay outside the button (no nested interactive).
  */
-export function SiteCandidates({ site, bundle }: { site: TSite; bundle: BundleIndex }) {
+export function SiteCandidates({
+  site,
+  bundle,
+  onFocusCandidate,
+}: {
+  site: TSite;
+  bundle: BundleIndex;
+  onFocusCandidate?: (lat: number, lon: number) => void;
+}) {
   const { t } = useTranslation();
   if (!site.candidates || site.candidates.length === 0) return null;
   return (
@@ -25,21 +36,36 @@ export function SiteCandidates({ site, bundle }: { site: TSite; bundle: BundleIn
       <h4 id={`cand-${site.id}`}>{t('sourcing.candidates.title')}</h4>
       <p className="site-candidates__intro">{t('sourcing.candidates.intro')}</p>
       <ul className="site-candidates__list">
-        {site.candidates.map((c, i) => (
-          <li key={`${c.lat},${c.lon},${i}`} className="site-candidates__item">
-            <span className={`site-candidates__pin confidence--${c.confidence}`} aria-hidden="true" />
-            <div>
-              <div className="site-candidates__head">
-                <strong>{c.label.en}</strong>
-                <ClaimMeta confidence={c.confidence} />
+        {site.candidates.map((c, i) => {
+          const label = c.label.en;
+          return (
+            <li key={`${c.lat},${c.lon},${i}`} className="site-candidates__item">
+              <div className="site-candidates__row">
+                <span className={`site-candidates__pin confidence--${c.confidence}`} aria-hidden="true" />
+                <div className="site-candidates__body">
+                  <div className="site-candidates__head">
+                    <strong>{label}</strong>
+                    <ClaimMeta confidence={c.confidence} />
+                  </div>
+                  <p className="site-candidates__coords">{formatCoords(c.lat, c.lon)}</p>
+                  {onFocusCandidate && (
+                    <button
+                      type="button"
+                      className="site-candidates__focus"
+                      onClick={() => onFocusCandidate(c.lat, c.lon)}
+                      aria-label={t('sourcing.candidates.findAria', { name: label })}
+                    >
+                      {t('sourcing.candidates.find')}
+                    </button>
+                  )}
+                  <ReferenceStack>
+                    <Citations ids={c.citations} bundle={bundle} />
+                  </ReferenceStack>
+                </div>
               </div>
-              <p className="site-candidates__coords">{formatCoords(c.lat, c.lon)}</p>
-              <ReferenceStack>
-                <Citations ids={c.citations} bundle={bundle} />
-              </ReferenceStack>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

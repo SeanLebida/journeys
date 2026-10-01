@@ -74,7 +74,9 @@
     },
     "candidates": {
       "title": "Rival identifications",
-      "intro": "Scholars do not agree on a single pin. The filled marker is the working identification; hollow markers on the map are the documented rivals."
+      "intro": "Scholars do not agree on a single pin. The filled marker is the working identification; hollow markers on the map are the documented rivals. Tap a rival to find that location on the map.",
+      "findAria": "Find {{name}} on the map",
+      "find": "Find on map"
     },
     "confidence": {
       "high": "Securely identified / physically attested",

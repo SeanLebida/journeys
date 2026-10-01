@@ -321,7 +321,11 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
             <DisputeNote text={site.coordinates.disputes?.en} />
             <Citations ids={[...new Set([...site.citations, ...site.coordinates.citations])]} bundle={bundle} />
           </ReferenceStack>
-          <SiteCandidates site={site} bundle={bundle} />
+          <SiteCandidates
+            site={site}
+            bundle={bundle}
+            onFocusCandidate={(lat, lon) => setFocus({ lat, lon })}
+          />
           <SiteExtras siteId={site.id} bundle={bundle} />
 
           {stopsHere.map((stop) => {
