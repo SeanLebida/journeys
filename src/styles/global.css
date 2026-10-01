@@ -193,9 +193,23 @@ a {
   pointer-events: none; /* never intercept a map click */
 }
 
-/* Custom country border details popup */
+/* Custom country border details popup.
+   Keep below mode sheet (12), tab bar (20), travel strip (26), and the
+   floating layer widget (100) so the detail never buries chrome. */
 .country-border-popup {
-  z-index: 1000;
+  z-index: 8;
+}
+.country-border-popup .maplibregl-popup-close-button {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  padding: 0.15rem 0.45rem;
+  right: 0;
+  top: 0;
+}
+.country-border-popup .maplibregl-popup-close-button:hover,
+.country-border-popup .maplibregl-popup-close-button:focus-visible {
+  color: var(--text);
+  background: transparent;
 }
 .country-border-popup .maplibregl-popup-content {
   background: var(--surface);
