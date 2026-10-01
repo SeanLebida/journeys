@@ -4,8 +4,10 @@ import { useBundle } from '../content/useBundle';
 import { SourcingDisclosure } from './SourcingDisclosure';
 
 function isWikiCredit(a: { name: string; url?: string }): boolean {
-  const blob = `${a.url ?? ''} ${a.name}`.toLowerCase();
-  return blob.includes('wikipedia') || blob.includes('wikimedia');
+  // Name only — KJV/ASV credit links point at Wikipedia articles but are not
+  // Wikipedia attributions; keep scripture/software credits above Wikimedia.
+  const name = a.name.toLowerCase();
+  return name.includes('wikipedia') || name.includes('wikimedia');
 }
 
 /** Scholarly / primary data credits above Wikipedia/Wikimedia in the list. */
