@@ -5,7 +5,7 @@ import { bibleHref } from './scriptureIndex';
 import type { BundleIndex } from './useBundle';
 import { useScripture } from './useBible';
 import { useUiStore } from '../state/useUiStore';
-import type { TConfidence, TGeometryGrade, TReviewStatus } from './schema';
+import type { TCitation, TCitationKind, TConfidence, TGeometryGrade, TReviewStatus } from './schema';
 
 export function ConfidenceBadge({ confidence }: { confidence: TConfidence }) {
   const { t } = useTranslation();
@@ -112,10 +112,43 @@ export function RouteGeometryNote({
   );
 }
 
+
+/** Display order for reference lists: scripture and scholarly work above
+ *  tertiary/popular (Wikipedia, Britannica, study-Bible maps). Authored id
+ *  order often put Wikipedia first; QC requires scholarly sources above it. */
+const CITATION_KIND_RANK: Record<TCitationKind, number> = {
+  'primary-scripture': 0,
+  'primary-ancient': 1,
+  'secondary-scholarly': 2,
+  archaeological: 3,
+  gazetteer: 4,
+  'tertiary-popular': 5,
+};
+
+function isWikipediaish(c: Pick<TCitation, 'url' | 'source'>): boolean {
+  const blob = `${c.url ?? ''} ${c.source.en}`.toLowerCase();
+  return blob.includes('wikipedia') || blob.includes('wikimedia');
+}
+
+/** Stable sort: kind rank, then Wikipedia-ish last within a kind, then source title. */
+export function sortCitationsForDisplay(citations: TCitation[]): TCitation[] {
+  return [...citations].sort((a, b) => {
+    const ra = CITATION_KIND_RANK[a.kind] ?? 99;
+    const rb = CITATION_KIND_RANK[b.kind] ?? 99;
+    if (ra !== rb) return ra - rb;
+    const wa = isWikipediaish(a) ? 1 : 0;
+    const wb = isWikipediaish(b) ? 1 : 0;
+    if (wa !== wb) return wa - wb;
+    return a.source.en.localeCompare(b.source.en);
+  });
+}
+
 /** Inline, collapsible list of sources for a set of citation ids. */
 export function Citations({ ids, bundle }: { ids: string[]; bundle: BundleIndex }) {
   const { t } = useTranslation();
-  const resolved = ids.map((id) => bundle.citation(id)).filter((c): c is NonNullable<typeof c> => Boolean(c));
+  const resolved = sortCitationsForDisplay(
+    ids.map((id) => bundle.citation(id)).filter((c): c is NonNullable<typeof c> => Boolean(c)),
+  );
   if (resolved.length === 0) return null;
   return (
     <details className="citations">
