@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useMap } from '../map/MapProvider';
 import { useMapLayersStore } from '../state/useMapLayersStore';
 import { useAerialViewStore } from '../state/useAerialViewStore';
+import { openExternalUrl } from '../platform/openExternal';
 
 // Map-dependent site views live in their own module so that photo/thumbnail
 // components (and anything that renders them, like HomeView) never pull
@@ -146,7 +147,16 @@ export function SiteViewLinks({ lat, lon, name }: { lat: number; lon: number; na
       {links.map((l, i) => (
         <span key={l.label}>
           {i > 0 && ' · '}
-          <a href={l.url} target="_blank" rel="noopener noreferrer" aria-label={`${l.label} of ${name} (opens external map)`}>
+          <a
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${l.label} of ${name} (opens external map)`}
+            onClick={(e) => {
+              e.preventDefault();
+              void openExternalUrl(l.url);
+            }}
+          >
             {l.label}
           </a>
         </span>

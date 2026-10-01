@@ -10,6 +10,7 @@ import { haversine } from '../../map/route';
 import { Citations, ReferenceStack } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { useQuizStore } from '../../state/useQuizStore';
+import { useSheetStore } from '../../state/useSheetStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
 
 export default function QuizMode() {
@@ -284,9 +285,16 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
 
 function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
   const { mapRef, ready } = useMap();
+  const requestSnap = useSheetStore((s) => s.requestSnap);
   const [arming, setArming] = useState(false);
   const [result, setResult] = useState<{ distance: number; correct: boolean; guess: [number, number] } | null>(null);
   const target = q.answerSiteId ? bundle.site(q.answerSiteId) : undefined;
+
+  // Drop the sheet to peek so the map is the tap target — otherwise "Tap the
+  // map…" leaves the half/full sheet covering the place the reader needs to hit.
+  useEffect(() => {
+    if (arming) requestSnap('peek');
+  }, [arming, requestSnap]);
 
   useEffect(() => {
     const map = mapRef.current;

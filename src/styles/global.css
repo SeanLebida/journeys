@@ -881,10 +881,37 @@ a {
   gap: 0.55rem;
 }
 .site-candidates__item {
+  margin: 0;
+}
+.site-candidates__row {
   display: grid;
   grid-template-columns: 0.75rem 1fr;
   gap: 0.5rem;
   align-items: start;
+}
+.site-candidates__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0.15rem;
+}
+.site-candidates__focus {
+  align-self: start;
+  margin: 0.2rem 0 0.15rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-raised));
+  color: var(--text);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.site-candidates__focus:hover,
+.site-candidates__focus:focus-visible {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface-raised));
 }
 .site-candidates__pin {
   width: 0.7rem;
