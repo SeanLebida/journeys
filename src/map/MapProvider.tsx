@@ -10,6 +10,8 @@ import { setLayerVisible } from './layers/atlas';
 import { useMapLayersStore } from '../state/useMapLayersStore';
 import { useAerialViewStore } from '../state/useAerialViewStore';
 import { useResolvedDark } from '../state/theme';
+import { computeMapPadding } from './viewportPadding';
+import { useMapViewportPadding } from './useMapViewportPadding';
 
 interface MapContextValue {
   /** The single persistent MapLibre instance (null until first mount). */
@@ -93,8 +95,6 @@ export function MapProvider({ children }: { children: ReactNode }) {
     if (!containerRef.current || mapRef.current) return;
 
     const reduce = prefersReducedMotion();
-    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-    const paddingLeft = isDesktop ? 450 : 0;
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: buildBaseStyle('ancient', darkRef.current),
@@ -108,7 +108,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
       pitchWithRotate: false,
       fadeDuration: reduce ? 0 : 300,
     });
-    map.setPadding({ left: paddingLeft, right: 0, top: 0, bottom: 0 });
+    // Sheet / rail / sidebar padding is owned by useMapViewportPadding; seed it
+    // here so the first fitBounds already respects the chrome.
+    map.setPadding(computeMapPadding());
 
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
@@ -155,13 +157,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
     });
     countryMarkersRef.current = countryMarkers.map(({ element, minZoom }) => ({ element, minZoom }));
 
-    const handleResize = () => {
-      const isDesktop = window.innerWidth >= 1024;
-      map.setPadding({ left: isDesktop ? 450 : 0, right: 0, top: 0, bottom: 0 });
-    };
-    window.addEventListener('resize', handleResize);
-
     map.on('load', () => {
+      // Padding before ready so the first mode easeTo/flyTo sees the sheet offset.
+      map.setPadding(computeMapPadding());
       setReady(true);
       updateLabelVisibility();
       markers.forEach((m) => m.addTo(map));
@@ -318,7 +316,6 @@ export function MapProvider({ children }: { children: ReactNode }) {
     mapRef.current = map;
 
     return () => {
-      window.removeEventListener('resize', handleResize);
       map.off('zoom', updateLabelVisibility);
       markers.forEach((m) => m.remove());
       waterMarkers.forEach(({ marker }) => marker.remove());
@@ -385,6 +382,10 @@ export function MapProvider({ children }: { children: ReactNode }) {
     updateWaterLabelVisibility(map, layers.labelsAlwaysOn, waterMarkersRef.current);
     updateCountryLabelVisibility(map, layers.borders, layers.labelsAlwaysOn, countryMarkersRef.current);
   }, [ready, layers, dark]);
+
+  // Keep camera padding matched to the sheet / rail / sidebar so easeTo and
+  // flyTo land a POI in the visible uncovered viewport, not under the chrome.
+  useMapViewportPadding(mapRef, ready);
 
   return (
     <MapContext.Provider value={{ mapRef, ready }}>

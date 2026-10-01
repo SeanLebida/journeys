@@ -387,8 +387,18 @@ function StopReader({
   total: number;
   bundle: BundleIndex;
 }) {
+  const { mapRef, ready } = useMap();
   const site = bundle.site(stop.siteId);
   const hasEventTitle = Boolean(stop.title?.en);
+  const focusCandidate = (lat: number, lon: number) => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    map.easeTo({
+      center: [lon, lat],
+      zoom: Math.max(map.getZoom(), 7),
+      duration: 800,
+    });
+  };
   return (
     <article className="stop-reader">
       <div className="stop-reader__meta">
@@ -427,7 +437,7 @@ function StopReader({
         {stop.disputes && <DisputeNote text={stop.disputes.en} />}
         <Citations ids={stop.citations} bundle={bundle} />
       </ReferenceStack>
-      {site && <SiteCandidates site={site} bundle={bundle} />}
+      {site && <SiteCandidates site={site} bundle={bundle} onFocusCandidate={focusCandidate} />}
       <SiteExtras siteId={stop.siteId} bundle={bundle} />
     </article>
   );
