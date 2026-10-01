@@ -2,6 +2,11 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.15] - 2026-10-01
+
+• Close place details when you move the map or tap elsewhere.
+• Map place-detail sits below sheets and chrome (no overlay covering UI).
+
 ## [0.3.14] - 2026-10-01
 
 • Tap a rival identification to find that location on the map.
