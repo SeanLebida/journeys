@@ -1,7 +1,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SiteCandidates } from './SiteCandidates';
 import type { BundleIndex } from '../content/useBundle';
 import type { TCitation, TSite } from '../content/schema';
@@ -46,3 +47,16 @@ describe('SiteCandidates', () => {
     expect(container).toBeEmptyDOMElement();
   });
 });
+
+  it('lets the reader tap a rival to find that location', async () => {
+    const site = sites.find((s) => s.id === 'site-baptism-at-the-jordan')!;
+    const onFocusCandidate = vi.fn();
+    const user = userEvent.setup();
+    render(<SiteCandidates site={site} bundle={stub} onFocusCandidate={onFocusCandidate} />);
+    const btn = screen.getAllByRole('button', { name: /Find on map|Find .* on the map/i })[0];
+    await user.click(btn);
+    expect(onFocusCandidate).toHaveBeenCalled();
+    const [lat, lon] = onFocusCandidate.mock.calls[0];
+    expect(typeof lat).toBe('number');
+    expect(typeof lon).toBe('number');
+  });
