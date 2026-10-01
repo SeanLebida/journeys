@@ -765,7 +765,7 @@
    "en": "Wikipedia, 'Via Egnatia'"
   },
   "url": "https://en.wikipedia.org/wiki/Via_Egnatia",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-via-appia",
@@ -773,7 +773,7 @@
    "en": "Wikipedia, 'Appian Way'"
   },
   "url": "https://en.wikipedia.org/wiki/Appian_Way",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-via-sebaste",
@@ -781,7 +781,7 @@
    "en": "Wikipedia, 'Via Sebaste'"
   },
   "url": "https://en.wikipedia.org/wiki/Via_Sebaste",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-cilician-gates",
@@ -789,7 +789,7 @@
    "en": "Wikipedia, 'Cilician Gates'"
   },
   "url": "https://en.wikipedia.org/wiki/Cilician_Gates",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-kings-highway",
@@ -797,7 +797,7 @@
    "en": "Wikipedia, 'King's Highway (ancient)'"
   },
   "url": "https://en.wikipedia.org/wiki/King%27s_Highway_(ancient)",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-acts-sea",
@@ -805,7 +805,7 @@
    "en": "Wikipedia, 'Acts 27' (the voyage and shipwreck sailing notices)"
   },
   "url": "https://en.wikipedia.org/wiki/Acts_27",
-  "kind": "secondary-scholarly"
+  "kind": "tertiary-popular"
  },
  {
   "id": "cit-route-itinere",
