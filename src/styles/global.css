@@ -11,6 +11,7 @@ html,
 body,
 #root {
   height: 100%;
+  height: 100dvh;
   margin: 0;
 }
 
@@ -74,6 +75,8 @@ a {
   /* 48px content box comfortably clears a 44px tap target plus its padding;
      keep this in lockstep with `.tabbar`'s own height. */
   --dock-h: calc(48px + 0.8rem + var(--safe-bottom));
+  /* Desktop/top chrome; zero on phone so bottom dock math stays unchanged. */
+  --topbar-h: 0px;
   position: relative;
   height: 100%;
   display: flex;
@@ -82,6 +85,13 @@ a {
 @media (max-width: 1023px) {
   .app-shell[data-dock='stowed'] {
     --dock-h: 0px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-shell {
+    /* Bottom dock becomes a top toolbar on wide screens (Mac / Chromebook / desktop web). */
+    --dock-h: 0px;
+    --topbar-h: calc(52px + var(--safe-top));
   }
 }
 
@@ -562,7 +572,7 @@ a {
   .mode-panel {
     position: absolute;
     left: 1.5rem;
-    top: calc(var(--safe-top) + 1.5rem);
+    top: calc(var(--topbar-h) + 1.5rem);
     bottom: calc(1.5rem + var(--dock-h));
     right: auto;
     margin: 0;
@@ -1480,8 +1490,9 @@ a {
   font: inherit;
   font-size: 0.75rem;
   font-weight: 500;
-  min-height: 32px;
-  padding: 0.25rem 0.7rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -1763,7 +1774,7 @@ a {
   /* The dock is the other fixed cost on a 360px-tall screen — see the landscape
      `.tabbar` block, which has to live after the tab bar's own rules. */
   .app-shell {
-    --dock-h: calc(38px + 0.5rem + var(--safe-bottom));
+    --dock-h: calc(44px + 0.5rem + var(--safe-bottom));
   }
   /* The travelling phase hid the body and footer because the *sheet* dropped to
      `peek` under them. The rail doesn't move, so hiding them would just blank a
@@ -2211,9 +2222,9 @@ a {
   background: var(--surface-raised);
   border-radius: var(--r-sm);
   cursor: pointer;
-  padding: 0.25rem 0.6rem;
-  min-height: 38px;
-  min-width: 38px;
+  padding: 0.35rem 0.65rem;
+  min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2328,13 +2339,13 @@ a {
    transport row under the dock. */
 @media (max-width: 1023px) and (orientation: landscape) {
   .tabbar {
-    height: calc(38px + 0.5rem + var(--safe-bottom));
+    height: calc(44px + 0.5rem + var(--safe-bottom));
     padding: 0.25rem calc(0.5rem + var(--safe-right)) calc(0.25rem + var(--safe-bottom)) calc(0.5rem + var(--safe-left));
   }
   .tabbar__item {
     flex-direction: row;
     gap: 0.35rem;
-    min-height: 38px;
+    min-height: 44px;
   }
   .tabbar__glyph {
     font-size: 1rem;
@@ -2692,9 +2703,9 @@ a {
   background: var(--surface);
   color: var(--text-muted);
   border-radius: 999px;
-  padding: 0.3rem 0.65rem;
+  padding: 0.4rem 0.75rem;
   font-size: 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2875,7 +2886,46 @@ a {
   }
 }
 
+/* Narrow phones: icon-only dock so eight slots stay tappable without ellipsis soup. */
+@media (max-width: 380px) {
+  .tabbar__label {
+    display: none;
+  }
+  .tabbar__glyph {
+    font-size: 1.35rem;
+  }
+}
+
 /* Theme toggle in the tab bar: a button dressed as a tab. */
+
+/* Desktop / Chromebook / Mac / wide web: top toolbar instead of phone bottom dock. */
+@media (min-width: 1024px) {
+  .tabbar {
+    top: 0;
+    bottom: auto;
+    height: var(--topbar-h);
+    padding: var(--safe-top) calc(0.75rem + var(--safe-right)) 0.35rem calc(0.75rem + var(--safe-left));
+    border-top: none;
+    border-bottom: 1px solid var(--border);
+    justify-content: flex-start;
+    gap: 0.35rem;
+  }
+  .tabbar__item {
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .tabbar__glyph {
+    font-size: 1.05rem;
+  }
+  .aerial-marker {
+    top: calc(var(--topbar-h) + 0.5rem);
+  }
+}
+
 .tabbar__theme {
   background: none;
   border: 0;
@@ -3883,8 +3933,8 @@ a {
   font-size: 0.95rem;
 }
 .bible-note__close {
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   background: none;
   color: var(--text-muted);
@@ -3899,8 +3949,8 @@ a {
   margin: 0.5rem 0;
 }
 .bible-note__swatch {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border: 2px solid var(--border);
   border-radius: 50%;
   cursor: pointer;
@@ -3916,8 +3966,8 @@ a {
 .bible-note__clear,
 .bible-note__save,
 .bible-note__delete {
-  min-height: 36px;
-  padding: 0.3rem 0.7rem;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface);
@@ -4518,8 +4568,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -4576,12 +4626,6 @@ a {
   }
   .tl-scroll__how-desk {
     display: inline;
-  }
-}
-@media (max-width: 560px) {
-  .tl-scroll__btn {
-    width: 44px;
-    height: 44px;
   }
 }
 /* A rival's coordinate and its citations are both notes on that pin.
