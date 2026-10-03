@@ -29,14 +29,17 @@ Shared web UI (Vite + React) with thin Capacitor overlays. Check items that can 
 
 ## iOS
 
+Unsigned scaffold only. `MARKETING_VERSION` **0.3.14** and `CURRENT_PROJECT_VERSION` **113** match `package.json` and `android/app/build.gradle` (`versionName` / `versionCode`) on `development`. That is the in-repo app version, not Play closed testing 0.3.15 / versionCode 119, and not a signed App Store build. The target sets `CODE_SIGNING_ALLOWED=NO`. No camera, location, or photo-library usage strings: the Android manifest requests `INTERNET` only, and the web app does not call device camera, geolocation, or the photo library (bundled site photos and the MapLibre camera are not those permissions). No tracking SDKs and no push/background modes. `ITSAppUsesNonExemptEncryption` is false (standard HTTPS only; see `STORE.md`).
+
 | Item | Status |
 |---|---|
-| Capacitor iOS project committed | **Blocked** — no `ios/` in repo; needs macOS + `npx cap add ios` |
-| `@capacitor/ios` dependency | Add with iOS project |
-| Xcode signing / provisioning | **Blocked** — Apple Developer interactive secrets |
+| Capacitor iOS project committed | Done — `ios/` is in git. `xcuserdata` and `DerivedData` are ignored by `ios/.gitignore`. Pods and the copied web bundle are generated (`pod install` / `cap sync`) |
+| `@capacitor/ios` dependency | Done (`^6.2.1`, lockfile 6.2.1, same line as core/Android) |
+| Unsigned simulator build | **Not in `.github/workflows` yet.** Pushing that file was rejected: the box OAuth token has `repo` but not `workflow`. The YAML is in the PR body. Not a device or App Store archive |
+| Xcode signing / provisioning | **Blocked** — Apple Developer identity still required before App Review |
 | App Privacy “Data Not Collected” | Documented in `STORE.md` / `PRIVACY.md` |
 | ATS / HTTPS-only external opens | Browser plugin for external maps |
-| TestFlight upload | **Blocked** — signing |
+| TestFlight / App Review | **HOLD** — signing does not exist yet |
 
 ## Cross-platform UX gates
 
