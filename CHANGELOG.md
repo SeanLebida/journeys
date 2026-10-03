@@ -2,6 +2,12 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.16] - 2026-10-03
+
+• Larger tap targets (44px) across the shell, dock, and toolbar.
+• Mobile shell uses full viewport height (100dvh).
+• Dock and toolbar accessibility improvements.
+
 ## [0.3.15] - 2026-10-01
 
 • Close place details when you move the map or tap elsewhere.
