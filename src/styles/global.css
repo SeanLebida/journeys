@@ -382,9 +382,12 @@ a {
 .site-label {
   border: 0;
   background: none;
-  padding: 0;
+  padding: 0.35rem 0.45rem;
   margin: 0;
-  font-size: 0.75rem;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--map-site-color);
   -webkit-text-stroke: 3.5px var(--map-site-halo);
@@ -392,6 +395,7 @@ a {
   text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   cursor: pointer;
+  touch-action: manipulation;
   /* Hidden until zoomed in past MapProvider's LABEL_ZOOM_THRESHOLD — a
      full-atlas or full-journey view has too many sites for labels to be
      readable at once. Dots stay visible/clickable throughout; zooming in is
@@ -402,7 +406,7 @@ a {
 }
 .map-labels-visible .site-label,
 .site-label.quiz-pin-label {
-  display: inline-block;
+  display: inline-flex;
 }
 .site-label:hover,
 .site-label:focus-visible {
@@ -1229,9 +1233,9 @@ a {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
+  height: 12px;
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 6px;
   outline: none;
   margin: 0;
   cursor: pointer;
@@ -1239,8 +1243,8 @@ a {
 .trace-controls input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--surface-raised);
@@ -1252,8 +1256,8 @@ a {
   background: color-mix(in srgb, var(--accent) 85%, black);
 }
 .trace-controls input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--surface-raised);
@@ -2193,6 +2197,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .quiz-choices button:hover:not(:disabled) {
   border-color: var(--accent);
@@ -2215,6 +2221,27 @@ a {
 .quiz-score {
   font-size: 1.1rem;
   font-weight: 600;
+}
+.quiz-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.quiz-check:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 .quiz-order__item {
   display: flex;
@@ -2898,10 +2925,21 @@ a {
   }
 }
 
-/* Narrow phones: icon-only dock so eight slots stay tappable without ellipsis soup. */
+/* Narrow phones: icon-only dock visually; keep labels for AT (glyphs stay aria-hidden). */
 @media (max-width: 380px) {
+  .tabbar__item {
+    position: relative;
+  }
   .tabbar__label {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
   .tabbar__glyph {
     font-size: 1.35rem;
@@ -2999,7 +3037,11 @@ a {
   margin: 0.75rem 0;
 }
 .tl-jump__link {
-  padding: 0.3rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface-raised);
@@ -3007,6 +3049,7 @@ a {
   font-size: 0.78rem;
   text-decoration: none;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 .tl-jump__link:hover,
 .tl-jump__link:focus-visible {
@@ -3879,10 +3922,13 @@ a {
 .bible-verse__num {
   grid-column: 1;
   justify-self: end;
-  min-width: 1.6rem;
-  min-height: 1.6rem;
+  min-width: 44px;
+  min-height: 44px;
   margin: 0;
-  padding: 0 0.15rem;
+  padding: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid transparent;
   border-radius: var(--r-sm);
   background: none;
