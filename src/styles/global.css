@@ -212,7 +212,12 @@ a {
 .country-border-popup .maplibregl-popup-close-button {
   color: var(--text-muted);
   font-size: 1.1rem;
-  padding: 0.15rem 0.45rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   right: 0;
   top: 0;
 }
@@ -347,13 +352,13 @@ a {
 /* Lesson step markers: clickable, numbered pins on the persistent map — a
    visual table of contents for the current lesson's stops. */
 .lesson-step-marker {
-  width: 22px;
-  height: 22px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px solid var(--surface-raised);
   background: var(--text-muted);
   color: var(--surface-raised);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
   line-height: 1;
   display: flex;
@@ -362,13 +367,14 @@ a {
   cursor: pointer;
   box-shadow: var(--shadow-1);
   padding: 0;
+  touch-action: manipulation;
 }
 .lesson-step-marker--active {
   background: var(--accent);
   color: var(--accent-contrast);
-  width: 28px;
-  height: 28px;
-  font-size: 0.8rem;
+  width: 48px;
+  height: 48px;
+  font-size: 0.95rem;
 }
 
 /* Atlas site name labels: a clickable text tag next to each dot (no glyph
@@ -1191,6 +1197,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .trace-controls button:hover {
   border-color: var(--accent);
@@ -2142,6 +2150,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .lesson-progress button:disabled {
   opacity: 0.5;
@@ -2428,10 +2438,13 @@ a {
   background: var(--surface);
   color: var(--text);
   border-radius: 6px;
-  width: 2rem;
-  height: 1.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .site-views {
   margin: 0.5rem 0 0.7rem;
@@ -2455,6 +2468,8 @@ a {
   padding: 0.35rem 0.6rem;
   font-size: 0.8rem;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .site-views__btn[aria-pressed='true'] {
   background: var(--accent);
@@ -2488,8 +2503,11 @@ a {
   background: transparent;
   color: var(--text);
   border-radius: 6px;
-  padding: 0.15rem 0.5rem;
+  padding: 0.35rem 0.75rem;
   cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
 }
 
 /* ── Site thumbnails on list cards (pickers + home mode cards) ───────────── */
@@ -2656,6 +2674,8 @@ a {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .video-card__frame {
   position: relative;
@@ -2864,14 +2884,6 @@ a {
   .sourcing__row {
     grid-template-columns: 1fr;
     gap: 0.15rem;
-  }
-  /* Comfortable, thumb-sized tap targets (WCAG 2.5.5). */
-  .site-views__btn,
-  .video-card__play,
-  .street-viewer__bar button,
-  .trace-controls button,
-  .lesson-progress button {
-    min-height: 44px;
   }
   .site-photo img,
   .extra-card__figure img {
@@ -3742,8 +3754,8 @@ a {
   border-bottom: 1px solid var(--border);
 }
 .bible__tab {
-  min-height: 40px;
-  padding: 0.4rem 0.7rem;
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
   border: 1px solid transparent;
   border-bottom: 0;
   border-radius: var(--r-sm) var(--r-sm) 0 0;
@@ -3791,8 +3803,8 @@ a {
   color: var(--text-muted);
 }
 .bible__nav {
-  min-height: 40px;
-  padding: 0.3rem 0.6rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -4116,8 +4128,8 @@ a {
   justify-content: center;
   gap: 0.3rem;
   width: 100%;
-  min-height: 40px;
-  padding: 0.3rem 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
