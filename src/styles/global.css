@@ -11,6 +11,7 @@ html,
 body,
 #root {
   height: 100%;
+  height: 100dvh;
   margin: 0;
 }
 
@@ -74,6 +75,8 @@ a {
   /* 48px content box comfortably clears a 44px tap target plus its padding;
      keep this in lockstep with `.tabbar`'s own height. */
   --dock-h: calc(48px + 0.8rem + var(--safe-bottom));
+  /* Desktop/top chrome; zero on phone so bottom dock math stays unchanged. */
+  --topbar-h: 0px;
   position: relative;
   height: 100%;
   display: flex;
@@ -82,6 +85,13 @@ a {
 @media (max-width: 1023px) {
   .app-shell[data-dock='stowed'] {
     --dock-h: 0px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-shell {
+    /* Bottom dock becomes a top toolbar on wide screens (Mac / Chromebook / desktop web). */
+    --dock-h: 0px;
+    --topbar-h: calc(52px + var(--safe-top));
   }
 }
 
@@ -202,7 +212,12 @@ a {
 .country-border-popup .maplibregl-popup-close-button {
   color: var(--text-muted);
   font-size: 1.1rem;
-  padding: 0.15rem 0.45rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   right: 0;
   top: 0;
 }
@@ -337,13 +352,13 @@ a {
 /* Lesson step markers: clickable, numbered pins on the persistent map — a
    visual table of contents for the current lesson's stops. */
 .lesson-step-marker {
-  width: 22px;
-  height: 22px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px solid var(--surface-raised);
   background: var(--text-muted);
   color: var(--surface-raised);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
   line-height: 1;
   display: flex;
@@ -352,13 +367,14 @@ a {
   cursor: pointer;
   box-shadow: var(--shadow-1);
   padding: 0;
+  touch-action: manipulation;
 }
 .lesson-step-marker--active {
   background: var(--accent);
   color: var(--accent-contrast);
-  width: 28px;
-  height: 28px;
-  font-size: 0.8rem;
+  width: 48px;
+  height: 48px;
+  font-size: 0.95rem;
 }
 
 /* Atlas site name labels: a clickable text tag next to each dot (no glyph
@@ -562,7 +578,7 @@ a {
   .mode-panel {
     position: absolute;
     left: 1.5rem;
-    top: calc(var(--safe-top) + 1.5rem);
+    top: calc(var(--topbar-h) + 1.5rem);
     bottom: calc(1.5rem + var(--dock-h));
     right: auto;
     margin: 0;
@@ -1181,6 +1197,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .trace-controls button:hover {
   border-color: var(--accent);
@@ -1480,8 +1498,9 @@ a {
   font: inherit;
   font-size: 0.75rem;
   font-weight: 500;
-  min-height: 32px;
-  padding: 0.25rem 0.7rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -1763,7 +1782,7 @@ a {
   /* The dock is the other fixed cost on a 360px-tall screen — see the landscape
      `.tabbar` block, which has to live after the tab bar's own rules. */
   .app-shell {
-    --dock-h: calc(38px + 0.5rem + var(--safe-bottom));
+    --dock-h: calc(44px + 0.5rem + var(--safe-bottom));
   }
   /* The travelling phase hid the body and footer because the *sheet* dropped to
      `peek` under them. The rail doesn't move, so hiding them would just blank a
@@ -2131,6 +2150,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .lesson-progress button:disabled {
   opacity: 0.5;
@@ -2211,9 +2232,9 @@ a {
   background: var(--surface-raised);
   border-radius: var(--r-sm);
   cursor: pointer;
-  padding: 0.25rem 0.6rem;
-  min-height: 38px;
-  min-width: 38px;
+  padding: 0.35rem 0.65rem;
+  min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2328,13 +2349,13 @@ a {
    transport row under the dock. */
 @media (max-width: 1023px) and (orientation: landscape) {
   .tabbar {
-    height: calc(38px + 0.5rem + var(--safe-bottom));
+    height: calc(44px + 0.5rem + var(--safe-bottom));
     padding: 0.25rem calc(0.5rem + var(--safe-right)) calc(0.25rem + var(--safe-bottom)) calc(0.5rem + var(--safe-left));
   }
   .tabbar__item {
     flex-direction: row;
     gap: 0.35rem;
-    min-height: 38px;
+    min-height: 44px;
   }
   .tabbar__glyph {
     font-size: 1rem;
@@ -2417,10 +2438,13 @@ a {
   background: var(--surface);
   color: var(--text);
   border-radius: 6px;
-  width: 2rem;
-  height: 1.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .site-views {
   margin: 0.5rem 0 0.7rem;
@@ -2444,6 +2468,8 @@ a {
   padding: 0.35rem 0.6rem;
   font-size: 0.8rem;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .site-views__btn[aria-pressed='true'] {
   background: var(--accent);
@@ -2477,8 +2503,11 @@ a {
   background: transparent;
   color: var(--text);
   border-radius: 6px;
-  padding: 0.15rem 0.5rem;
+  padding: 0.35rem 0.75rem;
   cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
 }
 
 /* ── Site thumbnails on list cards (pickers + home mode cards) ───────────── */
@@ -2645,6 +2674,8 @@ a {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .video-card__frame {
   position: relative;
@@ -2692,9 +2723,9 @@ a {
   background: var(--surface);
   color: var(--text-muted);
   border-radius: 999px;
-  padding: 0.3rem 0.65rem;
+  padding: 0.4rem 0.75rem;
   font-size: 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2854,14 +2885,6 @@ a {
     grid-template-columns: 1fr;
     gap: 0.15rem;
   }
-  /* Comfortable, thumb-sized tap targets (WCAG 2.5.5). */
-  .site-views__btn,
-  .video-card__play,
-  .street-viewer__bar button,
-  .trace-controls button,
-  .lesson-progress button {
-    min-height: 44px;
-  }
   .site-photo img,
   .extra-card__figure img {
     max-height: 200px;
@@ -2875,7 +2898,46 @@ a {
   }
 }
 
+/* Narrow phones: icon-only dock so eight slots stay tappable without ellipsis soup. */
+@media (max-width: 380px) {
+  .tabbar__label {
+    display: none;
+  }
+  .tabbar__glyph {
+    font-size: 1.35rem;
+  }
+}
+
 /* Theme toggle in the tab bar: a button dressed as a tab. */
+
+/* Desktop / Chromebook / Mac / wide web: top toolbar instead of phone bottom dock. */
+@media (min-width: 1024px) {
+  .tabbar {
+    top: 0;
+    bottom: auto;
+    height: var(--topbar-h);
+    padding: var(--safe-top) calc(0.75rem + var(--safe-right)) 0.35rem calc(0.75rem + var(--safe-left));
+    border-top: none;
+    border-bottom: 1px solid var(--border);
+    justify-content: flex-start;
+    gap: 0.35rem;
+  }
+  .tabbar__item {
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .tabbar__glyph {
+    font-size: 1.05rem;
+  }
+  .aerial-marker {
+    top: calc(var(--topbar-h) + 0.5rem);
+  }
+}
+
 .tabbar__theme {
   background: none;
   border: 0;
@@ -2984,8 +3046,7 @@ a {
   align-items: center;
   gap: 0.3rem;
   /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
-  /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
-  min-height: 32px;
+  min-height: 44px;
   cursor: pointer;
 }
 
@@ -3674,8 +3735,8 @@ a {
   color: var(--text-muted);
 }
 .bible__translation select {
-  min-height: 36px;
-  padding: 0.25rem 0.4rem;
+  min-height: 44px;
+  padding: 0.35rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -3693,8 +3754,8 @@ a {
   border-bottom: 1px solid var(--border);
 }
 .bible__tab {
-  min-height: 40px;
-  padding: 0.4rem 0.7rem;
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
   border: 1px solid transparent;
   border-bottom: 0;
   border-radius: var(--r-sm) var(--r-sm) 0 0;
@@ -3742,8 +3803,8 @@ a {
   color: var(--text-muted);
 }
 .bible__nav {
-  min-height: 40px;
-  padding: 0.3rem 0.6rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -3765,8 +3826,8 @@ a {
   font-size: 0.8rem;
 }
 .bible__bookmark {
-  min-height: 36px;
-  padding: 0.25rem 0.6rem;
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface-raised);
@@ -3883,8 +3944,8 @@ a {
   font-size: 0.95rem;
 }
 .bible-note__close {
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   background: none;
   color: var(--text-muted);
@@ -3899,8 +3960,8 @@ a {
   margin: 0.5rem 0;
 }
 .bible-note__swatch {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border: 2px solid var(--border);
   border-radius: 50%;
   cursor: pointer;
@@ -3916,8 +3977,8 @@ a {
 .bible-note__clear,
 .bible-note__save,
 .bible-note__delete {
-  min-height: 36px;
-  padding: 0.3rem 0.7rem;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface);
@@ -4067,8 +4128,8 @@ a {
   justify-content: center;
   gap: 0.3rem;
   width: 100%;
-  min-height: 40px;
-  padding: 0.3rem 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -4518,8 +4579,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -4576,12 +4637,6 @@ a {
   }
   .tl-scroll__how-desk {
     display: inline;
-  }
-}
-@media (max-width: 560px) {
-  .tl-scroll__btn {
-    width: 44px;
-    height: 44px;
   }
 }
 /* A rival's coordinate and its citations are both notes on that pin.
