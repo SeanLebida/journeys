@@ -8,7 +8,7 @@ tracks the non-code requirements so a release is reproducible.
 ```bash
 npm run build:content      # validate content + compile Bible DB (+ --release to enforce the review gate)
 npm run build              # web build -> dist/
-npx cap add ios            # once
+npx cap add ios            # once — ios/ is already committed; use `npm run ios:sync`
 npx cap add android        # once
 npm run cap:sync           # copy web build + plugins into native projects
 ```
