@@ -162,7 +162,7 @@ async function encodePreview(webm, dest, width, height) {
   await ffmpeg([
     '-i', webm,
     '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo',
-    '-vf', `scale=${width}:${height}:flags=lanczos,fps=30,tpad=stop_mode=clone:stop_duration=2`,
+    '-vf', `scale=${width}:${height}:flags=lanczos:force_original_aspect_ratio=disable,setsar=1,fps=30,tpad=stop_mode=clone:stop_duration=2`,
     '-t', '22',
     '-map', '0:v:0',
     '-map', '1:a:0',
@@ -172,7 +172,7 @@ async function encodePreview(webm, dest, width, height) {
     '-pix_fmt', 'yuv420p',
     '-b:v', '8M',
     '-c:a', 'aac',
-    '-b:a', '64k',
+    '-b:a', '256k',
     '-ac', '2',
     '-shortest',
     '-movflags', '+faststart',
