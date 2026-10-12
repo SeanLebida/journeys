@@ -17,6 +17,7 @@
     "test:e2e": "playwright test",
     "cap:sync": "cap sync",
     "ios:sync": "cap sync ios",
+    "ios:version:bump": "node scripts/bump-ios-version.mjs",
     "android:version:bump": "node scripts/bump-android-version.mjs",
     "android:release:notes": "node scripts/generate-release-notes.mjs",
     "android:build:release": "npm run build && npm run cap:sync && npm run android:release:notes && npm run android:version:bump && cd android && ./gradlew bundleRelease",

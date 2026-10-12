@@ -22,7 +22,7 @@ Generate native icons/splash from `public/icon.svg` with `@capacitor/assets`
 - **Category:** Education / Reference
 - **Short description:** Cited offline Bible atlas: patriarchs, OT battles, Jesus' birth and ministry.
 
-Paste-ready title, short description, and full description for the next Google Play closed test are in `docs/STORE_LISTING.md`.
+Paste-ready title, short description, and full description for the next Google Play closed test are in `docs/STORE_LISTING.md`. App Store Connect fields, screenshot sizes, review notes, and the TestFlight secret list are in `docs/APP_STORE.md`.
 
 ## Compliance checklist
 
@@ -32,7 +32,8 @@ Paste-ready title, short description, and full description for the next Google P
 | Apple App Privacy | **Data Not Collected** |
 | Google Play Data safety | **No data collected, none shared** |
 | Account required | No |
-| iOS encryption / export compliance | Uses only standard HTTPS; declare **exempt** (no proprietary crypto) |
+| iOS encryption / export compliance | Uses only standard HTTPS; `ITSAppUsesNonExemptEncryption` is false. Declare **exempt** |
+| iOS SDK | Xcode 26 / iOS 26 SDK. Deployment target iOS 15 |
 | Age rating | Apple 4+ / Play "Everyone"; content is educational/religious-historical, neutral framing |
 | Android target API level | meet the current Play target-API requirement at submission time |
 
