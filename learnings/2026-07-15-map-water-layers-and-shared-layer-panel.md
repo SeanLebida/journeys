@@ -52,7 +52,7 @@
   pulled from `style.layers.find(...)` doesn't narrow automatically — TS7053.
   Cast the found layer to a small local shape (`{ paint?: Record<string,
   unknown> }`) in tests rather than fighting the union.
-- The git worktree this feature was built in (`.claude/worktrees/
+- The git worktree this feature was built in (`worktrees/
   worktree-map-layers`) had no local `node_modules` — `npm run typecheck`/
   `test`/`lint`/`build` all silently succeeded anyway (Node's module resolution
   walks up to the parent repo's `node_modules`), but `scripts/build-content.ts`

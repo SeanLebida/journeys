@@ -50,7 +50,7 @@ GitHub → SeanLebida/journeys → Settings → Secrets and variables → Action
 
 ## Ship the binary
 
-After this workflow file is on `production` (or dispatch it from the branch that contains it):
+The workflow is on `development`, which is the default branch, so GitHub can dispatch it. Secrets for this repo are already set. The upload still fails until the app record in step 4 exists:
 
 Actions → **iOS App Store** → Run workflow.
 
@@ -87,10 +87,10 @@ The first TestFlight build needs the app record from the step above. Export comp
 bible,atlas,scripture,maps,history,jesus,paul,geography,timeline,archaeology,exodus
 ```
 
-**Promotional text:**
+**Promotional text** (146 characters, limit 170):
 
 ```text
-Offline atlas of the biblical historical record, from the patriarchs and Old Testament battles through the birth and ministry of Jesus and the apostles.
+Follow cited routes from the patriarchs through the ministry of Jesus and the apostles. Offline maps, a timeline, the Bible, lessons, and quizzes.
 ```
 
 **Description:** use the full description in `docs/STORE_LISTING.md`.
@@ -104,19 +104,24 @@ Journeys is an offline educational atlas. The binary includes a public-domain Bi
 
 Optional network use, only after a tap: satellite and historical map tiles, one Mapillary view, one YouTube video, or a citation opened in the system browser. Nothing is loaded until the reader opts in.
 
-Sign-in is not required. Please review the bundled content without an account.
+The in-app sourcing note says high-confidence claims are checked by the project and are not yet signed by a specialist historical geographer. That is intentional. Contested locations are shown as rival candidates rather than a single pin.
+
+No sign-in. Please review the bundled content without an account.
 ```
 
 **Sign-in information:** leave blank. All functionality is available without an account.
 
-**Screenshots.** The Play assets under `docs/store-assets/phone/` are 1080×1920. App Store Connect rejects that size. This target is universal (`TARGETED_DEVICE_FAMILY` 1,2), so both sets are required:
+**Screenshots, previews, header, and search.** Generated files and the paste order are in `docs/store-assets/apple/LISTING.md`. Do not upload the Play shots in `docs/store-assets/phone/` (1080×1920). This target is universal (`TARGETED_DEVICE_FAMILY` 1,2), so both device sets are required.
 
-| Device | Accepted portrait size |
-|---|---|
-| iPhone 6.9-inch | 1320×2868 or 1290×2796 |
-| iPad 13-inch | 2064×2752 |
+| Placement | File | Pixels |
+|---|---|---|
+| iPhone 6.9-inch screenshots | `docs/store-assets/apple/iphone-6.9/01`–`07` | 1290×2796 |
+| iPad 13-inch screenshots | `docs/store-assets/apple/ipad-13/01`–`07` | 2064×2752 |
+| App previews (three workflows) | `docs/store-assets/apple/previews/` | phone 886×1920, iPad 1200×1600, 15–30s |
+| Product page header | `docs/store-assets/apple/header-3840x1646.png` | 3840×1646 |
+| Search results | `docs/store-assets/apple/search-3840x2560.png` | 3840×2560 |
 
-Capture at least three: home, route trace, timeline. Bible, lessons, and the sandbox atlas match the Play set. Upload those in the App Store Connect media manager before you submit. TestFlight itself does not need them.
+Leave "Use header asset in search results" off. The two crops are different. TestFlight itself does not need this media. App Review does. The product-page header slot may be website-only; the local App Store Connect OpenAPI dump has a search-results asset and no header upload.
 
 ## Submit for review
 
