@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Journeys: Biblical Atlas</title>
+  <meta name="description" content="Privacy Policy for Journeys: Biblical Atlas. Journeys collects no personal data, requires no accounts, and contains no tracking SDKs.">
+  <link rel="icon" type="image/png" href="../store-assets/icon-512x512.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="../" class="brand">
+        <img src="../store-assets/icon-512x512.png" alt="Journeys Icon">
+        Journeys: Biblical Atlas
+      </a>
+      <ul class="nav-links">
+        <li><a href="../">Home</a></li>
+        <li><a href="./" class="active">Privacy Policy</a></li>
+        <li><a href="../support/">Support &amp; FAQ</a></li>
+        <li><a href="https://github.com/SeanLebida/journeys" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <article class="prose">
+      <h1>Privacy Policy</h1>
+      <p class="meta-date">Last updated: October 12, 2026</p>
+
+      <div class="callout">
+        <strong>Journeys collects no personal data.</strong>
+        <p style="margin-top: 0.5rem; margin-bottom: 0;">The application is completely client-side, privacy-first, and designed to function fully offline without requiring an account, sign-in, or internet connection.</p>
+      </div>
+
+      <h2>1. No User Accounts or Authentication</h2>
+      <p>Journeys does not require, request, or create any user account. We do not ask for or collect your name, email address, phone number, location, or any personal device identifiers.</p>
+
+      <h2>2. No Analytics, Tracking, or Advertising</h2>
+      <p>The application contains <strong>zero analytics SDKs, zero advertising frameworks, and zero third-party tracking scripts</strong>. We do not profile your usage, track your reading habits, or monitor your navigation between biblical sites and routes.</p>
+
+      <h2>3. Local On-Device Data Storage</h2>
+      <p>All core educational content — including interactive maps, historical journey routes, archaeological notes, and complete Bible texts (KJV &amp; ASV) — is bundled directly in the application binary and read locally from an on-device SQLite database.</p>
+      <p>Any data generated through your use of the app is stored <strong>strictly on your device</strong>:</p>
+      <ul>
+        <li><strong>Preferences:</strong> Theme choices and Bible translation preferences are saved locally in system preferences (UserDefaults on iOS via Capacitor Preferences, or browser <code>localStorage</code> on web).</li>
+        <li><strong>Personal Study Notes &amp; Highlights:</strong> Your reading notes and verse highlights are keyed to biblical chapter and verse and stored exclusively on your device. They are never transmitted over the network or synced to any remote server.</li>
+        <li><strong>Quiz Progress:</strong> Educational quiz scores and completion states remain strictly local.</li>
+      </ul>
+
+      <h2>4. Transparent &amp; Optional Network Access</h2>
+      <p>The core application requires no internet connection. Network communication only occurs if you explicitly choose to interact with optional online features:</p>
+      <ul>
+        <li><strong>Optional Online Map Layers:</strong> When you enable satellite imagery or historical Roman Empire map overlays in the map layer panel, tiles are fetched directly from Esri or DARE. These requests transmit standard tile coordinate parameters and never transmit personal information.</li>
+        <li><strong>Optional Street-Level Imagery:</strong> Tapping "Street-level imagery" on a site card loads an optional Mapillary viewer for that specific geographic location.</li>
+        <li><strong>Optional Video Links:</strong> Tapping "Play video" on an archaeological find loads that single video via YouTube's privacy-hardened <code>youtube-nocookie.com</code> domain.</li>
+        <li><strong>Source Citations:</strong> Tapping a reference citation link opens the primary scholarly source in your external system web browser.</li>
+        <li><strong>Optional Content Updates:</strong> If an over-the-air content pack is published, checking for updates queries the project repository for public JSON bundle updates.</li>
+      </ul>
+      <p>None of these services are contacted unless you actively initiate the request.</p>
+
+      <h2>5. Data Retention and Deletion</h2>
+      <p>Because Journeys transmits and stores no user data on servers, <strong>there is no personal data held on any server to delete, sell, or disclose</strong>.</p>
+      <p>If you wish to delete all locally stored preferences, notes, and quiz history, you can simply delete the app from your device (or clear site storage if using the web version). Doing so permanently erases all on-device data.</p>
+
+      <h2>6. App Store &amp; Platform Privacy Declarations</h2>
+      <ul>
+        <li><strong>Apple App Store:</strong> "Data Not Collected". The bundled Apple Privacy Manifest (<code>PrivacyInfo.xcprivacy</code>) declares only standard local UserDefaults storage (Reason <code>CA92.1</code>) for device preferences.</li>
+        <li><strong>Google Play Store:</strong> "No data collected; No data shared".</li>
+      </ul>
+
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions, feedback, or concerns regarding this Privacy Policy, please contact us:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:auth@authentic.how">auth@authentic.how</a></li>
+        <li><strong>Project Repository:</strong> <a href="https://github.com/SeanLebida/journeys" target="_blank" rel="noopener noreferrer">github.com/SeanLebida/journeys</a></li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="./">Privacy Policy</a>
+      <a href="../support/">Support &amp; FAQ</a>
+      <a href="https://github.com/SeanLebida/journeys" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>&copy; 2026 Authentic How. All rights reserved.</p>
+  </footer>
+</body>
+</html>
