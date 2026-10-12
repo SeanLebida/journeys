@@ -43,6 +43,7 @@ Debug keeps `CODE_SIGNING_ALLOWED=NO` for an unsigned simulator compile. Release
 | Signed archive + TestFlight | Workflow destination `testflight`. Archive and export already succeeded. Upload waits on the App Store Connect app record (`POST /v1/apps` is 403 for this key) |
 | App Privacy “Data Not Collected” | Documented. Still has to be confirmed in App Store Connect |
 | Screenshots, previews, header, search | Generated in `docs/store-assets/apple/`. Paste order is `LISTING.md`. Play shots stay 1080×1920 and are not for Apple |
+| App icon and launch image | Done. Marketing icon is the compass from `public/icon.svg`, 1024 RGB, no alpha, full bleed. Launch image is `public/splash.svg` on the night background. Regenerate with `npx tsx scripts/generate-assets.ts --ios-icon` |
 | App Review | Listing, review notes, and media are ready locally. Submission waits on the website app record, then a processed TestFlight build attached to 0.3.14 |
 
 ## Cross-platform UX gates

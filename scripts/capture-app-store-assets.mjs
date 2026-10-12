@@ -202,7 +202,20 @@ async function marketing(phoneShot, padShot) {
     .png()
     .toBuffer();
   const phoneMeta = await sharp(phone).metadata();
-  const iconBuf = await sharp(icon).resize(280, 280).png().toBuffer();
+  const iconSize = 280;
+  const iconRadius = Math.round(iconSize * 0.2237);
+  const iconBuf = await sharp(icon)
+    .resize(iconSize, iconSize)
+    .composite([
+      {
+        input: Buffer.from(
+          `<svg width="${iconSize}" height="${iconSize}" xmlns="http://www.w3.org/2000/svg"><rect width="${iconSize}" height="${iconSize}" rx="${iconRadius}" ry="${iconRadius}" fill="#fff"/></svg>`,
+        ),
+        blend: 'dest-in',
+      },
+    ])
+    .png()
+    .toBuffer();
   const headerText = await svgText(headerW, headerH, [
     { x: 180, y: 620, size: 148, fill: '#faf5e9', text: 'Journeys', weight: 600 },
     { x: 184, y: 760, size: 64, fill: '#c9a227', text: 'Biblical Atlas' },
@@ -313,11 +326,20 @@ const flows = [
   { name: 'lesson-quiz', steps: lessonSteps },
 ];
 
-const args = process.argv.slice(2).filter((arg) => arg !== 'stills');
+const args = process.argv.slice(2).filter((arg) => arg !== 'stills' && arg !== 'marketing');
 const stillsOnly = process.argv.includes('stills');
 const selected = args.length ? flows.filter((flow) => args.includes(flow.name)) : flows;
 if (args.length && selected.length !== args.length) {
   throw new Error(`Unknown flow. Choose from: ${flows.map((flow) => flow.name).join(', ')}`);
+}
+
+if (process.argv.includes('marketing')) {
+  await marketing(path.join(phoneDir, '02-route-trace.png'), path.join(padDir, '03-atlas.png'));
+  const headerMeta = await sharp(path.join(out, 'header-3840x1646.png')).metadata();
+  if (headerMeta.width !== 3840 || headerMeta.height !== 1646 || headerMeta.hasAlpha) {
+    throw new Error(`header ${headerMeta.width}x${headerMeta.height} alpha=${headerMeta.hasAlpha}`);
+  }
+  process.exit(0);
 }
 
 const browser = await chromium.launch({
