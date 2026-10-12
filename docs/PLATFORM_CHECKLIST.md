@@ -40,10 +40,10 @@ Debug keeps `CODE_SIGNING_ALLOWED=NO` for an unsigned simulator compile. Release
 | iOS 26 SDK / deployment target 15 | Workflow selects Xcode 26 on `macos-26`. Project and Podfile target 15.0 |
 | Privacy manifest + export exemption | Done in the app target |
 | Unsigned simulator build | `.github/workflows/ios-appstore.yml` destination `compile-only` |
-| Signed archive + TestFlight | Same workflow, destination `testflight`, once the Apple secrets in `docs/APP_STORE.md` exist |
+| Signed archive + TestFlight | Workflow destination `testflight`. Archive and export already succeeded. Upload waits on the App Store Connect app record (`POST /v1/apps` is 403 for this key) |
 | App Privacy “Data Not Collected” | Documented. Still has to be confirmed in App Store Connect |
-| Screenshots at App Store sizes | Not generated. Play phone shots are 1080×1920 and will be rejected. Sizes are in `docs/APP_STORE.md` |
-| App Review | **Blocked on Apple credentials.** No team key, distribution certificate, or provisioning profile is available here |
+| Screenshots, previews, header, search | Generated in `docs/store-assets/apple/`. Paste order is `LISTING.md`. Play shots stay 1080×1920 and are not for Apple |
+| App Review | Listing, review notes, and media are ready locally. Submission waits on the website app record, then a processed TestFlight build attached to 0.3.14 |
 
 ## Cross-platform UX gates
 
