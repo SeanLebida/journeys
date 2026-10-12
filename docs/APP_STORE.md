@@ -2,7 +2,9 @@
 
 Bundle ID `how.authentic.journeys`. Marketing version is `package.json` (`0.3.14` today). The build number is `CURRENT_PROJECT_VERSION`, bumped in CI by `npm run ios:version:bump` (git commit count, same rule as Android).
 
-This machine cannot sign or upload. There is no Apple Developer credential in the repo, in GitHub secrets, or on disk. The workflow uploads only after the secrets below exist.
+Signing uses the Apple team already enrolled for ToGet. The distribution certificate on that team is named **iPhone Distribution**. The ToGet provisioning profile cannot sign this app. Journeys has its own App Store profile, `Journeys App Store`, for `how.authentic.journeys`.
+
+This API key can register bundle ids, certificates, and profiles. It cannot create the App Store Connect app record (`POST /v1/apps` returns 403). Create that record once in the website before TestFlight will accept a build.
 
 ## What the project already satisfies
 
