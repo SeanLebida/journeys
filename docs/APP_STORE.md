@@ -14,7 +14,7 @@ This API key can register bundle ids, certificates, and profiles. It cannot crea
 | Deployment target iOS 15 | `ios/App/Podfile` and `project.pbxproj` (Xcode 26 cannot target iOS 13) |
 | Encryption exemption | `ITSAppUsesNonExemptEncryption` = false in `ios/App/App/Info.plist` |
 | Privacy manifest | `ios/App/App/PrivacyInfo.xcprivacy` — no tracking, no collected data, UserDefaults reason `CA92.1` (Capacitor Preferences) |
-| 1024 icon, no alpha | `ios/App/App/Assets.xcassets/AppIcon.appiconset/` |
+| 1024 icon, no alpha | `AppIcon-512@2x.png`, the Journeys compass, full-bleed RGB. `npx tsx scripts/generate-assets.ts --ios-icon` |
 | Release signing allowed | Release config no longer sets `CODE_SIGNING_ALLOWED=NO`. Debug stays unsigned so `compile-only` still builds |
 | Offline value for Guideline 4.2 | Review notes below |
 

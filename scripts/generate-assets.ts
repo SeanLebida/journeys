@@ -1,7 +1,9 @@
-import { chromium } from '@playwright/test';
+import { chromium, type Page } from '@playwright/test';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,8 +11,85 @@ const rootDir = path.resolve(__dirname, '..');
 
 const iconSvgPath = path.join(rootDir, 'public', 'icon.svg');
 const splashSvgPath = path.join(rootDir, 'public', 'splash.svg');
+const iosIconPath = path.join(
+  rootDir,
+  'ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png',
+);
+const iosSplashDir = path.join(rootDir, 'ios/App/App/Assets.xcassets/Splash.imageset');
+
+// iOS masks the icon itself. A pre-rounded squircle leaves transparent corners,
+// which App Store Connect rejects, and a square gold rim would be clipped.
+function iosMarketingSvg(svg: string): string {
+  const rounded = '<rect width="512" height="512" rx="108" fill="url(#bgGrad)"/>';
+  const bleed = '<rect width="512" height="512" fill="url(#bgGrad)"/>';
+  if (!svg.includes(rounded)) {
+    throw new Error('public/icon.svg no longer has the rx=108 background; refusing to guess the iOS crop');
+  }
+  return svg
+    .replace(rounded, bleed)
+    .replace(
+      /\n\s*<rect x="6" y="6" width="500" height="500" rx="102" fill="none" stroke="url\(#goldGrad\)" stroke-width="2" stroke-opacity="0\.35"\/>/,
+      '',
+    );
+}
+
+async function screenshotSvg(page: Page, svg: string, width: number, height: number): Promise<Buffer> {
+  const file = path.join(os.tmpdir(), `journeys-asset-${width}x${height}.svg`);
+  fs.writeFileSync(file, svg);
+  await page.setViewportSize({ width, height });
+  await page.goto(`file://${file}`);
+  const shot = await page.screenshot({ omitBackground: false, type: 'png' });
+  fs.unlinkSync(file);
+  return shot;
+}
+
+async function writeIosMarketingIcon(page: Page) {
+  const svg = iosMarketingSvg(fs.readFileSync(iconSvgPath, 'utf8'));
+  const shot = await screenshotSvg(page, svg, 1024, 1024);
+  await sharp(shot)
+    .flatten({ background: '#090d16' })
+    .removeAlpha()
+    .png()
+    .toFile(iosIconPath);
+  console.log(`Generated iOS marketing icon: ${iosIconPath}`);
+}
+
+async function writeIosSplash(page: Page) {
+  const svg = fs.readFileSync(splashSvgPath, 'utf8');
+  const side = 2732;
+  const portraitW = Math.round((1080 * side) / 1920);
+  const shot = await screenshotSvg(page, svg, portraitW, side);
+  const portrait = await sharp(shot).flatten({ background: '#070a10' }).removeAlpha().png().toBuffer();
+  const square = await sharp({
+    create: { width: side, height: side, channels: 3, background: '#070a10' },
+  })
+    .composite([{ input: portrait, gravity: 'centre' }])
+    .removeAlpha()
+    .png()
+    .toBuffer();
+  for (const name of ['splash-2732x2732.png', 'splash-2732x2732-1.png', 'splash-2732x2732-2.png']) {
+    fs.writeFileSync(path.join(iosSplashDir, name), square);
+    console.log(`Generated iOS splash: ${name}`);
+  }
+}
+
+async function generateIosBrandAssets() {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  try {
+    await writeIosMarketingIcon(page);
+    await writeIosSplash(page);
+  } finally {
+    await browser.close();
+  }
+}
 
 async function main() {
+  if (process.argv.includes('--ios-icon')) {
+    await generateIosBrandAssets();
+    return;
+  }
+
   console.log('Generating PNG assets from icon.svg and splash.svg using Playwright Chromium...');
 
   const browser = await chromium.launch();
@@ -82,6 +161,9 @@ async function main() {
     await page.screenshot({ path: icLauncherForeFile, omitBackground: false });
     console.log(`Generated Android icon: ${target.dir} (${target.size}x${target.size})`);
   }
+
+  await writeIosMarketingIcon(page);
+  await writeIosSplash(page);
 
   await browser.close();
   console.log('Asset generation completed successfully!');
