@@ -9,6 +9,7 @@ All notable changes to Journeys are documented in this file.
 • Quiz “place a pin” peeks the sheet so the map is tappable.
 • External map links open on Android via the system browser.
 • PWA install metas and a web/Android/iOS platform checklist.
+• iOS App Store path: deployment target iOS 15, privacy manifest, Release signing, TestFlight workflow. Upload still needs the Apple secrets in `docs/APP_STORE.md`.
 
 ## [0.3.13] - 2026-09-22
 
