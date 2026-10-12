@@ -13,9 +13,9 @@ Paste these into App Store Connect for version 0.3.14, English (U.S.). Asset fil
 | Secondary category | Reference |
 | Price | Free |
 | Copyright | 2026 Authentic How |
-| Support URL | https://github.com/SeanLebida/journeys |
-| Marketing URL | https://github.com/SeanLebida/journeys |
-| Privacy policy URL | https://github.com/SeanLebida/journeys/blob/development/PRIVACY.md |
+| Support URL | https://seanlebida.github.io/journeys/support |
+| Marketing URL | https://seanlebida.github.io/journeys/ |
+| Privacy policy URL | https://seanlebida.github.io/journeys/privacy |
 | Support email | auth@authentic.how |
 
 Keywords (83 / 100):
