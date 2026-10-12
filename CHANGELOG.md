@@ -10,6 +10,7 @@ All notable changes to Journeys are documented in this file.
 • External map links open on Android via the system browser.
 • PWA install metas and a web/Android/iOS platform checklist.
 • iOS App Store path: deployment target iOS 15, privacy manifest, Release signing, TestFlight workflow. The signed IPA exports. Upload waits on an App Store Connect app record, which this API key cannot create. Review media and paste-ready listing are in `docs/store-assets/apple/`.
+• The iOS home-screen icon and launch image use the Journeys compass. The Capacitor placeholder is gone.
 
 ## [0.3.13] - 2026-09-22
 
