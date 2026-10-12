@@ -61,7 +61,6 @@ tests/          unit + e2e (Playwright)
 learnings/      single source of truth for meaningful changes (read before planning)
 ```
 
-The full plan lives at `~/.claude/plans/parallel-doodling-glade.md`.
 Milestones M0–M9 track scaffold → map → content/Bible DB → the four modes → offline hardening →
 content completion + OTA → store release.
 
@@ -89,4 +88,3 @@ persistence across a reload).
 > Accuracy note: content is **cited and self-reviewed, not yet scholar-approved**. `npm run build:content -- --release`
 > intentionally blocks a store release until a qualified reviewer signs off the `high`-confidence claims.
 
-The implementation plan is at `~/.claude/plans/parallel-doodling-glade.md`.
