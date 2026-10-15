@@ -33,6 +33,12 @@ on:
         description: 'Override CFBundleVersion (empty = git commit count)'
         required: false
         type: string
+  push:
+    branches: [production]
+
+concurrency:
+  group: ios-appstore-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ios:
@@ -73,13 +79,13 @@ jobs:
         run: npx cap sync ios
 
       - name: Prepare iOS version
-        if: ${{ inputs.destination != 'compile-only' }}
+        if: ${{ (inputs.destination || 'testflight') != 'compile-only' }}
         env:
           IOS_BUILD_NUMBER: ${{ inputs.build_number }}
         run: npm run ios:version:bump
 
       - name: Compile unsigned simulator app
-        if: ${{ inputs.destination == 'compile-only' }}
+        if: ${{ (inputs.destination || 'testflight') == 'compile-only' }}
         working-directory: ios/App
         run: |
           set -euo pipefail
@@ -93,7 +99,7 @@ jobs:
             build
 
       - name: Require signing secrets
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         run: |
           set -euo pipefail
           missing=0
@@ -117,7 +123,7 @@ jobs:
 
       - name: Install distribution certificate and profile
         id: signing
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         env:
           IOS_DISTRIBUTION_CERTIFICATE_PASSWORD: ${{ secrets.IOS_DISTRIBUTION_CERTIFICATE_PASSWORD }}
           KEYCHAIN_PASSWORD: ${{ github.run_id }}
@@ -149,7 +155,7 @@ jobs:
           echo "Installed profile $NAME ($PROFILE_UUID)"
 
       - name: Sign only the App target
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         run: |
           python3 <<'PY'
           import os
@@ -188,7 +194,7 @@ jobs:
           PY
 
       - name: Archive signed app
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         working-directory: ios/App
         run: |
           set -euo pipefail
@@ -202,7 +208,7 @@ jobs:
 
       - name: Export IPA
         id: ipa
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         run: |
           set -euo pipefail
           printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">' '<plist version="1.0"><dict/></plist>' > "$RUNNER_TEMP/ExportOptions.plist"
@@ -223,7 +229,7 @@ jobs:
 
       - name: Generate release notes
         id: notes
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         run: |
           set -euo pipefail
           npm run android:release:notes
@@ -234,7 +240,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Upload IPA artifact
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         uses: actions/upload-artifact@v7
         with:
           name: journeys-ipa
@@ -242,7 +248,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to TestFlight
-        if: ${{ inputs.destination == 'testflight' }}
+        if: ${{ (inputs.destination || 'testflight') == 'testflight' }}
         uses: apple-actions/upload-testflight-build@v5
         with:
           app-path: ${{ steps.ipa.outputs.path }}

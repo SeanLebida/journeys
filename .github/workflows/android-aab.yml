@@ -43,6 +43,12 @@ on:
         description: 'Override versionCode (leave empty to use git commit count)'
         required: false
         type: string
+  push:
+    branches: [production]
+
+concurrency:
+  group: android-aab-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
