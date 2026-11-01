@@ -17,7 +17,8 @@ test.describe('location focus QC', () => {
     });
     expect(before).toBeGreaterThan(0);
 
-    await page.getByRole('button', { name: /Find on map/i }).click();
+    // Accessible name carries the rival's name ("Find X on the map"); several rivals can show.
+    await page.getByRole('button', { name: /^Find .+ on the map$/ }).first().click();
     // Site panel stays open (working identification parent).
     await expect(page.locator('.stop-panel')).toBeVisible();
   });
