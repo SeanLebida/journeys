@@ -420,6 +420,12 @@ a {
   background: none;
   padding: 0;
   margin: 0;
+  /* The glyph stays small; the hit area is a full 44px touch target. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 0.85rem;
   line-height: 1;
   color: #8f1f1f;
@@ -4695,3 +4701,13 @@ a {
   padding-top: 0;
   border-top: 0;
 }
+
+/* Atlas: close a place's details and land back where you were. */
+.stop-panel__head { position: relative; }
+.stop-panel__close {
+  position: absolute; top: 0; right: 0;
+  min-width: 44px; min-height: 44px;
+  border: 0; background: transparent; font-size: 1.5rem; line-height: 1;
+  cursor: pointer; color: inherit;
+}
+.stop-panel__head h3 { padding-right: 48px; }
