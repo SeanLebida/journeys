@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl, { type MapLayerMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
+import { useSheetStore } from '../../state/useSheetStore';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { LayerPanel } from '../../map/LayerPanel';
@@ -151,7 +152,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           setSelectedBattle(b.id);
           setSelected(null);
         });
-        return new maplibregl.Marker({ element: el, anchor: 'right', offset: [-7, 0] }).setLngLat([b.lon, b.lat]).addTo(map);
+        return labelledMarker(el, { element: el, anchor: 'right', offset: [-7, 0] }, [b.lon, b.lat], map);
       });
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showBattles, conf, maxYear]);
@@ -174,7 +175,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           setSelected(s.id);
           setSelectedBattle(null);
         });
-        return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([s.lon, s.lat]).addTo(map);
+        return labelledMarker(el, { element: el, anchor: 'left', offset: [7, 0] }, [s.lon, s.lat], map);
       });
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showSites, conf, maxYear]);
@@ -197,10 +198,18 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           setSelected(c.parentId);
           setSelectedBattle(null);
         });
-        return new maplibregl.Marker({ element: el, anchor: 'left', offset: [10, 0] }).setLngLat([c.lon, c.lat]).addTo(map);
+        return labelledMarker(el, { element: el, anchor: 'left', offset: [10, 0] }, [c.lon, c.lat], map);
       });
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showSites, conf, maxYear, selected]);
+
+  // A collapsed sheet would hide the details just opened; lift it to half so
+  // the place reads at once and the map stays in view above it.
+  useEffect(() => {
+    if (!selected && !selectedBattle) return;
+    const sheet = useSheetStore.getState();
+    if (sheet.snap === 'peek') sheet.requestSnap('half');
+  }, [selected, selectedBattle]);
 
   // Center map on selected site (or selected battle's site) in Atlas mode
   useEffect(() => {
@@ -224,63 +233,30 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];
   const battle = selectedBattle ? bundle.battle(selectedBattle) : undefined;
   const battleSite = battle ? bundle.site(battle.siteId) : undefined;
+  const detailsLabel = site
+    ? `Details: ${site.ancientName.en}`
+    : battle
+      ? `Details: ${battle.title.en}`
+      : undefined;
+  const closeDetails = () => {
+    setSelected(null);
+    setSelectedBattle(null);
+    setFocus(null);
+  };
   const toggleConf = (c: string) =>
     setConf((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
 
   return (
-    <ModePanel title={t('modes.atlas.title')}>
-      <p>Toggle layers and filter by period. Tap a site for its details and sources.</p>
-
-      <LayerPanel />
-
-      <fieldset className="atlas-toggles">
-        <legend>Atlas content</legend>
-        <label><input type="checkbox" checked={showSites} onChange={(e) => setShowSites(e.target.checked)} /> Sites</label>
-        <label><input type="checkbox" checked={showRoutes} onChange={(e) => setShowRoutes(e.target.checked)} /> Journey routes</label>
-        <label><input type="checkbox" checked={showBattles} onChange={(e) => setShowBattles(e.target.checked)} /> ⚔ Battles &amp; conquests</label>
-      </fieldset>
-
-      <fieldset className="atlas-toggles">
-        <legend>Confidence</legend>
-        {CONFIDENCES.map((c) => (
-          <label key={c}>
-            <input type="checkbox" checked={conf.includes(c)} onChange={() => toggleConf(c)} />{' '}
-            <span className={`confidence confidence--${c}`}>{c}</span>
-          </label>
-        ))}
-      </fieldset>
-
-      <label className="atlas-period">
-        Show up to year: <strong>{maxYear < 0 ? `${-maxYear} BC` : `AD ${maxYear}`}</strong>
-        <input
-          type="range"
-          min={YEAR_MIN}
-          max={YEAR_MAX}
-          value={maxYear}
-          list="atlas-era-ticks"
-          onChange={(e) => setMaxYear(Number(e.target.value))}
-        />
-        <datalist id="atlas-era-ticks">
-          {ERA_TICKS.map((t) => (
-            <option key={t.year} value={t.year} label={t.label} />
-          ))}
-        </datalist>
-        <span className="atlas-period__eras" aria-hidden="true">
-          {ERA_TICKS.map((t) => (
-            <button
-              key={t.year}
-              type="button"
-              className="atlas-period__era"
-              onClick={() => setMaxYear(t.year)}
-            >
-              {t.label}
-            </button>
-          ))}
-        </span>
-      </label>
-
+    <ModePanel
+      title={t('modes.atlas.title')}
+      scrollKey={selected ? `site:${selected}` : selectedBattle ? `battle:${selectedBattle}` : 'atlas'}
+      rememberScroll
+    >
+      {/* Details come first: tapping a place should show it, not leave it
+          below the layer controls where most readers never scroll. */}
       {battle && (
-        <article className="stop-panel" aria-live="polite">
+        <article className="stop-panel" aria-live="polite" aria-label={detailsLabel}>
+          <CloseDetails name={battle.title.en} onClose={closeDetails} />
           <BattleCard battle={battle} bundle={bundle} />
           {battleSite && (
             <button
@@ -298,9 +274,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       )}
 
       {site && (
-        <article className="stop-panel" aria-live="polite">
+        <article className="stop-panel" aria-live="polite" aria-label={detailsLabel}>
           <header className="stop-panel__head">
             <h3>{site.ancientName.en}</h3>
+            <CloseDetails name={site.ancientName.en} onClose={closeDetails} />
             <ClaimMeta
               confidence={site.coordinates.confidence}
               reviewStatus={site.coordinates.reviewStatus}
@@ -411,6 +388,81 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
           })}
         </article>
       )}
+
+      <p>Toggle layers and filter by period. Tap a site for its details and sources.</p>
+
+      <LayerPanel />
+
+      <fieldset className="atlas-toggles">
+        <legend>Atlas content</legend>
+        <label><input type="checkbox" checked={showSites} onChange={(e) => setShowSites(e.target.checked)} /> Sites</label>
+        <label><input type="checkbox" checked={showRoutes} onChange={(e) => setShowRoutes(e.target.checked)} /> Journey routes</label>
+        <label><input type="checkbox" checked={showBattles} onChange={(e) => setShowBattles(e.target.checked)} /> ⚔ Battles &amp; conquests</label>
+      </fieldset>
+
+      <fieldset className="atlas-toggles">
+        <legend>Confidence</legend>
+        {CONFIDENCES.map((c) => (
+          <label key={c}>
+            <input type="checkbox" checked={conf.includes(c)} onChange={() => toggleConf(c)} />{' '}
+            <span className={`confidence confidence--${c}`}>{c}</span>
+          </label>
+        ))}
+      </fieldset>
+
+      <label className="atlas-period">
+        Show up to year: <strong>{maxYear < 0 ? `${-maxYear} BC` : `AD ${maxYear}`}</strong>
+        <input
+          type="range"
+          min={YEAR_MIN}
+          max={YEAR_MAX}
+          value={maxYear}
+          list="atlas-era-ticks"
+          onChange={(e) => setMaxYear(Number(e.target.value))}
+        />
+        <datalist id="atlas-era-ticks">
+          {ERA_TICKS.map((t) => (
+            <option key={t.year} value={t.year} label={t.label} />
+          ))}
+        </datalist>
+        <span className="atlas-period__eras" aria-hidden="true">
+          {ERA_TICKS.map((t) => (
+            <button
+              key={t.year}
+              type="button"
+              className="atlas-period__era"
+              onClick={() => setMaxYear(t.year)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </span>
+      </label>
+
     </ModePanel>
   );
+}
+
+function CloseDetails({ name, onClose }: { name: string; onClose: () => void }) {
+  return (
+    <button type="button" className="stop-panel__close" onClick={onClose} aria-label={`Close details for ${name}`}>
+      ×
+    </button>
+  );
+}
+
+/**
+ * MapLibre overwrites a custom element's aria-label with "Map marker", which
+ * leaves screen-reader users with dozens of identical buttons. Keep ours.
+ */
+function labelledMarker(
+  el: HTMLElement,
+  options: maplibregl.MarkerOptions,
+  at: [number, number],
+  map: maplibregl.Map,
+) {
+  const label = el.getAttribute('aria-label');
+  const marker = new maplibregl.Marker({ ...options, element: el }).setLngLat(at).addTo(map);
+  if (label) el.setAttribute('aria-label', label);
+  return marker;
 }
