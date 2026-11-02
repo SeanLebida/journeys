@@ -1961,13 +1961,15 @@ a {
   transform: translateX(-50%);
   z-index: 100;
   width: max-content;
-  max-width: min(340px, calc(100vw - 1.6rem));
+  max-width: min(340px, calc(100vw - 7rem));
   pointer-events: auto;
 }
 /* Open, the tab becomes a panel — pin it to a stable width so the checkbox rows
    are not re-flowed by whichever label happens to be longest. */
 .map-floating-layers:has(.atlas-toggles-expandable[open]) {
-  width: min(340px, calc(100vw - 1.6rem));
+  /* Leave a gutter either side wide enough for MapLibre's top-right zoom
+     control (29px button + 10px margin), so the open panel never covers it. */
+  width: min(340px, calc(100vw - 7rem));
 }
 /* Landscape docks the mode panel as a left rail (see the side-rail block above),
    so the tab hangs from the middle of what is left of the map, not the shell.
@@ -1976,7 +1978,7 @@ a {
   .map-floating-layers,
   .map-floating-layers:has(.atlas-toggles-expandable[open]) {
     left: calc(var(--rail-w) + (100% - var(--rail-w)) / 2);
-    max-width: min(340px, calc(100vw - var(--rail-w) - 1.6rem));
+    max-width: min(340px, calc(100vw - var(--rail-w) - 7rem));
   }
 }
 .map-floating-layers .atlas-toggles-expandable {
@@ -2120,11 +2122,14 @@ a {
 }
 .atlas-toggles__group-items {
   display: grid;
-  gap: 0.4rem;
+  /* Rows are already 44px tall; extra gap would only stretch the list. */
+  gap: 0;
 }
 .atlas-toggles__checkbox-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  /* Every layer row is a full-width 44px touch target. */
+  min-height: 44px;
   gap: 0.4rem;
   font-size: 0.85rem;
   color: var(--text);

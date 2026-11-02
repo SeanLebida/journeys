@@ -5,7 +5,7 @@ import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
-import { LayerPanel } from '../../map/LayerPanel';
+import { MapLayerControl } from '../../map/MapLayerControl';
 import { Citations, ReferenceStack, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
@@ -122,11 +122,11 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
   return (
     <div className="lesson-player-layout">
+      <MapLayerControl />
       <ModePanel title={lesson.title.en}>
         <Link to="/lessons" className="backlink">
           ← {t('nav.lessons')}
         </Link>
-        <LayerPanel />
 
         <div className="lesson-step" aria-live="polite">
           <p className="lesson-step__body">{step.body.en}</p>
