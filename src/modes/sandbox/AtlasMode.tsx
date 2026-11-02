@@ -6,7 +6,7 @@ import { ModePanel } from '../ModePanel';
 import { useSheetStore } from '../../state/useSheetStore';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
-import { LayerPanel } from '../../map/LayerPanel';
+import { MapLayerControl } from '../../map/MapLayerControl';
 import {
   ATLAS_LAYERS,
   ROUTE_LAYER_IDS,
@@ -247,6 +247,28 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     setConf((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
 
   return (
+    <>
+    <MapLayerControl
+      extraGroups={[
+        {
+          title: 'Atlas content',
+          items: [
+            { id: 'sites', label: 'Sites', checked: showSites, onChange: setShowSites },
+            { id: 'routes', label: 'Journey routes', checked: showRoutes, onChange: setShowRoutes },
+            { id: 'battles', label: '⚔ Battles & conquests', checked: showBattles, onChange: setShowBattles },
+          ],
+        },
+        {
+          title: 'Confidence',
+          items: CONFIDENCES.map((c) => ({
+            id: `conf-${c}`,
+            label: <span className={`confidence confidence--${c}`}>{c}</span>,
+            checked: conf.includes(c),
+            onChange: () => toggleConf(c),
+          })),
+        },
+      ]}
+    />
     <ModePanel
       title={t('modes.atlas.title')}
       scrollKey={selected ? `site:${selected}` : selectedBattle ? `battle:${selectedBattle}` : 'atlas'}
@@ -389,26 +411,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         </article>
       )}
 
-      <p>Toggle layers and filter by period. Tap a site for its details and sources.</p>
-
-      <LayerPanel />
-
-      <fieldset className="atlas-toggles">
-        <legend>Atlas content</legend>
-        <label><input type="checkbox" checked={showSites} onChange={(e) => setShowSites(e.target.checked)} /> Sites</label>
-        <label><input type="checkbox" checked={showRoutes} onChange={(e) => setShowRoutes(e.target.checked)} /> Journey routes</label>
-        <label><input type="checkbox" checked={showBattles} onChange={(e) => setShowBattles(e.target.checked)} /> ⚔ Battles &amp; conquests</label>
-      </fieldset>
-
-      <fieldset className="atlas-toggles">
-        <legend>Confidence</legend>
-        {CONFIDENCES.map((c) => (
-          <label key={c}>
-            <input type="checkbox" checked={conf.includes(c)} onChange={() => toggleConf(c)} />{' '}
-            <span className={`confidence confidence--${c}`}>{c}</span>
-          </label>
-        ))}
-      </fieldset>
+      <p>Open Map details &amp; layers above the map to toggle layers. Filter by period below, and tap a site for its details and sources.</p>
 
       <label className="atlas-period">
         Show up to year: <strong>{maxYear < 0 ? `${-maxYear} BC` : `AD ${maxYear}`}</strong>
@@ -440,6 +443,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       </label>
 
     </ModePanel>
+    </>
   );
 }
 

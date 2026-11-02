@@ -29,10 +29,10 @@ test.describe('atlas: tapping a place shows its details at once', () => {
 
     const panel = page.locator('.stop-panel').first();
     await expect(panel).toBeVisible();
-    // Details come before the layer controls in the panel, not after them.
+    // Details come before the period filter in the panel, not after them.
     const order = await page.evaluate(() => {
       const d = document.querySelector('.stop-panel');
-      const l = document.querySelector('.mode-panel__body fieldset, .layer-panel');
+      const l = document.querySelector('.mode-panel__body .atlas-period');
       return d && l ? d.compareDocumentPosition(l) & Node.DOCUMENT_POSITION_FOLLOWING : 0;
     });
     expect(order).toBeTruthy();
