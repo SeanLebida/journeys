@@ -2,6 +2,11 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.18] - 2026-11-02
+
+• Timeline era chips scroll to that era instead of opening a missing page on the phone apps.
+• The phone apps remind you when a store update is ready and show what's new after you update.
+
 ## [0.3.17] - 2026-11-02
 
 • Tapping a place on the Atlas shows its details first, and Close returns you to where you were scrolled.
