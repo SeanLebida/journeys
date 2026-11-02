@@ -4711,3 +4711,11 @@ a {
   cursor: pointer; color: inherit;
 }
 .stop-panel__head h3 { padding-right: 48px; }
+button.tl-jump__link {
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.tl-era:focus {
+  outline: none;
+}
