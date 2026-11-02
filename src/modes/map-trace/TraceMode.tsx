@@ -5,7 +5,7 @@ import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
-import { LayerPanel } from '../../map/LayerPanel';
+import { MapLayerControl } from '../../map/MapLayerControl';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useSheetStore } from '../../state/useSheetStore';
@@ -195,9 +195,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
           ))}
         </details>
       </ModePanel>
-      <div className="map-floating-layers">
-        <LayerPanel />
-      </div>
+      <MapLayerControl />
       {/* Desktop playback pill. On mobile the same controls live in the sheet
           footer (StopActions) and the travel strip, so it is hidden by CSS. */}
       <div className="trace-controls-fixed" style={accent}>
