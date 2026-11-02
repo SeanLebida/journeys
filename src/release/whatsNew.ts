@@ -28,7 +28,8 @@ export const DISMISSED_UPDATE_KEY = 'journeys.dismissedUpdate';
 /** Show the walkthrough once per installed version, and only if it has steps. */
 export function shouldShowWhatsNew(version: string, lastSeen: string | null, steps = WHATS_NEW): boolean {
   const current = version.trim();
-  return Boolean(current) && steps.length > 0 && lastSeen !== current;
+  // A fresh install has nothing saved yet: it's not an update, so no walkthrough.
+  return Boolean(current) && steps.length > 0 && lastSeen !== null && lastSeen !== current;
 }
 
 export function readKey(key: string): string | null {
