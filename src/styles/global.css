@@ -4711,3 +4711,51 @@ a {
   cursor: pointer; color: inherit;
 }
 .stop-panel__head h3 { padding-right: 48px; }
+.release-notice {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: calc(var(--dock-h, 64px) + 0.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface-raised);
+  color: var(--text, inherit);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+}
+.release-notice__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+.release-notice__title {
+  margin: 0.25rem 0;
+  font-size: 1.05rem;
+}
+.release-notice__body {
+  margin: 0 0 0.75rem;
+}
+.release-notice__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.release-notice__btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.release-notice__btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
