@@ -2,6 +2,10 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.19] - 2026-11-02
+
+• The map layers pill now sits at the top of every map, and the Atlas filters live inside it.
+
 ## [0.3.18] - 2026-11-02
 
 • Timeline era chips scroll to that era instead of opening a missing page on the phone apps.
