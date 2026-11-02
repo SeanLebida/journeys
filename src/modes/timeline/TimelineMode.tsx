@@ -42,6 +42,15 @@ import { useUiStore } from '../../state/useUiStore';
  * millennia would leave the entire New Testament a few pixels tall — and the
  * scale change is stated at every boundary rather than hidden.
  */
+/** Scroll an era band into view and move focus there, without touching the URL. */
+function jumpToEra(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  el.focus({ preventScroll: true });
+}
+
 export default function TimelineMode() {
   const { bundle, loading, error } = useBundle();
   const { t } = useTranslation();
@@ -122,9 +131,11 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
       <nav className="tl-jump" aria-label="Jump to an era">
         {model.sections.map((s) => (
-          <a key={s.era.id} className="tl-jump__link" href={`#${s.era.id}`}>
+          // A button, not an #id link: the native app routes on the URL hash,
+          // so a hash link opened the not-found page.
+          <button key={s.era.id} type="button" className="tl-jump__link" onClick={() => jumpToEra(s.era.id)}>
             {s.era.label}
-          </a>
+          </button>
         ))}
       </nav>
 
@@ -153,7 +164,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
       <ol className="tl-eras" ref={erasRef} data-fold={foldEnabled ? 'on' : 'off'}>
         {sections.map((section) => (
-          <li className="tl-era" key={section.era.id} id={section.era.id}>
+          <li className="tl-era" key={section.era.id} id={section.era.id} tabIndex={-1}>
             <EraHeader era={section.era} count={section.itemCount} />
             <ChartScrollCue
               eraId={section.era.id}
