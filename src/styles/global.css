@@ -4758,4 +4758,11 @@ a {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+button.tl-jump__link {
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.tl-era:focus {
+  outline: none;
 }
