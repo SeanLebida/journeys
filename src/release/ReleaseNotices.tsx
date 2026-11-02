@@ -38,7 +38,9 @@ export function ReleaseNotices({
       const v = await getVersion();
       if (!live) return;
       setVersion(v);
-      if (shouldShowWhatsNew(v, readKey(LAST_SEEN_VERSION_KEY), steps)) {
+      const lastSeen = readKey(LAST_SEEN_VERSION_KEY);
+      if (lastSeen === null && v.trim()) writeKey(LAST_SEEN_VERSION_KEY, v.trim());
+      if (shouldShowWhatsNew(v, lastSeen, steps)) {
         setStep(0);
         return;
       }

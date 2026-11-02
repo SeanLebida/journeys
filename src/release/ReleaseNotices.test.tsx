@@ -23,7 +23,7 @@ describe('updateOffer', () => {
 
 describe('shouldShowWhatsNew', () => {
   it('shows once per installed version, and not without steps', () => {
-    expect(shouldShowWhatsNew('0.3.18', null, steps)).toBe(true);
+    expect(shouldShowWhatsNew('0.3.18', null, steps)).toBe(false);
     expect(shouldShowWhatsNew('0.3.18', '0.3.17', steps)).toBe(true);
     expect(shouldShowWhatsNew('0.3.18', '0.3.18', steps)).toBe(false);
     expect(shouldShowWhatsNew('0.3.18', null, [])).toBe(false);
@@ -44,6 +44,14 @@ describe('ReleaseNotices', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(localStorage.getItem(LAST_SEEN_VERSION_KEY)).toBe('0.3.18');
     expect(getUpdate).not.toHaveBeenCalled();
+  });
+
+  it('skips the walkthrough on a fresh install but remembers the version', async () => {
+    const getUpdate = vi.fn().mockResolvedValue(null);
+    render(<ReleaseNotices getVersion={version('0.3.18')} getUpdate={getUpdate} steps={steps} />);
+    await waitFor(() => expect(getUpdate).toHaveBeenCalled());
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(localStorage.getItem(LAST_SEEN_VERSION_KEY)).toBe('0.3.18');
   });
 
   it('reminds about a store update, and Later hides it for that version', async () => {
