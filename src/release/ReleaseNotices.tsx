@@ -14,7 +14,7 @@ export interface ReleaseNoticesProps {
   /** Injected in tests; the app reads the installed build and the store. */
   getVersion?: () => Promise<string>;
   getUpdate?: (dismissed: string | null) => Promise<string | null>;
-  onOpenStore?: () => Promise<void>;
+  onOpenStore?: () => Promise<unknown>;
   steps?: WhatsNewStep[];
 }
 

@@ -37,6 +37,12 @@ export async function checkForUpdate(dismissed: string | null): Promise<string |
   }
 }
 
-export async function openStore(): Promise<void> {
-  await AppUpdate.openAppStore();
+/** Opens the store listing; returns false instead of throwing when the store can't open. */
+export async function openStore(): Promise<boolean> {
+  try {
+    await AppUpdate.openAppStore();
+    return true;
+  } catch {
+    return false;
+  }
 }
