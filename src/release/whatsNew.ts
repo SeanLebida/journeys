@@ -9,6 +9,10 @@ export interface WhatsNewStep {
 
 export const WHATS_NEW: WhatsNewStep[] = [
   {
+    title: 'Map layers in one place',
+    body: 'Every map now has Map details & layers at the top. In the Atlas, Sites, Routes, Battles and Confidence live there too.',
+  },
+  {
     title: 'Era chips work again',
     body: 'On the Timeline, tap an era like The monarchy or The exile to jump straight to it.',
   },
