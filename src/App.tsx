@@ -5,6 +5,7 @@ import { MapProvider } from './map/MapProvider';
 import { TabBar } from './components/TabBar';
 import { useThemeAttribute } from './state/theme';
 import { useJourneyStore } from './state/useJourneyStore';
+import { ReleaseNotices } from './release/ReleaseNotices';
 
 /**
  * Layout route. Mounts the persistent map once and renders the active mode in
@@ -35,6 +36,7 @@ export default function App() {
         </main>
       </MapProvider>
       <TabBar />
+      <ReleaseNotices />
     </div>
   );
 }

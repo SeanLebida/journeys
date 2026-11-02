@@ -1,6 +1,6 @@
 {
   "name": "journeys",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "private": true,
   "type": "module",
   "description": "Cited offline atlas of the biblical historical record: patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles.",
@@ -30,6 +30,7 @@
     "@capacitor/core": "^6.2.0",
     "@capacitor/ios": "^6.2.1",
     "@capacitor/preferences": "^6.0.3",
+    "@capawesome/capacitor-app-update": "^6.1.0",
     "@turf/along": "^7.1.0",
     "@turf/helpers": "^7.1.0",
     "@turf/length": "^7.1.0",
