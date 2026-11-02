@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { BASEMAP_LAYERS } from './style';
 import { useMapLayersStore, type BasemapLayerKey } from '../state/useMapLayersStore';
 
@@ -27,7 +27,7 @@ const CATEGORIES: { title: string; keys: BasemapLayerKey[] }[] = [
   },
   {
     title: 'Borders & Kingdom Heartlands',
-    keys: ['borders', 'kingdomIsrael', 'kingdomJudah', 'mandate', 'borders1949'],
+    keys: ['borders', 'kingdomIsrael', 'kingdomJudah', 'mandate', 'borders1949', 'conflict'],
   },
   {
     title: 'Geography & Features',
@@ -35,16 +35,23 @@ const CATEGORIES: { title: string; keys: BasemapLayerKey[] }[] = [
   },
 ];
 
+/** A mode-specific group of toggles shown inside the shared panel, in the same
+ * row style as the basemap layers (e.g. Atlas content and confidence). */
+export interface LayerPanelGroup {
+  title: string;
+  items: { id: string; label: ReactNode; checked: boolean; onChange: (checked: boolean) => void }[];
+}
+
 /** Expandable floating map details / layer control widget shared across modes —
  * backed by `useMapLayersStore` so layer selections persist across journey navigation. */
-export function LayerPanel() {
+export function LayerPanel({ extraGroups = [] }: { extraGroups?: LayerPanelGroup[] }) {
   const layers = useMapLayersStore();
   const [open, setOpen] = useState(false);
 
   // Count active optional layers
   const activeCount = (Object.keys(BASEMAP_LAYERS) as BasemapLayerKey[]).filter(
     (k) => layers[k] && k !== 'land' && k !== 'coastline'
-  ).length;
+  ).length + extraGroups.reduce((n, g) => n + g.items.filter((i) => i.checked).length, 0);
 
   return (
     <details
@@ -83,6 +90,23 @@ export function LayerPanel() {
                     onChange={(e) => layers.setLayerVisible(key, e.target.checked)}
                   />
                   <span>{LAYER_LABELS[key]}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+        {extraGroups.map((g) => (
+          <div key={g.title} className="atlas-toggles__group">
+            <h4 className="atlas-toggles__group-title">{g.title}</h4>
+            <div className="atlas-toggles__group-items">
+              {g.items.map((item) => (
+                <label key={item.id} className="atlas-toggles__checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={item.checked}
+                    onChange={(e) => item.onChange(e.target.checked)}
+                  />
+                  <span>{item.label}</span>
                 </label>
               ))}
             </div>
