@@ -38,7 +38,7 @@ export function HomeView() {
 
       <SourcingDisclosure />
       <p className="home__credits-link">
-        <Link to="/about">{t('sourcing.title')} · Credits &amp; sources</Link>
+        <Link to="/about">About Journeys · Credits &amp; sources</Link>
       </p>
     </ModeHomeShell>
   );
