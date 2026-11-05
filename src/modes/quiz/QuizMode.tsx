@@ -10,8 +10,10 @@ import { haversine } from '../../map/route';
 import { Citations, ReferenceStack } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { useQuizStore } from '../../state/useQuizStore';
+import { placeToForget, usePlaceHydrated, usePlaceStore, type QuizAnswer } from '../../state/usePlaceStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
+import { answeredFlags, matchingAnswer } from './quizScore';
 
 export default function QuizMode() {
   const { quizId } = useParams();
@@ -21,8 +23,19 @@ export default function QuizMode() {
   if (error || !bundle) return <ModePanel title={t('modes.quiz.title')}>Could not load content.</ModePanel>;
   if (!quizId) return <QuizPicker bundle={bundle} />;
   const quiz = bundle.quiz(quizId);
-  if (!quiz) return <ModePanel title={t('modes.quiz.title')}>Unknown quiz.</ModePanel>;
+  if (!quiz) return <MissingQuiz bundle={bundle} quizId={quizId} />;
   return <QuizRunner bundle={bundle} quiz={quiz} />;
+}
+
+/** Quiz id is gone from the loaded bundle. Forgets the place, then shows the list. */
+function MissingQuiz({ bundle, quizId }: { bundle: BundleIndex; quizId: string }) {
+  const hydrated = usePlaceHydrated();
+  const forgetQuiz = usePlaceStore((s) => s.forgetQuiz);
+  const missing = placeToForget(hydrated, quizId, false);
+  useEffect(() => {
+    if (missing) forgetQuiz(missing);
+  }, [missing, forgetQuiz]);
+  return <QuizPicker bundle={bundle} />;
 }
 
 function QuizPicker({ bundle }: { bundle: BundleIndex }) {
@@ -60,14 +73,27 @@ function QuizPicker({ bundle }: { bundle: BundleIndex }) {
 function QuizRunner({ bundle, quiz }: { bundle: BundleIndex; quiz: TQuiz }) {
   const { t } = useTranslation();
   const record = useQuizStore((s) => s.record);
+  const hydrated = usePlaceHydrated();
+  const savedQuiz = usePlaceStore((s) => s.quizzes[quiz.id]);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
-  const answeredCount = Object.keys(answers).length;
-  const score = Object.values(answers).filter(Boolean).length;
+  const scored = {
+    ...(hydrated ? answeredFlags(quiz.questions, savedQuiz) : {}),
+    ...answers,
+  };
+  const answeredCount = Object.keys(scored).length;
+  const score = Object.values(scored).filter(Boolean).length;
   const done = answeredCount === quiz.questions.length;
 
   useEffect(() => {
     if (done) record(quiz.id, score, quiz.questions.length);
   }, [done, record, quiz.id, score, quiz.questions.length]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const place = usePlaceStore.getState();
+    place.reconcileQuiz(quiz.id, quiz.questions.map((q) => q.id));
+    place.touchQuiz(quiz.id);
+  }, [hydrated, quiz]);
 
   const onAnswered = (qid: string, correct: boolean) =>
     setAnswers((a) => (qid in a ? a : { ...a, [qid]: correct }));
@@ -83,23 +109,48 @@ function QuizRunner({ bundle, quiz }: { bundle: BundleIndex; quiz: TQuiz }) {
         Score: {score} / {quiz.questions.length}
         {done && ' — complete!'}
       </p>
-      {quiz.questions.map((q) => (
-        <Question key={q.id} bundle={bundle} q={q} onAnswered={onAnswered} />
+      {hydrated && quiz.questions.map((q) => (
+        <Question
+          key={q.id}
+          bundle={bundle}
+          quizId={quiz.id}
+          q={q}
+          saved={matchingAnswer(q, usePlaceStore.getState().quizzes[quiz.id]?.[q.id])}
+          onAnswered={onAnswered}
+        />
       ))}
     </ModePanel>
     </>
   );
 }
 
-function Question({ bundle, q, onAnswered }: { bundle: BundleIndex; q: TQuizQuestion; onAnswered: (id: string, correct: boolean) => void }) {
+function Question({
+  bundle,
+  quizId,
+  q,
+  saved,
+  onAnswered,
+}: {
+  bundle: BundleIndex;
+  quizId: string;
+  q: TQuizQuestion;
+  saved: QuizAnswer | undefined;
+  onAnswered: (id: string, correct: boolean) => void;
+}) {
   return (
     <section className="quiz-question">
       <p>
         <strong>{q.prompt.en}</strong>
       </p>
-      {(q.kind === 'mcq' || q.kind === 'true-false') && <ChoiceQuestion q={q} onAnswered={onAnswered} bundle={bundle} />}
-      {q.kind === 'order-stops' && <OrderQuestion q={q} onAnswered={onAnswered} bundle={bundle} />}
-      {q.kind === 'map-pin' && <MapPinQuestion q={q} onAnswered={onAnswered} bundle={bundle} />}
+      {(q.kind === 'mcq' || q.kind === 'true-false') && (
+        <ChoiceQuestion q={q} quizId={quizId} saved={saved} onAnswered={onAnswered} bundle={bundle} />
+      )}
+      {q.kind === 'order-stops' && (
+        <OrderQuestion q={q} quizId={quizId} saved={saved} onAnswered={onAnswered} bundle={bundle} />
+      )}
+      {q.kind === 'map-pin' && (
+        <MapPinQuestion q={q} quizId={quizId} saved={saved} onAnswered={onAnswered} bundle={bundle} />
+      )}
     </section>
   );
 }
@@ -118,10 +169,23 @@ function Explanation({ q, bundle }: { q: TQuizQuestion; bundle: BundleIndex }) {
   );
 }
 
-function ChoiceQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
+function ChoiceQuestion({
+  q,
+  quizId,
+  saved,
+  onAnswered,
+  bundle,
+}: {
+  q: TQuizQuestion;
+  quizId: string;
+  saved: QuizAnswer | undefined;
+  onAnswered: (id: string, c: boolean) => void;
+  bundle: BundleIndex;
+}) {
   const { mapRef, ready } = useMap();
-  const [picked, setPicked] = useState<number | null>(null);
-  const [correctAnswered, setCorrectAnswered] = useState(false);
+  const restored = saved?.kind === 'choice' ? saved : undefined;
+  const [picked, setPicked] = useState<number | null>(restored?.picked ?? null);
+  const [correctAnswered, setCorrectAnswered] = useState(restored?.correct ?? false);
   const answered = picked !== null;
 
   const choose = (i: number) => {
@@ -129,6 +193,7 @@ function ChoiceQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
     setPicked(i);
     const correct = i === q.answerIndex;
     onAnswered(q.id, correct);
+    usePlaceStore.getState().setQuizAnswer(quizId, q.id, { kind: 'choice', picked: i, correct });
     if (correct) {
       setCorrectAnswered(true);
     }
@@ -179,13 +244,26 @@ function ChoiceQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
   );
 }
 
-function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
+function OrderQuestion({
+  q,
+  quizId,
+  saved,
+  onAnswered,
+  bundle,
+}: {
+  q: TQuizQuestion;
+  quizId: string;
+  saved: QuizAnswer | undefined;
+  onAnswered: (id: string, c: boolean) => void;
+  bundle: BundleIndex;
+}) {
   const { mapRef, ready } = useMap();
   const answer = q.answerOrder ?? [];
+  const restored = saved?.kind === 'order' ? saved : undefined;
   // Start in a deliberately-wrong order (reversed) so there's something to do.
-  const [order, setOrder] = useState<string[]>(() => [...answer].reverse());
-  const [checked, setChecked] = useState(false);
-  const [correctAnswered, setCorrectAnswered] = useState(false);
+  const [order, setOrder] = useState<string[]>(() => restored?.order ?? [...answer].reverse());
+  const [checked, setChecked] = useState(Boolean(restored));
+  const [correctAnswered, setCorrectAnswered] = useState(restored?.correct ?? false);
 
   const label = (stopId: string) => {
     const stop = bundle.stop(stopId);
@@ -203,6 +281,7 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
     setChecked(true);
     const correct = order.every((id, i) => id === answer[i]);
     onAnswered(q.id, correct);
+    usePlaceStore.getState().setQuizAnswer(quizId, q.id, { kind: 'order', order, correct });
     if (correct) {
       setCorrectAnswered(true);
     }
@@ -285,11 +364,26 @@ function OrderQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered
   );
 }
 
-function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswered: (id: string, c: boolean) => void; bundle: BundleIndex }) {
+function MapPinQuestion({
+  q,
+  quizId,
+  saved,
+  onAnswered,
+  bundle,
+}: {
+  q: TQuizQuestion;
+  quizId: string;
+  saved: QuizAnswer | undefined;
+  onAnswered: (id: string, c: boolean) => void;
+  bundle: BundleIndex;
+}) {
   const { mapRef, ready } = useMap();
   const requestSnap = useSheetStore((s) => s.requestSnap);
+  const restored = saved?.kind === 'pin' ? saved : undefined;
   const [arming, setArming] = useState(false);
-  const [result, setResult] = useState<{ distance: number; correct: boolean; guess: [number, number] } | null>(null);
+  const [result, setResult] = useState<{ distance: number; correct: boolean; guess: [number, number] } | null>(
+    restored ? { distance: restored.distance, correct: restored.correct, guess: restored.guess } : null,
+  );
   const target = q.answerSiteId ? bundle.site(q.answerSiteId) : undefined;
 
   // Drop the sheet to peek so the map is the tap target — otherwise "Tap the
@@ -308,6 +402,7 @@ function MapPinQuestion({ q, onAnswered, bundle }: { q: TQuizQuestion; onAnswere
       setResult({ distance: d, correct, guess });
       setArming(false);
       onAnswered(q.id, correct);
+      usePlaceStore.getState().setQuizAnswer(quizId, q.id, { kind: 'pin', distance: d, correct, guess });
     };
     map.once('click', onClick);
     map.getCanvas().style.cursor = 'crosshair';

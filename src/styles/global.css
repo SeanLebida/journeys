@@ -2854,6 +2854,15 @@ a {
   margin: 0.3rem 0 0;
 }
 
+/* Keep MapLibre's zoom +/- below the status bar (viewport-fit: cover). The
+   vendor sheet pins .maplibregl-ctrl-top-right at top:0; right:0, so the
+   buttons sit under the battery indicator on phones like the Xiaomi 14T.
+   Inner controls already have a 10px margin. */
+.app-shell .maplibregl-ctrl-top-right {
+  top: var(--safe-top);
+  right: var(--safe-right);
+}
+
 /* Ubuntu on the MapLibre controls too (attribution, zoom buttons) so the one
    typeface is truly used throughout — MapLibre ships its own Helvetica/Arial
    stack in its stylesheet. */
@@ -3923,6 +3932,10 @@ a {
 .bible-verse--active {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+.bible-verse--passage {
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--gold) 55%, transparent);
 }
 /* Highlight colours are tinted against the surface so they stay legible in
    both themes rather than shouting in dark mode. */
