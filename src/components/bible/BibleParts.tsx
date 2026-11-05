@@ -115,19 +115,24 @@ export function VerseRowView({
   note,
   mapped,
   active,
+  passage,
+  passageStart,
   onActivate,
 }: {
   row: VerseRow;
   note?: VerseNote;
   mapped: boolean;
   active: boolean;
+  passage?: boolean;
+  passageStart?: boolean;
   onActivate: (verse: number) => void;
 }) {
   return (
     <p
-      className={`bible-verse${active ? ' bible-verse--active' : ''}`}
+      className={`bible-verse${active ? ' bible-verse--active' : ''}${passage ? ' bible-verse--passage' : ''}`}
       data-highlight={note?.color ?? undefined}
       id={`v${row.verse}`}
+      tabIndex={passageStart ? -1 : undefined}
     >
       <button
         type="button"
