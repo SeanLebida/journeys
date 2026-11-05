@@ -80,9 +80,10 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     setLessonStep(lesson.id, i, lesson.steps.length);
   }, [placeReady, lesson, i, setLessonStep]);
 
-  // Move the camera to the current step.
+  // Move the camera to the current step. Wait until the saved step is applied.
   useEffect(() => {
     const map = mapRef.current;
+    if (!placeReady) return;
     if (!map || !ready || !step) return;
     const focus =
       step.mapFocus ??
@@ -95,7 +96,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     };
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 900 });
-  }, [mapRef, ready, step, bundle]);
+  }, [placeReady, mapRef, ready, step, bundle]);
 
   // Drop an interactive numbered marker + name label at each step's location;
   // clicking either jumps straight to that step (a clickable, named table of

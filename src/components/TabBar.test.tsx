@@ -36,4 +36,24 @@ describe('TabBar resume links', () => {
     const link = container.querySelector('a[href="/lessons/carmel"]');
     expect(link?.className).toContain('tabbar__item--active');
   });
+
+  it('exposes aria-current for the visible section, including the list', () => {
+    const onList = render(
+      <MemoryRouter initialEntries={['/lessons']}>
+        <TabBar />
+      </MemoryRouter>,
+    );
+    expect(onList.container.querySelector('a[href="/lessons/carmel"]')?.getAttribute('aria-current')).toBe(
+      'page',
+    );
+    onList.unmount();
+
+    const home = render(
+      <MemoryRouter initialEntries={['/']}>
+        <TabBar />
+      </MemoryRouter>,
+    );
+    expect(home.container.querySelector('a[href="/"]')?.getAttribute('aria-current')).toBe('page');
+    expect(home.container.querySelector('a[href="/lessons/carmel"]')?.getAttribute('aria-current')).toBeNull();
+  });
 });
