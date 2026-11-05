@@ -10,7 +10,7 @@ import { haversine } from '../../map/route';
 import { Citations, ReferenceStack } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { useQuizStore } from '../../state/useQuizStore';
-import { usePlaceHydrated, usePlaceStore, type QuizAnswer } from '../../state/usePlaceStore';
+import { placeToForget, usePlaceHydrated, usePlaceStore, type QuizAnswer } from '../../state/usePlaceStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
 
@@ -30,8 +30,19 @@ export default function QuizMode() {
   if (error || !bundle) return <ModePanel title={t('modes.quiz.title')}>Could not load content.</ModePanel>;
   if (!quizId) return <QuizPicker bundle={bundle} />;
   const quiz = bundle.quiz(quizId);
-  if (!quiz) return <ModePanel title={t('modes.quiz.title')}>Unknown quiz.</ModePanel>;
+  if (!quiz) return <MissingQuiz bundle={bundle} quizId={quizId} />;
   return <QuizRunner bundle={bundle} quiz={quiz} />;
+}
+
+/** Quiz id is gone from the loaded bundle. Forgets the place, then shows the list. */
+function MissingQuiz({ bundle, quizId }: { bundle: BundleIndex; quizId: string }) {
+  const hydrated = usePlaceHydrated();
+  const forgetQuiz = usePlaceStore((s) => s.forgetQuiz);
+  const missing = placeToForget(hydrated, quizId, false);
+  useEffect(() => {
+    if (missing) forgetQuiz(missing);
+  }, [missing, forgetQuiz]);
+  return <QuizPicker bundle={bundle} />;
 }
 
 function QuizPicker({ bundle }: { bundle: BundleIndex }) {

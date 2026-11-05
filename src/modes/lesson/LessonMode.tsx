@@ -10,7 +10,7 @@ import { Citations, ReferenceStack, ScripturePassage } from '../../content/citat
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
-import { usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
+import { placeToForget, usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
 import { lessonStart } from './lessonStep';
 
 function reducedMotion(): boolean {
@@ -59,9 +59,15 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
   const lesson = bundle.lesson(lessonId);
   const hydrated = usePlaceHydrated();
   const setLessonStep = usePlaceStore((s) => s.setLessonStep);
+  const forgetLesson = usePlaceStore((s) => s.forgetLesson);
+  const missingLesson = placeToForget(hydrated, lessonId, lesson != null);
   const [i, setI] = useState(0);
   const [placeReady, setPlaceReady] = useState(false);
   const step = lesson?.steps[i];
+
+  useEffect(() => {
+    if (missingLesson) forgetLesson(missingLesson);
+  }, [missingLesson, forgetLesson]);
 
   useEffect(() => {
     if (!hydrated || !lesson) return;
@@ -125,7 +131,8 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, lesson, i, bundle]);
 
-  if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
+  if (!lesson) return <LessonPicker bundle={bundle} />;
+  if (!step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
 
   const currentSiteId = stepSiteId(bundle, step);
   const currentSite = currentSiteId ? bundle.site(currentSiteId) : undefined;

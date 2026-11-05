@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl from 'maplibre-gl';
@@ -7,8 +7,8 @@ import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { MapLayerControl } from '../../map/MapLayerControl';
 import { useJourneyStore } from '../../state/useJourneyStore';
-import { usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
-import { lessonStart } from '../lesson/lessonStep';
+import { placeToForget, usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
+import { openRoutePlace, stopToPersist } from './routeResume';
 import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
@@ -32,7 +32,7 @@ export default function TraceMode() {
   if (error || !bundle)
     return <ModePanel title={t('modes.trace.title')}>Could not load content. {error?.message}</ModePanel>;
   if (!journeyId) return <JourneyPicker bundle={bundle} />;
-  return <JourneyTrace bundle={bundle} journeyId={journeyId} />;
+  return <JourneyTrace key={journeyId} bundle={bundle} journeyId={journeyId} />;
 }
 
 function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
@@ -92,10 +92,11 @@ function siteName(stop: TStop | undefined, bundle: BundleIndex): string {
 }
 
 function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: string }) {
-  const { t } = useTranslation();
   const journey = bundle.journey(journeyId);
   const openAtStop = useJourneyStore((s) => s.openAtStop);
   const hydrated = usePlaceHydrated();
+  const forgetJourney = usePlaceStore((s) => s.forgetJourney);
+  const [routeReady, setRouteReady] = useState(false);
   const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
   const targetStopIdx = useJourneyStore((s) => s.targetStopIdx);
   const setTargetStopIdx = useJourneyStore((s) => s.setTargetStopIdx);
@@ -125,16 +126,26 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
     return { path: p, fractions: stopFractions(p), stopCoords: c, stopIds: ids, traceStops: ts, names: n };
   }, [bundle, stops, route]);
 
+  const missingJourney = placeToForget(hydrated, journeyId, journey != null);
+
+  useEffect(() => {
+    if (missingJourney) forgetJourney(missingJourney);
+  }, [missingJourney, forgetJourney]);
+
   useEffect(() => {
     if (!hydrated || !journey || stops.length === 0) return;
     const saved = usePlaceStore.getState().routes[journey.id];
-    openAtStop(journey.id, lessonStart(saved, stops.length));
-  }, [hydrated, journey, stops.length, openAtStop]);
+    const place = openRoutePlace(saved, stops.length, fractions);
+    openAtStop(journey.id, place.stop, place.progress);
+    setRouteReady(true);
+  }, [hydrated, journey, stops.length, fractions, openAtStop]);
 
   useEffect(() => {
-    if (!hydrated || !journey || stops.length === 0 || targetStopIdx !== null) return;
-    usePlaceStore.getState().setRouteStop(journey.id, currentStopIdx, stops.length);
-  }, [hydrated, journey, currentStopIdx, targetStopIdx, stops.length]);
+    if (!hydrated || !journey || stops.length === 0) return;
+    const stop = stopToPersist(routeReady, targetStopIdx !== null, currentStopIdx);
+    if (stop === null) return;
+    usePlaceStore.getState().setRouteStop(journey.id, stop, stops.length);
+  }, [hydrated, journey, currentStopIdx, targetStopIdx, stops.length, routeReady]);
 
   // Two-phase mobile UI. Starting a leg drops the sheet to `peek` so the camera
   // move plays over a near-full-bleed map; arriving raises it to `full` so the
@@ -164,7 +175,7 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   useRouteAnimation(path, journey?.color ?? '#c75b39', traceStops, stopIds);
   useStopLabels(stopCoords, fractions, names, stopIds, journey?.color ?? '#c75b39');
 
-  if (!journey) return <ModePanel title={t('modes.trace.title')}>Unknown journey.</ModePanel>;
+  if (!journey) return <JourneyPicker bundle={bundle} />;
 
   const activeStop = stops[currentStopIdx];
   const accent = { '--accent': journey.color } as React.CSSProperties;
