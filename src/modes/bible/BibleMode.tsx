@@ -5,7 +5,8 @@ import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useChapter, useChapterCounts, searchVerses, type VerseRow } from '../../content/useBible';
 import { bookNameFromNumber } from '../../content/books';
-import { parseScriptureRef } from '../../content/scriptureRef';
+import { parseScriptureRef, passageBand } from '../../content/scriptureRef';
+import { focusPassage } from './focusPassage';
 import {
   buildScriptureIndex,
   markedVerses,
@@ -76,20 +77,21 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   const [book, setBook] = useState(() => parsed?.book ?? lastRead?.book ?? 43);
   const [chapter, setChapter] = useState(() => parsed?.chapter ?? lastRead?.chapter ?? 1);
   const [tab, setTab] = useState<Tab>('read');
-  const [activeVerse, setActiveVerse] = useState<number | null>(parsed?.verseStart ?? null);
+  const [activeVerse, setActiveVerse] = useState<number | null>(null);
 
   // A `?ref=` arriving after mount (an in-app link while the reader is open)
   // has to move the reader; the state initialisers only run once.
+  // A passage link does not open the note editor, so verseStart stays out of
+  // this effect and out of its dependency list.
   useEffect(() => {
     if (!parsed) return;
     setBook(parsed.book);
     setChapter(parsed.chapter);
-    setActiveVerse(parsed.verseStart);
     setTab('read');
     // Deliberately keyed on the parsed primitives: `parsed` is a fresh object
     // every render, so depending on it directly would re-run this on every
     // keystroke and drag the reader back to the linked verse.
-  }, [parsed?.book, parsed?.chapter, parsed?.verseStart]);
+  }, [parsed?.book, parsed?.chapter]);
 
   useEffect(() => {
     setLastRead(book, chapter);
@@ -105,11 +107,24 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   const verseNotes = useMemo(() => chapterNotes(notes, book, chapter), [notes, book, chapter]);
   const bookmarked = Boolean(bookmarks[`${book}:${chapter}`]);
 
-  // Scroll a deep-linked verse into view once its chapter has actually rendered.
+  // Scroll a note verse the reader tapped. Stays idle for a passage link,
+  // which leaves activeVerse null until a verse number is tapped.
   useEffect(() => {
     if (!activeVerse || rows.length === 0) return;
     document.getElementById(`v${activeVerse}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }, [activeVerse, rows.length]);
+
+  const band = passageBand(parsed);
+
+  // Arrival band: focus the first verse after the rows exist. Keyed on the
+  // ref string so a fresh `parsed` object does not steal focus every render.
+  useEffect(() => {
+    const arrival = passageBand(refParam ? parseScriptureRef(refParam) : null);
+    if (!arrival || rows.length === 0) return;
+    const el = document.getElementById(`v${arrival.start}`);
+    if (!(el instanceof HTMLElement)) return;
+    focusPassage(el, window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, [refParam, rows.length]);
 
   const go = useCallback(
     (nextBook: number, nextChapter: number) => {
@@ -247,6 +262,8 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
                   note={verseNotes.get(row.verse)}
                   mapped={marked.has(row.verse)}
                   active={activeVerse === row.verse}
+                  passage={band != null && row.verse >= band.start && row.verse <= band.end}
+                  passageStart={band != null && row.verse === band.start}
                   onActivate={(v) => setActiveVerse(activeVerse === v ? null : v)}
                 />
               ))}

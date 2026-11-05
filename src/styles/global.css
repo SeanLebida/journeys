@@ -3933,6 +3933,10 @@ a {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
+.bible-verse--passage {
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--gold) 55%, transparent);
+}
 /* Highlight colours are tinted against the surface so they stay legible in
    both themes rather than shouting in dark mode. */
 .bible-verse[data-highlight='gold'] { background: color-mix(in srgb, var(--gold) 24%, transparent); }
