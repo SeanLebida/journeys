@@ -11,6 +11,7 @@ html,
 body,
 #root {
   height: 100%;
+  height: 100dvh;
   margin: 0;
 }
 
@@ -74,6 +75,8 @@ a {
   /* 48px content box comfortably clears a 44px tap target plus its padding;
      keep this in lockstep with `.tabbar`'s own height. */
   --dock-h: calc(48px + 0.8rem + var(--safe-bottom));
+  /* Desktop/top chrome; zero on phone so bottom dock math stays unchanged. */
+  --topbar-h: 0px;
   position: relative;
   height: 100%;
   display: flex;
@@ -82,6 +85,13 @@ a {
 @media (max-width: 1023px) {
   .app-shell[data-dock='stowed'] {
     --dock-h: 0px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-shell {
+    /* Bottom dock becomes a top toolbar on wide screens (Mac / Chromebook / desktop web). */
+    --dock-h: 0px;
+    --topbar-h: calc(52px + var(--safe-top));
   }
 }
 
@@ -193,9 +203,28 @@ a {
   pointer-events: none; /* never intercept a map click */
 }
 
-/* Custom country border details popup */
+/* Custom country border details popup.
+   Keep below mode sheet (12), tab bar (20), travel strip (26), and the
+   floating layer widget (100) so the detail never buries chrome. */
 .country-border-popup {
-  z-index: 1000;
+  z-index: 8;
+}
+.country-border-popup .maplibregl-popup-close-button {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+}
+.country-border-popup .maplibregl-popup-close-button:hover,
+.country-border-popup .maplibregl-popup-close-button:focus-visible {
+  color: var(--text);
+  background: transparent;
 }
 .country-border-popup .maplibregl-popup-content {
   background: var(--surface);
@@ -323,13 +352,13 @@ a {
 /* Lesson step markers: clickable, numbered pins on the persistent map — a
    visual table of contents for the current lesson's stops. */
 .lesson-step-marker {
-  width: 22px;
-  height: 22px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px solid var(--surface-raised);
   background: var(--text-muted);
   color: var(--surface-raised);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
   line-height: 1;
   display: flex;
@@ -338,13 +367,14 @@ a {
   cursor: pointer;
   box-shadow: var(--shadow-1);
   padding: 0;
+  touch-action: manipulation;
 }
 .lesson-step-marker--active {
   background: var(--accent);
   color: var(--accent-contrast);
-  width: 28px;
-  height: 28px;
-  font-size: 0.8rem;
+  width: 48px;
+  height: 48px;
+  font-size: 0.95rem;
 }
 
 /* Atlas site name labels: a clickable text tag next to each dot (no glyph
@@ -352,9 +382,12 @@ a {
 .site-label {
   border: 0;
   background: none;
-  padding: 0;
+  padding: 0.35rem 0.45rem;
   margin: 0;
-  font-size: 0.75rem;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--map-site-color);
   -webkit-text-stroke: 3.5px var(--map-site-halo);
@@ -362,6 +395,7 @@ a {
   text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
   cursor: pointer;
+  touch-action: manipulation;
   /* Hidden until zoomed in past MapProvider's LABEL_ZOOM_THRESHOLD — a
      full-atlas or full-journey view has too many sites for labels to be
      readable at once. Dots stay visible/clickable throughout; zooming in is
@@ -372,7 +406,7 @@ a {
 }
 .map-labels-visible .site-label,
 .site-label.quiz-pin-label {
-  display: inline-block;
+  display: inline-flex;
 }
 .site-label:hover,
 .site-label:focus-visible {
@@ -386,6 +420,12 @@ a {
   background: none;
   padding: 0;
   margin: 0;
+  /* The glyph stays small; the hit area is a full 44px touch target. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 0.85rem;
   line-height: 1;
   color: #8f1f1f;
@@ -548,7 +588,7 @@ a {
   .mode-panel {
     position: absolute;
     left: 1.5rem;
-    top: calc(var(--safe-top) + 1.5rem);
+    top: calc(var(--topbar-h) + 1.5rem);
     bottom: calc(1.5rem + var(--dock-h));
     right: auto;
     margin: 0;
@@ -1167,6 +1207,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .trace-controls button:hover {
   border-color: var(--accent);
@@ -1197,9 +1239,9 @@ a {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
+  height: 12px;
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 6px;
   outline: none;
   margin: 0;
   cursor: pointer;
@@ -1207,8 +1249,8 @@ a {
 .trace-controls input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--surface-raised);
@@ -1220,8 +1262,8 @@ a {
   background: color-mix(in srgb, var(--accent) 85%, black);
 }
 .trace-controls input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--surface-raised);
@@ -1466,8 +1508,9 @@ a {
   font: inherit;
   font-size: 0.75rem;
   font-weight: 500;
-  min-height: 32px;
-  padding: 0.25rem 0.7rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.35rem 0.85rem;
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -1749,7 +1792,7 @@ a {
   /* The dock is the other fixed cost on a 360px-tall screen — see the landscape
      `.tabbar` block, which has to live after the tab bar's own rules. */
   .app-shell {
-    --dock-h: calc(38px + 0.5rem + var(--safe-bottom));
+    --dock-h: calc(44px + 0.5rem + var(--safe-bottom));
   }
   /* The travelling phase hid the body and footer because the *sheet* dropped to
      `peek` under them. The rail doesn't move, so hiding them would just blank a
@@ -1918,13 +1961,15 @@ a {
   transform: translateX(-50%);
   z-index: 100;
   width: max-content;
-  max-width: min(340px, calc(100vw - 1.6rem));
+  max-width: min(340px, calc(100vw - 7rem));
   pointer-events: auto;
 }
 /* Open, the tab becomes a panel — pin it to a stable width so the checkbox rows
    are not re-flowed by whichever label happens to be longest. */
 .map-floating-layers:has(.atlas-toggles-expandable[open]) {
-  width: min(340px, calc(100vw - 1.6rem));
+  /* Leave a gutter either side wide enough for MapLibre's top-right zoom
+     control (29px button + 10px margin), so the open panel never covers it. */
+  width: min(340px, calc(100vw - 7rem));
 }
 /* Landscape docks the mode panel as a left rail (see the side-rail block above),
    so the tab hangs from the middle of what is left of the map, not the shell.
@@ -1933,7 +1978,7 @@ a {
   .map-floating-layers,
   .map-floating-layers:has(.atlas-toggles-expandable[open]) {
     left: calc(var(--rail-w) + (100% - var(--rail-w)) / 2);
-    max-width: min(340px, calc(100vw - var(--rail-w) - 1.6rem));
+    max-width: min(340px, calc(100vw - var(--rail-w) - 7rem));
   }
 }
 .map-floating-layers .atlas-toggles-expandable {
@@ -2077,11 +2122,14 @@ a {
 }
 .atlas-toggles__group-items {
   display: grid;
-  gap: 0.4rem;
+  /* Rows are already 44px tall; extra gap would only stretch the list. */
+  gap: 0;
 }
 .atlas-toggles__checkbox-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  /* Every layer row is a full-width 44px touch target. */
+  min-height: 44px;
   gap: 0.4rem;
   font-size: 0.85rem;
   color: var(--text);
@@ -2117,6 +2165,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .lesson-progress button:disabled {
   opacity: 0.5;
@@ -2158,6 +2208,8 @@ a {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .quiz-choices button:hover:not(:disabled) {
   border-color: var(--accent);
@@ -2181,6 +2233,27 @@ a {
   font-size: 1.1rem;
   font-weight: 600;
 }
+.quiz-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.quiz-check:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
 .quiz-order__item {
   display: flex;
   align-items: center;
@@ -2197,9 +2270,9 @@ a {
   background: var(--surface-raised);
   border-radius: var(--r-sm);
   cursor: pointer;
-  padding: 0.25rem 0.6rem;
-  min-height: 38px;
-  min-width: 38px;
+  padding: 0.35rem 0.65rem;
+  min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2314,13 +2387,13 @@ a {
    transport row under the dock. */
 @media (max-width: 1023px) and (orientation: landscape) {
   .tabbar {
-    height: calc(38px + 0.5rem + var(--safe-bottom));
+    height: calc(44px + 0.5rem + var(--safe-bottom));
     padding: 0.25rem calc(0.5rem + var(--safe-right)) calc(0.25rem + var(--safe-bottom)) calc(0.5rem + var(--safe-left));
   }
   .tabbar__item {
     flex-direction: row;
     gap: 0.35rem;
-    min-height: 38px;
+    min-height: 44px;
   }
   .tabbar__glyph {
     font-size: 1rem;
@@ -2403,10 +2476,13 @@ a {
   background: var(--surface);
   color: var(--text);
   border-radius: 6px;
-  width: 2rem;
-  height: 1.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  width: 44px;
+  height: 44px;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .site-views {
   margin: 0.5rem 0 0.7rem;
@@ -2430,6 +2506,8 @@ a {
   padding: 0.35rem 0.6rem;
   font-size: 0.8rem;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .site-views__btn[aria-pressed='true'] {
   background: var(--accent);
@@ -2463,8 +2541,11 @@ a {
   background: transparent;
   color: var(--text);
   border-radius: 6px;
-  padding: 0.15rem 0.5rem;
+  padding: 0.35rem 0.75rem;
   cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
 }
 
 /* ── Site thumbnails on list cards (pickers + home mode cards) ───────────── */
@@ -2631,6 +2712,8 @@ a {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 .video-card__frame {
   position: relative;
@@ -2678,9 +2761,9 @@ a {
   background: var(--surface);
   color: var(--text-muted);
   border-radius: 999px;
-  padding: 0.3rem 0.65rem;
+  padding: 0.4rem 0.75rem;
   font-size: 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2771,6 +2854,15 @@ a {
   margin: 0.3rem 0 0;
 }
 
+/* Keep MapLibre's zoom +/- below the status bar (viewport-fit: cover). The
+   vendor sheet pins .maplibregl-ctrl-top-right at top:0; right:0, so the
+   buttons sit under the battery indicator on phones like the Xiaomi 14T.
+   Inner controls already have a 10px margin. */
+.app-shell .maplibregl-ctrl-top-right {
+  top: var(--safe-top);
+  right: var(--safe-right);
+}
+
 /* Ubuntu on the MapLibre controls too (attribution, zoom buttons) so the one
    typeface is truly used throughout — MapLibre ships its own Helvetica/Arial
    stack in its stylesheet. */
@@ -2840,14 +2932,6 @@ a {
     grid-template-columns: 1fr;
     gap: 0.15rem;
   }
-  /* Comfortable, thumb-sized tap targets (WCAG 2.5.5). */
-  .site-views__btn,
-  .video-card__play,
-  .street-viewer__bar button,
-  .trace-controls button,
-  .lesson-progress button {
-    min-height: 44px;
-  }
   .site-photo img,
   .extra-card__figure img {
     max-height: 200px;
@@ -2861,7 +2945,57 @@ a {
   }
 }
 
+/* Narrow phones: icon-only dock visually; keep labels for AT (glyphs stay aria-hidden). */
+@media (max-width: 380px) {
+  .tabbar__item {
+    position: relative;
+  }
+  .tabbar__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .tabbar__glyph {
+    font-size: 1.35rem;
+  }
+}
+
 /* Theme toggle in the tab bar: a button dressed as a tab. */
+
+/* Desktop / Chromebook / Mac / wide web: top toolbar instead of phone bottom dock. */
+@media (min-width: 1024px) {
+  .tabbar {
+    top: 0;
+    bottom: auto;
+    height: var(--topbar-h);
+    padding: var(--safe-top) calc(0.75rem + var(--safe-right)) 0.35rem calc(0.75rem + var(--safe-left));
+    border-top: none;
+    border-bottom: 1px solid var(--border);
+    justify-content: flex-start;
+    gap: 0.35rem;
+  }
+  .tabbar__item {
+    flex: 0 1 auto;
+    flex-direction: row;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .tabbar__glyph {
+    font-size: 1.05rem;
+  }
+  .aerial-marker {
+    top: calc(var(--topbar-h) + 0.5rem);
+  }
+}
+
 .tabbar__theme {
   background: none;
   border: 0;
@@ -2923,7 +3057,11 @@ a {
   margin: 0.75rem 0;
 }
 .tl-jump__link {
-  padding: 0.3rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface-raised);
@@ -2931,6 +3069,7 @@ a {
   font-size: 0.78rem;
   text-decoration: none;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 .tl-jump__link:hover,
 .tl-jump__link:focus-visible {
@@ -2970,8 +3109,7 @@ a {
   align-items: center;
   gap: 0.3rem;
   /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
-  /* Comfortable tap target without stretching the row (WCAG 2.5.5). */
-  min-height: 32px;
+  min-height: 44px;
   cursor: pointer;
 }
 
@@ -3660,8 +3798,8 @@ a {
   color: var(--text-muted);
 }
 .bible__translation select {
-  min-height: 36px;
-  padding: 0.25rem 0.4rem;
+  min-height: 44px;
+  padding: 0.35rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -3679,8 +3817,8 @@ a {
   border-bottom: 1px solid var(--border);
 }
 .bible__tab {
-  min-height: 40px;
-  padding: 0.4rem 0.7rem;
+  min-height: 44px;
+  padding: 0.45rem 0.75rem;
   border: 1px solid transparent;
   border-bottom: 0;
   border-radius: var(--r-sm) var(--r-sm) 0 0;
@@ -3728,8 +3866,8 @@ a {
   color: var(--text-muted);
 }
 .bible__nav {
-  min-height: 40px;
-  padding: 0.3rem 0.6rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -3751,8 +3889,8 @@ a {
   font-size: 0.8rem;
 }
 .bible__bookmark {
-  min-height: 36px;
-  padding: 0.25rem 0.6rem;
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--surface-raised);
@@ -3795,6 +3933,10 @@ a {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
+.bible-verse--passage {
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--gold) 55%, transparent);
+}
 /* Highlight colours are tinted against the surface so they stay legible in
    both themes rather than shouting in dark mode. */
 .bible-verse[data-highlight='gold'] { background: color-mix(in srgb, var(--gold) 24%, transparent); }
@@ -3804,10 +3946,13 @@ a {
 .bible-verse__num {
   grid-column: 1;
   justify-self: end;
-  min-width: 1.6rem;
-  min-height: 1.6rem;
+  min-width: 44px;
+  min-height: 44px;
   margin: 0;
-  padding: 0 0.15rem;
+  padding: 0 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid transparent;
   border-radius: var(--r-sm);
   background: none;
@@ -3869,8 +4014,8 @@ a {
   font-size: 0.95rem;
 }
 .bible-note__close {
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   background: none;
   color: var(--text-muted);
@@ -3885,8 +4030,8 @@ a {
   margin: 0.5rem 0;
 }
 .bible-note__swatch {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border: 2px solid var(--border);
   border-radius: 50%;
   cursor: pointer;
@@ -3902,8 +4047,8 @@ a {
 .bible-note__clear,
 .bible-note__save,
 .bible-note__delete {
-  min-height: 36px;
-  padding: 0.3rem 0.7rem;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface);
@@ -4053,8 +4198,8 @@ a {
   justify-content: center;
   gap: 0.3rem;
   width: 100%;
-  min-height: 40px;
-  padding: 0.3rem 0.5rem;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
   background: var(--surface-raised);
@@ -4504,8 +4649,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -4564,12 +4709,6 @@ a {
     display: inline;
   }
 }
-@media (max-width: 560px) {
-  .tl-scroll__btn {
-    width: 44px;
-    height: 44px;
-  }
-}
 /* A rival's coordinate and its citations are both notes on that pin.
    The stack hairline is for the gap under a prose claim. */
 .site-candidates__list {
@@ -4579,4 +4718,71 @@ a {
   margin-top: var(--space-hair);
   padding-top: 0;
   border-top: 0;
+}
+
+/* Atlas: close a place's details and land back where you were. */
+.stop-panel__head { position: relative; }
+.stop-panel__close {
+  position: absolute; top: 0; right: 0;
+  min-width: 44px; min-height: 44px;
+  border: 0; background: transparent; font-size: 1.5rem; line-height: 1;
+  cursor: pointer; color: inherit;
+}
+.stop-panel__head h3 { padding-right: 48px; }
+.release-notice {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: calc(var(--dock-h, 64px) + 0.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface-raised);
+  color: var(--text, inherit);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+}
+.release-notice__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+.release-notice__title {
+  margin: 0.25rem 0;
+  font-size: 1.05rem;
+}
+.release-notice__body {
+  margin: 0 0 0.75rem;
+}
+.release-notice__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.release-notice__btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.release-notice__btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.tl-jump__link {
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.tl-era:focus {
+  outline: none;
 }

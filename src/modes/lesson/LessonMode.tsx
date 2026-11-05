@@ -5,11 +5,13 @@ import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
-import { LayerPanel } from '../../map/LayerPanel';
+import { MapLayerControl } from '../../map/MapLayerControl';
 import { Citations, ReferenceStack, ScripturePassage } from '../../content/citations';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
+import { placeToForget, usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
+import { lessonStart } from './lessonStep';
 
 function reducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -22,7 +24,7 @@ export default function LessonMode() {
   if (loading) return <ModePanel title={t('modes.lessons.title')}>{t('common.loading')}</ModePanel>;
   if (error || !bundle) return <ModePanel title={t('modes.lessons.title')}>Could not load content.</ModePanel>;
   if (!lessonId) return <LessonPicker bundle={bundle} />;
-  return <LessonPlayer bundle={bundle} lessonId={lessonId} />;
+  return <LessonPlayer key={lessonId} bundle={bundle} lessonId={lessonId} />;
 }
 
 function LessonPicker({ bundle }: { bundle: BundleIndex }) {
@@ -55,12 +57,33 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
   const { t } = useTranslation();
   const { mapRef, ready } = useMap();
   const lesson = bundle.lesson(lessonId);
+  const hydrated = usePlaceHydrated();
+  const setLessonStep = usePlaceStore((s) => s.setLessonStep);
+  const forgetLesson = usePlaceStore((s) => s.forgetLesson);
+  const missingLesson = placeToForget(hydrated, lessonId, lesson != null);
   const [i, setI] = useState(0);
+  const [placeReady, setPlaceReady] = useState(false);
   const step = lesson?.steps[i];
 
-  // Move the camera to the current step.
+  useEffect(() => {
+    if (missingLesson) forgetLesson(missingLesson);
+  }, [missingLesson, forgetLesson]);
+
+  useEffect(() => {
+    if (!hydrated || !lesson) return;
+    setI(lessonStart(usePlaceStore.getState().lessons[lesson.id], lesson.steps.length));
+    setPlaceReady(true);
+  }, [hydrated, lesson]);
+
+  useEffect(() => {
+    if (!placeReady || !lesson) return;
+    setLessonStep(lesson.id, i, lesson.steps.length);
+  }, [placeReady, lesson, i, setLessonStep]);
+
+  // Move the camera to the current step. Wait until the saved step is applied.
   useEffect(() => {
     const map = mapRef.current;
+    if (!placeReady) return;
     if (!map || !ready || !step) return;
     const focus =
       step.mapFocus ??
@@ -73,7 +96,7 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     };
     if (reducedMotion()) map.jumpTo(opts);
     else map.flyTo({ ...opts, duration: 900 });
-  }, [mapRef, ready, step, bundle]);
+  }, [placeReady, mapRef, ready, step, bundle]);
 
   // Drop an interactive numbered marker + name label at each step's location;
   // clicking either jumps straight to that step (a clickable, named table of
@@ -109,7 +132,8 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, lesson, i, bundle]);
 
-  if (!lesson || !step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
+  if (!lesson) return <LessonPicker bundle={bundle} />;
+  if (!step) return <ModePanel title={t('modes.lessons.title')}>Unknown lesson.</ModePanel>;
 
   const currentSiteId = stepSiteId(bundle, step);
   const currentSite = currentSiteId ? bundle.site(currentSiteId) : undefined;
@@ -122,11 +146,11 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
 
   return (
     <div className="lesson-player-layout">
+      <MapLayerControl />
       <ModePanel title={lesson.title.en}>
         <Link to="/lessons" className="backlink">
           ← {t('nav.lessons')}
         </Link>
-        <LayerPanel />
 
         <div className="lesson-step" aria-live="polite">
           <p className="lesson-step__body">{step.body.en}</p>

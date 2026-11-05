@@ -71,4 +71,27 @@ describe('sortCitationsForDisplay', () => {
     });
     expect(sortCitationsForDisplay([wiki, britannica]).map((c) => c.id)).toEqual(['b', 'w']);
   });
+  it('puts Wikipedia last even when mis-tagged as secondary-scholarly', () => {
+    const wiki = cite({
+      id: 'w',
+      kind: 'secondary-scholarly',
+      source: { en: "Wikipedia, 'Via Egnatia'" },
+      url: 'https://en.wikipedia.org/wiki/Via_Egnatia',
+    });
+    const gazetteer = cite({
+      id: 'g',
+      kind: 'gazetteer',
+      source: { en: 'Pleiades' },
+    });
+    const scholar = cite({
+      id: 's',
+      kind: 'secondary-scholarly',
+      source: { en: 'Anchor Bible Dictionary' },
+    });
+    expect(sortCitationsForDisplay([wiki, gazetteer, scholar]).map((c) => c.id)).toEqual([
+      's',
+      'g',
+      'w',
+    ]);
+  });
 });

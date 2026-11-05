@@ -2,6 +2,36 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.20] - 2026-11-05
+
+• Journeys, map routes, the timeline, and quizzes reopen where you left off.
+• Opening a passage in the reader highlights that passage and starts at its first verse. The note stays closed until you tap a verse number.
+
+## [0.3.19] - 2026-11-02
+
+• The map layers pill now sits at the top of every map, and the Atlas filters live inside it.
+
+## [0.3.18] - 2026-11-02
+
+• Timeline era chips scroll to that era instead of opening a missing page on the phone apps.
+• The phone apps remind you when a store update is ready and show what's new after you update.
+
+## [0.3.17] - 2026-11-02
+
+• Tapping a place on the Atlas shows its details first, and Close returns you to where you were scrolled.
+• The iOS app uses the Journeys compass icon and is prepared for the App Store.
+
+## [0.3.16] - 2026-10-03
+
+• Larger tap targets (44px) across the shell, dock, and toolbar.
+• Mobile shell uses full viewport height (100dvh).
+• Dock and toolbar accessibility improvements.
+
+## [0.3.15] - 2026-10-01
+
+• Close place details when you move the map or tap elsewhere.
+• Map place-detail sits below sheets and chrome (no overlay covering UI).
+
 ## [0.3.14] - 2026-10-01
 
 • Tap a rival identification to find that location on the map.
@@ -9,6 +39,8 @@ All notable changes to Journeys are documented in this file.
 • Quiz “place a pin” peeks the sheet so the map is tappable.
 • External map links open on Android via the system browser.
 • PWA install metas and a web/Android/iOS platform checklist.
+• iOS App Store path: deployment target iOS 15, privacy manifest, Release signing, TestFlight workflow. The signed IPA exports. Upload waits on an App Store Connect app record, which this API key cannot create. Review media and paste-ready listing are in `docs/store-assets/apple/`.
+• The iOS home-screen icon and launch image use the Journeys compass. The Capacitor placeholder is gone.
 
 ## [0.3.13] - 2026-09-22
 

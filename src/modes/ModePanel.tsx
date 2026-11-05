@@ -15,7 +15,9 @@ import { useSheetDrag } from '../components/useSheetDrag';
  * `scrollKey` identifies what the body is currently showing. When it changes the
  * body returns to the top: arriving at a new stop otherwise drops the reader
  * wherever the *previous* stop's scroll left them, halfway down a section that
- * no longer exists.
+ * no longer exists. With `rememberScroll`, returning to a key restores where
+ * the reader was on it (Atlas: closing a place's details lands back on the
+ * layer controls exactly where they left them).
  */
 export function ModePanel({
   title,
@@ -24,6 +26,7 @@ export function ModePanel({
   footer,
   style,
   scrollKey,
+  rememberScroll = false,
 }: {
   title: string;
   eyebrow?: ReactNode;
@@ -31,13 +34,21 @@ export function ModePanel({
   footer?: ReactNode;
   style?: CSSProperties;
   scrollKey?: string | number;
+  rememberScroll?: boolean;
 }) {
   const panelRef = useRef<HTMLElement>(null);
   const { bodyRef, handleProps, snap, isSheet } = useSheetDrag(panelRef);
+  const saved = useRef(new Map<string | number, number>());
+  const lastKey = useRef(scrollKey);
   useEffect(() => {
     if (scrollKey === undefined) return;
-    bodyRef.current?.scrollTo({ top: 0 });
-  }, [scrollKey, bodyRef]);
+    const body = bodyRef.current;
+    if (rememberScroll && lastKey.current !== undefined && body) {
+      saved.current.set(lastKey.current, body.scrollTop);
+    }
+    lastKey.current = scrollKey;
+    body?.scrollTo({ top: rememberScroll ? (saved.current.get(scrollKey) ?? 0) : 0 });
+  }, [scrollKey, bodyRef, rememberScroll]);
   return (
     <section
       ref={panelRef}

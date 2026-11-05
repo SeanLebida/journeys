@@ -29,14 +29,22 @@ Shared web UI (Vite + React) with thin Capacitor overlays. Check items that can 
 
 ## iOS
 
+Capacitor 6 project, deployment target **iOS 15** (the oldest target Xcode 26 will build; App Store uploads must use the iOS 26 SDK). `MARKETING_VERSION` **0.3.14** and the committed `CURRENT_PROJECT_VERSION` **113** match `package.json` and the in-repo Android version, not Play closed testing 0.3.15 / versionCode 119. CI (`ios:version:bump`) raises the build number from the git commit count before a signed archive.
+
+Debug keeps `CODE_SIGNING_ALLOWED=NO` for an unsigned simulator compile. Release does not, so an Apple Distribution profile can sign an archive. No camera, location, or photo-library usage strings: the web app does not call those APIs. No tracking SDKs and no push or background modes. `ITSAppUsesNonExemptEncryption` is false. `PrivacyInfo.xcprivacy` declares UserDefaults reason `CA92.1` and no collected data. Paste-ready listing and the secret names are in `docs/APP_STORE.md`.
+
 | Item | Status |
 |---|---|
-| Capacitor iOS project committed | **Blocked** — no `ios/` in repo; needs macOS + `npx cap add ios` |
-| `@capacitor/ios` dependency | Add with iOS project |
-| Xcode signing / provisioning | **Blocked** — Apple Developer interactive secrets |
-| App Privacy “Data Not Collected” | Documented in `STORE.md` / `PRIVACY.md` |
-| ATS / HTTPS-only external opens | Browser plugin for external maps |
-| TestFlight upload | **Blocked** — signing |
+| Capacitor iOS project committed | Done — `ios/` is in git. Pods and the copied web bundle are generated (`pod install` / `cap sync`) |
+| `@capacitor/ios` dependency | Done (`^6.2.1`, same line as core and Android) |
+| iOS 26 SDK / deployment target 15 | Workflow selects Xcode 26 on `macos-26`. Project and Podfile target 15.0 |
+| Privacy manifest + export exemption | Done in the app target |
+| Unsigned simulator build | `.github/workflows/ios-appstore.yml` destination `compile-only` |
+| Signed archive + TestFlight | Workflow destination `testflight`. Archive and export already succeeded. Upload waits on the App Store Connect app record (`POST /v1/apps` is 403 for this key) |
+| App Privacy “Data Not Collected” | Documented. Still has to be confirmed in App Store Connect |
+| Screenshots, previews, header, search | Generated in `docs/store-assets/apple/`. Paste order is `LISTING.md`. Play shots stay 1080×1920 and are not for Apple |
+| App icon and launch image | Done. Marketing icon is the compass from `public/icon.svg`, 1024 RGB, no alpha, full bleed. Launch image is `public/splash.svg` on the night background. Regenerate with `npx tsx scripts/generate-assets.ts --ios-icon` |
+| App Review | Listing, review notes, and media are ready locally. Submission waits on the website app record, then a processed TestFlight build attached to 0.3.14 |
 
 ## Cross-platform UX gates
 

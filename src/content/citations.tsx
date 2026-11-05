@@ -113,9 +113,9 @@ export function RouteGeometryNote({
 }
 
 
-/** Display order for reference lists: scripture and scholarly work above
- *  tertiary/popular (Wikipedia, Britannica, study-Bible maps). Authored id
- *  order often put Wikipedia first; QC requires scholarly sources above it. */
+/** Display order for reference lists: scripture / scholarly / gazetteer first;
+ *  Wikipedia & Wikimedia always last (any kind). Authored id order often put
+ *  Wikipedia first; every Citations surface uses this sort. */
 const CITATION_KIND_RANK: Record<TCitationKind, number> = {
   'primary-scripture': 0,
   'primary-ancient': 1,
@@ -130,15 +130,15 @@ function isWikipediaish(c: Pick<TCitation, 'url' | 'source'>): boolean {
   return blob.includes('wikipedia') || blob.includes('wikimedia');
 }
 
-/** Stable sort: kind rank, then Wikipedia-ish last within a kind, then source title. */
+/** Stable sort: Wikipedia/Wikimedia last globally, then kind rank, then title. */
 export function sortCitationsForDisplay(citations: TCitation[]): TCitation[] {
   return [...citations].sort((a, b) => {
-    const ra = CITATION_KIND_RANK[a.kind] ?? 99;
-    const rb = CITATION_KIND_RANK[b.kind] ?? 99;
-    if (ra !== rb) return ra - rb;
     const wa = isWikipediaish(a) ? 1 : 0;
     const wb = isWikipediaish(b) ? 1 : 0;
     if (wa !== wb) return wa - wb;
+    const ra = CITATION_KIND_RANK[a.kind] ?? 99;
+    const rb = CITATION_KIND_RANK[b.kind] ?? 99;
+    if (ra !== rb) return ra - rb;
     return a.source.en.localeCompare(b.source.en);
   });
 }
