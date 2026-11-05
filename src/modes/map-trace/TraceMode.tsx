@@ -7,6 +7,8 @@ import { useBundle } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { MapLayerControl } from '../../map/MapLayerControl';
 import { useJourneyStore } from '../../state/useJourneyStore';
+import { usePlaceStore } from '../../state/usePlaceStore';
+import { lessonStart } from '../lesson/lessonStep';
 import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
@@ -92,7 +94,7 @@ function siteName(stop: TStop | undefined, bundle: BundleIndex): string {
 function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: string }) {
   const { t } = useTranslation();
   const journey = bundle.journey(journeyId);
-  const setActiveJourney = useJourneyStore((s) => s.setActiveJourney);
+  const openAtStop = useJourneyStore((s) => s.openAtStop);
   const currentStopIdx = useJourneyStore((s) => s.currentStopIdx);
   const targetStopIdx = useJourneyStore((s) => s.targetStopIdx);
   const setTargetStopIdx = useJourneyStore((s) => s.setTargetStopIdx);
@@ -123,8 +125,15 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   }, [bundle, stops, route]);
 
   useEffect(() => {
-    setActiveJourney(journeyId);
-  }, [journeyId, setActiveJourney]);
+    if (!journey || stops.length === 0) return;
+    const saved = usePlaceStore.getState().routes[journey.id];
+    openAtStop(journey.id, lessonStart(saved, stops.length));
+  }, [journey, stops.length, openAtStop]);
+
+  useEffect(() => {
+    if (!journey || stops.length === 0 || targetStopIdx !== null) return;
+    usePlaceStore.getState().setRouteStop(journey.id, currentStopIdx, stops.length);
+  }, [journey, currentStopIdx, targetStopIdx, stops.length]);
 
   // Two-phase mobile UI. Starting a leg drops the sheet to `peek` so the camera
   // move plays over a near-full-bleed map; arriving raises it to `full` so the
