@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatScriptureRef, parseScriptureRef } from './scriptureRef';
+import { formatScriptureRef, parseScriptureRef, passageBand } from './scriptureRef';
 
 describe('parseScriptureRef', () => {
   it('parses a simple verse reference', () => {
@@ -60,5 +60,16 @@ describe('parseScriptureRef', () => {
   it('round-trips through formatScriptureRef', () => {
     const ref = parseScriptureRef('1 Cor 13:4-7')!;
     expect(formatScriptureRef(ref)).toBe('1 Corinthians 13:4-7');
+  });
+
+  it('highlights a whole verse band from its first verse', () => {
+    expect(passageBand(parseScriptureRef('1 Kings 18:20-40'))).toEqual({ start: 20, end: 40 });
+  });
+  it('highlights a single verse', () => {
+    expect(passageBand(parseScriptureRef('John 3:16'))).toEqual({ start: 16, end: 16 });
+  });
+  it('does not highlight a whole chapter', () => {
+    expect(passageBand(parseScriptureRef('Acts 13'))).toBeNull();
+    expect(passageBand(null)).toBeNull();
   });
 });

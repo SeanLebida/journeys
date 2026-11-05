@@ -40,6 +40,14 @@ export function parseScriptureRef(raw: string): ScriptureRef | null {
   return ref;
 }
 
+/** Inclusive verse band for a passage link, or null for a whole chapter.
+ * Chapter-only refs default verseStart to 1, so the raw text must contain a
+ * verse numeral. `John 3:1` is a real verse, not a chapter. */
+export function passageBand(ref: ScriptureRef | null): { start: number; end: number } | null {
+  if (!ref || !/:\s*\d+/.test(ref.raw)) return null;
+  return { start: ref.verseStart, end: ref.verseEnd ?? ref.verseStart };
+}
+
 /** Render a parsed ref back to canonical display form. */
 export function formatScriptureRef(ref: ScriptureRef): string {
   const name = bookNameFromNumber(ref.book) ?? `Book ${ref.book}`;

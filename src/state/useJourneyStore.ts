@@ -10,6 +10,7 @@ interface JourneyState {
   /** Animation progress along the active journey, 0..1 (drives the trace line). */
   progress: number;
   setActiveJourney: (journeyId: string | null) => void;
+  openAtStop: (journeyId: string, stopIdx: number, progress?: number) => void;
   setActiveStop: (stopId: string | null) => void;
   setCurrentStopIdx: (idx: number) => void;
   setTargetStopIdx: (idx: number | null) => void;
@@ -25,6 +26,13 @@ export const useJourneyStore = create<JourneyState>((set) => ({
   progress: 0,
   setActiveJourney: (activeJourneyId) =>
     set({ activeJourneyId, currentStopIdx: 0, targetStopIdx: null, progress: 0 }),
+  openAtStop: (activeJourneyId, currentStopIdx, progress = 0) =>
+    set({
+      activeJourneyId,
+      currentStopIdx,
+      targetStopIdx: null,
+      progress: Math.min(1, Math.max(0, progress)),
+    }),
   setActiveStop: (activeStopId) => set({ activeStopId }),
   setCurrentStopIdx: (currentStopIdx) => set({ currentStopIdx }),
   setTargetStopIdx: (targetStopIdx) => set({ targetStopIdx }),
