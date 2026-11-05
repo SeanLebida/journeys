@@ -9,20 +9,12 @@ export interface WhatsNewStep {
 
 export const WHATS_NEW: WhatsNewStep[] = [
   {
-    title: 'Map layers in one place',
-    body: 'Every map now has Map details & layers at the top. In the Atlas, Sites, Routes, Battles and Confidence live there too.',
+    title: 'Pick up where you left off',
+    body: 'Journeys, routes, the timeline, and quizzes reopen on the step you left, including after a passage.',
   },
   {
-    title: 'Era chips work again',
-    body: 'On the Timeline, tap an era like The monarchy or The exile to jump straight to it.',
-  },
-  {
-    title: 'Details come first in the Atlas',
-    body: 'Tap a place or battle and its details open at the top. Close takes you back to where you were.',
-  },
-  {
-    title: 'Update reminders',
-    body: 'When a newer version with fixes is ready, Journeys reminds you so you can update in one tap.',
+    title: 'A passage opens on its verses',
+    body: 'The reader highlights the whole passage and starts at the first verse. The note stays closed until you tap a number.',
   },
 ];
 

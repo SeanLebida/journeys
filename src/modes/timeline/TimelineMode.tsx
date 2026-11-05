@@ -14,6 +14,8 @@ import {
   type TimelineLaneId,
 } from '../../content/timeline';
 import { formatYearSpan } from '../../content/eras';
+import { usePlaceStore } from '../../state/usePlaceStore';
+import { findTimelineItem } from './timelinePlace';
 import {
   ChartKey,
   ChartOverflowEdge,
@@ -77,6 +79,37 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
     setSelected(item);
     setBeatId(id);
   };
+
+  const savedTimeline = usePlaceStore((s) => s.timeline);
+  const restoredId = useRef<string | null>(null);
+  useEffect(() => {
+    if (!savedTimeline || restoredId.current === savedTimeline.itemId) return;
+    const found = findTimelineItem(model, savedTimeline.itemId);
+    restoredId.current = savedTimeline.itemId;
+    if (!found) {
+      usePlaceStore.getState().setTimelinePlace(null);
+      return;
+    }
+    const beat =
+      savedTimeline.beatId && found.item.beats?.some((b) => b.id === savedTimeline.beatId)
+        ? savedTimeline.beatId
+        : found.item.beats?.length === 1
+          ? found.item.beats[0].id
+          : null;
+    setSelected(found.item);
+    setBeatId(beat);
+    if (found.eraId) document.getElementById(found.eraId)?.scrollIntoView({ block: 'start' });
+  }, [savedTimeline, model]);
+
+  useEffect(() => {
+    if (!selected) return;
+    const found = findTimelineItem(model, selected.id);
+    usePlaceStore.getState().setTimelinePlace({
+      itemId: selected.id,
+      eraId: found?.eraId ?? '',
+      beatId,
+    });
+  }, [selected, beatId, model]);
 
   // The fold-out effect: on unless the reader has opted out, and always off
   // under prefers-reduced-motion. See useFoldOut for the readability rules.
@@ -222,6 +255,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
                 onClose={() => {
                   setSelected(null);
                   setBeatId(null);
+                  usePlaceStore.getState().setTimelinePlace(null);
                 }}
               />
             )}

@@ -2,6 +2,11 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.20] - 2026-11-05
+
+• Journeys, map routes, the timeline, and quizzes reopen where you left off.
+• Opening a passage in the reader highlights that passage and starts at its first verse. The note stays closed until you tap a verse number.
+
 ## [0.3.19] - 2026-11-02
 
 • The map layers pill now sits at the top of every map, and the Atlas filters live inside it.
