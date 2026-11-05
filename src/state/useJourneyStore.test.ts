@@ -17,4 +17,11 @@ describe('openAtStop', () => {
     useJourneyStore.getState().openAtStop('paul', 3);
     expect(useJourneyStore.getState().currentStopIdx).toBe(3);
   });
+
+  it('opens a route at a stop with that stop’s progress', () => {
+    useJourneyStore.getState().openAtStop('paul', 3, 0.8);
+    expect(useJourneyStore.getState().currentStopIdx).toBe(3);
+    expect(useJourneyStore.getState().progress).toBe(0.8);
+    expect(useJourneyStore.getState().targetStopIdx).toBeNull();
+  });
 });

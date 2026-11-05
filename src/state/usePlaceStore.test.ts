@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { clampIndex, usePlaceStore } from './usePlaceStore';
+import { clampIndex, placeToForget, usePlaceStore } from './usePlaceStore';
 
 describe('clampIndex', () => {
   it('keeps a step inside the lesson', () => {
@@ -91,5 +91,12 @@ describe('usePlaceStore', () => {
     usePlaceStore.getState().setTimelinePlace({ itemId: 'battle:carmel', eraId: 'divided-kingdom', beatId: null });
     usePlaceStore.getState().setTimelinePlace(null);
     expect(usePlaceStore.getState().timeline).toBeNull();
+  });
+
+  it('forgets a missing id only after hydration', () => {
+    expect(placeToForget(false, 'carmel', false)).toBeNull();
+    expect(placeToForget(true, 'carmel', true)).toBeNull();
+    expect(placeToForget(true, undefined, false)).toBeNull();
+    expect(placeToForget(true, 'carmel', false)).toBe('carmel');
   });
 });

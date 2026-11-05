@@ -14,6 +14,12 @@ export interface TimelinePlace {
   beatId: string | null;
 }
 
+/** Id to drop after hydration when the bundle no longer has that place. */
+export function placeToForget(hydrated: boolean, id: string | undefined, found: boolean): string | null {
+  if (!hydrated || found || !id) return null;
+  return id;
+}
+
 export function clampIndex(index: number, count: number): number | null {
   if (count < 1) return null;
   return Math.min(count - 1, Math.max(0, index));
