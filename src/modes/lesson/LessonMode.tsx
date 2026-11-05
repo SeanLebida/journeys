@@ -10,6 +10,8 @@ import { Citations, ReferenceStack, ScripturePassage } from '../../content/citat
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
+import { usePlaceStore } from '../../state/usePlaceStore';
+import { lessonStart } from './lessonStep';
 
 function reducedMotion(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -22,7 +24,7 @@ export default function LessonMode() {
   if (loading) return <ModePanel title={t('modes.lessons.title')}>{t('common.loading')}</ModePanel>;
   if (error || !bundle) return <ModePanel title={t('modes.lessons.title')}>Could not load content.</ModePanel>;
   if (!lessonId) return <LessonPicker bundle={bundle} />;
-  return <LessonPlayer bundle={bundle} lessonId={lessonId} />;
+  return <LessonPlayer key={lessonId} bundle={bundle} lessonId={lessonId} />;
 }
 
 function LessonPicker({ bundle }: { bundle: BundleIndex }) {
@@ -55,8 +57,15 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
   const { t } = useTranslation();
   const { mapRef, ready } = useMap();
   const lesson = bundle.lesson(lessonId);
-  const [i, setI] = useState(0);
+  const saved = usePlaceStore((s) => s.lessons[lessonId]);
+  const setLessonStep = usePlaceStore((s) => s.setLessonStep);
+  const [i, setI] = useState(() => lessonStart(saved, lesson?.steps.length ?? 0));
   const step = lesson?.steps[i];
+
+  useEffect(() => {
+    if (!lesson) return;
+    setLessonStep(lesson.id, i, lesson.steps.length);
+  }, [lesson, i, setLessonStep]);
 
   // Move the camera to the current step.
   useEffect(() => {
