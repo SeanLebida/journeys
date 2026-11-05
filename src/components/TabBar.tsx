@@ -1,6 +1,8 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUiStore, type Theme } from '../state/useUiStore';
+import { usePlaceStore } from '../state/usePlaceStore';
+import { sectionHref, tabSelected } from './sectionHref';
 
 interface Tab {
   to: string;
@@ -55,21 +57,36 @@ function ThemeToggle() {
  */
 export function TabBar() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const currentLessonId = usePlaceStore((s) => s.currentLessonId);
+  const currentJourneyId = usePlaceStore((s) => s.currentJourneyId);
+  const currentQuizId = usePlaceStore((s) => s.currentQuizId);
   return (
     <nav className="tabbar" aria-label={t('app.title')}>
-      {TABS.map((tab) => (
+      {TABS.map((tab) => {
+        const href =
+          tab.key === 'lessons'
+            ? sectionHref('lessons', currentLessonId)
+            : tab.key === 'trace'
+              ? sectionHref('trace', currentJourneyId)
+              : tab.key === 'quiz'
+                ? sectionHref('quiz', currentQuizId)
+                : tab.to;
+        const active = tabSelected(tab.to, pathname, Boolean(tab.end));
+        return (
         <NavLink
           key={tab.key}
-          to={tab.to}
+          to={href}
           end={tab.end}
-          className={({ isActive }) => `tabbar__item${isActive ? ' tabbar__item--active' : ''}`}
+          className={() => `tabbar__item${active ? ' tabbar__item--active' : ''}`}
         >
           <span className="tabbar__glyph" aria-hidden="true">
             {tab.glyph}
           </span>
           <span className="tabbar__label">{t(tab.labelKey ?? `nav.${tab.key}`)}</span>
         </NavLink>
-      ))}
+        );
+      })}
       <ThemeToggle />
     </nav>
   );
