@@ -80,6 +80,13 @@ describe('usePlaceStore', () => {
     expect(usePlaceStore.getState().currentQuizId).toBe('q1');
   });
 
+  it('marks a quiz current without dropping another quiz', () => {
+    usePlaceStore.getState().setQuizAnswer('q1', 'a', { kind: 'choice', picked: 1, correct: true });
+    usePlaceStore.getState().touchQuiz('q2');
+    expect(usePlaceStore.getState().currentQuizId).toBe('q2');
+    expect(usePlaceStore.getState().quizzes.q1.a.kind).toBe('choice');
+  });
+
   it('clears the timeline place', () => {
     usePlaceStore.getState().setTimelinePlace({ itemId: 'battle:carmel', eraId: 'divided-kingdom', beatId: null });
     usePlaceStore.getState().setTimelinePlace(null);

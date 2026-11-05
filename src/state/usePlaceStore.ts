@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { platformStorage } from './persistAdapter';
@@ -31,9 +32,23 @@ interface PlaceState {
   setTimelinePlace: (place: TimelinePlace | null) => void;
   setQuizAnswer: (quizId: string, questionId: string, answer: QuizAnswer) => void;
   reconcileQuiz: (quizId: string, questionIds: readonly string[]) => void;
+  touchQuiz: (quizId: string) => void;
   forgetLesson: (lessonId: string) => void;
   forgetJourney: (journeyId: string) => void;
   forgetQuiz: (quizId: string) => void;
+}
+
+/** True once `journeys-place` has been read. Screens must not write over a place before this. */
+export function usePlaceHydrated(): boolean {
+  const [hydrated, setHydrated] = useState(() => usePlaceStore.persist.hasHydrated());
+  useEffect(() => {
+    if (usePlaceStore.persist.hasHydrated()) {
+      setHydrated(true);
+      return;
+    }
+    return usePlaceStore.persist.onFinishHydration(() => setHydrated(true));
+  }, []);
+  return hydrated;
 }
 
 export const usePlaceStore = create<PlaceState>()(
@@ -88,6 +103,7 @@ export const usePlaceStore = create<PlaceState>()(
           }
           return { quizzes: { ...s.quizzes, [quizId]: next } };
         }),
+      touchQuiz: (quizId) => set({ currentQuizId: quizId }),
       forgetLesson: (lessonId) =>
         set((s) => {
           const lessons = { ...s.lessons };

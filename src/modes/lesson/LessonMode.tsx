@@ -10,7 +10,7 @@ import { Citations, ReferenceStack, ScripturePassage } from '../../content/citat
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
-import { usePlaceStore } from '../../state/usePlaceStore';
+import { usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
 import { lessonStart } from './lessonStep';
 
 function reducedMotion(): boolean {
@@ -57,15 +57,22 @@ function LessonPlayer({ bundle, lessonId }: { bundle: BundleIndex; lessonId: str
   const { t } = useTranslation();
   const { mapRef, ready } = useMap();
   const lesson = bundle.lesson(lessonId);
-  const saved = usePlaceStore((s) => s.lessons[lessonId]);
+  const hydrated = usePlaceHydrated();
   const setLessonStep = usePlaceStore((s) => s.setLessonStep);
-  const [i, setI] = useState(() => lessonStart(saved, lesson?.steps.length ?? 0));
+  const [i, setI] = useState(0);
+  const [placeReady, setPlaceReady] = useState(false);
   const step = lesson?.steps[i];
 
   useEffect(() => {
-    if (!lesson) return;
+    if (!hydrated || !lesson) return;
+    setI(lessonStart(usePlaceStore.getState().lessons[lesson.id], lesson.steps.length));
+    setPlaceReady(true);
+  }, [hydrated, lesson]);
+
+  useEffect(() => {
+    if (!placeReady || !lesson) return;
     setLessonStep(lesson.id, i, lesson.steps.length);
-  }, [lesson, i, setLessonStep]);
+  }, [placeReady, lesson, i, setLessonStep]);
 
   // Move the camera to the current step.
   useEffect(() => {
