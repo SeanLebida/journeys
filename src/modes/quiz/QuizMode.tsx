@@ -13,14 +13,7 @@ import { useQuizStore } from '../../state/useQuizStore';
 import { placeToForget, usePlaceHydrated, usePlaceStore, type QuizAnswer } from '../../state/usePlaceStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import type { TQuiz, TQuizQuestion } from '../../content/schema';
-
-function matchingAnswer(q: TQuizQuestion, saved: QuizAnswer | undefined): QuizAnswer | undefined {
-  if (!saved) return undefined;
-  if ((q.kind === 'mcq' || q.kind === 'true-false') && saved.kind === 'choice') return saved;
-  if (q.kind === 'order-stops' && saved.kind === 'order') return saved;
-  if (q.kind === 'map-pin' && saved.kind === 'pin') return saved;
-  return undefined;
-}
+import { answeredFlags, matchingAnswer } from './quizScore';
 
 export default function QuizMode() {
   const { quizId } = useParams();
@@ -81,9 +74,14 @@ function QuizRunner({ bundle, quiz }: { bundle: BundleIndex; quiz: TQuiz }) {
   const { t } = useTranslation();
   const record = useQuizStore((s) => s.record);
   const hydrated = usePlaceHydrated();
+  const savedQuiz = usePlaceStore((s) => s.quizzes[quiz.id]);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
-  const answeredCount = Object.keys(answers).length;
-  const score = Object.values(answers).filter(Boolean).length;
+  const scored = {
+    ...(hydrated ? answeredFlags(quiz.questions, savedQuiz) : {}),
+    ...answers,
+  };
+  const answeredCount = Object.keys(scored).length;
+  const score = Object.values(scored).filter(Boolean).length;
   const done = answeredCount === quiz.questions.length;
 
   useEffect(() => {
@@ -95,13 +93,6 @@ function QuizRunner({ bundle, quiz }: { bundle: BundleIndex; quiz: TQuiz }) {
     const place = usePlaceStore.getState();
     place.reconcileQuiz(quiz.id, quiz.questions.map((q) => q.id));
     place.touchQuiz(quiz.id);
-    const saved = usePlaceStore.getState().quizzes[quiz.id] ?? {};
-    const init: Record<string, boolean> = {};
-    for (const q of quiz.questions) {
-      const answer = matchingAnswer(q, saved[q.id]);
-      if (answer) init[q.id] = answer.correct;
-    }
-    setAnswers(init);
   }, [hydrated, quiz]);
 
   const onAnswered = (qid: string, correct: boolean) =>

@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUiStore, type Theme } from '../state/useUiStore';
 import { usePlaceStore } from '../state/usePlaceStore';
@@ -72,19 +72,19 @@ export function TabBar() {
               : tab.key === 'quiz'
                 ? sectionHref('quiz', currentQuizId)
                 : tab.to;
-        const active = tabSelected(tab.to, pathname, Boolean(tab.end));
+        const selected = tabSelected(tab.to, pathname, Boolean(tab.end));
         return (
-        <NavLink
+        <Link
           key={tab.key}
           to={href}
-          end={tab.end}
-          className={() => `tabbar__item${active ? ' tabbar__item--active' : ''}`}
+          className={`tabbar__item${selected ? ' tabbar__item--active' : ''}`}
+          aria-current={selected ? 'page' : undefined}
         >
           <span className="tabbar__glyph" aria-hidden="true">
             {tab.glyph}
           </span>
           <span className="tabbar__label">{t(tab.labelKey ?? `nav.${tab.key}`)}</span>
-        </NavLink>
+        </Link>
         );
       })}
       <ThemeToggle />
