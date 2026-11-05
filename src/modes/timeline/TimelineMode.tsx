@@ -14,6 +14,8 @@ import {
   type TimelineLaneId,
 } from '../../content/timeline';
 import { formatYearSpan } from '../../content/eras';
+import { usePlaceStore } from '../../state/usePlaceStore';
+import { findTimelineItem } from './timelinePlace';
 import {
   ChartKey,
   ChartOverflowEdge,
@@ -42,6 +44,15 @@ import { useUiStore } from '../../state/useUiStore';
  * millennia would leave the entire New Testament a few pixels tall — and the
  * scale change is stated at every boundary rather than hidden.
  */
+/** Scroll an era band into view and move focus there, without touching the URL. */
+function jumpToEra(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  el.focus({ preventScroll: true });
+}
+
 export default function TimelineMode() {
   const { bundle, loading, error } = useBundle();
   const { t } = useTranslation();
@@ -68,6 +79,37 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
     setSelected(item);
     setBeatId(id);
   };
+
+  const savedTimeline = usePlaceStore((s) => s.timeline);
+  const restoredId = useRef<string | null>(null);
+  useEffect(() => {
+    if (!savedTimeline || restoredId.current === savedTimeline.itemId) return;
+    const found = findTimelineItem(model, savedTimeline.itemId);
+    restoredId.current = savedTimeline.itemId;
+    if (!found) {
+      usePlaceStore.getState().setTimelinePlace(null);
+      return;
+    }
+    const beat =
+      savedTimeline.beatId && found.item.beats?.some((b) => b.id === savedTimeline.beatId)
+        ? savedTimeline.beatId
+        : found.item.beats?.length === 1
+          ? found.item.beats[0].id
+          : null;
+    setSelected(found.item);
+    setBeatId(beat);
+    if (found.eraId) document.getElementById(found.eraId)?.scrollIntoView({ block: 'start' });
+  }, [savedTimeline, model]);
+
+  useEffect(() => {
+    if (!selected) return;
+    const found = findTimelineItem(model, selected.id);
+    usePlaceStore.getState().setTimelinePlace({
+      itemId: selected.id,
+      eraId: found?.eraId ?? '',
+      beatId,
+    });
+  }, [selected, beatId, model]);
 
   // The fold-out effect: on unless the reader has opted out, and always off
   // under prefers-reduced-motion. See useFoldOut for the readability rules.
@@ -122,9 +164,11 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
       <nav className="tl-jump" aria-label="Jump to an era">
         {model.sections.map((s) => (
-          <a key={s.era.id} className="tl-jump__link" href={`#${s.era.id}`}>
+          // A button, not an #id link: the native app routes on the URL hash,
+          // so a hash link opened the not-found page.
+          <button key={s.era.id} type="button" className="tl-jump__link" onClick={() => jumpToEra(s.era.id)}>
             {s.era.label}
-          </a>
+          </button>
         ))}
       </nav>
 
@@ -153,7 +197,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
 
       <ol className="tl-eras" ref={erasRef} data-fold={foldEnabled ? 'on' : 'off'}>
         {sections.map((section) => (
-          <li className="tl-era" key={section.era.id} id={section.era.id}>
+          <li className="tl-era" key={section.era.id} id={section.era.id} tabIndex={-1}>
             <EraHeader era={section.era} count={section.itemCount} />
             <ChartScrollCue
               eraId={section.era.id}
@@ -211,6 +255,7 @@ function Timeline({ bundle }: { bundle: BundleIndex }) {
                 onClose={() => {
                   setSelected(null);
                   setBeatId(null);
+                  usePlaceStore.getState().setTimelinePlace(null);
                 }}
               />
             )}

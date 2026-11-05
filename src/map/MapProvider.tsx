@@ -167,9 +167,13 @@ export function MapProvider({ children }: { children: ReactNode }) {
       countryMarkers.forEach(({ marker }) => marker.addTo(map));
 
       // Click handler on country shading to show info popup
+      // closeOnMove + closeOnClick: dismiss when the user pans or taps elsewhere.
+      // closeButton: explicit close. Z-index stays below mode sheet / chrome (see CSS).
       const popup = new maplibregl.Popup({
-        closeButton: false,
+        closeButton: true,
         closeOnClick: true,
+        closeOnMove: true,
+        maxWidth: '280px',
         className: 'country-border-popup',
       });
 
@@ -288,8 +292,11 @@ export function MapProvider({ children }: { children: ReactNode }) {
               </div>
             `;
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
+            return;
           }
         }
+        // Empty map tap — clear any open detail so chrome stays usable.
+        popup.remove();
       });
 
       // Hover handler to dynamically change the cursor to a pointer when
