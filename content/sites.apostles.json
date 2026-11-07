@@ -1,0 +1,98 @@
+[
+ {
+  "id": "site-olbia-pontica",
+  "ancientName": {
+   "en": "Olbia"
+  },
+  "modernName": {
+   "en": "Olbia"
+  },
+  "modernLocation": {
+   "en": "Parutyne, Mykolaiv Oblast, Ukraine, on the Southern Bug estuary"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 46.69238,
+    "lon": 31.9056
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-gaz-dare-olbia",
+    "cit-gaz-pontic-olbia"
+   ]
+  },
+  "summary": {
+   "en": "Milesian colony on the north shore of the Black Sea, a Greek city facing Scythia. This atlas uses it as a regional marker for the Scythia Eusebius allots to Andrew, not as a town the text names."
+  },
+  "citations": [
+   "cit-gaz-pontic-olbia",
+   "cit-src-eusebius-he"
+  ]
+ },
+ {
+  "id": "site-patrae",
+  "ancientName": {
+   "en": "Patrae"
+  },
+  "modernName": {
+   "en": "Patras"
+  },
+  "modernLocation": {
+   "en": "Patras, Achaea, Greece"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 38.243265,
+    "lon": 21.738518
+   },
+   "confidence": "high",
+   "reviewStatus": "self-reviewed",
+   "citations": [
+    "cit-gaz-dare-patrae"
+   ]
+  },
+  "summary": {
+   "en": "Roman colony in Achaia. Later tradition, not the New Testament and not Eusebius' allotment of Scythia, places Andrew's crucifixion here."
+  },
+  "citations": [
+   "cit-gaz-dare-patrae",
+   "cit-ref-newadvent-andrew"
+  ],
+  "pleiadesId": "570567"
+ },
+ {
+  "id": "site-hecatompylos",
+  "ancientName": {
+   "en": "Hecatompylos"
+  },
+  "modernName": {
+   "en": "Shahr-e Qumis"
+  },
+  "modernLocation": {
+   "en": "Between Semnan and Damghan, Semnan Province, Iran"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 35.95328,
+    "lon": 54.11783
+   },
+   "confidence": "medium",
+   "reviewStatus": "self-reviewed",
+   "disputes": {
+    "en": "The Digital Atlas marks this identification with a question mark. Eusebius names Parthia, not this city."
+   },
+   "citations": [
+    "cit-gaz-dare-hecatompylos",
+    "cit-gaz-qumis-hecatompylos"
+   ]
+  },
+  "summary": {
+   "en": "A Parthian royal city, usually placed at Shahr-e Qumis. The pin marks Parthia for the tradition Eusebius records about Thomas. It is not a town Acts names."
+  },
+  "citations": [
+   "cit-gaz-qumis-hecatompylos",
+   "cit-src-eusebius-he"
+  ]
+ }
+]
