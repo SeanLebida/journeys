@@ -90,7 +90,7 @@ describe('buildBaseStyle', () => {
     expect(topography).toMatchObject({
       type: 'image',
       url: '/images/map/hillshade.png',
-      coordinates: [[-12, 48], [50, 48], [50, 22], [-12, 22]],
+      coordinates: [[-12, 48], [55, 48], [55, 22], [-12, 22]],
     });
     const json = JSON.stringify(style);
     expect(json).not.toContain('World_Shaded_Relief');
