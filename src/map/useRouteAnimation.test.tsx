@@ -12,7 +12,7 @@ const { fakeMap, removeTraceLayers, attachJourneyTrace, attachJourneyTraceWhenRe
     on: vi.fn(),
     off: vi.fn(),
     once: vi.fn(),
-    getLayer: vi.fn(() => ({ id: 'trace-progress-line' })),
+    getLayer: vi.fn((): unknown => ({ id: 'trace-progress-line' })),
     jumpTo: vi.fn(),
     easeTo: vi.fn(),
     getZoom: () => 10,
@@ -55,7 +55,11 @@ describe('useRouteAnimation trace lifetime', () => {
     }));
     removeTraceLayers.mockClear();
     attachJourneyTrace.mockClear();
+    attachJourneyTrace.mockReturnValue(true);
     attachJourneyTraceWhenReady.mockClear();
+    fakeMap.getLayer.mockReturnValue({ id: 'trace-progress-line' });
+    fakeMap.easeTo.mockClear();
+    fakeMap.jumpTo.mockClear();
     useJourneyStore.getState().reset();
   });
 
@@ -70,6 +74,30 @@ describe('useRouteAnimation trace lifetime', () => {
     expect(attachJourneyTraceWhenReady).toHaveBeenCalled();
     unmount();
     expect(removeTraceLayers).toHaveBeenCalled();
+  });
+
+  it('does not ease to the stop when the trace cannot be placed', () => {
+    fakeMap.getLayer.mockReturnValue(undefined);
+    attachJourneyTrace.mockReturnValue(false);
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    expect(fakeMap.easeTo).not.toHaveBeenCalled();
+  });
+
+  it('follows an attached trace without rewriting the whole route each frame', () => {
+    const frames: FrameRequestCallback[] = [];
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+      frames.push(cb);
+      return frames.length;
+    });
+    vi.stubGlobal('cancelAnimationFrame', vi.fn());
+    useJourneyStore.getState().setTargetStopIdx(1);
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    attachJourneyTrace.mockClear();
+    fakeMap.jumpTo.mockClear();
+    frames[0]?.(performance.now() + 50);
+    expect(attachJourneyTrace).not.toHaveBeenCalled();
+    expect(fakeMap.jumpTo).toHaveBeenCalled();
+    vi.unstubAllGlobals();
   });
 
   it('does not subscribe to the one-shot load event', () => {

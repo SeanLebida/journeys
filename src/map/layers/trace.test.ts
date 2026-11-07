@@ -80,6 +80,13 @@ describe('attachJourneyTrace', () => {
     expect(written.features[0].geometry.coordinates).toEqual([[2, 2], [3, 3]]);
   });
 
+  it('places the trace when the style can take layers while sources are still loading', () => {
+    const map = fakeMap(false);
+    (map.style as { _loaded?: boolean })._loaded = true;
+    expect(attachJourneyTrace(map as never, args)).toBe(true);
+    expect(map.addLayer).toHaveBeenCalled();
+  });
+
   it('attaches on styledata after the style loads, and unsubscribes', () => {
     const map = fakeMap(false);
     const stopListening = attachJourneyTraceWhenReady(map as never, args);
