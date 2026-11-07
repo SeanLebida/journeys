@@ -1,0 +1,353 @@
+[
+ {
+  "id": "journey-james-zebedee",
+  "title": {
+   "en": "James son of Zebedee"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 44,
+   "display": {
+    "en": "c. AD 30–44"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "James was with the Twelve in Jerusalem, and Acts records that Herod Agrippa I killed him there with the sword. The New Testament gives him no journey beyond that city."
+  },
+  "chronologyNotes": {
+   "en": "Pentecost comes first. His death in Acts 12 is later, about AD 44."
+  },
+  "color": "#8f4a4a",
+  "stops": [
+   "stop-james-zebedee-jerusalem",
+   "stop-james-zebedee-death"
+  ],
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-scripture-acts-12-2",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-john",
+  "title": {
+   "en": "John son of Zebedee"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 100,
+   "display": {
+    "en": "c. AD 30–100"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "John was with Peter in Jerusalem and Samaria. Revelation places a John on Patmos. Later tradition, preserved by Eusebius, puts the apostle's last years at Ephesus. The identity of the John on Patmos with the apostle is disputed."
+  },
+  "chronologyNotes": {
+   "en": "Acts orders Jerusalem, then Samaria. Ephesus and Patmos are later. Tradition puts a stay at Ephesus before the island and a return there afterward. The two Ephesus stops are earlier, then later, in that order."
+  },
+  "color": "#3d6b8f",
+  "stops": [
+   "stop-john-jerusalem",
+   "stop-john-samaria",
+   "stop-john-ephesus",
+   "stop-john-patmos",
+   "stop-john-ephesus-later"
+  ],
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-scripture-acts-8-14-25",
+   "cit-scripture-revelation-1-9",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-andrew",
+  "title": {
+   "en": "Andrew"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 60,
+   "display": {
+    "en": "c. AD 30–60"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Andrew was with the Twelve in Jerusalem at Pentecost. Eusebius, reporting Origen, allots him Scythia. A later tradition places his death at Patrae in Achaia. The New Testament names neither place."
+  },
+  "chronologyNotes": {
+   "en": "Pentecost comes first. Scythia is the allotment in Eusebius. Patrae is a later tradition and is placed after it. Neither year is fixed by Acts."
+  },
+  "color": "#6b5a3d",
+  "stops": [
+   "stop-andrew-jerusalem",
+   "stop-andrew-scythia",
+   "stop-andrew-patras"
+  ],
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt",
+   "cit-ref-newadvent-andrew"
+  ]
+ },
+ {
+  "id": "journey-philip-apostle",
+  "title": {
+   "en": "Philip the Apostle"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 80,
+   "display": {
+    "en": "c. AD 30–80"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Philip the apostle was with the Twelve in Jerusalem at Pentecost. Eusebius quotes Polycrates that one of the Twelve named Philip sleeps at Hierapolis. This is not Philip the evangelist of Acts 8."
+  },
+  "chronologyNotes": {
+   "en": "Pentecost comes first. Hierapolis is the later tradition of his burial. Acts 8 is a different Philip and is not on this journey."
+  },
+  "color": "#4a6b5a",
+  "stops": [
+   "stop-philip-apostle-jerusalem",
+   "stop-philip-apostle-hierapolis"
+  ],
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-bartholomew",
+  "title": {
+   "en": "Bartholomew"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Bartholomew is named with the apostles in Jerusalem, and he was there at Pentecost. Eusebius later says he had preached in India, but names no city, so this journey does not invent one."
+  },
+  "chronologyNotes": {
+   "en": "The upper room comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#5a4a6b",
+  "stops": [
+   "stop-bartholomew-jerusalem-gathered",
+   "stop-bartholomew-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-thomas",
+  "title": {
+   "en": "Thomas"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 70,
+   "display": {
+    "en": "c. AD 30–70"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Thomas was with the Twelve in Jerusalem at Pentecost. Eusebius, reporting Origen, allots him Parthia. A later India tradition is not given a pin here, because the text that tells it does not fix a city this atlas can place without guessing."
+  },
+  "chronologyNotes": {
+   "en": "Pentecost comes first. Parthia is the allotment in Eusebius and is marked at Hecatompylos, a Parthian royal city, not a town Acts names."
+  },
+  "color": "#6b4a3d",
+  "stops": [
+   "stop-thomas-jerusalem",
+   "stop-thomas-parthia"
+  ],
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-matthew",
+  "title": {
+   "en": "Matthew"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Matthew was named with the apostles in Jerusalem and was there at Pentecost. Eusebius says he preached to the Hebrews and then went to other peoples, but names no city."
+  },
+  "chronologyNotes": {
+   "en": "The upper room comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#3d5a6b",
+  "stops": [
+   "stop-matthew-jerusalem-gathered",
+   "stop-matthew-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-james-alphaeus",
+  "title": {
+   "en": "James son of Alphaeus"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "James son of Alphaeus was named with the apostles in Jerusalem and was there at Pentecost. The New Testament gives him no destination after that, and he is not James the brother of the Lord."
+  },
+  "chronologyNotes": {
+   "en": "The upper room comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#6b3d5a",
+  "stops": [
+   "stop-james-alphaeus-jerusalem-gathered",
+   "stop-james-alphaeus-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-thaddaeus",
+  "title": {
+   "en": "Thaddaeus"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Thaddaeus, also called Judas son of James, was named with the apostles in Jerusalem and was there at Pentecost. The New Testament names no later destination, and the Edessa tradition is a different story this atlas does not pin on him."
+  },
+  "chronologyNotes": {
+   "en": "The upper room comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#4a5a3d",
+  "stops": [
+   "stop-thaddaeus-jerusalem-gathered",
+   "stop-thaddaeus-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-simon-zealot",
+  "title": {
+   "en": "Simon the Zealot"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Simon the Zealot was named with the apostles in Jerusalem and was there at Pentecost. The New Testament names no later destination."
+  },
+  "chronologyNotes": {
+   "en": "The upper room comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#3d4a6b",
+  "stops": [
+   "stop-simon-zealot-jerusalem-gathered",
+   "stop-simon-zealot-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "journey-matthias",
+  "title": {
+   "en": "Matthias"
+  },
+  "kind": "apostolic",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "c. AD 30"
+   },
+   "approximate": true
+  },
+  "summary": {
+   "en": "Matthias was chosen by lot in Jerusalem to take Judas' place, and he was with the apostles at Pentecost. The New Testament names no later destination."
+  },
+  "chronologyNotes": {
+   "en": "The lot comes first in the same year, then Pentecost. No later city is pinned."
+  },
+  "color": "#5a3d4a",
+  "stops": [
+   "stop-matthias-chosen",
+   "stop-matthias-jerusalem"
+  ],
+  "citations": [
+   "cit-scripture-acts-1-26",
+   "cit-scripture-acts-2-1-41",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ }
+]
