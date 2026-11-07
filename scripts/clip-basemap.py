@@ -18,7 +18,7 @@ import os
 import urllib.request
 
 # Keep in sync with WORLD_BBOX in src/map/graticule.ts.
-BBOX = (-12.0, 22.0, 50.0, 48.0)  # west, south, east, north
+BBOX = (-12.0, 22.0, 55.0, 48.0)  # west, south, east, north
 PRECISION = 3
 SIMPLIFY_EPS = 0.015  # degrees; matches the ~small, coarse existing files
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
