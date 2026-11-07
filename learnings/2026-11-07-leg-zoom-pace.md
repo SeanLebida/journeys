@@ -17,4 +17,5 @@ Starting Next after a close zoom lerped that zoom across the entire leg. On a lo
 
 ## Verification
 
-- `npx vitest run src/map/useRouteAnimation.test.tsx`
+- `npx vitest run src/map/useRouteAnimation.test.tsx`: 10 passed.
+- Dev server, Paul's voyage to Rome, zoomed in six steps, then Next. At 2.2s the coast had opened out to a regional view (Lebanon labelled) while the leg was still travelling.
