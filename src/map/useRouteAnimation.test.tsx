@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import source from './useRouteAnimation.ts?raw';
 import type { JourneyPath } from './route';
 import { useJourneyStore } from '../state/useJourneyStore';
-import { useRouteAnimation } from './useRouteAnimation';
+import { legTravelMs, legTravelZoom, useRouteAnimation } from './useRouteAnimation';
 
 const { fakeMap, removeTraceLayers, attachJourneyTrace, attachJourneyTraceWhenReady } = vi.hoisted(() => ({
   fakeMap: {
@@ -15,6 +15,7 @@ const { fakeMap, removeTraceLayers, attachJourneyTrace, attachJourneyTraceWhenRe
     getLayer: vi.fn((): unknown => ({ id: 'trace-progress-line' })),
     jumpTo: vi.fn(),
     easeTo: vi.fn(),
+    stop: vi.fn(),
     getZoom: () => 10,
   },
   removeTraceLayers: vi.fn(),
@@ -60,6 +61,8 @@ describe('useRouteAnimation trace lifetime', () => {
     fakeMap.getLayer.mockReturnValue({ id: 'trace-progress-line' });
     fakeMap.easeTo.mockClear();
     fakeMap.jumpTo.mockClear();
+    fakeMap.stop.mockClear();
+    fakeMap.on.mockClear();
     useJourneyStore.getState().reset();
   });
 
@@ -102,5 +105,68 @@ describe('useRouteAnimation trace lifetime', () => {
 
   it('does not subscribe to the one-shot load event', () => {
     expect(source).not.toContain("once('load'");
+  });
+
+  function zoomStartHandler() {
+    const call = [...fakeMap.on.mock.calls].reverse().find((c) => c[0] === 'zoomstart');
+    return call?.[1] as (e: { originalEvent?: Event }) => void;
+  }
+
+  it('does not treat a zoomstart without originalEvent as a user grab', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    zoomStartHandler()({});
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).toHaveBeenCalled();
+  });
+
+  it('calls stop when a leg starts and the user is not interacting', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not stop the stationary ease when the user is interacting', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    zoomStartHandler()({ originalEvent: new Event('wheel') });
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).not.toHaveBeenCalled();
+  });
+});
+
+describe('leg travel camera', () => {
+  it('gives a long leg more time than a short one, past the old six-second cap', () => {
+    const short = legTravelMs(30, false);
+    const long = legTravelMs(400, false);
+    expect(short).toBeGreaterThan(2000);
+    expect(short).toBeLessThan(4000);
+    expect(long).toBeGreaterThan(12000);
+    expect(long).toBeGreaterThan(short * 2);
+  });
+
+  it('zooms back out over the opening of the leg, not across the whole rush', () => {
+    const duration = legTravelMs(400, false);
+    const start = legTravelZoom(15, 8, 0, duration, false);
+    const early = legTravelZoom(15, 8, 400 / duration, duration, false);
+    const opened = legTravelZoom(15, 8, 1800 / duration, duration, false);
+    expect(start).toBe(15);
+    expect(early).toBeGreaterThan(13);
+    expect(early).toBeLessThan(15);
+    expect(opened).toBeCloseTo(8, 5);
+  });
+
+  it('spreads a zoom-in across the whole leg', () => {
+    const duration = 8000;
+    const mid = legTravelZoom(6, 10, 0.5, duration, false);
+    expect(mid).toBeGreaterThan(7);
+    expect(mid).toBeLessThan(9);
   });
 });

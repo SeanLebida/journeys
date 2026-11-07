@@ -1,17 +1,21 @@
-import { useEffect, useRef, type MutableRefObject } from 'react';
+import { useLayoutEffect, useRef, type MutableRefObject } from 'react';
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import { computeMapPadding, paddingsEqual, type MapPadding } from './viewportPadding';
+import { useJourneyStore } from '../state/useJourneyStore';
 import { useSheetStore } from '../state/useSheetStore';
 
 /**
- * Keep `map.setPadding` aligned with the chrome that covers the map. Re-runs
- * when the sheet snap changes, the window resizes/reorients, or ResizeObserver
- * sees `.app-main` / `.mode-panel` change size (live drag).
+ * Keep map padding aligned with the chrome that covers the map. Re-runs when
+ * the sheet snap changes, the window resizes/reorients, or ResizeObserver sees
+ * `.app-main` / `.mode-panel` change size (live drag). This is a layout effect
+ * so the first setPadding lands before the journey ease starts. A later
+ * setPadding is a jumpTo and would cancel that ease.
  *
- * On a settled snap change we also easeTo the current center so the POI that
- * was framed for the old chrome stays in the newly uncovered viewport (QC:
- * place sheet open → POI centered in the visible area). Mid-drag we only
- * update padding — reframing every pointer move would fight the reader.
+ * A settled snap eases the current center with the new padding so the inset
+ * interpolates (setPadding is a jumpTo and would cancel that ease). Mid-drag
+ * only setPadding — easing every pointer move would fight the reader. While a
+ * leg is in flight, or a recenter ease is already running, a snap does not
+ * take the camera. The inset is applied on the next idle reframe.
  */
 export function useMapViewportPadding(
   mapRef: MutableRefObject<MapLibreMap | null>,
@@ -20,22 +24,34 @@ export function useMapViewportPadding(
   const snap = useSheetStore((s) => s.snap);
   const lastSnap = useRef<string | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ready) return;
     let last: MapPadding | null = null;
     const snapChanged = lastSnap.current !== null && lastSnap.current !== snap;
     lastSnap.current = snap;
 
+    let waitForIdle = false;
     const apply = (reframe: boolean) => {
       const map = mapRef.current;
       if (!map) return;
       const next = computeMapPadding();
       if (last && paddingsEqual(last, next)) return;
-      last = next;
-      map.setPadding(next);
-      if (reframe) {
-        map.easeTo({ center: map.getCenter(), zoom: map.getZoom(), duration: 280 });
+      if (reframe && useJourneyStore.getState().targetStopIdx !== null) return;
+      if (reframe && map.isMoving()) {
+        if (waitForIdle) return;
+        waitForIdle = true;
+        map.once('moveend', () => {
+          waitForIdle = false;
+          apply(true);
+        });
+        return;
       }
+      last = next;
+      if (reframe) {
+        map.easeTo({ center: map.getCenter(), zoom: map.getZoom(), padding: next, duration: 280 });
+        return;
+      }
+      map.setPadding(next);
     };
 
     apply(snapChanged);

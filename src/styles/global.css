@@ -2970,6 +2970,11 @@ a {
 
 /* Desktop / Chromebook / Mac / wide web: top toolbar instead of phone bottom dock. */
 @media (min-width: 1024px) {
+  /* The phone rule only clears the status-bar inset, which is 0 here.
+     --topbar-h already includes that inset. */
+  .app-shell .maplibregl-ctrl-top-right {
+    top: var(--topbar-h);
+  }
   .tabbar {
     top: 0;
     bottom: auto;

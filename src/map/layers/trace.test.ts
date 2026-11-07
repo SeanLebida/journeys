@@ -37,7 +37,7 @@ function fakeMap(loaded: boolean) {
       };
       sources.set(id, source);
     },
-    addLayer: vi.fn((layer: { id: string }) => {
+    addLayer: vi.fn((layer: { id: string; paint?: Record<string, unknown> }) => {
       layers.add(layer.id);
     }),
     on: (event: string, fn: () => void) => {
@@ -65,6 +65,10 @@ describe('attachJourneyTrace', () => {
     const map = fakeMap(true);
     expect(attachJourneyTrace(map as never, args)).toBe(true);
     expect(map.addLayer.mock.calls.some((call) => call[0].id === 'trace-full-line')).toBe(true);
+    const full = map.addLayer.mock.calls.map((call) => call[0]).find((layer) => layer.id === 'trace-full-line');
+    expect(full?.paint?.['line-width']).toBe(5);
+    expect(full?.paint?.['line-opacity']).toBe(0.8);
+    expect(full?.paint?.['line-dasharray']).toBeUndefined();
     const written = map.sources.get('trace-full')!.setData.mock.calls.at(-1)![0];
     expect(written.features[0].geometry.coordinates).toEqual(line);
     expect(maplibregl.Marker).toHaveBeenCalled();
