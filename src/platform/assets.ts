@@ -12,6 +12,7 @@ export const ASSET_PATHS = {
   // map labels working offline and key-free — every hosted glyph service needs
   // network, and most need an API key.
   glyphs: '/fonts/{fontstack}/{range}.pbf',
+  hillshade: '/images/map/hillshade.png',
 } as const;
 
 export function getGlyphsUrl(): string {
