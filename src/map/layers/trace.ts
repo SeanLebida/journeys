@@ -118,3 +118,33 @@ export function removeTraceLayers(map: MapLibreMap): void {
   for (const id of Object.values(LYR)) if (map.getLayer(id)) map.removeLayer(id);
   for (const id of Object.values(SRC)) if (map.getSource(id)) map.removeSource(id);
 }
+
+export interface TraceAttachArgs {
+  color: string;
+  full: LngLat[];
+  stops: TraceStop[];
+  at: LngLat;
+}
+
+/** Add the trace and write its data. False when the style is not ready to take layers. */
+export function attachJourneyTrace(map: MapLibreMap, args: TraceAttachArgs): boolean {
+  if (!hasLiveStyle(map) || !map.isStyleLoaded()) return false;
+  ensureTraceLayers(map, args.color);
+  updateTraceStatic(map, args.full, args.stops);
+  ensureTravelerMarker(map, args.color, args.at);
+  return true;
+}
+
+/**
+ * Attach now, or on the next styledata. `load` fires once, when the style is
+ * first created, so a map that is already open never emits it again.
+ */
+export function attachJourneyTraceWhenReady(map: MapLibreMap, args: TraceAttachArgs): () => void {
+  if (!hasLiveStyle(map)) return () => {};
+  if (attachJourneyTrace(map, args)) return () => {};
+  const onStyle = () => {
+    if (attachJourneyTrace(map, args)) map.off('styledata', onStyle);
+  };
+  map.on('styledata', onStyle);
+  return () => map.off('styledata', onStyle);
+}
