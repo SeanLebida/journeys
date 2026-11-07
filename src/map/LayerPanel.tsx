@@ -23,7 +23,7 @@ const LAYER_LABELS: Record<BasemapLayerKey, string> = {
 const CATEGORIES: { title: string; keys: BasemapLayerKey[] }[] = [
   {
     title: 'Imagery & Historical Maps',
-    keys: ['satellite', 'topography', 'ancientMap', 'streets'],
+    keys: ['satellite', 'ancientMap', 'streets'],
   },
   {
     title: 'Borders & Kingdom Heartlands',
@@ -31,7 +31,7 @@ const CATEGORIES: { title: string; keys: BasemapLayerKey[] }[] = [
   },
   {
     title: 'Geography & Features',
-    keys: ['rivers', 'lakes', 'coastline', 'graticule'],
+    keys: ['topography', 'rivers', 'lakes', 'coastline', 'graticule'],
   },
 ];
 

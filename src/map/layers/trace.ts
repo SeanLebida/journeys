@@ -118,3 +118,53 @@ export function removeTraceLayers(map: MapLibreMap): void {
   for (const id of Object.values(LYR)) if (map.getLayer(id)) map.removeLayer(id);
   for (const id of Object.values(SRC)) if (map.getSource(id)) map.removeSource(id);
 }
+
+export interface TraceAttachArgs {
+  color: string;
+  full: LngLat[];
+  stops: TraceStop[];
+  at: LngLat;
+}
+
+/**
+ * True once the style object can accept layers.
+ *
+ * `map.isStyleLoaded()` is false while any source still has tiles in flight,
+ * and while a GeoJSON `setData` is waiting on the worker. That includes the
+ * optional satellite, street, and Roman pictures, and it includes this trace's
+ * own updates. Layers can be added as soon as the style's own load has
+ * finished (`style._loaded`). The public flag remains for callers that only
+ * implement `isStyleLoaded`.
+ */
+function styleCanTakeLayers(map: MapLibreMap): boolean {
+  if (!hasLiveStyle(map)) return false;
+  const style = (map as unknown as { style?: { _loaded?: boolean } }).style;
+  if (style?._loaded) return true;
+  return map.isStyleLoaded() === true;
+}
+
+/** Add the trace and write its data. False when the style is not ready to take layers. */
+export function attachJourneyTrace(map: MapLibreMap, args: TraceAttachArgs): boolean {
+  if (!styleCanTakeLayers(map)) return false;
+  ensureTraceLayers(map, args.color);
+  updateTraceStatic(map, args.full, args.stops);
+  ensureTravelerMarker(map, args.color, args.at);
+  return true;
+}
+
+/**
+ * Attach now, or on the next styledata. `load` fires once, when the style is
+ * first created, so a map that is already open never emits it again.
+ */
+export function attachJourneyTraceWhenReady(
+  map: MapLibreMap,
+  getArgs: () => TraceAttachArgs,
+): () => void {
+  if (!hasLiveStyle(map)) return () => {};
+  if (attachJourneyTrace(map, getArgs())) return () => {};
+  const onStyle = () => {
+    if (attachJourneyTrace(map, getArgs())) map.off('styledata', onStyle);
+  };
+  map.on('styledata', onStyle);
+  return () => map.off('styledata', onStyle);
+}

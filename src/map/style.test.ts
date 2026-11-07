@@ -84,6 +84,21 @@ describe('buildBaseStyle', () => {
     expect(rivers.data.features.length).toBeGreaterThan(0);
   });
 
+  it('uses the bundled hillshade for topography and keeps the online picture URLs', () => {
+    const style = buildBaseStyle('ancient', false);
+    const topography = style.sources.topography;
+    expect(topography).toMatchObject({
+      type: 'image',
+      url: '/images/map/hillshade.png',
+      coordinates: [[-12, 48], [50, 48], [50, 22], [-12, 22]],
+    });
+    const json = JSON.stringify(style);
+    expect(json).not.toContain('World_Shaded_Relief');
+    expect(json).toContain('World_Imagery');
+    expect(json).toContain('World_Street_Map');
+    expect(json).toContain('dh.gu.se/tiles/imperium');
+  });
+
   it('ships the online imagery basemaps hidden by default with attributed raster sources', () => {
     const style = buildBaseStyle('ancient', false);
     for (const key of IMAGERY_LAYERS) {
