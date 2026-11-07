@@ -26,6 +26,41 @@ function isCompactViewport(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches;
 }
 
+/** How long a zoom-out takes when the reader pinched in before pressing Next. */
+const ZOOM_OUT_MS = 1800;
+
+/**
+ * Leg length in milliseconds. Short hops stay near the old floor. Long legs
+ * keep gaining time, up to a cap, so a journey of several hundred kilometres
+ * is not the same six-second rush as a short one.
+ */
+export function legTravelMs(distKm: number, compact: boolean): number {
+  const base = Math.min(11000, Math.max(1700, 1600 + distKm * 36));
+  return base * (compact ? 1.7 : 1.15);
+}
+
+/**
+ * Camera zoom along a leg. Pinching in zooms back out over the opening of the
+ * leg (eased, not snapped) so the route is visible while the traveller is
+ * still moving. Zooming in toward the arrival stop stays spread across the
+ * whole leg. The desktop elevation dip only runs for a small zoom change.
+ */
+export function legTravelZoom(
+  startZoom: number,
+  targetZoom: number,
+  rawT: number,
+  durationMs: number,
+  compact: boolean,
+): number {
+  const zoomingOut = startZoom > targetZoom + 0.4;
+  const span = zoomingOut ? Math.min(1, ZOOM_OUT_MS / Math.max(durationMs, 1)) : 1;
+  const zoomT = Math.min(1, rawT / span);
+  const zoomEased = zoomT * zoomT * (3 - 2 * zoomT);
+  const baseZoom = startZoom + (targetZoom - startZoom) * zoomEased;
+  const dip = !compact && !zoomingOut && Math.abs(startZoom - targetZoom) < 1;
+  return dip ? baseZoom - 0.25 * Math.sin(rawT * Math.PI) : baseZoom;
+}
+
 /** The progress line exists only after an attach that also placed the traveller. */
 function traceReady(map: { getLayer: (id: string) => unknown }, args: TraceAttachArgs): boolean {
   return Boolean(map.getLayer('trace-progress-line')) || attachJourneyTrace(map as Parameters<typeof attachJourneyTrace>[0], args);
@@ -85,8 +120,14 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const start = () => { isUserInteractingRef.current = true; };
-    const end = () => { isUserInteractingRef.current = false; };
+    const start = (e: { originalEvent?: Event }) => {
+      if (!e.originalEvent) return;
+      isUserInteractingRef.current = true;
+    };
+    const end = (e: { originalEvent?: Event }) => {
+      if (!e.originalEvent) return;
+      isUserInteractingRef.current = false;
+    };
     map.on('dragstart', start); map.on('dragend', end);
     map.on('zoomstart', start); map.on('zoomend', end);
     map.on('pitchstart', start); map.on('pitchend', end);
@@ -138,7 +179,12 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     if (stopIds[currentStopIdx]) {
       setActiveStop(stopIds[currentStopIdx]);
     }
-    if (targetStopIdx !== null) return; // Travelling handles its own movement
+    if (targetStopIdx !== null) {
+      // A leg's jumpTo does not cancel an ease that is already in flight.
+      const flying = mapRef.current;
+      if (flying && ready && !isUserInteractingRef.current) flying.stop();
+      return;
+    }
     const map = mapRef.current;
     if (!map || !ready) return;
 
@@ -231,21 +277,11 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     }
 
     const compact = isCompactViewport();
-    // Duration is proportional to distance, but deliberately unhurried so the eye
-    // can follow the traveller along the waypoints rather than being whipped
-    // across the map. Compact (mobile) viewports are slowed further still — a pan
-    // covers proportionally more of a small screen, so the same speed reads as
-    // dizzying there.
-    const base = Math.min(5200, Math.max(1700, 1600 + distKm * 18));
-    const durationMs = base * (compact ? 1.7 : 1.15);
+    // Duration grows with distance so a long leg is not the same rush as a short
+    // one. Compact viewports are slowed further: a pan covers more of a small screen.
+    const durationMs = legTravelMs(distKm, compact);
     const startZoom = map.getZoom();
     const targetZoom = getTargetZoomForStop(toIdx);
-
-    // Elevation lift over the leg. Zero on compact screens: a zoom that swells and
-    // settles while the map is also panning is the single biggest source of
-    // "wobble" on a phone, and with the pan alone the motion reads as one clean
-    // glide from stop to stop.
-    const maxZoomDip = compact ? 0 : 0.25;
 
     let raf = 0;
     const t0 = performance.now();
@@ -280,9 +316,10 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const prog = lineProgress(coords, currentP);
       updateTraceProgress(map, prog);
       if (placed && !isUserInteractingRef.current) {
-        const baseZoom = startZoom + (targetZoom - startZoom) * easedT;
-        const currentZoom = maxZoomDip === 0 ? baseZoom : baseZoom - maxZoomDip * Math.sin(rawT * Math.PI);
-        map.jumpTo({ center: prog.point, zoom: currentZoom });
+        map.jumpTo({
+          center: prog.point,
+          zoom: legTravelZoom(startZoom, targetZoom, rawT, durationMs, compact),
+        });
       }
 
       if (now - lastStoreWrite >= STORE_INTERVAL_MS) {
