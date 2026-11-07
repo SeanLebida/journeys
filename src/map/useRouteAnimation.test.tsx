@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import source from './useRouteAnimation.ts?raw';
 import type { JourneyPath } from './route';
 import { useJourneyStore } from '../state/useJourneyStore';
-import { useRouteAnimation } from './useRouteAnimation';
+import { legTravelMs, legTravelZoom, useRouteAnimation } from './useRouteAnimation';
 
 const { fakeMap, removeTraceLayers, attachJourneyTrace, attachJourneyTraceWhenReady } = vi.hoisted(() => ({
   fakeMap: {
@@ -139,5 +139,34 @@ describe('useRouteAnimation trace lifetime', () => {
       useJourneyStore.getState().setTargetStopIdx(1);
     });
     expect(fakeMap.stop).not.toHaveBeenCalled();
+  });
+});
+
+describe('leg travel camera', () => {
+  it('gives a long leg more time than a short one, past the old six-second cap', () => {
+    const short = legTravelMs(30, false);
+    const long = legTravelMs(400, false);
+    expect(short).toBeGreaterThan(2000);
+    expect(short).toBeLessThan(4000);
+    expect(long).toBeGreaterThan(12000);
+    expect(long).toBeGreaterThan(short * 2);
+  });
+
+  it('zooms back out over the opening of the leg, not across the whole rush', () => {
+    const duration = legTravelMs(400, false);
+    const start = legTravelZoom(15, 8, 0, duration, false);
+    const early = legTravelZoom(15, 8, 400 / duration, duration, false);
+    const opened = legTravelZoom(15, 8, 1800 / duration, duration, false);
+    expect(start).toBe(15);
+    expect(early).toBeGreaterThan(13);
+    expect(early).toBeLessThan(15);
+    expect(opened).toBeCloseTo(8, 5);
+  });
+
+  it('spreads a zoom-in across the whole leg', () => {
+    const duration = 8000;
+    const mid = legTravelZoom(6, 10, 0.5, duration, false);
+    expect(mid).toBeGreaterThan(7);
+    expect(mid).toBeLessThan(9);
   });
 });
