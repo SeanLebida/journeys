@@ -9,12 +9,8 @@ export interface WhatsNewStep {
 
 export const WHATS_NEW: WhatsNewStep[] = [
   {
-    title: 'Pick up where you left off',
-    body: 'Journeys, routes, the timeline, and quizzes reopen on the step you left, including after a passage.',
-  },
-  {
-    title: 'A passage opens on its verses',
-    body: 'The reader highlights the whole passage and starts at the first verse. The note stays closed until you tap a number.',
+    title: 'The path stays on the map',
+    body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
   },
 ];
 
