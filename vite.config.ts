@@ -22,7 +22,7 @@ export default defineConfig({
         // `pbf` covers the self-hosted map glyph ranges (~1.9 MB) — without them
         // precached, symbol layers would silently lose their labels offline on
         // web. Native builds bundle them in the app package regardless.
-        globPatterns: ['**/*.{js,css,html,wasm,woff2,pbf}', 'dist-content/**/*.{json,sqlite}'],
+        globPatterns: ['**/*.{js,css,html,wasm,woff2,pbf}', 'dist-content/**/*.{json,sqlite}', 'images/map/hillshade.png'],
         maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
@@ -75,7 +75,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./tests/setup.ts'],
+    setupFiles: ['./tests/storage-setup.ts', './tests/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts', 'tests/unit/**/*.test.ts'],
     exclude: ['tests/e2e/**', 'node_modules/**'],
     coverage: {
