@@ -15,6 +15,7 @@ import { useRouteAnimation } from '../../map/useRouteAnimation';
 import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ClaimMeta, DisputeNote, ReferenceStack, RouteGeometryNote, ScripturePassage } from '../../content/citations';
+import { PlaceFrame } from '../../components/PlaceFrame';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
@@ -435,7 +436,17 @@ function StopReader({
           {stop.dateRange.display.en} · {stop.legMode}
         </p>
       </div>
-      <SitePhoto siteId={stop.siteId} />
+      {site ? (
+        <PlaceFrame
+          siteId={stop.siteId}
+          lat={site.coordinates.value.lat}
+          lon={site.coordinates.value.lon}
+          name={site.ancientName.en}
+          online={typeof navigator !== 'undefined' && navigator.onLine}
+        />
+      ) : (
+        <SitePhoto siteId={stop.siteId} />
+      )}
       {site && (
         <SiteViews
           lat={site.coordinates.value.lat}

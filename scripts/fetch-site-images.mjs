@@ -151,6 +151,9 @@ const SITE_SOURCES = {
   'site-carchemish': { file: 'Karkamış. Standbeeld van de God Atarluhas en twee leeuwen Aan de Koninklijke Poort, GD006254.jpg', caption: 'The god Atarluhas and lions from the Royal Gate at Carchemish (Karkamış)' },
   'site-dan': { article: 'Tel Dan', caption: 'The Bronze Age gate and springs of Tel Dan below Mount Hermon' },
   'site-lachish': { article: 'Lachish', caption: 'Tel Lachish in the Shephelah of Judah' },
+  'site-olbia-pontica': { article: 'Pontic Olbia', caption: 'The excavated ruins of Pontic Olbia on the Black Sea coast of Ukraine' },
+  'site-patrae': { file: 'Roman Odeon of Patras - 1.jpg', caption: 'The Roman odeon in the ruins of ancient Patras, Greece' },
+  // site-hecatompylos: Qumis / Hecatompylos has locator maps on Commons, not a free photo of the site; left imageless.
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
