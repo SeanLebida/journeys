@@ -15,6 +15,7 @@ const { fakeMap, removeTraceLayers, attachJourneyTrace, attachJourneyTraceWhenRe
     getLayer: vi.fn((): unknown => ({ id: 'trace-progress-line' })),
     jumpTo: vi.fn(),
     easeTo: vi.fn(),
+    stop: vi.fn(),
     getZoom: () => 10,
   },
   removeTraceLayers: vi.fn(),
@@ -60,6 +61,8 @@ describe('useRouteAnimation trace lifetime', () => {
     fakeMap.getLayer.mockReturnValue({ id: 'trace-progress-line' });
     fakeMap.easeTo.mockClear();
     fakeMap.jumpTo.mockClear();
+    fakeMap.stop.mockClear();
+    fakeMap.on.mockClear();
     useJourneyStore.getState().reset();
   });
 
@@ -102,5 +105,39 @@ describe('useRouteAnimation trace lifetime', () => {
 
   it('does not subscribe to the one-shot load event', () => {
     expect(source).not.toContain("once('load'");
+  });
+
+  function zoomStartHandler() {
+    const call = [...fakeMap.on.mock.calls].reverse().find((c) => c[0] === 'zoomstart');
+    return call?.[1] as (e: { originalEvent?: Event }) => void;
+  }
+
+  it('does not treat a zoomstart without originalEvent as a user grab', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    zoomStartHandler()({});
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).toHaveBeenCalled();
+  });
+
+  it('calls stop when a leg starts and the user is not interacting', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not stop the stationary ease when the user is interacting', () => {
+    renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    zoomStartHandler()({ originalEvent: new Event('wheel') });
+    fakeMap.stop.mockClear();
+    act(() => {
+      useJourneyStore.getState().setTargetStopIdx(1);
+    });
+    expect(fakeMap.stop).not.toHaveBeenCalled();
   });
 });
