@@ -198,6 +198,7 @@ journeys/
 ├── content/              # Authored JSON datasets (journeys, sites, persons, artifacts, citations)
 ├── dist-content/         # Compiled SQLite database (content.sqlite) & bundle.json
 ├── docs/                 # App Store and Google Play listing documentation & checklists
+│   ├── research/         # Sourced archaeology notes. Not imported into content JSON.
 │   └── store-assets/     # High-resolution screenshots, banners, icons, and preview media
 ├── ios/                  # Capacitor iOS native Xcode project & configuration
 ├── android/              # Capacitor Android native Gradle project & configuration
