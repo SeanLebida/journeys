@@ -11,6 +11,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
+import type { ReadableStream as WebReadableStream } from 'node:stream/web';
 import sharp from 'sharp';
 import { WORLD_BBOX } from '../src/map/graticule';
 import { SHADED_RELIEF_RASTER, hillshadeCrop } from '../src/map/hillshade';
@@ -87,7 +88,7 @@ async function main(): Promise<void> {
   const zipPath = join(dir, 'SR_50M.zip');
   const response = await fetch(SOURCE);
   if (!response.ok || !response.body) throw new Error(`Download failed: ${response.status} ${SOURCE}`);
-  await pipeline(Readable.fromWeb(response.body), createWriteStream(zipPath));
+  await pipeline(Readable.fromWeb(response.body as unknown as WebReadableStream), createWriteStream(zipPath));
   execFileSync('unzip', ['-o', zipPath, '-d', dir]);
   const tif = walkTif(dir);
   if (!tif) throw new Error('SR_50M.zip has no GeoTIFF');
