@@ -18,3 +18,11 @@ test('zoom +/- sits below the status-bar inset', async ({ page }) => {
   const zoomBtn = await box(page, '.maplibregl-ctrl-top-right .maplibregl-ctrl-zoom-in');
   expect(zoomBtn.y).toBeGreaterThanOrEqual(48);
 });
+
+test('zoom +/- sits below the desktop top bar', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/atlas');
+  const zoomBtn = await box(page, '.maplibregl-ctrl-top-right .maplibregl-ctrl-zoom-in');
+  const header = await box(page, '.tabbar');
+  expect(zoomBtn.y).toBeGreaterThanOrEqual(header.y + header.height);
+});
