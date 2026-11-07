@@ -7,6 +7,7 @@ import { useBundle, type BundleIndex } from '../../content/useBundle';
 import { useMap } from '../../map/MapProvider';
 import { MapLayerControl } from '../../map/MapLayerControl';
 import { Citations, ReferenceStack, ScripturePassage } from '../../content/citations';
+import { PlaceFrame } from '../../components/PlaceFrame';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteExtras } from '../../components/SiteExtras';
@@ -201,7 +202,17 @@ function LessonStepViews({ bundle, step }: { bundle: BundleIndex; step: { siteId
   if (!siteId) return null;
   return (
     <>
-      <SitePhoto siteId={siteId} />
+      {site ? (
+        <PlaceFrame
+          siteId={siteId}
+          lat={site.coordinates.value.lat}
+          lon={site.coordinates.value.lon}
+          name={site.ancientName.en}
+          online={typeof navigator !== 'undefined' && navigator.onLine}
+        />
+      ) : (
+        <SitePhoto siteId={siteId} />
+      )}
       {site && (
         <SiteViews
           lat={site.coordinates.value.lat}

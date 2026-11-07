@@ -1414,5 +1414,29 @@
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_64670_beth_shemesh_-_excavations_of_north_wall.jpg"
       }
     ]
+  },
+  "site-olbia-pontica": {
+    "images": [
+      {
+        "src": "images/sites/site-olbia-pontica.jpg",
+        "caption": "The excavated ruins of Pontic Olbia on the Black Sea coast of Ukraine",
+        "commonsFile": "AncientTownOlvia.jpg",
+        "author": "Ivengo(RUS) at Russian Wikipedia",
+        "license": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:AncientTownOlvia.jpg"
+      }
+    ]
+  },
+  "site-patrae": {
+    "images": [
+      {
+        "src": "images/sites/site-patrae.jpg",
+        "caption": "The Roman odeon in the ruins of ancient Patras, Greece",
+        "commonsFile": "Roman Odeon of Patras - 1.jpg",
+        "author": "Annatsach",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roman_Odeon_of_Patras_-_1.jpg"
+      }
+    ]
   }
 }

@@ -1,0 +1,225 @@
+[
+ {
+  "id": "route-journey-james-zebedee",
+  "journeyId": "journey-james-zebedee",
+  "legs": [
+   [
+    [
+     35.2346,
+     31.77611
+    ],
+    [
+     35.2346,
+     31.77611
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": [
+   "cit-scripture-acts-12-2"
+  ]
+ },
+ {
+  "id": "route-journey-john",
+  "journeyId": "journey-john",
+  "legs": [
+   [
+    [
+     35.2346,
+     31.77611
+    ],
+    [
+     35.28381,
+     32.20964
+    ]
+   ],
+   [
+    [
+     35.28381,
+     32.20964
+    ],
+    [
+     27.34194,
+     37.94111
+    ]
+   ],
+   [
+    [
+     27.34194,
+     37.94111
+    ],
+    [
+     26.54778,
+     37.30944
+    ]
+   ],
+   [
+    [
+     26.54778,
+     37.30944
+    ],
+    [
+     27.34194,
+     37.94111
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic",
+   "sea-lane",
+   "sea-lane",
+   "sea-lane"
+  ],
+  "note": {
+   "en": "Jerusalem to Samaria is a schematic land line. The later legs are sea connectors, not a surveyed voyage."
+  },
+  "citations": [
+   "cit-scripture-acts-8-14-25",
+   "cit-src-eusebius-he"
+  ]
+ },
+ {
+  "id": "route-journey-andrew",
+  "journeyId": "journey-andrew",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [31.9056, 46.69238]
+   ],
+   [
+    [31.9056, 46.69238],
+    [21.738518, 38.243265]
+   ]
+  ],
+  "legGrades": ["schematic", "sea-lane"],
+  "note": {
+   "en": "Jerusalem to the Black Sea pin is a schematic connector. Olbia to Patrae is a sea connector, not a surveyed voyage."
+  },
+  "citations": ["cit-src-eusebius-he", "cit-ref-newadvent-andrew"]
+ },
+ {
+  "id": "route-journey-philip-apostle",
+  "journeyId": "journey-philip-apostle",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [29.12944, 37.92583]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "A schematic land line from Jerusalem to Hierapolis, not a surveyed road."
+  },
+  "citations": ["cit-src-eusebius-he", "cit-ref-keener-bbcnt"]
+ },
+ {
+  "id": "route-journey-bartholomew",
+  "journeyId": "journey-bartholomew",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-2-1-41"]
+ },
+ {
+  "id": "route-journey-thomas",
+  "journeyId": "journey-thomas",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [54.11783, 35.95328]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "A schematic connector from Jerusalem to Hecatompylos in Parthia, not a surveyed road."
+  },
+  "citations": ["cit-src-eusebius-he"]
+ },
+ {
+  "id": "route-journey-matthew",
+  "journeyId": "journey-matthew",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-2-1-41"]
+ },
+ {
+  "id": "route-journey-james-alphaeus",
+  "journeyId": "journey-james-alphaeus",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-2-1-41"]
+ },
+ {
+  "id": "route-journey-thaddaeus",
+  "journeyId": "journey-thaddaeus",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-2-1-41"]
+ },
+ {
+  "id": "route-journey-simon-zealot",
+  "journeyId": "journey-simon-zealot",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-2-1-41"]
+ },
+ {
+  "id": "route-journey-matthias",
+  "journeyId": "journey-matthias",
+  "legs": [
+   [
+    [35.2346, 31.77611],
+    [35.2346, 31.77611]
+   ]
+  ],
+  "legGrades": ["schematic"],
+  "note": {
+   "en": "Both stops are Jerusalem. The line does not leave the city."
+  },
+  "citations": ["cit-scripture-acts-1-26", "cit-scripture-acts-2-1-41"]
+ }
+]

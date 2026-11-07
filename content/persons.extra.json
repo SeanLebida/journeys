@@ -2653,11 +2653,14 @@
   "homeSiteId": "site-bethsaida",
   "siteIds": [
    "site-capernaum",
-   "site-jerusalem"
+   "site-jerusalem",
+   "site-olbia-pontica",
+   "site-patrae"
   ],
   "journeyIds": [
    "journey-ministry",
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-andrew"
   ]
  },
  {
@@ -2708,7 +2711,8 @@
    "site-jerusalem"
   ],
   "journeyIds": [
-   "journey-ministry"
+   "journey-ministry",
+   "journey-james-zebedee"
   ]
  },
  {
@@ -2769,7 +2773,8 @@
   ],
   "journeyIds": [
    "journey-ministry",
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-john"
   ],
   "datingNote": {
    "en": "Authorship of the Johannine books is debated: the Gospel is anonymous, and Revelation names a 'John' on Patmos without identifying him as the apostle. The ascriptions here are the traditional ones, recorded as such."
@@ -2824,7 +2829,8 @@
   ],
   "journeyIds": [
    "journey-ministry",
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-philip-apostle"
   ]
  },
  {
@@ -2865,7 +2871,8 @@
   "homeSiteId": "site-cana-of-galilee",
   "journeyIds": [
    "journey-ministry",
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-bartholomew"
   ]
  },
  {
@@ -2904,9 +2911,13 @@
    "approximate": true
   },
   "homeSiteId": "site-capernaum",
+  "siteIds": [
+   "site-hecatompylos"
+  ],
   "journeyIds": [
    "journey-ministry",
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-thomas"
   ]
  },
  {
@@ -2949,7 +2960,8 @@
   },
   "homeSiteId": "site-capernaum",
   "journeyIds": [
-   "journey-ministry"
+   "journey-ministry",
+   "journey-matthew"
   ],
   "datingNote": {
    "en": "The first Gospel is formally anonymous; the ascription to Matthew is second-century and universal in the manuscripts, but it is a tradition rather than a claim the book makes."
@@ -2990,7 +3002,8 @@
    "approximate": true
   },
   "journeyIds": [
-   "journey-ministry"
+   "journey-ministry",
+   "journey-james-alphaeus"
   ]
  },
  {
@@ -3028,7 +3041,8 @@
    "approximate": true
   },
   "journeyIds": [
-   "journey-ministry"
+   "journey-ministry",
+   "journey-thaddaeus"
   ]
  },
  {
@@ -3066,7 +3080,8 @@
    "approximate": true
   },
   "journeyIds": [
-   "journey-ministry"
+   "journey-ministry",
+   "journey-simon-zealot"
   ]
  },
  {
@@ -3149,7 +3164,8 @@
   },
   "homeSiteId": "site-jerusalem",
   "journeyIds": [
-   "journey-apostolic-traditions"
+   "journey-apostolic-traditions",
+   "journey-matthias"
   ]
  },
  {

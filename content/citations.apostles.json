@@ -1,0 +1,68 @@
+[
+ {
+  "id": "cit-gaz-dare-olbia",
+  "source": {
+   "en": "Digital Atlas of the Roman Empire, Olbia/Borysthenes (id 22004; WGS 84 46.69238, 31.9056)"
+  },
+  "url": "https://imperium.ahlfeldt.se/places/22004",
+  "kind": "gazetteer",
+  "note": {
+   "en": "Coordinate for Pontic Olbia at Parutino. Pleiades place 226546."
+  }
+ },
+ {
+  "id": "cit-gaz-dare-hecatompylos",
+  "source": {
+   "en": "Digital Atlas of the Roman Empire, Hecatompylos/Komish (id 22308; WGS 84 35.95328, 54.11783)"
+  },
+  "url": "https://imperium.ahlfeldt.se/places/22308",
+  "kind": "gazetteer",
+  "note": {
+   "en": "Coordinate for the Shahr-e Qumis site identified, with a question mark in the atlas, as Hecatompylos. Pleiades place 942276."
+  }
+ },
+ {
+  "id": "cit-gaz-pontic-olbia",
+  "source": {
+   "en": "Wikipedia, 'Pontic Olbia' (archaeological site near Parutyne; coordinates 46°41′33″N 31°54′13″E)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Pontic_Olbia",
+  "kind": "tertiary-popular",
+  "note": {
+   "en": "Gazetteer pin for the Milesian city on the Scythian shore of the Black Sea. Not a claim that Andrew is named there."
+  }
+ },
+ {
+  "id": "cit-gaz-dare-patrae",
+  "source": {
+   "en": "Digital Atlas of the Roman Empire, Patrae/Patrai (id 21942; WGS 84 38.243265, 21.738518)"
+  },
+  "url": "https://imperium.ahlfeldt.se/places/21942",
+  "kind": "gazetteer",
+  "note": {
+   "en": "Coordinate for ancient Patrae. Pleiades place 570567."
+  }
+ },
+ {
+  "id": "cit-ref-newadvent-andrew",
+  "source": {
+   "en": "Joseph MacRory, 'St. Andrew', The Catholic Encyclopedia, vol. 1 (Robert Appleton, 1907)"
+  },
+  "url": "https://www.newadvent.org/cathen/01471a.htm",
+  "kind": "tertiary-popular",
+  "note": {
+   "en": "Reports Eusebius for Scythia, Jerome for Achaia, and the later agreement that Andrew was crucified at Patrae. A popular encyclopedia, not the ancient text itself."
+  }
+ },
+ {
+  "id": "cit-gaz-qumis-hecatompylos",
+  "source": {
+   "en": "Wikipedia, 'Qumis, Iran' (Hecatompylos; coordinates 35°57′03.8″N 54°06′46.10″E)"
+  },
+  "url": "https://en.wikipedia.org/wiki/Hecatompylos",
+  "kind": "tertiary-popular",
+  "note": {
+   "en": "Pin for the Shahr-e Qumis site identified with the Parthian city Hecatompylos. Wikipedia is not the only support for the Parthia tradition; that is Eusebius."
+  }
+ }
+]
