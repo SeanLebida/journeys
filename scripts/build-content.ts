@@ -140,10 +140,11 @@ async function buildBibleDb(): Promise<{ bytes: Uint8Array; verseKeys: Set<strin
 async function main(): Promise<void> {
   mkdirSync(OUT, { recursive: true });
 
-  // 1. Load each entity = generated base + hand-authored `<name>.extra.json`.
+  // 1. Load each entity = generated base + hand-authored extra + apostles files.
   const merged = (name: string) => [
     ...readJson<unknown[]>(`${name}.json`, []),
     ...readJson<unknown[]>(`${name}.extra.json`, []),
+    ...readJson<unknown[]>(`${name}.apostles.json`, []),
   ];
   const citations = merged('citations');
   const sites = merged('sites');

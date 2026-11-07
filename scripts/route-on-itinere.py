@@ -31,7 +31,7 @@ sys.setrecursionlimit(100000)  # dp() recurses; near-collinear runs go deep at ~
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 C = os.path.join(ROOT, "content")
-BBOX = (-12.0, 22.0, 50.0, 48.0)  # keep in sync with WORLD_BBOX
+BBOX = (-12.0, 22.0, 55.0, 48.0)  # keep in sync with WORLD_BBOX
 SNAP_KM = 20.0        # a stop must be this close to the network to route (tells sit off the line)
 NODE_GRID = 0.0015    # ~160 m endpoint-merge grid: closes digitization gaps at junctions
 SIMPLIFY_EPS = 0.00001  # ~1 m: dedup only — keeps full surveyed fidelity
