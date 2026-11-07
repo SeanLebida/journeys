@@ -26,12 +26,13 @@ export function ensureTraceLayers(map: MapLibreMap, color: string): void {
   if (map.getLayer(LYR.full)) return;
   for (const id of Object.values(SRC)) if (!map.getSource(id)) map.addSource(id, { type: 'geojson', data: empty });
 
+  // A dash at the opening zoom breaks into gaps and the route disappears.
   map.addLayer({
     id: LYR.full,
     type: 'line',
     source: SRC.full,
     layout: { 'line-cap': 'round', 'line-join': 'round' },
-    paint: { 'line-color': color, 'line-width': 4, 'line-opacity': 0.35, 'line-dasharray': [2, 2] },
+    paint: { 'line-color': color, 'line-width': 5, 'line-opacity': 0.8 },
   });
   map.addLayer({
     id: LYR.progress,
