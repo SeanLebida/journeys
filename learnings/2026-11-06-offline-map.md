@@ -15,7 +15,7 @@ On a journey with no data connection the parchment map kept moving and the path,
 
 ## Gotchas / pitfalls
 
-- Do not subscribe to `once('load')` to attach a journey trace. Use `styledata`, and keep the latest stop in a ref that the callback reads. Replacing that object drops the update.
+- Do not subscribe to `once('load')` to attach a journey trace. Use `styledata`. `attachJourneyTraceWhenReady` takes a getter and reads it when the event fires, so a replaced args object still draws the current stop.
 - Do not call `removeTraceLayers` from an effect that depends on `currentStopIdx`. The path is memoized without that index. Remove the layers when the coordinates change or the hook unmounts.
 - `updateTraceProgress` does nothing when the progress source is missing, so a camera move can happen with an empty overlay. Move the camera only when `trace-progress-line` is already on the map, or when `attachJourneyTrace` just placed it.
 - `map.isStyleLoaded()` is false while any source has tiles in flight and while a GeoJSON `setData` is on the worker. Do not use it as the per-frame camera gate, and do not `setData` the full route on every animation frame. Layers can be added once `style._loaded` is true. The stationary recenter waits for that same placement, then eases.

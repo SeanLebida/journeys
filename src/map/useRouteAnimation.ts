@@ -104,7 +104,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2) return;
-    return attachJourneyTraceWhenReady(map, argsRef.current);
+    return attachJourneyTraceWhenReady(map, () => argsRef.current);
   }, [mapRef, ready, coords, color, path]);
 
   useEffect(() => {
