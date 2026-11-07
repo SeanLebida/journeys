@@ -16,6 +16,11 @@ name: Android Release AAB (Signed & Play Store)
 #
 # Run this from production. That is the line that ships. development and main
 # carry the same workflow file once those branches are synced.
+#
+# A push has no track input. One upload assigns Internal testing and Closed
+# testing (internal,alpha). Play rejects a second upload of that versionCode,
+# so do not dispatch this workflow again for a commit the push already published.
+# The action splits tracks on commas and does not trim spaces.
 
 on:
   workflow_dispatch:
@@ -149,7 +154,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: how.authentic.journeys
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
-          tracks: ${{ github.event.inputs.track || 'internal' }}
+          tracks: ${{ github.event.inputs.track || 'internal,alpha' }}
           status: ${{ github.event.inputs.status || 'completed' }}
           mappingFile: android/app/build/outputs/mapping/release/mapping.txt
           whatsNewDirectory: android/release-notes

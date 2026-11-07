@@ -21,7 +21,7 @@ import {
   siteIdFromFeature,
 } from '../../map/layers/atlas';
 import { Citations, ClaimMeta, DisputeNote, ReferenceStack, ScripturePassage } from '../../content/citations';
-import { SitePhoto } from '../../components/SitePhoto';
+import { PlaceFrame } from '../../components/PlaceFrame';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
 import { BattleCard, SiteExtras } from '../../components/SiteExtras';
@@ -309,7 +309,13 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
             {site.modernName && <p className="stop-panel__modern">{site.modernName.en}</p>}
             <p className="stop-panel__modern">{site.modernLocation.en}</p>
           </div>
-          <SitePhoto siteId={site.id} />
+          <PlaceFrame
+            siteId={site.id}
+            lat={site.coordinates.value.lat}
+            lon={site.coordinates.value.lon}
+            name={site.ancientName.en}
+            online={typeof navigator !== 'undefined' && navigator.onLine}
+          />
           <SiteViews
             lat={site.coordinates.value.lat}
             lon={site.coordinates.value.lon}

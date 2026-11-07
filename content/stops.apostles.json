@@ -1,0 +1,880 @@
+[
+ {
+  "id": "stop-together-jerusalem",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "After the ascension the apostles were together in Jerusalem, and at Pentecost they were all in one place. Matthias was numbered with the eleven before that day."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 1:26",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-peter",
+   "person-andrew",
+   "person-james-zebedee",
+   "person-john-apostle",
+   "person-philip-apostle",
+   "person-bartholomew",
+   "person-thomas",
+   "person-matthew",
+   "person-james-alphaeus",
+   "person-thaddaeus",
+   "person-simon-zealot",
+   "person-matthias"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-scripture-acts-1-26",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-together-samaria",
+  "journeyId": "journey-apostolic-traditions",
+  "order": 1,
+  "siteId": "site-samaria",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 34,
+   "endYear": 34,
+   "display": {
+    "en": "Later, c. AD 34, after Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The apostles at Jerusalem sent Peter and John to Samaria after the city received the word. This atlas marks Samaria at the Shechem and Gerizim region."
+  },
+  "scriptureRefs": [
+   "Acts 8:14"
+  ],
+  "persons": [
+   "person-peter",
+   "person-john-apostle"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-8-14-25",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-james-zebedee-jerusalem",
+  "journeyId": "journey-james-zebedee",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the Twelve"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "James was among the apostles together in Jerusalem at Pentecost."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-james-zebedee",
+   "person-peter",
+   "person-john-apostle"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-james-zebedee-death",
+  "journeyId": "journey-james-zebedee",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 44,
+   "endYear": 44,
+   "display": {
+    "en": "Later, c. AD 44"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Herod Agrippa I killed James, the brother of John, with the sword. Acts places that death in Jerusalem and records no further travel."
+  },
+  "scriptureRefs": [
+   "Acts 12:2"
+  ],
+  "persons": [
+   "person-james-zebedee"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-12-2",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-john-jerusalem",
+  "journeyId": "journey-john",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "John was with the apostles in Jerusalem at Pentecost."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-john-apostle",
+   "person-peter"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-john-samaria",
+  "journeyId": "journey-john",
+  "order": 1,
+  "siteId": "site-samaria",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 34,
+   "endYear": 34,
+   "display": {
+    "en": "Later, c. AD 34"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The apostles sent Peter and John to Samaria. This atlas marks that region at Shechem and Mount Gerizim."
+  },
+  "scriptureRefs": [
+   "Acts 8:14"
+  ],
+  "persons": [
+   "person-john-apostle",
+   "person-peter"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-8-14-25",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-john-ephesus",
+  "journeyId": "journey-john",
+  "order": 2,
+  "siteId": "site-ephesus",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 70,
+   "endYear": 90,
+   "display": {
+    "en": "Earlier, c. AD 70, before the island"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eusebius preserves the tradition that John lived at Ephesus. Acts does not send him there."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-john-apostle"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The New Testament does not place the apostle at Ephesus. The tradition comes through second-century writers as Eusebius reports them."
+  },
+  "citations": [
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-john-patmos",
+  "journeyId": "journey-john",
+  "order": 3,
+  "siteId": "site-patmos",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 95,
+   "endYear": 95,
+   "display": {
+    "en": "c. AD 95, the island"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Revelation says John was on the island of Patmos because of the word of God. Whether that John is the apostle is disputed."
+  },
+  "scriptureRefs": [
+   "Revelation 1:9"
+  ],
+  "persons": [
+   "person-john-apostle"
+  ],
+  "confidence": "disputed",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Revelation 1:9 names John on Patmos and does not call him the son of Zebedee. Early tradition identifies them. Some scholars do not."
+  },
+  "citations": [
+   "cit-scripture-revelation-1-9",
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-john-ephesus-later",
+  "journeyId": "journey-john",
+  "order": 4,
+  "siteId": "site-ephesus",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 98,
+   "endYear": 100,
+   "display": {
+    "en": "Later, c. AD 98, the tradition of his death"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The same tradition brings John back to Ephesus and places his death there, after Patmos."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-john-apostle"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "A return to Ephesus and a death there are church tradition reported by Eusebius, not a statement of Acts or Revelation."
+  },
+  "citations": [
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-andrew-jerusalem",
+  "journeyId": "journey-andrew",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Andrew was among the apostles together in Jerusalem at Pentecost."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-andrew"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-andrew-scythia",
+  "journeyId": "journey-andrew",
+  "order": 1,
+  "siteId": "site-olbia-pontica",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 50,
+   "endYear": 59,
+   "display": {
+    "en": "Earlier, c. AD 50, the tradition of Scythia"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eusebius, citing Origen, says Scythia was allotted to Andrew. The pin is Pontic Olbia, a Greek city on that shore, because the text names a region and not a town."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-andrew"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Acts does not send Andrew to Scythia. Eusebius reports a tradition and names no city. Olbia is a real Black Sea coordinate in that region, not a place the ancient notice identifies."
+  },
+  "citations": [
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-andrew-patras",
+  "journeyId": "journey-andrew",
+  "order": 2,
+  "siteId": "site-patrae",
+  "legMode": "sea",
+  "dateRange": {
+   "startYear": 60,
+   "endYear": 60,
+   "display": {
+    "en": "Later, c. AD 60, the tradition of his death"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Later church tradition places Andrew's crucifixion at Patrae in Achaia. Eusebius' allotment names Scythia, not this city."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-andrew"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "The New Testament and Eusebius' Ecclesiastical History 3.1 do not name Patrae. The crucifixion there is later tradition, reported as such."
+  },
+  "citations": [
+   "cit-ref-newadvent-andrew",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-philip-apostle-jerusalem",
+  "journeyId": "journey-philip-apostle",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Philip the apostle was among the Twelve together in Jerusalem at Pentecost. He is not the Philip who preached in Samaria and met the Ethiopian."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-philip-apostle"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-philip-apostle-hierapolis",
+  "journeyId": "journey-philip-apostle",
+  "order": 1,
+  "siteId": "site-hierapolis",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 80,
+   "endYear": 80,
+   "display": {
+    "en": "Later, c. AD 80, the tradition of his burial"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eusebius quotes Polycrates of Ephesus: Philip, one of the Twelve, sleeps at Hierapolis. Proclus, whom Eusebius also quotes, puts a tomb of Philip and his daughters there, and Eusebius notes that Acts' Philip at Caesarea is the evangelist."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-philip-apostle"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Polycrates calls the Philip at Hierapolis one of the Twelve. Luke's Philip with four prophesying daughters is the evangelist at Caesarea. Eusebius sets the two notices side by side. This stop follows Polycrates and does not use Acts 8."
+  },
+  "citations": [
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-bartholomew-jerusalem-gathered",
+  "journeyId": "journey-bartholomew",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the eleven"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Bartholomew is named among the apostles staying in the upper room in Jerusalem."
+  },
+  "scriptureRefs": [
+   "Acts 1:13"
+  ],
+  "persons": [
+   "person-bartholomew"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-bartholomew-jerusalem",
+  "journeyId": "journey-bartholomew",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Bartholomew was among the apostles together in Jerusalem at Pentecost. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-bartholomew"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-thomas-jerusalem",
+  "journeyId": "journey-thomas",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Thomas was among the apostles together in Jerusalem at Pentecost."
+  },
+  "scriptureRefs": [
+   "Acts 1:13",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-thomas"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-thomas-parthia",
+  "journeyId": "journey-thomas",
+  "order": 1,
+  "siteId": "site-hecatompylos",
+  "legMode": "land",
+  "dateRange": {
+   "startYear": 70,
+   "endYear": 72,
+   "display": {
+    "en": "Later, c. AD 70, the tradition of Parthia"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Eusebius, citing Origen, says Parthia was allotted to Thomas. The pin is Hecatompylos, a Parthian royal city, because the text names a region and not a town."
+  },
+  "scriptureRefs": [],
+  "persons": [
+   "person-thomas"
+  ],
+  "confidence": "legendary",
+  "reviewStatus": "self-reviewed",
+  "disputes": {
+   "en": "Acts does not send Thomas to Parthia. Eusebius reports a tradition. Hecatompylos is one Parthian capital, not a city he names. A later India story is not pinned here."
+  },
+  "citations": [
+   "cit-src-eusebius-he",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-matthew-jerusalem-gathered",
+  "journeyId": "journey-matthew",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the eleven"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Matthew is named among the apostles staying in the upper room in Jerusalem."
+  },
+  "scriptureRefs": [
+   "Acts 1:13"
+  ],
+  "persons": [
+   "person-matthew"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-matthew-jerusalem",
+  "journeyId": "journey-matthew",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Matthew was among the apostles together in Jerusalem at Pentecost. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-matthew"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-james-alphaeus-jerusalem-gathered",
+  "journeyId": "journey-james-alphaeus",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the eleven"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "James son of Alphaeus is named among the apostles staying in the upper room in Jerusalem. He is not James the brother of the Lord."
+  },
+  "scriptureRefs": [
+   "Acts 1:13"
+  ],
+  "persons": [
+   "person-james-alphaeus"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-james-alphaeus-jerusalem",
+  "journeyId": "journey-james-alphaeus",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "James son of Alphaeus was among the apostles together in Jerusalem at Pentecost. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-james-alphaeus"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-thaddaeus-jerusalem-gathered",
+  "journeyId": "journey-thaddaeus",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the eleven"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Thaddaeus, Judas son of James, is named among the apostles staying in the upper room in Jerusalem."
+  },
+  "scriptureRefs": [
+   "Acts 1:13"
+  ],
+  "persons": [
+   "person-thaddaeus"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-thaddaeus-jerusalem",
+  "journeyId": "journey-thaddaeus",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Thaddaeus was among the apostles together in Jerusalem at Pentecost. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-thaddaeus"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-simon-zealot-jerusalem-gathered",
+  "journeyId": "journey-simon-zealot",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, with the eleven"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Simon the Zealot is named among the apostles staying in the upper room in Jerusalem."
+  },
+  "scriptureRefs": [
+   "Acts 1:13"
+  ],
+  "persons": [
+   "person-simon-zealot"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-13",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-simon-zealot-jerusalem",
+  "journeyId": "journey-simon-zealot",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Simon the Zealot was among the apostles together in Jerusalem at Pentecost. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-simon-zealot"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-matthias-chosen",
+  "journeyId": "journey-matthias",
+  "order": 0,
+  "siteId": "site-jerusalem",
+  "legMode": "start",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Earlier in c. AD 30, chosen by lot"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "The believers in Jerusalem put forward Joseph Barsabbas and Matthias, and the lot fell to Matthias, who was numbered with the eleven."
+  },
+  "scriptureRefs": [
+   "Acts 1:23",
+   "Acts 1:26"
+  ],
+  "persons": [
+   "person-matthias"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-23",
+   "cit-scripture-acts-1-26",
+   "cit-ref-keener-bbcnt"
+  ]
+ },
+ {
+  "id": "stop-matthias-jerusalem",
+  "journeyId": "journey-matthias",
+  "order": 1,
+  "siteId": "site-jerusalem",
+  "legMode": "turnaround",
+  "dateRange": {
+   "startYear": 30,
+   "endYear": 30,
+   "display": {
+    "en": "Later in c. AD 30, Pentecost"
+   },
+   "approximate": true
+  },
+  "eventSummary": {
+   "en": "Matthias was numbered with the apostles before Pentecost, when they were all together in Jerusalem. No later city is marked."
+  },
+  "scriptureRefs": [
+   "Acts 1:26",
+   "Acts 2:1"
+  ],
+  "persons": [
+   "person-matthias"
+  ],
+  "confidence": "high",
+  "reviewStatus": "self-reviewed",
+  "citations": [
+   "cit-scripture-acts-1-26",
+   "cit-scripture-acts-2-1-41",
+   "cit-ref-keener-bbcnt"
+  ]
+ }
+]
