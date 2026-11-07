@@ -362,14 +362,10 @@ export function MapProvider({ children }: { children: ReactNode }) {
     setLayerVisible(map, 'wb-barrier', layers.borders);
     setLayerVisible(map, 'wb-barrier-casing', layers.borders);
 
-    let maxZoom = 20;
+    let maxZoom = 19;
     if (layers.ancientMap) {
       maxZoom = 11;
     } else if (layers.satellite || layers.streets) {
-      maxZoom = 19;
-    } else if (layers.topography) {
-      maxZoom = 13;
-    } else {
       maxZoom = 19;
     }
     map.setMaxZoom(maxZoom);

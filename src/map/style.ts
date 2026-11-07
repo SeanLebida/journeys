@@ -1,7 +1,8 @@
 import type { FilterSpecification, StyleSpecification } from 'maplibre-gl';
 import type { FeatureCollection } from 'geojson';
-import { generateGraticule } from './graticule';
-import { getGlyphsUrl } from '../platform/assets';
+import { WORLD_BBOX, generateGraticule } from './graticule';
+import { ASSET_PATHS, getGlyphsUrl } from '../platform/assets';
+import { resolveAssetUrl } from '../platform/bridge';
 import land from './basemap/land.json';
 import countries from './basemap/countries.json';
 import lakes from './basemap/lakes.json';
@@ -297,11 +298,14 @@ export function buildBaseStyle(_basemap: Basemap, dark: boolean): StyleSpecifica
       'oct7-sites': { type: 'geojson', data: oct7Sites as FeatureCollection },
       'kingdoms-iron-ii': { type: 'geojson', data: kingdomsIronII as FeatureCollection },
       topography: {
-        type: 'raster',
-        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'],
-        tileSize: 256,
-        attribution: 'Tiles © Esri — Source: USGS',
-        maxzoom: 13,
+        type: 'image',
+        url: resolveAssetUrl(ASSET_PATHS.hillshade),
+        coordinates: [
+          [WORLD_BBOX[0], WORLD_BBOX[3]],
+          [WORLD_BBOX[2], WORLD_BBOX[3]],
+          [WORLD_BBOX[2], WORLD_BBOX[1]],
+          [WORLD_BBOX[0], WORLD_BBOX[1]],
+        ],
       },
       satellite: {
         type: 'raster',
