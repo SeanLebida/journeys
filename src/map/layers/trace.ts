@@ -156,11 +156,14 @@ export function attachJourneyTrace(map: MapLibreMap, args: TraceAttachArgs): boo
  * Attach now, or on the next styledata. `load` fires once, when the style is
  * first created, so a map that is already open never emits it again.
  */
-export function attachJourneyTraceWhenReady(map: MapLibreMap, args: TraceAttachArgs): () => void {
+export function attachJourneyTraceWhenReady(
+  map: MapLibreMap,
+  getArgs: () => TraceAttachArgs,
+): () => void {
   if (!hasLiveStyle(map)) return () => {};
-  if (attachJourneyTrace(map, args)) return () => {};
+  if (attachJourneyTrace(map, getArgs())) return () => {};
   const onStyle = () => {
-    if (attachJourneyTrace(map, args)) map.off('styledata', onStyle);
+    if (attachJourneyTrace(map, getArgs())) map.off('styledata', onStyle);
   };
   map.on('styledata', onStyle);
   return () => map.off('styledata', onStyle);

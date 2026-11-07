@@ -89,7 +89,7 @@ describe('attachJourneyTrace', () => {
 
   it('attaches on styledata after the style loads, and unsubscribes', () => {
     const map = fakeMap(false);
-    const stopListening = attachJourneyTraceWhenReady(map as never, args);
+    const stopListening = attachJourneyTraceWhenReady(map as never, () => args);
     expect(map.sources.get('trace-full')).toBeUndefined();
     map.setLoaded(true);
     map.emit();
@@ -99,6 +99,18 @@ describe('attachJourneyTrace', () => {
     const writes = map.sources.get('trace-full')!.setData.mock.calls.length;
     map.emit();
     expect(map.sources.get('trace-full')!.setData).toHaveBeenCalledTimes(writes);
+    stopListening();
+  });
+
+  it('writes the args the getter returns when styledata fires', () => {
+    const map = fakeMap(false);
+    let current = args;
+    const stopListening = attachJourneyTraceWhenReady(map as never, () => current);
+    current = { ...args, full: [[2, 2], [3, 3]] as [number, number][] };
+    map.setLoaded(true);
+    map.emit();
+    const written = map.sources.get('trace-full')!.setData.mock.calls.at(-1)![0];
+    expect(written.features[0].geometry.coordinates).toEqual([[2, 2], [3, 3]]);
     stopListening();
   });
 });
