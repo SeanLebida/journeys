@@ -58,6 +58,10 @@ describe('MapLayerControl', () => {
     fireEvent.click(screen.getByRole('checkbox', { name: 'Journey routes' }));
     expect(onChange).toHaveBeenCalledWith(true);
     expect(screen.getByRole('checkbox', { name: /Oct 7, 2023 attack sites/ })).toBeInTheDocument();
+    const geography = screen.getByRole('heading', { name: 'Geography & Features' }).parentElement!;
+    const imagery = screen.getByRole('heading', { name: 'Imagery & Historical Maps' }).parentElement!;
+    expect(geography.querySelector('input[type="checkbox"]')?.closest('label')?.textContent).toContain('Topography (terrain)');
+    expect(imagery.textContent).not.toContain('Topography (terrain)');
     // 5 default basemap layers (topography, borders, rivers, lakes, grid) + Sites.
     expect(screen.getByText('6 active')).toBeInTheDocument();
   });
