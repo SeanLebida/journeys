@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef } from 'react';
 import { useMap } from './MapProvider';
 import { lineLength, lineProgress, stopFractions, type JourneyPath } from './route';
 import {
-  ensureTraceLayers,
-  ensureTravelerMarker,
+  attachJourneyTrace,
+  attachJourneyTraceWhenReady,
   removeTraceLayers,
   updateTraceProgress,
   updateTraceStatic,
+  type TraceAttachArgs,
   type TraceStop,
 } from './layers/trace';
 import { useJourneyStore } from '../state/useJourneyStore';
@@ -46,6 +47,18 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   const setActiveStop = useJourneyStore((s) => s.setActiveStop);
 
   const isUserInteractingRef = useRef(false);
+  const vertex = path.stopVertex[currentStopIdx];
+  const at = vertex === undefined ? undefined : coords[vertex];
+  const argsRef = useRef<TraceAttachArgs>({
+    color,
+    full: coords,
+    stops: stops.map((s, i) => ({ ...s, reached: i <= currentStopIdx })),
+    at: at ?? coords[0] ?? [0, 0],
+  });
+  argsRef.current.color = color;
+  argsRef.current.full = coords;
+  argsRef.current.stops = stops.map((s, i) => ({ ...s, reached: i <= currentStopIdx }));
+  if (at) argsRef.current.at = at;
 
   // Helper: calculate natural zoom level for a stop
   const getTargetZoomForStop = useMemo(() => {
@@ -81,26 +94,20 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     };
   }, [mapRef, ready]);
 
-  // Add layers + auto-center on the initial waypoint when the map loads
+  // Attach once per path. Stop changes rewrite argsRef and must not remove the
+  // layers. A map that is already open emits styledata, and load does not fire again.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || coords.length < 2) return;
-    const add = () => {
-      ensureTraceLayers(map, color);
-      const v = path.stopVertex[currentStopIdx] ?? 0;
-      const pt = coords[v];
-      if (pt) ensureTravelerMarker(map, color, pt);
-      if (pt && !isUserInteractingRef.current) {
-        map.jumpTo({
-          center: pt,
-          zoom: getTargetZoomForStop(currentStopIdx),
-        });
-      }
+    return attachJourneyTraceWhenReady(map, argsRef.current);
+  }, [mapRef, ready, coords, color, path]);
+
+  useEffect(() => {
+    return () => {
+      const map = mapRef.current;
+      if (map) removeTraceLayers(map);
     };
-    if (map.isStyleLoaded()) add();
-    else map.once('load', add);
-    return () => { removeTraceLayers(map); };
-  }, [mapRef, ready, coords, color, path, currentStopIdx, getTargetZoomForStop]);
+  }, [coords]);
 
   // The route outline and the stop dots only change when the journey or the
   // reached-so-far count does, so they stay out of the animation loop entirely.
@@ -185,7 +192,8 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const tickCoLocated = (now: number) => {
         const elapsed = now - t0;
         const rawT = Math.min(1, elapsed / durationMs);
-        if (!isUserInteractingRef.current && pt) {
+        const attached = attachJourneyTrace(map, argsRef.current);
+        if (attached && !isUserInteractingRef.current && pt) {
           // Subtle elevation pulse out and back in
           const pulseZoom = baseZoom - pulseAmp * Math.sin(rawT * Math.PI);
           map.jumpTo({ center: pt, zoom: pulseZoom });
@@ -238,6 +246,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const currentP = startFraction + (targetFraction - startFraction) * easedT;
 
       if (rawT >= 1) {
+        attachJourneyTrace(map, argsRef.current);
         updateTraceProgress(map, lineProgress(coords, targetFraction));
         setProgress(targetFraction);
         setCurrentStopIdx(toIdx);
@@ -246,10 +255,12 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       }
 
       // Trace geometry and camera are written in the same frame, in that order,
-      // so the traveller and the view it is centred in never disagree.
+      // so the traveller and the view it is centred in never disagree. A frame
+      // that cannot place the dot does not move the camera.
+      const attached = attachJourneyTrace(map, argsRef.current);
       const prog = lineProgress(coords, currentP);
       updateTraceProgress(map, prog);
-      if (!isUserInteractingRef.current) {
+      if (attached && !isUserInteractingRef.current) {
         const baseZoom = startZoom + (targetZoom - startZoom) * easedT;
         const currentZoom = maxZoomDip === 0 ? baseZoom : baseZoom - maxZoomDip * Math.sin(rawT * Math.PI);
         map.jumpTo({ center: prog.point, zoom: currentZoom });
