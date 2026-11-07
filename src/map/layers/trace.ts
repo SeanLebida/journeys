@@ -126,9 +126,26 @@ export interface TraceAttachArgs {
   at: LngLat;
 }
 
+/**
+ * True once the style object can accept layers.
+ *
+ * `map.isStyleLoaded()` is false while any source still has tiles in flight,
+ * and while a GeoJSON `setData` is waiting on the worker. That includes the
+ * optional satellite, street, and Roman pictures, and it includes this trace's
+ * own updates. Layers can be added as soon as the style's own load has
+ * finished (`style._loaded`). The public flag remains for callers that only
+ * implement `isStyleLoaded`.
+ */
+function styleCanTakeLayers(map: MapLibreMap): boolean {
+  if (!hasLiveStyle(map)) return false;
+  const style = (map as unknown as { style?: { _loaded?: boolean } }).style;
+  if (style?._loaded) return true;
+  return map.isStyleLoaded() === true;
+}
+
 /** Add the trace and write its data. False when the style is not ready to take layers. */
 export function attachJourneyTrace(map: MapLibreMap, args: TraceAttachArgs): boolean {
-  if (!hasLiveStyle(map) || !map.isStyleLoaded()) return false;
+  if (!styleCanTakeLayers(map)) return false;
   ensureTraceLayers(map, args.color);
   updateTraceStatic(map, args.full, args.stops);
   ensureTravelerMarker(map, args.color, args.at);

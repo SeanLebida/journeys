@@ -26,6 +26,11 @@ function isCompactViewport(): boolean {
   return typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches;
 }
 
+/** The progress line exists only after an attach that also placed the traveller. */
+function traceReady(map: { getLayer: (id: string) => unknown }, args: TraceAttachArgs): boolean {
+  return Boolean(map.getLayer('trace-progress-line')) || attachJourneyTrace(map as Parameters<typeof attachJourneyTrace>[0], args);
+}
+
 /**
  * Drives the route trace for the active journey:
  * - Auto-centers the map view on the current waypoint prior to journey start or reset.
@@ -139,10 +144,23 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
 
     const v = path.stopVertex[currentStopIdx];
     const pt = coords[v];
-    if (pt && !isUserInteractingRef.current) {
-      const zoom = getTargetZoomForStop(currentStopIdx);
-      map.easeTo({ center: pt, zoom, duration: isCompactViewport() ? 900 : 600 });
-    }
+    if (!pt || isUserInteractingRef.current) return;
+    const duration = isCompactViewport() ? 900 : 600;
+    const recenter = () => {
+      if (isUserInteractingRef.current || useJourneyStore.getState().targetStopIdx !== null) return true;
+      if (!traceReady(map, argsRef.current)) return false;
+      const idx = useJourneyStore.getState().currentStopIdx;
+      const point = coords[path.stopVertex[idx]];
+      if (!point) return true;
+      map.easeTo({ center: point, zoom: getTargetZoomForStop(idx), duration });
+      return true;
+    };
+    if (recenter()) return;
+    const onStyle = () => {
+      if (recenter()) map.off('styledata', onStyle);
+    };
+    map.on('styledata', onStyle);
+    return () => { map.off('styledata', onStyle); };
   }, [currentStopIdx, targetStopIdx, stopIds, setActiveStop, mapRef, ready, path, coords, getTargetZoomForStop]);
 
   // ── Leg Travel & Co-located Elevation Pulse Animation Loop ───────────────
@@ -192,8 +210,8 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const tickCoLocated = (now: number) => {
         const elapsed = now - t0;
         const rawT = Math.min(1, elapsed / durationMs);
-        const attached = attachJourneyTrace(map, argsRef.current);
-        if (attached && !isUserInteractingRef.current && pt) {
+        const placed = traceReady(map, argsRef.current);
+        if (placed && !isUserInteractingRef.current && pt) {
           // Subtle elevation pulse out and back in
           const pulseZoom = baseZoom - pulseAmp * Math.sin(rawT * Math.PI);
           map.jumpTo({ center: pt, zoom: pulseZoom });
@@ -246,7 +264,7 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       const currentP = startFraction + (targetFraction - startFraction) * easedT;
 
       if (rawT >= 1) {
-        attachJourneyTrace(map, argsRef.current);
+        traceReady(map, argsRef.current);
         updateTraceProgress(map, lineProgress(coords, targetFraction));
         setProgress(targetFraction);
         setCurrentStopIdx(toIdx);
@@ -254,13 +272,14 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
         return;
       }
 
-      // Trace geometry and camera are written in the same frame, in that order,
-      // so the traveller and the view it is centred in never disagree. A frame
-      // that cannot place the dot does not move the camera.
-      const attached = attachJourneyTrace(map, argsRef.current);
+      // The progress line and the camera are written in the same frame. A frame
+      // that cannot place the dot does not move the camera. The full route is
+      // not rewritten here: that setData keeps isStyleLoaded false and would
+      // freeze the camera on the next frame.
+      const placed = traceReady(map, argsRef.current);
       const prog = lineProgress(coords, currentP);
       updateTraceProgress(map, prog);
-      if (attached && !isUserInteractingRef.current) {
+      if (placed && !isUserInteractingRef.current) {
         const baseZoom = startZoom + (targetZoom - startZoom) * easedT;
         const currentZoom = maxZoomDip === 0 ? baseZoom : baseZoom - maxZoomDip * Math.sin(rawT * Math.PI);
         map.jumpTo({ center: prog.point, zoom: currentZoom });
