@@ -85,8 +85,14 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const start = () => { isUserInteractingRef.current = true; };
-    const end = () => { isUserInteractingRef.current = false; };
+    const start = (e: { originalEvent?: Event }) => {
+      if (!e.originalEvent) return;
+      isUserInteractingRef.current = true;
+    };
+    const end = (e: { originalEvent?: Event }) => {
+      if (!e.originalEvent) return;
+      isUserInteractingRef.current = false;
+    };
     map.on('dragstart', start); map.on('dragend', end);
     map.on('zoomstart', start); map.on('zoomend', end);
     map.on('pitchstart', start); map.on('pitchend', end);
@@ -138,7 +144,12 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     if (stopIds[currentStopIdx]) {
       setActiveStop(stopIds[currentStopIdx]);
     }
-    if (targetStopIdx !== null) return; // Travelling handles its own movement
+    if (targetStopIdx !== null) {
+      // A leg's jumpTo does not cancel an ease that is already in flight.
+      const flying = mapRef.current;
+      if (flying && ready && !isUserInteractingRef.current) flying.stop();
+      return;
+    }
     const map = mapRef.current;
     if (!map || !ready) return;
 
