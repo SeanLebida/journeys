@@ -10,6 +10,7 @@
     "build": "npm run build:content && tsc --noEmit && vite build",
     "preview": "vite preview",
     "build:content": "tsx scripts/build-content.ts",
+    "map:hillshade": "tsx scripts/clip-hillshade.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
