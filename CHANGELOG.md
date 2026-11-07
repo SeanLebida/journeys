@@ -2,6 +2,13 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.21] - 2026-11-07
+
+• The journey path, stop dots, and current location stay on the map with no signal.
+• Shaded relief ships in the install. Satellite, streets, and the Roman map stay online.
+• Zoom controls sit below the header on a wide screen.
+• A close zoom eases back out at the start of a leg, and a long leg takes longer to cross.
+
 ## [0.3.20] - 2026-11-05
 
 • Journeys, map routes, the timeline, and quizzes reopen where you left off.
