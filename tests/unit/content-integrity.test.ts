@@ -42,20 +42,24 @@ const CONTENT = join(process.cwd(), 'content');
 const read = (n: string): unknown[] =>
   existsSync(join(CONTENT, n)) ? (JSON.parse(readFileSync(join(CONTENT, n), 'utf8')) as unknown[]) : [];
 
-const citations = [...read('citations.json'), ...read('citations.extra.json')];
-// Merge hand-authored `.extra.json` layers exactly as the build does, so the
-// test validates the same content set that ships (base-only reads missed sites
-// and stops authored in the extra files).
-const sites = [...read('sites.json'), ...read('sites.extra.json')];
-const journeys = [...read('journeys.json'), ...read('journeys.extra.json')];
-const stops = [...read('stops.json'), ...read('stops.extra.json')];
-const persons = [...read('persons.json'), ...read('persons.extra.json')];
-const artifacts = [...read('artifacts.json'), ...read('artifacts.extra.json')];
-const witnesses = [...read('witnesses.json'), ...read('witnesses.extra.json')];
-const miracles = [...read('miracles.json'), ...read('miracles.extra.json')];
-const battles = [...read('battles.json'), ...read('battles.extra.json')];
-const routes = [...read('routes.json'), ...read('routes.extra.json')];
-const videos = [...read('videos.json'), ...read('videos.extra.json')];
+// Merge base + `.extra.json` + `.apostles.json` exactly as `merged()` in
+// scripts/build-content.ts, so the test validates the same set that ships.
+const merge = (name: string) => [
+  ...read(`${name}.json`),
+  ...read(`${name}.extra.json`),
+  ...read(`${name}.apostles.json`),
+];
+const citations = merge('citations');
+const sites = merge('sites');
+const journeys = merge('journeys');
+const stops = merge('stops');
+const persons = merge('persons');
+const artifacts = merge('artifacts');
+const witnesses = merge('witnesses');
+const miracles = merge('miracles');
+const battles = merge('battles');
+const routes = merge('routes');
+const videos = merge('videos');
 const terms = read('terms.json');
 const lessons = read('lessons.json');
 const quizzes = read('quizzes.json');

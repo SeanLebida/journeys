@@ -7,11 +7,12 @@ export type BBox = [number, number, number, number];
 export const MEDITERRANEAN_BBOX: BBox = [-12, 27, 46, 48];
 
 // The whole biblical stage: Mesopotamia (Ur, Babylon) → the Levant → Egypt and
-// Sinai. This is the geo-sanity bbox the content validator checks coordinates
+// Sinai. The east edge is 55 so Hecatompylos in Parthia sits inside the atlas.
+// This is the geo-sanity bbox the content validator checks coordinates
 // against, the extent the offline basemap (scripts/clip-basemap.py) is clipped
 // to, and the graticule's span — widened from MEDITERRANEAN_BBOX so Old-Testament
 // sites (patriarchs, the Exodus) sit on real mapped land, not empty sea.
-export const WORLD_BBOX: BBox = [-12, 22, 50, 48];
+export const WORLD_BBOX: BBox = [-12, 22, 55, 48];
 
 /**
  * Generate a graticule (meridians + parallels) as GeoJSON for the M1 basemap.

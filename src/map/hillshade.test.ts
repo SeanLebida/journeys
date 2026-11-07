@@ -5,7 +5,7 @@ import { hillshadeCrop, lonLatToCropPixel } from './hillshade';
 
 describe('hillshadeCrop', () => {
   it('crops the 50m world raster to WORLD_BBOX', () => {
-    expect(hillshadeCrop()).toEqual({ left: 5040, top: 1260, width: 1860, height: 780 });
+    expect(hillshadeCrop()).toEqual({ left: 5040, top: 1260, width: 2010, height: 780 });
   });
 
   it('maps Jerusalem and the eastern Mediterranean onto different interior pixels', () => {

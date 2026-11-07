@@ -2,6 +2,12 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.22] - 2026-11-07
+
+• Each of the Twelve has his own journey. Peter keeps his. The shared line is only the places they were together.
+• A stop without a free photo shows a close satellite view online, and the bundled relief with no signal.
+• The map now reaches Hecatompylos in Parthia.
+
 ## [0.3.21] - 2026-11-07
 
 • The journey path, stop dots, and current location stay on the map with no signal.
