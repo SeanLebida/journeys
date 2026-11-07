@@ -12,6 +12,10 @@ export const WHATS_NEW: WhatsNewStep[] = [
     title: 'The path stays on the map',
     body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
   },
+  {
+    title: 'The journey is easier to follow',
+    body: 'Zoom controls clear the header. A close zoom eases back out, and a long leg slows down so the route can be followed.',
+  },
 ];
 
 export const LAST_SEEN_VERSION_KEY = 'journeys.lastSeenVersion';
