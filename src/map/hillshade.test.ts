@@ -39,4 +39,10 @@ describe('hillshade png', () => {
     expect(alphaAt(35.23, 31.78)).toBeGreaterThan(0);
     expect(alphaAt(33.0, 34.0)).toBe(0);
   });
+
+  it('precaches the hillshade file and not every png', () => {
+    const config = readFileSync('vite.config.ts', 'utf8');
+    expect(config).toContain("'images/map/hillshade.png'");
+    expect(config).not.toContain('*.png');
+  });
 });
