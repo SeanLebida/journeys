@@ -9,20 +9,12 @@ export interface WhatsNewStep {
 
 export const WHATS_NEW: WhatsNewStep[] = [
   {
-    title: 'Map layers in one place',
-    body: 'Every map now has Map details & layers at the top. In the Atlas, Sites, Routes, Battles and Confidence live there too.',
+    title: 'The path stays on the map',
+    body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
   },
   {
-    title: 'Era chips work again',
-    body: 'On the Timeline, tap an era like The monarchy or The exile to jump straight to it.',
-  },
-  {
-    title: 'Details come first in the Atlas',
-    body: 'Tap a place or battle and its details open at the top. Close takes you back to where you were.',
-  },
-  {
-    title: 'Update reminders',
-    body: 'When a newer version with fixes is ready, Journeys reminds you so you can update in one tap.',
+    title: 'The journey is easier to follow',
+    body: 'Zoom controls clear the header. A close zoom eases back out, and a long leg slows down so the route can be followed.',
   },
 ];
 
