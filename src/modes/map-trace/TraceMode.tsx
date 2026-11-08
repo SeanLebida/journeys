@@ -149,13 +149,13 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   }, [hydrated, journey, currentStopIdx, targetStopIdx, stops.length, routeReady]);
 
   // Two-phase mobile UI. Starting a leg drops the sheet to `peek` so the camera
-  // move plays over a near-full-bleed map; arriving raises it to `full` so the
-  // stop is immediately readable. Only the *transitions* fire a request, so a
+  // move plays over a near-full-bleed map; arriving returns it to `half` so the
+  // stop and its map location remain visible. Only transitions fire a request, so a
   // reader who drags the sheet mid-leg keeps their position until the next one.
   const wasTravelling = useRef(false);
   useEffect(() => {
     if (travelling !== wasTravelling.current) {
-      requestSnap(travelling ? 'peek' : 'full');
+      requestSnap(travelling ? 'peek' : 'half');
       wasTravelling.current = travelling;
     }
   }, [travelling, requestSnap]);
