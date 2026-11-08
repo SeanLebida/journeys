@@ -73,6 +73,34 @@ describe('computeMapPadding', () => {
     expect(computeMapPadding()).toEqual({ top: 0, bottom: 64, left: 0, right: 0 });
   });
 
+  it('uses the resolved dock and clamped sheet height rather than CSS expressions', () => {
+    window.matchMedia = (q: string) => mockMatchMedia(q, q.includes('orientation: portrait'));
+    document.body.innerHTML = `
+      <div class="app-shell" style="--dock-h: calc(48px + 0.8rem); --safe-top: 0px">
+        <div class="app-main" style="--sheet-h: 736px">
+          <section class="mode-panel" style="bottom: 60px"></section>
+        </div>
+      </div>`;
+    const panel = document.querySelector('.mode-panel');
+    if (!panel) throw new Error('missing panel');
+    vi.spyOn(panel, 'getBoundingClientRect').mockReturnValue(new DOMRect(0, 8, 390, 732));
+    expect(computeMapPadding()).toEqual({ top: 0, bottom: 792, left: 0, right: 0 });
+  });
+
+  it('measures a landscape rail whose width is a CSS calc/min expression', () => {
+    window.matchMedia = (q: string) => mockMatchMedia(q, q.includes('orientation: landscape'));
+    document.body.innerHTML = `
+      <div class="app-shell" style="--dock-h: calc(44px + 0.5rem); --safe-top: 0px">
+        <div class="app-main" style="--rail-w: calc(min(54vw, 360px) + 0px)">
+          <section class="mode-panel" style="bottom: 52px"></section>
+        </div>
+      </div>`;
+    const panel = document.querySelector('.mode-panel');
+    if (!panel) throw new Error('missing panel');
+    vi.spyOn(panel, 'getBoundingClientRect').mockReturnValue(new DOMRect(0, 0, 360, 338));
+    expect(computeMapPadding()).toEqual({ top: 0, bottom: 52, left: 360, right: 0 });
+  });
+
   it('pads the left for the landscape rail', () => {
     window.matchMedia = ((q: string) =>
       mockMatchMedia(
