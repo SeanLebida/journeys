@@ -35,26 +35,32 @@ export function computeMapPadding(root: ParentNode = document): MapPadding {
 
   const shell = root.querySelector('.app-shell') as HTMLElement | null;
   const main = root.querySelector('.app-main') as HTMLElement | null;
-  const dockH = shell ? readCssPx(shell, '--dock-h') : 0;
+  const panel = root.querySelector('.mode-panel');
+  // Custom properties retain calc()/min()/env() expressions. Read the used
+  // layout instead: parseFloat('--rail-w') silently treated the rail as zero.
+  const panelStyle = panel ? getComputedStyle(panel) : null;
+  const panelBottom = Number.parseFloat(panelStyle?.bottom ?? '');
+  const dockFallback = shell ? readCssPx(shell, '--dock-h') : 0;
+  const dockH = Number.isFinite(panelBottom) ? Math.max(0, panelBottom) : dockFallback;
   const safeTop = shell ? readCssPx(shell, '--safe-top') : 0;
 
   // Desktop sidebar floats over the left edge of the map.
   if (window.matchMedia(`(min-width: ${LG}px)`).matches) {
-    return { top: safeTop, bottom: dockH, left: DESKTOP_LEFT, right: 0 };
+    return { top: safeTop, bottom: dockFallback, left: DESKTOP_LEFT, right: 0 };
   }
 
   // Landscape phone/tablet: panel is a left rail; map keeps the rest.
   if (window.matchMedia(RAIL_MQ).matches) {
-    const railW = main ? readCssPx(main, '--rail-w') : 0;
+    const railW = panel?.getBoundingClientRect().width || (main ? readCssPx(main, '--rail-w') : 0);
     return { top: safeTop, bottom: dockH, left: railW, right: 0 };
   }
 
-  // Portrait sheet: --sheet-h is the live sheet height inside .app-main.
+  // Use the actual sheet height, which CSS can clamp below --sheet-h.
   // The sheet sits above the dock (`bottom: var(--dock-h)`), so the covered
   // band from the bottom of the map canvas is sheet + dock.
   let sheetH = 0;
   if (window.matchMedia(SHEET_MQ).matches && main) {
-    sheetH = readCssPx(main, '--sheet-h');
+    sheetH = panel?.getBoundingClientRect().height || readCssPx(main, '--sheet-h');
     // Before useSheetDrag publishes --sheet-h, the CSS fallback height is 50%.
     if (sheetH <= 0) {
       sheetH = main.clientHeight * 0.5;

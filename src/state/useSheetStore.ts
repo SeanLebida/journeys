@@ -23,8 +23,8 @@ interface SheetState {
 /**
  * Lets a mode drive the mobile bottom sheet without prop-drilling through
  * ModePanel. Trace uses it to run the two-phase mobile UI: drop to `peek` when
- * the camera starts travelling (map becomes cinematic), rise to `full` on
- * arrival (the stop becomes readable). A manual drag simply wins until the next
+ * the camera starts travelling (map becomes cinematic), rise to `half` on
+ * arrival (the stop and map stay visible). A manual drag simply wins until the next
  * request arrives, so the reader is never fought mid-gesture.
  */
 export const useSheetStore = create<SheetState>((set, get) => ({
