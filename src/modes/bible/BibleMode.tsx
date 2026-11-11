@@ -27,7 +27,8 @@ import {
   useNotesStore,
   type HighlightColor,
 } from '../../state/useNotesStore';
-import { useUiStore, type Translation } from '../../state/useUiStore';
+import { useUiStore } from '../../state/useUiStore';
+import { TRANSLATIONS, isTranslation, translationInfo, type Translation } from '../../content/translations';
 
 /**
  * The Bible reader.
@@ -161,9 +162,12 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
         </div>
         <label className="bible__translation">
           Translation
-          <select value={translation} onChange={(e) => setTranslation(e.target.value as Translation)}>
-            <option value="ASV">American Standard Version (1901)</option>
-            <option value="KJV">King James Version</option>
+          <select value={translation} onChange={(e) => isTranslation(e.target.value) && setTranslation(e.target.value)}>
+            {TRANSLATIONS.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name} ({t.id})
+              </option>
+            ))}
           </select>
         </label>
       </header>
@@ -287,7 +291,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
       )}
 
       <p className="bible__sourcing">
-        Text: {translation === 'KJV' ? 'King James Version' : 'American Standard Version (1901)'} — public domain,
+        Text: {translationInfo(translation).name} — public domain,
         bundled for offline reading. Notes and highlights are stored on this device only and are never uploaded.
       </p>
     </section>

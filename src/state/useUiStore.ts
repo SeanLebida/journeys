@@ -2,9 +2,11 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { platformStorage } from './persistAdapter';
 import { DEFAULT_LOCALE, type AppLocale } from '../i18n';
+import { DEFAULT_TRANSLATION, isTranslation, type Translation } from '../content/translations';
+
+export type { Translation };
 
 export type Theme = 'system' | 'light' | 'dark';
-export type Translation = 'ASV' | 'KJV';
 
 interface UiState {
   theme: Theme;
@@ -29,7 +31,7 @@ export const useUiStore = create<UiState>()(
     (set) => ({
       theme: 'system',
       locale: DEFAULT_LOCALE,
-      translation: 'ASV',
+      translation: DEFAULT_TRANSLATION,
       timelineFold: true,
       setTheme: (theme) => set({ theme }),
       setLocale: (locale) => set({ locale }),
@@ -39,6 +41,16 @@ export const useUiStore = create<UiState>()(
     {
       name: 'journeys-ui',
       storage: createJSONStorage(() => platformStorage),
+      // A saved translation that is no longer bundled falls back to the default
+      // instead of leaving the reader on a text it cannot load.
+      merge: (persisted, current) => {
+        const saved = (persisted ?? {}) as Partial<UiState>;
+        return {
+          ...current,
+          ...saved,
+          translation: isTranslation(saved.translation) ? saved.translation : current.translation,
+        };
+      },
     },
   ),
 );
