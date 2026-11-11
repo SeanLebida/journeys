@@ -3,7 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
-import { useChapter, useChapterCounts, searchVerses, type VerseRow } from '../../content/useBible';
+import { closeDownloadedDb, useChapter, useChapterCounts, searchVerses, type VerseRow } from '../../content/useBible';
+import { deleteBibleBytes } from '../../platform/bibleStore';
 import { bookNameFromNumber } from '../../content/books';
 import { parseScriptureRef, passageBand } from '../../content/scriptureRef';
 import { focusPassage } from './focusPassage';
@@ -61,6 +62,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   const translation = useUiStore((s) => s.translation);
   const setTranslation = useUiStore((s) => s.setTranslation);
   const downloaded = useUiStore((s) => s.downloaded);
+  const removeDownloaded = useUiStore((s) => s.removeDownloaded);
   const meta = useTranslationMeta();
 
   const notes = useNotesStore((s) => s.notes);
@@ -82,6 +84,16 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   const [book, setBook] = useState(() => parsed?.book ?? lastRead?.book ?? 43);
   const [chapter, setChapter] = useState(() => parsed?.chapter ?? lastRead?.chapter ?? 1);
   const [tab, setTab] = useState<Tab>('read');
+
+  // A downloaded Bible whose file (or, for licensed text, its decryption key)
+  // is gone: forget it and take the reader to the library to fetch it again.
+  async function redownload() {
+    const id = translation;
+    removeDownloaded(id);
+    await closeDownloadedDb(id);
+    await deleteBibleBytes(id).catch(() => undefined);
+    setTab('translations');
+  }
   const [activeVerse, setActiveVerse] = useState<number | null>(null);
 
   // A `?ref=` arriving after mount (an in-app link while the reader is open)
@@ -278,7 +290,16 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
             </div>
 
             {loading && <p className="mode-panel--loading">{t('common.loading')}</p>}
-            {error && <p className="bible__error">Could not load {chapterLabel}: {error.message}</p>}
+            {error && isDownloadedId(translation) && /not downloaded on this device/.test(error.message) ? (
+              <p className="bible__error" role="alert">
+                {meta.name} can&apos;t be opened on this device anymore.{' '}
+                <button type="button" className="bible__library-btn" onClick={() => void redownload()}>
+                  Download again
+                </button>
+              </p>
+            ) : (
+              error && <p className="bible__error">Could not load {chapterLabel}: {error.message}</p>
+            )}
             {!loading && !error && rows.length === 0 && (
               <p className="bible__error">{chapterLabel} isn&apos;t in this translation.</p>
             )}
