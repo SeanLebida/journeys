@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { afterEach, describe, test } from "node:test";
+import { hmacSha256Hex } from "../src/crypto.ts";
 import { handleRequest } from "../src/worker.ts";
 import {
   MemoryDownloadStats,
   MemoryRateLimiter,
   TEST_ADMIN_TOKEN,
   TEST_APP_KEY,
+  TEST_RATE_LIMIT_SALT,
   headerOf,
   installMockFetch,
   jsonRequest,
@@ -214,18 +216,54 @@ describe("download counting and admin stats", () => {
 describe("rate limit and client header", () => {
   test("returns 429 after the per-IP limit is exceeded", async () => {
     mock = installMockFetch(() => Response.json(bibleJson(100, "NASB1995")));
+    const limiterNames: string[] = [];
+    const logs: string[] = [];
+    const originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      logs.push(args.map((value) => String(value)).join(" "));
+    };
+    try {
+      const env = testEnv({
+        limiter: new MemoryRateLimiter(2),
+        rateLimitMax: "2",
+        limiterNames,
+      });
+      const ctx = testCtx();
+      const ip = "203.0.113.10";
+      const headers = { "CF-Connecting-IP": ip };
+      assert.equal((await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx)).status, 200);
+      assert.equal((await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx)).status, 200);
+      const limited = await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx);
+      assert.equal(limited.status, 429);
+      assert.equal(limited.headers.get("Retry-After"), "60");
+      assert.equal(mock.calls.length, 2);
+      const expectedName = `ip:${await hmacSha256Hex(TEST_RATE_LIMIT_SALT, ip)}`;
+      assert.deepEqual(limiterNames, [expectedName, expectedName, expectedName]);
+      assert.equal(limiterNames.some((name) => name.includes(ip)), false);
+      assert.equal(logs.some((line) => line.includes(ip)), false);
+      const rateLimited = logs
+        .map((line) => JSON.parse(line) as { event?: string; ip_hash?: string })
+        .find((line) => line.event === "rate_limited");
+      assert.equal(rateLimited?.ip_hash, expectedName.slice("ip:".length));
+    } finally {
+      console.log = originalLog;
+    }
+  });
+
+  test("fails open when the rate-limit salt is missing, without naming a raw IP", async () => {
+    mock = installMockFetch(() => Response.json(bibleJson(100, "NASB1995")));
+    const limiterNames: string[] = [];
     const env = testEnv({
-      limiter: new MemoryRateLimiter(2),
-      rateLimitMax: "2",
+      limiter: new MemoryRateLimiter(1),
+      rateLimitMax: "1",
+      rateLimitSalt: "",
+      limiterNames,
     });
     const ctx = testCtx();
-    const headers = { "CF-Connecting-IP": "203.0.113.10" };
+    const headers = { "CF-Connecting-IP": "198.51.100.20" };
     assert.equal((await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx)).status, 200);
     assert.equal((await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx)).status, 200);
-    const limited = await handleRequest(jsonRequest("/v1/bibles/100", { headers }), env, ctx);
-    assert.equal(limited.status, 429);
-    assert.equal(limited.headers.get("Retry-After"), "60");
-    assert.equal(mock.calls.length, 2);
+    assert.deepEqual(limiterNames, []);
   });
 
   test("can require the journeys client header", async () => {
@@ -234,10 +272,153 @@ describe("rate limit and client header", () => {
     const missing = await handleRequest(jsonRequest("/v1/bibles/100"), env, testCtx());
     assert.equal(missing.status, 403);
     const ok = await handleRequest(
-      jsonRequest("/v1/bibles/100", { headers: { "X-Journeys-Client": "journeys" } }),
+      jsonRequest("/v1/bibles/100", {
+        headers: { Origin: "https://localhost", "X-Journeys-Client": "journeys" },
+      }),
       env,
       testCtx(),
     );
     assert.equal(ok.status, 200);
+  });
+});
+
+describe("app client gate", () => {
+  const allowedPair = {
+    Origin: "https://localhost",
+    "X-Journeys-Client": "journeys",
+  };
+
+  test("when the flag is off, a request with no Origin or client header is allowed", async () => {
+    mock = installMockFetch(() => Response.json(bibleJson(100, "NASB1995")));
+    const response = await handleRequest(jsonRequest("/v1/bibles/100"), testEnv(), testCtx());
+    assert.equal(response.status, 200);
+    assert.equal(mock.calls.length, 1);
+  });
+
+  test("when the flag is on, a missing X-Journeys-Client header is 403 even with an allowed Origin", async () => {
+    mock = installMockFetch(() => {
+      throw new Error("upstream should not be called");
+    });
+    const response = await handleRequest(
+      jsonRequest("/v1/bibles/100", { headers: { Origin: "https://localhost" } }),
+      testEnv({ requireClient: true }),
+      testCtx(),
+    );
+    assert.equal(response.status, 403);
+    const body = await response.json();
+    assert.equal(body.error, "Forbidden");
+    assert.equal(mock.calls.length, 0);
+  });
+
+  test("when the flag is on, a missing Origin is 403 even with the client header", async () => {
+    mock = installMockFetch(() => {
+      throw new Error("upstream should not be called");
+    });
+    const response = await handleRequest(
+      jsonRequest("/v1/bibles/100", { headers: { "X-Journeys-Client": "journeys" } }),
+      testEnv({ requireClient: true }),
+      testCtx(),
+    );
+    assert.equal(response.status, 403);
+    const body = await response.json();
+    assert.equal(body.error, "Forbidden");
+    assert.equal(mock.calls.length, 0);
+  });
+
+  test("when the flag is on, a wrong Origin is 403 even with the client header", async () => {
+    mock = installMockFetch(() => {
+      throw new Error("upstream should not be called");
+    });
+    const response = await handleRequest(
+      jsonRequest("/v1/bibles/100", {
+        headers: { Origin: "https://evil.example", "X-Journeys-Client": "journeys" },
+      }),
+      testEnv({ requireClient: true }),
+      testCtx(),
+    );
+    assert.equal(response.status, 403);
+    const body = await response.json();
+    assert.equal(body.error, "Forbidden");
+    assert.equal(mock.calls.length, 0);
+  });
+
+  test("when the flag is on, an allowed Origin and the client header succeed", async () => {
+    mock = installMockFetch(() => Response.json(bibleJson(100, "NASB1995")));
+    const env = testEnv({ requireClient: true });
+    const ctx = testCtx();
+    for (const origin of ["https://localhost", "capacitor://localhost"]) {
+      const response = await handleRequest(
+        jsonRequest("/v1/bibles/100", {
+          headers: { Origin: origin, "X-Journeys-Client": "journeys" },
+        }),
+        env,
+        ctx,
+      );
+      assert.equal(response.status, 200);
+      assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
+    }
+    assert.equal(mock.calls.length, 2);
+  });
+
+  test("when the flag is on, POST /downloads also requires the allowed pair", async () => {
+    const env = testEnv({ requireClient: true });
+    const ctx = testCtx();
+    const denied = await handleRequest(
+      jsonRequest("/v1/bibles/100/downloads", {
+        method: "POST",
+        headers: { "X-Journeys-Download": "complete" },
+      }),
+      env,
+      ctx,
+    );
+    assert.equal(denied.status, 403);
+
+    const ok = await handleRequest(
+      jsonRequest("/v1/bibles/100/downloads", {
+        method: "POST",
+        headers: { ...allowedPair, "X-Journeys-Download": "complete" },
+      }),
+      env,
+      ctx,
+    );
+    assert.equal(ok.status, 200);
+    const body = await ok.json();
+    assert.equal(body.ok, true);
+    assert.equal(body.month_count, 1);
+  });
+
+  test("when the flag is on, OPTIONS preflight and admin stats are unchanged", async () => {
+    mock = installMockFetch(() => {
+      throw new Error("upstream should not be called");
+    });
+    const env = testEnv({ requireClient: true });
+    const ctx = testCtx();
+    const preflight = await handleRequest(
+      jsonRequest("/v1/bibles/100/passages/JHN.3", {
+        method: "OPTIONS",
+        headers: {
+          Origin: "capacitor://localhost",
+          "Access-Control-Request-Method": "GET",
+          "Access-Control-Request-Headers": "X-Journeys-Client",
+        },
+      }),
+      env,
+      ctx,
+    );
+    assert.equal(preflight.status, 204);
+    assert.equal(preflight.headers.get("Access-Control-Allow-Origin"), "capacitor://localhost");
+
+    const unauthorized = await handleRequest(jsonRequest("/admin/stats?year=2026"), env, ctx);
+    assert.equal(unauthorized.status, 401);
+
+    const stats = await handleRequest(
+      jsonRequest("/admin/stats?year=2026", {
+        headers: { Authorization: `Bearer ${TEST_ADMIN_TOKEN}` },
+      }),
+      env,
+      ctx,
+    );
+    assert.equal(stats.status, 200);
+    assert.equal(mock.calls.length, 0);
   });
 });

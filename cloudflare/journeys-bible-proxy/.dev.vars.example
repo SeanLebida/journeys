@@ -4,3 +4,4 @@
 # (not in this change — do not deploy yet)
 YOUVERSION_APP_KEY=
 ADMIN_TOKEN=
+RATE_LIMIT_SALT=

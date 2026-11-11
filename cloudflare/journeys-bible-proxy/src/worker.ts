@@ -1,6 +1,6 @@
 import { parseAllowedIds, VERSION_LABELS } from "./allowlist.ts";
-import { withCors, preflightResponse } from "./cors.ts";
-import { secretsEqual } from "./crypto.ts";
+import { allowedOrigin, withCors, preflightResponse } from "./cors.ts";
+import { hmacSha256Hex, secretsEqual } from "./crypto.ts";
 import { jsonResponse } from "./json.ts";
 import { logEvent } from "./log.ts";
 import { allowedSearch, cacheTtlSeconds, parseRoute } from "./routes.ts";
@@ -95,16 +95,28 @@ async function applyRateLimit(
 ): Promise<Response | null> {
   const limit = parsePositiveInt(env.RATE_LIMIT_MAX, 180);
   const windowSeconds = parsePositiveInt(env.RATE_LIMIT_WINDOW_SECONDS, 60);
-  const ip = clientIp(request);
+  const salt = env.RATE_LIMIT_SALT ?? "";
+  if (salt.length === 0) {
+    logEvent("rate_limit_error", { reason: "missing_salt" });
+    // Fail open rather than name a Durable Object by the raw IP.
+    return null;
+  }
+  let ipHash: string;
   try {
-    const result = await env.RATE_LIMITER.getByName(`ip:${ip}`).take(
+    ipHash = await hmacSha256Hex(salt, clientIp(request));
+  } catch (error) {
+    logEvent("rate_limit_error", { message: errorMessage(error) });
+    return null;
+  }
+  try {
+    const result = await env.RATE_LIMITER.getByName(`ip:${ipHash}`).take(
       limit,
       windowSeconds,
     );
     if (result.allowed) {
       return null;
     }
-    logEvent("rate_limited", { ip_hash: await shortHash(ip) });
+    logEvent("rate_limited", { ip_hash: ipHash });
     return jsonResponse(
       429,
       { error: "Too Many Requests", message: "Rate limit exceeded." },
@@ -122,13 +134,14 @@ function requireClientHeader(request: Request, env: WorkerEnv): Response | null 
     return null;
   }
   const value = request.headers.get(CLIENT_HEADER);
-  if (value === CLIENT_VALUE) {
+  const origin = allowedOrigin(request);
+  if (value === CLIENT_VALUE && origin) {
     return null;
   }
-  logEvent("proxy_deny", { reason: "missing_client_header" });
+  logEvent("proxy_deny", { reason: "missing_app_client" });
   return jsonResponse(403, {
     error: "Forbidden",
-    message: "Missing or invalid X-Journeys-Client header.",
+    message: "Missing or invalid Origin or X-Journeys-Client header.",
   });
 }
 
@@ -403,14 +416,4 @@ function errorMessage(error: unknown): string {
   return error instanceof Error ? error.message : "unknown";
 }
 
-async function shortHash(value: string): Promise<string> {
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(value),
-  );
-  return [...new Uint8Array(digest)]
-    .slice(0, 8)
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-}
 

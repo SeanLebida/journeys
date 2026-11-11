@@ -17,7 +17,7 @@
     "UPSTREAM_BASE": "https://api.youversion.com/v1",
     "RATE_LIMIT_MAX": "180",
     "RATE_LIMIT_WINDOW_SECONDS": "60",
-    "REQUIRE_APP_CLIENT": "false",
+    "REQUIRE_APP_CLIENT": "true",
     // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
     "CACHE_TTL_METADATA_SECONDS": "0",
     "CACHE_TTL_PASSAGE_SECONDS": "0",
@@ -42,7 +42,7 @@
         "UPSTREAM_BASE": "https://api.youversion.com/v1",
         "RATE_LIMIT_MAX": "180",
         "RATE_LIMIT_WINDOW_SECONDS": "60",
-        "REQUIRE_APP_CLIENT": "false",
+        "REQUIRE_APP_CLIENT": "true",
         // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
         "CACHE_TTL_METADATA_SECONDS": "0",
         "CACHE_TTL_PASSAGE_SECONDS": "0",

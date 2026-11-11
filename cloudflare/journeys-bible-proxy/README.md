@@ -26,11 +26,14 @@ Production host: `https://bible.authentic.how`. Staging: `https://bible-staging.
 
 CORS allowlist: `https://localhost`, `capacitor://localhost`. Capacitor Android’s `http://localhost` is **not** included; say if that origin is needed.
 
-Optional (recommended in production, set `REQUIRE_APP_CLIENT=true` on the Worker):
+When `REQUIRE_APP_CLIENT=true`, every `/v1/bibles/*` request (GET and the download POST) must send both of these, or the Worker returns 403:
 
 ```
+Origin: https://localhost
 X-Journeys-Client: journeys
 ```
+
+`Origin` must be one of the CORS allowlist values (`https://localhost` or `capacitor://localhost`). OPTIONS preflight and `/admin/stats` are unchanged. Both staging and production set `REQUIRE_APP_CLIENT=true`.
 
 ### List / identify a licensed version
 
@@ -94,7 +97,7 @@ One successful POST counts as one completed download for that version in the cur
 | --- | --- |
 | 400 | Download POST missing `X-Journeys-Download: complete`, or admin `year` missing/invalid |
 | 401 | Admin stats without a valid token |
-| 403 | NIV or any other non-allowlisted version, or a path that is not proxied |
+| 403 | NIV or any other non-allowlisted version, a path that is not proxied, or (when `REQUIRE_APP_CLIENT` is true) a request missing the journeys client header or an allowed Origin |
 | 404 | Unknown path |
 | 429 | Per-IP rate limit; honor `Retry-After` |
 | 502 | YouVersion upstream failure |
@@ -110,7 +113,7 @@ Authorization: Bearer <ADMIN_TOKEN>
 
 ## Rate limit
 
-180 requests per 60 seconds per client IP (Durable Object, SQLite, strict across locations). That is enough for a short burst of chapter fetches but a full 1,189-chapter walk takes several minutes; the app should back off on 429. This uses a free-tier Durable Object rather than the Workers Rate Limiting binding (that binding is backed by WAF rate-limiting infrastructure; treat it as potentially billable and leave it off).
+180 requests per 60 seconds per client (Durable Object, SQLite, strict across locations). The limiter names its Durable Object by a keyed HMAC-SHA256 of the client IP (`RATE_LIMIT_SALT`), not the raw address, and an alarm deletes the stored window when it expires. That is enough for a short burst of chapter fetches but a full 1,189-chapter walk takes several minutes; the app should back off on 429. This uses a free-tier Durable Object rather than the Workers Rate Limiting binding (that binding is backed by WAF rate-limiting infrastructure; treat it as potentially billable and leave it off).
 
 ## Storage
 
