@@ -4911,3 +4911,16 @@ button.tl-jump__link {
   font-size: 0.85rem;
   color: var(--accent);
 }
+
+.bible__notice,
+.scripture__notice {
+  white-space: pre-line;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin: 0.5rem 0 0;
+}
+.bible__library-progress {
+  width: 100%;
+  height: 0.5rem;
+  margin-top: 0.4rem;
+}

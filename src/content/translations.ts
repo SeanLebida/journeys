@@ -75,11 +75,19 @@ export function translationInfo(id: Translation): TranslationInfo {
   return BY_ID.get(id)!;
 }
 
-/** A translation the reader downloaded from HelloAO, e.g. `hao:eng_lsv`. */
-export type DownloadedId = `hao:${string}`;
+/**
+ * A translation the reader downloaded: `hao:eng_lsv` from HelloAO, or `yv:100`
+ * for a licensed text fetched through the Journeys YouVersion proxy.
+ */
+export type DownloadedId = `hao:${string}` | `yv:${string}`;
 /** Anything the reader can show: a bundled translation or a downloaded one. */
 export type TranslationId = Translation | DownloadedId;
 
 export function isDownloadedId(value: unknown): value is DownloadedId {
-  return typeof value === 'string' && value.startsWith('hao:') && value.length > 4;
+  return typeof value === 'string' && /^(hao|yv):./.test(value);
+}
+
+/** Licensed text: stored encrypted, never exported, credited with its publisher's notice. */
+export function isLicensedId(value: unknown): value is `yv:${string}` {
+  return typeof value === 'string' && /^yv:./.test(value);
 }
