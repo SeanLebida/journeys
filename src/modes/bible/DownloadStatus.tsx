@@ -8,7 +8,7 @@ export function DownloadStatus({ onOpen }: { onOpen: () => void }) {
   const text = items
     .map(({ name, progress }) =>
       progress.phase === 'chapters' && progress.total > 0
-        ? `${name}: ${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters`
+        ? `${name}: ${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters${progress.waitingUntil && progress.waitingUntil > Date.now() ? ' (waiting for the server)' : ''}`
         : progress.phase === 'installing'
           ? `${name}: installing`
           : `${name}: downloading`,

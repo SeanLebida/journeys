@@ -270,7 +270,7 @@ function LicensedDownloads() {
                     {progress.phase === 'installing'
                       ? 'Installing…'
                       : progress.phase === 'chapters' && progress.total > 0
-                        ? `${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters`
+                        ? `${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters${progress.waitingUntil && progress.waitingUntil > Date.now() ? ' · the server asked us to wait, it will carry on by itself' : ''}`
                         : 'Starting…'}
                   </span>
                   {progress.phase !== 'installing' && (
