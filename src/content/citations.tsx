@@ -177,7 +177,7 @@ export function Citations({ ids, bundle }: { ids: string[]; bundle: BundleIndex 
 /** Render the verse text for a scripture reference in the current translation. */
 export function ScripturePassage({ raw }: { raw: string }) {
   const translation = useUiStore((s) => s.translation);
-  const { label } = useTranslationMeta();
+  const { label, notice } = useTranslationMeta();
   const { rows, loading, error } = useScripture(raw, translation);
   if (loading) return <span className="scripture scripture--loading">{raw}…</span>;
   if (error || rows.length === 0) return <span className="scripture scripture--missing">{raw}</span>;
@@ -200,6 +200,7 @@ export function ScripturePassage({ raw }: { raw: string }) {
           open in the reader →
         </Link>
       </cite>
+      {notice && <p className="scripture__notice">{notice}</p>}
     </blockquote>
   );
 }

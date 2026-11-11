@@ -8,10 +8,14 @@
 // temp file and are renamed into place so a failed or cancelled save leaves
 // nothing half-written.
 //
-// Bytes pass through `codec` before they hit disk. Today's codec is identity
-// (HelloAO texts are not encrypted). The YouVersion/NASB work can swap in an
-// encrypting codec without changing this module's public API, the file layout,
-// or the temp-then-rename write.
+// Licensed texts (NASB via YouVersion) must be stored encrypted, on web and
+// native alike. `saveBibleBytes(id, bytes, { licensed: true })` seals them with
+// AES-GCM under a non-extractable WebCrypto key kept in IndexedDB: script can
+// use the key but never read it out, so what's on disk is ciphertext. Sealed
+// bytes start with a short magic header, so loading needs no flag. If the key
+// is ever lost (say the WebView's storage is cleared) a sealed Bible reads as
+// not downloaded and can simply be downloaded again. HelloAO texts are stored
+// as plain bytes.
 
 import { Capacitor } from '@capacitor/core';
 import { Directory, Filesystem } from '@capacitor/filesystem';
@@ -23,18 +27,10 @@ const BIBLES_DIR = 'bibles';
 /** Keep each bridge payload small: a multi-MB base64 string can OOM the Android WebView. */
 const WRITE_CHUNK_BYTES = 256 * 1024;
 
-interface BibleBytesCodec {
-  encode(plain: Uint8Array): Uint8Array | Promise<Uint8Array>;
-  decode(stored: Uint8Array): Uint8Array | Promise<Uint8Array>;
-}
-
-const plaintextCodec: BibleBytesCodec = {
-  encode: (bytes) => bytes,
-  decode: (bytes) => bytes,
-};
-
-// Slot for the later encrypted-storage PR.
-const codec: BibleBytesCodec = plaintextCodec;
+const KEY_ID = '__journeys_licensed_key__';
+/** `JSB1` + 12-byte IV + AES-GCM ciphertext. A SQLite file starts with `SQLite format 3`. */
+const SEALED_MAGIC = new Uint8Array([0x4a, 0x53, 0x42, 0x31]);
+const IV_BYTES = 12;
 
 let dbPromise: Promise<IDBDatabase> | null = null;
 
@@ -61,6 +57,49 @@ function run<T>(mode: IDBTransactionMode, fn: (s: IDBObjectStore) => IDBRequest<
         tx.onerror = tx.onabort = () => reject(tx.error ?? req.error ?? new Error('IndexedDB write failed'));
       }),
   );
+}
+
+let keyPromise: Promise<CryptoKey> | null = null;
+
+function licensedKey(): Promise<CryptoKey> {
+  keyPromise ??= (async () => {
+    const existing = await run<CryptoKey | undefined>('readonly', (s) => s.get(KEY_ID));
+    if (existing) return existing;
+    const key = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+    await run('readwrite', (s) => s.put(key, KEY_ID));
+    return key;
+  })().catch((e: unknown) => {
+    keyPromise = null;
+    throw e;
+  });
+  return keyPromise;
+}
+
+function isSealed(bytes: Uint8Array): boolean {
+  return bytes.byteLength > SEALED_MAGIC.length + IV_BYTES && SEALED_MAGIC.every((b, i) => bytes[i] === b);
+}
+
+async function seal(plain: Uint8Array): Promise<Uint8Array> {
+  const key = await licensedKey();
+  const iv = crypto.getRandomValues(new Uint8Array(IV_BYTES));
+  const cipher = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new Uint8Array(plain)));
+  const out = new Uint8Array(SEALED_MAGIC.length + IV_BYTES + cipher.byteLength);
+  out.set(SEALED_MAGIC, 0);
+  out.set(iv, SEALED_MAGIC.length);
+  out.set(cipher, SEALED_MAGIC.length + IV_BYTES);
+  return out;
+}
+
+async function unseal(id: string, stored: Uint8Array): Promise<Uint8Array> {
+  if (!isSealed(stored)) return stored;
+  try {
+    const key = await licensedKey();
+    const iv = stored.slice(SEALED_MAGIC.length, SEALED_MAGIC.length + IV_BYTES);
+    const cipher = stored.slice(SEALED_MAGIC.length + IV_BYTES);
+    return new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, cipher));
+  } catch {
+    throw missingTranslation(id);
+  }
 }
 
 function bibleDirectory(): Directory {
@@ -184,20 +223,25 @@ async function listNativeIds(): Promise<string[]> {
   return ids;
 }
 
-export function saveBibleBytes(id: string, bytes: Uint8Array): Promise<IDBValidKey> {
-  if (!isNative()) return run('readwrite', (s) => s.put(bytes, id));
-  return Promise.resolve(codec.encode(bytes))
-    .then((encoded) => writeNativeFile(id, encoded))
-    .then(() => id);
+export interface SaveOptions {
+  /** Licensed text: encrypt at rest. */
+  licensed?: boolean;
+}
+
+export async function saveBibleBytes(id: string, bytes: Uint8Array, opts: SaveOptions = {}): Promise<IDBValidKey> {
+  const stored = opts.licensed ? await seal(bytes) : bytes;
+  if (!isNative()) return run('readwrite', (s) => s.put(stored, id));
+  await writeNativeFile(id, stored);
+  return id;
 }
 
 export async function loadStoredBibleBytes(id: string): Promise<Uint8Array> {
   if (!isNative()) {
     const bytes = await run<Uint8Array | undefined>('readonly', (s) => s.get(id));
     if (!bytes) throw missingTranslation(id);
-    return bytes;
+    return unseal(id, bytes);
   }
-  return codec.decode(await loadNativeFile(id));
+  return unseal(id, await loadNativeFile(id));
 }
 
 export function deleteBibleBytes(id: string): Promise<undefined> {
@@ -209,7 +253,21 @@ export function deleteBibleBytes(id: string): Promise<undefined> {
 export async function listStoredBibleIds(): Promise<string[]> {
   if (!isNative()) {
     const keys = await run<IDBValidKey[]>('readonly', (s) => s.getAllKeys());
-    return keys.map(String);
+    return keys.map(String).filter((k) => k !== KEY_ID);
   }
   return listNativeIds();
+}
+
+/**
+ * Ask the browser not to clear downloaded Bibles when space runs low (and, on
+ * Safari, after a week away). Best effort: browsers may decline, and native
+ * builds keep Bibles in app storage anyway.
+ */
+export async function requestPersistentStorage(): Promise<boolean> {
+  if (isNative() || typeof navigator === 'undefined' || !navigator.storage?.persist) return false;
+  try {
+    return (await navigator.storage.persisted()) || (await navigator.storage.persist());
+  } catch {
+    return false;
+  }
 }
