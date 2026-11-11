@@ -5,7 +5,7 @@ import initSqlJs, { type Database } from 'sql.js';
 import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 import { loadBibleDbBytes } from '../platform/assets';
 import { parseScriptureRef, type ScriptureRef } from './scriptureRef';
-import type { Translation } from '../state/useUiStore';
+import { translationInfo, type Translation } from './translations';
 
 export interface VerseRow {
   book: number;
@@ -14,22 +14,27 @@ export interface VerseRow {
   text: string;
 }
 
-let dbPromise: Promise<Database> | null = null;
+let sqlPromise: ReturnType<typeof initSqlJs> | null = null;
+// One open database per bundled file, opened on first use: picking a
+// translation loads only that text, not every Bible in the app.
+const dbByFile = new Map<string, Promise<Database>>();
 
-async function openDb(): Promise<Database> {
-  if (!dbPromise) {
-    dbPromise = (async () => {
-      const SQL = await initSqlJs({ locateFile: () => sqlWasmUrl });
-      const bytes = await loadBibleDbBytes();
-      return new SQL.Database(bytes);
-    })();
+function openDb(translation: Translation): Promise<Database> {
+  const { file } = translationInfo(translation);
+  let db = dbByFile.get(file);
+  if (!db) {
+    sqlPromise ??= initSqlJs({ locateFile: () => sqlWasmUrl });
+    db = Promise.all([sqlPromise, loadBibleDbBytes(file)]).then(([SQL, bytes]) => new SQL.Database(bytes));
+    // A failed load (e.g. a flaky asset fetch) must not be cached forever.
+    db.catch(() => dbByFile.delete(file));
+    dbByFile.set(file, db);
   }
-  return dbPromise;
+  return db;
 }
 
 /** Resolve a parsed ref to its verse rows in a translation. */
 export async function lookupRef(ref: ScriptureRef, translation: Translation): Promise<VerseRow[]> {
-  const db = await openDb();
+  const db = await openDb(translation);
   const end = ref.verseEnd ?? ref.verseStart;
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND book=? AND chapter=? AND verse BETWEEN ? AND ? ORDER BY verse',
@@ -47,7 +52,7 @@ export async function lookupChapter(
   chapter: number,
   translation: Translation,
 ): Promise<VerseRow[]> {
-  const db = await openDb();
+  const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND book=? AND chapter=? ORDER BY verse',
   );
@@ -64,7 +69,7 @@ export async function lookupChapter(
  * book that ever arrives short cannot produce chapter buttons that go nowhere.
  */
 export async function chapterCounts(translation: Translation): Promise<Map<number, number>> {
-  const db = await openDb();
+  const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, MAX(chapter) AS chapters FROM verses WHERE translation=? GROUP BY book ORDER BY book',
   );
@@ -79,7 +84,7 @@ export async function chapterCounts(translation: Translation): Promise<Map<numbe
 }
 
 /**
- * Full-text search across the bundled translation. `LIKE` on 31k rows is fast
+ * Full-text search across one bundled translation. `LIKE` on its 31k rows is fast
  * enough in sql.js (tens of milliseconds) and keeps the shipped DB free of an
  * FTS index that would roughly double its 10 MB download.
  */
@@ -90,7 +95,7 @@ export async function searchVerses(
 ): Promise<VerseRow[]> {
   const trimmed = query.trim();
   if (trimmed.length < 3) return [];
-  const db = await openDb();
+  const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND text LIKE ? ' +
       'ORDER BY book, chapter, verse LIMIT ?',
