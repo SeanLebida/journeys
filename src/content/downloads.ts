@@ -3,7 +3,7 @@ import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from './hell
 import { getSql } from './useBible';
 import { saveBibleBytes } from '../platform/bibleStore';
 
-/** What the app remembers about a downloaded translation (the text itself is in IndexedDB). */
+/** What the app remembers about a downloaded translation (the text itself is in bibleStore). */
 export type DownloadedTranslation = Omit<DownloadableTranslation, 'completeUrl'> & {
   sizeBytes: number;
   downloadedAt: string;

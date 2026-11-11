@@ -13,7 +13,7 @@ interface UiState {
   theme: Theme;
   locale: AppLocale;
   translation: TranslationId;
-  /** Translations downloaded onto this device; their text lives in IndexedDB. */
+  /** Translations downloaded onto this device; their text lives in bibleStore. */
   downloaded: DownloadedTranslation[];
   /**
    * The timeline's fold-out chart effect. On by default, and independently
