@@ -7,9 +7,16 @@ import { saveBibleBytes } from '../platform/bibleStore';
 export type DownloadedTranslation = Omit<DownloadableTranslation, 'completeUrl'> & {
   sizeBytes: number;
   downloadedAt: string;
+  /** Licensed text only: the publisher's copyright notice, shown wherever the text is read. */
+  notice?: string;
+  /** Licensed text only: the download hasn't been reported to the publisher yet; retried on next open. */
+  reportPending?: boolean;
 };
 
-export type DownloadProgress = { phase: 'downloading'; receivedBytes: number } | { phase: 'installing' };
+export type DownloadProgress =
+  | { phase: 'downloading'; receivedBytes: number }
+  | { phase: 'chapters'; done: number; total: number }
+  | { phase: 'installing' };
 
 async function readJson(res: Response, onProgress?: (p: DownloadProgress) => void): Promise<unknown> {
   if (!res.body || !onProgress) return res.json();

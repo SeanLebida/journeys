@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchCatalog, type DownloadableTranslation } from '../../content/catalog';
 import { downloadTranslation, type DownloadProgress } from '../../content/downloads';
 import { closeDownloadedDb } from '../../content/useBible';
+import { LICENSED_TRANSLATIONS, downloadLicensed, reportDownload, type LicensedTranslation } from '../../content/youversion';
 import { TRANSLATIONS, type TranslationId } from '../../content/translations';
-import { deleteBibleBytes } from '../../platform/bibleStore';
+import { deleteBibleBytes, requestPersistentStorage } from '../../platform/bibleStore';
 import { useUiStore } from '../../state/useUiStore';
 
 const PAGE = 40;
@@ -81,6 +82,7 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
     try {
       const done = await downloadTranslation(t, (p) => setBusy((b) => ({ ...b, [t.id]: p })));
       addDownloaded(done);
+      void requestPersistentStorage();
     } catch (e) {
       setFailed((f) => ({ ...f, [t.id]: (e as Error).message || 'Download failed.' }));
     } finally {
@@ -135,11 +137,12 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
         ))}
       </ul>
 
+      <LicensedDownloads />
+
       <h2 className="bible__library-heading">Download more</h2>
       <p className="bible__library-meta">
         Free-to-use translations from AO Lab&apos;s Free Use Bible API. Each one downloads once and then
-        reads offline. Copyrighted translations such as the NASB, ESV and NIV need a publisher license and
-        aren&apos;t listed.
+        reads offline.
       </p>
 
       {catalog.status === 'loading' && <p className="mode-panel--loading">Loading translations…</p>}
@@ -200,7 +203,9 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
                       ? 'Download'
                       : progress.phase === 'installing'
                         ? 'Installing…'
-                        : `${mb(progress.receivedBytes)}…`}
+                        : progress.phase === 'downloading'
+                          ? `${mb(progress.receivedBytes)}…`
+                          : 'Downloading…'}
                   </button>
                 </li>
               );
@@ -214,5 +219,122 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
         </>
       )}
     </section>
+  );
+}
+
+/**
+ * Licensed translations (NASB) fetched chapter by chapter through the Journeys
+ * Bible proxy. They take a few minutes, are stored encrypted, and are reported
+ * once to the publisher when complete.
+ */
+/** Reports in flight or done this session, so a re-render or remount can't count twice. */
+const reporting = new Set<string>();
+
+function LicensedDownloads() {
+  const downloaded = useUiStore((s) => s.downloaded);
+  const addDownloaded = useUiStore((s) => s.addDownloaded);
+  const [busy, setBusy] = useState<Record<string, DownloadProgress | undefined>>({});
+  const [failed, setFailed] = useState<Record<string, string | undefined>>({});
+  const controllers = useRef(new Map<string, AbortController>());
+
+  // A download whose report didn't reach the proxy is retried, once per open.
+  useEffect(() => {
+    for (const d of downloaded) {
+      if (!d.reportPending) continue;
+      const t = LICENSED_TRANSLATIONS.find((l) => l.id === d.id);
+      if (!t || reporting.has(t.id)) continue;
+      reporting.add(t.id);
+      void reportDownload(t.yvId).then((ok) => {
+        if (ok) addDownloaded({ ...d, reportPending: undefined });
+        else reporting.delete(t.id);
+      });
+    }
+    // Only on open: retrying on every store change could double count.
+  }, []);
+
+  useEffect(() => {
+    const map = controllers.current;
+    return () => map.forEach((c) => c.abort());
+  }, []);
+
+  const available = LICENSED_TRANSLATIONS.filter((t) => !downloaded.some((d) => d.id === t.id));
+  if (available.length === 0) return null;
+
+  async function download(t: LicensedTranslation) {
+    const ctrl = new AbortController();
+    controllers.current.set(t.id, ctrl);
+    setFailed((f) => ({ ...f, [t.id]: undefined }));
+    setBusy((b) => ({ ...b, [t.id]: { phase: 'chapters', done: 0, total: 0 } }));
+    try {
+      addDownloaded(await downloadLicensed(t, (p) => setBusy((b) => ({ ...b, [t.id]: p })), ctrl.signal));
+      void requestPersistentStorage();
+    } catch (e) {
+      if (!ctrl.signal.aborted) {
+        setFailed((f) => ({
+          ...f,
+          [t.id]: navigator.onLine === false ? 'Connect to the internet to download this translation.' : (e as Error).message || 'Download failed.',
+        }));
+      }
+    } finally {
+      controllers.current.delete(t.id);
+      setBusy((b) => ({ ...b, [t.id]: undefined }));
+    }
+  }
+
+  return (
+    <>
+      <h2 className="bible__library-heading">Licensed translations</h2>
+      <p className="bible__library-meta">
+        Downloaded through YouVersion by permission of the publisher. A full Bible takes several minutes, so
+        keep the app open until it finishes. It then reads offline and stays on this device only.
+      </p>
+      <ul className="bible__library-list" aria-label="Licensed Bibles to download">
+        {available.map((t) => {
+          const progress = busy[t.id];
+          return (
+            <li key={t.id} className="bible__library-item">
+              <div>
+                <strong>{t.name}</strong> <span className="bible__translation-tag">({t.shortName})</span>
+                <p className="bible__library-meta">
+                  English · Full Bible ·{' '}
+                  <a href={t.publisherUrl} target="_blank" rel="noreferrer">
+                    {t.publisher}
+                  </a>
+                </p>
+                {progress?.phase === 'chapters' && progress.total > 0 && (
+                  <progress className="bible__library-progress" max={progress.total} value={progress.done} aria-label={`${t.name} download progress`} />
+                )}
+                {failed[t.id] && <p role="alert" className="bible__library-error">{failed[t.id]}</p>}
+              </div>
+              {progress ? (
+                <span className="bible__library-actions">
+                  <span className="bible__library-meta" aria-live="polite">
+                    {progress.phase === 'installing'
+                      ? 'Installing…'
+                      : progress.phase === 'chapters' && progress.total > 0
+                        ? `${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters`
+                        : 'Starting…'}
+                  </span>
+                  {progress.phase !== 'installing' && (
+                    <button
+                      type="button"
+                      className="bible__library-btn bible__library-btn--quiet"
+                      aria-label={`Cancel downloading ${t.name}`}
+                      onClick={() => controllers.current.get(t.id)?.abort()}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </span>
+              ) : (
+                <button type="button" className="bible__library-btn" aria-label={`Download ${t.name}`} onClick={() => void download(t)}>
+                  Download
+                </button>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
