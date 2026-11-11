@@ -1,10 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const saved: { id: string; licensed?: boolean }[] = [];
+const partials = new Map<string, { v: 1; id: string; chapters: { passageId: string }[]; verses: unknown[] }>();
+const partialSnapshots: number[] = [];
 vi.mock('../../src/platform/bibleStore', () => ({
   saveBibleBytes: vi.fn(async (id: string, _b: Uint8Array, opts?: { licensed?: boolean }) => {
     saved.push({ id, licensed: opts?.licensed });
     return id;
+  }),
+  saveLicensedPartial: vi.fn(async (id: string, payload: { v: 1; id: string; chapters: { passageId: string }[]; verses: unknown[] }) => {
+    partials.set(id, JSON.parse(JSON.stringify(payload)) as typeof payload);
+    partialSnapshots.push(payload.verses.filter(Boolean).length);
+  }),
+  loadLicensedPartial: vi.fn(async (id: string) => {
+    const payload = partials.get(id);
+    return payload ? (JSON.parse(JSON.stringify(payload)) as typeof payload) : undefined;
+  }),
+  deleteLicensedPartial: vi.fn(async (id: string) => {
+    partials.delete(id);
   }),
 }));
 vi.mock('../../src/content/downloads', () => ({
@@ -12,7 +25,7 @@ vi.mock('../../src/content/downloads', () => ({
 }));
 
 import { parseChapterHtml } from '../../src/content/youversionHtml';
-import { chapterPassages, downloadLicensed, LICENSED_TRANSLATIONS } from '../../src/content/youversion';
+import { chapterPassages, clearLicensedPartialMemoryForTests, downloadLicensed, LICENSED_TRANSLATIONS } from '../../src/content/youversion';
 
 // Synthetic passages in YouVersion's markup (no licensed text in the repo).
 const PROSE =
@@ -84,6 +97,9 @@ const noSleep = { base: 'https://proxy.test', minIntervalMs: 0 };
 describe('downloadLicensed', () => {
   beforeEach(() => {
     saved.length = 0;
+    partials.clear();
+    partialSnapshots.length = 0;
+    clearLicensedPartialMemoryForTests();
     vi.unstubAllGlobals();
   });
 
@@ -131,15 +147,18 @@ describe('downloadLicensed', () => {
     expect(calls.filter((c) => c.method === 'POST')).toEqual([]);
   });
 
-  it('waits out more busy answers than the failure limit without giving up', async () => {
-    proxy({ busyOnce: 'GEN.2', busyTimes: 8 });
+  it('waits out many busy answers without giving up', async () => {
+    // YouVersion's 200-request-per-hour limit can 429 a single chapter many
+    // times (Retry-After is often 300s). A cap of a dozen waits would fail a
+    // real NASB download; this case is past that old limit.
+    proxy({ busyOnce: 'GEN.2', busyTimes: 15 });
     const waits: number[] = [];
     await downloadLicensed(nasb, (p) => void (p.phase === 'chapters' && p.waitingUntil && waits.push(p.waitingUntil)), undefined, {
       ...noSleep,
       sleep: async () => undefined,
     });
     expect(saved).toHaveLength(1);
-    expect(waits.length).toBeGreaterThanOrEqual(8);
+    expect(waits.length).toBeGreaterThanOrEqual(15);
   });
 
   it('a retry after a failure fetches only the chapters still missing', async () => {
@@ -160,8 +179,41 @@ describe('downloadLicensed', () => {
     proxy({ busyOnce: 'GEN.2', busyTimes: 99 });
     const p = downloadLicensed(nasb, undefined, ctrl.signal, { ...noSleep, sleep: async () => void ctrl.abort(new Error('cancelled')) });
     await expect(p).rejects.toThrow();
+    expect(partials.has('yv:100')).toBe(false);
     const calls = proxy();
     await downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined });
     expect(calls.filter((c) => c.url.includes('/passages/'))).toHaveLength(2);
+  });
+
+  it('writes each finished chapter to partial storage and only then saves and reports the Bible', async () => {
+    const calls = proxy();
+    await downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined });
+    // Concurrent workers may finish both chapters before the first persist runs,
+    // so the snapshot may jump straight to 2. A persist must still have happened
+    // before the finished Bible is saved, and the last snapshot must be complete.
+    expect(partialSnapshots.length).toBeGreaterThan(0);
+    expect(partialSnapshots.at(-1)).toBe(2);
+    expect(saved).toEqual([{ id: 'yv:100', licensed: true }]);
+    const { deleteLicensedPartial } = await import('../../src/platform/bibleStore');
+    expect(vi.mocked(deleteLicensedPartial)).toHaveBeenCalledWith('yv:100');
+    expect(partials.has('yv:100')).toBe(false);
+    const posts = calls.filter((c) => c.method === 'POST');
+    expect(posts).toHaveLength(1);
+    expect(calls.indexOf(posts[0])).toBe(calls.length - 1);
+  });
+
+  it('a retry after a simulated restart resumes from the stored partial, not from memory', async () => {
+    proxy({ failChapter: 'GEN.2' });
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    expect(saved).toEqual([]);
+    expect(partials.get('yv:100')?.verses[0]).toBeTruthy();
+    expect(partials.get('yv:100')?.verses[1]).toBeFalsy();
+    clearLicensedPartialMemoryForTests();
+    const calls = proxy();
+    await downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined });
+    expect(calls.filter((c) => c.url.includes('/passages/')).map((c) => c.url)).toEqual([expect.stringContaining('GEN.2')]);
+    expect(saved).toEqual([{ id: 'yv:100', licensed: true }]);
+    expect(calls.filter((c) => c.method === 'POST')).toHaveLength(1);
+    expect(partials.has('yv:100')).toBe(false);
   });
 });

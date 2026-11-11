@@ -1,10 +1,24 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 // NASB comes through the Journeys Bible proxy chapter by chapter, is stored
 // encrypted, carries Lockman's notice, and is reported exactly once. The proxy
 // is mocked with synthetic text; no licensed text lives in the repo.
 const PROXY = 'https://bible.authentic.how';
 const NOTICE = 'TEST BIBLE®\nCopyright © Test Foundation\nhttp://www.lockman.org';
+
+// The app paces licensed requests at one per 18 s (YouVersion's 200/hour
+// limit). Tests install Playwright's clock and skip ahead instead of waiting.
+async function paced(page: Page, check: () => Promise<void>): Promise<void> {
+  for (let i = 0; i < 40; i++) {
+    try {
+      await check();
+      return;
+    } catch {
+      await page.clock.fastForward(20_000);
+    }
+  }
+  await check();
+}
 
 function chapterHtml(book: string, ch: number, verses: number): string {
   const v = Array.from(
@@ -45,6 +59,7 @@ test('download NASB 1995, read it offline with the notice, reported once', async
   });
   await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
 
+  await page.clock.install();
   await page.goto('/bible?ref=Genesis%201%3A1');
   await page.getByRole('button', { name: 'Translations' }).click();
   const licensed = page.getByRole('list', { name: 'Licensed Bibles to download' });
@@ -53,7 +68,7 @@ test('download NASB 1995, read it offline with the notice, reported once', async
 
   await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
   const installed = page.locator('.bible__library-item', { hasText: 'New American Standard Bible (1995)' });
-  await expect(installed.getByRole('button', { name: 'Remove New American Standard Bible (1995)' })).toBeVisible();
+  await paced(page, () => expect(installed.getByRole('button', { name: 'Remove New American Standard Bible (1995)' })).toBeVisible({ timeout: 500 }));
   expect(posts).toHaveLength(1);
   expect(posts[0].url).toBe(`${PROXY}/v1/bibles/100/downloads`);
   expect(posts[0].headers['x-journeys-download']).toBe('complete');
@@ -104,10 +119,12 @@ test('a licensed Bible whose key was lost offers Download again', async ({ page 
   });
   await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
 
+  await page.clock.install();
   await page.goto('/bible?ref=Genesis%201%3A1');
   await page.getByRole('button', { name: 'Translations' }).click();
   await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
   const installed = page.locator('.bible__library-item', { hasText: 'New American Standard Bible (1995)' });
+  await paced(page, () => expect(installed.getByRole('button', { name: 'Read' })).toBeVisible({ timeout: 500 }));
   await installed.getByRole('button', { name: 'Read' }).click();
   await expect(page.locator('#v1')).toContainText('GEN 1 licensed verse 1');
 
@@ -130,6 +147,7 @@ test('a licensed Bible whose key was lost offers Download again', async ({ page 
 
   await expect(page.getByRole('button', { name: 'Download New American Standard Bible (1995)' })).toBeVisible();
   await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
+  await paced(page, () => expect(installed.getByRole('button', { name: 'Read' })).toBeVisible({ timeout: 500 }));
   await installed.getByRole('button', { name: 'Read' }).click();
   await expect(page.locator('#v1')).toContainText('GEN 1 licensed verse 1');
 });
@@ -159,15 +177,16 @@ test('a licensed download keeps going while the reader switches to Read', async 
   });
   await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
 
+  await page.clock.install();
   await page.goto('/bible?ref=Genesis%201%3A1');
   await page.getByRole('button', { name: 'Translations' }).click();
   await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
-  await expect(page.getByText('1 of 2 chapters')).toBeVisible();
+  await paced(page, () => expect(page.getByText('1 of 2 chapters')).toBeVisible({ timeout: 500 }));
 
   await page.getByRole('button', { name: /^Genesis 1/ }).click();
   await expect(page.getByRole('status').filter({ hasText: 'New American Standard Bible (1995): 1 of 2 chapters' })).toBeVisible();
   release();
-  await expect(page.getByRole('status').filter({ hasText: 'New American Standard Bible (1995)' })).toHaveCount(0);
+  await paced(page, () => expect(page.getByRole('status').filter({ hasText: 'New American Standard Bible (1995)' })).toHaveCount(0, { timeout: 500 }));
 
   await page.getByRole('button', { name: 'Translations' }).click();
   await expect(page.getByRole('button', { name: 'Remove New American Standard Bible (1995)' })).toBeVisible();
