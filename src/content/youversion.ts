@@ -26,10 +26,12 @@ export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
   { id: 'yv:2692', yvId: 2692, name: 'New American Standard Bible (2020)', shortName: 'NASB2020', publisher: 'The Lockman Foundation', publisherUrl: 'https://www.lockman.org' },
 ];
 
-/** Stay under the proxy's 180 requests a minute per device. */
-const MIN_INTERVAL_MS = 60_000 / 150;
+/** YouVersion rate-limits the shared key (429, Retry-After 300) without publishing the limit; stay well under one request a second. */
+const MIN_INTERVAL_MS = 1_250;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
+/** "Busy, come back later" answers are waited out, not counted as failures, up to this many per request. */
+const MAX_BUSY_WAITS = 12;
 const CLIENT_HEADERS = { 'X-Journeys-Client': 'journeys' } as const;
 
 export interface ProxyOptions {
@@ -60,8 +62,9 @@ class Pacer {
     if (at > now) await this.sleep(at - now, signal);
   }
   /** After a 429, hold every worker until the proxy says to come back. */
-  pause(ms: number): void {
+  pause(ms: number): number {
     this.next = Math.max(this.next, Date.now() + ms);
+    return this.next;
   }
 }
 
@@ -71,8 +74,15 @@ function retryAfterMs(res: Response): number {
   return Number.isFinite(secs) && secs >= 0 ? secs * 1000 : 10_000;
 }
 
-async function getJson(url: string, pacer: Pacer, sleep: NonNullable<ProxyOptions['sleep']>, signal?: AbortSignal): Promise<unknown> {
+async function getJson(
+  url: string,
+  pacer: Pacer,
+  sleep: NonNullable<ProxyOptions['sleep']>,
+  signal?: AbortSignal,
+  onBusy?: (until: number) => void,
+): Promise<unknown> {
   let lastError: unknown;
+  let busy = 0;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     signal?.throwIfAborted();
     await pacer.wait(signal);
@@ -87,8 +97,10 @@ async function getJson(url: string, pacer: Pacer, sleep: NonNullable<ProxyOption
     }
     if (res.ok) return res.json();
     if (res.status === 429) {
-      pacer.pause(retryAfterMs(res));
-      lastError = new Error('The Bible service is busy.');
+      lastError = new Error('The Bible service is busy right now. Try again in a few minutes; chapters already downloaded are kept.');
+      if (++busy > MAX_BUSY_WAITS) break;
+      onBusy?.(pacer.pause(retryAfterMs(res)));
+      attempt--;
       continue;
     }
     if (res.status >= 500) {
@@ -133,9 +145,13 @@ export async function reportDownload(yvId: number, base = BIBLE_PROXY_URL): Prom
   }
 }
 
+/** Chapters fetched so far per translation, kept in memory so a retry resumes. */
+const partial = new Map<string, (PlainVerse[] | undefined)[]>();
+
 /**
  * Download a licensed translation chapter by chapter, store it encrypted, then
- * report it once. All or nothing: nothing is saved unless every chapter arrived.
+ * report it once. Nothing is saved unless every chapter arrived; a retry after a
+ * failure resumes from the chapters already fetched this session.
  */
 export async function downloadLicensed(
   t: LicensedTranslation,
@@ -151,6 +167,8 @@ export async function downloadLicensed(
     return await run(t, ctl, onProgress, opts);
   } catch (e) {
     ctl.abort(e);
+    // A cancel drops everything; a failure keeps finished chapters for the retry.
+    if (signal?.aborted) partial.delete(t.id);
     throw signal?.aborted ? signal.reason : e;
   }
 }
@@ -171,24 +189,31 @@ async function run(
   const chapters = chapterPassages(await getJson(`${api}/books`, pacer, sleep, signal));
   if (chapters.length === 0) throw new Error('That translation came through empty.');
 
-  const rows: PlainVerse[][] = new Array(chapters.length);
+  // Chapters from an earlier failed attempt are reused (memory only, never on disk).
+  const kept = partial.get(t.id);
+  const rows: (PlainVerse[] | undefined)[] = kept?.length === chapters.length ? kept : new Array(chapters.length);
+  partial.set(t.id, rows);
+  const todo = chapters.flatMap((_, i) => (rows[i] ? [] : [i]));
   let next = 0;
-  let done = 0;
-  onProgress?.({ phase: 'chapters', done, total: chapters.length });
+  let done = chapters.length - todo.length;
+  const total = chapters.length;
+  onProgress?.({ phase: 'chapters', done, total });
+  const onBusy = (until: number) => onProgress?.({ phase: 'chapters', done, total, waitingUntil: until });
   const worker = async () => {
-    while (next < chapters.length) {
-      const i = next++;
+    while (next < todo.length) {
+      const i = todo[next++];
       const c = chapters[i];
       const body = (await getJson(
         `${api}/passages/${encodeURIComponent(c.passageId)}?format=html&include_headings=false&include_notes=false`,
         pacer,
         sleep,
         signal,
+        onBusy,
       )) as { content?: unknown };
       if (typeof body.content !== 'string') throw new Error(`${c.passageId} came through empty.`);
       rows[i] = parseChapterHtml(body.content, c.book, c.chapter);
       done++;
-      onProgress?.({ phase: 'chapters', done, total: chapters.length });
+      onProgress?.({ phase: 'chapters', done, total });
     }
   };
   await Promise.all(
@@ -202,9 +227,10 @@ async function run(
 
   signal.throwIfAborted();
   onProgress?.({ phase: 'installing' });
-  const flat = rows.flat();
+  const flat = (rows as PlainVerse[][]).flat();
   const bytes = await buildBibleDb(t.id, flat);
   await saveBibleBytes(t.id, bytes, { licensed: true });
+  partial.delete(t.id);
   const reported = await reportDownload(t.yvId, base);
   const notice = typeof meta.copyright === 'string' && meta.copyright.trim() ? meta.copyright.trim() : `© ${t.publisher}. Used by permission.`;
 
