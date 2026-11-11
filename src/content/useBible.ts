@@ -4,8 +4,9 @@ import initSqlJs, { type Database } from 'sql.js';
 // browser (and via the Capacitor local server on device).
 import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 import { loadBibleDbBytes } from '../platform/assets';
+import { loadStoredBibleBytes } from '../platform/bibleStore';
 import { parseScriptureRef, type ScriptureRef } from './scriptureRef';
-import { translationInfo, type Translation } from './translations';
+import { isDownloadedId, translationInfo, type TranslationId } from './translations';
 
 export interface VerseRow {
   book: number;
@@ -15,25 +16,41 @@ export interface VerseRow {
 }
 
 let sqlPromise: ReturnType<typeof initSqlJs> | null = null;
-// One open database per bundled file, opened on first use: picking a
-// translation loads only that text, not every Bible in the app.
-const dbByFile = new Map<string, Promise<Database>>();
 
-function openDb(translation: Translation): Promise<Database> {
-  const { file } = translationInfo(translation);
-  let db = dbByFile.get(file);
+/** sql.js, loaded once; shared with the download path that builds new databases. */
+export function getSql(): ReturnType<typeof initSqlJs> {
+  sqlPromise ??= initSqlJs({ locateFile: () => sqlWasmUrl });
+  return sqlPromise;
+}
+
+// One open database per source, opened on first use: picking a translation
+// loads only that text, not every Bible in the app. Bundled translations key by
+// their asset file (KJV and ASV share one); downloaded ones by their id.
+const dbByKey = new Map<string, Promise<Database>>();
+
+function openDb(translation: TranslationId): Promise<Database> {
+  const downloaded = isDownloadedId(translation);
+  const key = downloaded ? translation : translationInfo(translation).file;
+  let db = dbByKey.get(key);
   if (!db) {
-    sqlPromise ??= initSqlJs({ locateFile: () => sqlWasmUrl });
-    db = Promise.all([sqlPromise, loadBibleDbBytes(file)]).then(([SQL, bytes]) => new SQL.Database(bytes));
+    const bytes = downloaded ? loadStoredBibleBytes(translation) : loadBibleDbBytes(key);
+    db = Promise.all([getSql(), bytes]).then(([SQL, b]) => new SQL.Database(b));
     // A failed load (e.g. a flaky asset fetch) must not be cached forever.
-    db.catch(() => dbByFile.delete(file));
-    dbByFile.set(file, db);
+    db.catch(() => dbByKey.delete(key));
+    dbByKey.set(key, db);
   }
   return db;
 }
 
+/** Close a downloaded translation's database before its bytes are deleted. */
+export async function closeDownloadedDb(id: TranslationId): Promise<void> {
+  const db = dbByKey.get(id);
+  dbByKey.delete(id);
+  await db?.then((d) => d.close()).catch(() => undefined);
+}
+
 /** Resolve a parsed ref to its verse rows in a translation. */
-export async function lookupRef(ref: ScriptureRef, translation: Translation): Promise<VerseRow[]> {
+export async function lookupRef(ref: ScriptureRef, translation: TranslationId): Promise<VerseRow[]> {
   const db = await openDb(translation);
   const end = ref.verseEnd ?? ref.verseStart;
   const stmt = db.prepare(
@@ -50,7 +67,7 @@ export async function lookupRef(ref: ScriptureRef, translation: Translation): Pr
 export async function lookupChapter(
   book: number,
   chapter: number,
-  translation: Translation,
+  translation: TranslationId,
 ): Promise<VerseRow[]> {
   const db = await openDb(translation);
   const stmt = db.prepare(
@@ -68,7 +85,7 @@ export async function lookupChapter(
  * hardcoded table — the DB is the authority on what was actually shipped, so a
  * book that ever arrives short cannot produce chapter buttons that go nowhere.
  */
-export async function chapterCounts(translation: Translation): Promise<Map<number, number>> {
+export async function chapterCounts(translation: TranslationId): Promise<Map<number, number>> {
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, MAX(chapter) AS chapters FROM verses WHERE translation=? GROUP BY book ORDER BY book',
@@ -90,7 +107,7 @@ export async function chapterCounts(translation: Translation): Promise<Map<numbe
  */
 export async function searchVerses(
   query: string,
-  translation: Translation,
+  translation: TranslationId,
   limit = 60,
 ): Promise<VerseRow[]> {
   const trimmed = query.trim();
@@ -112,7 +129,7 @@ export async function searchVerses(
 type ChapterState = { rows: VerseRow[]; loading: boolean; error: Error | null };
 
 /** React hook: the verses of one chapter in the current translation. */
-export function useChapter(book: number, chapter: number, translation: Translation): ChapterState {
+export function useChapter(book: number, chapter: number, translation: TranslationId): ChapterState {
   const [state, setState] = useState<ChapterState>({ rows: [], loading: true, error: null });
   useEffect(() => {
     let active = true;
@@ -128,7 +145,7 @@ export function useChapter(book: number, chapter: number, translation: Translati
 }
 
 /** React hook: chapter counts for the whole canon, loaded once per translation. */
-export function useChapterCounts(translation: Translation): Map<number, number> {
+export function useChapterCounts(translation: TranslationId): Map<number, number> {
   const [counts, setCounts] = useState<Map<number, number>>(new Map());
   useEffect(() => {
     let active = true;
@@ -145,7 +162,7 @@ export function useChapterCounts(translation: Translation): Map<number, number> 
 type RefState = { rows: VerseRow[]; loading: boolean; error: Error | null };
 
 /** React hook: fetch the verse text for a raw reference string. */
-export function useScripture(raw: string, translation: Translation): RefState {
+export function useScripture(raw: string, translation: TranslationId): RefState {
   const [state, setState] = useState<RefState>({ rows: [], loading: true, error: null });
   useEffect(() => {
     let active = true;

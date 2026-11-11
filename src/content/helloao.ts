@@ -51,3 +51,30 @@ export function flattenHelloAo(data: HelloAoTranslation): PlainVerse[] {
   }
   return rows;
 }
+
+/**
+ * One entry of HelloAO's `available_translations.json`. Only the fields the
+ * download screen uses are typed; `license` is missing on a few entries.
+ */
+export interface HelloAoCatalogEntry {
+  id: string;
+  name: string;
+  englishName?: string;
+  shortName?: string;
+  language: string;
+  languageName?: string;
+  languageEnglishName?: string;
+  textDirection?: 'ltr' | 'rtl';
+  website?: string;
+  licenseUrl?: string;
+  license?: {
+    attribution: 'required' | 'not-required';
+    commercialUse: 'allowed' | 'not-allowed';
+    derivatives: 'allowed' | 'not-allowed';
+    copyleft: boolean;
+    publicDomain: boolean;
+  } | null;
+  completeTranslationApiLink?: string;
+  numberOfBooks?: number;
+  totalNumberOfVerses?: number;
+}
