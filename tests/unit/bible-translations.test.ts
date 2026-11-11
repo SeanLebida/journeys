@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { flattenHelloAo, verseText, type HelloAoTranslation } from '../../scripts/lib/helloao';
+import { flattenHelloAo, verseText, type HelloAoTranslation } from '../../src/content/helloao';
 import { DEFAULT_TRANSLATION, TRANSLATIONS, isTranslation, translationInfo } from '../../src/content/translations';
 
 describe('bundled translations', () => {

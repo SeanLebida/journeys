@@ -28,7 +28,9 @@ import {
   type HighlightColor,
 } from '../../state/useNotesStore';
 import { useUiStore } from '../../state/useUiStore';
-import { TRANSLATIONS, isTranslation, translationInfo, type Translation } from '../../content/translations';
+import { TRANSLATIONS, isDownloadedId, isTranslation, type TranslationId } from '../../content/translations';
+import { useTranslationMeta } from '../../content/translationMeta';
+import { TranslationLibrary } from './TranslationLibrary';
 
 /**
  * The Bible reader.
@@ -51,13 +53,15 @@ export default function BibleMode() {
   return <Reader bundle={bundle} />;
 }
 
-type Tab = 'read' | 'contents' | 'notes' | 'search';
+type Tab = 'read' | 'contents' | 'notes' | 'search' | 'translations';
 
 function Reader({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   const [params, setParams] = useSearchParams();
   const translation = useUiStore((s) => s.translation);
   const setTranslation = useUiStore((s) => s.setTranslation);
+  const downloaded = useUiStore((s) => s.downloaded);
+  const meta = useTranslationMeta();
 
   const notes = useNotesStore((s) => s.notes);
   const bookmarks = useNotesStore((s) => s.bookmarks);
@@ -162,10 +166,21 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
         </div>
         <label className="bible__translation">
           Translation
-          <select value={translation} onChange={(e) => isTranslation(e.target.value) && setTranslation(e.target.value)}>
+          <select
+            value={translation}
+            onChange={(e) => {
+              const id = e.target.value;
+              if (isTranslation(id) || (isDownloadedId(id) && downloaded.some((d) => d.id === id))) setTranslation(id);
+            }}
+          >
             {TRANSLATIONS.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.name} ({t.id})
+              </option>
+            ))}
+            {downloaded.map((d) => (
+              <option key={d.id} value={d.id}>
+                {d.name} ({d.shortName})
               </option>
             ))}
           </select>
@@ -179,6 +194,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
             ['contents', 'Books'],
             ['notes', `My notes (${Object.keys(notes).length})`],
             ['search', 'Search'],
+            ['translations', 'Translations'],
           ] as [Tab, string][]
         ).map(([id, label]) => (
           <button
@@ -217,7 +233,16 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
         />
       )}
 
-      {tab === 'search' && <SearchSection translation={translation} onOpen={(r) => {
+      {tab === 'translations' && (
+        <TranslationLibrary
+          onRead={(id) => {
+            setTranslation(id);
+            setTab('read');
+          }}
+        />
+      )}
+
+      {tab === 'search' && <SearchSection label={meta.label} translation={translation} onOpen={(r) => {
         go(r.book, r.chapter);
         setActiveVerse(r.verse);
       }} />}
@@ -231,7 +256,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
               </button>
               <h2 className="bible__chapter-title">
                 {chapterLabel}{' '}
-                <span className="bible__translation-tag">({translation})</span>
+                <span className="bible__translation-tag">({meta.label})</span>
               </h2>
               <button type="button" className="bible__nav" disabled={!next} onClick={() => next && go(next.book, next.chapter)}>
                 Next →
@@ -255,10 +280,10 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
             {loading && <p className="mode-panel--loading">{t('common.loading')}</p>}
             {error && <p className="bible__error">Could not load {chapterLabel}: {error.message}</p>}
             {!loading && !error && rows.length === 0 && (
-              <p className="bible__error">{chapterLabel} is not in the bundled text.</p>
+              <p className="bible__error">{chapterLabel} isn&apos;t in this translation.</p>
             )}
 
-            <div className="bible__text">
+            <div className="bible__text" dir={meta.rtl ? 'rtl' : undefined}>
               {rows.map((row) => (
                 <VerseRowView
                   key={row.verse}
@@ -291,8 +316,8 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
       )}
 
       <p className="bible__sourcing">
-        Text: {translationInfo(translation).name} — public domain,
-        bundled for offline reading. Notes and highlights are stored on this device only and are never uploaded.
+        Text: {meta.licenseUrl ? <a href={meta.licenseUrl} target="_blank" rel="noreferrer">{meta.name}</a> : meta.name} —{' '}
+        {meta.sourcing} Notes and highlights are stored on this device only and are never uploaded.
       </p>
     </section>
   );
@@ -336,10 +361,12 @@ function NotesSection({
 }
 
 function SearchSection({
+  label,
   translation,
   onOpen,
 }: {
-  translation: Translation;
+  label: string;
+  translation: TranslationId;
   onOpen: (row: VerseRow) => void;
 }) {
   const [query, setQuery] = useState('');
@@ -374,7 +401,7 @@ function SearchSection({
   return (
     <section className="bible__search">
       <label className="bible__search-label" htmlFor="bible-search">
-        Search the {translation} text
+        Search the {label} text
       </label>
       <input
         id="bible-search"

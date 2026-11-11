@@ -46,7 +46,7 @@ import {
 } from '../src/content/accuracy';
 import { WORLD_BBOX } from '../src/map/graticule';
 import { TRANSLATIONS } from '../src/content/translations';
-import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from './lib/helloao';
+import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from '../src/content/helloao';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
 const CONTENT = join(ROOT, 'content');
