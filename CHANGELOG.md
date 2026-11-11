@@ -2,6 +2,12 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.25] - 2026-11-11
+
+• Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.
+• An interrupted download picks up where it stopped instead of starting over.
+• When a download can't connect, the message now says so in plain words.
+
 ## [0.3.24] - 2026-11-11
 
 • Six complete Bibles now ship in the app: KJV, ASV, Berean Standard, World English, Young's Literal and the 1599 Geneva.
