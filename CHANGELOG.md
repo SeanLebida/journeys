@@ -11,6 +11,7 @@ All notable changes to Journeys are documented in this file.
 • On the phone, downloaded Bibles are stored in the app's own files and left out of device backups.
 • NASB 1995 and 2020 can be downloaded through bible.authentic.how and are stored encrypted on the device.
 • If a licensed Bible can no longer be opened, the app offers Download again.
+• The About page explains how each stop, find, battle, miracle and witness is graded by the strength of its evidence.
 
 ## [0.3.23] - 2026-11-07
 
