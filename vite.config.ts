@@ -40,7 +40,7 @@ export default defineConfig({
           },
         ],
       },
-      includeAssets: ['dist-content/content.sqlite', 'dist-content/bundle.json', 'icon.svg'],
+      includeAssets: ['dist-content/*.sqlite', 'dist-content/bundle.json', 'icon.svg'],
       manifest: {
         name: 'Journeys — Atlas of the Apostles',
         short_name: 'Journeys',

@@ -72,8 +72,9 @@ export function CreditsView() {
         </li>
         <li>
           <strong>Embedded Bible Reader (▤)</strong> — Read Scripture alongside the map. Complete
-          public-domain translations (King James Version and American Standard Version) bundled in a
-          fast, on-device SQLite database. Tap place names in Scripture to jump straight to their
+          public-domain translations bundled for offline reading: American Standard Version, King
+          James Version, Berean Standard Bible, World English Bible, Young&apos;s Literal Translation
+          and the Geneva Bible (1599). Tap place names in Scripture to jump straight to their
           location on the map, with private highlighting and local notes.
         </li>
         <li>
@@ -164,8 +165,10 @@ export function CreditsView() {
       </ul>
 
       <p className="credits-note">
-        Scripture quotations are from public-domain translations (King James Version; American
-        Standard Version). The KJV is public domain worldwide except in the United Kingdom, where it
+        Scripture quotations are from public-domain translations: the American Standard Version,
+        King James Version, Berean Standard Bible, World English Bible, Young&apos;s Literal
+        Translation and Geneva Bible (1599), with the newer four drawn from AO Lab&apos;s Free Use
+        Bible API. The KJV is public domain worldwide except in the United Kingdom, where it
         is under Crown copyright.
       </p>
     </section>
