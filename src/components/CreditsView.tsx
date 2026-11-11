@@ -169,7 +169,9 @@ export function CreditsView() {
         King James Version, Berean Standard Bible, World English Bible, Young&apos;s Literal
         Translation and Geneva Bible (1599), with the newer four drawn from AO Lab&apos;s Free Use
         Bible API. The KJV is public domain worldwide except in the United Kingdom, where it
-        is under Crown copyright.
+        is under Crown copyright. Translations you download from the reader&apos;s Translations tab
+        also come from the Free Use Bible API; each one&apos;s license and attribution are shown beside
+        it there and under its text in the reader.
       </p>
     </section>
   );

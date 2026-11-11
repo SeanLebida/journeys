@@ -4832,3 +4832,82 @@ button.tl-jump__link {
 .tl-era:focus {
   outline: none;
 }
+
+/* Translation library (Bible reader → Translations tab) */
+.bible__library {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 46rem;
+}
+.bible__library-heading {
+  margin: 0.6rem 0 0;
+  font-size: 1rem;
+}
+.bible__library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bible__library-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+}
+.bible__library-item > div {
+  min-width: 0;
+}
+.bible__library-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.bible__library-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.4rem;
+}
+.bible__library-btn {
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bible__library-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.bible__library-btn--quiet {
+  border-color: var(--border);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.bible__library-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.bible__library-search {
+  flex: 1 1 12rem;
+}
+.bible__library-error {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: var(--accent);
+}

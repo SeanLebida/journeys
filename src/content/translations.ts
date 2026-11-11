@@ -74,3 +74,12 @@ export function translationInfo(id: Translation): TranslationInfo {
   // Safe: `Translation` is derived from TRANSLATIONS, so every id is present.
   return BY_ID.get(id)!;
 }
+
+/** A translation the reader downloaded from HelloAO, e.g. `hao:eng_lsv`. */
+export type DownloadedId = `hao:${string}`;
+/** Anything the reader can show: a bundled translation or a downloaded one. */
+export type TranslationId = Translation | DownloadedId;
+
+export function isDownloadedId(value: unknown): value is DownloadedId {
+  return typeof value === 'string' && value.startsWith('hao:') && value.length > 4;
+}
