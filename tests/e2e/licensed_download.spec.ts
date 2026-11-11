@@ -133,3 +133,43 @@ test('a licensed Bible whose key was lost offers Download again', async ({ page 
   await installed.getByRole('button', { name: 'Read' }).click();
   await expect(page.locator('#v1')).toContainText('GEN 1 licensed verse 1');
 });
+
+test('a licensed download keeps going while the reader switches to Read', async ({ page }) => {
+  let release!: () => void;
+  const gate = new Promise<void>((r) => (release = r));
+  let posts = 0;
+  await page.route(`${PROXY}/**`, async (route) => {
+    const req = route.request();
+    const url = req.url();
+    if (req.method() === 'OPTIONS') return route.fulfill({ status: 204 });
+    if (req.method() === 'POST') {
+      posts++;
+      return route.fulfill({ json: { ok: true } });
+    }
+    if (url.endsWith('/v1/bibles/100')) return route.fulfill({ json: { id: 100, abbreviation: 'NASB1995', copyright: NOTICE } });
+    if (url.endsWith('/v1/bibles/100/books')) {
+      return route.fulfill({ json: { data: [{ id: 'GEN', chapters: [{ passage_id: 'GEN.1' }, { passage_id: 'GEN.2' }] }] } });
+    }
+    const m = /\/passages\/([A-Z0-9]{3})\.(\d+)\?/.exec(url);
+    if (m) {
+      if (m[2] === '2') await gate;
+      return route.fulfill({ json: { id: `${m[1]}.${m[2]}`, content: chapterHtml(m[1], Number(m[2]), 5), reference: '' } });
+    }
+    return route.fulfill({ status: 404 });
+  });
+  await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
+
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: 'Translations' }).click();
+  await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
+  await expect(page.getByText('1 of 2 chapters')).toBeVisible();
+
+  await page.getByRole('button', { name: /^Genesis 1/ }).click();
+  await expect(page.getByRole('status').filter({ hasText: 'New American Standard Bible (1995): 1 of 2 chapters' })).toBeVisible();
+  release();
+  await expect(page.getByRole('status').filter({ hasText: 'New American Standard Bible (1995)' })).toHaveCount(0);
+
+  await page.getByRole('button', { name: 'Translations' }).click();
+  await expect(page.getByRole('button', { name: 'Remove New American Standard Bible (1995)' })).toBeVisible();
+  expect(posts).toBe(1);
+});

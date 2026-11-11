@@ -32,6 +32,7 @@ import { useUiStore } from '../../state/useUiStore';
 import { TRANSLATIONS, isDownloadedId, isTranslation, type TranslationId } from '../../content/translations';
 import { useTranslationMeta } from '../../content/translationMeta';
 import { TranslationLibrary } from './TranslationLibrary';
+import { DownloadStatus } from './DownloadStatus';
 
 /**
  * The Bible reader.
@@ -220,6 +221,8 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
           </button>
         ))}
       </nav>
+
+      {tab !== 'translations' && <DownloadStatus onOpen={() => setTab('translations')} />}
 
       {tab === 'contents' && (
         <>
