@@ -1,3 +1,4 @@
+import 'fake-indexeddb/auto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const native = vi.hoisted(() => ({
@@ -102,7 +103,7 @@ vi.mock('@capacitor/filesystem', () => ({
   Filesystem: fs,
 }));
 
-import { deleteBibleBytes, listStoredBibleIds, loadStoredBibleBytes, saveBibleBytes } from '../../src/platform/bibleStore';
+import { deleteBibleBytes, deleteLicensedPartial, listStoredBibleIds, loadLicensedPartial, loadStoredBibleBytes, saveBibleBytes, saveLicensedPartial } from '../../src/platform/bibleStore';
 
 const ID = 'hao:eng_lsv';
 // Hex of the id: no '%' or ':' for convertFileSrc to mangle.
@@ -212,5 +213,64 @@ describe('bibleStore native filesystem', () => {
 describe('bible file names', () => {
   it('use only URL-safe characters so convertFileSrc cannot change them', () => {
     expect(FILE).toMatch(/^bibles\/[0-9a-f]+$/);
+  });
+});
+
+const LICENSED_ID = 'yv:100';
+const PARTIAL = 'bibles/79763a313030.partial';
+const PARTIAL_TEMP = `${PARTIAL}.tmp`;
+const SAMPLE_PARTIAL = {
+  v: 1 as const,
+  id: LICENSED_ID,
+  chapters: [
+    { passageId: 'GEN.1', book: 1, chapter: 1 },
+    { passageId: 'GEN.2', book: 1, chapter: 2 },
+  ],
+  verses: [[{ book: 1, chapter: 1, verse: 1, text: 'In the beginning.' }], null],
+};
+
+describe('licensed download partials', () => {
+  const originalFetch = globalThis.fetch;
+
+  beforeEach(() => {
+    native.isNative = true;
+    native.platform = 'android';
+    fs.reset();
+    globalThis.fetch = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      const match = url.match(/^https:\/\/localhost\/_capacitor_file_\/mock\/([^/]+)\/(.+)$/);
+      if (!match) return new Response(null, { status: 404 });
+      const file = fs.files.get(fs.keyOf(match[2], match[1]));
+      if (!file || file.type !== 'file') return new Response(null, { status: 404 });
+      const body = new ArrayBuffer(file.data.byteLength);
+      new Uint8Array(body).set(file.data);
+      return new Response(body);
+    }) as typeof fetch;
+  });
+
+  afterEach(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  it('writes an encrypted snapshot through a temp file, then renames, and does not list it as installed', async () => {
+    await saveLicensedPartial(LICENSED_ID, SAMPLE_PARTIAL);
+    expect(fs.writeFile).toHaveBeenCalledWith(expect.objectContaining({ path: PARTIAL_TEMP, directory: 'DATA' }));
+    expect(fs.rename).toHaveBeenCalledWith(expect.objectContaining({ from: PARTIAL_TEMP, to: PARTIAL, directory: 'DATA', toDirectory: 'DATA' }));
+    expect(stored('DATA', PARTIAL_TEMP)).toBeUndefined();
+    const onDisk = stored('DATA', PARTIAL);
+    expect(onDisk).toBeDefined();
+    const asText = new TextDecoder().decode(onDisk);
+    expect(asText).not.toContain('In the beginning.');
+    expect(asText).not.toContain('GEN.1');
+    expect(await listStoredBibleIds()).toEqual([]);
+    expect(await loadLicensedPartial(LICENSED_ID)).toEqual(SAMPLE_PARTIAL);
+  });
+
+  it('returns undefined when nothing has been stored, and delete removes a snapshot', async () => {
+    expect(await loadLicensedPartial(LICENSED_ID)).toBeUndefined();
+    await saveLicensedPartial(LICENSED_ID, SAMPLE_PARTIAL);
+    await deleteLicensedPartial(LICENSED_ID);
+    expect(stored('DATA', PARTIAL)).toBeUndefined();
+    expect(await loadLicensedPartial(LICENSED_ID)).toBeUndefined();
   });
 });

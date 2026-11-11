@@ -81,6 +81,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   // `?ref=` wins, then wherever the reader left off, then John 1 as a default
   // that is neither arbitrary nor a spoiler.
   const refParam = params.get('ref');
+  const translationParam = params.get('translation');
   const parsed = refParam ? parseScriptureRef(refParam) : null;
   const [book, setBook] = useState(() => parsed?.book ?? lastRead?.book ?? 43);
   const [chapter, setChapter] = useState(() => parsed?.chapter ?? lastRead?.chapter ?? 1);
@@ -110,6 +111,23 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
     // every render, so depending on it directly would re-run this on every
     // keystroke and drag the reader back to the linked verse.
   }, [parsed?.book, parsed?.chapter]);
+
+  // A "ready to read" notification opens /bible?translation=<id> on the Read tab.
+  // Wait until the id is a bundled translation or already downloaded (persist
+  // may still be hydrating on a cold start) before dropping the param.
+  useEffect(() => {
+    if (!translationParam) return;
+    const known =
+      isTranslation(translationParam) ||
+      (isDownloadedId(translationParam) && downloaded.some((d) => d.id === translationParam));
+    if (!known) return;
+    setTranslation(translationParam);
+    setTab('read');
+    if (params.has('translation')) {
+      params.delete('translation');
+      setParams(params, { replace: true });
+    }
+  }, [translationParam, downloaded, params, setParams, setTranslation]);
 
   useEffect(() => {
     setLastRead(book, chapter);

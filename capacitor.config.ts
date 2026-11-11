@@ -10,6 +10,12 @@ const config: CapacitorConfig = {
   appName: 'Journeys',
   webDir: 'dist',
   backgroundColor: '#0b1020',
+  plugins: {
+    LocalNotifications: {
+      smallIcon: 'ic_stat_download',
+      iconColor: '#c9a227',
+    },
+  },
 };
 
 export default config;
