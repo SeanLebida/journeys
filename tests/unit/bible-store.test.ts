@@ -105,7 +105,8 @@ vi.mock('@capacitor/filesystem', () => ({
 import { deleteBibleBytes, listStoredBibleIds, loadStoredBibleBytes, saveBibleBytes } from '../../src/platform/bibleStore';
 
 const ID = 'hao:eng_lsv';
-const FILE = 'bibles/hao%3Aeng_lsv';
+// Hex of the id: no '%' or ':' for convertFileSrc to mangle.
+const FILE = 'bibles/68616f3a656e675f6c7376';
 const TEMP = `${FILE}.tmp`;
 
 function payload(length: number, fill = 7): Uint8Array {
@@ -205,5 +206,11 @@ describe('bibleStore native filesystem', () => {
     // Leftover temp from a write that crashed before rename.
     fs.files.set(fs.keyOf(TEMP, 'DATA'), { data: payload(2, 9), type: 'file' });
     expect(await listStoredBibleIds()).toEqual([ID]);
+  });
+});
+
+describe('bible file names', () => {
+  it('use only URL-safe characters so convertFileSrc cannot change them', () => {
+    expect(FILE).toMatch(/^bibles\/[0-9a-f]+$/);
   });
 });

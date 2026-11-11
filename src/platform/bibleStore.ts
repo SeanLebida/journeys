@@ -67,8 +67,18 @@ function bibleDirectory(): Directory {
   return Capacitor.getPlatform() === 'ios' ? Directory.Library : Directory.Data;
 }
 
+// File names must survive convertFileSrc: the WebView decodes %XX in the
+// URL, so a percent-encoded name would point at a file that doesn't exist.
+// Hex of the UTF-8 id keeps names to [0-9a-f] and stays reversible.
 function fileName(id: string): string {
-  return encodeURIComponent(id);
+  return Array.from(new TextEncoder().encode(id), (b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function idFromFileName(name: string): string | null {
+  if (!/^(?:[0-9a-f]{2})+$/.test(name)) return null;
+  const bytes = new Uint8Array(name.length / 2);
+  for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(name.slice(i * 2, i * 2 + 2), 16);
+  return new TextDecoder().decode(bytes);
 }
 
 function filePath(id: string): string {
@@ -165,7 +175,8 @@ async function listNativeIds(): Promise<string[]> {
     if (entry.type === 'directory') continue;
     if (entry.name.endsWith('.tmp')) continue;
     try {
-      ids.push(decodeURIComponent(entry.name));
+      const id = idFromFileName(entry.name);
+      if (id) ids.push(id);
     } catch {
       // Skip a name we did not write.
     }
