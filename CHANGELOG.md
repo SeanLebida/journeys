@@ -2,6 +2,18 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.24] - 2026-11-11
+
+• Six complete Bibles now ship in the app: KJV, ASV, Berean Standard, World English, Young's Literal and the 1599 Geneva.
+• Download more translations from the new Translations tab, including NASB 1995 and 2020, and read them offline.
+• Paul's journeys and the apostles' stories are rewritten in plain sentences, and nine stops that were cut off are finished.
+• The About page now opens with why Journeys exists.
+
+## [0.3.23] - 2026-11-07
+
+• Journey progress stays centered in the part of the map you can see, and arrival details no longer cover most of the view.
+• Map zoom buttons sit below the status bar.
+
 ## [0.3.22] - 2026-11-07
 
 • Each of the Twelve has his own journey. Peter keeps his. The shared line is only the places they were together.
