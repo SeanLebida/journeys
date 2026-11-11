@@ -6,9 +6,12 @@ import './styles/global.css';
 import { router } from './routes';
 import { isNative } from './platform/bridge';
 import { initContentVersion } from './content/contentUpdate';
+import { installNotificationTapHandler } from './platform/backgroundDownload';
 
 // Record installed content version (drives the OTA update channel).
 void initContentVersion();
+// Notification taps only; permission is requested at the first download, never here.
+installNotificationTapHandler();
 
 // Service worker for offline web use (native uses the Capacitor bundle instead).
 if (!isNative()) {
