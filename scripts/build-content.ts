@@ -3,7 +3,7 @@
  *
  * Validates content/ against the zod schemas, enforces the integrity invariants
  * (the project's mechanical accuracy guarantee), compiles the public-domain
- * Bible text into content.sqlite, and emits the integrity-hashed bundle.json +
+ * Bible text into content.sqlite and the per-translation bible-*.sqlite files, and emits the integrity-hashed bundle.json +
  * bundle.schema.json into public/dist-content/.
  *
  * Run: `npm run build:content` (add `--release` to enforce the scholar-review gate).
@@ -45,6 +45,8 @@ import {
   onlyGenericBackstops,
 } from '../src/content/accuracy';
 import { WORLD_BBOX } from '../src/map/graticule';
+import { TRANSLATIONS } from '../src/content/translations';
+import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from './lib/helloao';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
 const CONTENT = join(ROOT, 'content');
@@ -52,16 +54,11 @@ const OUT = join(ROOT, 'public', 'dist-content');
 const BIBLE_SRC = join(CONTENT, 'bible-src');
 const RELEASE = process.argv.includes('--release');
 
-const TRANSLATIONS = [
-  { id: 'KJV', url: 'https://raw.githubusercontent.com/bibleapi/bibleapi-bibles-json/master/kjv.json' },
-  { id: 'ASV', url: 'https://raw.githubusercontent.com/bibleapi/bibleapi-bibles-json/master/asv.json' },
-];
-
 // Data sources bundled in the app — every one MUST be credited (license gate).
 const ATTRIBUTIONS = [
-  { id: 'KJV', name: 'King James Version', license: 'Public Domain (UK: Crown copyright)', url: 'https://en.wikipedia.org/wiki/King_James_Version' },
-  { id: 'ASV', name: 'American Standard Version (1901)', license: 'Public Domain', url: 'https://en.wikipedia.org/wiki/American_Standard_Version' },
-  { id: 'bibleapi', name: 'bibleapi-bibles-json (text source)', license: 'Public Domain texts', url: 'https://github.com/bibleapi/bibleapi-bibles-json' },
+  ...TRANSLATIONS.map((t) => ({ id: t.id, name: t.name, license: t.license, url: t.infoUrl })),
+  { id: 'bibleapi', name: 'bibleapi-bibles-json (KJV and ASV text source)', license: 'Public Domain texts', url: 'https://github.com/bibleapi/bibleapi-bibles-json' },
+  { id: 'HelloAO', name: 'Free Use Bible API by AO Lab (BSB, WEB, YLT and Geneva text source)', license: 'Public Domain texts', url: 'https://github.com/HelloAOLab/bible-api' },
   { id: 'MapLibre', name: 'MapLibre GL JS', license: 'BSD-3-Clause', url: 'https://maplibre.org/' },
   { id: 'NaturalEarth', name: 'Natural Earth (coastlines, land, country boundaries, lakes, rivers, shaded relief)', license: 'Public Domain', url: 'https://www.naturalearthdata.com/' },
   { id: 'OpenStreetMap', name: 'OpenStreetMap contributors (planned detailed basemap)', license: 'ODbL', url: 'https://www.openstreetmap.org/copyright' },
@@ -73,7 +70,7 @@ const ATTRIBUTIONS = [
   { id: 'BibleProject', name: 'BibleProject (optional supplementary overview videos, embedded from YouTube on tap)', license: '© BibleProject; embedded via YouTube, not redistributed', url: 'https://bibleproject.com/' },
   { id: 'Fonts', name: 'Ubuntu and Open Sans typefaces (self-hosted)', license: 'Ubuntu Font Licence 1.0 / SIL Open Font License 1.1', url: 'https://fonts.google.com/' },
 ];
-const REQUIRED_CREDITS = ['KJV', 'ASV', 'MapLibre'];
+const REQUIRED_CREDITS = [...TRANSLATIONS.map((t) => t.id), 'MapLibre'];
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -96,45 +93,70 @@ function validateArray<S extends z.ZodTypeAny>(label: string, schema: S, items: 
   return ok;
 }
 
-async function buildBibleDb(): Promise<{ bytes: Uint8Array; verseKeys: Set<string>; counts: Record<string, number> }> {
+/** Shortest acceptable full canon: guards against a truncated or partial download. */
+const MIN_VERSES = 31_000;
+
+async function fetchTranslation(t: (typeof TRANSLATIONS)[number]): Promise<PlainVerse[]> {
+  const cache = join(BIBLE_SRC, `${t.id.toLowerCase()}.${t.source.kind}.json`);
+  let raw: unknown;
+  if (existsSync(cache)) {
+    raw = JSON.parse(readFileSync(cache, 'utf8'));
+  } else {
+    process.stdout.write(`  fetching ${t.id} … `);
+    const res = await fetch(t.source.url);
+    if (!res.ok) throw new Error(`failed to fetch ${t.id}: ${res.status}`);
+    raw = await res.json();
+    writeFileSync(cache, JSON.stringify(raw));
+  }
+  let rows: PlainVerse[];
+  if (t.source.kind === 'helloao') {
+    rows = flattenHelloAo(raw as HelloAoTranslation);
+  } else {
+    type Row = { field: [number, number, number, number, string] };
+    const data = raw as { resultset?: { row?: Row[] } } | Row[];
+    const list = Array.isArray(data) ? data : data.resultset?.row ?? [];
+    rows = list.map(({ field: [, book, chapter, verse, text] }) => ({ book, chapter, verse, text }));
+  }
+  const books = new Set(rows.map((r) => r.book));
+  if (rows.length < MIN_VERSES || books.size !== 66)
+    throw new Error(`${t.id}: expected the full 66-book canon, got ${books.size} books / ${rows.length} verses`);
+  return rows;
+}
+
+async function buildBibleDbs(): Promise<{ files: Map<string, Uint8Array>; verseKeys: Set<string>; counts: Record<string, number> }> {
   mkdirSync(BIBLE_SRC, { recursive: true });
   const SQL = await initSqlJs({ locateFile: (f) => join(ROOT, 'node_modules', 'sql.js', 'dist', f) });
-  const db = new SQL.Database();
-  db.run(
-    'CREATE TABLE verses (translation TEXT, book INTEGER, chapter INTEGER, verse INTEGER, text TEXT);' +
-      'CREATE INDEX idx_verses ON verses (translation, book, chapter, verse);',
-  );
+  const dbs = new Map<string, InstanceType<typeof SQL.Database>>();
   const verseKeys = new Set<string>();
   const counts: Record<string, number> = {};
 
   for (const t of TRANSLATIONS) {
-    const cache = join(BIBLE_SRC, `${t.id.toLowerCase()}.json`);
-    let json: { field: [number, number, number, number, string] }[];
-    if (existsSync(cache)) {
-      json = JSON.parse(readFileSync(cache, 'utf8'));
-    } else {
-      process.stdout.write(`  fetching ${t.id} … `);
-      const res = await fetch(t.url);
-      if (!res.ok) throw new Error(`failed to fetch ${t.id}: ${res.status}`);
-      const data = (await res.json()) as { resultset?: { row?: { field: [number, number, number, number, string] }[] } } | { field: [number, number, number, number, string] }[];
-      json = Array.isArray(data) ? data : data.resultset?.row ?? [];
-      writeFileSync(cache, JSON.stringify(json));
-      process.stdout.write(`${json.length} verses\n`);
+    let db = dbs.get(t.file);
+    if (!db) {
+      db = new SQL.Database();
+      db.run(
+        'CREATE TABLE verses (translation TEXT, book INTEGER, chapter INTEGER, verse INTEGER, text TEXT);' +
+          'CREATE INDEX idx_verses ON verses (translation, book, chapter, verse);',
+      );
+      dbs.set(t.file, db);
     }
+    const rows = await fetchTranslation(t);
     const stmt = db.prepare('INSERT INTO verses VALUES (?,?,?,?,?)');
     db.run('BEGIN');
-    for (const row of json) {
-      const [, book, chapter, verse, text] = row.field;
+    for (const { book, chapter, verse, text } of rows) {
       stmt.run([t.id, book, chapter, verse, text]);
       if (t.id === 'KJV') verseKeys.add(`${book}:${chapter}:${verse}`);
     }
     db.run('COMMIT');
     stmt.free();
-    counts[t.id] = json.length;
+    counts[t.id] = rows.length;
   }
-  const bytes = db.export();
-  db.close();
-  return { bytes, verseKeys, counts };
+  const files = new Map<string, Uint8Array>();
+  for (const [file, db] of dbs) {
+    files.set(file, db.export());
+    db.close();
+  }
+  return { files, verseKeys, counts };
 }
 
 async function main(): Promise<void> {
@@ -463,8 +485,8 @@ async function main(): Promise<void> {
   let dbCounts: Record<string, number> = {};
   let verseKeys = new Set<string>();
   try {
-    const built = await buildBibleDb();
-    writeFileSync(join(OUT, 'content.sqlite'), Buffer.from(built.bytes));
+    const built = await buildBibleDbs();
+    for (const [file, bytes] of built.files) writeFileSync(join(OUT, file), Buffer.from(bytes));
     dbCounts = built.counts;
     verseKeys = built.verseKeys;
   } catch (e2) {
@@ -551,7 +573,7 @@ async function main(): Promise<void> {
     errors.slice(0, 50).forEach((m) => console.error(`  • ${m}`));
     process.exit(1);
   }
-  console.log(`\n✓ content valid → public/dist-content/{bundle.json, content.sqlite, bundle.schema.json}`);
+  console.log(`\n✓ content valid → public/dist-content/{bundle.json, content.sqlite, bible-*.sqlite, bundle.schema.json}`);
 }
 
 const invokedDirectly = process.argv[1]?.includes('build-content');
