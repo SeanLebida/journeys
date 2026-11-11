@@ -52,9 +52,9 @@ describe('chapterPassages', () => {
 
 interface Call { url: string; method: string; headers: Record<string, string> }
 
-function proxy(opts: { failChapter?: string; busyOnce?: string } = {}) {
+function proxy(opts: { failChapter?: string; busyOnce?: string; busyTimes?: number } = {}) {
   const calls: Call[] = [];
-  let busySent = false;
+  let busySent = 0;
   const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
     const call = { url, method: init?.method ?? 'GET', headers: { ...(init?.headers as Record<string, string>) } };
     calls.push(call);
@@ -67,8 +67,8 @@ function proxy(opts: { failChapter?: string; busyOnce?: string } = {}) {
     }
     const m = /passages\/([^?]+)/.exec(url);
     const pid = decodeURIComponent(m?.[1] ?? '');
-    if (pid === opts.busyOnce && !busySent) {
-      busySent = true;
+    if (pid === opts.busyOnce && busySent < (opts.busyTimes ?? 1)) {
+      busySent++;
       return json({}, 429, { 'Retry-After': '7' });
     }
     if (pid === opts.failChapter) return json({}, 403);
@@ -129,5 +129,39 @@ describe('downloadLicensed', () => {
     await expect(downloadLicensed(nasb, undefined, ctrl.signal, { ...noSleep, sleep: async () => undefined })).rejects.toThrow();
     expect(saved).toEqual([]);
     expect(calls.filter((c) => c.method === 'POST')).toEqual([]);
+  });
+
+  it('waits out more busy answers than the failure limit without giving up', async () => {
+    proxy({ busyOnce: 'GEN.2', busyTimes: 8 });
+    const waits: number[] = [];
+    await downloadLicensed(nasb, (p) => void (p.phase === 'chapters' && p.waitingUntil && waits.push(p.waitingUntil)), undefined, {
+      ...noSleep,
+      sleep: async () => undefined,
+    });
+    expect(saved).toHaveLength(1);
+    expect(waits.length).toBeGreaterThanOrEqual(8);
+  });
+
+  it('a retry after a failure fetches only the chapters still missing', async () => {
+    proxy({ failChapter: 'GEN.2' });
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    const calls = proxy();
+    const seen: number[] = [];
+    await downloadLicensed(nasb, (p) => void (p.phase === 'chapters' && seen.push(p.done)), undefined, { ...noSleep, sleep: async () => undefined });
+    expect(calls.filter((c) => c.url.includes('/passages/')).map((c) => c.url)).toEqual([expect.stringContaining('GEN.2')]);
+    expect(seen[0]).toBe(1);
+    expect(saved).toEqual([{ id: 'yv:100', licensed: true }]);
+  });
+
+  it('a cancel throws away chapters fetched so far', async () => {
+    proxy({ failChapter: 'GEN.2' });
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    const ctrl = new AbortController();
+    proxy({ busyOnce: 'GEN.2', busyTimes: 99 });
+    const p = downloadLicensed(nasb, undefined, ctrl.signal, { ...noSleep, sleep: async () => void ctrl.abort(new Error('cancelled')) });
+    await expect(p).rejects.toThrow();
+    const calls = proxy();
+    await downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined });
+    expect(calls.filter((c) => c.url.includes('/passages/'))).toHaveLength(2);
   });
 });

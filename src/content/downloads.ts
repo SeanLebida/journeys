@@ -16,7 +16,8 @@ export type DownloadedTranslation = Omit<DownloadableTranslation, 'completeUrl'>
 
 export type DownloadProgress =
   | { phase: 'downloading'; receivedBytes: number }
-  | { phase: 'chapters'; done: number; total: number }
+  /** `waitingUntil`: the server asked us to pause until this time (ms since epoch). */
+  | { phase: 'chapters'; done: number; total: number; waitingUntil?: number }
   | { phase: 'installing' };
 
 async function readJson(res: Response, onProgress?: (p: DownloadProgress) => void): Promise<unknown> {
