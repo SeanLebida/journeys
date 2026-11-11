@@ -1,0 +1,58 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "journeys-bible-proxy",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-11",
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true,
+    "traces": { "enabled": true },
+  },
+  // Proposed production hostname. Do not uncomment until Sean approves
+  // DNS for authentic.how — this file must not create routes or records.
+  // "routes": [
+  //   { "pattern": "bible.authentic.how/*", "zone_name": "authentic.how" }
+  // ],
+  "vars": {
+    "ALLOWED_BIBLE_IDS": "100,2692",
+    "UPSTREAM_BASE": "https://api.youversion.com/v1",
+    "RATE_LIMIT_MAX": "180",
+    "RATE_LIMIT_WINDOW_SECONDS": "60",
+    "REQUIRE_APP_CLIENT": "false",
+    "CACHE_TTL_METADATA_SECONDS": "604800",
+    "CACHE_TTL_PASSAGE_SECONDS": "86400",
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "DOWNLOAD_STATS", "class_name": "DownloadStats" },
+      { "name": "RATE_LIMITER", "class_name": "RateLimiter" },
+    ],
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["DownloadStats", "RateLimiter"] },
+  ],
+  "env": {
+    "staging": {
+      "name": "journeys-bible-proxy-staging",
+      // Proposed staging hostname, same approval rule as production:
+      // "routes": [
+      //   { "pattern": "bible-staging.authentic.how/*", "zone_name": "authentic.how" }
+      // ],
+      "vars": {
+        "ALLOWED_BIBLE_IDS": "100,2692",
+        "UPSTREAM_BASE": "https://api.youversion.com/v1",
+        "RATE_LIMIT_MAX": "180",
+        "RATE_LIMIT_WINDOW_SECONDS": "60",
+        "REQUIRE_APP_CLIENT": "false",
+        "CACHE_TTL_METADATA_SECONDS": "604800",
+        "CACHE_TTL_PASSAGE_SECONDS": "86400",
+      },
+      "durable_objects": {
+        "bindings": [
+          { "name": "DOWNLOAD_STATS", "class_name": "DownloadStats" },
+          { "name": "RATE_LIMITER", "class_name": "RateLimiter" },
+        ],
+      },
+    },
+  },
+}
