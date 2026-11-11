@@ -37,90 +37,94 @@ export function CreditsView() {
         {bundle?.version ?? '0.3.14'} · content {bundle?.integrity ?? '—'}.
       </p>
 
-      <h2 className="home__heading">The biblical historical record</h2>
+      <h2 className="home__heading">Why Journeys exists</h2>
       <p>
-        Journeys is an accurate, cited, offline atlas of the historical record in the Bible. The
-        chronology runs from Creation through the patriarchs, the exodus and conquest, the kings and
-        prophets, the battles of the Old Testament, the birth and ministry of Jesus, and on to the
-        travels of the apostles. It is biblically, geographically, historically, and archaeologically
-        grounded, with a denominationally neutral stance.
+        Journeys is here to equip Christians with the knowledge of God&apos;s word and the evidence
+        that it speaks of real people, real places and real events. The Bible names kings, cities
+        and governors, and over the last two centuries excavations have turned up many of them:
+        Pontius Pilate on a dedication stone at Caesarea, the &ldquo;House of David&rdquo; on the
+        Tel Dan stele, King Hezekiah&apos;s name pressed into a clay seal. Journeys sets those finds
+        beside the passages they speak to, so you can study, teach and answer questions with
+        confidence.
       </p>
       <p>
-        Whether studying Scripture, teaching, or exploring ancient history, Journeys turns that
-        record from flat paper maps into an interactive exploration across the ancient Mediterranean
-        and Near East.
+        It follows the whole story, from Creation and the patriarchs through the exodus, the kings
+        and prophets, the life and ministry of Jesus, and the travels of the apostles, on a map of
+        the world where it happened. Journeys takes no side between denominations.
       </p>
 
       <h2 className="home__heading">Six ways to explore</h2>
       <ul className="credits-list">
         <li>
-          <strong>Route Tracing (⟿)</strong> — Follow animated journeys on the ancient map. Trace the
-          patriarchs, the exodus, the conquest, the kings, and the ministry routes of Jesus across
-          Galilee and Judea, then Paul (First, Second, Third Missionary Journeys, and the voyage to
-          Rome). Inspect terrain, travel legs, and stop-by-stop accounts.
+          <strong>Journeys</strong>: watch a route unfold leg by leg and read the story at every
+          stop, from Abraham&apos;s travels and the exodus to Jesus in Galilee, the Twelve, and
+          Paul&apos;s three journeys and his voyage to Rome.
         </li>
         <li>
-          <strong>Sandbox Atlas (◍)</strong> — Freely explore the ancient Mediterranean and Near
-          Eastern world with toggleable historical layers. Inspect Roman roads, trade lanes,
-          provincial borders, and ancient settlements with rich topographical context.
+          <strong>Atlas</strong>: explore the ancient Mediterranean and Near East freely, with Roman
+          roads, borders and settlements, and tap any place for its Scripture, history and finds.
         </li>
         <li>
-          <strong>Biblical Timeline (≣)</strong> — A unified chronology from Creation through the
-          apostolic age. Each era has its own proportional scale so Passion week is not flattened
-          against three millennia. Parallel swimlanes track figures, prophets, kings, battles, finds,
-          and the life and ministry of Jesus.
+          <strong>Timeline</strong>: see who lived at the same time, from Creation to the apostles.
+          Each era is drawn to its own scale, so the week of the Passion isn&apos;t lost against
+          three thousand years.
         </li>
         <li>
-          <strong>Embedded Bible Reader (▤)</strong> — Read Scripture alongside the map. Complete
-          public-domain translations bundled for offline reading: American Standard Version, King
-          James Version, Berean Standard Bible, World English Bible, Young&apos;s Literal Translation
-          and the Geneva Bible (1599). Tap place names in Scripture to jump straight to their
-          location on the map, with private highlighting and local notes.
+          <strong>Bible reader</strong>: read Scripture beside the map and tap a place name to fly
+          to it. Six complete translations are built in: the King James Version, American Standard
+          Version, Berean Standard Bible, World English Bible, Young&apos;s Literal Translation and
+          the Geneva Bible (1599). You can download more from the Translations tab, including the
+          NASB 1995 and 2020. Highlights and notes stay on your device.
         </li>
         <li>
-          <strong>Guided Lessons (❖)</strong> — Paced, step-by-step deep dives into biblical events,
-          examining cultural context, physical geography, and archaeological finds.
+          <strong>Lessons</strong>: step-by-step walk-throughs of key events, with the map moving as
+          you read.
         </li>
         <li>
-          <strong>Interactive Quizzes (?)</strong> — Test and deepen your knowledge of ancient
-          geography, apostolic travels, and historical chronology.
+          <strong>Quizzes</strong>: test what you&apos;ve learned about places, people and the order
+          of events.
         </li>
       </ul>
 
-      <h2 className="home__heading">Archaeology &amp; primary sources</h2>
-      <ul className="credits-list">
-        <li>
-          <strong>Cited claims</strong> — Every site and route stop is anchored to primary historical
-          texts (Scripture, Josephus, Tacitus, cuneiform annals, Roman itineraries) and excavation
-          records.
-        </li>
-        <li>
-          <strong>Transparent confidence</strong> — Ratings (<code>high</code>, <code>medium</code>,{' '}
-          <code>disputed</code>, <code>legendary</code>) distinguish between securely attested sites
-          and contested traditions.
-        </li>
-        <li>
-          <strong>Rival candidates shown</strong> — When scholars disagree on a biblical site’s
-          location, Journeys displays documented rivals as hollow markers on the map rather than
-          guessing a single pin.
-        </li>
-        <li>
-          <strong>Graded route strokes</strong> — Surveyed Roman roads, reconstructed travel
-          corridors, sea lanes, and schematic connectors are drawn distinctly so reconstructions are
-          never mistaken for surveyed roads.
-        </li>
-      </ul>
-
-      <h2 className="home__heading">100% offline &amp; privacy first</h2>
+      <h2 className="home__heading">Honest about the evidence</h2>
       <p>
-        Journeys works anywhere — in church, in the classroom, on flights, or in the field:
+        Faith is not afraid of the facts, so Journeys shows you how strong each piece of evidence
+        really is.
       </p>
       <ul className="credits-list">
-        <li>Complete 10 MB on-device SQLite Scripture database included in the binary.</li>
-        <li>Offline vector map tiles bundled directly inside the app.</li>
-        <li>No internet connection required after install.</li>
-        <li>Zero data collection, zero tracking, no accounts required, and completely ad-free.</li>
-        <li>Personal study notes and reading highlights stay exclusively on your device.</li>
+        <li>
+          <strong>Every claim is cited</strong> to Scripture, ancient historians such as Josephus
+          and Tacitus, royal annals, Roman itineraries, excavation reports or museum records, and
+          never to Wikipedia alone.
+        </li>
+        <li>
+          <strong>Every claim is graded</strong> as <code>high</code>, <code>medium</code>,{' '}
+          <code>disputed</code> or <code>legendary</code>, so a site confirmed by excavation is
+          never confused with a later tradition.
+        </li>
+        <li>
+          <strong>Rival locations are shown.</strong> When scholars disagree about where a place
+          was, you see each candidate on the map as a hollow marker instead of a single guess.
+        </li>
+        <li>
+          <strong>Routes are drawn honestly.</strong> Surveyed Roman roads, reconstructed routes,
+          sea lanes and simple connecting lines each look different, so a reconstruction is never
+          mistaken for a surveyed road.
+        </li>
+      </ul>
+
+      <h2 className="home__heading">Works anywhere, private by design</h2>
+      <ul className="credits-list">
+        <li>
+          The built-in Bibles, the journeys and the base map work offline after install: in church,
+          in class, on a plane or in the Holy Land.
+        </li>
+        <li>
+          Satellite, ancient-map and video layers need a connection, and so does downloading another
+          translation. Once downloaded, a translation reads offline.
+        </li>
+        <li>No account, no ads and no tracking.</li>
+        <li>Your highlights and notes stay on your device.</li>
       </ul>
 
       <h2 className="home__heading">How we handle accuracy</h2>
