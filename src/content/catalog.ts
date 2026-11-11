@@ -1,4 +1,5 @@
 import type { HelloAoCatalogEntry } from './helloao';
+import { fetchOrExplain } from './net';
 import { TRANSLATIONS, type DownloadedId } from './translations';
 
 export const HELLOAO_ORIGIN = 'https://bible.helloao.org';
@@ -70,7 +71,7 @@ export function toDownloadable(entries: HelloAoCatalogEntry[]): DownloadableTran
 }
 
 export async function fetchCatalog(signal?: AbortSignal): Promise<DownloadableTranslation[]> {
-  const res = await fetch(HELLOAO_CATALOG_URL, { signal });
+  const res = await fetchOrExplain(HELLOAO_CATALOG_URL, { signal });
   if (!res.ok) throw new Error(`Couldn't load the translation list (${res.status}).`);
   const body = (await res.json()) as { translations: HelloAoCatalogEntry[] };
   return toDownloadable(body.translations);
