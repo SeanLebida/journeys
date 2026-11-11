@@ -319,6 +319,11 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
         Text: {meta.licenseUrl ? <a href={meta.licenseUrl} target="_blank" rel="noreferrer">{meta.name}</a> : meta.name} —{' '}
         {meta.sourcing} Notes and highlights are stored on this device only and are never uploaded.
       </p>
+      {meta.notice && (
+        <p className="bible__notice" data-testid="bible-notice">
+          {meta.notice}
+        </p>
+      )}
     </section>
   );
 }

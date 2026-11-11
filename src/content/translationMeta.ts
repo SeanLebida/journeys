@@ -1,6 +1,6 @@
 import { useUiStore } from '../state/useUiStore';
 import type { DownloadedTranslation } from './downloads';
-import { isDownloadedId, isTranslation, translationInfo, type TranslationId } from './translations';
+import { isDownloadedId, isLicensedId, isTranslation, translationInfo, type TranslationId } from './translations';
 
 /** How the reader names and credits whichever translation is showing. */
 export interface TranslationMeta {
@@ -11,6 +11,8 @@ export interface TranslationMeta {
   /** One line on where the text comes from and its terms. */
   sourcing: string;
   licenseUrl?: string;
+  /** Publisher's copyright notice; licensed translations must show it with the text. */
+  notice?: string;
   rtl: boolean;
 }
 
@@ -21,6 +23,17 @@ export function translationMeta(id: TranslationId, downloaded: DownloadedTransla
   }
   const d = isDownloadedId(id) ? downloaded.find((x) => x.id === id) : undefined;
   if (!d) return { id, label: id, name: id, sourcing: 'downloaded to this device.', rtl: false };
+  if (isLicensedId(id)) {
+    return {
+      id,
+      label: d.shortName,
+      name: d.name,
+      sourcing: 'used by permission, via YouVersion, downloaded to this device.',
+      licenseUrl: d.licenseUrl,
+      notice: d.notice,
+      rtl: false,
+    };
+  }
   return {
     id,
     label: d.shortName,

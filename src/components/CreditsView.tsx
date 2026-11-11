@@ -171,7 +171,10 @@ export function CreditsView() {
         Bible API. The KJV is public domain worldwide except in the United Kingdom, where it
         is under Crown copyright. Translations you download from the reader&apos;s Translations tab
         also come from the Free Use Bible API; each one&apos;s license and attribution are shown beside
-        it there and under its text in the reader.
+        it there and under its text in the reader. The New American Standard Bible (NASB 1995 and
+        NASB 2020), when you download it, is copyright The Lockman Foundation, used by permission
+        through YouVersion, and shown with Lockman&apos;s notice wherever it is quoted;{' '}
+        <a href="https://www.lockman.org" target="_blank" rel="noreferrer">lockman.org</a>.
       </p>
     </section>
   );
