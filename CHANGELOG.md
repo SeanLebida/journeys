@@ -2,6 +2,11 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.23] - 2026-11-07
+
+• Journey progress stays centered in the part of the map you can see, and arrival details no longer cover most of the view.
+• Map zoom buttons sit below the status bar.
+
 ## [0.3.22] - 2026-11-07
 
 • Each of the Twelve has his own journey. Peter keeps his. The shared line is only the places they were together.
