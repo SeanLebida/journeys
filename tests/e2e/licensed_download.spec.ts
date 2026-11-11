@@ -90,3 +90,46 @@ test('download NASB 1995, read it offline with the notice, reported once', async
   await expect(page.getByTestId('bible-notice')).toBeVisible();
   expect(posts).toHaveLength(1);
 });
+
+test('a licensed Bible whose key was lost offers Download again', async ({ page }) => {
+  await page.route(`${PROXY}/**`, (route) => {
+    const req = route.request();
+    const url = req.url();
+    if (req.method() === 'POST') return route.fulfill({ json: { ok: true } });
+    if (url.endsWith('/v1/bibles/100')) return route.fulfill({ json: { id: 100, copyright: NOTICE } });
+    if (url.endsWith('/v1/bibles/100/books')) return route.fulfill({ json: { data: [{ id: 'GEN', chapters: [{ passage_id: 'GEN.1' }] }] } });
+    const m = /\/passages\/([A-Z0-9]{3})\.(\d+)\?/.exec(url);
+    if (m) return route.fulfill({ json: { id: `${m[1]}.${m[2]}`, content: chapterHtml(m[1], Number(m[2]), 3), reference: '' } });
+    return route.fulfill({ status: 404 });
+  });
+  await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
+
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: 'Translations' }).click();
+  await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
+  const installed = page.locator('.bible__library-item', { hasText: 'New American Standard Bible (1995)' });
+  await installed.getByRole('button', { name: 'Read' }).click();
+  await expect(page.locator('#v1')).toContainText('GEN 1 licensed verse 1');
+
+  // Lose the encryption key, as if the WebView's storage had been cleared.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        const req = indexedDB.open('journeys-bibles');
+        req.onsuccess = () => {
+          const tx = req.result.transaction('dbs', 'readwrite');
+          tx.objectStore('dbs').delete('__journeys_licensed_key__');
+          tx.oncomplete = () => resolve();
+        };
+      }),
+  );
+  await page.reload();
+  const alert = page.getByRole('alert').filter({ hasText: "can't be opened on this device anymore" });
+  await expect(alert).toBeVisible();
+  await alert.getByRole('button', { name: 'Download again' }).click();
+
+  await expect(page.getByRole('button', { name: 'Download New American Standard Bible (1995)' })).toBeVisible();
+  await page.getByRole('button', { name: 'Download New American Standard Bible (1995)' }).click();
+  await installed.getByRole('button', { name: 'Read' }).click();
+  await expect(page.locator('#v1')).toContainText('GEN 1 licensed verse 1');
+});
