@@ -98,9 +98,9 @@ export function CreditsView() {
           never to Wikipedia alone.
         </li>
         <li>
-          <strong>Every claim is graded</strong> as <code>high</code>, <code>medium</code>,{' '}
-          <code>disputed</code> or <code>legendary</code>, so a site confirmed by excavation is
-          never confused with a later tradition.
+          <strong>Every stop, find, battle, miracle and witness is graded</strong> as{' '}
+          <code>high</code>, <code>medium</code>, <code>disputed</code> or <code>legendary</code>, so
+          a site confirmed by excavation is never confused with a later tradition.
         </li>
         <li>
           <strong>Rival locations are shown.</strong> When scholars disagree about where a place
