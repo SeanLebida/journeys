@@ -9,6 +9,7 @@ import type {
 
 export const TEST_APP_KEY = "test-youversion-app-key";
 export const TEST_ADMIN_TOKEN = "test-admin-token";
+export const TEST_RATE_LIMIT_SALT = "test-rate-limit-salt";
 
 export class MemoryDownloadStats implements DownloadStatsStub {
   readonly rows = new Map<string, number>();
@@ -77,6 +78,8 @@ export interface TestEnvOptions {
   limiter?: MemoryRateLimiter;
   requireClient?: boolean;
   rateLimitMax?: string;
+  rateLimitSalt?: string;
+  limiterNames?: string[];
   appKey?: string;
   adminToken?: string;
 }
@@ -91,11 +94,17 @@ export function testEnv(options: TestEnvOptions = {}): WorkerEnv {
     UPSTREAM_BASE: "https://api.youversion.com/v1",
     RATE_LIMIT_MAX: options.rateLimitMax ?? "1000",
     RATE_LIMIT_WINDOW_SECONDS: "60",
+    RATE_LIMIT_SALT: options.rateLimitSalt ?? TEST_RATE_LIMIT_SALT,
     REQUIRE_APP_CLIENT: options.requireClient ? "true" : "false",
     CACHE_TTL_METADATA_SECONDS: "604800",
     CACHE_TTL_PASSAGE_SECONDS: "86400",
     DOWNLOAD_STATS: { getByName: () => stats },
-    RATE_LIMITER: { getByName: () => limiter },
+    RATE_LIMITER: {
+      getByName: (name: string) => {
+        options.limiterNames?.push(name);
+        return limiter;
+      },
+    },
   };
 }
 

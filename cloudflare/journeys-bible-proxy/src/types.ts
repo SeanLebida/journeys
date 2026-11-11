@@ -39,6 +39,7 @@ export interface WorkerEnv {
   UPSTREAM_BASE: string;
   RATE_LIMIT_MAX: string;
   RATE_LIMIT_WINDOW_SECONDS: string;
+  RATE_LIMIT_SALT: string;
   REQUIRE_APP_CLIENT: string;
   CACHE_TTL_METADATA_SECONDS: string;
   CACHE_TTL_PASSAGE_SECONDS: string;
