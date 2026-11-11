@@ -5,8 +5,10 @@
   "compatibility_date": "2026-11-11",
   "upload_source_maps": true,
   "observability": {
+    // Sean, Nov 11 2026: keep no client IPs. Only our own console events (no IPs) are logged.
     "enabled": true,
-    "traces": { "enabled": true },
+    "logs": { "enabled": true, "invocation_logs": false },
+    "traces": { "enabled": false },
   },
   // Sean approved bible.authentic.how DNS on 2026-11-11.
   "routes": [
