@@ -64,5 +64,55 @@
   "note": {
    "en": "Pin for the Shahr-e Qumis site identified with the Parthian city Hecatompylos. Wikipedia is not the only support for the Parthia tradition; that is Eusebius."
   }
+ },
+ {
+  "id": "cit-scripture-john-1-41",
+  "source": {
+   "en": "Holy Scripture: John 1:41"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-14-9",
+  "source": {
+   "en": "Holy Scripture: John 14:9"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-john-14-23",
+  "source": {
+   "en": "Holy Scripture: John 14:23"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-mark-14-33",
+  "source": {
+   "en": "Holy Scripture: Mark 14:33"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
+ },
+ {
+  "id": "cit-scripture-acts-1-21",
+  "source": {
+   "en": "Holy Scripture: Acts 1:21"
+  },
+  "kind": "primary-scripture",
+  "note": {
+   "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
+  }
  }
 ]
