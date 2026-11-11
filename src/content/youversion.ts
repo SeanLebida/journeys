@@ -26,8 +26,8 @@ export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
   { id: 'yv:2692', yvId: 2692, name: 'New American Standard Bible (2020)', shortName: 'NASB2020', publisher: 'The Lockman Foundation', publisherUrl: 'https://www.lockman.org' },
 ];
 
-/** Stay under the proxy's 180 requests a minute per device. */
-const MIN_INTERVAL_MS = 60_000 / 150;
+/** YouVersion rate-limits the shared key (429, Retry-After 300) without publishing the limit; stay well under one request a second. */
+const MIN_INTERVAL_MS = 1_250;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
 /** "Busy, come back later" answers are waited out, not counted as failures, up to this many per request. */

@@ -243,7 +243,7 @@ function LicensedDownloads() {
     <>
       <h2 className="bible__library-heading">Licensed translations</h2>
       <p className="bible__library-meta">
-        Downloaded through YouVersion by permission of the publisher. A full Bible takes several minutes. You can
+        Downloaded through YouVersion by permission of the publisher. A full Bible takes about 25 minutes. You can
         keep reading while it downloads, but keep the app open until it finishes. It then reads offline and stays on this device only.
       </p>
       <ul className="bible__library-list" aria-label="Licensed Bibles to download">
