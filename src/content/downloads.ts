@@ -1,4 +1,5 @@
 import type { DownloadableTranslation } from './catalog';
+import { fetchOrExplain } from './net';
 import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from './helloao';
 import { getSql } from './useBible';
 import { saveBibleBytes } from '../platform/bibleStore';
@@ -64,7 +65,7 @@ export async function downloadTranslation(
   onProgress?: (p: DownloadProgress) => void,
   signal?: AbortSignal,
 ): Promise<DownloadedTranslation> {
-  const res = await fetch(t.completeUrl, { signal });
+  const res = await fetchOrExplain(t.completeUrl, { signal });
   if (!res.ok) throw new Error(`Download failed (${res.status}).`);
   const data = (await readJson(res, onProgress)) as HelloAoTranslation;
   onProgress?.({ phase: 'installing' });

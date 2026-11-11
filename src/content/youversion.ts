@@ -1,4 +1,5 @@
 import { buildBibleDb, type DownloadProgress, type DownloadedTranslation } from './downloads';
+import { NetworkError } from './net';
 import type { PlainVerse } from './helloao';
 import { bookNumberFromUsfm } from './usfm';
 import { parseChapterHtml } from './youversionHtml';
@@ -90,7 +91,7 @@ async function getJson(
       res = await fetch(url, { headers: CLIENT_HEADERS, signal });
     } catch (e) {
       if (signal?.aborted) throw e;
-      lastError = e;
+      lastError = new NetworkError(url, e);
       await sleep(1000 * 2 ** attempt, signal);
       continue;
     }
