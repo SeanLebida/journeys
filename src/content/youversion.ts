@@ -1,8 +1,9 @@
 import { buildBibleDb, type DownloadProgress, type DownloadedTranslation } from './downloads';
+import { NetworkError } from './net';
 import type { PlainVerse } from './helloao';
 import { bookNumberFromUsfm } from './usfm';
 import { parseChapterHtml } from './youversionHtml';
-import { saveBibleBytes } from '../platform/bibleStore';
+import { deleteLicensedPartial, loadLicensedPartial, saveBibleBytes, saveLicensedPartial, type LicensedPartialPayload } from '../platform/bibleStore';
 
 // Licensed translations come through the Journeys Bible proxy (a Cloudflare
 // Worker in front of the YouVersion Platform API). The proxy holds the app key,
@@ -25,10 +26,12 @@ export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
   { id: 'yv:2692', yvId: 2692, name: 'New American Standard Bible (2020)', shortName: 'NASB2020', publisher: 'The Lockman Foundation', publisherUrl: 'https://www.lockman.org' },
 ];
 
-/** Stay under the proxy's 180 requests a minute per device. */
-const MIN_INTERVAL_MS = 60_000 / 150;
+/** YouVersion limits this app key to 200 requests an hour (a full NASB is 1,189 chapters, about six hours). 200/hour is one request every 18s; stay on that pace and honour Retry-After if we still get a 429. */
+const MIN_INTERVAL_MS = 18_000;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
+/** 429s are waited out, not counted as failures. This cap is only a safety valve for a service that never recovers (12 hours of 5-minute waits on one request). */
+const MAX_BUSY_WAITS = 144;
 const CLIENT_HEADERS = { 'X-Journeys-Client': 'journeys' } as const;
 
 export interface ProxyOptions {
@@ -59,8 +62,9 @@ class Pacer {
     if (at > now) await this.sleep(at - now, signal);
   }
   /** After a 429, hold every worker until the proxy says to come back. */
-  pause(ms: number): void {
+  pause(ms: number): number {
     this.next = Math.max(this.next, Date.now() + ms);
+    return this.next;
   }
 }
 
@@ -70,8 +74,15 @@ function retryAfterMs(res: Response): number {
   return Number.isFinite(secs) && secs >= 0 ? secs * 1000 : 10_000;
 }
 
-async function getJson(url: string, pacer: Pacer, sleep: NonNullable<ProxyOptions['sleep']>, signal?: AbortSignal): Promise<unknown> {
+async function getJson(
+  url: string,
+  pacer: Pacer,
+  sleep: NonNullable<ProxyOptions['sleep']>,
+  signal?: AbortSignal,
+  onBusy?: (until: number) => void,
+): Promise<unknown> {
   let lastError: unknown;
+  let busy = 0;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     signal?.throwIfAborted();
     await pacer.wait(signal);
@@ -80,14 +91,16 @@ async function getJson(url: string, pacer: Pacer, sleep: NonNullable<ProxyOption
       res = await fetch(url, { headers: CLIENT_HEADERS, signal });
     } catch (e) {
       if (signal?.aborted) throw e;
-      lastError = e;
+      lastError = new NetworkError(url, e);
       await sleep(1000 * 2 ** attempt, signal);
       continue;
     }
     if (res.ok) return res.json();
     if (res.status === 429) {
-      pacer.pause(retryAfterMs(res));
-      lastError = new Error('The Bible service is busy.');
+      lastError = new Error('The Bible service is busy right now. Chapters already downloaded are saved. Tap Download to pick up where it stopped.');
+      if (++busy > MAX_BUSY_WAITS) break;
+      onBusy?.(pacer.pause(retryAfterMs(res)));
+      attempt--;
       continue;
     }
     if (res.status >= 500) {
@@ -132,9 +145,43 @@ export async function reportDownload(yvId: number, base = BIBLE_PROXY_URL): Prom
   }
 }
 
+/** Chapters fetched so far per translation this session. Survives a retry in the same run; a restart reloads from encrypted storage. */
+const partial = new Map<string, (PlainVerse[] | undefined)[]>();
+
+/** Test hook: drop the in-memory snapshot so the next call must resume from disk, as after a process kill. */
+export function clearLicensedPartialMemoryForTests(): void {
+  partial.clear();
+}
+
+function sameChapterList(saved: LicensedPartialPayload, chapters: { passageId: string; book: number; chapter: number }[]): boolean {
+  return (
+    saved.chapters.length === chapters.length &&
+    saved.verses.length === chapters.length &&
+    saved.chapters.every((c, i) => c.passageId === chapters[i].passageId && c.book === chapters[i].book && c.chapter === chapters[i].chapter)
+  );
+}
+
+function rowsFrom(kept: (PlainVerse[] | undefined)[] | undefined, saved: LicensedPartialPayload | undefined, total: number): (PlainVerse[] | undefined)[] {
+  if (kept?.length === total) return kept;
+  if (saved?.verses.length === total) return saved.verses.map((v) => (v && v.length > 0 ? v : undefined));
+  return new Array(total);
+}
+
+function toPayload(t: LicensedTranslation, chapters: { passageId: string; book: number; chapter: number }[], rows: (PlainVerse[] | undefined)[], copyright?: string): LicensedPartialPayload {
+  return {
+    v: 1,
+    id: t.id,
+    chapters,
+    verses: rows.map((r) => r ?? null),
+    ...(copyright ? { copyright } : {}),
+  };
+}
+
 /**
- * Download a licensed translation chapter by chapter, store it encrypted, then
- * report it once. All or nothing: nothing is saved unless every chapter arrived.
+ * Download a licensed translation chapter by chapter. Each finished chapter is
+ * written to encrypted storage (temp-then-rename) so a killed process can
+ * resume. The finished Bible is stored, and the publisher is told, only once
+ * every chapter has arrived. A cancel throws the partial away.
  */
 export async function downloadLicensed(
   t: LicensedTranslation,
@@ -147,7 +194,7 @@ export async function downloadLicensed(
   if (signal?.aborted) ctl.abort(signal.reason);
   signal?.addEventListener('abort', () => ctl.abort(signal.reason), { once: true });
   try {
-    return await run(t, ctl, onProgress, opts);
+    return await run(t, ctl, onProgress, opts, signal);
   } catch (e) {
     ctl.abort(e);
     throw signal?.aborted ? signal.reason : e;
@@ -159,6 +206,7 @@ async function run(
   ctl: AbortController,
   onProgress: ((p: DownloadProgress) => void) | undefined,
   opts: ProxyOptions,
+  userSignal?: AbortSignal,
 ): Promise<DownloadedTranslation> {
   const signal = ctl.signal;
   const base = opts.base ?? BIBLE_PROXY_URL;
@@ -169,43 +217,71 @@ async function run(
   const meta = (await getJson(api, pacer, sleep, signal)) as { copyright?: unknown; promotional_content?: unknown };
   const chapters = chapterPassages(await getJson(`${api}/books`, pacer, sleep, signal));
   if (chapters.length === 0) throw new Error('That translation came through empty.');
+  const copyright = typeof meta.copyright === 'string' && meta.copyright.trim() ? meta.copyright.trim() : undefined;
 
-  const rows: PlainVerse[][] = new Array(chapters.length);
+  const saved = await loadLicensedPartial(t.id);
+  const disk = saved && sameChapterList(saved, chapters) ? saved : undefined;
+  const rows: (PlainVerse[] | undefined)[] = rowsFrom(partial.get(t.id), disk, chapters.length);
+  partial.set(t.id, rows);
+
+  let discarded = false;
+  let writeChain = Promise.resolve();
+  const persist = () => {
+    writeChain = writeChain
+      .catch(() => undefined)
+      .then(async () => {
+        if (discarded) return;
+        await saveLicensedPartial(t.id, toPayload(t, chapters, rows, copyright));
+      });
+    return writeChain;
+  };
+
+  const todo = chapters.flatMap((_, i) => (rows[i] ? [] : [i]));
   let next = 0;
-  let done = 0;
-  onProgress?.({ phase: 'chapters', done, total: chapters.length });
+  let done = chapters.length - todo.length;
+  const total = chapters.length;
+  onProgress?.({ phase: 'chapters', done, total });
+  const onBusy = (until: number) => onProgress?.({ phase: 'chapters', done, total, waitingUntil: until });
   const worker = async () => {
-    while (next < chapters.length) {
-      const i = next++;
+    while (next < todo.length) {
+      const i = todo[next++];
       const c = chapters[i];
       const body = (await getJson(
         `${api}/passages/${encodeURIComponent(c.passageId)}?format=html&include_headings=false&include_notes=false`,
         pacer,
         sleep,
         signal,
+        onBusy,
       )) as { content?: unknown };
       if (typeof body.content !== 'string') throw new Error(`${c.passageId} came through empty.`);
       rows[i] = parseChapterHtml(body.content, c.book, c.chapter);
       done++;
-      onProgress?.({ phase: 'chapters', done, total: chapters.length });
+      onProgress?.({ phase: 'chapters', done, total });
+      await persist();
     }
   };
-  await Promise.all(
-    Array.from({ length: CONCURRENCY }, () =>
-      worker().catch((e: unknown) => {
-        ctl.abort(e);
-        throw e;
-      }),
-    ),
-  );
 
-  signal.throwIfAborted();
-  onProgress?.({ phase: 'installing' });
-  const flat = rows.flat();
-  const bytes = await buildBibleDb(t.id, flat);
-  await saveBibleBytes(t.id, bytes, { licensed: true });
-  const reported = await reportDownload(t.yvId, base);
-  const notice = typeof meta.copyright === 'string' && meta.copyright.trim() ? meta.copyright.trim() : `© ${t.publisher}. Used by permission.`;
+  try {
+    await Promise.all(
+      Array.from({ length: CONCURRENCY }, () =>
+        worker().catch((e: unknown) => {
+          ctl.abort(e);
+          throw e;
+        }),
+      ),
+    );
+
+    signal.throwIfAborted();
+    onProgress?.({ phase: 'installing' });
+    await writeChain.catch(() => undefined);
+    const flat = (rows as PlainVerse[][]).flat();
+    const bytes = await buildBibleDb(t.id, flat);
+    await saveBibleBytes(t.id, bytes, { licensed: true });
+    discarded = true;
+    partial.delete(t.id);
+    await deleteLicensedPartial(t.id);
+    const reported = await reportDownload(t.yvId, base);
+    const notice = copyright ?? `© ${t.publisher}. Used by permission.`;
 
   return {
     id: t.id,
@@ -224,4 +300,20 @@ async function run(
     notice,
     ...(reported ? {} : { reportPending: true }),
   };
+  } catch (e) {
+    if (userSignal?.aborted) {
+      discarded = true;
+      await writeChain.catch(() => undefined);
+      partial.delete(t.id);
+      await deleteLicensedPartial(t.id).catch(() => undefined);
+    } else {
+      await writeChain.catch(() => undefined);
+      try {
+        if (!discarded) await saveLicensedPartial(t.id, toPayload(t, chapters, rows, copyright));
+      } catch {
+        // Keep going to rethrow the original error; the last successful persist is still on disk.
+      }
+    }
+    throw e;
+  }
 }

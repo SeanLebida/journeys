@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchCatalog, type DownloadableTranslation } from '../../content/catalog';
-import { downloadTranslation, type DownloadProgress } from '../../content/downloads';
 import { closeDownloadedDb } from '../../content/useBible';
-import { LICENSED_TRANSLATIONS, downloadLicensed, reportDownload, type LicensedTranslation } from '../../content/youversion';
+import { LICENSED_TRANSLATIONS, reportDownload } from '../../content/youversion';
 import { TRANSLATIONS, type TranslationId } from '../../content/translations';
-import { deleteBibleBytes, requestPersistentStorage } from '../../platform/bibleStore';
+import { deleteBibleBytes } from '../../platform/bibleStore';
+import { cancelDownload, startFreeDownload, startLicensedDownload, useBibleDownloads } from '../../state/useBibleDownloads';
 import { useUiStore } from '../../state/useUiStore';
 
 const PAGE = 40;
@@ -32,15 +32,14 @@ function coverage(verses: number): string {
  */
 export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => void }) {
   const downloaded = useUiStore((s) => s.downloaded);
-  const addDownloaded = useUiStore((s) => s.addDownloaded);
   const removeDownloaded = useUiStore((s) => s.removeDownloaded);
 
   const [catalog, setCatalog] = useState<CatalogState>({ status: 'loading' });
   const [attempt, setAttempt] = useState(0);
   const [query, setQuery] = useState('');
   const [language, setLanguage] = useState('eng');
-  const [busy, setBusy] = useState<Record<string, DownloadProgress | undefined>>({});
-  const [failed, setFailed] = useState<Record<string, string | undefined>>({});
+  const active = useBibleDownloads((s) => s.active);
+  const failed = useBibleDownloads((s) => s.failed);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -75,20 +74,6 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
         (q ? `${t.name} ${t.shortName} ${t.languageName}`.toLowerCase().includes(q) : t.language === language),
     );
   }, [catalog, query, language, installed]);
-
-  async function download(t: DownloadableTranslation) {
-    setFailed((f) => ({ ...f, [t.id]: undefined }));
-    setBusy((b) => ({ ...b, [t.id]: { phase: 'downloading', receivedBytes: 0 } }));
-    try {
-      const done = await downloadTranslation(t, (p) => setBusy((b) => ({ ...b, [t.id]: p })));
-      addDownloaded(done);
-      void requestPersistentStorage();
-    } catch (e) {
-      setFailed((f) => ({ ...f, [t.id]: (e as Error).message || 'Download failed.' }));
-    } finally {
-      setBusy((b) => ({ ...b, [t.id]: undefined }));
-    }
-  }
 
   async function remove(id: TranslationId) {
     removeDownloaded(id);
@@ -181,7 +166,7 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
           {matches.length === 0 && <p className="bible__library-meta">No translations match.</p>}
           <ul className="bible__library-list" aria-label="Translations to download">
             {matches.slice(0, PAGE).map((t) => {
-              const progress = busy[t.id];
+              const progress = active[t.id]?.progress;
               return (
                 <li key={t.id} className="bible__library-item">
                   <div>
@@ -197,7 +182,7 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
                     className="bible__library-btn"
                     disabled={Boolean(progress)}
                     aria-label={progress ? `Downloading ${t.name}` : `Download ${t.name}`}
-                    onClick={() => void download(t)}
+                    onClick={() => void startFreeDownload(t)}
                   >
                     {!progress
                       ? 'Download'
@@ -233,9 +218,8 @@ const reporting = new Set<string>();
 function LicensedDownloads() {
   const downloaded = useUiStore((s) => s.downloaded);
   const addDownloaded = useUiStore((s) => s.addDownloaded);
-  const [busy, setBusy] = useState<Record<string, DownloadProgress | undefined>>({});
-  const [failed, setFailed] = useState<Record<string, string | undefined>>({});
-  const controllers = useRef(new Map<string, AbortController>());
+  const active = useBibleDownloads((s) => s.active);
+  const failed = useBibleDownloads((s) => s.failed);
 
   // A download whose report didn't reach the proxy is retried, once per open.
   useEffect(() => {
@@ -252,45 +236,19 @@ function LicensedDownloads() {
     // Only on open: retrying on every store change could double count.
   }, []);
 
-  useEffect(() => {
-    const map = controllers.current;
-    return () => map.forEach((c) => c.abort());
-  }, []);
-
   const available = LICENSED_TRANSLATIONS.filter((t) => !downloaded.some((d) => d.id === t.id));
   if (available.length === 0) return null;
-
-  async function download(t: LicensedTranslation) {
-    const ctrl = new AbortController();
-    controllers.current.set(t.id, ctrl);
-    setFailed((f) => ({ ...f, [t.id]: undefined }));
-    setBusy((b) => ({ ...b, [t.id]: { phase: 'chapters', done: 0, total: 0 } }));
-    try {
-      addDownloaded(await downloadLicensed(t, (p) => setBusy((b) => ({ ...b, [t.id]: p })), ctrl.signal));
-      void requestPersistentStorage();
-    } catch (e) {
-      if (!ctrl.signal.aborted) {
-        setFailed((f) => ({
-          ...f,
-          [t.id]: navigator.onLine === false ? 'Connect to the internet to download this translation.' : (e as Error).message || 'Download failed.',
-        }));
-      }
-    } finally {
-      controllers.current.delete(t.id);
-      setBusy((b) => ({ ...b, [t.id]: undefined }));
-    }
-  }
 
   return (
     <>
       <h2 className="bible__library-heading">Licensed translations</h2>
       <p className="bible__library-meta">
-        Downloaded through YouVersion by permission of the publisher. A full Bible takes several minutes, so
-        keep the app open until it finishes. It then reads offline and stays on this device only.
+        Downloaded through YouVersion by permission of the publisher. YouVersion currently allows about 200 chapters an hour, so a full Bible takes around 6 hours; it pauses and carries on by itself. You can
+        keep reading while it downloads, but keep the app open until it finishes. It then reads offline and stays on this device only.
       </p>
       <ul className="bible__library-list" aria-label="Licensed Bibles to download">
         {available.map((t) => {
-          const progress = busy[t.id];
+          const progress = active[t.id]?.progress;
           return (
             <li key={t.id} className="bible__library-item">
               <div>
@@ -312,7 +270,7 @@ function LicensedDownloads() {
                     {progress.phase === 'installing'
                       ? 'Installing…'
                       : progress.phase === 'chapters' && progress.total > 0
-                        ? `${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters`
+                        ? `${progress.done.toLocaleString()} of ${progress.total.toLocaleString()} chapters${progress.waitingUntil && progress.waitingUntil > Date.now() ? ' · the server asked us to wait, it will carry on by itself' : ''}`
                         : 'Starting…'}
                   </span>
                   {progress.phase !== 'installing' && (
@@ -320,14 +278,14 @@ function LicensedDownloads() {
                       type="button"
                       className="bible__library-btn bible__library-btn--quiet"
                       aria-label={`Cancel downloading ${t.name}`}
-                      onClick={() => controllers.current.get(t.id)?.abort()}
+                      onClick={() => cancelDownload(t.id)}
                     >
                       Cancel
                     </button>
                   )}
                 </span>
               ) : (
-                <button type="button" className="bible__library-btn" aria-label={`Download ${t.name}`} onClick={() => void download(t)}>
+                <button type="button" className="bible__library-btn" aria-label={`Download ${t.name}`} onClick={() => void startLicensedDownload(t)}>
                   Download
                 </button>
               )}

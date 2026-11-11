@@ -18,6 +18,7 @@
 // as plain bytes.
 
 import { Capacitor } from '@capacitor/core';
+import type { PlainVerse } from '../content/helloao';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { isNative } from './bridge';
 
@@ -28,6 +29,8 @@ const BIBLES_DIR = 'bibles';
 const WRITE_CHUNK_BYTES = 256 * 1024;
 
 const KEY_ID = '__journeys_licensed_key__';
+/** IndexedDB key prefix (and `.partial` file suffix) for an in-progress licensed download. Not a finished Bible. */
+const PARTIAL_PREFIX = '__journeys_partial__';
 /** `JSB1` + 12-byte IV + AES-GCM ciphertext. A SQLite file starts with `SQLite format 3`. */
 const SEALED_MAGIC = new Uint8Array([0x4a, 0x53, 0x42, 0x31]);
 const IV_BYTES = 12;
@@ -153,10 +156,10 @@ async function ensureBiblesDir(directory: Directory): Promise<void> {
   }
 }
 
-async function writeNativeFile(id: string, bytes: Uint8Array): Promise<void> {
+/** Write `path` (under the bibles folder) through a temp file, then rename. */
+async function writeNativePath(path: string, bytes: Uint8Array): Promise<void> {
   const directory = bibleDirectory();
-  const dest = filePath(id);
-  const temp = `${dest}.tmp`;
+  const temp = `${path}.tmp`;
   await ensureBiblesDir(directory);
   await ignoreMissing(Filesystem.deleteFile({ path: temp, directory }));
   try {
@@ -173,31 +176,44 @@ async function writeNativeFile(id: string, bytes: Uint8Array): Promise<void> {
         }
       }
     }
-    await Filesystem.rename({ from: temp, to: dest, directory, toDirectory: directory });
+    await Filesystem.rename({ from: temp, to: path, directory, toDirectory: directory });
   } catch (err) {
     await ignoreMissing(Filesystem.deleteFile({ path: temp, directory }));
     throw err;
   }
 }
 
-async function loadNativeFile(id: string): Promise<Uint8Array> {
+function writeNativeFile(id: string, bytes: Uint8Array): Promise<void> {
+  return writeNativePath(filePath(id), bytes);
+}
+
+async function loadNativePath(path: string): Promise<Uint8Array | undefined> {
   const directory = bibleDirectory();
-  const path = filePath(id);
   try {
     await Filesystem.stat({ path, directory });
   } catch {
-    throw missingTranslation(id);
+    return undefined;
   }
   const { uri } = await Filesystem.getUri({ path, directory });
   const res = await fetch(Capacitor.convertFileSrc(uri));
-  if (!res.ok) throw missingTranslation(id);
+  if (!res.ok) return undefined;
   return new Uint8Array(await res.arrayBuffer());
 }
 
-async function deleteNativeFile(id: string): Promise<void> {
+async function loadNativeFile(id: string): Promise<Uint8Array> {
+  const bytes = await loadNativePath(filePath(id));
+  if (!bytes) throw missingTranslation(id);
+  return bytes;
+}
+
+async function deleteNativePath(path: string): Promise<void> {
   const directory = bibleDirectory();
-  await ignoreMissing(Filesystem.deleteFile({ path: filePath(id), directory }));
-  await ignoreMissing(Filesystem.deleteFile({ path: `${filePath(id)}.tmp`, directory }));
+  await ignoreMissing(Filesystem.deleteFile({ path, directory }));
+  await ignoreMissing(Filesystem.deleteFile({ path: `${path}.tmp`, directory }));
+}
+
+async function deleteNativeFile(id: string): Promise<void> {
+  await deleteNativePath(filePath(id));
 }
 
 async function listNativeIds(): Promise<string[]> {
@@ -212,7 +228,7 @@ async function listNativeIds(): Promise<string[]> {
   const ids: string[] = [];
   for (const entry of entries) {
     if (entry.type === 'directory') continue;
-    if (entry.name.endsWith('.tmp')) continue;
+    if (entry.name.endsWith('.tmp') || entry.name.endsWith('.partial')) continue;
     try {
       const id = idFromFileName(entry.name);
       if (id) ids.push(id);
@@ -253,7 +269,7 @@ export function deleteBibleBytes(id: string): Promise<undefined> {
 export async function listStoredBibleIds(): Promise<string[]> {
   if (!isNative()) {
     const keys = await run<IDBValidKey[]>('readonly', (s) => s.getAllKeys());
-    return keys.map(String).filter((k) => k !== KEY_ID);
+    return keys.map(String).filter((k) => k !== KEY_ID && !k.startsWith(PARTIAL_PREFIX));
   }
   return listNativeIds();
 }
@@ -270,4 +286,69 @@ export async function requestPersistentStorage(): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+/** A licensed download in progress: enough to resume after the app is killed. */
+export interface LicensedPartialPayload {
+  v: 1;
+  id: string;
+  chapters: { passageId: string; book: number; chapter: number }[];
+  verses: (PlainVerse[] | null)[];
+  copyright?: string;
+}
+
+function partialPath(id: string): string {
+  return `${filePath(id)}.partial`;
+}
+
+function encodePartial(payload: LicensedPartialPayload): Uint8Array {
+  return new TextEncoder().encode(JSON.stringify(payload));
+}
+
+function decodePartial(id: string, plain: Uint8Array): LicensedPartialPayload | undefined {
+  try {
+    const data = JSON.parse(new TextDecoder().decode(plain)) as LicensedPartialPayload;
+    if (data?.v !== 1 || data.id !== id || !Array.isArray(data.chapters) || !Array.isArray(data.verses)) return undefined;
+    return data;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Persist the chapters fetched so far, encrypted, through the same
+ * temp-then-rename path as a finished Bible. The reader never lists this
+ * as an installed translation.
+ */
+export async function saveLicensedPartial(id: string, payload: LicensedPartialPayload): Promise<void> {
+  const stored = await seal(encodePartial(payload));
+  if (!isNative()) {
+    await run('readwrite', (s) => s.put(stored, PARTIAL_PREFIX + id));
+    return;
+  }
+  await writeNativePath(partialPath(id), stored);
+}
+
+/** Load a resume snapshot, or `undefined` if none is stored or it cannot be read. */
+export async function loadLicensedPartial(id: string): Promise<LicensedPartialPayload | undefined> {
+  try {
+    let stored: Uint8Array | undefined;
+    if (!isNative()) {
+      stored = await run<Uint8Array | undefined>('readonly', (s) => s.get(PARTIAL_PREFIX + id));
+    } else {
+      stored = await loadNativePath(partialPath(id));
+    }
+    if (!stored) return undefined;
+    return decodePartial(id, await unseal(id, stored));
+  } catch {
+    return undefined;
+  }
+}
+
+export async function deleteLicensedPartial(id: string): Promise<void> {
+  if (!isNative()) {
+    await run('readwrite', (s) => s.delete(PARTIAL_PREFIX + id));
+    return;
+  }
+  await deleteNativePath(partialPath(id));
 }
