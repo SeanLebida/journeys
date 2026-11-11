@@ -97,7 +97,7 @@ async function getJson(
     }
     if (res.ok) return res.json();
     if (res.status === 429) {
-      lastError = new Error('The Bible service is busy right now. Try again in a few minutes; chapters already downloaded are kept.');
+      lastError = new Error('The Bible service is busy right now. Try again in a few minutes. Chapters already downloaded are kept while Journeys stays open. Tap Download to pick up where it stopped.');
       if (++busy > MAX_BUSY_WAITS) break;
       onBusy?.(pacer.pause(retryAfterMs(res)));
       attempt--;
