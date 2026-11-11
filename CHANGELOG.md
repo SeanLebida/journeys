@@ -4,14 +4,10 @@ All notable changes to Journeys are documented in this file.
 
 ## [0.3.24] - 2026-11-11
 
-• Apostle journey copy now introduces each man from the Gospels, then Acts, then tradition.
-• Paul's journey stops are rewritten in plain sentences, and nine stops that were cut off mid-word are finished.
-• Four more Bibles ship in the app: the Berean Standard Bible, World English Bible, Young's Literal Translation, and the 1599 Geneva Bible.
-• A Translations tab lets you download more Bibles for offline reading.
-• On the phone, downloaded Bibles are stored in the app's own files and left out of device backups.
-• NASB 1995 and 2020 can be downloaded through bible.authentic.how and are stored encrypted on the device.
-• If a licensed Bible can no longer be opened, the app offers Download again.
-• The About page explains how each stop, find, battle, miracle and witness is graded by the strength of its evidence.
+• Six complete Bibles now ship in the app: KJV, ASV, Berean Standard, World English, Young's Literal and the 1599 Geneva.
+• Download more translations from the new Translations tab, including NASB 1995 and 2020, and read them offline.
+• Paul's journeys and the apostles' stories are rewritten in plain sentences, and nine stops that were cut off are finished.
+• The About page now opens with why Journeys exists.
 
 ## [0.3.23] - 2026-11-07
 
