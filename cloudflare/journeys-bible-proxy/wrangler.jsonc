@@ -8,19 +8,19 @@
     "enabled": true,
     "traces": { "enabled": true },
   },
-  // Proposed production hostname. Do not uncomment until Sean approves
-  // DNS for authentic.how — this file must not create routes or records.
-  // "routes": [
-  //   { "pattern": "bible.authentic.how/*", "zone_name": "authentic.how" }
-  // ],
+  // Sean approved bible.authentic.how DNS on 2026-11-11.
+  "routes": [
+    { "pattern": "bible.authentic.how", "custom_domain": true }
+  ],
   "vars": {
     "ALLOWED_BIBLE_IDS": "100,2692",
     "UPSTREAM_BASE": "https://api.youversion.com/v1",
     "RATE_LIMIT_MAX": "180",
     "RATE_LIMIT_WINDOW_SECONDS": "60",
     "REQUIRE_APP_CLIENT": "false",
-    "CACHE_TTL_METADATA_SECONDS": "604800",
-    "CACHE_TTL_PASSAGE_SECONDS": "86400",
+    // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
+    "CACHE_TTL_METADATA_SECONDS": "0",
+    "CACHE_TTL_PASSAGE_SECONDS": "0",
   },
   "durable_objects": {
     "bindings": [
@@ -34,18 +34,18 @@
   "env": {
     "staging": {
       "name": "journeys-bible-proxy-staging",
-      // Proposed staging hostname, same approval rule as production:
-      // "routes": [
-      //   { "pattern": "bible-staging.authentic.how/*", "zone_name": "authentic.how" }
-      // ],
+      "routes": [
+        { "pattern": "bible-staging.authentic.how", "custom_domain": true }
+      ],
       "vars": {
         "ALLOWED_BIBLE_IDS": "100,2692",
         "UPSTREAM_BASE": "https://api.youversion.com/v1",
         "RATE_LIMIT_MAX": "180",
         "RATE_LIMIT_WINDOW_SECONDS": "60",
         "REQUIRE_APP_CLIENT": "false",
-        "CACHE_TTL_METADATA_SECONDS": "604800",
-        "CACHE_TTL_PASSAGE_SECONDS": "86400",
+        // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
+        "CACHE_TTL_METADATA_SECONDS": "0",
+        "CACHE_TTL_PASSAGE_SECONDS": "0",
       },
       "durable_objects": {
         "bindings": [

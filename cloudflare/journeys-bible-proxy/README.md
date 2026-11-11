@@ -2,7 +2,7 @@
 
 Cloudflare Worker that proxies the [YouVersion Platform API](https://developers.youversion.com/quick-reference) for the Journeys app so the YouVersion app key never ships in the client.
 
-This package lives at `cloudflare/journeys-bible-proxy` in [SeanLebida/journeys](https://github.com/SeanLebida/journeys). It has not been deployed. Do not run `wrangler deploy` or create DNS until Sean approves.
+This package lives at `cloudflare/journeys-bible-proxy` in [SeanLebida/journeys](https://github.com/SeanLebida/journeys). Staging is `https://bible-staging.authentic.how` (`journeys-bible-proxy-staging`). Production is `https://bible.authentic.how` (`journeys-bible-proxy`).
 
 ## YouVersion API (verified)
 
@@ -22,7 +22,7 @@ Text comes from `GET /v1/bibles/{id}/passages/{passage}` (USFM ids such as `JHN.
 
 Call this Worker the same way you would call YouVersion, under `/v1/...`. Do **not** send `X-YVP-App-Key`. The Worker injects the secret and strips any client-supplied copy.
 
-Proposed production host (DNS not created): `https://bible.authentic.how`
+Production host: `https://bible.authentic.how`. Staging: `https://bible-staging.authentic.how`.
 
 CORS allowlist: `https://localhost`, `capacitor://localhost`. Capacitor Android’s `http://localhost` is **not** included; say if that origin is needed.
 
@@ -60,7 +60,7 @@ GET /v1/bibles/2692/passages/GEN.1?format=html&include_headings=true&include_not
 
 Allowed query: `format=text|html`, `include_headings=true|false`, `include_notes=true|false`. Upstream returns `{ "id", "content", "reference" }`. Headings and notes are only present when `format=html`.
 
-A successful GET may be served from the edge cache (`X-Proxy-Cache: HIT|MISS`). Caching does not increment download counts.
+A successful GET may be served from the edge cache (`X-Proxy-Cache: HIT|MISS`) when the TTL vars are greater than 0. Caching does not increment download counts. Both environments currently set the TTLs to `0` until Sean confirms the Lockman/YouVersion license allows caching.
 
 ### Download-complete signal (required for Lockman counts)
 
@@ -118,20 +118,21 @@ Download counters live in a SQLite Durable Object (`DownloadStats`, one instance
 
 ## Caching and license
 
-YouVersion’s public docs say to [cache responses when possible](https://developers.youversion.com/quick-reference). Successful GETs are cached at the edge (metadata 7 days, passages 1 day). Confirm that Sean’s YouVersion / Lockman license allows this edge cache before production; the license text itself lives in the YouVersion portal, not in the public docs. If it does not, set the TTL vars to `0`.
+YouVersion’s public docs say to [cache responses when possible](https://developers.youversion.com/quick-reference). Edge cache TTLs (`CACHE_TTL_METADATA_SECONDS`, `CACHE_TTL_PASSAGE_SECONDS`) are set to `0` on staging and production until Sean confirms the Lockman/YouVersion license allows caching. The license text lives in the YouVersion portal, not in the public docs. If it does, metadata can be cached for 7 days and passages for 1 day.
 
-## Secrets and deploy (not done in this change)
+## Secrets and deploy
 
 ```sh
 cp .dev.vars.example .dev.vars   # local only; gitignored
-# wrangler secret put YOUVERSION_APP_KEY
-# wrangler secret put ADMIN_TOKEN
-# wrangler deploy --env staging    # only after approval
+# printf '%s' "$YOUVERSION_APP_KEY" | wrangler secret put YOUVERSION_APP_KEY --env staging
+# printf '%s' "$ADMIN_TOKEN" | wrangler secret put ADMIN_TOKEN --env staging
+# wrangler deploy --env staging
+# wrangler deploy
 ```
 
-Do not commit `.dev.vars`. Do not print the app key.
+Do not commit `.dev.vars`. Do not print the app key or admin tokens. Use separate `ADMIN_TOKEN` values for staging and production.
 
-Proposed hostnames (commented in `wrangler.jsonc`, not created):
+Hostnames (Workers custom domains in `wrangler.jsonc`):
 
 - Production: `bible.authentic.how`
 - Staging: `bible-staging.authentic.how`
