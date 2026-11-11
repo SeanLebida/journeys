@@ -31,6 +31,23 @@ function bibleJson(id: number, abbreviation: string) {
 }
 
 describe("allowlist and proxy", () => {
+  test("proxies passages for books whose code starts with a digit (1SA, 2KI, 1JN)", async () => {
+    for (const id of ["1SA.1", "2KI.25", "1JN.5"]) {
+      mock = installMockFetch((request) => {
+        assert.equal(new URL(request.url).pathname, `/v1/bibles/100/passages/${id}`);
+        return Response.json({ id, content: "<p>text</p>" });
+      });
+      const response = await handleRequest(
+        jsonRequest(`/v1/bibles/100/passages/${id}`, { headers: { Origin: "https://localhost" } }),
+        testEnv(),
+        testCtx(),
+      );
+      assert.equal(response.status, 200, id);
+      restoreFetch(mock);
+      mock = null;
+    }
+  });
+
   test("proxies NASB 1995 bible metadata and injects the server app key", async () => {
     mock = installMockFetch((request) => {
       assert.equal(request.url, "https://api.youversion.com/v1/bibles/100");

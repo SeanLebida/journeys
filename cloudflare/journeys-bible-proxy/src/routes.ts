@@ -11,7 +11,7 @@ export type ProxyRoute =
 const BIBLE_PATH =
   /^\/v1\/bibles\/(\d+)(?:\/(books|passages|downloads)(?:\/([^/]+))?)?\/?$/;
 
-const PASSAGE_ID = /^[A-Za-z][A-Za-z0-9._-]{0,63}$/;
+const PASSAGE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/;
 
 const BOOKS_QUERY = new Set(["canon"]);
 const PASSAGE_QUERY = new Set(["format", "include_headings", "include_notes"]);
