@@ -7,8 +7,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        excludeDownloadedBiblesFromBackup()
         return true
+    }
+
+    // Downloaded Bibles live in Library/bibles, which is @capacitor/filesystem
+    // Directory.Library on iOS. They can be fetched again, so they should not
+    // consume iCloud backup space. Excluding the folder also covers files
+    // written into it later.
+    private func excludeDownloadedBiblesFromBackup() {
+        guard let library = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let bibles = library.appendingPathComponent("bibles", isDirectory: true)
+        try? FileManager.default.createDirectory(at: bibles, withIntermediateDirectories: true)
+        var url = bibles
+        var values = URLResourceValues()
+        values.isExcludedFromBackup = true
+        try? url.setResourceValues(values)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
