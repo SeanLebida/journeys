@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   DISMISSED_UPDATE_KEY,
   LAST_SEEN_VERSION_KEY,
@@ -8,8 +8,8 @@ import {
   shouldShowWhatsNew,
   writeKey,
   type WhatsNewStep,
-} from './whatsNew';
-import { checkForUpdate, installedVersion, openStore } from './storeUpdate';
+} from "./whatsNew";
+import { checkForUpdate, installedVersion, openStore } from "./storeUpdate";
 
 export interface ReleaseNoticesProps {
   /** Injected in tests; the app reads the installed build and the store. */
@@ -32,7 +32,7 @@ export function ReleaseNotices({
   steps = WHATS_NEW,
   stepsVersion = WHATS_NEW_VERSION,
 }: ReleaseNoticesProps) {
-  const [version, setVersion] = useState('');
+  const [version, setVersion] = useState("");
   const [step, setStep] = useState<number | null>(null);
   const [offer, setOffer] = useState<string | null>(null);
 
@@ -43,7 +43,8 @@ export function ReleaseNotices({
       if (!live) return;
       setVersion(v);
       const lastSeen = readKey(LAST_SEEN_VERSION_KEY);
-      if (lastSeen === null && v.trim()) writeKey(LAST_SEEN_VERSION_KEY, v.trim());
+      if (lastSeen === null && v.trim())
+        writeKey(LAST_SEEN_VERSION_KEY, v.trim());
       if (shouldShowWhatsNew(v, lastSeen, steps, stepsVersion)) {
         setStep(0);
         return;
@@ -65,7 +66,12 @@ export function ReleaseNotices({
     const s = steps[step];
     const last = step === steps.length - 1;
     return (
-      <div className="release-notice" role="dialog" aria-modal="false" aria-labelledby="whats-new-title">
+      <div
+        className="release-notice"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="whats-new-title"
+      >
         <p className="release-notice__eyebrow">
           What&apos;s new · {step + 1} of {steps.length}
         </p>
@@ -75,11 +81,19 @@ export function ReleaseNotices({
         <p className="release-notice__body">{s.body}</p>
         <div className="release-notice__actions">
           {step > 0 ? (
-            <button type="button" className="release-notice__btn" onClick={() => setStep(step - 1)}>
+            <button
+              type="button"
+              className="release-notice__btn"
+              onClick={() => setStep(step - 1)}
+            >
               Back
             </button>
           ) : (
-            <button type="button" className="release-notice__btn" onClick={finishWalkthrough}>
+            <button
+              type="button"
+              className="release-notice__btn"
+              onClick={finishWalkthrough}
+            >
               Skip
             </button>
           )}
@@ -88,7 +102,7 @@ export function ReleaseNotices({
             className="release-notice__btn release-notice__btn--primary"
             onClick={last ? finishWalkthrough : () => setStep(step + 1)}
           >
-            {last ? 'Done' : 'Next'}
+            {last ? "Done" : "Next"}
           </button>
         </div>
       </div>
@@ -97,11 +111,18 @@ export function ReleaseNotices({
 
   if (offer) {
     return (
-      <div className="release-notice" role="dialog" aria-modal="false" aria-labelledby="update-title">
+      <div
+        className="release-notice"
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="update-title"
+      >
         <h2 id="update-title" className="release-notice__title">
           Update available
         </h2>
-        <p className="release-notice__body">Journeys {offer} is ready with bug fixes and improvements.</p>
+        <p className="release-notice__body">
+          Journeys {offer} is ready with bug fixes and improvements.
+        </p>
         <div className="release-notice__actions">
           <button
             type="button"
