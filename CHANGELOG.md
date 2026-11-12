@@ -2,6 +2,12 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.26] - 2026-11-12
+
+• Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.
+• An interrupted download picks up where it stopped instead of starting over.
+• The What's new screen now shows what changed in each update instead of repeating older notes.
+
 ## [0.3.25] - 2026-11-11
 
 • Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.
