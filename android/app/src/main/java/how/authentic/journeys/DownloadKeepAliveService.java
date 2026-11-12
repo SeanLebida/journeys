@@ -73,15 +73,27 @@ public class DownloadKeepAliveService extends Service {
         if (body != null) lastBody = body;
         ensureChannel();
         Notification notification = buildNotification(lastTitle, lastBody);
-        if (ACTION_UPDATE.equals(intent.getAction()) && running) {
-            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            if (manager != null) manager.notify(NOTIFICATION_ID, notification);
+        if (ACTION_UPDATE.equals(intent.getAction())) {
+            // Updates arrive through startService(): just re-post the notification.
+            // Never promote to foreground from here (that can be refused in the background).
+            if (running) {
+                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                if (manager != null) manager.notify(NOTIFICATION_ID, notification);
+            } else {
+                stopSelf(startId);
+            }
             return START_NOT_STICKY;
         }
-        if (Build.VERSION.SDK_INT >= 34) {
-            startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
-        } else {
-            startForeground(NOTIFICATION_ID, notification);
+        try {
+            if (Build.VERSION.SDK_INT >= 34) {
+                startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+            } else {
+                startForeground(NOTIFICATION_ID, notification);
+            }
+        } catch (RuntimeException e) {
+            // e.g. ForegroundServiceStartNotAllowedException: run without keep-alive.
+            stopSelf(startId);
+            return START_NOT_STICKY;
         }
         running = true;
         acquireWakeLock();
