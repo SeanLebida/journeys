@@ -7,22 +7,80 @@ export interface WhatsNewStep {
   body: string;
 }
 
-export const WHATS_NEW: WhatsNewStep[] = [
+export interface WhatsNewRelease {
+  version: string;
+  steps: WhatsNewStep[];
+}
+
+/**
+ * Newest release first. Every shipped version needs an entry (a test checks the
+ * package.json version), so the walkthrough can't repeat an older release's notes.
+ */
+export const RELEASES: WhatsNewRelease[] = [
   {
-    title: 'The path stays on the map',
-    body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
+    version: '0.3.25',
+    steps: [
+      {
+        title: 'Downloads keep going',
+        body: 'A Bible keeps downloading while you read, and on Android after you leave the app. You get a notice when it is ready.',
+      },
+      {
+        title: 'Downloads pick up where they stopped',
+        body: 'If a download is interrupted, tap Download again and it carries on from the chapters already saved.',
+      },
+    ],
   },
   {
-    title: 'The journey is easier to follow',
-    body: 'Zoom controls clear the header. A close zoom eases back out, and a long leg slows down so the route can be followed.',
+    version: '0.3.24',
+    steps: [
+      {
+        title: 'More Bibles to read',
+        body: 'Download more translations from the Translations tab, including NASB 1995 and NASB 2020, to read offline.',
+      },
+    ],
+  },
+  {
+    version: '0.3.21',
+    steps: [
+      {
+        title: 'The path stays on the map',
+        body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
+      },
+      {
+        title: 'The journey is easier to follow',
+        body: 'Zoom controls clear the header. A close zoom eases back out, and a long leg slows down so the route can be followed.',
+      },
+    ],
   },
 ];
+
+/** Compare dotted versions numerically: negative if a < b. */
+export function compareVersions(a: string, b: string): number {
+  const pa = a.trim().split('.').map((n) => Number.parseInt(n, 10) || 0);
+  const pb = b.trim().split('.').map((n) => Number.parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const d = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (d !== 0) return d;
+  }
+  return 0;
+}
+
+const MAX_STEPS = 5;
+
+/** Steps from every release after lastSeen up to the installed version, newest first. */
+export function stepsSince(lastSeen: string | null, version: string, releases = RELEASES): WhatsNewStep[] {
+  if (lastSeen === null || !version.trim()) return [];
+  return releases
+    .filter((r) => compareVersions(r.version, lastSeen) > 0 && compareVersions(r.version, version) <= 0)
+    .flatMap((r) => r.steps)
+    .slice(0, MAX_STEPS);
+}
 
 export const LAST_SEEN_VERSION_KEY = 'journeys.lastSeenVersion';
 export const DISMISSED_UPDATE_KEY = 'journeys.dismissedUpdate';
 
 /** Show the walkthrough once per installed version, and only if it has steps. */
-export function shouldShowWhatsNew(version: string, lastSeen: string | null, steps = WHATS_NEW): boolean {
+export function shouldShowWhatsNew(version: string, lastSeen: string | null, steps: WhatsNewStep[]): boolean {
   const current = version.trim();
   // A fresh install has nothing saved yet: it's not an update, so no walkthrough.
   return Boolean(current) && steps.length > 0 && lastSeen !== null && lastSeen !== current;
