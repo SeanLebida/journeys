@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import {
   DISMISSED_UPDATE_KEY,
   LAST_SEEN_VERSION_KEY,
-  WHATS_NEW,
   readKey,
   shouldShowWhatsNew,
+  stepsSince,
   writeKey,
   type WhatsNewStep,
 } from './whatsNew';
@@ -15,6 +15,7 @@ export interface ReleaseNoticesProps {
   getVersion?: () => Promise<string>;
   getUpdate?: (dismissed: string | null) => Promise<string | null>;
   onOpenStore?: () => Promise<unknown>;
+  /** Overrides the steps worked out from the installed and last-seen versions. */
   steps?: WhatsNewStep[];
 }
 
@@ -26,10 +27,11 @@ export function ReleaseNotices({
   getVersion = installedVersion,
   getUpdate = checkForUpdate,
   onOpenStore = openStore,
-  steps = WHATS_NEW,
+  steps: stepsOverride,
 }: ReleaseNoticesProps) {
   const [version, setVersion] = useState('');
   const [step, setStep] = useState<number | null>(null);
+  const [steps, setSteps] = useState<WhatsNewStep[]>([]);
   const [offer, setOffer] = useState<string | null>(null);
 
   useEffect(() => {
@@ -40,17 +42,21 @@ export function ReleaseNotices({
       setVersion(v);
       const lastSeen = readKey(LAST_SEEN_VERSION_KEY);
       if (lastSeen === null && v.trim()) writeKey(LAST_SEEN_VERSION_KEY, v.trim());
-      if (shouldShowWhatsNew(v, lastSeen, steps)) {
+      const pending = stepsOverride ?? stepsSince(lastSeen, v);
+      if (shouldShowWhatsNew(v, lastSeen, pending)) {
+        setSteps(pending);
         setStep(0);
         return;
       }
+      // Nothing new to say for this update: remember it so older notes never come back.
+      if (lastSeen !== null && v.trim() && lastSeen !== v.trim()) writeKey(LAST_SEEN_VERSION_KEY, v.trim());
       const o = await getUpdate(readKey(DISMISSED_UPDATE_KEY));
       if (live) setOffer(o);
     })();
     return () => {
       live = false;
     };
-  }, [getVersion, getUpdate, steps]);
+  }, [getVersion, getUpdate, stepsOverride]);
 
   const finishWalkthrough = () => {
     writeKey(LAST_SEEN_VERSION_KEY, version);
