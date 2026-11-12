@@ -30,8 +30,17 @@ public class DownloadKeepAlivePlugin extends Plugin {
         if (plugin == null || plugin.getBridge() == null) return;
         WebView webView = plugin.getBridge().getWebView();
         if (webView == null) return;
-        webView.onResume();
-        webView.resumeTimers();
+        // WebView methods must run on the main thread; plugin calls arrive on
+        // Capacitor's background thread, and calling from there kills the app.
+        Runnable resume = () -> {
+            webView.onResume();
+            webView.resumeTimers();
+        };
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            resume.run();
+        } else {
+            new Handler(Looper.getMainLooper()).post(resume);
+        }
     }
 
     @Override
