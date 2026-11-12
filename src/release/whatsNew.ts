@@ -18,7 +18,7 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
-    version: '0.3.25',
+    version: '0.3.26',
     steps: [
       {
         title: 'Downloads keep going',
@@ -28,7 +28,15 @@ export const RELEASES: WhatsNewRelease[] = [
         title: 'Picks up where it stopped',
         body: 'If a download is interrupted, the chapters already saved stay saved. Tap Download to pick up where it stopped.',
       },
+      {
+        title: "What's new is up to date",
+        body: 'After each update, this screen now shows what changed in that version, not the same notes again.',
+      },
     ],
+  },
+  {
+    version: '0.3.25',
+    steps: [],
   },
   {
     version: '0.3.24',
