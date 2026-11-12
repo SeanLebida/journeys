@@ -1,31 +1,41 @@
 /**
- * What's new walkthrough. One entry per release that has something to say;
- * each step is one screen. Update this list in the PR that ships the change.
+ * What's new walkthrough for one release; each step is one screen.
+ * Update the steps and WHATS_NEW_VERSION in the PR that ships the change.
+ * Other versions show no walkthrough, so old steps never come back.
  */
 export interface WhatsNewStep {
   title: string;
   body: string;
 }
 
+export const WHATS_NEW_VERSION = '0.3.25';
+
 export const WHATS_NEW: WhatsNewStep[] = [
   {
-    title: 'The path stays on the map',
-    body: 'With no signal, the journey path, stops, and your place on the route still show. Shaded relief is included.',
+    title: 'Downloads keep going',
+    body: "A Bible download keeps going while you read. On Android it carries on after you leave the app and tells you when it's ready.",
   },
   {
-    title: 'The journey is easier to follow',
-    body: 'Zoom controls clear the header. A close zoom eases back out, and a long leg slows down so the route can be followed.',
+    title: 'Picks up where it stopped',
+    body: 'If a download is interrupted, the chapters already saved stay saved. Tap Download to pick up where it stopped.',
   },
 ];
 
 export const LAST_SEEN_VERSION_KEY = 'journeys.lastSeenVersion';
 export const DISMISSED_UPDATE_KEY = 'journeys.dismissedUpdate';
 
-/** Show the walkthrough once per installed version, and only if it has steps. */
-export function shouldShowWhatsNew(version: string, lastSeen: string | null, steps = WHATS_NEW): boolean {
+/** Show the walkthrough once, on the version it was written for, and only if it has steps. */
+export function shouldShowWhatsNew(
+  version: string,
+  lastSeen: string | null,
+  steps = WHATS_NEW,
+  forVersion = WHATS_NEW_VERSION,
+): boolean {
   const current = version.trim();
   // A fresh install has nothing saved yet: it's not an update, so no walkthrough.
-  return Boolean(current) && steps.length > 0 && lastSeen !== null && lastSeen !== current;
+  return (
+    Boolean(current) && current === forVersion && steps.length > 0 && lastSeen !== null && lastSeen !== current
+  );
 }
 
 export function readKey(key: string): string | null {

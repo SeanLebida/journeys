@@ -3,6 +3,7 @@ import {
   DISMISSED_UPDATE_KEY,
   LAST_SEEN_VERSION_KEY,
   WHATS_NEW,
+  WHATS_NEW_VERSION,
   readKey,
   shouldShowWhatsNew,
   writeKey,
@@ -16,6 +17,8 @@ export interface ReleaseNoticesProps {
   getUpdate?: (dismissed: string | null) => Promise<string | null>;
   onOpenStore?: () => Promise<unknown>;
   steps?: WhatsNewStep[];
+  /** The version the steps were written for; other versions show none. */
+  stepsVersion?: string;
 }
 
 /**
@@ -27,6 +30,7 @@ export function ReleaseNotices({
   getUpdate = checkForUpdate,
   onOpenStore = openStore,
   steps = WHATS_NEW,
+  stepsVersion = WHATS_NEW_VERSION,
 }: ReleaseNoticesProps) {
   const [version, setVersion] = useState('');
   const [step, setStep] = useState<number | null>(null);
@@ -40,7 +44,7 @@ export function ReleaseNotices({
       setVersion(v);
       const lastSeen = readKey(LAST_SEEN_VERSION_KEY);
       if (lastSeen === null && v.trim()) writeKey(LAST_SEEN_VERSION_KEY, v.trim());
-      if (shouldShowWhatsNew(v, lastSeen, steps)) {
+      if (shouldShowWhatsNew(v, lastSeen, steps, stepsVersion)) {
         setStep(0);
         return;
       }
@@ -50,7 +54,7 @@ export function ReleaseNotices({
     return () => {
       live = false;
     };
-  }, [getVersion, getUpdate, steps]);
+  }, [getVersion, getUpdate, steps, stepsVersion]);
 
   const finishWalkthrough = () => {
     writeKey(LAST_SEEN_VERSION_KEY, version);

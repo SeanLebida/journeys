@@ -23,11 +23,11 @@ describe('updateOffer', () => {
 
 describe('shouldShowWhatsNew', () => {
   it('shows once per installed version, and not without steps', () => {
-    expect(shouldShowWhatsNew('0.3.18', null, steps)).toBe(false);
-    expect(shouldShowWhatsNew('0.3.18', '0.3.17', steps)).toBe(true);
-    expect(shouldShowWhatsNew('0.3.18', '0.3.18', steps)).toBe(false);
-    expect(shouldShowWhatsNew('0.3.18', null, [])).toBe(false);
-    expect(shouldShowWhatsNew('', null, steps)).toBe(false);
+    expect(shouldShowWhatsNew('0.3.18', null, steps, '0.3.18')).toBe(false);
+    expect(shouldShowWhatsNew('0.3.18', '0.3.17', steps, '0.3.18')).toBe(true);
+    expect(shouldShowWhatsNew('0.3.18', '0.3.18', steps, '0.3.18')).toBe(false);
+    expect(shouldShowWhatsNew('0.3.18', null, [], '0.3.18')).toBe(false);
+    expect(shouldShowWhatsNew('', null, steps, '0.3.18')).toBe(false);
   });
 });
 
@@ -35,7 +35,7 @@ describe('ReleaseNotices', () => {
   it('walks through What is new after an update and remembers it was seen', async () => {
     localStorage.setItem(LAST_SEEN_VERSION_KEY, '0.3.17');
     const getUpdate = vi.fn().mockResolvedValue(null);
-    render(<ReleaseNotices getVersion={version('0.3.18')} getUpdate={getUpdate} steps={steps} />);
+    render(<ReleaseNotices getVersion={version('0.3.18')} getUpdate={getUpdate} steps={steps} stepsVersion="0.3.18" />);
     expect(await screen.findByRole('heading', { name: 'First thing' })).toBeTruthy();
     expect(screen.getByText(/1 of 2/)).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
@@ -48,7 +48,7 @@ describe('ReleaseNotices', () => {
 
   it('skips the walkthrough on a fresh install but remembers the version', async () => {
     const getUpdate = vi.fn().mockResolvedValue(null);
-    render(<ReleaseNotices getVersion={version('0.3.18')} getUpdate={getUpdate} steps={steps} />);
+    render(<ReleaseNotices getVersion={version('0.3.18')} getUpdate={getUpdate} steps={steps} stepsVersion="0.3.18" />);
     await waitFor(() => expect(getUpdate).toHaveBeenCalled());
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(localStorage.getItem(LAST_SEEN_VERSION_KEY)).toBe('0.3.18');
@@ -62,7 +62,7 @@ describe('ReleaseNotices', () => {
         getVersion={version('0.3.18')}
         getUpdate={(d) => Promise.resolve(updateOffer({ updateAvailability: 2, availableVersionName: '0.3.19' }, d))}
         onOpenStore={onOpenStore}
-        steps={steps}
+        steps={steps} stepsVersion="0.3.18"
       />,
     );
     expect(await screen.findByText(/0\.3\.19 is ready with bug fixes/)).toBeTruthy();
@@ -75,7 +75,7 @@ describe('ReleaseNotices', () => {
 
   it('shows nothing on the web, where there is no installed version or store', async () => {
     const getUpdate = vi.fn().mockResolvedValue(null);
-    const { container } = render(<ReleaseNotices getVersion={version('')} getUpdate={getUpdate} steps={steps} />);
+    const { container } = render(<ReleaseNotices getVersion={version('')} getUpdate={getUpdate} steps={steps} stepsVersion="0.3.18" />);
     await waitFor(() => expect(getUpdate).toHaveBeenCalled());
     expect(container.innerHTML).toBe('');
   });
