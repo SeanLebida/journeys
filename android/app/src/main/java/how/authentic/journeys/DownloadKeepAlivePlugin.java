@@ -30,8 +30,17 @@ public class DownloadKeepAlivePlugin extends Plugin {
         if (plugin == null || plugin.getBridge() == null) return;
         WebView webView = plugin.getBridge().getWebView();
         if (webView == null) return;
-        webView.onResume();
-        webView.resumeTimers();
+        // WebView methods must run on the main thread; plugin calls arrive on
+        // Capacitor's background thread, and calling from there kills the app.
+        Runnable resume = () -> {
+            webView.onResume();
+            webView.resumeTimers();
+        };
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            resume.run();
+        } else {
+            new Handler(Looper.getMainLooper()).post(resume);
+        }
     }
 
     @Override
@@ -56,9 +65,15 @@ public class DownloadKeepAlivePlugin extends Plugin {
 
     @PluginMethod
     public void stop(PluginCall call) {
-        Intent intent = new Intent(getContext(), DownloadKeepAliveService.class);
-        intent.setAction(DownloadKeepAliveService.ACTION_STOP);
-        getContext().startService(intent);
+        if (DownloadKeepAliveService.isRunning()) {
+            Intent intent = new Intent(getContext(), DownloadKeepAliveService.class);
+            intent.setAction(DownloadKeepAliveService.ACTION_STOP);
+            try {
+                getContext().startService(intent);
+            } catch (RuntimeException ignored) {
+                // Nothing to stop if the system refuses the intent.
+            }
+        }
         call.resolve();
     }
 
@@ -78,10 +93,24 @@ public class DownloadKeepAlivePlugin extends Plugin {
         intent.setAction(action);
         intent.putExtra(DownloadKeepAliveService.EXTRA_TITLE, call.getString("title", "Downloading"));
         intent.putExtra(DownloadKeepAliveService.EXTRA_BODY, call.getString("body", ""));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            getContext().startForegroundService(intent);
-        } else {
-            getContext().startService(intent);
+        boolean update = DownloadKeepAliveService.ACTION_UPDATE.equals(action);
+        try {
+            if (update) {
+                // Every startForegroundService() call obliges the service to call
+                // startForeground() within a few seconds, or Android kills the app.
+                // Progress updates only re-post the notification, so they go through
+                // plain startService(), and only while the service is already running.
+                if (DownloadKeepAliveService.isRunning()) {
+                    getContext().startService(intent);
+                }
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                getContext().startForegroundService(intent);
+            } else {
+                getContext().startService(intent);
+            }
+        } catch (RuntimeException ignored) {
+            // Keep-alive is best effort (e.g. a start refused while in the background);
+            // the download itself keeps running in the WebView.
         }
     }
 }
