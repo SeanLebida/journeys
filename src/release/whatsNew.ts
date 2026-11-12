@@ -22,11 +22,11 @@ export const RELEASES: WhatsNewRelease[] = [
     steps: [
       {
         title: 'Downloads keep going',
-        body: 'A Bible keeps downloading while you read, and on Android after you leave the app. You get a notice when it is ready.',
+        body: "A Bible download keeps going while you read. On Android it carries on after you leave the app and tells you when it's ready.",
       },
       {
-        title: 'Downloads pick up where they stopped',
-        body: 'If a download is interrupted, tap Download again and it carries on from the chapters already saved.',
+        title: 'Picks up where it stopped',
+        body: 'If a download is interrupted, the chapters already saved stay saved. Tap Download to pick up where it stopped.',
       },
     ],
   },
