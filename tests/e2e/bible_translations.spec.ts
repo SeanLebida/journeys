@@ -14,6 +14,7 @@ const GENESIS_1_1: Record<string, string> = {
 test('every bundled translation reads Genesis 1 and the choice persists', async ({ page }) => {
   await page.goto('/bible?ref=Genesis%201%3A1');
   await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
+  await page.route('https://bible.authentic.how/**', (route) => route.abort('internetdisconnected'));
   const chip = page.getByRole('button', { name: /^Translation:/ });
   await expect(chip).toBeVisible();
   const sheet = page.getByRole('dialog', { name: 'Bible versions' });

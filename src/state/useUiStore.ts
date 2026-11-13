@@ -36,6 +36,8 @@ interface UiState {
   streamed: StreamedTranslation[];
   /** Last few translations the reader switched to, newest first (the version picker's "Recently used"). */
   recentTranslations: TranslationId[];
+  /** Bible languages the reader picked in the version picker, newest first. */
+  recentLanguages: string[];
   /**
    * The timeline's fold-out chart effect. On by default, and independently
    * overridden by `prefers-reduced-motion` — this is the explicit opt-out for a
@@ -50,6 +52,7 @@ interface UiState {
   removeDownloaded: (id: TranslationId) => void;
   addStreamed: (t: StreamedTranslation) => void;
   removeStreamed: (id: TranslationId) => void;
+  addRecentLanguage: (tag: string) => void;
   setTimelineFold: (on: boolean) => void;
 }
 
@@ -61,6 +64,7 @@ export const useUiStore = create<UiState>()(
       downloaded: [],
       streamed: [],
       recentTranslations: [],
+      recentLanguages: [],
       theme: 'system',
       locale: DEFAULT_LOCALE,
       translation: DEFAULT_TRANSLATION,
@@ -85,6 +89,7 @@ export const useUiStore = create<UiState>()(
           translation:
             s.translation === id && !s.downloaded.some((d) => d.id === id) ? DEFAULT_TRANSLATION : s.translation,
         })),
+      addRecentLanguage: (tag) => set((s) => ({ recentLanguages: [tag, ...s.recentLanguages.filter((t) => t !== tag)].slice(0, 4) })),
       setTimelineFold: (timelineFold) => set({ timelineFold }),
     }),
     {
