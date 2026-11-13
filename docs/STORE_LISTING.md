@@ -74,8 +74,8 @@ Journeys works in church, in the classroom, on flights, or in the field:
 ◆ PRIVACY FIRST
 • No data collected.
 • No data shared.
-• No tracking or third-party ad networks.
-• Completely free of advertisements.
+• No account, no analytics, no ads, no tracking.
+• Your notes, settings, and quiz progress stay on your device.
 
 Discover the ancient world as it was traveled. Explore Journeys today!
 ```
