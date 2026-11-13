@@ -1,0 +1,7 @@
+# Copy to .dev.vars for local wrangler dev. Never commit .dev.vars.
+# Set these with: wrangler secret put YOUVERSION_APP_KEY
+#                 wrangler secret put ADMIN_TOKEN
+# (not in this change — do not deploy yet)
+YOUVERSION_APP_KEY=
+ADMIN_TOKEN=
+RATE_LIMIT_SALT=
