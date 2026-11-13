@@ -104,6 +104,7 @@ body:has(dialog.vp[open]) {
 }
 .vp__text-btn {
   min-height: 44px;
+  padding: 0 0.25rem;
   color: var(--link);
   text-decoration: underline;
 }
@@ -126,10 +127,10 @@ body:has(dialog.vp[open]) {
   min-width: 0;
 }
 .vp__field {
-  flex: 1 1 10rem;
+  flex: 0 1 9rem;
 }
 .vp__field--grow {
-  flex: 1 1 14rem;
+  flex: 1 1 9rem;
 }
 .vp__field-label {
   font-size: 0.72rem;
@@ -252,7 +253,7 @@ body:has(dialog.vp[open]) {
   flex-shrink: 0;
   display: inline-grid;
   place-items: center;
-  width: 4.6rem;
+  width: 5.4rem;
   min-height: 2.4rem;
   padding: 0.2rem 0.3rem;
   border: 1px solid var(--border);
@@ -263,6 +264,7 @@ body:has(dialog.vp[open]) {
   font-weight: 700;
   letter-spacing: 0.02em;
   overflow-wrap: anywhere;
+  word-break: keep-all;
   text-align: center;
   line-height: 1.15;
 }
@@ -378,4 +380,81 @@ body:has(dialog.vp[open]) {
 .vp-chip:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
+}
+
+.vp__section-note {
+  margin-top: 0;
+}
+.vp-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 0.5rem;
+  margin: 0.75rem 0 0;
+  padding: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+.vp-note--quiet {
+  border-left-color: var(--c-high);
+}
+.vp-row__name:dir(rtl) {
+  text-align: right;
+}
+
+.vp-lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.vp-lang-btn > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vp-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.4rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.vp-lang__name {
+  flex: 1;
+  min-width: 0;
+}
+.vp-lang__tag {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.vp-lang--current .vp-lang__name {
+  font-weight: 700;
+}
+.vp-tag--plain {
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+.vp-detail__copyright--loading {
+  color: var(--text-muted);
+  font-style: italic;
+}
+/* Long lists: let the browser skip layout for rows far off screen. */
+.vp__list > li {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 56px;
 }

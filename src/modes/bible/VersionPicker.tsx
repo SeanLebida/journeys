@@ -1,30 +1,31 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { App } from '@capacitor/app';
-import { matchesQuery, type BibleCatalog, type CatalogVersion } from '../../content/bibleCatalog';
-import { useBibleCatalog } from '../../content/useBibleCatalog';
+import { fetchCatalog, type DownloadableTranslation } from '../../content/catalog';
 import { licensedDownloadNote } from '../../content/licensedNote';
+import { closeDownloadedDb } from '../../content/useBible';
 import type { TranslationId } from '../../content/translations';
+import { deleteBibleBytes } from '../../platform/bibleStore';
 import { isNative } from '../../platform/bridge';
+import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../state/useBibleDownloads';
 import { useUiStore } from '../../state/useUiStore';
+import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
+import { useVersionNotice } from './useVersionNotice';
+import { builtinRows, downloadedRow, helloAoRow, languageOptions, rowMatches, readableFirst, streamedRow, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
 import '../../styles/version-picker.css';
 
 const PAGE = 60;
+const LANGUAGE_PAGE = 100;
+const LANGUAGE_BUTTON = '\u0000language';
 
-const SOURCE_LABEL: Record<CatalogVersion['source'], string> = {
+const SOURCE_LABEL: Record<VersionRow['source'], string> = {
   builtin: 'Built into Journeys',
   helloao: "AO Lab's Free Use Bible API",
   youversion: 'YouVersion, used by permission',
 };
 
-const COVERAGE_LABEL = {
-  full: 'Full Bible',
-  nt: 'New Testament',
-  partial: 'Partial',
-} as const;
-
-function progressLabel(v: CatalogVersion): string | null {
-  const p = v.progress;
+function progressLabel(r: VersionRow): string | null {
+  const p = r.progress;
   if (!p) return null;
   if (p.phase === 'installing') return 'Installing…';
   if (p.phase === 'downloading') return `Downloading ${(p.receivedBytes / 1_048_576).toFixed(1)} MB…`;
@@ -35,15 +36,20 @@ function progressLabel(v: CatalogVersion): string | null {
   return 'Starting…';
 }
 
-/** One short line under the name: where it stands for this reader. */
-function rowMeta(v: CatalogVersion): string {
-  const progress = progressLabel(v);
+/** One short line under the name. Reading online is the normal case, so it says least. */
+function rowMeta(r: VersionRow, offline: boolean): string {
+  const progress = progressLabel(r);
   if (progress) return progress;
-  if (v.source === 'builtin') return `Built in · ${v.license}`;
-  if (v.installed) return 'On this device';
-  const who = v.publisher ?? v.license;
-  return v.coverage && v.coverage !== 'full' ? `${who} · ${COVERAGE_LABEL[v.coverage]}` : who;
+  if (r.source === 'builtin') return `Built in · ${r.license}`;
+  if (r.state === 'device') return 'On this device';
+  if (r.state === 'download') return `${r.license} · Download to read`;
+  if (r.state === 'unavailable') return r.publisher ?? '';
+  const who = r.publisher ?? 'Reads online';
+  return offline ? `${who} · Needs a connection` : who;
 }
+
+// HelloAO's list is ~1 MB; fetch it once per session.
+let helloaoPromise: Promise<DownloadableTranslation[]> | null = null;
 
 /**
  * The Bible header's version chip and the version sheet it opens: search, a
@@ -95,16 +101,84 @@ export function VersionPicker({ current, label, name, onRead }: { current: Trans
 }
 
 function VersionSheet({ current, onClose, onRead }: { current: TranslationId; onClose: () => void; onRead: (id: TranslationId) => void }) {
-  const catalog = useBibleCatalog();
+  const downloaded = useUiStore((s) => s.downloaded);
+  const streamed = useUiStore((s) => s.streamed);
   const recent = useUiStore((s) => s.recentTranslations);
+  const active = useBibleDownloads((s) => s.active);
+  const failed = useBibleDownloads((s) => s.failed);
   const dialog = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const [query, setQuery] = useState('');
-  const currentVersion = catalog.versions.find((v) => v.id === current);
-  const [language, setLanguage] = useState(currentVersion?.language ?? 'eng');
+  const currentStreamed = streamed.find((s) => s.id === current);
+  const [language, setLanguage] = useState(currentStreamed?.languageTag ?? 'en');
+  const yv = useYouVersionCatalog({ language, query, readableOnly: false });
+  const [hao, setHao] = useState<{ items: DownloadableTranslation[]; error: string | null }>({ items: [], error: null });
+  const [haoAttempt, setHaoAttempt] = useState(0);
   const [detailId, setDetailId] = useState<string | null>(null);
+  const [choosingLanguage, setChoosingLanguage] = useState(false);
+  const [limit, setLimit] = useState(PAGE);
+  const recentLanguages = useUiStore((s) => s.recentLanguages);
+  const chooseLanguage = (tag: string) => {
+    setLanguage(tag);
+    setLimit(PAGE);
+    useUiStore.getState().addRecentLanguage(tag);
+    returnFocus.current = LANGUAGE_BUTTON;
+    setChoosingLanguage(false);
+  };
   const returnFocus = useRef<string | null>(null);
-  const detail = detailId ? catalog.versions.find((v) => v.id === detailId) : undefined;
+  const [online, setOnline] = useState(() => navigator.onLine !== false);
+
+  useEffect(() => {
+    const up = () => setOnline(true);
+    const down = () => setOnline(false);
+    window.addEventListener('online', up);
+    window.addEventListener('offline', down);
+    return () => {
+      window.removeEventListener('online', up);
+      window.removeEventListener('offline', down);
+    };
+  }, []);
+
+  useEffect(() => {
+    let live = true;
+    helloaoPromise ??= fetchCatalog();
+    helloaoPromise
+      .then((items) => live && setHao({ items, error: null }))
+      .catch((e: Error) => {
+        helloaoPromise = null;
+        if (live) setHao({ items: [], error: e.message });
+      });
+    return () => {
+      live = false;
+    };
+  }, [haoAttempt]);
+
+  const { options: languages, haoKey } = useMemo(() => languageOptions(yv.languages, hao.items), [yv.languages, hao.items]);
+  const languageName = languages.find((l) => l.key === language)?.name ?? language;
+
+  const withStatus = (r: VersionRow): VersionRow => ({ ...r, progress: active[r.id]?.progress, error: failed[r.id] });
+  const onDevice = useMemo(() => {
+    const rows = [...builtinRows(), ...downloaded.map(downloadedRow)];
+    const ids = new Set(rows.map((r) => r.id));
+    // Downloads in progress sit with what's on this device.
+    for (const id of Object.keys(active)) {
+      if (!active[id] || ids.has(id)) continue;
+      const v = yv.all.find((x) => x.id === id);
+      const t = hao.items.find((x) => x.id === id);
+      if (v) rows.push(youVersionRow(v, languageName));
+      else if (t) rows.push(helloAoRow(t, haoKey(t)));
+    }
+    return rows.map(withStatus);
+  }, [downloaded, active, failed, yv.all, hao.items]);
+  const deviceIds = new Set(onDevice.map((r) => r.id));
+  const byId = new Map<string, VersionRow>([...streamed.map(streamedRow), ...onDevice].map((r) => [r.id, r]));
+  const recentRows = recent.map((id) => byId.get(id)).filter((r): r is VersionRow => Boolean(r)).slice(0, 3);
+  const youVersion = readableFirst(yv.versions.filter((v) => !deviceIds.has(v.id)).map((v) => withStatus(youVersionRow(v, languageName))));
+  const free = hao.items.filter((t) => !deviceIds.has(t.id) && haoKey(t) === language).map((t) => withStatus(helloAoRow(t, language))).filter((r) => rowMatches(r, query));
+  const searching = query.trim() !== '';
+  const deviceShown = searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice;
+  const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
+  const detail = detailId ? all.find((r) => r.id === detailId) : undefined;
 
   useEffect(() => {
     const d = dialog.current;
@@ -118,6 +192,9 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
     if (detailId) {
       returnFocus.current = detailId;
       setDetailId(null);
+    } else if (choosingLanguage) {
+      returnFocus.current = LANGUAGE_BUTTON;
+      setChoosingLanguage(false);
     } else onClose();
   };
   useEffect(() => {
@@ -128,20 +205,67 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
 
   // Put focus where the reader was: the row they came from, or the details' Back button.
   useEffect(() => {
-    if (detailId) {
+    if (choosingLanguage) {
+      dialog.current?.querySelector<HTMLElement>('.vp-lang__search')?.focus();
+    } else if (detailId) {
       dialog.current?.querySelector<HTMLElement>('.vp__back')?.focus();
     } else if (returnFocus.current) {
       const id = returnFocus.current;
       returnFocus.current = null;
-      dialog.current?.querySelector<HTMLElement>(`[data-version="${CSS.escape(id)}"]`)?.focus();
+      const selector = id === LANGUAGE_BUTTON ? '.vp-lang-btn' : `[data-version="${CSS.escape(id)}"]`;
+      dialog.current?.querySelector<HTMLElement>(selector)?.focus();
     }
-  }, [detailId]);
+  }, [detailId, choosingLanguage]);
+
+  const read = (r: VersionRow) => {
+    if (r.state === 'online' && r.yv) readYouVersionOnline(r.yv);
+    onRead(r.id as TranslationId);
+  };
+  const pick = (r: VersionRow) => ((r.state === 'download' && !r.progress) || r.state === 'unavailable' ? setDetailId(r.id) : read(r));
+  const actions: Actions = {
+    read,
+    download: (r) => {
+      if (r.yv) void downloadYouVersion(r.yv);
+      else if (r.hao) void startFreeDownload(r.hao);
+    },
+    cancel: (r) => cancelDownload(r.id),
+    remove: async (r) => {
+      useUiStore.getState().removeDownloaded(r.id as TranslationId);
+      await closeDownloadedDb(r.id as TranslationId);
+      await deleteBibleBytes(r.id).catch(() => undefined);
+    },
+  };
+
+  let banner: ReactNode = null;
+  if (!online) banner = <p className="vp-banner" role="status">You&apos;re offline. Versions on this device still open; online versions need a connection.</p>;
+  else if (yv.source === 'fallback' && yv.status === 'ready')
+    banner = (
+      <p className="vp-banner" role="status">
+        Couldn&apos;t load the full YouVersion list, so only a few versions show.{' '}
+        <button type="button" className="vp__text-btn" onClick={yv.refresh}>Try again</button>
+      </p>
+    );
+  else if (yv.stale && yv.source === 'cache')
+    banner = (
+      <p className="vp-banner" role="status">
+        Showing the list saved on this device{yv.fetchedAt ? ` (${new Date(yv.fetchedAt).toLocaleDateString()})` : ''}.{' '}
+        <button type="button" className="vp__text-btn" onClick={yv.refresh}>Refresh</button>
+      </p>
+    );
 
   return (
     <dialog
       ref={dialog}
       className="vp"
       aria-labelledby={titleId}
+      onKeyDown={(e) => {
+        // Handle Escape here rather than in `cancel`: Chrome stops letting a
+        // dialog cancel `cancel` twice without a click in between.
+        if (e.key !== 'Escape') return;
+        e.preventDefault();
+        e.stopPropagation();
+        back.current();
+      }}
       onCancel={(e) => {
         e.preventDefault();
         back.current();
@@ -152,139 +276,117 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
       }}
     >
       <div className="vp__panel">
-        {detail ? (
-          <VersionDetail
-            version={detail}
-            current={current}
-            titleId={titleId}
-            catalog={catalog}
+        {choosingLanguage && !detail ? (
+          <LanguageList
+            options={languages}
+            current={language}
+            recent={recentLanguages}
+            deviceTag={typeof navigator !== 'undefined' ? navigator.language : 'en'}
+            onPick={chooseLanguage}
             onBack={() => back.current()}
             onClose={onClose}
-            onRead={onRead}
           />
+        ) : detail ? (
+          <VersionDetail row={detail} current={current} titleId={titleId} offline={!online} actions={actions} onBack={() => back.current()} onClose={onClose} />
         ) : (
-          <VersionList
-            catalog={catalog}
-            current={current}
-            recent={recent}
-            titleId={titleId}
-            query={query}
-            setQuery={setQuery}
-            language={language}
-            setLanguage={setLanguage}
-            onClose={onClose}
-            onPick={(v) => (v.installed ? onRead(v.id as TranslationId) : setDetailId(v.id))}
-            onInfo={(v) => setDetailId(v.id)}
-          />
+          <>
+            <header className="vp__head">
+              <h2 id={titleId} className="vp__title">Bible versions</h2>
+              <button type="button" className="vp__icon-btn" aria-label="Close" onClick={onClose}>
+                ✕
+              </button>
+            </header>
+            <div className="vp__controls">
+              <label className="vp__field vp__field--grow">
+                <span className="vp__field-label">Search</span>
+                <input type="search" className="vp__input" value={query} placeholder="Name, abbreviation or publisher" onChange={(e) => setQuery(e.target.value)} />
+              </label>
+              <div className="vp__field">
+                <span className="vp__field-label" id={`${titleId}-lang`}>
+                  Language
+                </span>
+                <button type="button" className="vp__input vp-lang-btn" aria-labelledby={`${titleId}-lang ${titleId}-lang-value`} onClick={() => setChoosingLanguage(true)}>
+                  <span id={`${titleId}-lang-value`} dir="auto">
+                    {languageName}
+                  </span>
+                  <span aria-hidden="true">▾</span>
+                </button>
+              </div>
+            </div>
+            <div className="vp__scroll">
+              {banner}
+              {!searching && recentRows.length > 0 && <Section title="Recently used" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
+              <Section title="On this device" rows={deviceShown} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} empty={searching ? 'Nothing on this device matches.' : undefined} />
+              <Section
+                title={`${languageName} · Read online`}
+                note="From YouVersion. Chapters load as you read."
+                rows={youVersion.slice(0, limit)}
+                current={current}
+                offline={!online}
+                onPick={pick}
+                onInfo={(r) => setDetailId(r.id)}
+                empty={yv.status === 'loading' ? 'Loading versions…' : searching ? 'No YouVersion versions match.' : 'YouVersion has no versions in this language for Journeys yet.'}
+              />
+              {youVersion.length > limit && (
+                <p className="vp__hint">
+                  Showing {limit} of {youVersion.length}.{' '}
+                  <button type="button" className="vp__text-btn" onClick={() => setLimit((n) => n + PAGE)}>
+                    Show more
+                  </button>
+                </p>
+              )}
+              {(free.length > 0 || hao.error) && (
+                <Section
+                  title={`${languageName} · Free to download`}
+                  note="From AO Lab's Free Use Bible API. Download once, then read offline."
+                  rows={free.slice(0, PAGE)}
+                  current={current}
+                  offline={!online}
+                  onPick={pick}
+                  onInfo={(r) => setDetailId(r.id)}
+                  empty={hao.error ? ' ' : undefined}
+                />
+              )}
+              {hao.error && (
+                <p role="alert" className="vp__hint">
+                  {online ? hao.error : 'Connect to the internet to see free downloads.'}{' '}
+                  <button type="button" className="vp__text-btn" onClick={() => setHaoAttempt((n) => n + 1)}>
+                    Try again
+                  </button>
+                </p>
+              )}
+            </div>
+          </>
         )}
       </div>
     </dialog>
   );
 }
 
-function VersionList({
-  catalog,
-  current,
-  recent,
-  titleId,
-  query,
-  setQuery,
-  language,
-  setLanguage,
-  onClose,
-  onPick,
-  onInfo,
-}: {
-  catalog: BibleCatalog;
-  current: TranslationId;
-  recent: TranslationId[];
-  titleId: string;
-  query: string;
-  setQuery: (q: string) => void;
-  language: string;
-  setLanguage: (l: string) => void;
-  onClose: () => void;
-  onPick: (v: CatalogVersion) => void;
-  onInfo: (v: CatalogVersion) => void;
-}) {
-  const searching = query.trim() !== '';
-  const byId = useMemo(() => new Map(catalog.versions.map((v) => [v.id, v])), [catalog.versions]);
-  const recentRows = recent
-    .map((id) => byId.get(id))
-    .filter((v): v is CatalogVersion => Boolean(v))
-    .slice(0, 3);
-  const onDevice = catalog.versions.filter((v) => v.installed || v.progress);
-  const more = catalog.versions.filter((v) => (searching ? matchesQuery(v, query) : !v.installed && !v.progress && v.language === language));
-  const languageName = catalog.languages.find((l) => l.code === language)?.name ?? 'this language';
-
-  return (
-    <>
-      <header className="vp__head">
-        <h2 id={titleId} className="vp__title">
-          Bible versions
-        </h2>
-        <button type="button" className="vp__icon-btn" aria-label="Close" onClick={onClose}>
-          ✕
-        </button>
-      </header>
-      <div className="vp__controls">
-        <label className="vp__field vp__field--grow">
-          <span className="vp__field-label">Search</span>
-          <input type="search" className="vp__input" value={query} placeholder="Name, abbreviation or language" onChange={(e) => setQuery(e.target.value)} />
-        </label>
-        <label className="vp__field">
-          <span className="vp__field-label">Language</span>
-          <select className="vp__input" value={language} onChange={(e) => setLanguage(e.target.value)} disabled={searching}>
-            {catalog.languages.map((l) => (
-              <option key={l.code} value={l.code}>
-                {l.name} ({l.count})
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <div className="vp__scroll">
-        {!searching && recentRows.length > 0 && <Section title="Recently used" rows={recentRows} current={current} onPick={onPick} onInfo={onInfo} />}
-        {!searching && <Section title="On this device" rows={onDevice} current={current} onPick={onPick} onInfo={onInfo} />}
-        <Section
-          title={searching ? `Results (${more.length})` : `More in ${languageName}`}
-          rows={more.slice(0, PAGE)}
-          current={current}
-          onPick={onPick}
-          onInfo={onInfo}
-          empty={catalog.status === 'loading' ? 'Loading versions…' : searching ? 'No versions match.' : 'Everything in this language is on your device.'}
-        />
-        {more.length > PAGE && (
-          <p className="vp__hint">
-            Showing {PAGE} of {more.length}. Search to narrow the list.
-          </p>
-        )}
-        {catalog.status === 'error' && (
-          <p role="alert" className="vp__hint">
-            {catalog.error}{' '}
-            <button type="button" className="vp__text-btn" onClick={catalog.retry}>
-              Try again
-            </button>
-          </p>
-        )}
-      </div>
-    </>
-  );
+interface Actions {
+  read: (r: VersionRow) => void;
+  download: (r: VersionRow) => void;
+  cancel: (r: VersionRow) => void;
+  remove: (r: VersionRow) => Promise<void>;
 }
 
 function Section({
   title,
+  note,
   rows,
   current,
+  offline,
   onPick,
   onInfo,
   empty,
 }: {
   title: string;
-  rows: CatalogVersion[];
+  note?: string;
+  rows: VersionRow[];
   current: TranslationId;
-  onPick: (v: CatalogVersion) => void;
-  onInfo: (v: CatalogVersion) => void;
+  offline: boolean;
+  onPick: (r: VersionRow) => void;
+  onInfo: (r: VersionRow) => void;
   empty?: string;
 }) {
   const id = useId();
@@ -294,36 +396,38 @@ function Section({
       <h3 id={id} className="vp__section-title">
         {title}
       </h3>
+      {note && <p className="vp__hint vp__section-note">{note}</p>}
       {rows.length === 0 ? (
-        <p className="vp__hint">{empty}</p>
+        empty?.trim() && <p className="vp__hint">{empty}</p>
       ) : (
         <ul className="vp__list">
-          {rows.map((v) => {
-            const isCurrent = v.id === current;
+          {rows.map((r) => {
+            const isCurrent = r.id === current;
+            const meta = rowMeta(r, offline);
             return (
-              <li key={v.id} className={`vp-row${isCurrent ? ' vp-row--current' : ''}`}>
+              <li key={r.id} className={`vp-row vp-row--${r.state}${isCurrent ? ' vp-row--current' : ''}`}>
                 <button
                   type="button"
                   className="vp-row__main"
-                  data-version={v.id}
+                  data-version={r.id}
                   aria-current={isCurrent ? 'true' : undefined}
-                  aria-label={`${v.name} (${v.abbreviation}). ${rowMeta(v)}${v.access === 'online' ? '. Online only' : ''}${isCurrent ? '. Reading now' : ''}`}
-                  onClick={() => onPick(v)}
+                  aria-label={`${r.name} (${r.abbreviation}). ${r.state === 'unavailable' ? 'Not available yet. ' : ''}${meta}${r.state === 'online' && r.canDownload ? '. Can be downloaded' : ''}${isCurrent ? '. Reading now' : ''}`}
+                  onClick={() => onPick(r)}
                 >
                   <span className="vp-badge" aria-hidden="true">
-                    {v.abbreviation}
+                    {r.abbreviation}
                   </span>
                   <span className="vp-row__text" aria-hidden="true">
-                    <span className="vp-row__name" dir="auto">
-                      {v.name}
+                    <span className="vp-row__name" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+                      {r.name}
                     </span>
                     <span className="vp-row__meta">
-                      {v.access === 'online' && <span className="vp-tag">Online only</span>}
-                      {rowMeta(v)}
+                      {r.coverage && r.coverage !== 'Full Bible' && <span className="vp-tag vp-tag--plain">{r.coverage}</span>}
+                      {r.state === 'online' && r.canDownload && !r.progress && <span className="vp-tag">Can download</span>}
+                      {r.state === 'unavailable' && <span className="vp-tag vp-tag--plain">Not available yet</span>}
+                      {meta}
                     </span>
-                    {v.progress?.phase === 'chapters' && v.progress.total > 0 && (
-                      <progress className="vp-row__progress" max={v.progress.total} value={v.progress.done} />
-                    )}
+                    {r.progress?.phase === 'chapters' && r.progress.total > 0 && <progress className="vp-row__progress" max={r.progress.total} value={r.progress.done} />}
                   </span>
                   {isCurrent && (
                     <span className="vp-row__check" aria-hidden="true">
@@ -331,7 +435,7 @@ function Section({
                     </span>
                   )}
                 </button>
-                <button type="button" className="vp__icon-btn vp-row__info" aria-label={`About ${v.name}`} onClick={() => onInfo(v)}>
+                <button type="button" className="vp__icon-btn vp-row__info" aria-label={`About ${r.name}`} onClick={() => onInfo(r)}>
                   <span aria-hidden="true">ⓘ</span>
                 </button>
               </li>
@@ -344,24 +448,27 @@ function Section({
 }
 
 function VersionDetail({
-  version: v,
+  row: r,
   current,
   titleId,
-  catalog,
+  offline,
+  actions,
   onBack,
   onClose,
-  onRead,
 }: {
-  version: CatalogVersion;
+  row: VersionRow;
   current: TranslationId;
   titleId: string;
-  catalog: BibleCatalog;
+  offline: boolean;
+  actions: Actions;
   onBack: () => void;
   onClose: () => void;
-  onRead: (id: TranslationId) => void;
 }) {
-  const progress = progressLabel(v);
-  const facts = [v.languageName, v.coverage ? COVERAGE_LABEL[v.coverage] : null].filter(Boolean).join(' · ');
+  const progress = progressLabel(r);
+  const facts = [r.languageName, r.coverage].filter(Boolean).join(' · ');
+  const notice = useVersionNotice(r.yv && !r.notice ? r.yv.yvId : null);
+  const installed = r.state === 'device';
+  const downloadable = r.state !== 'unavailable' && !installed && !r.progress && (r.state === 'download' || r.canDownload);
   return (
     <>
       <header className="vp__head">
@@ -373,93 +480,199 @@ function VersionDetail({
         </button>
       </header>
       <div className="vp__scroll vp-detail">
-        <span className="vp-badge vp-badge--lg">{v.abbreviation}</span>
-        <h2 id={titleId} className="vp-detail__title" dir="auto">
-          {v.name}
+        <span className="vp-badge vp-badge--lg">{r.abbreviation}</span>
+        <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+          {r.name}
         </h2>
         <p className="vp-detail__facts">
           {facts}
-          {v.access === 'online' && <span className="vp-tag">Online only</span>}
+          {r.state === 'online' && <span className="vp-tag">{r.canDownload ? 'Online · can download' : 'Online only'}</span>}
+          {r.state === 'unavailable' && <span className="vp-tag vp-tag--plain">Not available yet</span>}
         </p>
         <dl className="vp-detail__dl">
-          {v.publisher && (
+          {r.publisher && (
             <>
               <dt>Publisher</dt>
               <dd>
-                {v.publisherUrl ? (
-                  <a href={v.publisherUrl} target="_blank" rel="noreferrer">
-                    {v.publisher}
+                {r.publisherUrl ? (
+                  <a href={r.publisherUrl} target="_blank" rel="noreferrer">
+                    {r.publisher}
                   </a>
                 ) : (
-                  v.publisher
+                  r.publisher
                 )}
               </dd>
             </>
           )}
-          <dt>License</dt>
-          <dd>
-            {v.licenseUrl ? (
-              <a href={v.licenseUrl} target="_blank" rel="noreferrer">
-                {v.license}
-              </a>
-            ) : (
-              v.license
-            )}
-          </dd>
+          {r.license && (
+            <>
+              <dt>License</dt>
+              <dd>
+                {r.licenseUrl ? (
+                  <a href={r.licenseUrl} target="_blank" rel="noreferrer">
+                    {r.license}
+                  </a>
+                ) : (
+                  r.license
+                )}
+              </dd>
+            </>
+          )}
           <dt>Source</dt>
-          <dd>{SOURCE_LABEL[v.source]}</dd>
+          <dd>{SOURCE_LABEL[r.source]}</dd>
         </dl>
-        {v.copyright && <p className="vp-detail__copyright">{v.copyright}</p>}
-        {v.access === 'online' && <p className="vp-note">This version is licensed for reading online only, so it can&apos;t be downloaded.</p>}
-        {v.source === 'youversion' && v.access === 'download' && !v.installed && <p className="vp-note">{licensedDownloadNote()}</p>}
+        {r.notice ? (
+          <p className="vp-detail__copyright">{r.notice}</p>
+        ) : notice.status === 'loading' ? (
+          <p className="vp-detail__copyright vp-detail__copyright--loading" aria-busy="true">
+            Loading the publisher&apos;s copyright notice…
+          </p>
+        ) : notice.status === 'ready' && notice.text ? (
+          <p className="vp-detail__copyright">{notice.text}</p>
+        ) : notice.status === 'error' ? (
+          <p className="vp-detail__copyright">
+            Couldn&apos;t load the copyright notice.{' '}
+            <button type="button" className="vp__text-btn" onClick={notice.retry}>
+              Try again
+            </button>
+          </p>
+        ) : null}
+        {r.state === 'online' && !r.canDownload && (
+          <p className="vp-note vp-note--quiet">Reads online only: chapters load as you read and aren&apos;t kept on this device. The publisher hasn&apos;t given permission to download it.</p>
+        )}
+        {r.state === 'unavailable' && (
+          <p className="vp-note vp-note--quiet">You can&apos;t read this version in Journeys yet. We&apos;re working with YouVersion to open up more versions.</p>
+        )}
+        {r.source === 'youversion' && r.canDownload && !installed && <p className="vp-note">{licensedDownloadNote()}</p>}
         {progress && (
           <div className="vp-detail__progress">
-            {v.progress?.phase === 'chapters' && v.progress.total > 0 && (
-              <progress className="vp-row__progress" max={v.progress.total} value={v.progress.done} aria-label={`${v.name} download progress`} />
+            {r.progress?.phase === 'chapters' && r.progress.total > 0 && (
+              <progress className="vp-row__progress" max={r.progress.total} value={r.progress.done} aria-label={`${r.name} download progress`} />
             )}
             <p className="vp__hint" aria-live="polite">
               {progress}
             </p>
           </div>
         )}
-        {v.error && (
+        {r.error && (
           <p role="alert" className="vp__error">
-            {v.error}
+            {r.error}
           </p>
         )}
         <div className="vp-detail__actions">
-          {v.installed && (
-            <button type="button" className="vp-btn vp-btn--primary" onClick={() => onRead(v.id as TranslationId)}>
-              {v.id === current ? 'Keep reading' : 'Read'}
+          {(installed || r.state === 'online') && (
+            <button type="button" className="vp-btn vp-btn--primary" disabled={r.state === 'online' && offline} onClick={() => actions.read(r)}>
+              {r.id === current ? 'Keep reading' : r.state === 'online' ? 'Read online' : 'Read'}
             </button>
           )}
-          {!v.installed && v.access === 'download' && !v.progress && (
-            <button type="button" className="vp-btn vp-btn--primary" onClick={() => catalog.download(v.id)}>
+          {downloadable && (
+            <button type="button" className={`vp-btn${r.state === 'download' ? ' vp-btn--primary' : ''}`} disabled={offline} onClick={() => actions.download(r)}>
               Download
             </button>
           )}
-          {v.progress && v.progress.phase !== 'installing' && (
-            <button type="button" className="vp-btn" onClick={() => catalog.cancel(v.id)}>
+          {r.progress && r.progress.phase !== 'installing' && (
+            <button type="button" className="vp-btn" onClick={() => actions.cancel(r)}>
               Cancel download
             </button>
           )}
-          {v.access === 'online' && (
-            // Placeholder until the online reader exists (data side owns it).
-            <button type="button" className="vp-btn vp-btn--primary" disabled aria-describedby={`${titleId}-soon`}>
-              Read online
-            </button>
-          )}
-          {v.installed && v.source !== 'builtin' && (
-            <button type="button" className="vp-btn" onClick={() => void catalog.remove(v.id)}>
+          {installed && r.source !== 'builtin' && (
+            <button type="button" className="vp-btn" onClick={() => void actions.remove(r)}>
               Remove from device
             </button>
           )}
         </div>
-        {v.access === 'online' && (
-          <p id={`${titleId}-soon`} className="vp__hint">
-            Reading online is coming in a later update.
-          </p>
+        {offline && !installed && r.state !== 'unavailable' && <p className="vp__hint">Connect to the internet to {r.state === 'online' ? 'read or download' : 'download'} this version.</p>}
+      </div>
+    </>
+  );
+}
+
+function LanguageList({
+  options,
+  current,
+  recent,
+  deviceTag,
+  onPick,
+  onBack,
+  onClose,
+}: {
+  options: LanguageOption[];
+  current: string;
+  recent: string[];
+  deviceTag: string;
+  onPick: (tag: string) => void;
+  onBack: () => void;
+  onClose: () => void;
+}) {
+  const [query, setQuery] = useState('');
+  const [limit, setLimit] = useState(LANGUAGE_PAGE);
+  const titleId = useId();
+  const byKey = useMemo(() => new Map(options.map((o) => [o.key, o])), [options]);
+  const device = byKey.get(deviceTag) ?? byKey.get(deviceTag.split('-')[0]);
+  const pinned = [device, ...recent.map((k) => byKey.get(k))].filter((o, i, all): o is LanguageOption => Boolean(o) && all.findIndex((x) => x?.key === o?.key) === i);
+  const q = query.trim().toLowerCase();
+  const matches = q ? options.filter((o) => `${o.name} ${o.key}`.toLowerCase().includes(q)) : options;
+  const row = (o: LanguageOption, note?: string) => (
+    <li key={`${note ?? ''}${o.key}`}>
+      <button type="button" className={`vp-lang${o.key === current ? ' vp-lang--current' : ''}`} aria-current={o.key === current ? 'true' : undefined} onClick={() => onPick(o.key)}>
+        <span className="vp-lang__name" dir={o.rtl ? 'rtl' : 'auto'} lang={o.key}>
+          {o.name}
+        </span>
+        <span className="vp-lang__tag">{note ?? o.key}</span>
+        {o.key === current && (
+          <span className="vp-row__check" aria-hidden="true">
+            ✓
+          </span>
         )}
+      </button>
+    </li>
+  );
+  return (
+    <>
+      <header className="vp__head">
+        <button type="button" className="vp__back" onClick={onBack}>
+          <span aria-hidden="true">←</span> Versions
+        </button>
+        <button type="button" className="vp__icon-btn" aria-label="Close" onClick={onClose}>
+          ✕
+        </button>
+      </header>
+      <div className="vp__controls">
+        <label className="vp__field vp__field--grow">
+          <span className="vp__field-label" id={titleId}>
+            Find a language ({options.length.toLocaleString()})
+          </span>
+          <input
+            type="search"
+            className="vp__input vp-lang__search"
+            value={query}
+            placeholder="Language name or code"
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setLimit(LANGUAGE_PAGE);
+            }}
+          />
+        </label>
+      </div>
+      <div className="vp__scroll">
+        {!q && pinned.length > 0 && (
+          <section className="vp__section" aria-label="Suggested languages">
+            <h3 className="vp__section-title">Suggested</h3>
+            <ul className="vp__list">{pinned.map((o) => row(o, o === device ? 'This device' : 'Recently used'))}</ul>
+          </section>
+        )}
+        <section className="vp__section" aria-label={q ? 'Matching languages' : 'All languages'}>
+          <h3 className="vp__section-title">{q ? `Matches (${matches.length.toLocaleString()})` : 'All languages'}</h3>
+          {matches.length === 0 ? <p className="vp__hint">No languages match.</p> : <ul className="vp__list">{matches.slice(0, limit).map((o) => row(o))}</ul>}
+          {matches.length > limit && (
+            <p className="vp__hint">
+              Showing {limit.toLocaleString()} of {matches.length.toLocaleString()}.{' '}
+              <button type="button" className="vp__text-btn" onClick={() => setLimit((n) => n + LANGUAGE_PAGE)}>
+                Show more
+              </button>
+            </p>
+          )}
+        </section>
       </div>
     </>
   );

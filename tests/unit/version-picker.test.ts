@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { buildCatalog, catalogLanguages, matchesQuery } from '../../src/content/bibleCatalog';
+import { builtinRows, helloAoRow, languageOptions, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
 import { licensedDownloadNote } from '../../src/content/licensedNote';
 import { translationMeta } from '../../src/content/translationMeta';
-import { LICENSED_TRANSLATIONS } from '../../src/content/youversion';
+import { capabilitiesFor, FALLBACK_VERSIONS } from '../../src/content/youversionCatalog';
 import type { DownloadableTranslation } from '../../src/content/catalog';
-
 const lsv: DownloadableTranslation = {
   id: 'hao:eng_lsv',
   sourceId: 'eng_lsv',
@@ -19,38 +18,51 @@ const lsv: DownloadableTranslation = {
   verses: 31_000,
 };
 
-describe('version catalog', () => {
-  const base = { helloao: [lsv], licensed: LICENSED_TRANSLATIONS, downloaded: [], active: {}, failed: {} };
-
-  it('merges built-in, YouVersion and HelloAO, built-in first and installed', () => {
-    const v = buildCatalog(base);
-    expect(v.slice(0, 6).map((x) => x.id)).toEqual(['ASV', 'KJV', 'BSB', 'WEB', 'YLT', 'GNV']);
-    expect(v.slice(0, 6).every((x) => x.installed && x.source === 'builtin')).toBe(true);
-    expect(v.find((x) => x.id === 'yv:100')).toMatchObject({ source: 'youversion', access: 'download', installed: false, publisher: 'The Lockman Foundation' });
-    expect(v.find((x) => x.id === 'hao:eng_lsv')).toMatchObject({ source: 'helloao', installed: false, coverage: 'full' });
-  });
-
-  it("shows each built-in Bible's own license (KJV carries the UK Crown copyright)", () => {
-    const kjv = buildCatalog(base).find((x) => x.id === 'KJV');
-    expect(kjv?.license).toBe('Public Domain (UK: Crown copyright)');
+describe('version picker rows', () => {
+  it("built-in rows are on the device and carry each Bible's own license", () => {
+    const rows = builtinRows();
+    expect(rows.map((r) => r.id)).toEqual(['ASV', 'KJV', 'BSB', 'WEB', 'YLT', 'GNV']);
+    expect(rows.every((r) => r.state === 'device')).toBe(true);
+    expect(rows.find((r) => r.id === 'KJV')?.license).toBe('Public Domain (UK: Crown copyright)');
     expect(translationMeta('KJV', []).sourcing).toMatch(/^Public Domain \(UK: Crown copyright\), bundled/);
   });
 
-  it('does not list a downloaded version twice and carries progress', () => {
-    const { completeUrl: _c, ...rest } = lsv;
-    const d = { ...rest, sizeBytes: 1, downloadedAt: '2026-11-13' };
-    const v = buildCatalog({ ...base, downloaded: [d], active: { 'yv:2692': { progress: { phase: 'chapters', done: 3, total: 10 } } } });
-    expect(v.filter((x) => x.id === 'hao:eng_lsv')).toHaveLength(1);
-    expect(v.find((x) => x.id === 'hao:eng_lsv')?.installed).toBe(true);
-    expect(v.find((x) => x.id === 'yv:2692')?.progress).toEqual({ phase: 'chapters', done: 3, total: 10 });
+  it('YouVersion rows read online by default; only allow-listed ones offer Download', () => {
+    const nasb = youVersionRow(FALLBACK_VERSIONS[0], 'English');
+    expect(nasb).toMatchObject({ state: 'online', canDownload: true, source: 'youversion' });
+    const streamOnly = youVersionRow({ ...FALLBACK_VERSIONS[0], id: 'yv:3034', yvId: 3034, capabilities: capabilitiesFor(true, false) }, 'English');
+    expect(streamOnly).toMatchObject({ state: 'online', canDownload: false });
+    const hebrew = youVersionRow({ ...FALLBACK_VERSIONS[0], id: 'yv:9', yvId: 9, languageTag: 'he', rtl: true, capabilities: capabilitiesFor(true, false) }, 'Hebrew');
+    expect(hebrew).toMatchObject({ rtl: true, lang: 'he' });
   });
 
-  it('counts languages and searches abbreviation, name and publisher', () => {
-    const v = buildCatalog(base);
-    expect(catalogLanguages(v)).toEqual([{ code: 'eng', name: 'English', count: v.length }]);
-    const lockman = v.filter((x) => matchesQuery(x, 'lockman')).map((x) => x.id);
-    expect(lockman).toEqual(['yv:100', 'yv:2692']);
-    expect(v.filter((x) => matchesQuery(x, 'kjv')).map((x) => x.id)).toEqual(['KJV']);
+  it("versions the proxy won't serve are shown as unavailable and sorted last", () => {
+    const locked = youVersionRow({ ...FALLBACK_VERSIONS[0], id: 'yv:111', yvId: 111, capabilities: capabilitiesFor(false, false) }, 'English');
+    expect(locked).toMatchObject({ state: 'unavailable', canDownload: false });
+    const nasb = youVersionRow(FALLBACK_VERSIONS[0], 'English');
+    expect(readableFirst([locked, nasb]).map((r) => r.id)).toEqual([nasb.id, 'yv:111']);
+  });
+
+  it('coverage says New Testament for NT-only versions', () => {
+    expect(yvCoverage({ hasOldTestament: false, hasNewTestament: true, bookCount: 27 })).toBe('New Testament');
+    expect(yvCoverage({ hasOldTestament: true, hasNewTestament: true, bookCount: 66 })).toBe('Full Bible');
+    expect(yvCoverage({ hasOldTestament: false, hasNewTestament: true, bookCount: 4 })).toBe('Partial');
+  });
+
+  it('HelloAO joins a YouVersion language by name and keeps its own code otherwise', () => {
+    const swahili = { ...lsv, id: 'hao:swh_x' as const, language: 'swh', languageName: 'Swahili' };
+    const { options, haoKey } = languageOptions([{ tag: 'en', name: 'English', rtl: false, defaultYvId: 100 }], [lsv, swahili]);
+    expect(haoKey(lsv)).toBe('en');
+    expect(haoKey(swahili)).toBe('swh');
+    expect(options.map((o) => o.key)).toEqual(['en', 'swh']);
+    expect(helloAoRow(lsv, 'en')).toMatchObject({ state: 'download', lang: 'en' });
+  });
+
+  it('search matches abbreviation, name and publisher', () => {
+    const nasb = youVersionRow(FALLBACK_VERSIONS[0], 'English');
+    expect(rowMatches(nasb, 'lockman')).toBe(true);
+    expect(rowMatches(nasb, 'nasb')).toBe(true);
+    expect(rowMatches(nasb, 'kjv')).toBe(false);
   });
 });
 
