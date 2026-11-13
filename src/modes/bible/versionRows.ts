@@ -244,3 +244,17 @@ export function visibleDeviceRows(
   }
   return ordered.filter((r) => !hide.has(r.id));
 }
+
+/** Hebrew, Arabic, Syriac, Thaana, NKo, and Arabic/Hebrew presentation forms. */
+const RTL_SCRIPT = /[\u0590-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]/;
+
+/**
+ * `dir` for a version title. A language can be RTL while the title is still
+ * Latin or Devanagari (ur-Deva, English glosses). Forcing `rtl` then mirrors
+ * punctuation; `auto` follows the title's first strong character. Titles that
+ * are themselves in an RTL script keep `rtl`.
+ */
+export function versionTitleDir(title: string, languageRtl: boolean): 'rtl' | 'auto' {
+  if (languageRtl && RTL_SCRIPT.test(title)) return 'rtl';
+  return 'auto';
+}

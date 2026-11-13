@@ -11,7 +11,7 @@ import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../stat
 import { useUiStore } from '../../state/useUiStore';
 import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
 import { useVersionNotice } from './useVersionNotice';
-import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, visibleDeviceRows, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, versionTitleDir, visibleDeviceRows, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
 import '../../styles/version-picker.css';
 
 const PAGE = 60;
@@ -523,7 +523,7 @@ function Section({
                   <span className="vp-row__text" aria-hidden="true">
                     <span className="vp-row__name">
                       <span className="vp-row__code">{r.abbreviation}</span> ·{' '}
-                      <span lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+                      <span lang={r.lang} dir={versionTitleDir(r.name, r.rtl)}>
                         {r.name}
                       </span>
                     </span>
@@ -577,6 +577,11 @@ function VersionDetail({
   const notice = useVersionNotice(r.yv && !r.notice ? r.yv.yvId : null);
   const installed = r.state === 'device';
   const downloadable = r.state !== 'unavailable' && !installed && !r.progress && (r.state === 'download' || r.canDownload);
+  const showRead = installed || r.state === 'online';
+  const showCancel = Boolean(r.progress && r.progress.phase !== 'installing');
+  const showRemove = installed && r.source !== 'builtin';
+  const showHint = offline && !installed && r.state !== 'unavailable';
+  const showFooter = showRead || downloadable || Boolean(progress) || showCancel || showRemove || showHint;
   return (
     <>
       <header className="vp__head">
@@ -589,7 +594,7 @@ function VersionDetail({
       </header>
       <div className="vp__scroll vp-detail vp-detail__scroll">
         <span className="vp-badge vp-badge--lg">{r.abbreviation}</span>
-        <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+        <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={versionTitleDir(r.name, r.rtl)}>
           {r.name}
         </h2>
         <p className="vp-detail__facts">
@@ -665,9 +670,10 @@ function VersionDetail({
           </p>
         )}
       </div>
+      {showFooter && (
       <div className="vp-detail__footer">
         <div className="vp-detail__actions">
-          {(installed || r.state === 'online') && (
+          {showRead && (
             <button type="button" className="vp-btn vp-btn--primary" disabled={r.state === 'online' && offline} onClick={() => actions.read(r)}>
               Read
             </button>
@@ -682,19 +688,20 @@ function VersionDetail({
               {progress}
             </button>
           )}
-          {r.progress && r.progress.phase !== 'installing' && (
+          {showCancel && (
             <button type="button" className="vp-btn" onClick={() => actions.cancel(r)}>
               Cancel
             </button>
           )}
-          {installed && r.source !== 'builtin' && (
+          {showRemove && (
             <button type="button" className="vp-btn" onClick={() => void actions.remove(r)}>
               Remove download
             </button>
           )}
         </div>
-        {offline && !installed && r.state !== 'unavailable' && <p className="vp__hint">Connect to the internet to {r.state === 'online' ? 'read or download' : 'download'} this version.</p>}
+        {showHint && <p className="vp__hint">Connect to the internet to {r.state === 'online' ? 'read or download' : 'download'} this version.</p>}
       </div>
+      )}
     </>
   );
 }

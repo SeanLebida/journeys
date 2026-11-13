@@ -1898,6 +1898,10 @@ a {
   border-top: 1px dashed var(--border);
 }
 .stop-visit__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 1rem;
   margin: 0.6rem 0;
   font-size: 0.85rem;
 }
@@ -3716,7 +3720,8 @@ a {
 .tl-detail__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
+  align-items: center;
+  gap: 0 1rem;
   margin: 0.6rem 0;
   font-size: 0.85rem;
 }
@@ -4213,10 +4218,21 @@ a {
 .bible-xrefs__links {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-hair) 0.75rem;
+  align-items: center;
+  gap: 0 0.75rem;
   margin-top: var(--space-near);
   font-size: var(--ref-size);
+}
+
+/* Text size stays as the parent set it; the box is a 44px touch target. */
+.tl-detail__links a,
+.stop-visit__links a,
+.bible-xrefs__links a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
 }
 
 /* Book and chapter grids — fluid, no fixed column counts. */
