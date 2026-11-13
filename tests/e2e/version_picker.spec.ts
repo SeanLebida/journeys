@@ -107,3 +107,95 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   await expect(sheet).toHaveCount(0);
   await expect(page.getByRole('button', { name: /^Translation: Test Stream Bible/ })).toBeFocused();
 });
+
+
+const LANGUAGES = [
+  { id: 'en', localized_name: 'English', text_direction: 'ltr' },
+  { id: 'es', localized_name: 'Spanish', text_direction: 'ltr' },
+  { id: 'he', localized_name: 'Hebrew', text_direction: 'rtl' },
+];
+
+function catalogPage(data: ReturnType<typeof bible>[]) {
+  return { json: { data, next_page_token: null, total_size: data.length } };
+}
+
+async function mockCatalog(
+  page: import('@playwright/test').Page,
+  versions: (lang: string | null) => ReturnType<typeof bible>[],
+  opts?: { delayLang?: string; delay?: Promise<void> },
+) {
+  await page.route(`${PROXY}/**`, async (route) => {
+    const url = new URL(route.request().url());
+    if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204 });
+    if (url.pathname === '/v1/bibles') {
+      const lang = url.searchParams.get('language_ranges[]');
+      if (opts?.delayLang && lang === opts.delayLang && opts.delay) await opts.delay;
+      const data = versions(lang);
+      return route.fulfill(catalogPage(data));
+    }
+    if (url.pathname === '/v1/bibles/100') return route.fulfill({ json: { id: 100, copyright: 'NASB1995 FULL NOTICE' } });
+    if (url.pathname === '/v1/languages') return route.fulfill({ json: { data: LANGUAGES } });
+    return route.fulfill({ status: 404, json: {} });
+  });
+  await page.route('https://bible.helloao.org/**', (route) => route.fulfill({ json: { translations: [] } }));
+}
+
+function versionsFor(lang: string | null) {
+  if (lang === 'he') return [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }];
+  if (lang === 'es') return [bible(128, 'NVI-S', 'Nueva Versión Internacional - Español', 'es', false)];
+  return [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
+}
+
+test('switching language clears the previous list and shows a loading state', async ({ page }) => {
+  let release: () => void = () => {};
+  const delay = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await mockCatalog(page, versionsFor, { delayLang: 'he', delay });
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  await expect(sheet.locator('[data-version="yv:3034"]')).toBeVisible();
+  await sheet.getByRole('button', { name: /^Language English/ }).click();
+  await page.keyboard.type('hebr');
+  await sheet.getByRole('button', { name: /^Hebrew/ }).click();
+  await expect(sheet.locator('[data-version="yv:3034"]')).toHaveCount(0);
+  await expect(sheet.getByText('Loading versions…')).toBeVisible();
+  await expect(sheet.locator('.vp-skel')).toHaveCount(3);
+  release();
+  await expect(sheet.locator('[data-version="yv:4001"]')).toBeVisible();
+  await expect(sheet.getByText('Loading versions…')).toHaveCount(0);
+});
+
+test('at 360px, built-in versions stay compact so online versions are on the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  const onDevice = sheet.getByRole('region', { name: 'On this device' });
+  await expect(onDevice.locator('[data-version]')).toHaveCount(2);
+  await expect(onDevice.locator('[data-version="ASV"]')).toBeVisible();
+  await expect(onDevice.locator('[data-version="GNV"]')).toHaveCount(0);
+  const online = sheet.getByRole('region', { name: /Read online/ });
+  await expect(online.locator('[data-version="yv:100"]')).toBeInViewport();
+  await sheet.getByRole('button', { name: 'Show more' }).click();
+  await expect(onDevice.locator('[data-version]')).toHaveCount(6);
+  await expect(onDevice.locator('[data-version="GNV"]')).toBeVisible();
+});
+
+test('searching a language name surfaces that language and its versions', async ({ page }) => {
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  await expect(sheet.locator('[data-version="yv:3034"]')).toBeVisible();
+  const search = sheet.getByPlaceholder('Search versions or languages');
+  await search.fill('span');
+  await expect(sheet.getByRole('region', { name: 'Suggested languages' }).getByRole('button', { name: /^Spanish/ })).toBeVisible();
+  await expect(sheet.getByText('No versions match. Try another name or language.')).toHaveCount(0);
+  await search.fill('Spanish');
+  await expect(sheet.locator('[data-version="yv:128"]')).toBeVisible();
+  await expect(sheet.getByRole('button', { name: /^Language Spanish/ })).toBeVisible();
+  await expect(sheet.getByText('No versions match. Try another name or language.')).toHaveCount(0);
+});

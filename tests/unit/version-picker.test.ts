@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { builtinRows, helloAoRow, languageOptions, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
+import { builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
 import { licensedDownloadNote } from '../../src/content/licensedNote';
 import { translationMeta } from '../../src/content/translationMeta';
 import { capabilitiesFor, FALLBACK_VERSIONS } from '../../src/content/youversionCatalog';
@@ -63,6 +63,32 @@ describe('version picker rows', () => {
     expect(rowMatches(nasb, 'lockman')).toBe(true);
     expect(rowMatches(nasb, 'nasb')).toBe(true);
     expect(rowMatches(nasb, 'kjv')).toBe(false);
+  });
+
+  it('search matches a language name or tag so Spanish can be found from the box', () => {
+    const options = [
+      { key: 'en', name: 'English', rtl: false },
+      { key: 'es', name: 'Spanish', rtl: false },
+      { key: 'he', name: 'Hebrew', rtl: true },
+    ];
+    expect(matchingLanguages(options, 'Spanish').map((o) => o.key)).toEqual(['es']);
+    expect(matchingLanguages(options, 'span').map((o) => o.key)).toEqual(['es']);
+    expect(matchingLanguages(options, 'es').map((o) => o.key)).toEqual(['es']);
+    expect(exactLanguageName(options, 'Spanish')?.key).toBe('es');
+    expect(exactLanguageName(options, 'span')).toBeUndefined();
+    expect(exactLanguageName(options, 'es')).toBeUndefined();
+  });
+
+  it('on-device rows put the current and recent versions first', () => {
+    const rows = builtinRows();
+    const ordered = orderedDeviceRows(rows, 'GNV', ['KJV']);
+    expect(ordered.map((r) => r.id)).toEqual(['GNV', 'KJV', 'ASV', 'BSB', 'WEB', 'YLT']);
+  });
+
+  it('catalogMatchesLanguage is false for a previous language still in the list', () => {
+    expect(catalogMatchesLanguage([{ languageTag: 'en' }], 'es')).toBe(false);
+    expect(catalogMatchesLanguage([{ languageTag: 'es-MX' }], 'es')).toBe(true);
+    expect(catalogMatchesLanguage([{ languageTag: 'en' }, { languageTag: 'es' }], '*')).toBe(true);
   });
 });
 
