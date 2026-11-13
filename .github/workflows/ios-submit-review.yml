@@ -4,20 +4,24 @@ name: iOS Submit for App Review
 # to App Review with the App Store Connect API key the iOS workflow uses.
 # Release type is always MANUAL: an approved version waits for a person.
 #
-# mode=check only reads and reports what is missing. mode=submit makes the
-# changes. Review notes come from docs/app-review-notes.txt, What's New from
-# the newest CHANGELOG.md entry. Listing fields are left as they are.
+# mode=check only reads and reports what is missing. mode=withdraw cancels the
+# review submission of withdraw_version (also when it is Pending Developer
+# Release), leaving it Developer Rejected; submit then reuses that record.
+# mode=submit makes the changes. Review notes come from
+# docs/app-review-notes.txt, What's New from docs/appstore-whatsnew.txt (all
+# changes since the live App Store version) or the newest CHANGELOG.md entry. Listing fields are left as they are.
 
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'check reads only. submit attaches the build and submits.'
+        description: 'check reads only. withdraw pulls withdraw_version from review or release. submit attaches the build and submits.'
         required: true
         default: 'check'
         type: choice
         options:
           - check
+          - withdraw
           - submit
       version:
         description: 'Marketing version, e.g. 0.3.28'
@@ -26,6 +30,10 @@ on:
       build_number:
         description: 'CFBundleVersion of the TestFlight build, e.g. 336'
         required: true
+        type: string
+      withdraw_version:
+        description: 'withdraw only: the version to pull (it ends Developer Rejected; nothing is released)'
+        required: false
         type: string
 
 concurrency:
@@ -51,4 +59,5 @@ jobs:
           MODE: ${{ inputs.mode }}
           VERSION: ${{ inputs.version }}
           BUILD_NUMBER: ${{ inputs.build_number }}
+          WITHDRAW_VERSION: ${{ inputs.withdraw_version }}
         run: python3 scripts/asc-submit-review.py
