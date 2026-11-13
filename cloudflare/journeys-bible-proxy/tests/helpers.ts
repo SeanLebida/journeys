@@ -82,6 +82,10 @@ export interface TestEnvOptions {
   limiterNames?: string[];
   appKey?: string;
   adminToken?: string;
+  allowedIds?: string;
+  blockedIds?: string;
+  offlineIds?: string;
+  catalogTtl?: string;
 }
 
 export function testEnv(options: TestEnvOptions = {}): WorkerEnv {
@@ -90,7 +94,10 @@ export function testEnv(options: TestEnvOptions = {}): WorkerEnv {
   return {
     YOUVERSION_APP_KEY: options.appKey ?? TEST_APP_KEY,
     ADMIN_TOKEN: options.adminToken ?? TEST_ADMIN_TOKEN,
-    ALLOWED_BIBLE_IDS: "100,2692",
+    ALLOWED_BIBLE_IDS: options.allowedIds ?? "100,2692",
+    BLOCKED_BIBLE_IDS: options.blockedIds ?? "",
+    OFFLINE_BIBLE_IDS: options.offlineIds ?? "100,2692",
+    CACHE_TTL_CATALOG_SECONDS: options.catalogTtl ?? "86400",
     UPSTREAM_BASE: "https://api.youversion.com/v1",
     RATE_LIMIT_MAX: options.rateLimitMax ?? "1000",
     RATE_LIMIT_WINDOW_SECONDS: "60",

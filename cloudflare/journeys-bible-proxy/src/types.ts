@@ -36,6 +36,12 @@ export interface WorkerEnv {
   YOUVERSION_APP_KEY: string;
   ADMIN_TOKEN: string;
   ALLOWED_BIBLE_IDS: string;
+  /** Versions never served, even when ALLOWED_BIBLE_IDS is `*`. */
+  BLOCKED_BIBLE_IDS?: string;
+  /** Versions the app may keep on a device (download + count). Defaults to NASB 1995 and 2020. */
+  OFFLINE_BIBLE_IDS?: string;
+  /** Edge cache for the catalog and languages lists (metadata only). Defaults to 24h. */
+  CACHE_TTL_CATALOG_SECONDS?: string;
   UPSTREAM_BASE: string;
   RATE_LIMIT_MAX: string;
   RATE_LIMIT_WINDOW_SECONDS: string;

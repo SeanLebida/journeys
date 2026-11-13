@@ -42,7 +42,34 @@ GET /v1/bibles/100
 GET /v1/bibles/2692
 ```
 
-Passes through the YouVersion Bible resource (id, abbreviation, title, copyright, book ids, and so on). `GET /v1/bibles` (the full catalog, which includes NIV) is rejected with 403.
+Passes through the YouVersion Bible resource (id, abbreviation, title, copyright, book ids, and so on).
+
+### Catalog: every version the app key can see
+
+```
+GET /v1/bibles?language_ranges[]=en&page_size=99
+GET /v1/bibles?language_ranges[]=*&page_token=<next_page_token>
+GET /v1/languages?page_size=99            (Accept-Language picks localized_name)
+```
+
+`/v1/bibles` lists the Bibles the app key's accepted YouVersion licenses cover (the proxy never sends `all_available=true`). Query: `language_ranges[]` (or `language_ranges=en,es`; tags or `*`, at most 5; YouVersion returns the first range that has Bibles), `page_size` 1-99 (default 99), `page_token`. Each item is trimmed to `id, abbreviation, localized_abbreviation, title, localized_title, language_tag, publisher_name, publisher_url, copyright, info, book_count, has_old_testament, has_new_testament, youversion_deep_link`, plus two Journeys flags:
+
+- `readable`: this proxy serves the version's books and passages (read online, chapter by chapter).
+- `offline`: Journeys has permission to keep a copy on the device (download + Lockman-style count).
+
+`/v1/languages` forces `bibles_available=true` and returns `id, language, script, localized_name, text_direction, default_bible_id`.
+
+Both lists are metadata only and are edge-cached for `CACHE_TTL_CATALOG_SECONDS` (default 86400). The cache key includes the policy below, so changing the vars never serves stale flags. Upstream errors are never cached; a 429 keeps its `Retry-After`.
+
+### Policy vars
+
+| Var | Meaning |
+| --- | --- |
+| `ALLOWED_BIBLE_IDS` | Versions the proxy reads. A comma list, or `*` for every version the key is licensed for (YouVersion enforces the license). |
+| `BLOCKED_BIBLE_IDS` | Never served or listed, even under `*`. |
+| `OFFLINE_BIBLE_IDS` | Versions the app may store; must also be readable. `POST /downloads` is 403 for anything else. Defaults to `100,2692`. |
+
+Production keeps `ALLOWED_BIBLE_IDS=100,2692` until Sean approves the full catalog; staging uses `*`.
 
 ### Book and chapter map for a download
 
@@ -97,7 +124,7 @@ One successful POST counts as one completed download for that version in the cur
 | --- | --- |
 | 400 | Download POST missing `X-Journeys-Download: complete`, or admin `year` missing/invalid |
 | 401 | Admin stats without a valid token |
-| 403 | NIV or any other non-allowlisted version, a path that is not proxied, or (when `REQUIRE_APP_CLIENT` is true) a request missing the journeys client header or an allowed Origin |
+| 403 | A version outside `ALLOWED_BIBLE_IDS` (or in `BLOCKED_BIBLE_IDS`), a download POST for a version not in `OFFLINE_BIBLE_IDS`, a path that is not proxied, or (when `REQUIRE_APP_CLIENT` is true) a request missing the journeys client header or an allowed Origin |
 | 404 | Unknown path |
 | 429 | Per-IP rate limit; honor `Retry-After` |
 | 502 | YouVersion upstream failure |
