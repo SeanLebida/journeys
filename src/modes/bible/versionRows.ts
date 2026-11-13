@@ -225,3 +225,22 @@ export function catalogMatchesLanguage(versions: { languageTag: string }[], lang
 export function builtinFoldLabel(expanded: boolean, count: number): string {
   return expanded ? 'Show fewer' : `Show ${count} built-in Bibles`;
 }
+
+/**
+ * On this device rows for the first screen: when collapsed, hide extra built-ins
+ * and anything already shown in Recent, so Read online stays in view at phone width.
+ */
+export function visibleDeviceRows(
+  ordered: VersionRow[],
+  recentIds: readonly string[],
+  preview: number,
+  opts: { expanded: boolean; searching: boolean },
+): VersionRow[] {
+  if (opts.searching || opts.expanded) return ordered;
+  const builtins = ordered.filter((r) => r.source === 'builtin');
+  const hide = new Set<string>(opts.searching ? [] : recentIds);
+  if (builtins.length > preview) {
+    for (const r of builtins.slice(preview)) hide.add(r.id);
+  }
+  return ordered.filter((r) => !hide.has(r.id));
+}

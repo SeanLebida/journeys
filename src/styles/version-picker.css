@@ -505,3 +505,20 @@ body:has(dialog.vp[open]) {
 .vp-skel__line--short {
   width: 40%;
 }
+
+/* Primary actions stay on screen in the detail sheet, including at 360px. */
+.vp-detail__scroll {
+  padding-bottom: 1rem;
+}
+.vp-detail__footer {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem calc(0.75rem + var(--safe-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--surface-raised);
+}
+.vp-detail__footer .vp-detail__actions {
+  margin-top: 0;
+}
+.vp-detail__footer .vp__hint {
+  margin-bottom: 0;
+}

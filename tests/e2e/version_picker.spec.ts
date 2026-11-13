@@ -182,8 +182,14 @@ test('at 360px, built-in versions stay compact so online versions are on the fir
   const fold = sheet.getByRole('button', { name: /Show \d+ built-in Bibles/ });
   const collapsed = await fold.textContent();
   await expect(fold).toBeVisible();
+  await expect(fold).toHaveAttribute('aria-expanded', 'false');
+  const controls = await fold.getAttribute('aria-controls');
+  expect(controls).toBeTruthy();
+  await expect(onDevice).toHaveAttribute('id', controls!);
   await expect(sheet.getByRole('button', { name: 'Show more' })).toHaveCount(0);
   await fold.click();
+  await expect(sheet.getByRole('button', { name: 'Show fewer' })).toHaveAttribute('aria-expanded', 'true');
+  await expect(sheet.getByRole('button', { name: 'Show fewer' })).toHaveAttribute('aria-controls', controls!);
   await expect(sheet.getByRole('button', { name: 'Show fewer' })).toBeVisible();
   await expect(onDevice.locator('[data-version="GNV"]')).toBeVisible();
   const builtinCount = await onDevice.locator('[data-version]').count();
@@ -207,4 +213,57 @@ test('searching a language name surfaces that language and its versions', async 
   await expect(sheet.locator('[data-version="yv:128"]')).toBeVisible();
   await expect(sheet.getByRole('button', { name: /^Language Spanish/ })).toBeVisible();
   await expect(sheet.getByText('No versions match. Try another name or language.')).toHaveCount(0);
+});
+
+test('after reading a built-in, Recent is not repeated in On this device, and Read online stays on the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  const chip = page.getByRole('button', { name: /^Translation: American Standard Version/ });
+  await chip.click();
+  const sheet = page.getByRole('dialog');
+  await sheet.locator('[data-version="KJV"]').click();
+  await expect(sheet).toHaveCount(0);
+  await page.getByRole('button', { name: /^Translation: King James Version/ }).click();
+  const again = page.getByRole('dialog');
+  const recent = again.getByRole('region', { name: 'Recent' });
+  const onDevice = again.getByRole('region', { name: 'On this device' });
+  await expect(recent.locator('[data-version="KJV"]')).toBeVisible();
+  await expect(onDevice.locator('[data-version="KJV"]')).toHaveCount(0);
+  await expect(again.getByRole('region', { name: /Read online/ }).locator('[data-version="yv:100"]')).toBeInViewport();
+});
+
+test('clearing a language-name search restores the previous language; a Language list pick stays', async ({ page }) => {
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  await expect(sheet.locator('[data-version="yv:3034"]')).toBeVisible();
+  const search = sheet.getByPlaceholder('Search versions or languages');
+  await search.fill('Spanish');
+  await expect(sheet.locator('[data-version="yv:128"]')).toBeVisible();
+  await expect(sheet.getByRole('button', { name: /^Language Spanish/ })).toBeVisible();
+  await search.fill('');
+  await expect(sheet.getByRole('button', { name: /^Language English/ })).toBeVisible();
+  await expect(sheet.locator('[data-version="yv:3034"]')).toBeVisible();
+  await sheet.getByRole('button', { name: /^Language English/ }).click();
+  await sheet.getByRole('region', { name: 'All languages' }).getByRole('button', { name: /^Spanish/ }).click();
+  await expect(sheet.getByRole('button', { name: /^Language Spanish/ })).toBeVisible();
+  await expect(sheet.locator('[data-version="yv:128"]')).toBeVisible();
+  await search.fill('zzzz');
+  await expect(sheet.getByText('No versions match. Try another name or language.')).toBeVisible();
+  await search.fill('');
+  await expect(sheet.getByRole('button', { name: /^Language Spanish/ })).toBeVisible();
+  await expect(sheet.locator('[data-version="yv:128"]')).toBeVisible();
+});
+
+test('at 360px, version detail keeps Read and Download on screen', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 740 });
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  await sheet.getByRole('button', { name: 'About New American Standard Bible 1995' }).click();
+  await expect(sheet.getByRole('button', { name: 'Read', exact: true })).toBeInViewport();
+  await expect(sheet.getByRole('button', { name: 'Download' })).toBeInViewport();
 });
