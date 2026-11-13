@@ -1,0 +1,73 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "journeys-bible-proxy",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-11",
+  "upload_source_maps": true,
+  "observability": {
+    // Sean, Nov 11 2026: keep no client IPs. Only our own console events (no IPs) are logged.
+    "enabled": true,
+    "logs": { "enabled": true, "invocation_logs": false },
+    "traces": { "enabled": false },
+  },
+  // Sean approved bible.authentic.how DNS on 2026-11-11.
+  "routes": [
+    { "pattern": "bible.authentic.how", "custom_domain": true }
+  ],
+  "vars": {
+    // Versions the app may read online. "*" = every version the app key's
+    // YouVersion licenses cover (YouVersion enforces that), minus BLOCKED_BIBLE_IDS.
+    // Production stays on the NASB pair until Sean approves the full catalog.
+    "ALLOWED_BIBLE_IDS": "100,2692",
+    "BLOCKED_BIBLE_IDS": "",
+    // Versions the app may store on a device. Only list a version once its
+    // publisher permission covers offline copies.
+    "OFFLINE_BIBLE_IDS": "100,2692",
+    // Catalog and language lists are metadata only, cached for a day.
+    "CACHE_TTL_CATALOG_SECONDS": "86400",
+    "UPSTREAM_BASE": "https://api.youversion.com/v1",
+    "RATE_LIMIT_MAX": "180",
+    "RATE_LIMIT_WINDOW_SECONDS": "60",
+    "REQUIRE_APP_CLIENT": "true",
+    // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
+    "CACHE_TTL_METADATA_SECONDS": "0",
+    "CACHE_TTL_PASSAGE_SECONDS": "0",
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "DOWNLOAD_STATS", "class_name": "DownloadStats" },
+      { "name": "RATE_LIMITER", "class_name": "RateLimiter" },
+    ],
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["DownloadStats", "RateLimiter"] },
+  ],
+  "env": {
+    "staging": {
+      "name": "journeys-bible-proxy-staging",
+      "routes": [
+        { "pattern": "bible-staging.authentic.how", "custom_domain": true }
+      ],
+      "vars": {
+        // Staging reads the whole licensed catalog for testing the new picker.
+        "ALLOWED_BIBLE_IDS": "*",
+        "BLOCKED_BIBLE_IDS": "",
+        "OFFLINE_BIBLE_IDS": "100,2692",
+        "CACHE_TTL_CATALOG_SECONDS": "86400",
+        "UPSTREAM_BASE": "https://api.youversion.com/v1",
+        "RATE_LIMIT_MAX": "180",
+        "RATE_LIMIT_WINDOW_SECONDS": "60",
+        "REQUIRE_APP_CLIENT": "true",
+        // Cache disabled until Sean confirms the Lockman/YouVersion license allows it.
+        "CACHE_TTL_METADATA_SECONDS": "0",
+        "CACHE_TTL_PASSAGE_SECONDS": "0",
+      },
+      "durable_objects": {
+        "bindings": [
+          { "name": "DOWNLOAD_STATS", "class_name": "DownloadStats" },
+          { "name": "RATE_LIMITER", "class_name": "RateLimiter" },
+        ],
+      },
+    },
+  },
+}
