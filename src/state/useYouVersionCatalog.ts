@@ -96,10 +96,15 @@ export function useYouVersionCatalog(options: UseYouVersionCatalogOptions = {}):
     return () => ctl.abort();
   }, [displayLocale, nonce]);
 
-  const all = useMemo(
-    () => (readableOnly ? result.versions.filter((v) => v.capabilities.canRead) : result.versions),
-    [result.versions, readableOnly],
-  );
+  const all = useMemo(() => {
+    const list = readableOnly ? result.versions.filter((v) => v.capabilities.canRead) : result.versions;
+    if (languages.length === 0) return list;
+    const byTag = new Map(languages.map((l) => [l.tag, l.rtl]));
+    return list.map((v) => {
+      const rtl = byTag.get(v.languageTag) ?? byTag.get(v.languageTag.split('-')[0]);
+      return rtl === undefined || rtl === v.rtl ? v : { ...v, rtl };
+    });
+  }, [result.versions, readableOnly, languages]);
   const versions = useMemo(() => searchCatalog(all, query), [all, query]);
   const refresh = useCallback(() => setNonce((n) => n + 1), []);
 
