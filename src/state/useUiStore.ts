@@ -34,6 +34,10 @@ interface UiState {
   downloaded: DownloadedTranslation[];
   /** YouVersion versions picked for reading online; text is never stored. */
   streamed: StreamedTranslation[];
+  /** Last few translations the reader switched to, newest first (the version picker's "Recent"). */
+  recentTranslations: TranslationId[];
+  /** Bible languages the reader picked in the version picker, newest first. */
+  recentLanguages: string[];
   /**
    * The timeline's fold-out chart effect. On by default, and independently
    * overridden by `prefers-reduced-motion` — this is the explicit opt-out for a
@@ -48,6 +52,7 @@ interface UiState {
   removeDownloaded: (id: TranslationId) => void;
   addStreamed: (t: StreamedTranslation) => void;
   removeStreamed: (id: TranslationId) => void;
+  addRecentLanguage: (tag: string) => void;
   setTimelineFold: (on: boolean) => void;
 }
 
@@ -58,27 +63,33 @@ export const useUiStore = create<UiState>()(
     (set) => ({
       downloaded: [],
       streamed: [],
+      recentTranslations: [],
+      recentLanguages: [],
       theme: 'system',
       locale: DEFAULT_LOCALE,
       translation: DEFAULT_TRANSLATION,
       timelineFold: true,
       setTheme: (theme) => set({ theme }),
       setLocale: (locale) => set({ locale }),
-      setTranslation: (translation) => set({ translation }),
+      setTranslation: (translation) =>
+        set((s) => ({ translation, recentTranslations: [translation, ...s.recentTranslations.filter((t) => t !== translation)].slice(0, 4) })),
       addDownloaded: (t) =>
         set((s) => ({ downloaded: [...s.downloaded.filter((d) => d.id !== t.id), t] })),
       removeDownloaded: (id) =>
         set((s) => ({
           downloaded: s.downloaded.filter((d) => d.id !== id),
+          recentTranslations: s.streamed.some((x) => x.id === id) ? s.recentTranslations : s.recentTranslations.filter((t) => t !== id),
           translation: s.translation === id ? DEFAULT_TRANSLATION : s.translation,
         })),
       addStreamed: (t) => set((s) => ({ streamed: [...s.streamed.filter((x) => x.id !== t.id), t] })),
       removeStreamed: (id) =>
         set((s) => ({
           streamed: s.streamed.filter((x) => x.id !== id),
+          recentTranslations: s.downloaded.some((d) => d.id === id) ? s.recentTranslations : s.recentTranslations.filter((t) => t !== id),
           translation:
             s.translation === id && !s.downloaded.some((d) => d.id === id) ? DEFAULT_TRANSLATION : s.translation,
         })),
+      addRecentLanguage: (tag) => set((s) => ({ recentLanguages: [tag, ...s.recentLanguages.filter((t) => t !== tag)].slice(0, 4) })),
       setTimelineFold: (timelineFold) => set({ timelineFold }),
     }),
     {
@@ -90,15 +101,15 @@ export const useUiStore = create<UiState>()(
         const saved = (persisted ?? {}) as Partial<UiState>;
         const downloaded = Array.isArray(saved.downloaded) ? saved.downloaded : [];
         const streamed = Array.isArray(saved.streamed) ? saved.streamed : [];
-        const known =
-          isTranslation(saved.translation) ||
-          downloaded.some((d) => d.id === saved.translation) ||
-          streamed.some((d) => d.id === saved.translation);
+        const isKnown = (t: unknown) => isTranslation(t) || downloaded.some((d) => d.id === t) || streamed.some((d) => d.id === t);
+        const known = isKnown(saved.translation);
+        const recentTranslations = Array.isArray(saved.recentTranslations) ? saved.recentTranslations.filter(isKnown) : [];
         return {
           ...current,
           ...saved,
           downloaded,
           streamed,
+          recentTranslations,
           translation: known && saved.translation ? saved.translation : current.translation,
         };
       },
