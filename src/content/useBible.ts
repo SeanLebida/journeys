@@ -7,6 +7,8 @@ import { loadBibleDbBytes } from '../platform/assets';
 import { loadStoredBibleBytes } from '../platform/bibleStore';
 import { parseScriptureRef, type ScriptureRef } from './scriptureRef';
 import { isDownloadedId, translationInfo, type TranslationId } from './translations';
+import { streamChapter, streamChapterCounts } from './youversionStream';
+import { streamedYvId } from '../state/useUiStore';
 
 export interface VerseRow {
   book: number;
@@ -51,8 +53,13 @@ export async function closeDownloadedDb(id: TranslationId): Promise<void> {
 
 /** Resolve a parsed ref to its verse rows in a translation. */
 export async function lookupRef(ref: ScriptureRef, translation: TranslationId): Promise<VerseRow[]> {
-  const db = await openDb(translation);
   const end = ref.verseEnd ?? ref.verseStart;
+  const yv = streamedYvId(translation);
+  if (yv !== null) {
+    const rows = await streamChapter(yv, ref.book, ref.chapter);
+    return rows.filter((r) => r.verse >= ref.verseStart && r.verse <= end);
+  }
+  const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND book=? AND chapter=? AND verse BETWEEN ? AND ? ORDER BY verse',
   );
@@ -69,6 +76,8 @@ export async function lookupChapter(
   chapter: number,
   translation: TranslationId,
 ): Promise<VerseRow[]> {
+  const yv = streamedYvId(translation);
+  if (yv !== null) return streamChapter(yv, book, chapter);
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND book=? AND chapter=? ORDER BY verse',
@@ -86,6 +95,8 @@ export async function lookupChapter(
  * book that ever arrives short cannot produce chapter buttons that go nowhere.
  */
 export async function chapterCounts(translation: TranslationId): Promise<Map<number, number>> {
+  const yv = streamedYvId(translation);
+  if (yv !== null) return streamChapterCounts(yv);
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, MAX(chapter) AS chapters FROM verses WHERE translation=? GROUP BY book ORDER BY book',
@@ -112,6 +123,8 @@ export async function searchVerses(
 ): Promise<VerseRow[]> {
   const trimmed = query.trim();
   if (trimmed.length < 3) return [];
+  // Online-only versions have no local text to search.
+  if (streamedYvId(translation) !== null) return [];
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND text LIKE ? ' +
