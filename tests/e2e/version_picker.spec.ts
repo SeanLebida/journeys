@@ -31,12 +31,12 @@ test('version sheet: read online by default, Download only where allowed, RTL la
     if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204 });
     if (url.pathname === '/v1/bibles') {
       const lang = url.searchParams.get('language_ranges[]');
-      const data = lang === 'he' ? [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }] : [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
+      const data = lang === 'he' ? [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }, { ...bible(4002, 'THS', 'תנ״ך', 'he', false), book_count: 27, has_old_testament: false }] : lang === 'ur' || (lang && lang.startsWith('ur')) ? [bible(5001, 'URD', 'Urdu Devanagari Bible', 'ur-Deva', false)] : [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
       return route.fulfill({ json: { data, next_page_token: null, total_size: data.length } });
     }
     if (url.pathname === '/v1/bibles/100') return route.fulfill({ json: { id: 100, copyright: 'NASB1995 FULL NOTICE' } });
     if (url.pathname === '/v1/languages') {
-      return route.fulfill({ json: { data: [{ id: 'en', localized_name: 'English', text_direction: 'ltr' }, { id: 'he', localized_name: 'Hebrew', text_direction: 'rtl' }] } });
+      return route.fulfill({ json: { data: [{ id: 'en', localized_name: 'English', text_direction: 'ltr' }, { id: 'he', localized_name: 'Hebrew', text_direction: 'rtl' }, { id: 'ur', localized_name: 'Urdu', text_direction: 'rtl' }] } });
     }
     return route.fulfill({ status: 404, json: {} });
   });
@@ -64,6 +64,7 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   await online.locator('[data-version="yv:111"]').click();
   await expect(sheet.getByText("You can't read this version in Journeys yet. We're working with YouVersion to open up more versions.")).toBeVisible();
   await expect(sheet.getByRole('button', { name: /^(Read|Read online|Download)$/ })).toHaveCount(0);
+  await expect(sheet.locator('.vp-detail__footer')).toHaveCount(0);
   await page.keyboard.press('Escape');
 
   // Details of a stream-only version: Read online, no Download. Escape returns to the list, then closes.
@@ -93,7 +94,9 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   await expect(sheet.getByRole('button', { name: /^All languages/ })).toBeVisible();
   await page.keyboard.type('hebr');
   await sheet.getByRole('button', { name: /^Hebrew/ }).click();
-  await expect(sheet.locator('[data-version="yv:4001"] .vp-row__name [dir]')).toHaveAttribute('dir', 'rtl');
+  // Latin-letter title in an RTL language follows the title, not the language.
+  await expect(sheet.locator('[data-version="yv:4001"] .vp-row__name [dir]')).toHaveAttribute('dir', 'auto');
+  await expect(sheet.locator('[data-version="yv:4002"] .vp-row__name [dir]')).toHaveAttribute('dir', 'rtl');
   await expect(sheet.locator('[data-version="yv:4001"]')).toContainText('New Testament only');
   await expect(sheet.getByRole('button', { name: /^Language Hebrew/ })).toBeFocused();
   await sheet.getByRole('button', { name: /^Language Hebrew/ }).click();
@@ -113,6 +116,7 @@ const LANGUAGES = [
   { id: 'en', localized_name: 'English', text_direction: 'ltr' },
   { id: 'es', localized_name: 'Spanish', text_direction: 'ltr' },
   { id: 'he', localized_name: 'Hebrew', text_direction: 'rtl' },
+  { id: 'ur', localized_name: 'Urdu', text_direction: 'rtl' },
 ];
 
 function catalogPage(data: ReturnType<typeof bible>[]) {
@@ -141,8 +145,9 @@ async function mockCatalog(
 }
 
 function versionsFor(lang: string | null) {
-  if (lang === 'he') return [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }];
+  if (lang === 'he') return [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }, { ...bible(4002, 'THS', 'תנ״ך', 'he', false), book_count: 27, has_old_testament: false }];
   if (lang === 'es') return [bible(128, 'NVI-S', 'Nueva Versión Internacional - Español', 'es', false)];
+  if (lang === 'ur' || (lang && lang.startsWith('ur'))) return [bible(5001, 'URD', 'Urdu Devanagari Bible', 'ur-Deva', false)];
   return [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
 }
 
@@ -266,4 +271,45 @@ test('at 360px, version detail keeps Read and Download on screen', async ({ page
   await sheet.getByRole('button', { name: 'About New American Standard Bible 1995' }).click();
   await expect(sheet.getByRole('button', { name: 'Read', exact: true })).toBeInViewport();
   await expect(sheet.getByRole('button', { name: 'Download' })).toBeInViewport();
+});
+
+function fullyOnScreen(box: { x: number; y: number; width: number; height: number }, port: { x: number; y: number; width: number; height: number }) {
+  return box.y >= port.y - 0.5 && box.y + box.height <= port.y + port.height + 0.5;
+}
+
+test('an RTL language with a Latin or Devanagari title uses dir=auto', async ({ page }) => {
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  await page.getByRole('button', { name: /^Translation: American Standard Version/ }).click();
+  const sheet = page.getByRole('dialog');
+  await sheet.getByRole('button', { name: /^Language English/ }).click();
+  await page.keyboard.type('urdu');
+  await sheet.getByRole('button', { name: /^Urdu/ }).click();
+  await expect(sheet.locator('[data-version="yv:5001"]')).toBeVisible();
+  await expect(sheet.locator('[data-version="yv:5001"] .vp-row__name [dir]')).toHaveAttribute('dir', 'auto');
+  await sheet.getByRole('button', { name: 'About Urdu Devanagari Bible' }).click();
+  await expect(sheet.getByRole('heading', { name: 'Urdu Devanagari Bible' })).toHaveAttribute('dir', 'auto');
+});
+
+test('at 640px with a Recent entry, the first Read online row is fully on the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 640, height: 740 });
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  const chip = page.getByRole('button', { name: /^Translation: American Standard Version/ });
+  await chip.click();
+  const sheet = page.getByRole('dialog');
+  await sheet.locator('[data-version="KJV"]').click();
+  await expect(sheet).toHaveCount(0);
+  await page.getByRole('button', { name: /^Translation: King James Version/ }).click();
+  const again = page.getByRole('dialog');
+  await expect(again.getByRole('region', { name: 'Recent' }).locator('[data-version="KJV"]')).toBeVisible();
+  const firstOnline = again.getByRole('region', { name: /Read online/ }).locator('[data-version]').first();
+  await expect(firstOnline).toBeVisible();
+  const rowBox = await firstOnline.boundingBox();
+  const scrollBox = await again.locator('.vp__scroll').boundingBox();
+  expect(rowBox).toBeTruthy();
+  expect(scrollBox).toBeTruthy();
+  expect(fullyOnScreen(rowBox!, scrollBox!)).toBe(true);
+  const viewport = page.viewportSize()!;
+  expect(fullyOnScreen(rowBox!, { x: 0, y: 0, width: viewport.width, height: viewport.height })).toBe(true);
 });
