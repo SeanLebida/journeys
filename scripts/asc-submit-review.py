@@ -3,7 +3,9 @@
 to App Review through the App Store Connect API.
 
 Run by .github/workflows/ios-submit-review.yml. MODE=check only reads and
-reports; MODE=submit makes the changes. The release type is always MANUAL,
+reports; MODE=submit makes the changes. MODE=withdraw removes WITHDRAW_VERSION
+from review or release (Pending Developer Release included), which leaves it
+Developer Rejected and editable; it never releases anything. The release type is always MANUAL,
 so an approved version waits for a person to release it.
 
 Env: APPSTORE_ISSUER_ID, APPSTORE_KEY_ID, APPSTORE_PRIVATE_KEY (never printed),
@@ -28,7 +30,11 @@ CONTACT_FIELDS = ("contactFirstName", "contactLastName", "contactPhone", "contac
 
 VERSION = os.environ["VERSION"].strip()
 BUILD_NUMBER = os.environ["BUILD_NUMBER"].strip()
-SUBMIT = os.environ.get("MODE", "check") == "submit"
+MODE = os.environ.get("MODE", "check")
+SUBMIT = MODE == "submit"
+WITHDRAW_VERSION = os.environ.get("WITHDRAW_VERSION", "").strip()
+WITHDRAWABLE = {"WAITING_FOR_REVIEW", "IN_REVIEW", "PENDING_DEVELOPER_RELEASE", "PENDING_APPLE_RELEASE",
+                "WAITING_FOR_EXPORT_COMPLIANCE"}
 
 
 def token():
@@ -70,6 +76,58 @@ def say(msg):
     print(msg, flush=True)
 
 
+def whats_new_text():
+    """docs/appstore-whatsnew.txt covers every change since the live App Store
+    version; fall back to the newest CHANGELOG.md entry."""
+    if os.path.exists("docs/appstore-whatsnew.txt"):
+        return open("docs/appstore-whatsnew.txt", encoding="utf8").read().strip()
+    return changelog_note()
+
+
+def withdraw(app_id, versions):
+    if not WITHDRAW_VERSION:
+        sys.exit("withdraw needs withdraw_version.")
+    v = next((x for x in versions if x["attributes"]["versionString"] == WITHDRAW_VERSION), None)
+    if not v:
+        sys.exit(f"No version {WITHDRAW_VERSION}.")
+    state = v["attributes"].get("appStoreState")
+    if state not in WITHDRAWABLE:
+        sys.exit(f"Version {WITHDRAW_VERSION} is {state}; nothing to withdraw.")
+    vb = (api("GET", f"/v1/appStoreVersions/{v['id']}/build", ok_missing=True) or {}).get("data")
+    if vb:
+        say(f"Version {WITHDRAW_VERSION} carries build {vb['attributes'].get('version')}")
+    sid = None
+    subs = api("GET", "/v1/reviewSubmissions", params={
+        "filter[app]": app_id, "filter[platform]": "IOS", "limit": "50"})["data"]
+    for sub in subs:
+        items = api("GET", f"/v1/reviewSubmissions/{sub['id']}/items")["data"]
+        for item in items:
+            rel = ((item.get("relationships") or {}).get("appStoreVersion") or {}).get("data") or {}
+            if rel.get("id") == v["id"]:
+                sid = sub["id"]
+                say(f"Review submission {sid} is {sub['attributes'].get('state')}")
+                break
+        if sid:
+            break
+    if sid:
+        api("PATCH", f"/v1/reviewSubmissions/{sid}", {"data": {"type": "reviewSubmissions", "id": sid,
+            "attributes": {"canceled": True}}})
+        say(f"Canceled review submission {sid}")
+    else:
+        old = (api("GET", f"/v1/appStoreVersions/{v['id']}/appStoreVersionSubmission", ok_missing=True) or {}).get("data")
+        if not old:
+            sys.exit(f"No review submission found for {WITHDRAW_VERSION}; nothing the API can cancel.")
+        api("DELETE", f"/v1/appStoreVersionSubmissions/{old['id']}")
+        say(f"Removed version submission {old['id']}")
+    for attempt in range(20):
+        now = api("GET", f"/v1/appStoreVersions/{v['id']}")["data"]["attributes"].get("appStoreState")
+        say(f"Version {WITHDRAW_VERSION} is now {now}")
+        if now == "DEVELOPER_REJECTED":
+            return
+        time.sleep(15)
+    sys.exit(f"Version {WITHDRAW_VERSION} did not reach DEVELOPER_REJECTED.")
+
+
 def changelog_note():
     text = open("CHANGELOG.md", encoding="utf8").read()
     m = re.search(r"##\s+\[([^\]]+)\][^\n]*\n([\s\S]*?)(?=\n##\s+\[|$)", text)
@@ -80,7 +138,7 @@ def changelog_note():
 
 def main():
     notes = open("docs/app-review-notes.txt", encoding="utf8").read().strip()
-    whats_new = changelog_note()
+    whats_new = whats_new_text()
     missing = []
 
     apps = api("GET", "/v1/apps", params={"filter[bundleId]": BUNDLE_ID})["data"]
@@ -100,6 +158,9 @@ def main():
         a = v["attributes"]
         say(f"  version {a['versionString']}: {a.get('appStoreState')} release={a.get('releaseType')}")
     ever_released = any(v["attributes"].get("appStoreState") in RELEASED for v in versions)
+    if MODE == "withdraw":
+        withdraw(app_id, versions)
+        return
 
     open_subs = api("GET", "/v1/reviewSubmissions", params={
         "filter[app]": app_id, "filter[platform]": "IOS",
