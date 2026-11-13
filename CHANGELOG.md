@@ -2,6 +2,10 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.27] - 2026-11-13
+
+Choosing a Bible is easier. Search by name or language, see your recent versions first, and tap any version to read or download it. More YouVersion Bibles now appear in the list and will open as they become available.
+
 ## [0.3.26] - 2026-11-12
 
 • Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.

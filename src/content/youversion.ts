@@ -19,6 +19,9 @@ export interface LicensedTranslation {
   shortName: string;
   publisher: string;
   publisherUrl: string;
+  /** BCP 47 tag from the YouVersion catalog; English when absent (the NASB editions). */
+  language?: string;
+  rtl?: boolean;
 }
 
 export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
@@ -288,9 +291,9 @@ async function run(
     sourceId: String(t.yvId),
     name: t.name,
     shortName: t.shortName,
-    language: 'eng',
-    languageName: 'English',
-    rtl: false,
+    language: !t.language || t.language === 'en' ? 'eng' : t.language,
+    languageName: displayLanguage(t.language ?? 'en'),
+    rtl: t.rtl ?? false,
     licenseLabel: `Licensed from ${t.publisher}`,
     licenseUrl: t.publisherUrl,
     attributionRequired: true,
@@ -315,5 +318,13 @@ async function run(
       }
     }
     throw e;
+  }
+}
+
+function displayLanguage(tag: string): string {
+  try {
+    return new Intl.DisplayNames(['en'], { type: 'language' }).of(tag) ?? tag;
+  } catch {
+    return tag;
   }
 }

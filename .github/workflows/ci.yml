@@ -27,5 +27,23 @@ jobs:
       - run: npm run build:content # validates content/ + compiles Bible DB (the accuracy gate)
       - run: npm run build
 
+  bible-proxy:
+    name: bible proxy worker · lint · typecheck · test
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: cloudflare/journeys-bible-proxy
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: npm
+          cache-dependency-path: cloudflare/journeys-bible-proxy/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc -p .
+      - run: npm test
+
   # Native (iOS/Android) build + Appium offline E2E are added in M7/M9.
   # iOS requires macOS runners + signing secrets; tracked as a release gate.

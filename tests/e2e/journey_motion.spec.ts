@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 /**
  * Steps the Ministry of Jesus journey through its first stops.
  *
- * Two things this test used to get wrong, both worth not repeating:
+ * Things this test used to get wrong, worth not repeating:
  *
  * 1. It wrote screenshots to an absolute path from one developer's machine, so
  *    it could only ever pass there. Artifacts now go through `testInfo.attach`,
@@ -13,8 +13,16 @@ import { test, expect } from '@playwright/test';
  *    longer than a second on a slow machine — so the test raced the animation
  *    and lost. It now waits for the control to re-enable, which is the app's own
  *    signal that the traveller has arrived.
+ * 3. The default 30 s test timeout is no longer enough. After long legs were
+ *    given more time (up to ~12.6 s on desktop, ~18.7 s on a compact screen),
+ *    the first five Ministry legs — Bethlehem to Egypt to Nazareth, then on
+ *    to the Temple — take about 38 s of travel alone, plus load. The
+ *    assertions were still right; the run just died mid-leg on the way to
+ *    stop 4. 120 s is the same kind of budget journey_camera.spec.ts already
+ *    uses (90 s for fewer hops), with room for the extra legs.
  */
 test('navigate through Ministry of Jesus journey stops', async ({ page }, testInfo) => {
+  test.setTimeout(120_000);
   await page.goto('/trace/journey-ministry');
 
   const nextBtn = page.getByRole('button', { name: 'Next stop' });
