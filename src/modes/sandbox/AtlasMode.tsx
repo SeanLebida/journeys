@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { TraceJourneyLink } from '../map-trace/TraceJourneyLink';
 import { useTranslation } from 'react-i18next';
 import maplibregl, { type MapLayerMouseEvent } from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
@@ -348,6 +349,14 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
                 {stop.scriptureRefs.map((r) => (
                   <ScripturePassage key={r} raw={r} />
                 ))}
+
+                {journey && (
+                  <p className="stop-visit__links">
+                    <TraceJourneyLink bundle={bundle} journeyId={journey.id}>
+                      Trace this journey →
+                    </TraceJourneyLink>
+                  </p>
+                )}
 
                 {stop.persons && stop.persons.length > 0 && (
                   <ul className="stop-visit__people">

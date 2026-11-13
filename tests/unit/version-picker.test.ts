@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, visibleDeviceRows, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, versionTitleDir, visibleDeviceRows, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
 import { licensedDownloadNote } from '../../src/content/licensedNote';
 import { translationMeta } from '../../src/content/translationMeta';
 import { capabilitiesFor, FALLBACK_VERSIONS } from '../../src/content/youversionCatalog';
@@ -102,6 +102,15 @@ describe('version picker rows', () => {
     expect(expanded.map((r) => r.id)[0]).toBe('KJV');
   });
 
+  it('preview 0 with Recent hides every built-in until the fold is opened', () => {
+    const rows = builtinRows();
+    const ordered = orderedDeviceRows(rows, 'KJV', ['KJV']);
+    const collapsed = visibleDeviceRows(ordered, ['KJV'], 0, { expanded: false, searching: false });
+    expect(collapsed).toEqual([]);
+    const expanded = visibleDeviceRows(ordered, ['KJV'], 0, { expanded: true, searching: false });
+    expect(expanded.map((r) => r.id)).toEqual(['KJV', 'ASV', 'BSB', 'WEB', 'YLT', 'GNV']);
+  });
+
   it('catalogMatchesLanguage is false for a previous language still in the list', () => {
     expect(catalogMatchesLanguage([{ languageTag: 'en' }], 'es')).toBe(false);
     expect(catalogMatchesLanguage([{ languageTag: 'es-MX' }], 'es')).toBe(true);
@@ -124,5 +133,20 @@ describe('licensed download note', () => {
     const web = licensedDownloadNote('web');
     expect(web).toContain('Keep this tab open while it downloads.');
     expect(web).toContain('picks up where it left off when you come back.');
+  });
+});
+
+describe('versionTitleDir', () => {
+  it('uses auto for an RTL language whose title is not in an RTL script', () => {
+    expect(versionTitleDir('Urdu Devanagari Bible', true)).toBe('auto');
+    expect(versionTitleDir('Test Hebrew Bible', true)).toBe('auto');
+  });
+
+  it('uses rtl when the title itself is in an RTL script', () => {
+    expect(versionTitleDir('תנ״ך', true)).toBe('rtl');
+  });
+
+  it('uses auto when the language is not RTL', () => {
+    expect(versionTitleDir('American Standard Version', false)).toBe('auto');
   });
 });

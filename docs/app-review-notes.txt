@@ -1,0 +1,7 @@
+Journeys is an offline educational atlas. The binary includes six public-domain Bibles (ASV, KJV, BSB, WEB, YLT, Geneva 1599) in on-device databases, offline map tiles, journey routes, lessons, and quizzes. No account is required, and the app collects no personal data.
+
+Optional network use, only after a tap: downloading more Bible translations (free-to-use texts from AO Lab's Free Use Bible API, and NASB 1995 and 2020 used by permission through YouVersion, stored encrypted with the publisher's notice), the list of available YouVersion translations, satellite and historical map tiles, one Mapillary view, one YouTube video, or a citation opened in the system browser.
+
+The in-app sourcing note says high-confidence claims are checked by the project and are not yet signed by a specialist historical geographer. That is intentional. Contested locations are shown as rival candidates rather than a single pin.
+
+No sign-in. Please review the bundled content without an account.

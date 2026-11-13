@@ -1,6 +1,7 @@
 import { parseScriptureRef } from './scriptureRef';
 import { bookNameFromNumber } from './books';
 import type { BundleIndex } from './useBundle';
+import { existingJourneyId, firstExistingJourneyId } from './existingJourney';
 
 /**
  * The reverse index: passage → everything in the atlas anchored to it.
@@ -87,7 +88,7 @@ export function buildScriptureIndex(bundle: BundleIndex): ScriptureIndex {
         id: stop.id,
         label,
         detail: journey ? `${journey.title.en} · ${stop.dateRange.display.en}` : stop.dateRange.display.en,
-        journeyId: stop.journeyId,
+        journeyId: existingJourneyId(bundle, stop.journeyId),
         siteId: stop.siteId,
         stopOrder: stop.order,
       });
@@ -128,7 +129,7 @@ export function buildScriptureIndex(bundle: BundleIndex): ScriptureIndex {
         detail: p.role.en,
         personId: p.id,
         siteId: p.homeSiteId,
-        journeyId: p.journeyIds?.[0],
+        journeyId: firstExistingJourneyId(bundle, p.journeyIds),
       });
     }
   }
