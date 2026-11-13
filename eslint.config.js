@@ -3,7 +3,8 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'dist-content', 'node_modules', 'ios', 'android', 'coverage', 'playwright-report'] },
+  // cloudflare/ Workers have their own package, lint and tests.
+  { ignores: ['dist', 'dist-content', 'node_modules', 'ios', 'android', 'coverage', 'playwright-report', 'cloudflare'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
