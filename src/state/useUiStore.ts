@@ -15,6 +15,8 @@ interface UiState {
   translation: TranslationId;
   /** Translations downloaded onto this device; their text lives in bibleStore. */
   downloaded: DownloadedTranslation[];
+  /** Last few translations the reader switched to, newest first (the version picker's "Recently used"). */
+  recentTranslations: TranslationId[];
   /**
    * The timeline's fold-out chart effect. On by default, and independently
    * overridden by `prefers-reduced-motion` — this is the explicit opt-out for a
@@ -36,18 +38,21 @@ export const useUiStore = create<UiState>()(
   persist(
     (set) => ({
       downloaded: [],
+      recentTranslations: [],
       theme: 'system',
       locale: DEFAULT_LOCALE,
       translation: DEFAULT_TRANSLATION,
       timelineFold: true,
       setTheme: (theme) => set({ theme }),
       setLocale: (locale) => set({ locale }),
-      setTranslation: (translation) => set({ translation }),
+      setTranslation: (translation) =>
+        set((s) => ({ translation, recentTranslations: [translation, ...s.recentTranslations.filter((t) => t !== translation)].slice(0, 4) })),
       addDownloaded: (t) =>
         set((s) => ({ downloaded: [...s.downloaded.filter((d) => d.id !== t.id), t] })),
       removeDownloaded: (id) =>
         set((s) => ({
           downloaded: s.downloaded.filter((d) => d.id !== id),
+          recentTranslations: s.recentTranslations.filter((t) => t !== id),
           translation: s.translation === id ? DEFAULT_TRANSLATION : s.translation,
         })),
       setTimelineFold: (timelineFold) => set({ timelineFold }),
@@ -60,11 +65,14 @@ export const useUiStore = create<UiState>()(
       merge: (persisted, current) => {
         const saved = (persisted ?? {}) as Partial<UiState>;
         const downloaded = Array.isArray(saved.downloaded) ? saved.downloaded : [];
-        const known = isTranslation(saved.translation) || downloaded.some((d) => d.id === saved.translation);
+        const isKnown = (t: unknown) => isTranslation(t) || downloaded.some((d) => d.id === t);
+        const known = isKnown(saved.translation);
+        const recentTranslations = Array.isArray(saved.recentTranslations) ? saved.recentTranslations.filter(isKnown) : [];
         return {
           ...current,
           ...saved,
           downloaded,
+          recentTranslations,
           translation: known && saved.translation ? saved.translation : current.translation,
         };
       },

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { fetchCatalog, type DownloadableTranslation } from '../../content/catalog';
 import { closeDownloadedDb } from '../../content/useBible';
+import { licensedDownloadNote } from '../../content/licensedNote';
 import { LICENSED_TRANSLATIONS, reportDownload } from '../../content/youversion';
 import { TRANSLATIONS, type TranslationId } from '../../content/translations';
 import { deleteBibleBytes } from '../../platform/bibleStore';
@@ -89,7 +90,7 @@ export function TranslationLibrary({ onRead }: { onRead: (id: TranslationId) => 
           <li key={t.id} className="bible__library-item">
             <div>
               <strong>{t.name}</strong> <span className="bible__translation-tag">({t.id})</span>
-              <p className="bible__library-meta">Built in · Public domain</p>
+              <p className="bible__library-meta">Built in · {t.license}</p>
             </div>
             <button type="button" className="bible__library-btn" onClick={() => onRead(t.id)}>
               Read
@@ -242,10 +243,7 @@ function LicensedDownloads() {
   return (
     <>
       <h2 className="bible__library-heading">Licensed translations</h2>
-      <p className="bible__library-meta">
-        Downloaded through YouVersion by permission of the publisher. YouVersion currently allows about 200 chapters an hour, so a full Bible takes around 6 hours; it pauses and carries on by itself. You can
-        keep reading while it downloads, but keep the app open until it finishes. It then reads offline and stays on this device only.
-      </p>
+      <p className="bible__library-meta">{licensedDownloadNote()}</p>
       <ul className="bible__library-list" aria-label="Licensed Bibles to download">
         {available.map((t) => {
           const progress = active[t.id]?.progress;

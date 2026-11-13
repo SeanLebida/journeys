@@ -77,12 +77,12 @@ test('download a translation, read it offline after reload, then remove it', asy
   await expect(page.locator('.bible__translation-tag')).toHaveText('(TLB)');
   await expect(page.locator('#v1')).toContainText('In a beginning God made the skies and the land.');
   await expect(page.locator('.bible-verse')).toHaveCount(31);
-  await expect(page.getByLabel('Translation')).toHaveValue('hao:eng_tst');
+  await expect(page.getByRole('button', { name: /^Translation: Test Literal Bible/ })).toBeVisible();
 
   // Relaunch with HelloAO unreachable: the text must come from this device.
   online = false;
   await page.reload();
-  await expect(page.getByLabel('Translation')).toHaveValue('hao:eng_tst');
+  await expect(page.getByRole('button', { name: /^Translation: Test Literal Bible/ })).toBeVisible();
   await expect(page.locator('#v1')).toContainText('In a beginning God made');
 
   // A book this translation doesn't have says so instead of breaking.
@@ -91,8 +91,11 @@ test('download a translation, read it offline after reload, then remove it', asy
 
   await page.getByRole('button', { name: 'Translations' }).click();
   await page.getByRole('button', { name: 'Remove Test Literal Bible' }).click();
-  await expect(page.getByLabel('Translation')).toHaveValue('ASV');
-  await expect(page.getByLabel('Translation').locator('option[value="hao:eng_tst"]')).toHaveCount(0);
+  const chip = page.getByRole('button', { name: /^Translation: American Standard Version/ });
+  await expect(chip).toBeVisible();
+  await chip.click();
+  await expect(page.getByRole('dialog').getByRole('region', { name: 'On this device' }).locator('[data-version="hao:eng_tst"]')).toHaveCount(0);
+  await page.keyboard.press('Escape');
   // Offline, the library explains why it can't list more.
   await expect(page.getByRole('alert')).toBeVisible();
 });
