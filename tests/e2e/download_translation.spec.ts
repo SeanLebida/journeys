@@ -95,7 +95,7 @@ test('download a translation, read it offline after reload, then remove it', asy
   await expect(chip).toBeVisible();
   await chip.click();
   const deviceSheet = page.getByRole('dialog');
-  const more = deviceSheet.getByRole('button', { name: 'Show more' });
+  const more = deviceSheet.getByRole('button', { name: /Show \d+ built-in Bibles/ });
   if (await more.count()) await more.click();
   await expect(deviceSheet.getByRole('region', { name: 'On this device' }).locator('[data-version="hao:eng_tst"]')).toHaveCount(0);
   await page.keyboard.press('Escape');
