@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
 import { licensedDownloadNote } from '../../src/content/licensedNote';
 import { translationMeta } from '../../src/content/translationMeta';
 import { capabilitiesFor, FALLBACK_VERSIONS } from '../../src/content/youversionCatalog';
@@ -83,6 +83,13 @@ describe('version picker rows', () => {
     const rows = builtinRows();
     const ordered = orderedDeviceRows(rows, 'GNV', ['KJV']);
     expect(ordered.map((r) => r.id)).toEqual(['GNV', 'KJV', 'ASV', 'BSB', 'WEB', 'YLT']);
+  });
+
+  it('built-ins fold label uses the total built-in count, then Show fewer', () => {
+    const n = builtinRows().length;
+    expect(n).toBeGreaterThan(0);
+    expect(builtinFoldLabel(false, n)).toBe(`Show ${n} built-in Bibles`);
+    expect(builtinFoldLabel(true, n)).toBe('Show fewer');
   });
 
   it('catalogMatchesLanguage is false for a previous language still in the list', () => {

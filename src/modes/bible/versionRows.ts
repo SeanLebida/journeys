@@ -220,3 +220,8 @@ export function catalogMatchesLanguage(versions: { languageTag: string }[], lang
     return t === r || t.startsWith(`${r}-`);
   });
 }
+
+/** Label for the On this device built-ins fold only. `count` is the total number of built-in Bibles. */
+export function builtinFoldLabel(expanded: boolean, count: number): string {
+  return expanded ? 'Show fewer' : `Show ${count} built-in Bibles`;
+}

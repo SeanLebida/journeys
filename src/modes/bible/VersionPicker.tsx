@@ -11,7 +11,7 @@ import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../stat
 import { useUiStore } from '../../state/useUiStore';
 import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
 import { useVersionNotice } from './useVersionNotice';
-import { builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
 import '../../styles/version-picker.css';
 
 const PAGE = 60;
@@ -214,7 +214,11 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const free = hao.items.filter((t) => !deviceIds.has(t.id) && (activeLanguage === ALL_LANGUAGES || haoKey(t) === activeLanguage)).map((t) => withStatus(helloAoRow(t, activeLanguage))).filter((r) => rowMatches(r, exactLang ? '' : query));
   const searching = query.trim() !== '';
   const deviceOrdered = orderedDeviceRows(searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice, current, recent);
-  const deviceShown = searching || deviceExpanded || deviceOrdered.length <= DEVICE_PREVIEW ? deviceOrdered : deviceOrdered.slice(0, DEVICE_PREVIEW);
+  const builtinOrdered = deviceOrdered.filter((r) => r.source === 'builtin');
+  const builtinCount = builtinRows().length;
+  const foldBuiltins = !searching && builtinOrdered.length > DEVICE_PREVIEW;
+  const hiddenBuiltins = new Set(foldBuiltins && !deviceExpanded ? builtinOrdered.slice(DEVICE_PREVIEW).map((r) => r.id) : []);
+  const deviceShown = deviceOrdered.filter((r) => !hiddenBuiltins.has(r.id));
   const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
   const detail = detailId ? all.find((r) => r.id === detailId) : undefined;
 
@@ -377,11 +381,10 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
               )}
               {!searching && recentRows.length > 0 && <Section title="Recent" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
               <Section title="On this device" rows={deviceShown} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} empty={undefined} />
-              {!searching && !deviceExpanded && deviceOrdered.length > DEVICE_PREVIEW && (
+              {foldBuiltins && (
                 <p className="vp__hint">
-                  Showing {DEVICE_PREVIEW} of {deviceOrdered.length}.{' '}
-                  <button type="button" className="vp__text-btn" onClick={() => setDeviceExpanded(true)}>
-                    Show more
+                  <button type="button" className="vp__text-btn" onClick={() => setDeviceExpanded((open) => !open)}>
+                    {builtinFoldLabel(deviceExpanded, builtinCount)}
                   </button>
                 </p>
               )}

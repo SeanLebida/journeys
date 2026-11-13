@@ -179,9 +179,18 @@ test('at 360px, built-in versions stay compact so online versions are on the fir
   await expect(onDevice.locator('[data-version="GNV"]')).toHaveCount(0);
   const online = sheet.getByRole('region', { name: /Read online/ });
   await expect(online.locator('[data-version="yv:100"]')).toBeInViewport();
-  await sheet.getByRole('button', { name: 'Show more' }).click();
-  await expect(onDevice.locator('[data-version]')).toHaveCount(6);
+  const fold = sheet.getByRole('button', { name: /Show \d+ built-in Bibles/ });
+  const collapsed = await fold.textContent();
+  await expect(fold).toBeVisible();
+  await expect(sheet.getByRole('button', { name: 'Show more' })).toHaveCount(0);
+  await fold.click();
+  await expect(sheet.getByRole('button', { name: 'Show fewer' })).toBeVisible();
   await expect(onDevice.locator('[data-version="GNV"]')).toBeVisible();
+  const builtinCount = await onDevice.locator('[data-version]').count();
+  expect(collapsed).toBe(`Show ${builtinCount} built-in Bibles`);
+  await sheet.getByRole('button', { name: 'Show fewer' }).click();
+  await expect(sheet.getByRole('button', { name: `Show ${builtinCount} built-in Bibles` })).toBeVisible();
+  await expect(onDevice.locator('[data-version]')).toHaveCount(2);
 });
 
 test('searching a language name surfaces that language and its versions', async ({ page }) => {
