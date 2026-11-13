@@ -11,7 +11,7 @@ import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../stat
 import { useUiStore } from '../../state/useUiStore';
 import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
 import { useVersionNotice } from './useVersionNotice';
-import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, visibleDeviceRows, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, versionTitleDir, visibleDeviceRows, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
 import '../../styles/version-picker.css';
 
 const PAGE = 60;
@@ -215,8 +215,11 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const deviceOrdered = orderedDeviceRows(searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice, current, recent);
   const builtinOrdered = deviceOrdered.filter((r) => r.source === 'builtin');
   const builtinCount = builtinRows().length;
-  const foldBuiltins = !searching && builtinOrdered.length > DEVICE_PREVIEW;
-  const deviceShown = visibleDeviceRows(deviceOrdered, recentRows.map((r) => r.id), DEVICE_PREVIEW, { expanded: deviceExpanded, searching });
+  // When Recent already shows the active Bible, hide the rest of the built-ins
+  // behind the fold so Read online fits on a 360×640 first screen.
+  const devicePreview = recentRows.length > 0 ? 0 : DEVICE_PREVIEW;
+  const foldBuiltins = !searching && builtinOrdered.length > devicePreview;
+  const deviceShown = visibleDeviceRows(deviceOrdered, recentRows.map((r) => r.id), devicePreview, { expanded: deviceExpanded, searching });
   const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
   const detail = detailId ? all.find((r) => r.id === detailId) : undefined;
 
@@ -378,6 +381,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 </section>
               )}
               {!searching && recentRows.length > 0 && <Section title="Recent" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
+              {deviceShown.length > 0 ? (
               <Section
                 id={deviceSectionId}
                 title="On this device"
@@ -386,8 +390,10 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 offline={!online}
                 onPick={pick}
                 onInfo={(r) => setDetailId(r.id)}
-                empty={foldBuiltins && deviceShown.length === 0 ? ' ' : undefined}
               />
+              ) : foldBuiltins ? (
+                <div id={deviceSectionId} />
+              ) : null}
               {foldBuiltins && (
                 <p className="vp__hint">
                   <button
@@ -523,7 +529,7 @@ function Section({
                   <span className="vp-row__text" aria-hidden="true">
                     <span className="vp-row__name">
                       <span className="vp-row__code">{r.abbreviation}</span> ·{' '}
-                      <span lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+                      <span lang={r.lang} dir={versionTitleDir(r.name, r.rtl)}>
                         {r.name}
                       </span>
                     </span>
@@ -577,6 +583,11 @@ function VersionDetail({
   const notice = useVersionNotice(r.yv && !r.notice ? r.yv.yvId : null);
   const installed = r.state === 'device';
   const downloadable = r.state !== 'unavailable' && !installed && !r.progress && (r.state === 'download' || r.canDownload);
+  const showRead = installed || r.state === 'online';
+  const showCancel = Boolean(r.progress && r.progress.phase !== 'installing');
+  const showRemove = installed && r.source !== 'builtin';
+  const showHint = offline && !installed && r.state !== 'unavailable';
+  const showFooter = showRead || downloadable || Boolean(progress) || showCancel || showRemove || showHint;
   return (
     <>
       <header className="vp__head">
@@ -589,7 +600,7 @@ function VersionDetail({
       </header>
       <div className="vp__scroll vp-detail vp-detail__scroll">
         <span className="vp-badge vp-badge--lg">{r.abbreviation}</span>
-        <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+        <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={versionTitleDir(r.name, r.rtl)}>
           {r.name}
         </h2>
         <p className="vp-detail__facts">
@@ -665,9 +676,10 @@ function VersionDetail({
           </p>
         )}
       </div>
+      {showFooter && (
       <div className="vp-detail__footer">
         <div className="vp-detail__actions">
-          {(installed || r.state === 'online') && (
+          {showRead && (
             <button type="button" className="vp-btn vp-btn--primary" disabled={r.state === 'online' && offline} onClick={() => actions.read(r)}>
               Read
             </button>
@@ -682,19 +694,20 @@ function VersionDetail({
               {progress}
             </button>
           )}
-          {r.progress && r.progress.phase !== 'installing' && (
+          {showCancel && (
             <button type="button" className="vp-btn" onClick={() => actions.cancel(r)}>
               Cancel
             </button>
           )}
-          {installed && r.source !== 'builtin' && (
+          {showRemove && (
             <button type="button" className="vp-btn" onClick={() => void actions.remove(r)}>
               Remove download
             </button>
           )}
         </div>
-        {offline && !installed && r.state !== 'unavailable' && <p className="vp__hint">Connect to the internet to {r.state === 'online' ? 'read or download' : 'download'} this version.</p>}
+        {showHint && <p className="vp__hint">Connect to the internet to {r.state === 'online' ? 'read or download' : 'download'} this version.</p>}
       </div>
+      )}
     </>
   );
 }
