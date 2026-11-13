@@ -19,7 +19,7 @@ export interface TranslationMeta {
 export function translationMeta(id: TranslationId, downloaded: DownloadedTranslation[], streamed: StreamedTranslation[] = []): TranslationMeta {
   if (isTranslation(id)) {
     const t = translationInfo(id);
-    return { id, label: id, name: t.name, sourcing: 'public domain, bundled for offline reading.', licenseUrl: t.infoUrl, rtl: false };
+    return { id, label: id, name: t.name, sourcing: `${t.license}, bundled for offline reading.`, licenseUrl: t.infoUrl, rtl: false };
   }
   const d = isDownloadedId(id) ? downloaded.find((x) => x.id === id) : undefined;
   const online = !d && isLicensedId(id) ? streamed.find((x) => x.id === id) : undefined;
