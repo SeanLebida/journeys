@@ -1,4 +1,4 @@
-import { useUiStore } from '../state/useUiStore';
+import { useUiStore, type StreamedTranslation } from '../state/useUiStore';
 import type { DownloadedTranslation } from './downloads';
 import { isDownloadedId, isLicensedId, isTranslation, translationInfo, type TranslationId } from './translations';
 
@@ -16,12 +16,24 @@ export interface TranslationMeta {
   rtl: boolean;
 }
 
-export function translationMeta(id: TranslationId, downloaded: DownloadedTranslation[]): TranslationMeta {
+export function translationMeta(id: TranslationId, downloaded: DownloadedTranslation[], streamed: StreamedTranslation[] = []): TranslationMeta {
   if (isTranslation(id)) {
     const t = translationInfo(id);
     return { id, label: id, name: t.name, sourcing: 'public domain, bundled for offline reading.', licenseUrl: t.infoUrl, rtl: false };
   }
   const d = isDownloadedId(id) ? downloaded.find((x) => x.id === id) : undefined;
+  const online = !d && isLicensedId(id) ? streamed.find((x) => x.id === id) : undefined;
+  if (online) {
+    return {
+      id,
+      label: online.shortName,
+      name: online.name,
+      sourcing: 'used by permission, via YouVersion, read online (not stored on this device).',
+      licenseUrl: online.publisherUrl ?? undefined,
+      notice: online.notice ?? `© ${online.publisher ?? 'the publisher'}. Used by permission.`,
+      rtl: online.rtl,
+    };
+  }
   if (!d) return { id, label: id, name: id, sourcing: 'downloaded to this device.', rtl: false };
   if (isLicensedId(id)) {
     return {
@@ -47,5 +59,6 @@ export function translationMeta(id: TranslationId, downloaded: DownloadedTransla
 export function useTranslationMeta(): TranslationMeta {
   const translation = useUiStore((s) => s.translation);
   const downloaded = useUiStore((s) => s.downloaded);
-  return translationMeta(translation, downloaded);
+  const streamed = useUiStore((s) => s.streamed);
+  return translationMeta(translation, downloaded, streamed);
 }
