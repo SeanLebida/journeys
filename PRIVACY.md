@@ -1,6 +1,6 @@
 # Privacy Policy — Journeys
 
-_Last updated: 2026-07-15_
+_Last updated: 2026-11-13_
 
 **Journeys collects no personal data.**
 
@@ -8,18 +8,9 @@ The app is fully client-side and works offline. Specifically:
 
 - **No accounts, no sign-in.** We do not ask for your name, email, or any identifier.
 - **No analytics or tracking.** The app contains no analytics SDKs, advertising SDKs, or third-party trackers.
-- **No data leaves your device.** All content (maps, journeys, Bible text) is bundled and read locally.
-  Your settings (theme, translation choice) and quiz progress are stored **only on your device**
-  (browser `localStorage` on web, the system preferences store on iOS/Android).
-- **Network use is optional.** The only network requests are: (1) downloading optional content updates
-  if you choose to, (2) opening a citation's source link in your browser if you tap it, and (3) optional
-  online map imagery and media **only when you turn it on**: the satellite / streets / Roman-Empire
-  map layers fetch tiles from Esri and DARE while enabled, tapping "Street-level imagery" loads
-  Mapillary's viewer for that one spot, and tapping "Play video" loads that one video from YouTube
-  (via the privacy-hardened youtube-nocookie domain). These requests carry only the map coordinates or
-  the video being viewed — never any personal information — and nothing is loaded from any of these
-  services until you opt in. The bundled site and artifact photos, and the app's fonts, are stored in
-  the app and need no network at all.
+- **Your data stays on your device.** Notes, settings, translation choice, and quiz progress are stored only on your device.
+- **Some features use the internet.** Downloading a Bible goes through the Journeys Bible proxy (free translations come from AO Lab's Free Use Bible API; NASB comes from YouVersion by permission). To stop abuse, the proxy holds a scrambled form of your IP address for about 60 seconds, then deletes it. It keeps no logs. Online map layers send the map area you're viewing to Esri and DARE so they can return map images. A close satellite view can also load when you open a place that has no bundled photo and you are online, and the app checks the store for an update when it starts.
+- **Opening a source or a video uses the internet too.** Tapping a citation opens it in your browser. Tapping Street-level imagery loads Mapillary for that spot, and tapping Play video loads that video from YouTube (via the privacy-hardened youtube-nocookie domain). The bundled site and artifact photos, and the app's fonts, stay in the app and need no network.
 
 Because we collect nothing, there is nothing to sell, share, or delete on a server. Removing the app (or
 clearing site data) removes everything it stored.

@@ -2,6 +2,10 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.29] - 2026-11-13
+
+Trace this journey now opens the journey you tapped. Journey links are easier to tap, and the Bible version picker fits every language and smaller screens.
+
 ## [0.3.28] - 2026-11-13
 
 Bible picker fixes. Built-in Bibles fold away so more versions fit on screen, searching a language name like Spanish now works, and switching languages clears the old list right away.
