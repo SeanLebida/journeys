@@ -28,8 +28,8 @@ import {
   useNotesStore,
   type HighlightColor,
 } from '../../state/useNotesStore';
-import { useUiStore } from '../../state/useUiStore';
-import { TRANSLATIONS, isDownloadedId, isTranslation, type TranslationId } from '../../content/translations';
+import { isOpenableTranslation, useUiStore } from '../../state/useUiStore';
+import { TRANSLATIONS, isDownloadedId, type TranslationId } from '../../content/translations';
 import { useTranslationMeta } from '../../content/translationMeta';
 import { TranslationLibrary } from './TranslationLibrary';
 import { DownloadStatus } from './DownloadStatus';
@@ -63,6 +63,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   const translation = useUiStore((s) => s.translation);
   const setTranslation = useUiStore((s) => s.setTranslation);
   const downloaded = useUiStore((s) => s.downloaded);
+  const streamed = useUiStore((s) => s.streamed);
   const removeDownloaded = useUiStore((s) => s.removeDownloaded);
   const meta = useTranslationMeta();
 
@@ -117,17 +118,14 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   // may still be hydrating on a cold start) before dropping the param.
   useEffect(() => {
     if (!translationParam) return;
-    const known =
-      isTranslation(translationParam) ||
-      (isDownloadedId(translationParam) && downloaded.some((d) => d.id === translationParam));
-    if (!known) return;
+    if (!isOpenableTranslation(translationParam, { downloaded, streamed })) return;
     setTranslation(translationParam);
     setTab('read');
     if (params.has('translation')) {
       params.delete('translation');
       setParams(params, { replace: true });
     }
-  }, [translationParam, downloaded, params, setParams, setTranslation]);
+  }, [translationParam, downloaded, streamed, params, setParams, setTranslation]);
 
   useEffect(() => {
     setLastRead(book, chapter);
@@ -201,7 +199,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
             value={translation}
             onChange={(e) => {
               const id = e.target.value;
-              if (isTranslation(id) || (isDownloadedId(id) && downloaded.some((d) => d.id === id))) setTranslation(id);
+              if (isOpenableTranslation(id, { downloaded, streamed })) setTranslation(id);
             }}
           >
             {TRANSLATIONS.map((t) => (
@@ -214,6 +212,13 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
                 {d.name} ({d.shortName})
               </option>
             ))}
+            {streamed
+              .filter((st) => !downloaded.some((d) => d.id === st.id))
+              .map((st) => (
+                <option key={st.id} value={st.id}>
+                  {st.name} ({st.shortName}, online)
+                </option>
+              ))}
           </select>
         </label>
       </header>
