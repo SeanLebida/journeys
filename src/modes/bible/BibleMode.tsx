@@ -29,10 +29,11 @@ import {
   type HighlightColor,
 } from '../../state/useNotesStore';
 import { useUiStore } from '../../state/useUiStore';
-import { TRANSLATIONS, isDownloadedId, isTranslation, type TranslationId } from '../../content/translations';
+import { isDownloadedId, isTranslation, type TranslationId } from '../../content/translations';
 import { useTranslationMeta } from '../../content/translationMeta';
 import { TranslationLibrary } from './TranslationLibrary';
 import { DownloadStatus } from './DownloadStatus';
+import { VersionPicker } from './VersionPicker';
 
 /**
  * The Bible reader.
@@ -195,27 +196,15 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
           </h1>
           <p className="home__tagline">{t('modes.bible.tagline')}</p>
         </div>
-        <label className="bible__translation">
-          Translation
-          <select
-            value={translation}
-            onChange={(e) => {
-              const id = e.target.value;
-              if (isTranslation(id) || (isDownloadedId(id) && downloaded.some((d) => d.id === id))) setTranslation(id);
-            }}
-          >
-            {TRANSLATIONS.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name} ({t.id})
-              </option>
-            ))}
-            {downloaded.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name} ({d.shortName})
-              </option>
-            ))}
-          </select>
-        </label>
+        <VersionPicker
+          current={translation}
+          label={meta.label}
+          name={meta.name}
+          onRead={(id) => {
+            setTranslation(id);
+            setTab('read');
+          }}
+        />
       </header>
 
       <nav className="bible__tabs" aria-label="Reader sections">
