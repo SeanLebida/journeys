@@ -1,0 +1,90 @@
+name: Android Promote to Production
+
+# Promotes an already-uploaded versionCode to the Google Play production
+# track. Does not build or upload an AAB.
+#
+# Run this from development (workflow_dispatch only). Required secret:
+#   PLAY_SERVICE_ACCOUNT_JSON
+#
+# Default status is completed (full rollout), matching android-aab.yml.
+# Use inProgress plus a user_fraction only for a staged rollout.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_code:
+        description: 'versionCode already on a testing track to promote'
+        required: true
+        type: string
+        default: '336'
+      dry_run:
+        description: 'Inspect tracks only; do not promote'
+        required: true
+        type: choice
+        default: 'false'
+        options:
+          - 'false'
+          - 'true'
+      release_notes:
+        description: 'en-US production release notes (max 500 characters)'
+        required: false
+        type: string
+      status:
+        description: 'Release rollout status (completed = full rollout)'
+        required: true
+        type: choice
+        default: 'completed'
+        options:
+          - completed
+          - inProgress
+          - draft
+      user_fraction:
+        description: 'Staged rollout fraction when status is inProgress (e.g. 0.1)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  promote:
+    name: Promote to Play production
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+
+      - name: Inspect Play tracks
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: how.authentic.journeys
+          PLAY_VERSION_CODE: ${{ inputs.version_code }}
+        run: node scripts/promote-android-play.mjs inspect
+
+      - name: Write release notes
+        if: ${{ inputs.dry_run != 'true' }}
+        env:
+          PLAY_RELEASE_NOTES: ${{ inputs.release_notes }}
+        run: |
+          if [ -z "$PLAY_RELEASE_NOTES" ]; then
+            echo "release_notes input is required unless dry_run is true."
+            exit 1
+          fi
+          printf '%s\n' "$PLAY_RELEASE_NOTES" > "$RUNNER_TEMP/whatsnew-en-US"
+          echo "Wrote ${#PLAY_RELEASE_NOTES} characters of en-US notes."
+
+      - name: Promote version to production
+        if: ${{ inputs.dry_run != 'true' }}
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          PLAY_PACKAGE_NAME: how.authentic.journeys
+          PLAY_VERSION_CODE: ${{ inputs.version_code }}
+          PLAY_NOTES_FILE: ${{ runner.temp }}/whatsnew-en-US
+          PLAY_STATUS: ${{ inputs.status }}
+          PLAY_USER_FRACTION: ${{ inputs.user_fraction }}
+        run: node scripts/promote-android-play.mjs promote
