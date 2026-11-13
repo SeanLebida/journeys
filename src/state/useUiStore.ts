@@ -34,7 +34,7 @@ interface UiState {
   downloaded: DownloadedTranslation[];
   /** YouVersion versions picked for reading online; text is never stored. */
   streamed: StreamedTranslation[];
-  /** Last few translations the reader switched to, newest first (the version picker's "Recently used"). */
+  /** Last few translations the reader switched to, newest first (the version picker's "Recent"). */
   recentTranslations: TranslationId[];
   /** Bible languages the reader picked in the version picker, newest first. */
   recentLanguages: string[];

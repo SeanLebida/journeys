@@ -130,7 +130,7 @@ body:has(dialog.vp[open]) {
   flex: 0 1 9rem;
 }
 .vp__field--grow {
-  flex: 1 1 9rem;
+  flex: 1 1 100%;
 }
 .vp__field-label {
   font-size: 0.72rem;
@@ -457,4 +457,19 @@ body:has(dialog.vp[open]) {
 .vp__list > li {
   content-visibility: auto;
   contain-intrinsic-size: auto 56px;
+}
+.vp-row__code {
+  font-weight: 700;
+}
+.vp__empty {
+  margin: 1.5rem 0;
+  text-align: center;
+  color: var(--text);
+}
+.vp-btn--progress:disabled {
+  cursor: progress;
+  border-style: solid;
+  border-color: var(--link);
+  background: var(--surface);
+  color: var(--text);
 }

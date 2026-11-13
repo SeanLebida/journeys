@@ -24,17 +24,17 @@ const SOURCE_LABEL: Record<VersionRow['source'], string> = {
   youversion: 'YouVersion, used by permission',
 };
 
+/** `Downloading… 42%`; a free download has no known size, so it shows no percentage. */
 function progressLabel(r: VersionRow): string | null {
   const p = r.progress;
   if (!p) return null;
-  if (p.phase === 'installing') return 'Installing…';
-  if (p.phase === 'downloading') return `Downloading ${(p.receivedBytes / 1_048_576).toFixed(1)} MB…`;
-  if (p.total > 0) {
-    const waiting = p.waitingUntil && p.waitingUntil > Date.now() ? ' · paused, carries on by itself' : '';
-    return `${p.done.toLocaleString()} of ${p.total.toLocaleString()} chapters${waiting}`;
-  }
-  return 'Starting…';
+  if (p.phase === 'installing') return 'Downloading… 100%';
+  if (p.phase === 'downloading') return 'Downloading…';
+  return `Downloading… ${p.total > 0 ? Math.floor((p.done / p.total) * 100) : 0}%`;
 }
+
+const ALL_LANGUAGES = '*';
+const NO_MATCH = 'No versions match. Try another name or language.';
 
 /** One short line under the name. Reading online is the normal case, so it says least. */
 function rowMeta(r: VersionRow, offline: boolean): string {
@@ -42,10 +42,20 @@ function rowMeta(r: VersionRow, offline: boolean): string {
   if (progress) return progress;
   if (r.source === 'builtin') return `Built in · ${r.license}`;
   if (r.state === 'device') return 'On this device';
-  if (r.state === 'download') return `${r.license} · Download to read`;
+  if (r.state === 'download') return r.license ?? '';
   if (r.state === 'unavailable') return r.publisher ?? '';
-  const who = r.publisher ?? 'Reads online';
-  return offline ? `${who} · Needs a connection` : who;
+  const who = r.publisher ?? '';
+  return offline ? [who, 'Needs a connection'].filter(Boolean).join(' · ') : who;
+}
+
+/** Row badges, in reading order: how you get it, then what it covers. */
+function badges(r: VersionRow): string[] {
+  const out: string[] = [];
+  if (r.state === 'unavailable') out.push('Not available yet');
+  else if (!r.progress && (r.state === 'download' || (r.state === 'online' && r.canDownload))) out.push('Download');
+  else if (r.state === 'online') out.push('Read online');
+  if (r.coverage === 'New Testament') out.push('New Testament only');
+  return out;
 }
 
 // HelloAO's list is ~1 MB; fetch it once per session.
@@ -154,7 +164,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   }, [haoAttempt]);
 
   const { options: languages, haoKey } = useMemo(() => languageOptions(yv.languages, hao.items), [yv.languages, hao.items]);
-  const languageName = languages.find((l) => l.key === language)?.name ?? language;
+  const languageName = language === ALL_LANGUAGES ? 'All languages' : (languages.find((l) => l.key === language)?.name ?? language);
 
   const withStatus = (r: VersionRow): VersionRow => ({ ...r, progress: active[r.id]?.progress, error: failed[r.id] });
   const onDevice = useMemo(() => {
@@ -174,7 +184,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const byId = new Map<string, VersionRow>([...streamed.map(streamedRow), ...onDevice].map((r) => [r.id, r]));
   const recentRows = recent.map((id) => byId.get(id)).filter((r): r is VersionRow => Boolean(r)).slice(0, 3);
   const youVersion = readableFirst(yv.versions.filter((v) => !deviceIds.has(v.id)).map((v) => withStatus(youVersionRow(v, languageName))));
-  const free = hao.items.filter((t) => !deviceIds.has(t.id) && haoKey(t) === language).map((t) => withStatus(helloAoRow(t, language))).filter((r) => rowMatches(r, query));
+  const free = hao.items.filter((t) => !deviceIds.has(t.id) && (language === ALL_LANGUAGES || haoKey(t) === language)).map((t) => withStatus(helloAoRow(t, language))).filter((r) => rowMatches(r, query));
   const searching = query.trim() !== '';
   const deviceShown = searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice;
   const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
@@ -237,7 +247,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   };
 
   let banner: ReactNode = null;
-  if (!online) banner = <p className="vp-banner" role="status">You&apos;re offline. Versions on this device still open; online versions need a connection.</p>;
+  if (!online) banner = <p className="vp-banner" role="status">You&apos;re offline. Your downloaded versions are still here.</p>;
   else if (yv.source === 'fallback' && yv.status === 'ready')
     banner = (
       <p className="vp-banner" role="status">
@@ -287,7 +297,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
             onClose={onClose}
           />
         ) : detail ? (
-          <VersionDetail row={detail} current={current} titleId={titleId} offline={!online} actions={actions} onBack={() => back.current()} onClose={onClose} />
+          <VersionDetail row={detail} titleId={titleId} offline={!online} actions={actions} onBack={() => back.current()} onClose={onClose} />
         ) : (
           <>
             <header className="vp__head">
@@ -299,7 +309,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
             <div className="vp__controls">
               <label className="vp__field vp__field--grow">
                 <span className="vp__field-label">Search</span>
-                <input type="search" className="vp__input" value={query} placeholder="Name, abbreviation or publisher" onChange={(e) => setQuery(e.target.value)} />
+                <input type="search" className="vp__input" value={query} placeholder="Search versions or languages" onChange={(e) => setQuery(e.target.value)} />
               </label>
               <div className="vp__field">
                 <span className="vp__field-label" id={`${titleId}-lang`}>
@@ -315,8 +325,13 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
             </div>
             <div className="vp__scroll">
               {banner}
-              {!searching && recentRows.length > 0 && <Section title="Recently used" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
-              <Section title="On this device" rows={deviceShown} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} empty={searching ? 'Nothing on this device matches.' : undefined} />
+              {searching && yv.status !== 'loading' && deviceShown.length + youVersion.length + free.length === 0 && (
+                <p className="vp__empty" role="status">
+                  {NO_MATCH}
+                </p>
+              )}
+              {!searching && recentRows.length > 0 && <Section title="Recent" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
+              <Section title="On this device" rows={deviceShown} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} empty={undefined} />
               <Section
                 title={`${languageName} · Read online`}
                 note="From YouVersion. Chapters load as you read."
@@ -325,7 +340,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 offline={!online}
                 onPick={pick}
                 onInfo={(r) => setDetailId(r.id)}
-                empty={yv.status === 'loading' ? 'Loading versions…' : searching ? 'No YouVersion versions match.' : 'YouVersion has no versions in this language for Journeys yet.'}
+                empty={yv.status === 'loading' ? 'Loading versions…' : searching ? undefined : 'YouVersion has no versions in this language for Journeys yet.'}
               />
               {youVersion.length > limit && (
                 <p className="vp__hint">
@@ -411,22 +426,26 @@ function Section({
                   className="vp-row__main"
                   data-version={r.id}
                   aria-current={isCurrent ? 'true' : undefined}
-                  aria-label={`${r.name} (${r.abbreviation}). ${r.state === 'unavailable' ? 'Not available yet. ' : ''}${meta}${r.state === 'online' && r.canDownload ? '. Can be downloaded' : ''}${isCurrent ? '. Reading now' : ''}`}
+                  aria-label={`${r.abbreviation} · ${r.name}. ${badges(r).join('. ')}${badges(r).length ? '. ' : ''}${meta}${isCurrent ? '. Reading now' : ''}`}
                   onClick={() => onPick(r)}
                 >
-                  <span className="vp-badge" aria-hidden="true">
-                    {r.abbreviation}
-                  </span>
                   <span className="vp-row__text" aria-hidden="true">
-                    <span className="vp-row__name" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
-                      {r.name}
+                    <span className="vp-row__name">
+                      <span className="vp-row__code">{r.abbreviation}</span> ·{' '}
+                      <span lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
+                        {r.name}
+                      </span>
                     </span>
-                    <span className="vp-row__meta">
-                      {r.coverage && r.coverage !== 'Full Bible' && <span className="vp-tag vp-tag--plain">{r.coverage}</span>}
-                      {r.state === 'online' && r.canDownload && !r.progress && <span className="vp-tag">Can download</span>}
-                      {r.state === 'unavailable' && <span className="vp-tag vp-tag--plain">Not available yet</span>}
-                      {meta}
-                    </span>
+                    {(badges(r).length > 0 || meta) && (
+                      <span className="vp-row__meta">
+                        {badges(r).map((b) => (
+                          <span key={b} className={`vp-tag${b === 'Read online' || b === 'Download' ? '' : ' vp-tag--plain'}`}>
+                            {b}
+                          </span>
+                        ))}
+                        {meta}
+                      </span>
+                    )}
                     {r.progress?.phase === 'chapters' && r.progress.total > 0 && <progress className="vp-row__progress" max={r.progress.total} value={r.progress.done} />}
                   </span>
                   {isCurrent && (
@@ -449,7 +468,6 @@ function Section({
 
 function VersionDetail({
   row: r,
-  current,
   titleId,
   offline,
   actions,
@@ -457,7 +475,6 @@ function VersionDetail({
   onClose,
 }: {
   row: VersionRow;
-  current: TranslationId;
   titleId: string;
   offline: boolean;
   actions: Actions;
@@ -486,7 +503,7 @@ function VersionDetail({
         </h2>
         <p className="vp-detail__facts">
           {facts}
-          {r.state === 'online' && <span className="vp-tag">{r.canDownload ? 'Online · can download' : 'Online only'}</span>}
+          {r.state === 'online' && !r.progress && <span className="vp-tag">{r.canDownload ? 'Download' : 'Read online'}</span>}
           {r.state === 'unavailable' && <span className="vp-tag vp-tag--plain">Not available yet</span>}
         </p>
         <dl className="vp-detail__dl">
@@ -538,7 +555,7 @@ function VersionDetail({
           </p>
         ) : null}
         {r.state === 'online' && !r.canDownload && (
-          <p className="vp-note vp-note--quiet">Reads online only: chapters load as you read and aren&apos;t kept on this device. The publisher hasn&apos;t given permission to download it.</p>
+          <p className="vp-note vp-note--quiet">This version can be read online but not downloaded.</p>
         )}
         {r.state === 'unavailable' && (
           <p className="vp-note vp-note--quiet">You can&apos;t read this version in Journeys yet. We&apos;re working with YouVersion to open up more versions.</p>
@@ -549,9 +566,6 @@ function VersionDetail({
             {r.progress?.phase === 'chapters' && r.progress.total > 0 && (
               <progress className="vp-row__progress" max={r.progress.total} value={r.progress.done} aria-label={`${r.name} download progress`} />
             )}
-            <p className="vp__hint" aria-live="polite">
-              {progress}
-            </p>
           </div>
         )}
         {r.error && (
@@ -562,7 +576,7 @@ function VersionDetail({
         <div className="vp-detail__actions">
           {(installed || r.state === 'online') && (
             <button type="button" className="vp-btn vp-btn--primary" disabled={r.state === 'online' && offline} onClick={() => actions.read(r)}>
-              {r.id === current ? 'Keep reading' : r.state === 'online' ? 'Read online' : 'Read'}
+              Read
             </button>
           )}
           {downloadable && (
@@ -570,14 +584,19 @@ function VersionDetail({
               Download
             </button>
           )}
+          {progress && (
+            <button type="button" className="vp-btn vp-btn--primary vp-btn--progress" disabled aria-live="polite">
+              {progress}
+            </button>
+          )}
           {r.progress && r.progress.phase !== 'installing' && (
             <button type="button" className="vp-btn" onClick={() => actions.cancel(r)}>
-              Cancel download
+              Cancel
             </button>
           )}
           {installed && r.source !== 'builtin' && (
             <button type="button" className="vp-btn" onClick={() => void actions.remove(r)}>
-              Remove from device
+              Remove download
             </button>
           )}
         </div>
@@ -615,7 +634,7 @@ function LanguageList({
   const row = (o: LanguageOption, note?: string) => (
     <li key={`${note ?? ''}${o.key}`}>
       <button type="button" className={`vp-lang${o.key === current ? ' vp-lang--current' : ''}`} aria-current={o.key === current ? 'true' : undefined} onClick={() => onPick(o.key)}>
-        <span className="vp-lang__name" dir={o.rtl ? 'rtl' : 'auto'} lang={o.key}>
+        <span className="vp-lang__name" dir={o.rtl ? 'rtl' : 'auto'} lang={o.key === ALL_LANGUAGES ? undefined : o.key}>
           {o.name}
         </span>
         <span className="vp-lang__tag">{note ?? o.key}</span>
@@ -655,10 +674,15 @@ function LanguageList({
         </label>
       </div>
       <div className="vp__scroll">
+        {!q && (
+          <ul className="vp__list" aria-label="All languages option">
+            {row({ key: ALL_LANGUAGES, name: 'All languages', rtl: false }, ' ')}
+          </ul>
+        )}
         {!q && pinned.length > 0 && (
           <section className="vp__section" aria-label="Suggested languages">
             <h3 className="vp__section-title">Suggested</h3>
-            <ul className="vp__list">{pinned.map((o) => row(o, o === device ? 'This device' : 'Recently used'))}</ul>
+            <ul className="vp__list">{pinned.map((o) => row(o, o === device ? 'This device' : 'Recent'))}</ul>
           </section>
         )}
         <section className="vp__section" aria-label={q ? 'Matching languages' : 'All languages'}>
