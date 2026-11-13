@@ -4,6 +4,7 @@ import { BOOKS } from '../../content/books';
 import type { VerseRow } from '../../content/useBible';
 import type { CrossRef } from '../../content/scriptureIndex';
 import { bibleHref } from '../../content/scriptureIndex';
+import { traceJourneyHref } from '../../modes/map-trace/traceHref';
 import {
   HIGHLIGHT_COLORS,
   type HighlightColor,
@@ -285,7 +286,7 @@ export function CrossRefPanel({ refs, chapterLabel }: { refs: CrossRef[]; chapte
             <p className="bible-xrefs__claim">{r.label}</p>
             {r.detail && <p className="bible-xrefs__detail">{r.detail}</p>}
             <span className="bible-xrefs__links">
-              {r.journeyId && <Link to={`/trace/${r.journeyId}`}>Trace →</Link>}
+              {r.journeyId && <Link to={traceJourneyHref(r.journeyId, r.stopOrder)}>Trace →</Link>}
               {r.siteId && <Link to={`/atlas?site=${r.siteId}`}>Map →</Link>}
               {r.lessonId && <Link to={`/lessons/${r.lessonId}`}>Lesson →</Link>}
             </span>

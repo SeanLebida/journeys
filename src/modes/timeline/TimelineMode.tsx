@@ -31,6 +31,7 @@ import { useFoldOut, usePrefersReducedMotion } from '../../components/timeline/u
 import { useScrollOverflow } from '../../components/timeline/useScrollOverflow';
 import { Citations, ConfidenceBadge, ReferenceStack } from '../../content/citations';
 import { bibleHref } from '../../content/scriptureIndex';
+import { TraceJourneyLink } from '../map-trace/TraceJourneyLink';
 import { useUiStore } from '../../state/useUiStore';
 
 /**
@@ -417,7 +418,9 @@ function TimelineEntryDetail({
           </ol>
           {journey && (
             <div className="tl-detail__links">
-              <Link to={`/trace/${journey.id}`}>Trace this journey →</Link>
+              <TraceJourneyLink bundle={bundle} journeyId={journey.id}>
+                Trace this journey →
+              </TraceJourneyLink>
             </div>
           )}
         </>
@@ -448,7 +451,11 @@ function TimelineEntryDetail({
             )}
             {(journey || site || item.scriptureRef || (person?.journeyIds?.length ?? 0) > 1) && (
               <div className="tl-detail__links">
-                {journey && <Link to={`/trace/${journey.id}`}>Trace this journey →</Link>}
+                {journey && (
+                  <TraceJourneyLink bundle={bundle} journeyId={journey.id}>
+                    Trace this journey →
+                  </TraceJourneyLink>
+                )}
                 {site && (
                   <Link to={`/atlas?site=${site.id}`}>Show {shortSiteName(site.ancientName.en)} on the atlas →</Link>
                 )}
@@ -458,9 +465,9 @@ function TimelineEntryDetail({
                   .map((jid) => bundle.journey(jid))
                   .filter((j): j is NonNullable<typeof j> => Boolean(j))
                   .map((j) => (
-                    <Link key={j.id} to={`/trace/${j.id}`}>
+                    <TraceJourneyLink key={j.id} bundle={bundle} journeyId={j.id}>
                       Also: {j.title.en} →
-                    </Link>
+                    </TraceJourneyLink>
                   ))}
               </div>
             )}
