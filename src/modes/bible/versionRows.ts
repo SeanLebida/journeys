@@ -1,0 +1,180 @@
+import type { DownloadableTranslation } from '../../content/catalog';
+import type { DownloadedTranslation, DownloadProgress } from '../../content/downloads';
+import { TRANSLATIONS } from '../../content/translations';
+import type { YouVersionLanguage, YouVersionVersion } from '../../content/youversionCatalog';
+import type { StreamedTranslation } from '../../state/useUiStore';
+
+/**
+ * View rows for the version picker. Not a data contract: the data comes from
+ * TRANSLATIONS (built in), useUiStore (downloaded / streamed), HelloAO's
+ * catalog and useYouVersionCatalog; this only shapes it for one list.
+ */
+export type RowState =
+  /** Built in or downloaded: reads offline. */
+  | 'device'
+  /** YouVersion, read chapter by chapter online. The normal state for licensed versions. */
+  | 'online'
+  /** HelloAO free text that has to be downloaded before it can be read. */
+  | 'download'
+  /** YouVersion lists it but the proxy won't serve it (canRead false): shown, not openable. */
+  | 'unavailable';
+
+export interface VersionRow {
+  id: string;
+  abbreviation: string;
+  name: string;
+  /** BCP 47 tag when known (YouVersion), else HelloAO's ISO 639-3 code. */
+  lang: string;
+  languageName: string;
+  rtl: boolean;
+  source: 'builtin' | 'helloao' | 'youversion';
+  state: RowState;
+  /** YouVersion only: the publisher lets Journeys keep an offline copy. */
+  canDownload: boolean;
+  publisher?: string | null;
+  publisherUrl?: string | null;
+  license?: string;
+  licenseUrl?: string;
+  notice?: string | null;
+  /** `Full Bible`, `New Testament`, `Old Testament` or `Partial`. */
+  coverage?: string;
+  progress?: DownloadProgress;
+  error?: string;
+  yv?: YouVersionVersion;
+  hao?: DownloadableTranslation;
+}
+
+export function builtinRows(): VersionRow[] {
+  return TRANSLATIONS.map((t) => ({
+    id: t.id,
+    abbreviation: t.id,
+    name: t.name,
+    lang: 'en',
+    languageName: 'English',
+    rtl: false,
+    source: 'builtin',
+    state: 'device',
+    canDownload: false,
+    license: t.license,
+    licenseUrl: t.infoUrl,
+    coverage: 'Full Bible',
+  }));
+}
+
+export function downloadedRow(d: DownloadedTranslation): VersionRow {
+  const yv = d.id.startsWith('yv:');
+  return {
+    id: d.id,
+    abbreviation: d.shortName,
+    name: d.name,
+    lang: d.language,
+    languageName: d.languageName,
+    rtl: d.rtl,
+    source: yv ? 'youversion' : 'helloao',
+    state: 'device',
+    canDownload: yv,
+    license: yv ? 'Used by permission' : d.licenseLabel,
+    licenseUrl: d.licenseUrl,
+    notice: d.notice,
+  };
+}
+
+export function streamedRow(s: StreamedTranslation): VersionRow {
+  return {
+    id: s.id,
+    abbreviation: s.shortName,
+    name: s.name,
+    lang: s.languageTag,
+    languageName: s.languageTag,
+    rtl: s.rtl,
+    source: 'youversion',
+    state: 'online',
+    canDownload: false,
+    publisher: s.publisher,
+    publisherUrl: s.publisherUrl,
+    license: 'Used by permission',
+    notice: s.notice,
+  };
+}
+
+/** Most YouVersion versions are New Testament only (1,023 of 1,484 on staging), so rows say which. */
+export function yvCoverage(v: Pick<YouVersionVersion, 'hasOldTestament' | 'hasNewTestament' | 'bookCount'>): string {
+  if (v.hasOldTestament && v.hasNewTestament) return v.bookCount >= 66 ? 'Full Bible' : 'Partial';
+  if (v.hasNewTestament) return v.bookCount >= 27 ? 'New Testament' : 'Partial';
+  if (v.hasOldTestament) return 'Old Testament';
+  return 'Partial';
+}
+
+export function youVersionRow(v: YouVersionVersion, languageName: string): VersionRow {
+  return {
+    id: v.id,
+    abbreviation: v.localizedAbbreviation || v.abbreviation,
+    name: v.localizedTitle || v.title,
+    lang: v.languageTag,
+    languageName,
+    rtl: v.rtl,
+    source: 'youversion',
+    state: v.capabilities.canRead ? 'online' : 'unavailable',
+    canDownload: v.capabilities.canRead && v.capabilities.canDownload,
+    publisher: v.publisher,
+    publisherUrl: v.publisherUrl ?? v.deepLink,
+    license: 'Used by permission',
+    licenseUrl: v.deepLink ?? undefined,
+    notice: v.notice,
+    coverage: yvCoverage(v),
+    yv: v,
+  };
+}
+
+export function helloAoRow(t: DownloadableTranslation, lang: string): VersionRow {
+  return {
+    id: t.id,
+    abbreviation: t.shortName,
+    name: t.name,
+    lang,
+    languageName: t.languageName,
+    rtl: t.rtl,
+    source: 'helloao',
+    state: 'download',
+    canDownload: true,
+    license: t.licenseLabel,
+    licenseUrl: t.licenseUrl,
+    coverage: t.verses >= 30_000 ? 'Full Bible' : t.verses >= 7_900 && t.verses < 8_100 ? 'New Testament' : 'Partial',
+    hao: t,
+  };
+}
+
+export interface LanguageOption {
+  key: string;
+  name: string;
+  rtl: boolean;
+}
+
+const fold = (s: string) => s.trim().toLowerCase();
+
+/**
+ * One language list: YouVersion's languages (BCP 47), plus any HelloAO-only
+ * language under its ISO 639-3 code. HelloAO entries join a YouVersion
+ * language by English name, since the two use different code systems.
+ */
+export function languageOptions(yv: YouVersionLanguage[], hao: DownloadableTranslation[]): { options: LanguageOption[]; haoKey: (t: DownloadableTranslation) => string } {
+  const byName = new Map(yv.map((l) => [fold(l.name), l.tag]));
+  const haoKey = (t: DownloadableTranslation) => byName.get(fold(t.languageName)) ?? t.language;
+  const options = new Map<string, LanguageOption>(yv.map((l) => [l.tag, { key: l.tag, name: l.name, rtl: l.rtl }]));
+  if (!options.has('en')) options.set('en', { key: 'en', name: 'English', rtl: false });
+  for (const t of hao) {
+    const key = haoKey(t);
+    if (!options.has(key)) options.set(key, { key, name: t.languageName, rtl: t.rtl });
+  }
+  return { options: [...options.values()].sort((a, b) => a.name.localeCompare(b.name)), haoKey };
+}
+
+export function rowMatches(r: VersionRow, query: string): boolean {
+  const q = fold(query);
+  return !q || fold(`${r.abbreviation} ${r.name} ${r.languageName} ${r.publisher ?? ''}`).includes(q);
+}
+
+/** Readable versions first; ones Journeys can't open yet sink to the bottom (order otherwise kept). */
+export function readableFirst(rows: VersionRow[]): VersionRow[] {
+  return [...rows.filter((r) => r.state !== 'unavailable'), ...rows.filter((r) => r.state === 'unavailable')];
+}
