@@ -102,6 +102,15 @@ describe('version picker rows', () => {
     expect(expanded.map((r) => r.id)[0]).toBe('KJV');
   });
 
+  it('preview 0 with Recent hides every built-in until the fold is opened', () => {
+    const rows = builtinRows();
+    const ordered = orderedDeviceRows(rows, 'KJV', ['KJV']);
+    const collapsed = visibleDeviceRows(ordered, ['KJV'], 0, { expanded: false, searching: false });
+    expect(collapsed).toEqual([]);
+    const expanded = visibleDeviceRows(ordered, ['KJV'], 0, { expanded: true, searching: false });
+    expect(expanded.map((r) => r.id)).toEqual(['KJV', 'ASV', 'BSB', 'WEB', 'YLT', 'GNV']);
+  });
+
   it('catalogMatchesLanguage is false for a previous language still in the list', () => {
     expect(catalogMatchesLanguage([{ languageTag: 'en' }], 'es')).toBe(false);
     expect(catalogMatchesLanguage([{ languageTag: 'es-MX' }], 'es')).toBe(true);

@@ -232,9 +232,11 @@ test('after reading a built-in, Recent is not repeated in On this device, and Re
   await page.getByRole('button', { name: /^Translation: King James Version/ }).click();
   const again = page.getByRole('dialog');
   const recent = again.getByRole('region', { name: 'Recent' });
-  const onDevice = again.getByRole('region', { name: 'On this device' });
   await expect(recent.locator('[data-version="KJV"]')).toBeVisible();
-  await expect(onDevice.locator('[data-version="KJV"]')).toHaveCount(0);
+  // Recent already shows the active Bible; built-ins sit behind the fold.
+  await expect(again.getByRole('region', { name: 'On this device' })).toHaveCount(0);
+  await expect(again.getByRole('button', { name: /Show \d+ built-in Bibles/ })).toBeVisible();
+  await expect(again.locator('[data-version="KJV"]')).toHaveCount(1);
   await expect(again.getByRole('region', { name: /Read online/ }).locator('[data-version="yv:100"]')).toBeInViewport();
 });
 
@@ -312,4 +314,26 @@ test('at 640px with a Recent entry, the first Read online row is fully on the fi
   expect(fullyOnScreen(rowBox!, scrollBox!)).toBe(true);
   const viewport = page.viewportSize()!;
   expect(fullyOnScreen(rowBox!, { x: 0, y: 0, width: viewport.width, height: viewport.height })).toBe(true);
+});
+
+test('at 360×640 with a Recent entry, the first Read online row is fully on the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 640 });
+  await mockCatalog(page, versionsFor);
+  await page.goto('/bible?ref=Genesis%201%3A1');
+  const chip = page.getByRole('button', { name: /^Translation: American Standard Version/ });
+  await chip.click();
+  const sheet = page.getByRole('dialog');
+  await sheet.locator('[data-version="KJV"]').click();
+  await expect(sheet).toHaveCount(0);
+  await page.getByRole('button', { name: /^Translation: King James Version/ }).click();
+  const again = page.getByRole('dialog');
+  await expect(again.getByRole('region', { name: 'Recent' }).locator('[data-version="KJV"]')).toBeVisible();
+  const firstOnline = again.getByRole('region', { name: /Read online/ }).locator('[data-version]').first();
+  await expect(firstOnline).toBeVisible();
+  const rowBox = await firstOnline.boundingBox();
+  expect(rowBox).toBeTruthy();
+  expect(rowBox!.y + rowBox!.height).toBeLessThanOrEqual(640);
+  const scrollBox = await again.locator('.vp__scroll').boundingBox();
+  expect(scrollBox).toBeTruthy();
+  expect(fullyOnScreen(rowBox!, scrollBox!)).toBe(true);
 });
