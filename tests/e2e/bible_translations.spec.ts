@@ -20,14 +20,21 @@ test('every bundled translation reads Genesis 1 and the choice persists', async 
   const sheet = page.getByRole('dialog', { name: 'Bible versions' });
   const pick = async (id: string) => {
     await chip.click();
-    await sheet.locator(`[data-version="${id}"]`).first().click();
+    const row = sheet.locator(`[data-version="${id}"]`).first();
+    if (!(await row.isVisible())) await sheet.getByRole('button', { name: /Show \d+ built-in Bibles/ }).click();
+    await row.click();
     await expect(sheet).toHaveCount(0);
   };
 
   await chip.click();
   const onDevice = sheet.getByRole('region', { name: 'On this device' });
+  const compact = await onDevice.locator('[data-version]').evaluateAll((rows) => rows.map((r) => r.getAttribute('data-version')));
+  expect(compact).toEqual(['ASV', 'KJV']);
+  const builtinCount = Object.keys(GENESIS_1_1).length;
+  await sheet.getByRole('button', { name: `Show ${builtinCount} built-in Bibles` }).click();
   const offered = await onDevice.locator('[data-version]').evaluateAll((rows) => rows.map((r) => r.getAttribute('data-version')));
-  expect(offered.slice(0, 6)).toEqual(Object.keys(GENESIS_1_1));
+  expect(offered.slice(0, builtinCount)).toEqual(Object.keys(GENESIS_1_1));
+  await expect(sheet.getByRole('button', { name: 'Show fewer' })).toBeVisible();
   await expect(onDevice.getByText('Built in · Public Domain (UK: Crown copyright)')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(sheet).toHaveCount(0);

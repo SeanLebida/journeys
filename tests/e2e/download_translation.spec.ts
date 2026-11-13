@@ -94,7 +94,10 @@ test('download a translation, read it offline after reload, then remove it', asy
   const chip = page.getByRole('button', { name: /^Translation: American Standard Version/ });
   await expect(chip).toBeVisible();
   await chip.click();
-  await expect(page.getByRole('dialog').getByRole('region', { name: 'On this device' }).locator('[data-version="hao:eng_tst"]')).toHaveCount(0);
+  const deviceSheet = page.getByRole('dialog');
+  const more = deviceSheet.getByRole('button', { name: /Show \d+ built-in Bibles/ });
+  if (await more.count()) await more.click();
+  await expect(deviceSheet.getByRole('region', { name: 'On this device' }).locator('[data-version="hao:eng_tst"]')).toHaveCount(0);
   await page.keyboard.press('Escape');
   // Offline, the library explains why it can't list more.
   await expect(page.getByRole('alert')).toBeVisible();

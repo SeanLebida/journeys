@@ -18,6 +18,15 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
+    version: '0.3.28',
+    steps: [
+      {
+        title: 'Easier to find your Bible',
+        body: 'The built-in Bibles now fold away, so more versions fit on the first screen. Searching a language like Spanish now finds its Bibles.',
+      },
+    ],
+  },
+  {
     version: '0.3.27',
     steps: [
       {

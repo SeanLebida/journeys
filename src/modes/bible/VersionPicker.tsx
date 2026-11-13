@@ -11,11 +11,13 @@ import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../stat
 import { useUiStore } from '../../state/useUiStore';
 import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
 import { useVersionNotice } from './useVersionNotice';
-import { builtinRows, downloadedRow, helloAoRow, languageOptions, rowMatches, readableFirst, streamedRow, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, downloadedRow, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, rowMatches, readableFirst, streamedRow, visibleDeviceRows, youVersionRow, type LanguageOption, type VersionRow } from './versionRows';
 import '../../styles/version-picker.css';
 
 const PAGE = 60;
 const LANGUAGE_PAGE = 100;
+/** Built-ins are collapsed to this many rows so the online list reaches the first phone screen. */
+const DEVICE_PREVIEW = 2;
 const LANGUAGE_BUTTON = '\u0000language';
 
 const SOURCE_LABEL: Record<VersionRow['source'], string> = {
@@ -60,6 +62,12 @@ function badges(r: VersionRow): string[] {
 
 // HelloAO's list is ~1 MB; fetch it once per session.
 let helloaoPromise: Promise<DownloadableTranslation[]> | null = null;
+
+/** Language hits in the version search, excluding the language already in use. */
+function searchingLanguages(options: LanguageOption[], query: string, current: string): LanguageOption[] {
+  if (!query.trim()) return [];
+  return matchingLanguages(options, query).filter((o) => o.key !== current && o.key !== ALL_LANGUAGES).slice(0, 7);
+}
 
 /**
  * The Bible header's version chip and the version sheet it opens: search, a
@@ -118,15 +126,22 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const failed = useBibleDownloads((s) => s.failed);
   const dialog = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  const deviceSectionId = useId();
   const [query, setQuery] = useState('');
   const currentStreamed = streamed.find((s) => s.id === current);
   const [language, setLanguage] = useState(currentStreamed?.languageTag ?? 'en');
-  const yv = useYouVersionCatalog({ language, query, readableOnly: false });
+  // Languages from the previous render: a search can match a name on the same keystroke.
+  const langsRef = useRef<LanguageOption[]>([]);
+  const exactLang = exactLanguageName(langsRef.current, query);
+  const activeLanguage = exactLang?.key ?? language;
+  const yv = useYouVersionCatalog({ language: activeLanguage, query: exactLang ? '' : query, readableOnly: false });
   const [hao, setHao] = useState<{ items: DownloadableTranslation[]; error: string | null }>({ items: [], error: null });
   const [haoAttempt, setHaoAttempt] = useState(0);
   const [detailId, setDetailId] = useState<string | null>(null);
   const [choosingLanguage, setChoosingLanguage] = useState(false);
   const [limit, setLimit] = useState(PAGE);
+  const [deviceExpanded, setDeviceExpanded] = useState(false);
+  const [, setLangTick] = useState(0);
   const recentLanguages = useUiStore((s) => s.recentLanguages);
   const chooseLanguage = (tag: string) => {
     setLanguage(tag);
@@ -164,7 +179,14 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   }, [haoAttempt]);
 
   const { options: languages, haoKey } = useMemo(() => languageOptions(yv.languages, hao.items), [yv.languages, hao.items]);
-  const languageName = language === ALL_LANGUAGES ? 'All languages' : (languages.find((l) => l.key === language)?.name ?? language);
+  langsRef.current = languages;
+  const languageHits = searchingLanguages(languages, query, activeLanguage);
+  const languageName = activeLanguage === ALL_LANGUAGES ? 'All languages' : (languages.find((l) => l.key === activeLanguage)?.name ?? activeLanguage);
+
+  // If languages arrive after the query, the ref used above is a render behind; tick once.
+  useEffect(() => {
+    if (exactLanguageName(languages, query) && !exactLang) setLangTick((n) => n + 1);
+  }, [languages, query, exactLang]);
 
   const withStatus = (r: VersionRow): VersionRow => ({ ...r, progress: active[r.id]?.progress, error: failed[r.id] });
   const onDevice = useMemo(() => {
@@ -183,10 +205,18 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const deviceIds = new Set(onDevice.map((r) => r.id));
   const byId = new Map<string, VersionRow>([...streamed.map(streamedRow), ...onDevice].map((r) => [r.id, r]));
   const recentRows = recent.map((id) => byId.get(id)).filter((r): r is VersionRow => Boolean(r)).slice(0, 3);
-  const youVersion = readableFirst(yv.versions.filter((v) => !deviceIds.has(v.id)).map((v) => withStatus(youVersionRow(v, languageName))));
-  const free = hao.items.filter((t) => !deviceIds.has(t.id) && (language === ALL_LANGUAGES || haoKey(t) === language)).map((t) => withStatus(helloAoRow(t, language))).filter((r) => rowMatches(r, query));
+  const listStale = yv.status === 'loading' && yv.versions.length > 0 && !catalogMatchesLanguage(yv.versions, activeLanguage);
+  const youVersion = listStale
+    ? []
+    : readableFirst(yv.versions.filter((v) => !deviceIds.has(v.id)).map((v) => withStatus(youVersionRow(v, languageName))));
+  const catalogLoading = yv.status === 'loading' && (listStale || youVersion.length === 0);
+  const free = hao.items.filter((t) => !deviceIds.has(t.id) && (activeLanguage === ALL_LANGUAGES || haoKey(t) === activeLanguage)).map((t) => withStatus(helloAoRow(t, activeLanguage))).filter((r) => rowMatches(r, exactLang ? '' : query));
   const searching = query.trim() !== '';
-  const deviceShown = searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice;
+  const deviceOrdered = orderedDeviceRows(searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice, current, recent);
+  const builtinOrdered = deviceOrdered.filter((r) => r.source === 'builtin');
+  const builtinCount = builtinRows().length;
+  const foldBuiltins = !searching && builtinOrdered.length > DEVICE_PREVIEW;
+  const deviceShown = visibleDeviceRows(deviceOrdered, recentRows.map((r) => r.id), DEVICE_PREVIEW, { expanded: deviceExpanded, searching });
   const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
   const detail = detailId ? all.find((r) => r.id === detailId) : undefined;
 
@@ -325,13 +355,52 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
             </div>
             <div className="vp__scroll">
               {banner}
-              {searching && yv.status !== 'loading' && deviceShown.length + youVersion.length + free.length === 0 && (
+              {searching && !catalogLoading && deviceShown.length + youVersion.length + free.length === 0 && languageHits.length === 0 && (
                 <p className="vp__empty" role="status">
                   {NO_MATCH}
                 </p>
               )}
+              {searching && languageHits.length > 0 && (
+                <section className="vp__section" aria-label="Suggested languages">
+                  <h3 className="vp__section-title">Suggested</h3>
+                  <ul className="vp__list">
+                    {languageHits.map((o) => (
+                      <li key={o.key}>
+                        <button type="button" className="vp-lang" onClick={() => { chooseLanguage(o.key); setQuery(''); }}>
+                          <span className="vp-lang__name" dir={o.rtl ? 'rtl' : 'auto'} lang={o.key}>
+                            {o.name}
+                          </span>
+                          <span className="vp-lang__tag">{o.key}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
               {!searching && recentRows.length > 0 && <Section title="Recent" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
-              <Section title="On this device" rows={deviceShown} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} empty={undefined} />
+              <Section
+                id={deviceSectionId}
+                title="On this device"
+                rows={deviceShown}
+                current={current}
+                offline={!online}
+                onPick={pick}
+                onInfo={(r) => setDetailId(r.id)}
+                empty={foldBuiltins && deviceShown.length === 0 ? ' ' : undefined}
+              />
+              {foldBuiltins && (
+                <p className="vp__hint">
+                  <button
+                    type="button"
+                    className="vp__text-btn"
+                    aria-expanded={deviceExpanded}
+                    aria-controls={deviceSectionId}
+                    onClick={() => setDeviceExpanded((open) => !open)}
+                  >
+                    {builtinFoldLabel(deviceExpanded, builtinCount)}
+                  </button>
+                </p>
+              )}
               <Section
                 title={`${languageName} · Read online`}
                 note="From YouVersion. Chapters load as you read."
@@ -340,7 +409,8 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 offline={!online}
                 onPick={pick}
                 onInfo={(r) => setDetailId(r.id)}
-                empty={yv.status === 'loading' ? 'Loading versions…' : searching ? undefined : 'YouVersion has no versions in this language for Journeys yet.'}
+                loading={catalogLoading}
+                empty={searching || catalogLoading ? undefined : 'YouVersion has no versions in this language for Journeys yet.'}
               />
               {youVersion.length > limit && (
                 <p className="vp__hint">
@@ -386,6 +456,7 @@ interface Actions {
 }
 
 function Section({
+  id: sectionId,
   title,
   note,
   rows,
@@ -394,7 +465,9 @@ function Section({
   onPick,
   onInfo,
   empty,
+  loading,
 }: {
+  id?: string;
   title: string;
   note?: string;
   rows: VersionRow[];
@@ -403,16 +476,34 @@ function Section({
   onPick: (r: VersionRow) => void;
   onInfo: (r: VersionRow) => void;
   empty?: string;
+  loading?: boolean;
 }) {
-  const id = useId();
-  if (rows.length === 0 && !empty) return null;
+  const headingId = useId();
+  if (rows.length === 0 && !empty && !loading) return null;
   return (
-    <section className="vp__section" aria-labelledby={id}>
-      <h3 id={id} className="vp__section-title">
+    <section id={sectionId} className="vp__section" aria-labelledby={headingId} aria-busy={loading ? 'true' : undefined}>
+      <h3 id={headingId} className="vp__section-title">
         {title}
       </h3>
       {note && <p className="vp__hint vp__section-note">{note}</p>}
-      {rows.length === 0 ? (
+      {loading ? (
+        <>
+          <p className="vp__hint" role="status">
+            Loading versions…
+          </p>
+          <ul className="vp__list" aria-hidden="true">
+            {['a', 'b', 'c'].map((k) => (
+              <li key={k} className="vp-skel">
+                <span className="vp-skel__badge" />
+                <span className="vp-skel__lines">
+                  <span className="vp-skel__line" />
+                  <span className="vp-skel__line vp-skel__line--short" />
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : rows.length === 0 ? (
         empty?.trim() && <p className="vp__hint">{empty}</p>
       ) : (
         <ul className="vp__list">
@@ -496,7 +587,7 @@ function VersionDetail({
           ✕
         </button>
       </header>
-      <div className="vp__scroll vp-detail">
+      <div className="vp__scroll vp-detail vp-detail__scroll">
         <span className="vp-badge vp-badge--lg">{r.abbreviation}</span>
         <h2 id={titleId} className="vp-detail__title" lang={r.lang} dir={r.rtl ? 'rtl' : 'auto'}>
           {r.name}
@@ -573,6 +664,8 @@ function VersionDetail({
             {r.error}
           </p>
         )}
+      </div>
+      <div className="vp-detail__footer">
         <div className="vp-detail__actions">
           {(installed || r.state === 'online') && (
             <button type="button" className="vp-btn vp-btn--primary" disabled={r.state === 'online' && offline} onClick={() => actions.read(r)}>

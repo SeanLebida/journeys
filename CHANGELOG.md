@@ -2,6 +2,10 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.28] - 2026-11-13
+
+Bible picker fixes. Built-in Bibles fold away so more versions fit on screen, searching a language name like Spanish now works, and switching languages clears the old list right away.
+
 ## [0.3.27] - 2026-11-13
 
 Choosing a Bible is easier. Search by name or language, see your recent versions first, and tap any version to read or download it. More YouVersion Bibles now appear in the list and will open as they become available.
