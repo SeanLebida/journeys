@@ -92,6 +92,12 @@ describe('parseCatalogItem', () => {
     expect(isRtlLanguage('pa-Arab')).toBe(true);
     expect(isRtlLanguage('en')).toBe(false);
   });
+
+  it('takes rtl from the API field when present, not a language-tag guess', () => {
+    expect(parseCatalogItem(item(1, 'ENR', { language_tag: 'en', text_direction: 'rtl' }))!.rtl).toBe(true);
+    expect(parseCatalogItem(item(2, 'HEL', { language_tag: 'he', text_direction: 'ltr' }))!.rtl).toBe(false);
+    expect(parseCatalogItem(item(3, 'ENB', { language_tag: 'en', rtl: true }))!.rtl).toBe(true);
+  });
 });
 
 describe('fetchCatalog', () => {

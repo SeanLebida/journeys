@@ -150,7 +150,7 @@ export interface LanguageOption {
   rtl: boolean;
 }
 
-const fold = (s: string) => s.trim().toLowerCase();
+const fold = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').trim().toLowerCase();
 
 /**
  * One language list: YouVersion's languages (BCP 47), plus any HelloAO-only
@@ -177,4 +177,70 @@ export function rowMatches(r: VersionRow, query: string): boolean {
 /** Readable versions first; ones Journeys can't open yet sink to the bottom (order otherwise kept). */
 export function readableFirst(rows: VersionRow[]): VersionRow[] {
   return [...rows.filter((r) => r.state !== 'unavailable'), ...rows.filter((r) => r.state === 'unavailable')];
+}
+
+/** Languages whose name or tag matches a version-sheet search (name contains, tag exact or prefix). */
+export function matchingLanguages(options: LanguageOption[], query: string): LanguageOption[] {
+  const q = fold(query);
+  if (!q) return [];
+  return options.filter((o) => fold(o.name).includes(q) || fold(o.key) === q || fold(o.key).startsWith(`${q}-`));
+}
+
+/** A unique exact name match, used to load that language's versions from the search box. Tags are ignored so a version code like ESV is not treated as a language. */
+export function exactLanguageName(options: LanguageOption[], query: string): LanguageOption | undefined {
+  const q = fold(query);
+  if (!q) return undefined;
+  const hits = options.filter((o) => fold(o.name) === q);
+  return hits.length === 1 ? hits[0] : undefined;
+}
+
+/** On-device rows with the current version, then recent, then the rest, for a compact first screen. */
+export function orderedDeviceRows(rows: VersionRow[], current: string, recent: string[]): VersionRow[] {
+  const seen = new Set<string>();
+  const out: VersionRow[] = [];
+  const take = (id: string) => {
+    const r = rows.find((x) => x.id === id);
+    if (r && !seen.has(r.id)) {
+      seen.add(r.id);
+      out.push(r);
+    }
+  };
+  take(current);
+  for (const id of recent) take(id);
+  for (const r of rows) take(r.id);
+  return out;
+}
+
+/** True when every version already belongs to `language` (so a refresh can keep showing them). */
+export function catalogMatchesLanguage(versions: { languageTag: string }[], language: string): boolean {
+  if (language === '*') return true;
+  const r = language.toLowerCase();
+  return versions.every((v) => {
+    const t = v.languageTag.toLowerCase();
+    return t === r || t.startsWith(`${r}-`);
+  });
+}
+
+/** Label for the On this device built-ins fold only. `count` is the total number of built-in Bibles. */
+export function builtinFoldLabel(expanded: boolean, count: number): string {
+  return expanded ? 'Show fewer' : `Show ${count} built-in Bibles`;
+}
+
+/**
+ * On this device rows for the first screen: when collapsed, hide extra built-ins
+ * and anything already shown in Recent, so Read online stays in view at phone width.
+ */
+export function visibleDeviceRows(
+  ordered: VersionRow[],
+  recentIds: readonly string[],
+  preview: number,
+  opts: { expanded: boolean; searching: boolean },
+): VersionRow[] {
+  if (opts.searching || opts.expanded) return ordered;
+  const builtins = ordered.filter((r) => r.source === 'builtin');
+  const hide = new Set<string>(opts.searching ? [] : recentIds);
+  if (builtins.length > preview) {
+    for (const r of builtins.slice(preview)) hide.add(r.id);
+  }
+  return ordered.filter((r) => !hide.has(r.id));
 }
