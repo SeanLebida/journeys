@@ -3,7 +3,7 @@ import { Capacitor } from '@capacitor/core';
 export type NotePlatform = 'android' | 'ios' | 'web';
 
 const LEAD =
-  "Downloaded through YouVersion with the publisher's permission. YouVersion allows about 200 chapters an hour, so a full Bible takes around 6 hours.";
+  "Downloaded through YouVersion with the publisher's permission. A full Bible usually takes under an hour, and if YouVersion is busy it pauses and carries on by itself.";
 const TAIL = "Once it's done, it reads offline and stays on this device.";
 
 /**

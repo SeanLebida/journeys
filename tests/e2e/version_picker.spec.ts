@@ -79,7 +79,7 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   await expect(sheet.getByRole('button', { name: 'Download' })).toBeVisible();
   // The listing has no notice; details fetch it for that one version.
   await expect(sheet.getByText('NASB1995 FULL NOTICE')).toBeVisible();
-  await expect(sheet.getByText(/200 chapters an hour/)).toBeVisible();
+  await expect(sheet.getByText(/usually takes under an hour/)).toBeVisible();
   await page.keyboard.press('Escape');
 
   // A search with no hits says so once.
