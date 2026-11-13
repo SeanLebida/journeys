@@ -3,6 +3,8 @@ export type ProxyRoute =
   | { kind: "books"; versionId: number }
   | { kind: "passage"; versionId: number; passageId: string }
   | { kind: "download"; versionId: number }
+  | { kind: "catalog" }
+  | { kind: "languages" }
   | { kind: "admin-stats"; year: number | null }
   | { kind: "forbidden-version"; versionId: number }
   | { kind: "forbidden-path" }
@@ -25,7 +27,7 @@ const ALLOWED_FORMAT = new Set(["text", "html"]);
 export function parseRoute(
   pathname: string,
   searchParams: URLSearchParams,
-  allowed: Set<number>,
+  canRead: (versionId: number) => boolean,
 ): ProxyRoute {
   const path = pathname.replace(/\/+$/, "") || "/";
 
@@ -42,7 +44,11 @@ export function parseRoute(
   }
 
   if (path === "/v1/bibles") {
-    return { kind: "forbidden-path" };
+    return { kind: "catalog" };
+  }
+
+  if (path === "/v1/languages") {
+    return { kind: "languages" };
   }
 
   const match = path.match(BIBLE_PATH);
@@ -54,7 +60,7 @@ export function parseRoute(
   const child = match[2];
   const rest = match[3];
 
-  if (!allowed.has(versionId)) {
+  if (!canRead(versionId)) {
     return { kind: "forbidden-version", versionId };
   }
 

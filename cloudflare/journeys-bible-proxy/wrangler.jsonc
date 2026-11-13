@@ -15,7 +15,16 @@
     { "pattern": "bible.authentic.how", "custom_domain": true }
   ],
   "vars": {
+    // Versions the app may read online. "*" = every version the app key's
+    // YouVersion licenses cover (YouVersion enforces that), minus BLOCKED_BIBLE_IDS.
+    // Production stays on the NASB pair until Sean approves the full catalog.
     "ALLOWED_BIBLE_IDS": "100,2692",
+    "BLOCKED_BIBLE_IDS": "",
+    // Versions the app may store on a device. Only list a version once its
+    // publisher permission covers offline copies.
+    "OFFLINE_BIBLE_IDS": "100,2692",
+    // Catalog and language lists are metadata only, cached for a day.
+    "CACHE_TTL_CATALOG_SECONDS": "86400",
     "UPSTREAM_BASE": "https://api.youversion.com/v1",
     "RATE_LIMIT_MAX": "180",
     "RATE_LIMIT_WINDOW_SECONDS": "60",
@@ -40,7 +49,11 @@
         { "pattern": "bible-staging.authentic.how", "custom_domain": true }
       ],
       "vars": {
+        // Matches production: the catalog lists every version, only NASB reads.
         "ALLOWED_BIBLE_IDS": "100,2692",
+        "BLOCKED_BIBLE_IDS": "",
+        "OFFLINE_BIBLE_IDS": "100,2692",
+        "CACHE_TTL_CATALOG_SECONDS": "86400",
         "UPSTREAM_BASE": "https://api.youversion.com/v1",
         "RATE_LIMIT_MAX": "180",
         "RATE_LIMIT_WINDOW_SECONDS": "60",
