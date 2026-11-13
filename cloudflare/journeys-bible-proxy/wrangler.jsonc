@@ -49,8 +49,8 @@
         { "pattern": "bible-staging.authentic.how", "custom_domain": true }
       ],
       "vars": {
-        // Staging reads the whole licensed catalog for testing the new picker.
-        "ALLOWED_BIBLE_IDS": "*",
+        // Matches production: the catalog lists every version, only NASB reads.
+        "ALLOWED_BIBLE_IDS": "100,2692",
         "BLOCKED_BIBLE_IDS": "",
         "OFFLINE_BIBLE_IDS": "100,2692",
         "CACHE_TTL_CATALOG_SECONDS": "86400",
