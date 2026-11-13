@@ -18,6 +18,23 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
+    version: '0.3.29',
+    steps: [
+      {
+        title: 'Trace this journey',
+        body: '"Trace this journey" now opens the journey you tapped, from the start.',
+      },
+      {
+        title: 'Easier journey links',
+        body: 'Journey links are easier to tap.',
+      },
+      {
+        title: 'A tidier Bible picker',
+        body: 'The Bible version picker looks right with every language and on smaller screens.',
+      },
+    ],
+  },
+  {
     version: '0.3.28',
     steps: [
       {
