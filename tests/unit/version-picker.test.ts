@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
+import { builtinFoldLabel, builtinRows, catalogMatchesLanguage, exactLanguageName, helloAoRow, languageOptions, matchingLanguages, orderedDeviceRows, readableFirst, rowMatches, visibleDeviceRows, youVersionRow, yvCoverage } from '../../src/modes/bible/versionRows';
 import { licensedDownloadNote } from '../../src/content/licensedNote';
 import { translationMeta } from '../../src/content/translationMeta';
 import { capabilitiesFor, FALLBACK_VERSIONS } from '../../src/content/youversionCatalog';
@@ -90,6 +90,16 @@ describe('version picker rows', () => {
     expect(n).toBeGreaterThan(0);
     expect(builtinFoldLabel(false, n)).toBe(`Show ${n} built-in Bibles`);
     expect(builtinFoldLabel(true, n)).toBe('Show fewer');
+  });
+
+  it('collapsed On this device omits versions already in Recent', () => {
+    const rows = builtinRows();
+    const ordered = orderedDeviceRows(rows, 'KJV', ['KJV']);
+    const collapsed = visibleDeviceRows(ordered, ['KJV'], 2, { expanded: false, searching: false });
+    expect(collapsed.map((r) => r.id)).not.toContain('KJV');
+    expect(collapsed.map((r) => r.id)).toEqual(['ASV']);
+    const expanded = visibleDeviceRows(ordered, ['KJV'], 2, { expanded: true, searching: false });
+    expect(expanded.map((r) => r.id)[0]).toBe('KJV');
   });
 
   it('catalogMatchesLanguage is false for a previous language still in the list', () => {

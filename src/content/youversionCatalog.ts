@@ -129,7 +129,7 @@ export function parseCatalogItem(raw: unknown): YouVersionVersion | null {
     localizedTitle: stripLanguagePrefix(str(o.localized_title)) ?? title,
     localizedAbbreviation: str(o.localized_abbreviation) ?? abbreviation,
     languageTag,
-    rtl: isRtlLanguage(languageTag),
+    rtl: rtlFromApi(o, languageTag),
     publisher: str(o.publisher_name),
     publisherUrl: httpsOrNull(o.publisher_url),
     notice: str(o.copyright),
@@ -193,6 +193,14 @@ export function parseLanguagesPage(body: unknown, displayLocale = 'en'): { langu
 
 const RTL_LANGUAGES = new Set(['ar', 'arc', 'ckb', 'dv', 'fa', 'he', 'hbo', 'ks', 'ku-Arab', 'pa-Arab', 'ps', 'sd', 'syr', 'ug', 'ur', 'yi']);
 const RTL_SCRIPTS = new Set(['Arab', 'Hebr', 'Syrc', 'Thaa', 'Nkoo', 'Adlm', 'Rohg']);
+
+/** Prefer the proxy/API `rtl` or `text_direction` field; fall back to the language tag only when the API omits it. */
+function rtlFromApi(raw: Record<string, unknown>, languageTag: string): boolean {
+  if (typeof raw.rtl === 'boolean') return raw.rtl;
+  if (raw.text_direction === 'rtl') return true;
+  if (raw.text_direction === 'ltr') return false;
+  return isRtlLanguage(languageTag);
+}
 
 export function isRtlLanguage(tag: string): boolean {
   const parts = tag.split('-');
