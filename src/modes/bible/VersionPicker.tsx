@@ -215,8 +215,11 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
   const deviceOrdered = orderedDeviceRows(searching ? onDevice.filter((r) => rowMatches(r, query)) : onDevice, current, recent);
   const builtinOrdered = deviceOrdered.filter((r) => r.source === 'builtin');
   const builtinCount = builtinRows().length;
-  const foldBuiltins = !searching && builtinOrdered.length > DEVICE_PREVIEW;
-  const deviceShown = visibleDeviceRows(deviceOrdered, recentRows.map((r) => r.id), DEVICE_PREVIEW, { expanded: deviceExpanded, searching });
+  // When Recent already shows the active Bible, hide the rest of the built-ins
+  // behind the fold so Read online fits on a 360×640 first screen.
+  const devicePreview = recentRows.length > 0 ? 0 : DEVICE_PREVIEW;
+  const foldBuiltins = !searching && builtinOrdered.length > devicePreview;
+  const deviceShown = visibleDeviceRows(deviceOrdered, recentRows.map((r) => r.id), devicePreview, { expanded: deviceExpanded, searching });
   const all = [...onDevice, ...youVersion, ...free, ...streamed.map(streamedRow)];
   const detail = detailId ? all.find((r) => r.id === detailId) : undefined;
 
@@ -378,6 +381,7 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 </section>
               )}
               {!searching && recentRows.length > 0 && <Section title="Recent" rows={recentRows} current={current} offline={!online} onPick={pick} onInfo={(r) => setDetailId(r.id)} />}
+              {deviceShown.length > 0 ? (
               <Section
                 id={deviceSectionId}
                 title="On this device"
@@ -386,8 +390,10 @@ function VersionSheet({ current, onClose, onRead }: { current: TranslationId; on
                 offline={!online}
                 onPick={pick}
                 onInfo={(r) => setDetailId(r.id)}
-                empty={foldBuiltins && deviceShown.length === 0 ? ' ' : undefined}
               />
+              ) : foldBuiltins ? (
+                <div id={deviceSectionId} />
+              ) : null}
               {foldBuiltins && (
                 <p className="vp__hint">
                   <button

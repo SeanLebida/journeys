@@ -228,7 +228,8 @@ export function builtinFoldLabel(expanded: boolean, count: number): string {
 
 /**
  * On this device rows for the first screen: when collapsed, hide extra built-ins
- * and anything already shown in Recent, so Read online stays in view at phone width.
+ * and anything already shown in Recent, so Read online stays in view at phone
+ * width. Pass preview 0 when Recent already lists the active Bible.
  */
 export function visibleDeviceRows(
   ordered: VersionRow[],
