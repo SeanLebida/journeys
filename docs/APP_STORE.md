@@ -99,17 +99,7 @@ Follow cited routes from the patriarchs through the ministry of Jesus and the ap
 
 **What's new:** the current section of `CHANGELOG.md`.
 
-**Review notes** (Guideline 4.2 — not a thin website wrapper):
-
-```text
-Journeys is an offline educational atlas. The binary includes a public-domain Bible (KJV and ASV) in an on-device SQLite database, offline map tiles, journey routes, lessons, and quizzes. No account is required. The app collects no data.
-
-Optional network use, only after a tap: satellite and historical map tiles, one Mapillary view, one YouTube video, or a citation opened in the system browser. Nothing is loaded until the reader opts in.
-
-The in-app sourcing note says high-confidence claims are checked by the project and are not yet signed by a specialist historical geographer. That is intentional. Contested locations are shown as rival candidates rather than a single pin.
-
-No sign-in. Please review the bundled content without an account.
-```
+**Review notes** (Guideline 4.2, not a thin website wrapper): use `docs/app-review-notes.txt` word for word. The iOS Submit for App Review workflow reads that file.
 
 **Sign-in information:** leave blank. All functionality is available without an account.
 
@@ -126,6 +116,11 @@ No sign-in. Please review the bundled content without an account.
 Leave "Use header asset in search results" off. The two crops are different. TestFlight itself does not need this media. App Review does. The product-page header slot may be website-only; the local App Store Connect OpenAPI dump has a search-results asset and no header upload.
 
 ## Submit for review
+
+Actions → **iOS Submit for App Review**. Run `mode=check` first with the version and TestFlight build number; it reads App Store Connect and lists anything missing without changing it. Then run `mode=submit`. It creates or reuses the version, attaches the build, sets release type Manual, the review notes, no sign-in, and What's New from `CHANGELOG.md`, then submits. Listing fields are left as they are.
+
+By hand:
+
 
 1. Wait until the TestFlight build shows **Ready to Submit** (the workflow waits for processing).
 2. Attach that build to version `0.3.14` (or whatever `MARKETING_VERSION` the workflow printed).
