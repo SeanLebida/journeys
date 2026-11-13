@@ -69,7 +69,7 @@ Both lists are metadata only and are edge-cached for `CACHE_TTL_CATALOG_SECONDS`
 | `BLOCKED_BIBLE_IDS` | Never served or listed, even under `*`. |
 | `OFFLINE_BIBLE_IDS` | Versions the app may store; must also be readable. `POST /downloads` is 403 for anything else. Defaults to `100,2692`. |
 
-Production keeps `ALLOWED_BIBLE_IDS=100,2692` until Sean approves the full catalog; staging uses `*`.
+Staging and production keep `ALLOWED_BIBLE_IDS=100,2692` until Sean approves reading more versions; the catalog still lists every version the key can see.
 
 ### Book and chapter map for a download
 
