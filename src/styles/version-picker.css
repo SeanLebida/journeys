@@ -132,6 +132,14 @@ body:has(dialog.vp[open]) {
 .vp__field--grow {
   flex: 1 1 100%;
 }
+/* At 640px the stacked search+language row was pushing the first Read online
+   row off the first screen once Recent was present. Share the toolbar row. */
+@media (min-width: 640px) {
+  .vp__field--grow {
+    flex: 1 1 0;
+    min-width: 12rem;
+  }
+}
 .vp__field-label {
   font-size: 0.72rem;
   letter-spacing: 0.04em;
