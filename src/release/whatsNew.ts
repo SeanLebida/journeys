@@ -18,19 +18,6 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
-    version: '0.3.27',
-    steps: [
-      {
-        title: 'Find a Bible faster',
-        body: "Search by name or language, and the versions you've used lately come first. Tap any version to see what it includes.",
-      },
-      {
-        title: 'More versions on the way',
-        body: "Some YouVersion Bibles show in the list but can't be opened yet. We're working with YouVersion to open up more.",
-      },
-    ],
-  },
-  {
     version: '0.3.26',
     steps: [
       {
