@@ -31,7 +31,7 @@ test('version sheet: read online by default, Download only where allowed, RTL la
     if (route.request().method() === 'OPTIONS') return route.fulfill({ status: 204 });
     if (url.pathname === '/v1/bibles') {
       const lang = url.searchParams.get('language_ranges[]');
-      const data = lang === 'he' ? [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 5 }] : [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
+      const data = lang === 'he' ? [{ ...bible(4001, 'THE', 'Test Hebrew Bible', 'he', false), book_count: 27, has_old_testament: false }] : [bible(111, 'AAA', 'A Locked Bible', 'en', false, false), bible(100, 'NASB1995', 'New American Standard Bible 1995', 'en', true), bible(3034, 'TSB', 'Test Stream Bible', 'en', false)];
       return route.fulfill({ json: { data, next_page_token: null, total_size: data.length } });
     }
     if (url.pathname === '/v1/bibles/100') return route.fulfill({ json: { id: 100, copyright: 'NASB1995 FULL NOTICE' } });
@@ -50,8 +50,12 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   const sheet = page.getByRole('dialog');
   const online = sheet.getByRole('region', { name: /Read online/ });
   await expect(online.locator('[data-version="yv:3034"]')).toBeVisible();
-  await expect(online.locator('[data-version="yv:100"]')).toContainText('Can download');
-  await expect(online.locator('[data-version="yv:3034"]')).not.toContainText('Can download');
+  // Short code first; badges say how you get it.
+  await expect(online.locator('[data-version="yv:100"]')).toContainText('NASB1995 · New American Standard Bible 1995');
+  await expect(online.locator('[data-version="yv:100"]')).toContainText('Download');
+  await expect(online.locator('[data-version="yv:3034"]')).toContainText('Read online');
+  await expect(online.locator('[data-version="yv:3034"]')).not.toContainText('Download');
+  await expect(sheet.getByPlaceholder('Search versions or languages')).toBeVisible();
 
   // A version Journeys can't open yet sorts last, says so, and offers no Read or Download.
   const ids = await online.locator('[data-version]').evaluateAll((rows) => rows.map((r) => r.getAttribute('data-version')));
@@ -65,8 +69,9 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   // Details of a stream-only version: Read online, no Download. Escape returns to the list, then closes.
   await sheet.getByRole('button', { name: 'About Test Stream Bible' }).click();
   await expect(sheet.getByRole('heading', { name: 'Test Stream Bible' })).toBeVisible();
-  await expect(sheet.getByRole('button', { name: 'Read online' })).toBeVisible();
+  await expect(sheet.getByRole('button', { name: 'Read', exact: true })).toBeVisible();
   await expect(sheet.getByRole('button', { name: 'Download' })).toHaveCount(0);
+  await expect(sheet.getByText('This version can be read online but not downloaded.')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(online).toBeVisible();
   await sheet.getByRole('button', { name: 'About New American Standard Bible 1995' }).click();
@@ -76,14 +81,20 @@ test('version sheet: read online by default, Download only where allowed, RTL la
   await expect(sheet.getByText(/200 chapters an hour/)).toBeVisible();
   await page.keyboard.press('Escape');
 
+  // A search with no hits says so once.
+  await sheet.getByPlaceholder('Search versions or languages').fill('zzzz');
+  await expect(sheet.getByText('No versions match. Try another name or language.')).toBeVisible();
+  await sheet.getByPlaceholder('Search versions or languages').fill('');
+
   // An RTL language lays its names out right to left.
   // Languages are a searchable list, not a <select>; Escape steps back to the versions.
   await sheet.getByRole('button', { name: /^Language English/ }).click();
   await expect(sheet.getByPlaceholder('Language name or code')).toBeFocused();
+  await expect(sheet.getByRole('button', { name: /^All languages/ })).toBeVisible();
   await page.keyboard.type('hebr');
   await sheet.getByRole('button', { name: /^Hebrew/ }).click();
-  await expect(sheet.locator('[data-version="yv:4001"] .vp-row__name')).toHaveAttribute('dir', 'rtl');
-  await expect(sheet.locator('[data-version="yv:4001"]')).toContainText('Partial');
+  await expect(sheet.locator('[data-version="yv:4001"] .vp-row__name [dir]')).toHaveAttribute('dir', 'rtl');
+  await expect(sheet.locator('[data-version="yv:4001"]')).toContainText('New Testament only');
   await expect(sheet.getByRole('button', { name: /^Language Hebrew/ })).toBeFocused();
   await sheet.getByRole('button', { name: /^Language Hebrew/ }).click();
   await expect(sheet.getByRole('region', { name: 'Suggested languages' }).getByRole('button', { name: /^Hebrew/ })).toBeVisible();
