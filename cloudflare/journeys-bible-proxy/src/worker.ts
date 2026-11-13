@@ -1,4 +1,12 @@
-import { parseAllowedIds, VERSION_LABELS } from "./allowlist.ts";
+import { biblePolicy, VERSION_LABELS, type BiblePolicy } from "./allowlist.ts";
+import {
+  catalogUpstreamSearch,
+  languagesUpstreamSearch,
+  parseCatalogQuery,
+  parseLanguagesQuery,
+  sanitizeCatalog,
+  sanitizeLanguages,
+} from "./catalog.ts";
 import { allowedOrigin, withCors, preflightResponse } from "./cors.ts";
 import { hmacSha256Hex, secretsEqual } from "./crypto.ts";
 import { jsonResponse } from "./json.ts";
@@ -22,8 +30,8 @@ export async function handleRequest(
   }
 
   const url = new URL(request.url);
-  const allowed = parseAllowedIds(env.ALLOWED_BIBLE_IDS);
-  const route = parseRoute(url.pathname, url.searchParams, allowed);
+  const policy = biblePolicy(env);
+  const route = parseRoute(url.pathname, url.searchParams, policy.canRead);
 
   const limited = await applyRateLimit(request, env);
   if (limited) {
@@ -73,6 +81,16 @@ export async function handleRequest(
   }
 
   if (route.kind === "download") {
+    if (!policy.canStore(route.versionId)) {
+      logEvent("proxy_deny", { reason: "download_not_allowed", version_id: route.versionId });
+      return withCors(
+        jsonResponse(403, {
+          error: "Forbidden",
+          message: "This Bible version can be read online but not downloaded.",
+        }),
+        request,
+      );
+    }
     return withCors(await handleDownload(request, env, route.versionId), request);
   }
 
@@ -81,6 +99,10 @@ export async function handleRequest(
       jsonResponse(405, { error: "Method Not Allowed", message: "Use GET." }),
       request,
     );
+  }
+
+  if (route.kind === "catalog" || route.kind === "languages") {
+    return withCors(await handleList(request, env, ctx, url, route.kind, policy), request);
   }
 
   return withCors(
@@ -220,8 +242,9 @@ async function handleAdminStats(
   const rows = await env.DOWNLOAD_STATS.getByName(STATS_OBJECT_NAME).statsForYear(
     year,
   );
-  const allowed = parseAllowedIds(env.ALLOWED_BIBLE_IDS);
-  const versions = [...allowed].sort((a, b) => a - b).map((versionId) => {
+  const policy = biblePolicy(env);
+  const ids = new Set<number>([...policy.offline, ...rows.map((row) => row.version_id)]);
+  const versions = [...ids].sort((a, b) => a - b).map((versionId) => {
     const months: Record<string, number> = {};
     for (let month = 1; month <= 12; month++) {
       months[String(month)] = 0;
@@ -244,6 +267,120 @@ async function handleAdminStats(
 
   logEvent("admin_stats", { year });
   return jsonResponse(200, { year, versions });
+}
+
+const CATALOG_TTL_DEFAULT = 86_400;
+
+/**
+ * GET /v1/bibles and GET /v1/languages: the catalog the app browses. Only
+ * metadata (no Scripture text), so it is edge-cached for a day by default;
+ * that also keeps catalog browsing from spending the app key's hourly quota.
+ */
+async function handleList(
+  request: Request,
+  env: WorkerEnv,
+  ctx: WorkerContext,
+  url: URL,
+  kind: "catalog" | "languages",
+  policy: BiblePolicy,
+): Promise<Response> {
+  const key = env.YOUVERSION_APP_KEY;
+  if (!key) {
+    logEvent("upstream_error", { reason: "missing_app_key" });
+    return jsonResponse(500, {
+      error: "Server Error",
+      message: "Bible service is not configured.",
+    });
+  }
+
+  let upstreamPath: string;
+  let search: URLSearchParams;
+  let acceptLanguage: string | null = null;
+  if (kind === "catalog") {
+    const q = parseCatalogQuery(url.searchParams);
+    if (!q) {
+      return jsonResponse(400, {
+        error: "Bad Request",
+        message: "Use language_ranges[] (language tags or *), page_size 1-99 and page_token.",
+      });
+    }
+    upstreamPath = "/bibles";
+    search = catalogUpstreamSearch(q);
+  } else {
+    const q = parseLanguagesQuery(url.searchParams, request.headers.get("Accept-Language"));
+    if (!q) {
+      return jsonResponse(400, {
+        error: "Bad Request",
+        message: "Use page_size 1-99, page_token and an optional two-letter country.",
+      });
+    }
+    upstreamPath = "/languages";
+    search = languagesUpstreamSearch(q);
+    acceptLanguage = q.acceptLanguage;
+  }
+
+  const ttl = parseNonNegativeInt(env.CACHE_TTL_CATALOG_SECONDS, CATALOG_TTL_DEFAULT);
+  const keyParams = new URLSearchParams(search);
+  keyParams.set("_policy", policy.fingerprint);
+  if (acceptLanguage) keyParams.set("_lang", acceptLanguage);
+  const cacheKey = new Request(cacheKeyUrl(upstreamPath, keyParams), { method: "GET" });
+  const cache = await getCache();
+  if (cache && ttl > 0) {
+    const hit = await cache.match(cacheKey);
+    if (hit) {
+      logEvent("proxy_ok", { source: "cache", path: url.pathname });
+      return withCacheControl(hit, ttl, "HIT");
+    }
+  }
+
+  const upstreamUrl = new URL(
+    `${trimSlash(env.UPSTREAM_BASE || "https://api.youversion.com/v1")}${upstreamPath}`,
+  );
+  search.forEach((value, name) => upstreamUrl.searchParams.append(name, value));
+  const headers: Record<string, string> = { Accept: "application/json", "X-YVP-App-Key": key };
+  if (acceptLanguage) headers["Accept-Language"] = acceptLanguage;
+  const upstream = await fetch(upstreamUrl, { method: "GET", headers, redirect: "manual" }).catch(
+    (error: unknown) => {
+      logEvent("upstream_error", { message: errorMessage(error) });
+      return null;
+    },
+  );
+  if (!upstream) {
+    return jsonResponse(502, { error: "Bad Gateway", message: "The Bible service is unavailable." });
+  }
+  if (upstream.status === 204) {
+    const empty = { data: [], next_page_token: null, total_size: 0 };
+    return jsonResponse(200, empty, { "Cache-Control": "no-store" });
+  }
+  if (!upstream.ok) {
+    logEvent("upstream_error", { status: upstream.status, path: url.pathname });
+    const passthrough: Record<string, string> = { "Cache-Control": "no-store" };
+    const retryAfter = upstream.headers.get("Retry-After");
+    if (retryAfter) passthrough["Retry-After"] = retryAfter;
+    const status = upstream.status === 429 ? 429 : upstream.status >= 500 ? 502 : upstream.status;
+    return jsonResponse(status, { error: "Upstream Error", message: `The Bible service answered ${upstream.status}.` }, passthrough);
+  }
+
+  let body: unknown;
+  try {
+    body = await upstream.json();
+  } catch {
+    return jsonResponse(502, { error: "Bad Gateway", message: "The Bible service sent an unreadable list." });
+  }
+  const page = kind === "catalog" ? sanitizeCatalog(body, policy) : sanitizeLanguages(body);
+  const response = jsonResponse(200, { ...page }, ttl > 0
+    ? { "Cache-Control": `public, max-age=${ttl}`, "X-Proxy-Cache": "MISS" }
+    : { "Cache-Control": "no-store" });
+  if (cache && ttl > 0) {
+    ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  }
+  logEvent("proxy_ok", { source: "origin", status: 200, path: url.pathname, items: page.data.length });
+  return response;
+}
+
+function parseNonNegativeInt(raw: string | undefined, fallback: number): number {
+  const parsed = Number.parseInt(raw ?? "", 10);
+  return Number.isInteger(parsed) && parsed >= 0 ? parsed : fallback;
 }
 
 async function proxyYouVersion(

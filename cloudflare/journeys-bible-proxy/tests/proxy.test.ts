@@ -122,8 +122,6 @@ describe("allowlist and proxy", () => {
     assert.equal(nivPassage.status, 403);
     const amp = await handleRequest(jsonRequest("/v1/bibles/1588"), env, ctx);
     assert.equal(amp.status, 403);
-    const list = await handleRequest(jsonRequest("/v1/bibles"), env, ctx);
-    assert.equal(list.status, 403);
     const book = await handleRequest(jsonRequest("/v1/bibles/100/books/GEN"), env, ctx);
     assert.equal(book.status, 403);
     assert.equal(mock.calls.length, 0);
