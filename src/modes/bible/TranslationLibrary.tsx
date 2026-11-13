@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { fetchCatalog, type DownloadableTranslation } from '../../content/catalog';
 import { closeDownloadedDb } from '../../content/useBible';
-import { LICENSED_TRANSLATIONS, reportDownload } from '../../content/youversion';
+import { reportDownload } from '../../content/youversion';
+import { parseYvId } from '../../content/youversionCatalog';
+import { downloadYouVersion, readYouVersionOnline, useYouVersionCatalog } from '../../state/useYouVersionCatalog';
 import { TRANSLATIONS, type TranslationId } from '../../content/translations';
 import { deleteBibleBytes } from '../../platform/bibleStore';
-import { cancelDownload, startFreeDownload, startLicensedDownload, useBibleDownloads } from '../../state/useBibleDownloads';
+import { cancelDownload, startFreeDownload, useBibleDownloads } from '../../state/useBibleDownloads';
 import { useUiStore } from '../../state/useUiStore';
 
 const PAGE = 40;
@@ -225,18 +227,21 @@ function LicensedDownloads() {
   useEffect(() => {
     for (const d of downloaded) {
       if (!d.reportPending) continue;
-      const t = LICENSED_TRANSLATIONS.find((l) => l.id === d.id);
-      if (!t || reporting.has(t.id)) continue;
-      reporting.add(t.id);
-      void reportDownload(t.yvId).then((ok) => {
+      const yvId = parseYvId(d.id);
+      if (yvId === null || reporting.has(d.id)) continue;
+      reporting.add(d.id);
+      void reportDownload(yvId).then((ok) => {
         if (ok) addDownloaded({ ...d, reportPending: undefined });
-        else reporting.delete(t.id);
+        else reporting.delete(d.id);
       });
     }
     // Only on open: retrying on every store change could double count.
   }, []);
 
-  const available = LICENSED_TRANSLATIONS.filter((t) => !downloaded.some((d) => d.id === t.id));
+  // Minimal wiring until the redesigned picker lands: English versions from the
+  // YouVersion catalog (falls back to NASB 1995 and 2020 when it can't load).
+  const catalog = useYouVersionCatalog({ language: 'en' });
+  const available = catalog.versions.filter((v) => !downloaded.some((d) => d.id === v.id));
   if (available.length === 0) return null;
 
   return (
@@ -247,14 +252,15 @@ function LicensedDownloads() {
         keep reading while it downloads, but keep the app open until it finishes. It then reads offline and stays on this device only.
       </p>
       <ul className="bible__library-list" aria-label="Licensed Bibles to download">
-        {available.map((t) => {
+        {available.map((v) => {
+          const t = { id: v.id, name: v.localizedTitle, shortName: v.localizedAbbreviation, publisher: v.publisher ?? 'Publisher', publisherUrl: v.publisherUrl ?? v.deepLink ?? 'https://www.bible.com' };
           const progress = active[t.id]?.progress;
           return (
             <li key={t.id} className="bible__library-item">
               <div>
                 <strong>{t.name}</strong> <span className="bible__translation-tag">({t.shortName})</span>
                 <p className="bible__library-meta">
-                  English · Full Bible ·{' '}
+                  English · {v.hasOldTestament && v.hasNewTestament ? 'Full Bible' : v.hasNewTestament ? 'New Testament' : 'Old Testament'} ·{' '}
                   <a href={t.publisherUrl} target="_blank" rel="noreferrer">
                     {t.publisher}
                   </a>
@@ -284,9 +290,13 @@ function LicensedDownloads() {
                     </button>
                   )}
                 </span>
-              ) : (
-                <button type="button" className="bible__library-btn" aria-label={`Download ${t.name}`} onClick={() => void startLicensedDownload(t)}>
+              ) : v.capabilities.canDownload ? (
+                <button type="button" className="bible__library-btn" aria-label={`Download ${t.name}`} onClick={() => void downloadYouVersion(v)}>
                   Download
+                </button>
+              ) : (
+                <button type="button" className="bible__library-btn" aria-label={`Read ${t.name} online`} onClick={() => readYouVersionOnline(v)}>
+                  Read online
                 </button>
               )}
             </li>
