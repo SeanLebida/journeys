@@ -273,6 +273,20 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
       raf = requestAnimationFrame(tickCoLocated);
       return () => {
         if (raf) cancelAnimationFrame(raf);
+        const state = useJourneyStore.getState();
+        const point = coords[path.stopVertex[toIdx]];
+        if (
+          state.targetStopIdx === null &&
+          state.currentStopIdx === toIdx &&
+          map &&
+          !isUserInteractingRef.current &&
+          point
+        ) {
+          map.jumpTo({
+            center: point,
+            zoom: getTargetZoomForStop(toIdx),
+          });
+        }
       };
     }
 
@@ -333,6 +347,20 @@ export function useRouteAnimation(path: JourneyPath, color: string, stops: Trace
     raf = requestAnimationFrame(tick);
     return () => {
       if (raf) cancelAnimationFrame(raf);
+      const state = useJourneyStore.getState();
+      const point = coords[path.stopVertex[toIdx]];
+      if (
+        state.targetStopIdx === null &&
+        state.currentStopIdx === toIdx &&
+        map &&
+        !isUserInteractingRef.current &&
+        point
+      ) {
+        map.jumpTo({
+          center: point,
+          zoom: getTargetZoomForStop(toIdx),
+        });
+      }
     };
   }, [targetStopIdx, currentStopIdx, fractions, totalPathKm, coords, path, mapRef, ready, setProgress, setCurrentStopIdx, setTargetStopIdx, getTargetZoomForStop]);
 }

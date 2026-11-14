@@ -121,12 +121,12 @@ describe('version picker rows', () => {
 describe('licensed download note', () => {
   it('Android says it keeps going and finishes on reopen', () => {
     expect(licensedDownloadNote('android')).toBe(
-      "Downloaded through YouVersion with the publisher's permission. YouVersion allows about 200 chapters an hour, so a full Bible takes around 6 hours. It keeps going if you leave the app, and you'll get a notification when it's ready to read. If it pauses near the end, open Journeys and it will finish. Once it's done, it reads offline and stays on this device.",
+      "Downloaded through YouVersion with the publisher's permission. A full Bible usually takes under an hour, and if YouVersion is busy it pauses and carries on by itself. It keeps going if you leave the app, and you'll get a notification when it's ready to read. If it pauses near the end, open Journeys and it will finish. Once it's done, it reads offline and stays on this device.",
     );
   });
   it('iPhone asks to keep Journeys open', () => {
     expect(licensedDownloadNote('ios')).toBe(
-      "Downloaded through YouVersion with the publisher's permission. YouVersion allows about 200 chapters an hour, so a full Bible takes around 6 hours. Keep Journeys open while it downloads. If it stops, the chapters you have are saved, and it picks up where it left off when you open the app again. Once it's done, it reads offline and stays on this device.",
+      "Downloaded through YouVersion with the publisher's permission. A full Bible usually takes under an hour, and if YouVersion is busy it pauses and carries on by itself. Keep Journeys open while it downloads. If it stops, the chapters you have are saved, and it picks up where it left off when you open the app again. Once it's done, it reads offline and stays on this device.",
     );
   });
   it('web asks to keep the tab open', () => {

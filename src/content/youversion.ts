@@ -30,8 +30,8 @@ export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
   { id: 'yv:2692', yvId: 2692, name: 'New American Standard Bible (2020)', shortName: 'NASB2020', publisher: 'The Lockman Foundation', publisherUrl: 'https://www.lockman.org' },
 ];
 
-/** YouVersion limits this app key to 200 requests an hour (a full NASB is 1,189 chapters, about six hours). 200/hour is one request every 18s; stay on that pace and honour Retry-After if we still get a 429. */
-const MIN_INTERVAL_MS = 18_000;
+/** A live YouVersion app key gets 10,000 requests an hour, shared by every user. One request every 2s (1,800/hour) finishes a full NASB (1,189 chapters) in about 40 minutes and leaves room for several downloads at once. If we still get a 429, Retry-After is honoured and the download waits it out. */
+const MIN_INTERVAL_MS = 2_000;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
 /** 429s are waited out, not counted as failures. This cap is only a safety valve for a service that never recovers (12 hours of 5-minute waits on one request). */
