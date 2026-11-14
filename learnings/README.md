@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-14-web-app-cloudflare](2026-11-14-web-app-cloudflare.md) — Serve the Vite `/app/` build at journeys.authentic.how/app via Workers static assets.
 - [2026-11-14-youversion-offline-typecheck](2026-11-14-youversion-offline-typecheck.md) — Re-read navigator.onLine so a second offline check still typechecks.
 - [2026-11-14-trace-skip-camera](2026-11-14-trace-skip-camera.md) — Skip cancels the leg jumpTo; sheet setPadding aborts the arrival easeTo.
 - [2026-11-13 YouVersion cache](2026-11-13-youversion-cache.md)
