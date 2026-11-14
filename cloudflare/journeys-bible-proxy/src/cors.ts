@@ -1,6 +1,7 @@
 export const ALLOWED_ORIGINS = new Set([
   "https://localhost",
   "capacitor://localhost",
+  "https://journeys.authentic.how",
 ]);
 
 const ALLOW_HEADERS = [
