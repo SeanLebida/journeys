@@ -103,6 +103,30 @@ describe('useRouteAnimation trace lifetime', () => {
     vi.unstubAllGlobals();
   });
 
+  it('skip lands the camera on the stop the text already shows', () => {
+    const frames: FrameRequestCallback[] = [];
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+      frames.push(cb);
+      return frames.length;
+    });
+    vi.stubGlobal('cancelAnimationFrame', vi.fn());
+    useJourneyStore.getState().setTargetStopIdx(1);
+    const { rerender } = renderHook(() => useRouteAnimation(path, '#c75b39', stops, stopIds));
+    act(() => {
+      frames[0]?.(performance.now() + 50);
+    });
+    fakeMap.jumpTo.mockClear();
+    fakeMap.easeTo.mockClear();
+    act(() => {
+      useJourneyStore.getState().setProgress(1);
+      useJourneyStore.getState().setCurrentStopIdx(1);
+      useJourneyStore.getState().setTargetStopIdx(null);
+    });
+    rerender();
+    expect(fakeMap.jumpTo).toHaveBeenCalledWith(expect.objectContaining({ center: [36, 33] }));
+    vi.unstubAllGlobals();
+  });
+
   it('does not subscribe to the one-shot load event', () => {
     expect(source).not.toContain("once('load'");
   });
