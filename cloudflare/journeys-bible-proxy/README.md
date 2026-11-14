@@ -24,7 +24,7 @@ Call this Worker the same way you would call YouVersion, under `/v1/...`. Do **n
 
 Production host: `https://bible.authentic.how`. Staging: `https://bible-staging.authentic.how`.
 
-CORS allowlist: `https://localhost`, `capacitor://localhost`. Capacitor Android’s `http://localhost` is **not** included; say if that origin is needed.
+CORS allowlist: `https://localhost`, `capacitor://localhost`, `https://journeys.authentic.how`. Capacitor Android’s `http://localhost` is **not** included; say if that origin is needed.
 
 When `REQUIRE_APP_CLIENT=true`, every `/v1/bibles/*` request (GET and the download POST) must send both of these, or the Worker returns 403:
 
@@ -33,7 +33,7 @@ Origin: https://localhost
 X-Journeys-Client: journeys
 ```
 
-`Origin` must be one of the CORS allowlist values (`https://localhost` or `capacitor://localhost`). OPTIONS preflight and `/admin/stats` are unchanged. Both staging and production set `REQUIRE_APP_CLIENT=true`.
+`Origin` must be one of the CORS allowlist values (`https://localhost`, `capacitor://localhost`, or `https://journeys.authentic.how`). OPTIONS preflight and `/admin/stats` are unchanged. Both staging and production set `REQUIRE_APP_CLIENT=true`.
 
 ### List / identify a licensed version
 
