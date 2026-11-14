@@ -12,6 +12,7 @@ import {
   type YouVersionLanguage,
   type YouVersionVersion,
 } from '../content/youversionCatalog';
+import { VERSION_LIST_FAILED } from '../content/bibleCopy';
 import { platformStorage } from './persistAdapter';
 import { startLicensedDownload } from './useBibleDownloads';
 import { useUiStore } from './useUiStore';
@@ -82,7 +83,7 @@ export function useYouVersionCatalog(options: UseYouVersionCatalogOptions = {}):
       })
       .catch(() => {
         if (ctl.signal.aborted) return;
-        setResult({ versions: FALLBACK_VERSIONS.filter((v) => languageMatches(v.languageTag, language)), source: 'fallback', fetchedAt: null, stale: true, error: 'Bible list failed.' });
+        setResult({ versions: FALLBACK_VERSIONS.filter((v) => languageMatches(v.languageTag, language)), source: 'fallback', fetchedAt: null, stale: true, error: VERSION_LIST_FAILED });
         setStatus('ready');
       });
     return () => ctl.abort();
