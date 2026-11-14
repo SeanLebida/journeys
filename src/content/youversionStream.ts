@@ -23,7 +23,7 @@ export interface StreamOptions {
 
 const chapters = new Map<string, Promise<PlainVerse[]>>();
 const counts = new Map<number, Promise<Map<number, number>>>();
-let chapterWaiting = false;
+let busySleeps = 0;
 const chapterWaiters = new Set<() => void>();
 
 function realSleep(ms: number, signal?: AbortSignal): Promise<void> {
@@ -37,13 +37,13 @@ function realSleep(ms: number, signal?: AbortSignal): Promise<void> {
   });
 }
 
-function setChapterWaiting(on: boolean): void {
-  chapterWaiting = on;
+function noteBusySleep(delta: 1 | -1): void {
+  busySleeps = Math.max(0, busySleeps + delta);
   for (const cb of chapterWaiters) cb();
 }
 
 export function chapterIsWaiting(): boolean {
-  return chapterWaiting;
+  return busySleeps > 0;
 }
 
 export function subscribeChapterWait(cb: () => void): () => void {
@@ -55,6 +55,7 @@ export function subscribeChapterWait(cb: () => void): () => void {
 export function clearStreamMemory(): void {
   chapters.clear();
   counts.clear();
+  busySleeps = 0;
 }
 
 export function streamedChapterCount(): number {
@@ -80,11 +81,11 @@ async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
     if (res.status === 403) throw new ReaderNotice(CHAPTER_UNAVAILABLE);
     if (res.status !== 429) throw new ReaderNotice(CHAPTER_GAVE_UP);
     if (++busy > MAX_BUSY_WAITS) break;
-    setChapterWaiting(true);
+    noteBusySleep(1);
     try {
       await sleep(retryAfterMs(res), opts.signal);
     } finally {
-      setChapterWaiting(false);
+      noteBusySleep(-1);
     }
   }
   throw new ReaderNotice(CHAPTER_GAVE_UP);

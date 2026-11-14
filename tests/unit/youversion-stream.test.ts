@@ -113,6 +113,29 @@ describe('streamChapter', () => {
     expect(sleep).not.toHaveBeenCalled();
   });
 
+  it('two overlapping busy sleeps stay waiting until both finish', async () => {
+    const gates: Array<() => void> = [];
+    const seen = new Map<string, number>();
+    const fetchImpl = (async (url: string | URL | Request) => {
+      const key = String(url);
+      const n = (seen.get(key) ?? 0) + 1;
+      seen.set(key, n);
+      if (n === 1) return new Response('{}', { status: 429, headers: { 'Retry-After': '1' } });
+      return Response.json({ content: CHAPTER });
+    }) as unknown as typeof fetch;
+    const sleep = () => new Promise<void>((resolve) => { gates.push(resolve); });
+    const first = streamChapter(1, 1, 1, { fetchImpl, sleep });
+    const second = streamChapter(1, 1, 2, { fetchImpl, sleep });
+    await vi.waitUntil(() => gates.length === 2);
+    expect(chapterIsWaiting()).toBe(true);
+    gates[0]!();
+    expect((await first).length).toBe(2);
+    expect(chapterIsWaiting()).toBe(true);
+    gates[1]!();
+    expect((await second).length).toBe(2);
+    expect(chapterIsWaiting()).toBe(false);
+  });
+
   it('abort during the wait rejects and clears the waiting flag', async () => {
     const ac = new AbortController();
     const reason = new Error('stopped');
