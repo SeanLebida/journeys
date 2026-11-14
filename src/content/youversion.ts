@@ -1,3 +1,4 @@
+import { DOWNLOAD_FAILED, DOWNLOAD_PAUSED, ReaderNotice } from './bibleCopy';
 import { buildBibleDb, type DownloadProgress, type DownloadedTranslation } from './downloads';
 import { NetworkError } from './net';
 import type { PlainVerse } from './helloao';
@@ -34,7 +35,7 @@ const MIN_INTERVAL_MS = 18_000;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
 /** 429s are waited out, not counted as failures. This cap is only a safety valve for a service that never recovers (12 hours of 5-minute waits on one request). */
-const MAX_BUSY_WAITS = 144;
+export const MAX_BUSY_WAITS = 144;
 const CLIENT_HEADERS = { 'X-Journeys-Client': 'journeys' } as const;
 
 export interface ProxyOptions {
@@ -71,7 +72,7 @@ class Pacer {
   }
 }
 
-function retryAfterMs(res: Response): number {
+export function retryAfterMs(res: Response): number {
   const v = res.headers.get('Retry-After');
   const secs = v == null ? NaN : Number(v);
   return Number.isFinite(secs) && secs >= 0 ? secs * 1000 : 10_000;
@@ -100,18 +101,18 @@ async function getJson(
     }
     if (res.ok) return res.json();
     if (res.status === 429) {
-      lastError = new Error('The Bible service is busy right now. Chapters already downloaded are saved. Tap Download to pick up where it stopped.');
+      lastError = new ReaderNotice(DOWNLOAD_PAUSED);
       if (++busy > MAX_BUSY_WAITS) break;
       onBusy?.(pacer.pause(retryAfterMs(res)));
       attempt--;
       continue;
     }
     if (res.status >= 500) {
-      lastError = new Error(`The Bible service had a problem (${res.status}).`);
+      lastError = new ReaderNotice(DOWNLOAD_FAILED);
       await sleep(1000 * 2 ** attempt, signal);
       continue;
     }
-    throw new Error(`Download failed (${res.status}).`);
+    throw new ReaderNotice(DOWNLOAD_FAILED);
   }
   throw lastError instanceof Error ? lastError : new Error('Download failed.');
 }
