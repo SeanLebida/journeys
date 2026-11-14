@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import maplibregl from 'maplibre-gl';
 import { ModePanel } from '../ModePanel';
@@ -8,7 +8,8 @@ import { useMap } from '../../map/MapProvider';
 import { MapLayerControl } from '../../map/MapLayerControl';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { placeToForget, usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
-import { openRoutePlace, stopToPersist } from './routeResume';
+import { stopToPersist } from './routeResume';
+import { parseTraceOpen, placeForTraceOpen } from './traceHref';
 import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
@@ -94,6 +95,8 @@ function siteName(stop: TStop | undefined, bundle: BundleIndex): string {
 
 function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: string }) {
   const journey = bundle.journey(journeyId);
+  const [params] = useSearchParams();
+  const requested = parseTraceOpen(params.toString());
   const openAtStop = useJourneyStore((s) => s.openAtStop);
   const hydrated = usePlaceHydrated();
   const forgetJourney = usePlaceStore((s) => s.forgetJourney);
@@ -136,10 +139,10 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   useEffect(() => {
     if (!hydrated || !journey || stops.length === 0) return;
     const saved = usePlaceStore.getState().routes[journey.id];
-    const place = openRoutePlace(saved, stops.length, fractions);
+    const place = placeForTraceOpen(requested.stop, saved, stops.length, fractions);
     openAtStop(journey.id, place.stop, place.progress);
     setRouteReady(true);
-  }, [hydrated, journey, stops.length, fractions, openAtStop]);
+  }, [hydrated, journey, stops.length, fractions, openAtStop, requested.stop]);
 
   useEffect(() => {
     if (!hydrated || !journey || stops.length === 0) return;
