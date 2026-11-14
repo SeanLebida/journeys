@@ -125,18 +125,3 @@ export function allowedSearch(
   }
   return out;
 }
-
-export function cacheTtlSeconds(
-  kind: "bible" | "books" | "passage",
-  env: { CACHE_TTL_METADATA_SECONDS: string; CACHE_TTL_PASSAGE_SECONDS: string },
-): number {
-  const raw =
-    kind === "passage"
-      ? env.CACHE_TTL_PASSAGE_SECONDS
-      : env.CACHE_TTL_METADATA_SECONDS;
-  const parsed = Number.parseInt(raw, 10);
-  if (!Number.isInteger(parsed) || parsed < 0) {
-    return kind === "passage" ? 86_400 : 604_800;
-  }
-  return parsed;
-}

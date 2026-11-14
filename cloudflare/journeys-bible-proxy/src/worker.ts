@@ -9,9 +9,10 @@ import {
 } from "./catalog.ts";
 import { allowedOrigin, withCors, preflightResponse } from "./cors.ts";
 import { hmacSha256Hex, secretsEqual } from "./crypto.ts";
+import { sharedFreshness, stillFresh } from "./freshness.ts";
 import { jsonResponse } from "./json.ts";
 import { logEvent } from "./log.ts";
-import { allowedSearch, cacheTtlSeconds, parseRoute } from "./routes.ts";
+import { allowedSearch, parseRoute } from "./routes.ts";
 import type { WorkerContext, WorkerEnv } from "./types.ts";
 
 const DOWNLOAD_HEADER = "x-journeys-download";
@@ -269,12 +270,9 @@ async function handleAdminStats(
   return jsonResponse(200, { year, versions });
 }
 
-const CATALOG_TTL_DEFAULT = 86_400;
-
 /**
- * GET /v1/bibles and GET /v1/languages: the catalog the app browses. Only
- * metadata (no Scripture text), so it is edge-cached for a day by default;
- * that also keeps catalog browsing from spending the app key's hourly quota.
+ * GET /v1/bibles and GET /v1/languages. A 200 is stored only for the upstream
+ * Cache-Control lifetime. The response to the app is no-store.
  */
 async function handleList(
   request: Request,
@@ -319,17 +317,16 @@ async function handleList(
     acceptLanguage = q.acceptLanguage;
   }
 
-  const ttl = parseNonNegativeInt(env.CACHE_TTL_CATALOG_SECONDS, CATALOG_TTL_DEFAULT);
   const keyParams = new URLSearchParams(search);
   keyParams.set("_policy", policy.fingerprint);
   if (acceptLanguage) keyParams.set("_lang", acceptLanguage);
   const cacheKey = new Request(cacheKeyUrl(upstreamPath, keyParams), { method: "GET" });
   const cache = await getCache();
-  if (cache && ttl > 0) {
-    const hit = await cache.match(cacheKey);
+  if (cache) {
+    const hit = await freshHit(cache, cacheKey);
     if (hit) {
       logEvent("proxy_ok", { source: "cache", path: url.pathname });
-      return withCacheControl(hit, ttl, "HIT");
+      return hit;
     }
   }
 
@@ -368,19 +365,9 @@ async function handleList(
     return jsonResponse(502, { error: "Bad Gateway", message: "The Bible service sent an unreadable list." });
   }
   const page = kind === "catalog" ? sanitizeCatalog(body, policy) : sanitizeLanguages(body);
-  const response = jsonResponse(200, { ...page }, ttl > 0
-    ? { "Cache-Control": `public, max-age=${ttl}`, "X-Proxy-Cache": "MISS" }
-    : { "Cache-Control": "no-store" });
-  if (cache && ttl > 0) {
-    ctx.waitUntil(cache.put(cacheKey, response.clone()));
-  }
+  const response = jsonResponse(200, { ...page });
   logEvent("proxy_ok", { source: "origin", status: 200, path: url.pathname, items: page.data.length });
-  return response;
-}
-
-function parseNonNegativeInt(raw: string | undefined, fallback: number): number {
-  const parsed = Number.parseInt(raw ?? "", 10);
-  return Number.isInteger(parsed) && parsed >= 0 ? parsed : fallback;
+  return storeForApp(cache, ctx, cacheKey, upstream.headers, response);
 }
 
 async function proxyYouVersion(
@@ -417,20 +404,19 @@ async function proxyYouVersion(
     upstreamUrl.searchParams.set(name, value);
   });
 
-  const ttl = cacheTtlSeconds(route.kind, env);
   const cacheKey = new Request(cacheKeyUrl(upstreamPath, query), {
     method: "GET",
   });
   const cache = await getCache();
-  if (cache && ttl > 0) {
-    const hit = await cache.match(cacheKey);
+  if (cache) {
+    const hit = await freshHit(cache, cacheKey);
     if (hit) {
       logEvent("proxy_ok", {
         source: "cache",
         version_id: route.versionId,
         path: url.pathname,
       });
-      return withCacheControl(hit, ttl, "HIT");
+      return hit;
     }
   }
 
@@ -453,10 +439,11 @@ async function proxyYouVersion(
     });
   }
 
-  const response = sanitizeUpstream(upstream, ttl);
-  if (upstream.ok && cache && ttl > 0) {
-    ctx.waitUntil(cache.put(cacheKey, response.clone()));
-  }
+  const response = sanitizeUpstream(upstream);
+  const delivered =
+    upstream.status === 200
+      ? storeForApp(cache, ctx, cacheKey, upstream.headers, response)
+      : response;
 
   logEvent("proxy_ok", {
     source: "origin",
@@ -464,10 +451,10 @@ async function proxyYouVersion(
     version_id: route.versionId,
     path: url.pathname,
   });
-  return response;
+  return delivered;
 }
 
-function sanitizeUpstream(upstream: Response, ttl: number): Response {
+function sanitizeUpstream(upstream: Response): Response {
   const headers = new Headers();
   const contentType = upstream.headers.get("Content-Type");
   if (contentType) {
@@ -477,12 +464,7 @@ function sanitizeUpstream(upstream: Response, ttl: number): Response {
   if (retryAfter) {
     headers.set("Retry-After", retryAfter);
   }
-  if (upstream.ok && ttl > 0) {
-    headers.set("Cache-Control", `public, max-age=${ttl}`);
-    headers.set("X-Proxy-Cache", "MISS");
-  } else {
-    headers.set("Cache-Control", "no-store");
-  }
+  headers.set("Cache-Control", "no-store");
   return new Response(upstream.body, {
     status: upstream.status,
     statusText: upstream.statusText,
@@ -490,13 +472,43 @@ function sanitizeUpstream(upstream: Response, ttl: number): Response {
   });
 }
 
-function withCacheControl(cached: Response, ttl: number, state: string): Response {
-  const headers = new Headers(cached.headers);
-  headers.set("Cache-Control", `public, max-age=${ttl}`);
+async function freshHit(cache: Cache, cacheKey: Request): Promise<Response | null> {
+  const hit = await cache.match(cacheKey);
+  if (!hit) return null;
+  if (stillFresh(hit, Date.now())) return toAppResponse(hit, "HIT");
+  void hit.body?.cancel();
+  if (typeof cache.delete === "function") {
+    await cache.delete(cacheKey);
+  }
+  return null;
+}
+
+function storeForApp(
+  cache: Cache | null,
+  ctx: WorkerContext,
+  cacheKey: Request,
+  upstreamHeaders: Headers,
+  response: Response,
+): Response {
+  const app = toAppResponse(response, "MISS");
+  if (!cache || response.status !== 200) return app;
+  const now = Date.now();
+  const freshness = sharedFreshness(upstreamHeaders, now);
+  if (!freshness.store) return app;
+  const stored = app.clone();
+  stored.headers.set("Cache-Control", `public, max-age=${freshness.maxAge}`);
+  stored.headers.set("Date", new Date(now).toUTCString());
+  ctx.waitUntil(cache.put(cacheKey, stored));
+  return app;
+}
+
+function toAppResponse(source: Response, state: "HIT" | "MISS"): Response {
+  const headers = new Headers(source.headers);
+  headers.set("Cache-Control", "no-store");
   headers.set("X-Proxy-Cache", state);
-  return new Response(cached.body, {
-    status: cached.status,
-    statusText: cached.statusText,
+  return new Response(source.body, {
+    status: source.status,
+    statusText: source.statusText,
     headers,
   });
 }
