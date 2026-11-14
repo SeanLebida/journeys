@@ -3,7 +3,7 @@ import { createBrowserRouter, createHashRouter, type RouteObject } from 'react-r
 import App from './App';
 import { HomeView } from './components/HomeView';
 import { CreditsView } from './components/CreditsView';
-import { isNative } from './platform/bridge';
+import { isNative, routerBasename } from './platform/bridge';
 
 // Heavy mode screens are code-split so the initial shell + map load fast.
 const TraceMode = lazy(() => import('./modes/map-trace/TraceMode'));
@@ -35,4 +35,6 @@ const routes: RouteObject[] = [
 
 // Native builds use hash routing to avoid blank-screen-on-reload from the
 // capacitor:// origin not resolving deep paths; web uses clean history URLs.
-export const router = isNative() ? createHashRouter(routes) : createBrowserRouter(routes);
+export const router = isNative()
+  ? createHashRouter(routes)
+  : createBrowserRouter(routes, { basename: routerBasename(import.meta.env.BASE_URL) });
