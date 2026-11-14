@@ -1,44 +1,40 @@
 import { clampIndex } from '../../state/usePlaceStore';
 import { openRoutePlace } from './routeResume';
 
-/** Query flag: this navigation should start the named journey, not resume a saved stop. */
-export const TRACE_PLAY = 'play';
+/** Query key for a stop the reader tapped. A missing stop resumes the saved place. */
 export const TRACE_STOP = 'stop';
 
-/** Deep link that opens and starts a specific journey, ignoring saved resume. */
+/** Address for a journey. A stop in the query opens that stop; no query resumes. */
 export function traceJourneyHref(journeyId: string, stop?: number): string {
+  const path = `/trace/${encodeURIComponent(journeyId)}`;
+  if (stop === undefined || !Number.isInteger(stop) || stop < 0) return path;
   const params = new URLSearchParams();
-  params.set(TRACE_PLAY, '1');
-  if (stop !== undefined && Number.isInteger(stop) && stop >= 0) {
-    params.set(TRACE_STOP, String(stop));
-  }
-  return `/trace/${encodeURIComponent(journeyId)}?${params}`;
+  params.set(TRACE_STOP, String(stop));
+  return `${path}?${params}`;
 }
 
-export function parseTracePlay(search: string): { play: boolean; stop?: number } {
+/** Stop named in a trace address. A leftover `play` flag is ignored. */
+export function parseTraceOpen(search: string): { stop?: number } {
   const q = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
-  const play = q.get(TRACE_PLAY) === '1';
-  if (!play) return { play: false };
   const raw = q.get(TRACE_STOP);
-  if (raw == null || raw === '') return { play: true };
+  if (raw == null || raw === '') return {};
   const n = Number(raw);
-  if (!Number.isInteger(n) || n < 0) return { play: true };
-  return { play: true, stop: n };
+  if (!Number.isInteger(n) || n < 0) return {};
+  return { stop: n };
 }
 
 /**
  * Stop to open when arriving at a trace URL.
- * A play request ignores any saved resume for that journey.
+ * A named stop wins. No stop resumes the saved place, or the first stop.
  */
 export function placeForTraceOpen(
-  play: boolean,
   requestedStop: number | undefined,
   saved: number | undefined,
   stopCount: number,
   fractions: readonly number[],
 ): { stop: number; progress: number } {
-  if (play) {
-    const stop = clampIndex(requestedStop ?? 0, stopCount) ?? 0;
+  if (requestedStop !== undefined) {
+    const stop = clampIndex(requestedStop, stopCount) ?? 0;
     return { stop, progress: fractions[stop] ?? 0 };
   }
   return openRoutePlace(saved, stopCount, fractions);

@@ -9,7 +9,7 @@ import { MapLayerControl } from '../../map/MapLayerControl';
 import { useJourneyStore } from '../../state/useJourneyStore';
 import { placeToForget, usePlaceHydrated, usePlaceStore } from '../../state/usePlaceStore';
 import { stopToPersist } from './routeResume';
-import { parseTracePlay, placeForTraceOpen } from './traceHref';
+import { parseTraceOpen, placeForTraceOpen } from './traceHref';
 import { useMapLayersStore } from '../../state/useMapLayersStore';
 import { useSheetStore } from '../../state/useSheetStore';
 import { useRouteAnimation } from '../../map/useRouteAnimation';
@@ -96,7 +96,7 @@ function siteName(stop: TStop | undefined, bundle: BundleIndex): string {
 function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: string }) {
   const journey = bundle.journey(journeyId);
   const [params] = useSearchParams();
-  const playReq = parseTracePlay(params.toString());
+  const requested = parseTraceOpen(params.toString());
   const openAtStop = useJourneyStore((s) => s.openAtStop);
   const hydrated = usePlaceHydrated();
   const forgetJourney = usePlaceStore((s) => s.forgetJourney);
@@ -139,10 +139,10 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   useEffect(() => {
     if (!hydrated || !journey || stops.length === 0) return;
     const saved = usePlaceStore.getState().routes[journey.id];
-    const place = placeForTraceOpen(playReq.play, playReq.stop, saved, stops.length, fractions);
+    const place = placeForTraceOpen(requested.stop, saved, stops.length, fractions);
     openAtStop(journey.id, place.stop, place.progress);
     setRouteReady(true);
-  }, [hydrated, journey, stops.length, fractions, openAtStop, playReq.play, playReq.stop]);
+  }, [hydrated, journey, stops.length, fractions, openAtStop, requested.stop]);
 
   useEffect(() => {
     if (!hydrated || !journey || stops.length === 0) return;
