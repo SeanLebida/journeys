@@ -43,3 +43,8 @@ content/bible-src/raw/
 .env*
 android/release-notes/
 
+
+# Cloudflare Worker local artifacts
+cloudflare/**/node_modules/
+cloudflare/**/.wrangler/
+cloudflare/**/.dev.vars

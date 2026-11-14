@@ -161,3 +161,35 @@ describe('links', () => {
     expect(verseLabel(11, 18, 21)).toBe('1 Kings 18:21');
   });
 });
+
+describe('buildScriptureIndex journey existence', () => {
+  it('omits journeyId on a stop whose journey is not in the bundle', () => {
+    const index = buildScriptureIndex(
+      fakeBundle({ stops: [stop('orphan', ['1 Kings 18:21'])] } as unknown as Partial<BundleIndex>),
+    );
+    const refs = index.byChapter.get(chapterKey(11, 18));
+    expect(refs).toHaveLength(1);
+    expect(refs![0].journeyId).toBeUndefined();
+  });
+
+  it('does not attach a person journey that the bundle does not have', () => {
+    const index = buildScriptureIndex(
+      fakeBundle({
+        persons: [
+          {
+            id: 'person-isaac',
+            name: { en: 'Isaac' },
+            role: { en: 'Patriarch' },
+            scriptureRefs: ['Genesis 22:1'],
+            journeyIds: ['journey-gone'],
+            citations: [],
+          },
+        ],
+      } as unknown as Partial<BundleIndex>),
+    );
+    const all = [...index.byChapter.values()].flat();
+    expect(all).toHaveLength(1);
+    expect(all[0].label).toBe('Isaac');
+    expect(all[0].journeyId).toBeUndefined();
+  });
+});

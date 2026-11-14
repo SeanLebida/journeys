@@ -5,6 +5,7 @@ import { bibleHref } from './scriptureIndex';
 import type { BundleIndex } from './useBundle';
 import { useScripture } from './useBible';
 import { useUiStore } from '../state/useUiStore';
+import { useTranslationMeta } from './translationMeta';
 import type { TCitation, TCitationKind, TConfidence, TGeometryGrade, TReviewStatus } from './schema';
 
 export function ConfidenceBadge({ confidence }: { confidence: TConfidence }) {
@@ -176,6 +177,7 @@ export function Citations({ ids, bundle }: { ids: string[]; bundle: BundleIndex 
 /** Render the verse text for a scripture reference in the current translation. */
 export function ScripturePassage({ raw }: { raw: string }) {
   const translation = useUiStore((s) => s.translation);
+  const { label, notice } = useTranslationMeta();
   const { rows, loading, error } = useScripture(raw, translation);
   if (loading) return <span className="scripture scripture--loading">{raw}…</span>;
   if (error || rows.length === 0) return <span className="scripture scripture--missing">{raw}</span>;
@@ -190,7 +192,7 @@ export function ScripturePassage({ raw }: { raw: string }) {
       </p>
       <cite className="scripture__ref">
         <span>
-          {raw} ({translation})
+          {raw} ({label})
         </span>
         {/* The way out of a quoted fragment and into the chapter around it —
             the reader opens on this passage with the verse scrolled to. */}
@@ -198,6 +200,7 @@ export function ScripturePassage({ raw }: { raw: string }) {
           open in the reader →
         </Link>
       </cite>
+      {notice && <p className="scripture__notice">{notice}</p>}
     </blockquote>
   );
 }

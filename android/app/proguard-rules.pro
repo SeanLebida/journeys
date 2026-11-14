@@ -34,3 +34,6 @@
 # Keep Cordova plugins
 -keep public class * extends org.apache.cordova.CordovaPlugin
 
+
+# Manifest-registered download foreground service (kept even if R8 misses the manifest entry).
+-keep class how.authentic.journeys.DownloadKeepAliveService { *; }
