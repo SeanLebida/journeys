@@ -52,11 +52,17 @@ export async function closeDownloadedDb(id: TranslationId): Promise<void> {
 }
 
 /** Resolve a parsed ref to its verse rows in a translation. */
-export async function lookupRef(ref: ScriptureRef, translation: TranslationId): Promise<VerseRow[]> {
+export async function lookupRef(
+  ref: ScriptureRef,
+  translation: TranslationId,
+  signal?: AbortSignal,
+): Promise<VerseRow[]> {
   const end = ref.verseEnd ?? ref.verseStart;
   const yv = streamedYvId(translation);
   if (yv !== null) {
-    const rows = await streamChapter(yv, ref.book, ref.chapter);
+    const rows = signal
+      ? await streamChapter(yv, ref.book, ref.chapter, { signal })
+      : await streamChapter(yv, ref.book, ref.chapter);
     return rows.filter((r) => r.verse >= ref.verseStart && r.verse <= end);
   }
   const db = await openDb(translation);
@@ -75,9 +81,12 @@ export async function lookupChapter(
   book: number,
   chapter: number,
   translation: TranslationId,
+  signal?: AbortSignal,
 ): Promise<VerseRow[]> {
   const yv = streamedYvId(translation);
-  if (yv !== null) return streamChapter(yv, book, chapter);
+  if (yv !== null) {
+    return signal ? streamChapter(yv, book, chapter, { signal }) : streamChapter(yv, book, chapter);
+  }
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, chapter, verse, text FROM verses WHERE translation=? AND book=? AND chapter=? ORDER BY verse',
@@ -94,9 +103,12 @@ export async function lookupChapter(
  * hardcoded table — the DB is the authority on what was actually shipped, so a
  * book that ever arrives short cannot produce chapter buttons that go nowhere.
  */
-export async function chapterCounts(translation: TranslationId): Promise<Map<number, number>> {
+export async function chapterCounts(
+  translation: TranslationId,
+  signal?: AbortSignal,
+): Promise<Map<number, number>> {
   const yv = streamedYvId(translation);
-  if (yv !== null) return streamChapterCounts(yv);
+  if (yv !== null) return signal ? streamChapterCounts(yv, { signal }) : streamChapterCounts(yv);
   const db = await openDb(translation);
   const stmt = db.prepare(
     'SELECT book, MAX(chapter) AS chapters FROM verses WHERE translation=? GROUP BY book ORDER BY book',
@@ -145,13 +157,15 @@ type ChapterState = { rows: VerseRow[]; loading: boolean; error: Error | null };
 export function useChapter(book: number, chapter: number, translation: TranslationId): ChapterState {
   const [state, setState] = useState<ChapterState>({ rows: [], loading: true, error: null });
   useEffect(() => {
+    const ac = new AbortController();
     let active = true;
     setState({ rows: [], loading: true, error: null });
-    lookupChapter(book, chapter, translation)
+    lookupChapter(book, chapter, translation, ac.signal)
       .then((rows) => active && setState({ rows, loading: false, error: null }))
       .catch((e: Error) => active && setState({ rows: [], loading: false, error: e }));
     return () => {
       active = false;
+      ac.abort();
     };
   }, [book, chapter, translation]);
   return state;
@@ -161,12 +175,14 @@ export function useChapter(book: number, chapter: number, translation: Translati
 export function useChapterCounts(translation: TranslationId): Map<number, number> {
   const [counts, setCounts] = useState<Map<number, number>>(new Map());
   useEffect(() => {
+    const ac = new AbortController();
     let active = true;
-    chapterCounts(translation)
+    chapterCounts(translation, ac.signal)
       .then((c) => active && setCounts(c))
       .catch(() => active && setCounts(new Map()));
     return () => {
       active = false;
+      ac.abort();
     };
   }, [translation]);
   return counts;
@@ -178,18 +194,23 @@ type RefState = { rows: VerseRow[]; loading: boolean; error: Error | null };
 export function useScripture(raw: string, translation: TranslationId): RefState {
   const [state, setState] = useState<RefState>({ rows: [], loading: true, error: null });
   useEffect(() => {
+    const ac = new AbortController();
     let active = true;
     const ref = parseScriptureRef(raw);
     if (!ref) {
       setState({ rows: [], loading: false, error: new Error(`Unparseable reference: ${raw}`) });
-      return;
+      return () => {
+        active = false;
+        ac.abort();
+      };
     }
     setState({ rows: [], loading: true, error: null });
-    lookupRef(ref, translation)
+    lookupRef(ref, translation, ac.signal)
       .then((rows) => active && setState({ rows, loading: false, error: null }))
       .catch((e: Error) => active && setState({ rows: [], loading: false, error: e }));
     return () => {
       active = false;
+      ac.abort();
     };
   }, [raw, translation]);
   return state;
