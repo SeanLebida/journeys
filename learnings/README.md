@@ -67,3 +67,7 @@ Copy this skeleton to start a new entry:
 ## Verification
 -
 ```
+
+## Index
+
+- [2026-11-13 YouVersion cache](2026-11-13-youversion-cache.md)

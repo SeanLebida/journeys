@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModePanel } from '../ModePanel';
@@ -34,6 +34,8 @@ import { useTranslationMeta } from '../../content/translationMeta';
 import { TranslationLibrary } from './TranslationLibrary';
 import { DownloadStatus } from './DownloadStatus';
 import { VersionPicker } from './VersionPicker';
+import { chapterIsWaiting, subscribeChapterWait } from '../../content/youversionStream';
+import { readerStatusText } from './readerStatus';
 
 /**
  * The Bible reader.
@@ -133,8 +135,10 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   }, [book, chapter, setLastRead]);
 
   const { rows, loading, error } = useChapter(book, chapter, translation);
+  const waiting = useSyncExternalStore(subscribeChapterWait, chapterIsWaiting, () => false);
   const bookName = bookNameFromNumber(book) ?? `Book ${book}`;
   const chapterLabel = `${bookName} ${chapter}`;
+  const statusText = readerStatusText({ loading, waiting, error, chapterLabel });
   const chapterCount = counts.get(book) ?? 0;
 
   const crossRefs = useMemo(() => refsForChapter(index, book, chapter), [index, book, chapter]);
@@ -297,8 +301,8 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
               )}
             </div>
 
-            {loading && <p className="mode-panel--loading">{t('common.loading')}</p>}
-            {error && isDownloadedId(translation) && /not downloaded on this device/.test(error.message) ? (
+            {loading && statusText && <p className="mode-panel--loading">{statusText}</p>}
+            {!loading && error && isDownloadedId(translation) && /not downloaded on this device/.test(error.message) ? (
               <p className="bible__error" role="alert">
                 {meta.name} can&apos;t be opened on this device anymore.{' '}
                 <button type="button" className="bible__library-btn" onClick={() => void redownload()}>
@@ -306,7 +310,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
                 </button>
               </p>
             ) : (
-              error && <p className="bible__error">Could not load {chapterLabel}: {error.message}</p>
+              !loading && statusText && <p className="bible__error">{statusText}</p>
             )}
             {!loading && !error && rows.length === 0 && (
               <p className="bible__error">{chapterLabel} isn&apos;t in this translation.</p>
