@@ -1,0 +1,41 @@
+name: Web Cloudflare
+
+# Static /app build. Vite base stays `/` for Capacitor; this job passes --base /app/.
+# Requires CLOUDFLARE_API_TOKEN (Workers Scripts and Workers Routes edit).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [production]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: build /app and deploy
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Require Cloudflare token
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Add repo secret CLOUDFLARE_API_TOKEN (Workers Scripts edit and Workers Routes edit)."
+            exit 1
+          fi
+      - run: npm ci
+      - run: npm run build:content
+      - run: npx tsc --noEmit
+      - run: npx vite build --base /app/
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 1a27e1439dde2fa5249a1fe07b43b3f4
+          command: deploy -c cloudflare/journeys-web/wrangler.jsonc
+          wranglerVersion: 4.156.0
