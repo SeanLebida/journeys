@@ -255,6 +255,17 @@ const CROSSREF_LABEL: Record<CrossRef['kind'], string> = {
 };
 
 /**
+ * Scroll to a verse in the open chapter without touching the URL hash. Native
+ * builds use a hash router, so letting `#v12` through would navigate to a route
+ * named `v12` and show the router's 404.
+ */
+function jumpToVerse(e: React.MouseEvent<HTMLAnchorElement>, verse: number) {
+  e.preventDefault();
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  document.getElementById(`v${verse}`)?.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+}
+
+/**
  * What the atlas has for the open chapter — the bridge between reading and the
  * map. Every row links somewhere: a stop into the animated trace, a site onto
  * the atlas, a lesson into the guided walk-through.
@@ -279,7 +290,7 @@ export function CrossRefPanel({ refs, chapterLabel }: { refs: CrossRef[]; chapte
           <li key={`${r.kind}:${r.id}:${r.raw}`} className={`bible-xrefs__item bible-xrefs__item--${r.kind}`}>
             <p className="bible-xrefs__head">
               <span className="bible-xrefs__kind">{CROSSREF_LABEL[r.kind]}</span>
-              <a className="bible-xrefs__verses" href={`#v${r.verseStart}`}>
+              <a className="bible-xrefs__verses" href={`#v${r.verseStart}`} onClick={(e) => jumpToVerse(e, r.verseStart)}>
                 {r.raw}
               </a>
             </p>

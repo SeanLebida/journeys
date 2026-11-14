@@ -128,7 +128,10 @@ describe("GET /v1/bibles", () => {
       assert.equal(url.searchParams.get("page_token"), "tok");
       assert.equal(url.searchParams.get("all_available"), null, "never asks for unlicensed Bibles");
       assert.equal(headerOf(request, "X-YVP-App-Key"), TEST_APP_KEY);
-      return Response.json({ data: [upstreamBible(128, "NVI", "es")], next_page_token: "n2", total_size: 51 });
+      return Response.json(
+        { data: [upstreamBible(128, "NVI", "es")], next_page_token: "n2", total_size: 51 },
+        { headers: { "Cache-Control": "public, max-age=86400" } },
+      );
     });
     const ctx = testCtx();
     const res = await handleRequest(
@@ -139,7 +142,7 @@ describe("GET /v1/bibles", () => {
       ctx,
     );
     assert.equal(res.status, 200);
-    assert.equal(res.headers.get("Cache-Control"), "public, max-age=86400");
+    assert.equal(res.headers.get("Cache-Control"), "no-store");
     assert.equal(res.headers.get("Access-Control-Allow-Origin"), "https://localhost");
     const body = await res.json();
     assert.equal(body.data[0].abbreviation, "NVI");

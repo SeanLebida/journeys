@@ -18,11 +18,20 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
+    version: '0.3.30',
+    steps: [
+      {
+        title: 'A chapter opens on its own',
+        body: "While you're online, a chapter that isn't on this device waits and opens on its own instead of showing an error.",
+      },
+    ],
+  },
+  {
     version: '0.3.29',
     steps: [
       {
         title: 'Trace this journey',
-        body: '"Trace this journey" now opens the journey you tapped, from the start.',
+        body: '"Trace this journey" now opens the journey you tapped.',
       },
       {
         title: 'Easier journey links',

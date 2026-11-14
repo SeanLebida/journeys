@@ -25,6 +25,7 @@ vi.mock('../../src/content/downloads', () => ({
 }));
 
 import { parseChapterHtml } from '../../src/content/youversionHtml';
+import { DOWNLOAD_FAILED, DOWNLOAD_PAUSED } from '../../src/content/bibleCopy';
 import { chapterPassages, clearLicensedPartialMemoryForTests, downloadLicensed, LICENSED_TRANSLATIONS } from '../../src/content/youversion';
 
 // Synthetic passages in YouVersion's markup (no licensed text in the repo).
@@ -133,7 +134,7 @@ describe('downloadLicensed', () => {
 
   it('saves and reports nothing when a chapter fails', async () => {
     const calls = proxy({ failChapter: 'GEN.2' });
-    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow(DOWNLOAD_FAILED);
     expect(saved).toEqual([]);
     expect(calls.filter((c) => c.method === 'POST')).toEqual([]);
   });
@@ -161,9 +162,14 @@ describe('downloadLicensed', () => {
     expect(waits.length).toBeGreaterThanOrEqual(15);
   });
 
+  it('gives up after 144 busy answers and says the download paused', async () => {
+    proxy({ busyOnce: 'GEN.2', busyTimes: 145 });
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow(DOWNLOAD_PAUSED);
+  });
+
   it('a retry after a failure fetches only the chapters still missing', async () => {
     proxy({ failChapter: 'GEN.2' });
-    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow(DOWNLOAD_FAILED);
     const calls = proxy();
     const seen: number[] = [];
     await downloadLicensed(nasb, (p) => void (p.phase === 'chapters' && seen.push(p.done)), undefined, { ...noSleep, sleep: async () => undefined });
@@ -174,7 +180,7 @@ describe('downloadLicensed', () => {
 
   it('a cancel throws away chapters fetched so far', async () => {
     proxy({ failChapter: 'GEN.2' });
-    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow(DOWNLOAD_FAILED);
     const ctrl = new AbortController();
     proxy({ busyOnce: 'GEN.2', busyTimes: 99 });
     const p = downloadLicensed(nasb, undefined, ctrl.signal, { ...noSleep, sleep: async () => void ctrl.abort(new Error('cancelled')) });
@@ -204,7 +210,7 @@ describe('downloadLicensed', () => {
 
   it('a retry after a simulated restart resumes from the stored partial, not from memory', async () => {
     proxy({ failChapter: 'GEN.2' });
-    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow('403');
+    await expect(downloadLicensed(nasb, undefined, undefined, { ...noSleep, sleep: async () => undefined })).rejects.toThrow(DOWNLOAD_FAILED);
     expect(saved).toEqual([]);
     expect(partials.get('yv:100')?.verses[0]).toBeTruthy();
     expect(partials.get('yv:100')?.verses[1]).toBeFalsy();

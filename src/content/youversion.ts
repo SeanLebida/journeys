@@ -1,3 +1,4 @@
+import { DOWNLOAD_FAILED, DOWNLOAD_PAUSED, ReaderNotice } from './bibleCopy';
 import { buildBibleDb, type DownloadProgress, type DownloadedTranslation } from './downloads';
 import { NetworkError } from './net';
 import type { PlainVerse } from './helloao';
@@ -29,12 +30,12 @@ export const LICENSED_TRANSLATIONS: readonly LicensedTranslation[] = [
   { id: 'yv:2692', yvId: 2692, name: 'New American Standard Bible (2020)', shortName: 'NASB2020', publisher: 'The Lockman Foundation', publisherUrl: 'https://www.lockman.org' },
 ];
 
-/** YouVersion limits this app key to 200 requests an hour (a full NASB is 1,189 chapters, about six hours). 200/hour is one request every 18s; stay on that pace and honour Retry-After if we still get a 429. */
-const MIN_INTERVAL_MS = 18_000;
+/** A live YouVersion app key gets 10,000 requests an hour, shared by every user. One request every 2s (1,800/hour) finishes a full NASB (1,189 chapters) in about 40 minutes and leaves room for several downloads at once. If we still get a 429, Retry-After is honoured and the download waits it out. */
+const MIN_INTERVAL_MS = 2_000;
 const CONCURRENCY = 3;
 const MAX_ATTEMPTS = 5;
 /** 429s are waited out, not counted as failures. This cap is only a safety valve for a service that never recovers (12 hours of 5-minute waits on one request). */
-const MAX_BUSY_WAITS = 144;
+export const MAX_BUSY_WAITS = 144;
 const CLIENT_HEADERS = { 'X-Journeys-Client': 'journeys' } as const;
 
 export interface ProxyOptions {
@@ -71,7 +72,7 @@ class Pacer {
   }
 }
 
-function retryAfterMs(res: Response): number {
+export function retryAfterMs(res: Response): number {
   const v = res.headers.get('Retry-After');
   const secs = v == null ? NaN : Number(v);
   return Number.isFinite(secs) && secs >= 0 ? secs * 1000 : 10_000;
@@ -100,18 +101,18 @@ async function getJson(
     }
     if (res.ok) return res.json();
     if (res.status === 429) {
-      lastError = new Error('The Bible service is busy right now. Chapters already downloaded are saved. Tap Download to pick up where it stopped.');
+      lastError = new ReaderNotice(DOWNLOAD_PAUSED);
       if (++busy > MAX_BUSY_WAITS) break;
       onBusy?.(pacer.pause(retryAfterMs(res)));
       attempt--;
       continue;
     }
     if (res.status >= 500) {
-      lastError = new Error(`The Bible service had a problem (${res.status}).`);
+      lastError = new ReaderNotice(DOWNLOAD_FAILED);
       await sleep(1000 * 2 ** attempt, signal);
       continue;
     }
-    throw new Error(`Download failed (${res.status}).`);
+    throw new ReaderNotice(DOWNLOAD_FAILED);
   }
   throw lastError instanceof Error ? lastError : new Error('Download failed.');
 }

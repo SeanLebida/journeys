@@ -2,6 +2,10 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.30] - 2026-11-13
+
+The proxy keeps a YouVersion response for the lifetime its Cache-Control allows, and a chapter that is not on the device waits instead of showing a status code.
+
 ## [0.3.29] - 2026-11-13
 
 Trace this journey now opens the journey you tapped. Journey links are easier to tap, and the Bible version picker fits every language and smaller screens.

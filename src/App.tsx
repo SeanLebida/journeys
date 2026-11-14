@@ -25,7 +25,15 @@ export default function App() {
   const travelling = useJourneyStore((s) => s.targetStopIdx !== null);
   return (
     <div className="app-shell" data-dock={travelling ? 'stowed' : 'docked'}>
-      <a className="skip-link" href="#main">
+      <a
+        className="skip-link"
+        href="#main"
+        onClick={(e) => {
+          // Native builds use a hash router: `#main` would be read as a route.
+          e.preventDefault();
+          document.getElementById('main')?.focus();
+        }}
+      >
         {t('common.skipToContent')}
       </a>
       <MapProvider>

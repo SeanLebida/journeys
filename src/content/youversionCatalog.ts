@@ -1,3 +1,4 @@
+import { LANGUAGE_LIST_FAILED, ReaderNotice, VERSION_LIST_FAILED } from './bibleCopy';
 import { BIBLE_PROXY_URL, LICENSED_TRANSLATIONS, type LicensedTranslation } from './youversion';
 
 /**
@@ -295,7 +296,7 @@ async function writeCache(storage: CatalogStorage | undefined, key: string, valu
 
 async function getJson(url: string, fetchImpl: typeof fetch, signal?: AbortSignal): Promise<unknown> {
   const res = await fetchImpl(url, { headers: CLIENT_HEADERS, signal });
-  if (!res.ok) throw new Error(res.status === 429 ? 'The Bible service is busy. Try again in a minute.' : `Bible list failed (${res.status}).`);
+  if (!res.ok) throw new ReaderNotice(VERSION_LIST_FAILED);
   return res.json();
 }
 
@@ -343,7 +344,7 @@ export async function loadCatalog(language: string, opts: CatalogOptions = {}): 
     return { versions: withFallbackNasb(versions, language), source: 'network', fetchedAt: now, stale: false, error: null };
   } catch (e) {
     if (opts.signal?.aborted) throw e;
-    const error = (e as Error).message || 'Bible list failed.';
+    const error = (e as Error).message || VERSION_LIST_FAILED;
     if (cached) return { versions: cached.versions, source: 'cache', fetchedAt: cached.fetchedAt, stale: true, error };
     return { versions: fallbackFor(language), source: 'fallback', fetchedAt: null, stale: true, error };
   }
@@ -384,7 +385,7 @@ export async function loadLanguages(displayLocale = 'en', opts: CatalogOptions =
         headers: { ...CLIENT_HEADERS, 'Accept-Language': displayLocale },
         signal: opts.signal,
       });
-      if (!res.ok) throw new Error(`Language list failed (${res.status}).`);
+      if (!res.ok) throw new ReaderNotice(LANGUAGE_LIST_FAILED);
       const parsed = parseLanguagesPage(await res.json(), displayLocale);
       out.push(...parsed.languages);
       token = parsed.nextPageToken;
