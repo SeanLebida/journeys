@@ -1,0 +1,19 @@
+{
+  // Path route only. The rest of journeys.authentic.how stays on the origin.
+  "name": "journeys-web",
+  "compatibility_date": "2026-11-14",
+  "account_id": "1a27e1439dde2fa5249a1fe07b43b3f4",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../../dist",
+    "base_path": "/app",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    {
+      "pattern": "journeys.authentic.how/app*",
+      "zone_name": "authentic.how"
+    }
+  ]
+}
