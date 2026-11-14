@@ -155,6 +155,107 @@ describe('streamChapter', () => {
     expect(rows).toHaveLength(2);
     expect(fetches).toBe(1);
   });
+
+  it('aborting one of two callers leaves the shared chapter waiting', async () => {
+    const ac1 = new AbortController();
+    const ac2 = new AbortController();
+    const reason2 = new Error('second left');
+    let fetches = 0;
+    let markReady!: () => void;
+    const ready = new Promise<void>((resolve) => { markReady = resolve; });
+    const fetchImpl = (async () => {
+      fetches += 1;
+      return new Response('{}', { status: 429, headers: { 'Retry-After': '7' } });
+    }) as unknown as typeof fetch;
+    const sleep = (_ms: number, signal?: AbortSignal) => new Promise<void>((_resolve, reject) => {
+      markReady();
+      if (signal?.aborted) reject(signal.reason);
+      else signal?.addEventListener('abort', () => reject(signal.reason), { once: true });
+    });
+    let firstState = 'pending';
+    let secondState = 'pending';
+    const first = streamChapter(1, 1, 1, { fetchImpl, sleep, signal: ac1.signal }).then(
+      () => { firstState = 'resolved'; },
+      () => { firstState = 'rejected'; },
+    );
+    const second = streamChapter(1, 1, 1, { fetchImpl, sleep, signal: ac2.signal });
+    second.then(
+      () => { secondState = 'resolved'; },
+      () => { secondState = 'rejected'; },
+    );
+    await ready;
+    ac1.abort(new Error('first left'));
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(firstState).toBe('pending');
+    expect(secondState).toBe('pending');
+    expect(chapterIsWaiting()).toBe(true);
+    ac2.abort(reason2);
+    await expect(second).rejects.toBe(reason2);
+    await first;
+    expect(firstState).toBe('rejected');
+    expect(chapterIsWaiting()).toBe(false);
+    const rows = await streamChapter(1, 1, 1, { fetchImpl: fetchOk({ content: CHAPTER }) });
+    expect(rows).toHaveLength(2);
+    expect(fetches).toBe(1);
+  });
+
+  it('a caller with no signal is not cancelled when another caller aborts', async () => {
+    const ac = new AbortController();
+    let fetches = 0;
+    let markReady!: () => void;
+    let release!: () => void;
+    const ready = new Promise<void>((resolve) => { markReady = resolve; });
+    const fetchImpl = (async () => {
+      fetches += 1;
+      if (fetches === 1) return new Response('{}', { status: 429, headers: { 'Retry-After': '5' } });
+      return Response.json({ content: CHAPTER });
+    }) as unknown as typeof fetch;
+    const sleep = (_ms: number, signal?: AbortSignal) => new Promise<void>((resolve, reject) => {
+      markReady();
+      release = resolve;
+      if (signal?.aborted) reject(signal.reason);
+      else signal?.addEventListener('abort', () => reject(signal.reason), { once: true });
+    });
+    const signaled = streamChapter(1, 1, 1, { fetchImpl, sleep, signal: ac.signal });
+    const plain = streamChapter(1, 1, 1, { fetchImpl, sleep });
+    await ready;
+    ac.abort(new Error('left'));
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(chapterIsWaiting()).toBe(true);
+    release();
+    await expect(plain).resolves.toHaveLength(2);
+    await expect(signaled).resolves.toHaveLength(2);
+    expect(fetches).toBe(2);
+    expect(chapterIsWaiting()).toBe(false);
+  });
+
+  it('going offline during a 429 wait rejects without another fetch', async () => {
+    vi.useFakeTimers();
+    try {
+      let fetches = 0;
+      const fetchImpl = (async () => {
+        fetches += 1;
+        return new Response('{}', { status: 429, headers: { 'Retry-After': '30' } });
+      }) as unknown as typeof fetch;
+      const pending = streamChapter(1, 1, 1, { fetchImpl });
+      const caught = pending.then((rows) => rows, (e: unknown) => e);
+      for (let i = 0; i < 20 && !chapterIsWaiting(); i += 1) await vi.advanceTimersByTimeAsync(0);
+      expect(chapterIsWaiting()).toBe(true);
+      Object.defineProperty(navigator, 'onLine', { value: false, configurable: true });
+      window.dispatchEvent(new Event('offline'));
+      await vi.advanceTimersByTimeAsync(0);
+      const err = await caught;
+      expect(err).toBeInstanceOf(ReaderNotice);
+      expect((err as Error).message).toBe(CHAPTER_OFFLINE);
+      expect(fetches).toBe(1);
+      expect(chapterIsWaiting()).toBe(false);
+    } finally {
+      vi.useRealTimers();
+      Object.defineProperty(navigator, 'onLine', { value: true, configurable: true });
+    }
+  });
 });
 
 describe('streamChapterCounts', () => {

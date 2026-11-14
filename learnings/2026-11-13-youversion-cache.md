@@ -14,6 +14,7 @@
 - `waiting` is only meaningful while `loading` is true. Once the load finishes, an error (including a `ReaderNotice`) owns the line. Showing both would stack the waiting sentence on the failure.
 - The "not downloaded on this device" redownload paragraph stays its own branch and still hides while a load is in progress.
 - Do not set `waiting` from the reader for a bundled or downloaded id. The gate is `streamedYvId` inside `lookupChapter`.
+- Leaving the chapter aborts the wait, and a shared in-flight chapter is aborted only when every caller that passed a signal has left and no caller without a signal is still attached.
 
 ## Verification
 - `npm test -- tests/unit/reader-status.test.ts` failed first because `src/modes/bible/readerStatus.ts` did not exist.

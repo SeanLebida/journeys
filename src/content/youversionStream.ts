@@ -21,20 +21,68 @@ export interface StreamOptions {
   sleep?: (ms: number, signal?: AbortSignal) => Promise<void>;
 }
 
-const chapters = new Map<string, Promise<PlainVerse[]>>();
-const counts = new Map<number, Promise<Map<number, number>>>();
+type Flight<T> = {
+  promise: Promise<T>;
+  controller: AbortController;
+  subscribers: number;
+  unsignaled: number;
+  cleanups: Array<() => void>;
+  settled: boolean;
+};
+
+const chapters = new Map<string, Flight<PlainVerse[]>>();
+const counts = new Map<number, Flight<Map<number, number>>>();
 let busySleeps = 0;
 const chapterWaiters = new Set<() => void>();
 
 function realSleep(ms: number, signal?: AbortSignal): Promise<void> {
   return new Promise((resolve, reject) => {
-    if (signal?.aborted) return reject(signal.reason);
-    const t = setTimeout(resolve, ms);
-    signal?.addEventListener('abort', () => {
-      clearTimeout(t);
+    if (signal?.aborted) {
       reject(signal.reason);
-    }, { once: true });
+      return;
+    }
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      resolve();
+      return;
+    }
+    let settled = false;
+    const finish = (fn: () => void) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (typeof window !== 'undefined') window.removeEventListener('offline', onOffline);
+      signal?.removeEventListener('abort', onAbort);
+      fn();
+    };
+    const onAbort = () => finish(() => reject(signal?.reason));
+    const onOffline = () => finish(resolve);
+    const timer = setTimeout(() => finish(resolve), ms);
+    signal?.addEventListener('abort', onAbort);
+    if (typeof window !== 'undefined') window.addEventListener('offline', onOffline);
   });
+}
+
+/** A caller with no signal keeps the shared fetch alive. Abort only when every signaled caller has left. */
+function track(flight: Flight<unknown>, signal?: AbortSignal): void {
+  if (!signal) {
+    flight.unsignaled += 1;
+    return;
+  }
+  const onAbort = () => {
+    signal.removeEventListener('abort', onAbort);
+    if (flight.settled) return;
+    flight.subscribers -= 1;
+    if (flight.subscribers === 0 && flight.unsignaled === 0) flight.controller.abort(signal.reason);
+  };
+  flight.subscribers += 1;
+  flight.cleanups.push(() => signal.removeEventListener('abort', onAbort));
+  if (signal.aborted) onAbort();
+  else signal.addEventListener('abort', onAbort);
+}
+
+function finishFlight(flight: Flight<unknown>): void {
+  flight.settled = true;
+  for (const undo of flight.cleanups.splice(0)) undo();
 }
 
 function noteBusySleep(delta: 1 | -1): void {
@@ -62,6 +110,21 @@ export function streamedChapterCount(): number {
   return chapters.size;
 }
 
+function startFlight<T>(run: (signal: AbortSignal) => Promise<T>, caller?: AbortSignal): Flight<T> {
+  const flight: Flight<T> = {
+    promise: Promise.resolve(undefined as T),
+    controller: new AbortController(),
+    subscribers: 0,
+    unsignaled: 0,
+    cleanups: [],
+    settled: false,
+  };
+  track(flight, caller);
+  const wrapped = run(flight.controller.signal).finally(() => finishFlight(flight));
+  flight.promise = wrapped;
+  return flight;
+}
+
 async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
   const fetchImpl = opts.fetchImpl ?? fetch;
   const sleep = opts.sleep ?? realSleep;
@@ -73,7 +136,10 @@ async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
     try {
       res = await fetchImpl(url, { headers: CLIENT_HEADERS, signal: opts.signal });
     } catch (e) {
-      if (opts.signal?.aborted) throw e;
+      if (opts.signal?.aborted) {
+        if (opts.signal.reason !== undefined) throw opts.signal.reason;
+        throw e;
+      }
       if (navigator.onLine === false) throw new ReaderNotice(CHAPTER_OFFLINE);
       throw new ReaderNotice(CHAPTER_GAVE_UP);
     }
@@ -104,30 +170,40 @@ export function streamChapter(yvId: number, book: number, chapter: number, opts:
   if (!code || !Number.isInteger(chapter) || chapter < 1) return Promise.resolve([]);
   const key = `${yvId}:${book}:${chapter}`;
   const hit = chapters.get(key);
-  if (hit) return remember(chapters, key, hit, MAX_CHAPTERS);
+  if (hit) {
+    if (!hit.settled) track(hit, opts.signal);
+    return remember(chapters, key, hit, MAX_CHAPTERS).promise;
+  }
   const base = opts.base ?? BIBLE_PROXY_URL;
-  const p = getJson(
+  const flight = startFlight((signal) => getJson(
     `${base}/v1/bibles/${yvId}/passages/${code}.${chapter}?format=html&include_headings=false&include_notes=false`,
-    opts,
+    { ...opts, signal },
   ).then((body) => {
     const content = (body as { content?: unknown })?.content;
     return typeof content === 'string' ? parseChapterHtml(content, book, chapter) : [];
+  }), opts.signal);
+  flight.promise.catch(() => {
+    if (chapters.get(key) === flight) chapters.delete(key);
   });
-  p.catch(() => chapters.delete(key));
-  return remember(chapters, key, p, MAX_CHAPTERS);
+  return remember(chapters, key, flight, MAX_CHAPTERS).promise;
 }
 
 /** Chapter count per book (book metadata only, no text). */
 export function streamChapterCounts(yvId: number, opts: StreamOptions = {}): Promise<Map<number, number>> {
   const hit = counts.get(yvId);
-  if (hit) return hit;
+  if (hit) {
+    if (!hit.settled) track(hit, opts.signal);
+    return hit.promise;
+  }
   const base = opts.base ?? BIBLE_PROXY_URL;
-  const p = getJson(`${base}/v1/bibles/${yvId}/books`, opts).then((body) => {
+  const flight = startFlight((signal) => getJson(`${base}/v1/bibles/${yvId}/books`, { ...opts, signal }).then((body) => {
     const out = new Map<number, number>();
     for (const c of chapterPassages(body)) out.set(c.book, Math.max(out.get(c.book) ?? 0, c.chapter));
     return out;
+  }), opts.signal);
+  flight.promise.catch(() => {
+    if (counts.get(yvId) === flight) counts.delete(yvId);
   });
-  p.catch(() => counts.delete(yvId));
-  counts.set(yvId, p);
-  return p;
+  counts.set(yvId, flight);
+  return flight.promise;
 }

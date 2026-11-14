@@ -22,7 +22,7 @@ export const RELEASES: WhatsNewRelease[] = [
     steps: [
       {
         title: 'A chapter opens on its own',
-        body: "If a chapter isn't on this device, it waits and opens on its own instead of showing an error.",
+        body: "While you're online, a chapter that isn't on this device waits and opens on its own instead of showing an error.",
       },
     ],
   },
