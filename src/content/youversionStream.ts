@@ -1,7 +1,7 @@
+import { CHAPTER_GAVE_UP, CHAPTER_OFFLINE, CHAPTER_UNAVAILABLE, ReaderNotice } from './bibleCopy';
 import type { PlainVerse } from './helloao';
-import { NetworkError } from './net';
 import { USFM_BOOKS } from './usfm';
-import { BIBLE_PROXY_URL, chapterPassages } from './youversion';
+import { BIBLE_PROXY_URL, chapterPassages, MAX_BUSY_WAITS, retryAfterMs } from './youversion';
 import { parseChapterHtml } from './youversionHtml';
 
 /**
@@ -18,10 +18,38 @@ export interface StreamOptions {
   base?: string;
   fetchImpl?: typeof fetch;
   signal?: AbortSignal;
+  sleep?: (ms: number, signal?: AbortSignal) => Promise<void>;
 }
 
 const chapters = new Map<string, Promise<PlainVerse[]>>();
 const counts = new Map<number, Promise<Map<number, number>>>();
+let chapterWaiting = false;
+const chapterWaiters = new Set<() => void>();
+
+function realSleep(ms: number, signal?: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) return reject(signal.reason);
+    const t = setTimeout(resolve, ms);
+    signal?.addEventListener('abort', () => {
+      clearTimeout(t);
+      reject(signal.reason);
+    }, { once: true });
+  });
+}
+
+function setChapterWaiting(on: boolean): void {
+  chapterWaiting = on;
+  for (const cb of chapterWaiters) cb();
+}
+
+export function chapterIsWaiting(): boolean {
+  return chapterWaiting;
+}
+
+export function subscribeChapterWait(cb: () => void): () => void {
+  chapterWaiters.add(cb);
+  return () => { chapterWaiters.delete(cb); };
+}
 
 /** Test hook. */
 export function clearStreamMemory(): void {
@@ -35,16 +63,31 @@ export function streamedChapterCount(): number {
 
 async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
   const fetchImpl = opts.fetchImpl ?? fetch;
-  let res: Response;
-  try {
-    res = await fetchImpl(url, { headers: CLIENT_HEADERS, signal: opts.signal });
-  } catch (e) {
-    throw new NetworkError(url, e);
+  const sleep = opts.sleep ?? realSleep;
+  let busy = 0;
+  for (;;) {
+    if (opts.signal?.aborted) throw opts.signal.reason;
+    if (navigator.onLine === false) throw new ReaderNotice(CHAPTER_OFFLINE);
+    let res: Response;
+    try {
+      res = await fetchImpl(url, { headers: CLIENT_HEADERS, signal: opts.signal });
+    } catch (e) {
+      if (opts.signal?.aborted) throw e;
+      if (navigator.onLine === false) throw new ReaderNotice(CHAPTER_OFFLINE);
+      throw new ReaderNotice(CHAPTER_GAVE_UP);
+    }
+    if (res.ok) return res.json();
+    if (res.status === 403) throw new ReaderNotice(CHAPTER_UNAVAILABLE);
+    if (res.status !== 429) throw new ReaderNotice(CHAPTER_GAVE_UP);
+    if (++busy > MAX_BUSY_WAITS) break;
+    setChapterWaiting(true);
+    try {
+      await sleep(retryAfterMs(res), opts.signal);
+    } finally {
+      setChapterWaiting(false);
+    }
   }
-  if (res.status === 429) throw new Error('The Bible service is busy right now. Try this chapter again in a minute.');
-  if (res.status === 403) throw new Error('This translation is not available to read in Journeys.');
-  if (!res.ok) throw new Error(`Could not load this chapter (${res.status}).`);
-  return res.json();
+  throw new ReaderNotice(CHAPTER_GAVE_UP);
 }
 
 function remember<K, V>(map: Map<K, V>, key: K, value: V, max: number): V {
