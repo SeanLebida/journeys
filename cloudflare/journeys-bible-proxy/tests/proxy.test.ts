@@ -361,7 +361,7 @@ describe("app client gate", () => {
     mock = installMockFetch(() => Response.json(bibleJson(100, "NASB1995")));
     const env = testEnv({ requireClient: true });
     const ctx = testCtx();
-    for (const origin of ["https://localhost", "capacitor://localhost"]) {
+    for (const origin of ["https://localhost", "capacitor://localhost", "https://journeys.authentic.how"]) {
       const response = await handleRequest(
         jsonRequest("/v1/bibles/100", {
           headers: { Origin: origin, "X-Journeys-Client": "journeys" },
@@ -372,7 +372,7 @@ describe("app client gate", () => {
       assert.equal(response.status, 200);
       assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
     }
-    assert.equal(mock.calls.length, 2);
+    assert.equal(mock.calls.length, 3);
   });
 
   test("when the flag is on, POST /downloads also requires the allowed pair", async () => {
