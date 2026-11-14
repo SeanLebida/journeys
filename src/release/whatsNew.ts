@@ -22,7 +22,7 @@ export const RELEASES: WhatsNewRelease[] = [
     steps: [
       {
         title: 'Trace this journey',
-        body: '"Trace this journey" now opens the journey you tapped, from the start.',
+        body: '"Trace this journey" now opens the journey you tapped.',
       },
       {
         title: 'Easier journey links',
