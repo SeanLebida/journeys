@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ModePanel } from '../ModePanel';
 import { useBundle, type BundleIndex } from '../../content/useBundle';
-import { useChapter, useChapterCounts, searchVerses, type VerseRow } from '../../content/useBible';
+import { closeDownloadedDb, useChapter, useChapterCounts, searchVerses, type VerseRow } from '../../content/useBible';
+import { deleteBibleBytes } from '../../platform/bibleStore';
 import { bookNameFromNumber } from '../../content/books';
 import { parseScriptureRef, passageBand } from '../../content/scriptureRef';
 import { focusPassage } from './focusPassage';
@@ -27,7 +28,14 @@ import {
   useNotesStore,
   type HighlightColor,
 } from '../../state/useNotesStore';
-import { useUiStore, type Translation } from '../../state/useUiStore';
+import { isOpenableTranslation, useUiStore } from '../../state/useUiStore';
+import { isDownloadedId, type TranslationId } from '../../content/translations';
+import { useTranslationMeta } from '../../content/translationMeta';
+import { TranslationLibrary } from './TranslationLibrary';
+import { DownloadStatus } from './DownloadStatus';
+import { VersionPicker } from './VersionPicker';
+import { chapterIsWaiting, subscribeChapterWait } from '../../content/youversionStream';
+import { readerStatusText } from './readerStatus';
 
 /**
  * The Bible reader.
@@ -50,13 +58,17 @@ export default function BibleMode() {
   return <Reader bundle={bundle} />;
 }
 
-type Tab = 'read' | 'contents' | 'notes' | 'search';
+type Tab = 'read' | 'contents' | 'notes' | 'search' | 'translations';
 
 function Reader({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
   const [params, setParams] = useSearchParams();
   const translation = useUiStore((s) => s.translation);
   const setTranslation = useUiStore((s) => s.setTranslation);
+  const downloaded = useUiStore((s) => s.downloaded);
+  const streamed = useUiStore((s) => s.streamed);
+  const removeDownloaded = useUiStore((s) => s.removeDownloaded);
+  const meta = useTranslationMeta();
 
   const notes = useNotesStore((s) => s.notes);
   const bookmarks = useNotesStore((s) => s.bookmarks);
@@ -73,10 +85,21 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
   // `?ref=` wins, then wherever the reader left off, then John 1 as a default
   // that is neither arbitrary nor a spoiler.
   const refParam = params.get('ref');
+  const translationParam = params.get('translation');
   const parsed = refParam ? parseScriptureRef(refParam) : null;
   const [book, setBook] = useState(() => parsed?.book ?? lastRead?.book ?? 43);
   const [chapter, setChapter] = useState(() => parsed?.chapter ?? lastRead?.chapter ?? 1);
   const [tab, setTab] = useState<Tab>('read');
+
+  // A downloaded Bible whose file (or, for licensed text, its decryption key)
+  // is gone: forget it and take the reader to the library to fetch it again.
+  async function redownload() {
+    const id = translation;
+    removeDownloaded(id);
+    await closeDownloadedDb(id);
+    await deleteBibleBytes(id).catch(() => undefined);
+    setTab('translations');
+  }
   const [activeVerse, setActiveVerse] = useState<number | null>(null);
 
   // A `?ref=` arriving after mount (an in-app link while the reader is open)
@@ -93,13 +116,29 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
     // keystroke and drag the reader back to the linked verse.
   }, [parsed?.book, parsed?.chapter]);
 
+  // A "ready to read" notification opens /bible?translation=<id> on the Read tab.
+  // Wait until the id is a bundled translation or already downloaded (persist
+  // may still be hydrating on a cold start) before dropping the param.
+  useEffect(() => {
+    if (!translationParam) return;
+    if (!isOpenableTranslation(translationParam, { downloaded, streamed })) return;
+    setTranslation(translationParam);
+    setTab('read');
+    if (params.has('translation')) {
+      params.delete('translation');
+      setParams(params, { replace: true });
+    }
+  }, [translationParam, downloaded, streamed, params, setParams, setTranslation]);
+
   useEffect(() => {
     setLastRead(book, chapter);
   }, [book, chapter, setLastRead]);
 
   const { rows, loading, error } = useChapter(book, chapter, translation);
+  const waiting = useSyncExternalStore(subscribeChapterWait, chapterIsWaiting, () => false);
   const bookName = bookNameFromNumber(book) ?? `Book ${book}`;
   const chapterLabel = `${bookName} ${chapter}`;
+  const statusText = readerStatusText({ loading, waiting, error, chapterLabel });
   const chapterCount = counts.get(book) ?? 0;
 
   const crossRefs = useMemo(() => refsForChapter(index, book, chapter), [index, book, chapter]);
@@ -159,13 +198,15 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
           </h1>
           <p className="home__tagline">{t('modes.bible.tagline')}</p>
         </div>
-        <label className="bible__translation">
-          Translation
-          <select value={translation} onChange={(e) => setTranslation(e.target.value as Translation)}>
-            <option value="ASV">American Standard Version (1901)</option>
-            <option value="KJV">King James Version</option>
-          </select>
-        </label>
+        <VersionPicker
+          current={translation}
+          label={meta.label}
+          name={meta.name}
+          onRead={(id) => {
+            setTranslation(id);
+            setTab('read');
+          }}
+        />
       </header>
 
       <nav className="bible__tabs" aria-label="Reader sections">
@@ -175,6 +216,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
             ['contents', 'Books'],
             ['notes', `My notes (${Object.keys(notes).length})`],
             ['search', 'Search'],
+            ['translations', 'Translations'],
           ] as [Tab, string][]
         ).map(([id, label]) => (
           <button
@@ -188,6 +230,8 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
           </button>
         ))}
       </nav>
+
+      {tab !== 'translations' && <DownloadStatus onOpen={() => setTab('translations')} />}
 
       {tab === 'contents' && (
         <>
@@ -213,7 +257,16 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
         />
       )}
 
-      {tab === 'search' && <SearchSection translation={translation} onOpen={(r) => {
+      {tab === 'translations' && (
+        <TranslationLibrary
+          onRead={(id) => {
+            setTranslation(id);
+            setTab('read');
+          }}
+        />
+      )}
+
+      {tab === 'search' && <SearchSection label={meta.label} translation={translation} onOpen={(r) => {
         go(r.book, r.chapter);
         setActiveVerse(r.verse);
       }} />}
@@ -227,7 +280,7 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
               </button>
               <h2 className="bible__chapter-title">
                 {chapterLabel}{' '}
-                <span className="bible__translation-tag">({translation})</span>
+                <span className="bible__translation-tag">({meta.label})</span>
               </h2>
               <button type="button" className="bible__nav" disabled={!next} onClick={() => next && go(next.book, next.chapter)}>
                 Next →
@@ -248,13 +301,22 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
               )}
             </div>
 
-            {loading && <p className="mode-panel--loading">{t('common.loading')}</p>}
-            {error && <p className="bible__error">Could not load {chapterLabel}: {error.message}</p>}
+            {loading && statusText && <p className="mode-panel--loading">{statusText}</p>}
+            {!loading && error && isDownloadedId(translation) && /not downloaded on this device/.test(error.message) ? (
+              <p className="bible__error" role="alert">
+                {meta.name} can&apos;t be opened on this device anymore.{' '}
+                <button type="button" className="bible__library-btn" onClick={() => void redownload()}>
+                  Download again
+                </button>
+              </p>
+            ) : (
+              !loading && statusText && <p className="bible__error">{statusText}</p>
+            )}
             {!loading && !error && rows.length === 0 && (
-              <p className="bible__error">{chapterLabel} is not in the bundled text.</p>
+              <p className="bible__error">{chapterLabel} isn&apos;t in this translation.</p>
             )}
 
-            <div className="bible__text">
+            <div className="bible__text" dir={meta.rtl ? 'rtl' : undefined}>
               {rows.map((row) => (
                 <VerseRowView
                   key={row.verse}
@@ -287,9 +349,14 @@ function Reader({ bundle }: { bundle: BundleIndex }) {
       )}
 
       <p className="bible__sourcing">
-        Text: {translation === 'KJV' ? 'King James Version' : 'American Standard Version (1901)'} — public domain,
-        bundled for offline reading. Notes and highlights are stored on this device only and are never uploaded.
+        Text: {meta.licenseUrl ? <a href={meta.licenseUrl} target="_blank" rel="noreferrer">{meta.name}</a> : meta.name} —{' '}
+        {meta.sourcing} Notes and highlights are stored on this device only and are never uploaded.
       </p>
+      {meta.notice && (
+        <p className="bible__notice" data-testid="bible-notice">
+          {meta.notice}
+        </p>
+      )}
     </section>
   );
 }
@@ -332,10 +399,12 @@ function NotesSection({
 }
 
 function SearchSection({
+  label,
   translation,
   onOpen,
 }: {
-  translation: Translation;
+  label: string;
+  translation: TranslationId;
   onOpen: (row: VerseRow) => void;
 }) {
   const [query, setQuery] = useState('');
@@ -370,7 +439,7 @@ function SearchSection({
   return (
     <section className="bible__search">
       <label className="bible__search-label" htmlFor="bible-search">
-        Search the {translation} text
+        Search the {label} text
       </label>
       <input
         id="bible-search"

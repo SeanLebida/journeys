@@ -2,6 +2,46 @@
 
 All notable changes to Journeys are documented in this file.
 
+## [0.3.30] - 2026-11-13
+
+The proxy keeps a YouVersion response for the lifetime its Cache-Control allows, and a chapter that is not on the device waits instead of showing a status code.
+
+## [0.3.29] - 2026-11-13
+
+Trace this journey now opens the journey you tapped. Journey links are easier to tap, and the Bible version picker fits every language and smaller screens.
+
+## [0.3.28] - 2026-11-13
+
+Bible picker fixes. Built-in Bibles fold away so more versions fit on screen, searching a language name like Spanish now works, and switching languages clears the old list right away.
+
+## [0.3.27] - 2026-11-13
+
+Choosing a Bible is easier. Search by name or language, see your recent versions first, and tap any version to read or download it. More YouVersion Bibles now appear in the list and will open as they become available.
+
+## [0.3.26] - 2026-11-12
+
+• Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.
+• An interrupted download picks up where it stopped instead of starting over.
+• The What's new screen now shows what changed in each update instead of repeating older notes.
+
+## [0.3.25] - 2026-11-11
+
+• Bible downloads now keep going while you read, and on Android even after you leave the app, with a notification when the translation is ready.
+• An interrupted download picks up where it stopped instead of starting over.
+• When a download can't connect, the message now says so in plain words.
+
+## [0.3.24] - 2026-11-11
+
+• Six complete Bibles now ship in the app: KJV, ASV, Berean Standard, World English, Young's Literal and the 1599 Geneva.
+• Download more translations from the new Translations tab, including NASB 1995 and 2020, and read them offline.
+• Paul's journeys and the apostles' stories are rewritten in plain sentences, and nine stops that were cut off are finished.
+• The About page now opens with why Journeys exists.
+
+## [0.3.23] - 2026-11-07
+
+• Journey progress stays centered in the part of the map you can see, and arrival details no longer cover most of the view.
+• Map zoom buttons sit below the status bar.
+
 ## [0.3.22] - 2026-11-07
 
 • Each of the Twelve has his own journey. Peter keeps his. The shared line is only the places they were together.

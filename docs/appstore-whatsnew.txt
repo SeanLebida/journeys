@@ -1,0 +1,8 @@
+A big update since the last App Store version:
+- "Trace this journey" now opens the journey you tapped, and journey links are easier to tap.
+- New offline map with shaded relief.
+- A journey for each of the Twelve, with rewritten apostle notes.
+- More Bibles. Six are built in, and you can download free translations plus NASB 1995 and 2020.
+- A new Bible picker. Search by name or language, and your recent versions come first.
+- Downloads pick up where they left off if they stop.
+- After each update, What's new shows what changed in that version.

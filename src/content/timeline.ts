@@ -1,5 +1,6 @@
 import { ERAS, formatYearSpan, type Era } from './eras';
 import type { BundleIndex } from './useBundle';
+import { firstExistingJourneyId } from './existingJourney';
 import type { TConfidence, TDateRange } from './schema';
 
 /**
@@ -405,7 +406,7 @@ export function buildTimeline(bundle: BundleIndex): TimelineModel {
       ...r,
       personId: p.id,
       siteId: p.homeSiteId,
-      journeyId: p.journeyIds?.[0],
+      journeyId: firstExistingJourneyId(bundle, p.journeyIds),
       scriptureRef: p.scriptureRefs[0],
       citations: p.citations,
       datingNote: p.datingNote?.en,

@@ -48,8 +48,8 @@ The life of Jesus is listed on that chart, not folded into a single bar:
 • Birth and boyhood — Bethlehem (c. 6–4 BC), the flight to Egypt, the return to Nazareth after Herod's death, and the temple visit at age twelve.
 • The ministry — baptism, the Galilean ministry, the journey to Jerusalem, and Passion week through the resurrection appearances and the Ascension, in the order the Gospels record. Events that share a year window are listed one by one. The crucifixion stays AD 30 or AD 33, and both are shown.
 
-4. EMBEDDED BIBLE READER
-Read Scripture alongside the map. Journeys bundles complete public-domain texts (King James Version and American Standard Version) in a fast, on-device SQLite database. Tap place names in Scripture to jump straight to their location on the map.
+4. BIBLE READER
+Read Scripture alongside the map. Six public-domain Bibles are built in: ASV, KJV, BSB, WEB, Young's Literal, and the 1599 Geneva Bible. Download more free translations, or NASB 1995 and 2020 by permission through YouVersion, and read them offline. When a chapter is mapped, the In the atlas list under the text lets you jump to that place on the map.
 
 5. GUIDED LESSONS
 Take step-by-step historical and geographical deep dives into biblical events, examining cultural context, topography, and archaeological artifacts.
@@ -64,19 +64,18 @@ Test and deepen your knowledge of ancient geography, apostolic travels, and hist
 • Rival Candidates Shown: When scholars disagree on a biblical site's exact location, Journeys displays the rival candidates on the map rather than guessing.
 • Rigorous Sources: Grounded in standard scholarly gazetteers including Pleiades, DARE, and archaeological reports.
 
-◆ 100% OFFLINE BY DESIGN
-
-Journeys works anywhere — in church, in the classroom, on flights, or in the field:
-• Complete 10 MB on-device SQLite Scripture database included.
-• Offline vector map tiles bundled directly inside the app.
-• No internet connection required after install.
-• No account creation, no sign-in, and zero cloud dependencies.
+◆ WORKS OFFLINE
+Journeys works in church, in the classroom, on flights, or in the field:
+• Six complete Bibles and the map are built into the app.
+• Bibles you download read offline too.
+• The internet is used only when you ask, like downloading a Bible, loading satellite maps, or opening a source.
+• No account and no sign-in.
 
 ◆ PRIVACY FIRST
 • No data collected.
 • No data shared.
-• No tracking or third-party ad networks.
-• Completely free of advertisements.
+• No account, no analytics, no ads, no tracking.
+• Your notes, settings, and quiz progress stay on your device.
 
 Discover the ancient world as it was traveled. Explore Journeys today!
 ```
@@ -134,7 +133,7 @@ Navigate to **Policy > App content** in Google Play Console and complete each se
 - **Appeal to Children:** "No" (neutral educational reference for general audience)
 
 ### Data Safety Questionnaire
-> Journeys is 100% offline. Answer **NO** to all data collection questions:
+> These are the answers currently documented for Play. They have not been resubmitted. See the Data Safety review before pasting a change in Play Console.
 
 1. **Does your app collect or share any of the required user data types?** &rarr; **No**
 2. **Is all of the user data collected by your app encrypted in transit?** &rarr; *(N/A - no data collected)*
