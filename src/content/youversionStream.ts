@@ -35,6 +35,11 @@ const counts = new Map<number, Flight<Map<number, number>>>();
 let busySleeps = 0;
 const chapterWaiters = new Set<() => void>();
 
+/** Live offline check. A direct `navigator.onLine === false` narrows that readonly flag for the rest of the function, so a later check fails typecheck even though the device can drop offline mid-request. */
+function browserIsOffline(): boolean {
+  return typeof navigator !== 'undefined' && navigator.onLine === false;
+}
+
 function realSleep(ms: number, signal?: AbortSignal): Promise<void> {
   return new Promise((resolve, reject) => {
     if (signal?.aborted) {
@@ -131,7 +136,7 @@ async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
   let busy = 0;
   for (;;) {
     if (opts.signal?.aborted) throw opts.signal.reason;
-    if (navigator.onLine === false) throw new ReaderNotice(CHAPTER_OFFLINE);
+    if (browserIsOffline()) throw new ReaderNotice(CHAPTER_OFFLINE);
     let res: Response;
     try {
       res = await fetchImpl(url, { headers: CLIENT_HEADERS, signal: opts.signal });
@@ -140,7 +145,7 @@ async function getJson(url: string, opts: StreamOptions): Promise<unknown> {
         if (opts.signal.reason !== undefined) throw opts.signal.reason;
         throw e;
       }
-      if (navigator.onLine === false) throw new ReaderNotice(CHAPTER_OFFLINE);
+      if (browserIsOffline()) throw new ReaderNotice(CHAPTER_OFFLINE);
       throw new ReaderNotice(CHAPTER_GAVE_UP);
     }
     if (res.ok) return res.json();

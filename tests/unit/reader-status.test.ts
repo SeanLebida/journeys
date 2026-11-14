@@ -22,6 +22,6 @@ describe('readerStatusText', () => {
 });
 
 it('a downloaded translation is not streamed', () => {
-  expect(streamedYvId('yv:100', { downloaded: [{ id: 'yv:100' } as DownloadedTranslation], streamed: [] })).toBeNull();
+  expect(streamedYvId('yv:100', { downloaded: [{ id: 'yv:100' } as unknown as DownloadedTranslation], streamed: [] })).toBeNull();
   expect(streamedYvId('yv:3034', { downloaded: [], streamed: [streamed] })).toBe(3034);
 });
