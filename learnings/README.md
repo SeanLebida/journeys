@@ -67,3 +67,7 @@ Copy this skeleton to start a new entry:
 ## Verification
 -
 ```
+
+## Index
+
+- [2026-11-14-trace-skip-camera](2026-11-14-trace-skip-camera.md) — Skip cancels the leg jumpTo; sheet setPadding aborts the arrival easeTo.
