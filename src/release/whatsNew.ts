@@ -18,6 +18,15 @@ export interface WhatsNewRelease {
  */
 export const RELEASES: WhatsNewRelease[] = [
   {
+    version: '0.3.30',
+    steps: [
+      {
+        title: 'A chapter opens on its own',
+        body: "If a chapter isn't on this device, it waits and opens on its own instead of showing an error.",
+      },
+    ],
+  },
+  {
     version: '0.3.29',
     steps: [
       {
