@@ -48,3 +48,6 @@ android/release-notes/
 cloudflare/**/node_modules/
 cloudflare/**/.wrangler/
 cloudflare/**/.dev.vars
+
+# Previous hashed /app/assets kept between web deploys
+.web-asset-retain/

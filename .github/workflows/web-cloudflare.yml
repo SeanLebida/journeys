@@ -2,6 +2,8 @@ name: Web Cloudflare
 
 # Static /app build. Vite base stays `/` for Capacitor; this job passes --base /app/.
 # Requires CLOUDFLARE_API_TOKEN (Workers Scripts and Workers Routes edit).
+# This workflow deploys production (wrangler.jsonc). Do not run it until Sean says go
+# for the assets 404 change.
 
 on:
   workflow_dispatch:
@@ -33,6 +35,14 @@ jobs:
       - run: npm run build:content
       - run: npx tsc --noEmit
       - run: npx vite build --base /app/
+      - uses: actions/cache@v4
+        with:
+          path: .web-asset-retain
+          key: web-assets-${{ github.run_id }}
+          restore-keys: |
+            web-assets-
+      - name: Keep previous hashed /app/assets for a day
+        run: node cloudflare/journeys-web/retain-previous-assets.mjs --assets-dir dist/assets --retain-dir .web-asset-retain --ttl-hours 24
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

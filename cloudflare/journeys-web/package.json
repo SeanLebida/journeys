@@ -1,0 +1,14 @@
+{
+  "name": "journeys-web",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker that serves the Journeys Vite app at /app.",
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
+    "dry-run": "npx -y wrangler@4.156.0 deploy -c wrangler.jsonc --dry-run",
+    "dry-run:staging": "npx -y wrangler@4.156.0 deploy -c wrangler.staging.jsonc --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
