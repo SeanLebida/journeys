@@ -99,5 +99,17 @@
     "citations": "Citations",
     "disputes": "Why scholars differ",
     "skipToContent": "Skip to main content"
+  },
+  "getApp": {
+    "title": "Get the app",
+    "siteTitle": "Journeys on the web",
+    "lead": "Journeys is on the App Store and Google Play, and works offline once installed.",
+    "storesLabel": "Download Journeys",
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play",
+    "siteLabel": "Journeys website",
+    "website": "About Journeys on journeys.authentic.how",
+    "privacy": "Privacy policy",
+    "trademarks": "Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC."
   }
 }

@@ -73,11 +73,11 @@ The first TestFlight build needs the app record from the step above. Export comp
 
 **App Privacy:** Data Not Collected. Tracking: No. The privacy policy matches `PRIVACY.md`.
 
-**Privacy policy URL:** `https://seanlebida.github.io/journeys/privacy`
+**Privacy policy URL:** `https://journeys.authentic.how/privacy/`
 
-**Support URL:** `https://seanlebida.github.io/journeys/support`
+**Support URL:** `https://journeys.authentic.how/privacy/` (the site has no support page yet; the privacy page carries the support email. Switch to `/support/` if one is added.)
 
-**Marketing URL:** `https://seanlebida.github.io/journeys/`
+**Marketing URL:** `https://journeys.authentic.how/`
 
 **Support email:** `auth@authentic.how`
 
