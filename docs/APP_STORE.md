@@ -97,7 +97,7 @@ Follow cited routes from the patriarchs through the ministry of Jesus and the ap
 
 **Description:** use the full description in `docs/STORE_LISTING.md`.
 
-**What's new:** the `### Store notes` subsection of the current `CHANGELOG.md` version. Plain language, user-visible changes only, under 500 characters. Technical detail stays in the rest of that changelog section.
+**What's new:** the `### Store notes` subsection of the current `CHANGELOG.md` version, under 500 characters. Describe visible changes specifically in everyday words; cover behind-the-scenes work with a line such as "Bug fixes and improvements." Technical detail stays in the rest of that changelog section. See `docs/STORE.md`.
 
 **Review notes** (Guideline 4.2, not a thin website wrapper): use `docs/app-review-notes.txt` word for word. The iOS Submit for App Review workflow reads that file.
 
