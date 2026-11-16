@@ -128,3 +128,9 @@ By hand:
 4. Add for Review. Release manually after approval. Do not use phased release for a first version.
 
 Content rights: KJV and ASV are public domain. MapLibre is BSD-3. Attribution is on the in-app Credits screen. Details are in `docs/STORE.md`.
+
+## Update listing URLs
+
+Privacy policy, marketing, and support URLs are set in App Store Connect, not by the review-submit workflow (that workflow leaves listing fields as they are). Privacy policy lives on the app info, for every locale. Marketing and support live on each version's localization and can only be changed on an editable version (Prepare for Submission, Developer Rejected, and similar). A live version is not editable; new version URLs go on the next version and appear on the store when that version is released.
+
+Actions → **iOS Update Listing URLs**. Run `mode=check` first; it only reads and reports. Then run `mode=update`. It uses the same App Store Connect API key as the submit workflow. The target URLs are in `scripts/asc-update-urls.py`. Update mode refuses to write if a target URL does not return HTTP 200.
