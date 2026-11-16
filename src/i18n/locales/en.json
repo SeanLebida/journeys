@@ -98,7 +98,8 @@
     "offline": "Offline",
     "citations": "Citations",
     "disputes": "Why scholars differ",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "somethingWentWrong": "Something went wrong."
   },
   "getApp": {
     "title": "Get the app",
@@ -111,5 +112,11 @@
     "website": "About Journeys on journeys.authentic.how",
     "privacy": "Privacy policy",
     "trademarks": "Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC."
+  },
+  "staleChunk": {
+    "title": "Updating Journeys…",
+    "body": "A new version is ready. This page will reload.",
+    "bodyManual": "A new version is ready. Reload to continue.",
+    "reload": "Reload"
   }
 }

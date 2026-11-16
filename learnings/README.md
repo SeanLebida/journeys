@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-16-stale-chunk-reload](2026-11-16-stale-chunk-reload.md) — Reload once when a cached web shell points at a JS chunk removed by a later deploy.
 - [2026-11-16-0918-asc-listing-urls](2026-11-16-0918-asc-listing-urls.md) — Manual workflow to set App Store privacy, marketing, and support URLs on journeys.authentic.how.
 - [2026-11-16-user-facing-store-notes](2026-11-16-user-facing-store-notes.md) — Play/TestFlight notes come from a user-facing `### Store notes` changelog subsection.
 - [2026-11-14-bible-web-origin](2026-11-14-bible-web-origin.md) — Allow https://journeys.authentic.how on the Bible proxy CORS list.
