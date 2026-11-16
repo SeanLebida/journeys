@@ -49,8 +49,8 @@
         { "pattern": "bible-staging.authentic.how", "custom_domain": true }
       ],
       "vars": {
-        // Matches production: the catalog lists every version, only NASB reads.
-        "ALLOWED_BIBLE_IDS": "100,2692",
+        // Sean, Nov 13 2026: read all 20 English versions the key can read (NIV included). Offline stays NASB until each license is checked.
+        "ALLOWED_BIBLE_IDS": "100,2692,1588,12,3034,42,2079,1932,2660,111,113,110,2530,3427,130,1849,1209,1207,206,2163",
         "BLOCKED_BIBLE_IDS": "",
         "OFFLINE_BIBLE_IDS": "100,2692",
         "CACHE_TTL_CATALOG_SECONDS": "86400",
