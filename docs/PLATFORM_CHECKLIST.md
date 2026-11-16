@@ -54,3 +54,8 @@ Debug keeps `CODE_SIGNING_ALLOWED=NO` for an unsigned simulator compile. Release
 | Quiz map-pin peeks sheet so map is tappable | Done |
 | POI centered in visible viewport (sheet/rail/sidebar padding) | Done |
 | External map links open on native (Cap Browser) | Done |
+
+## Store release notes
+
+Play and TestFlight notes come from the `### Store notes` subsection of the current `CHANGELOG.md` version and must stay under 500 characters. Describe visible changes specifically in everyday words. Behind-the-scenes work can be covered by a line such as "Bug fixes and improvements." Technical detail stays in the rest of that section. See `docs/STORE.md`. Each version also needs a `RELEASES` entry in `src/release/whatsNew.ts`.
+

@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-16-user-facing-store-notes](2026-11-16-user-facing-store-notes.md) — Play/TestFlight notes come from a user-facing `### Store notes` changelog subsection.
 - [2026-11-14-bible-web-origin](2026-11-14-bible-web-origin.md) — Allow https://journeys.authentic.how on the Bible proxy CORS list.
 - [2026-11-14-web-app-cloudflare](2026-11-14-web-app-cloudflare.md) — Serve the Vite `/app/` build at journeys.authentic.how/app via Workers static assets.
 - [2026-11-14-youversion-offline-typecheck](2026-11-14-youversion-offline-typecheck.md) — Re-read navigator.onLine so a second offline check still typechecks.

@@ -97,7 +97,7 @@ Follow cited routes from the patriarchs through the ministry of Jesus and the ap
 
 **Description:** use the full description in `docs/STORE_LISTING.md`.
 
-**What's new:** the current section of `CHANGELOG.md`.
+**What's new:** the `### Store notes` subsection of the current `CHANGELOG.md` version, under 500 characters. Describe visible changes specifically in everyday words; cover behind-the-scenes work with a line such as "Bug fixes and improvements." Technical detail stays in the rest of that changelog section. See `docs/STORE.md`.
 
 **Review notes** (Guideline 4.2, not a thin website wrapper): use `docs/app-review-notes.txt` word for word. The iOS Submit for App Review workflow reads that file.
 
@@ -117,7 +117,7 @@ Leave "Use header asset in search results" off. The two crops are different. Tes
 
 ## Submit for review
 
-Actions → **iOS Submit for App Review**. Run `mode=check` first with the version and TestFlight build number; it reads App Store Connect and lists anything missing without changing it. Then run `mode=submit`. It creates or reuses the version, attaches the build, sets release type Manual, the review notes, no sign-in, and What's New from `CHANGELOG.md`, then submits. Listing fields are left as they are.
+Actions → **iOS Submit for App Review**. Run `mode=check` first with the version and TestFlight build number; it reads App Store Connect and lists anything missing without changing it. Then run `mode=submit`. It creates or reuses the version, attaches the build, sets release type Manual, the review notes, no sign-in, and What's New from the `### Store notes` subsection of `CHANGELOG.md` (or `docs/appstore-whatsnew.txt` when present), then submits. Listing fields are left as they are.
 
 By hand:
 
