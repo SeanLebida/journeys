@@ -1,0 +1,48 @@
+name: iOS Update Listing URLs
+
+# Sets the App Store Connect privacy, marketing, and support URLs through
+# the same API key the iOS submit workflow uses.
+#
+# mode=check only reads and reports current values. mode=update patches
+# editable records, then reads them back. Privacy policy is on the app
+# info (every locale). Marketing and support are on each version
+# localization and can only change on an editable version (Prepare for
+# Submission, Developer Rejected, and similar). A live version is left
+# alone; those URLs carry over to the next version.
+#
+# Update mode refuses to write if a target URL does not return HTTP 200.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'check reads only. update writes the listing URLs and reads them back.'
+        required: true
+        default: 'check'
+        type: choice
+        options:
+          - check
+          - update
+
+concurrency:
+  group: ios-update-listing-urls
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Listing URLs (${{ inputs.mode }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet 'pyjwt[crypto]==2.10.1'
+      - name: App Store Connect
+        env:
+          APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          APPSTORE_KEY_ID: ${{ secrets.APPSTORE_KEY_ID }}
+          APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+          MODE: ${{ inputs.mode }}
+        run: python3 scripts/asc-update-urls.py
