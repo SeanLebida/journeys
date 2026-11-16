@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useBundle } from '../content/useBundle';
 import { SourcingDisclosure } from './SourcingDisclosure';
+import { GetTheApp } from './GetTheApp';
 
 function isWikiCredit(a: { name: string; url?: string }): boolean {
   // Name only — KJV/ASV credit links point at Wikipedia articles but are not
@@ -126,6 +127,8 @@ export function CreditsView() {
         <li>No account, no ads and no tracking.</li>
         <li>Your highlights and notes stay on your device.</li>
       </ul>
+
+      <GetTheApp />
 
       <h2 className="home__heading">How we handle accuracy</h2>
       <SourcingDisclosure />

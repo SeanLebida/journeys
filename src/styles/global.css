@@ -2325,6 +2325,60 @@ a {
   font-size: 0.85rem;
 }
 
+/* ---- Get the app / Journeys website (home + About) ---- */
+.get-app {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.25rem;
+}
+.get-app__lead {
+  margin: 0 0 0.5rem;
+  color: var(--text-muted);
+}
+.get-app__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.get-app__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-radius: var(--r-sm);
+}
+.get-app__badge img {
+  display: block;
+  width: auto;
+}
+.get-app__site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  margin-top: 0.5rem;
+}
+.get-app__site a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--link);
+  font-weight: 500;
+}
+.get-app__badge:focus-visible,
+.get-app__site a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.get-app__legal {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
 /* ---- Tab bar ---- */
 .tabbar {
   display: flex;
