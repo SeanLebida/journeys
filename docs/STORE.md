@@ -51,6 +51,16 @@ offline value is the argument to make in review notes.
   are added only under licenses that permit redistribution; attribution is rendered
   on the Credits screen and enforced by the content build (license-completeness gate).
 
+## Store release notes (Play / TestFlight)
+
+Play and TestFlight notes come from the `### Store notes` subsection of the current `CHANGELOG.md` version. `npm run android:release:notes` writes that text to `android/release-notes/whatsnew-en-US` (gitignored). The Android AAB and iOS App Store workflows upload it.
+
+Write those notes for end users, in plain language, covering only changes a user can see or feel. Do not mention internal, infrastructure, or tooling details (proxy, Cache-Control, Worker, CI, refactors). Stay under 500 characters. Keep technical detail in the rest of the changelog section. The subsection runs until the next `###` heading or the end of the version section, so put technical notes under a following heading such as `### Details`, or place `### Store notes` last.
+
+If `### Store notes` is missing, the generator falls back to the full top section and prints a warning so a release still builds. `src/release/storeNotes.test.ts` fails until the subsection is present and within the limit.
+
+Each shipped version also needs a `RELEASES` entry in `src/release/whatsNew.ts`.
+
 ## Release gate
 
 `npm run build:content -- --release` must pass. It fails if any `high`-confidence

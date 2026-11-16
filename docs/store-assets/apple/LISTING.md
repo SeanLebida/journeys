@@ -26,7 +26,7 @@ bible,atlas,scripture,maps,history,jesus,paul,geography,timeline,archaeology,exo
 
 Full description: the full-description block in `docs/STORE_LISTING.md` (3,827 / 4,000).
 
-What's new: the current section of `CHANGELOG.md`.
+What's new: the `### Store notes` subsection of the current `CHANGELOG.md` version. Plain language, user-visible changes only, under 500 characters.
 
 ## Header and search results
 
