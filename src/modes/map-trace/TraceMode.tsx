@@ -17,6 +17,8 @@ import { expandJourneyPath, stopFractions, type LngLat } from '../../map/route';
 import type { TraceStop } from '../../map/layers/trace';
 import { Citations, ClaimMeta, DisputeNote, ReferenceStack, RouteGeometryNote, ScripturePassage } from '../../content/citations';
 import { PlaceFrame } from '../../components/PlaceFrame';
+import { computeMapPadding } from '../../map/viewportPadding';
+import { journeysExtent } from './pickerCamera';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
@@ -39,6 +41,22 @@ export default function TraceMode() {
 
 function JourneyPicker({ bundle }: { bundle: BundleIndex }) {
   const { t } = useTranslation();
+  const { mapRef, ready } = useMap();
+  const extent = useMemo(() => journeysExtent(bundle), [bundle]);
+  // Frame every journey in the map left uncovered by the sheet. A jump, not an
+  // ease: the sheet's padding updates are jumps too and would cancel an ease.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    map.setPadding(computeMapPadding());
+    map.fitBounds(
+      [
+        [extent[0], extent[1]],
+        [extent[2], extent[3]],
+      ],
+      { padding: 16, animate: false },
+    );
+  }, [mapRef, ready, extent]);
   return (
     <ModePanel title={t('modes.trace.title')}>
       <p>Choose a journey to trace — from Creation to the apostles.</p>
