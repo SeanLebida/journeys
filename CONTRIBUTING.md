@@ -1,17 +1,33 @@
 # Contributing
 
-Contributions are welcome. By submitting a contribution, you agree to license it on the same terms as the files it changes. Inbound terms equal outbound terms. You keep the copyright in what you write. A contribution does not grant any right to the Journeys name, logo, app icon, or other brand assets.
+You are welcome here. Journeys is a cited atlas of the biblical record, and it gets better when readers, scholars, and builders help. The project will keep improving. A careful correction is as useful as a large feature.
 
-## Code
+## Ways to help
 
-Changes to application source, scripts, tests, and configuration are accepted under the GNU Affero General Public License, version 3 only. See `LICENSE`. Do not contribute code under "or any later version."
+- **Map and route data.** A stop in the wrong place, a leg that should follow a known road, a site that is missing.
+- **Scholarly corrections.** A date, a citation, or a note that should be more careful about what the sources actually say.
+- **Translations.** Interface strings live in `src/i18n/locales/`. Journey text lives in `content/`.
+- **Code.** Bug fixes, tests, and small improvements to the app.
+- **Design feedback.** Where the app is confusing. A screenshot helps.
 
-## Content
+If you want a place to start, look for issues labeled [good first issue](https://github.com/SeanLebida/journeys/labels/good%20first%20issue).
 
-Changes to the paths listed in `LICENSE-CONTENT` are accepted under Creative Commons Attribution-ShareAlike 4.0 International. That covers Bible journey data, route data, notes, and written text in those paths.
+## How to start
 
-Give credit for material you adapt from someone else, and keep that material's original license when this project does not have the right to relicense it. Natural Earth geography, the OpenStreetMap West Bank barrier line, Itiner-e route geometry, Wikimedia photographs, and public-domain scripture stay under the terms named in `LICENSE-CONTENT`.
+1. Open an issue, or comment on one, so we can say hello before you spend a long time.
+2. Fork the repository and branch from `development`.
+3. Make the change. For journey data, edit the JSON in `content/` and run `npm run build:content` so the accuracy checks run.
+4. Open a pull request into `development`.
+5. Agree to the [contributor agreement](CLA.md) by checking the box in the pull request.
 
-## Branding
+A note is enough when you only want to report something. Open an issue, or write to [auth@authentic.how](mailto:auth@authentic.how).
+
+## Your agreement
+
+You keep the copyright in what you write. Contributions are accepted under the [Individual Contributor License Agreement](CLA.md). That agreement lets Sean Lebida also offer a commercial license for the software, which is how the app can keep being maintained for the long term.
+
+Content you add to the paths in `LICENSE-CONTENT` is still offered to everyone under CC BY-SA 4.0. Code is still offered to everyone under the AGPL, version 3 only.
+
+Please do not send other people's copyrighted text, photos, or map data unless their license allows it and the credit stays with the file. Natural Earth geography, the OpenStreetMap West Bank barrier line, Itiner-e route geometry, Wikimedia photographs, and public-domain scripture stay under the terms named in `LICENSE-CONTENT`.
 
 Do not add a logo, icon, or name that presents a fork as Journeys. See `TRADEMARKS.md`.

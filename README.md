@@ -133,6 +133,8 @@ Journeys was engineered to work reliably in sanctuaries, classrooms, remote arch
 
 ## Development
 
+Want to help? Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ### Prerequisites
 
 - **Node.js** >= 20.0.0
@@ -251,10 +253,16 @@ Three different terms apply.
 
 **Code.** The application source is licensed under the GNU Affero General Public License, version 3 only ([AGPL-3.0-only](LICENSE)). You may use, change, and share the code. If you share a modified version, or if you run a modified version as a network service, you must share the corresponding source under the same license.
 
+### Commercial use
+
+Using this software without the AGPL obligations (for example, without sharing your source) requires a commercial license.
+
+Contact Sean at [auth@authentic.how](mailto:auth@authentic.how).
+
 **Content.** Bible journey data, route data, notes, and written text in the paths listed in [LICENSE-CONTENT](LICENSE-CONTENT) are licensed under [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may copy and adapt that material if you give credit and license your adaptations the same way.
 
 **Branding.** The Journeys name, logo, app icon, and visual design assets are all rights reserved by Sean Lebida. They are not licensed for forks. A fork must rebrand. See [TRADEMARKS.md](TRADEMARKS.md).
 
 Some files keep an upstream license instead. Natural Earth geography is public domain. The West Bank barrier line is OpenStreetMap data. Site photographs keep the license named beside each photo. Public-domain scripture stays public domain. Those exceptions are listed in [LICENSE-CONTENT](LICENSE-CONTENT).
 
-Contributions are accepted under these same licenses. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Help is welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [contributor agreement](CLA.md) before you open a pull request.
