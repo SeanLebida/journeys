@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-20-1643-promote-production-to-main](2026-11-20-1643-promote-production-to-main.md) — Merge main's history into the production line so main can catch up without dropping its own commits.
 - [2026-11-20-1634-promote-development-to-production](2026-11-20-1634-promote-development-to-production.md) — Merge production's history into the development line and make Play and TestFlight builds manual from production.
 - [2026-11-20-commercial-license-and-cla](2026-11-20-commercial-license-and-cla.md) — Commercial license contact, individual CLA, and a pull request checkbox. Supersedes the contribution terms in the split-license entry.
 - [2026-11-20-split-license](2026-11-20-split-license.md) — AGPL-3.0-only for code, CC BY-SA 4.0 for journey content, brand assets reserved.
