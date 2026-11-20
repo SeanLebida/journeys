@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-20-1634-promote-development-to-production](2026-11-20-1634-promote-development-to-production.md) — Merge production's history into the development line and make Play and TestFlight builds manual from production.
 - [2026-11-20-commercial-license-and-cla](2026-11-20-commercial-license-and-cla.md) — Commercial license contact, individual CLA, and a pull request checkbox. Supersedes the contribution terms in the split-license entry.
 - [2026-11-20-split-license](2026-11-20-split-license.md) — AGPL-3.0-only for code, CC BY-SA 4.0 for journey content, brand assets reserved.
 - [2026-11-16-stale-chunk-reload](2026-11-16-stale-chunk-reload.md) — Reload once when a cached web shell points at a JS chunk removed by a later deploy.
