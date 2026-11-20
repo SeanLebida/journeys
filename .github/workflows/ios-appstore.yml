@@ -3,8 +3,8 @@ name: iOS App Store
 # Signed App Store archive on Xcode 26 (required since 2026-04-28), then
 # TestFlight upload when the Apple secrets below exist.
 #
-# Run from production once this file is on that branch. workflow_dispatch
-# also works from the branch that contains this file.
+# Dispatch this from the production branch. A push does not start a store
+# build. The first step fails unless github.ref is refs/heads/production.
 #
 # Repository secrets (Settings > Secrets and variables > Actions):
 #   IOS_DISTRIBUTION_CERTIFICATE_BASE64  Apple Distribution .p12, base64
@@ -33,8 +33,6 @@ on:
         description: 'Override CFBundleVersion (empty = git commit count)'
         required: false
         type: string
-  push:
-    branches: [production]
 
 concurrency:
   group: ios-appstore-${{ github.ref }}
@@ -50,6 +48,14 @@ jobs:
       IOS_PROVISIONING_PROFILE_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_BASE64 }}
       APPSTORE_PRIVATE_KEY: ${{ secrets.APPSTORE_PRIVATE_KEY }}
     steps:
+      - name: Require the production branch
+        run: |
+          ref='${{ github.ref }}'
+          if [ "$ref" != "refs/heads/production" ]; then
+            echo "Store builds run only from the production branch. github.ref is '$ref', expected 'refs/heads/production'."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v7
         with:
