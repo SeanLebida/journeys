@@ -16,6 +16,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:app": "playwright test -c playwright.app.config.ts",
     "cap:sync": "cap sync",
     "ios:sync": "cap sync ios",
     "ios:version:bump": "node scripts/bump-ios-version.mjs",

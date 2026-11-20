@@ -7,15 +7,19 @@ import { useSheetStore } from '../state/useSheetStore';
 /**
  * Keep map padding aligned with the chrome that covers the map. Re-runs when
  * the sheet snap changes, the window resizes/reorients, or ResizeObserver sees
- * `.app-main` / `.mode-panel` change size (live drag). This is a layout effect
- * so the first setPadding lands before the journey ease starts. A later
- * setPadding is a jumpTo and would cancel that ease.
+ * `.app-main` / `.mode-panel` change size (live drag). Replacing the mode panel
+ * (Home's page card → Trace's sheet) does not resize `.app-main` and does not
+ * change the snap, so a MutationObserver reapplies padding when that element
+ * is swapped. This is a layout effect so the first setPadding lands before the
+ * journey ease starts. A later setPadding is a jumpTo and would cancel that ease.
  *
  * A settled snap eases the current center with the new padding so the inset
  * interpolates (setPadding is a jumpTo and would cancel that ease). Mid-drag
  * only setPadding — easing every pointer move would fight the reader. While a
  * leg is in flight, or a recenter ease is already running, a snap does not
- * take the camera. The inset is applied on the next idle reframe.
+ * take the camera. The inset is applied on the next idle reframe. Panel
+ * swaps call setPadding only when the measured padding actually changes, so a
+ * journey view that replaces the same-sized sheet does not abort an ease.
  */
 export function useMapViewportPadding(
   mapRef: MutableRefObject<MapLibreMap | null>,
@@ -57,10 +61,28 @@ export function useMapViewportPadding(
     apply(snapChanged);
 
     const main = document.querySelector('.app-main');
-    const panel = document.querySelector('.mode-panel');
+    let panel = document.querySelector('.mode-panel');
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => apply(false)) : null;
     if (main && ro) ro.observe(main);
     if (panel && ro) ro.observe(panel);
+
+    // Home → Trace swaps the panel node. The snap value stays `half` and
+    // `.app-main` does not change size, so neither this effect nor the
+    // ResizeObserver would notice. The map would stay fitted to the full
+    // canvas and the sheet would cover it.
+    const onPanelSwap = () => {
+      const next = document.querySelector('.mode-panel');
+      if (next === panel) return;
+      if (panel && ro) ro.unobserve(panel);
+      panel = next;
+      if (panel && ro) ro.observe(panel);
+      apply(false);
+    };
+    const mo =
+      main && typeof MutationObserver !== 'undefined'
+        ? new MutationObserver(onPanelSwap)
+        : null;
+    if (main && mo) mo.observe(main, { childList: true, subtree: true });
 
     const onResize = () => apply(false);
     window.addEventListener('resize', onResize);
@@ -73,6 +95,7 @@ export function useMapViewportPadding(
 
     return () => {
       ro?.disconnect();
+      mo?.disconnect();
       window.removeEventListener('resize', onResize);
       mqSheet.removeEventListener('change', onResize);
       mqRail.removeEventListener('change', onResize);

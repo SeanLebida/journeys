@@ -95,6 +95,10 @@ export function MapProvider({ children }: { children: ReactNode }) {
     if (!containerRef.current || mapRef.current) return;
 
     const reduce = prefersReducedMotion();
+    // The sheet is already in the layout when this effect runs. Fit the opening
+    // view into the uncovered area; a later route swap reapplies padding in
+    // useMapViewportPadding (the sheet is an overlay, so the canvas does not resize).
+    const padding = computeMapPadding();
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: buildBaseStyle('ancient', darkRef.current),
@@ -102,15 +106,13 @@ export function MapProvider({ children }: { children: ReactNode }) {
         [MEDITERRANEAN_BBOX[0], MEDITERRANEAN_BBOX[1]],
         [MEDITERRANEAN_BBOX[2], MEDITERRANEAN_BBOX[3]],
       ],
-      fitBoundsOptions: { padding: 24, animate: false },
+      fitBoundsOptions: { padding, animate: false },
       attributionControl: false,
       dragRotate: false,
       pitchWithRotate: false,
       fadeDuration: reduce ? 0 : 300,
     });
-    // Sheet / rail / sidebar padding is owned by useMapViewportPadding; seed it
-    // here so the first fitBounds already respects the chrome.
-    map.setPadding(computeMapPadding());
+    map.setPadding(padding);
 
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
