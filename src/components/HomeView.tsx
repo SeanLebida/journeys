@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SourcingDisclosure } from './SourcingDisclosure';
 import { SiteThumb } from './SitePhoto';
+import { GetTheApp } from './GetTheApp';
 
 // Each mode card carries a representative bundled site photo (offline, credited
 // on the site's own detail panel): the Appian Way for route tracing, Ephesus
@@ -40,6 +41,7 @@ export function HomeView() {
       <p className="home__credits-link">
         <Link to="/about">About Journeys · Credits &amp; sources</Link>
       </p>
+      <GetTheApp />
     </ModeHomeShell>
   );
 }

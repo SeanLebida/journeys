@@ -73,11 +73,11 @@ The first TestFlight build needs the app record from the step above. Export comp
 
 **App Privacy:** Data Not Collected. Tracking: No. The privacy policy matches `PRIVACY.md`.
 
-**Privacy policy URL:** `https://seanlebida.github.io/journeys/privacy`
+**Privacy policy URL:** `https://journeys.authentic.how/privacy/`
 
-**Support URL:** `https://seanlebida.github.io/journeys/support`
+**Support URL:** `https://journeys.authentic.how/privacy/` (the site has no support page yet; the privacy page carries the support email. Switch to `/support/` if one is added.)
 
-**Marketing URL:** `https://seanlebida.github.io/journeys/`
+**Marketing URL:** `https://journeys.authentic.how/`
 
 **Support email:** `auth@authentic.how`
 
@@ -97,7 +97,7 @@ Follow cited routes from the patriarchs through the ministry of Jesus and the ap
 
 **Description:** use the full description in `docs/STORE_LISTING.md`.
 
-**What's new:** the current section of `CHANGELOG.md`.
+**What's new:** the `### Store notes` subsection of the current `CHANGELOG.md` version, under 500 characters. Describe visible changes specifically in everyday words; cover behind-the-scenes work with a line such as "Bug fixes and improvements." Technical detail stays in the rest of that changelog section. See `docs/STORE.md`.
 
 **Review notes** (Guideline 4.2, not a thin website wrapper): use `docs/app-review-notes.txt` word for word. The iOS Submit for App Review workflow reads that file.
 
@@ -117,7 +117,7 @@ Leave "Use header asset in search results" off. The two crops are different. Tes
 
 ## Submit for review
 
-Actions → **iOS Submit for App Review**. Run `mode=check` first with the version and TestFlight build number; it reads App Store Connect and lists anything missing without changing it. Then run `mode=submit`. It creates or reuses the version, attaches the build, sets release type Manual, the review notes, no sign-in, and What's New from `CHANGELOG.md`, then submits. Listing fields are left as they are.
+Actions → **iOS Submit for App Review**. Run `mode=check` first with the version and TestFlight build number; it reads App Store Connect and lists anything missing without changing it. Then run `mode=submit`. It creates or reuses the version, attaches the build, sets release type Manual, the review notes, no sign-in, and What's New from the `### Store notes` subsection of `CHANGELOG.md` (or `docs/appstore-whatsnew.txt` when present), then submits. Listing fields are left as they are.
 
 By hand:
 
@@ -128,3 +128,9 @@ By hand:
 4. Add for Review. Release manually after approval. Do not use phased release for a first version.
 
 Content rights: KJV and ASV are public domain. MapLibre is BSD-3. Attribution is on the in-app Credits screen. Details are in `docs/STORE.md`.
+
+## Update listing URLs
+
+Privacy policy, marketing, and support URLs are set in App Store Connect, not by the review-submit workflow (that workflow leaves listing fields as they are). Privacy policy lives on the app info, for every locale. Marketing and support live on each version's localization and can only be changed on an editable version (Prepare for Submission, Developer Rejected, and similar). A live version is not editable; new version URLs go on the next version and appear on the store when that version is released.
+
+Actions → **iOS Update Listing URLs**. Run `mode=check` first; it only reads and reports. Then run `mode=update`. It uses the same App Store Connect API key as the submit workflow. The target URLs are in `scripts/asc-update-urls.py`. Update mode refuses to write if a target URL does not return HTTP 200.

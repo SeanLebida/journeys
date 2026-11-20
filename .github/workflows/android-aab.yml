@@ -14,13 +14,12 @@ name: Android Release AAB (Signed & Play Store)
 # If PLAY_SERVICE_ACCOUNT_JSON is not provided, the workflow still builds the signed AAB,
 # uploads the artifact, and drafts a GitHub release for 1-click manual upload to Play Console.
 #
-# Run this from production. That is the line that ships. development and main
-# carry the same workflow file once those branches are synced.
+# Dispatch this from the production branch. A push does not start a store
+# build. The first step fails unless github.ref is refs/heads/production.
 #
-# A push has no track input. One upload assigns Internal testing and Closed
-# testing (internal,alpha). Play rejects a second upload of that versionCode,
-# so do not dispatch this workflow again for a commit the push already published.
-# The action splits tracks on commas and does not trim spaces.
+# The track input chooses the Play track. When that input is empty the upload
+# falls back to internal,alpha. The action splits tracks on commas and does
+# not trim spaces.
 
 on:
   workflow_dispatch:
@@ -48,8 +47,6 @@ on:
         description: 'Override versionCode (leave empty to use git commit count)'
         required: false
         type: string
-  push:
-    branches: [production]
 
 concurrency:
   group: android-aab-${{ github.ref }}
@@ -65,6 +62,14 @@ jobs:
       RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
       PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
     steps:
+      - name: Require the production branch
+        run: |
+          ref='${{ github.ref }}'
+          if [ "$ref" != "refs/heads/production" ]; then
+            echo "Store builds run only from the production branch. github.ref is '$ref', expected 'refs/heads/production'."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v7
         with:

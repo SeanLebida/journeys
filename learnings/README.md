@@ -70,6 +70,13 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-20-1643-promote-production-to-main](2026-11-20-1643-promote-production-to-main.md) — Merge main's history into the production line so main can catch up without dropping its own commits.
+- [2026-11-20-1634-promote-development-to-production](2026-11-20-1634-promote-development-to-production.md) — Merge production's history into the development line and make Play and TestFlight builds manual from production.
+- [2026-11-20-commercial-license-and-cla](2026-11-20-commercial-license-and-cla.md) — Commercial license contact, individual CLA, and a pull request checkbox. Supersedes the contribution terms in the split-license entry.
+- [2026-11-20-split-license](2026-11-20-split-license.md) — AGPL-3.0-only for code, CC BY-SA 4.0 for journey content, brand assets reserved.
+- [2026-11-16-stale-chunk-reload](2026-11-16-stale-chunk-reload.md) — Reload once when a cached web shell points at a JS chunk removed by a later deploy.
+- [2026-11-16-0918-asc-listing-urls](2026-11-16-0918-asc-listing-urls.md) — Manual workflow to set App Store privacy, marketing, and support URLs on journeys.authentic.how.
+- [2026-11-16-user-facing-store-notes](2026-11-16-user-facing-store-notes.md) — Play/TestFlight notes come from a user-facing `### Store notes` changelog subsection.
 - [2026-11-14-bible-web-origin](2026-11-14-bible-web-origin.md) — Allow https://journeys.authentic.how on the Bible proxy CORS list.
 - [2026-11-14-web-app-cloudflare](2026-11-14-web-app-cloudflare.md) — Serve the Vite `/app/` build at journeys.authentic.how/app via Workers static assets.
 - [2026-11-14-youversion-offline-typecheck](2026-11-14-youversion-offline-typecheck.md) — Re-read navigator.onLine so a second offline check still typechecks.

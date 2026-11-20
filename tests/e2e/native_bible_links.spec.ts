@@ -38,12 +38,13 @@ test('native: In the atlas Trace → opens the tapped journey, not the saved one
   const row = await openBibleChapter(page);
   const link = row.getByRole('link', { name: 'Trace →' });
   await link.scrollIntoViewIfNeeded();
-  await expect(link).toHaveAttribute('href', '#/trace/journey-elijah?play=1&stop=4');
+  // Tapping Trace opens that stop. Autoplay (`play=1`) was dropped; a leftover play flag is ignored.
+  await expect(link).toHaveAttribute('href', '#/trace/journey-elijah?stop=4');
   const box = await link.boundingBox();
   expect(box!.height).toBeGreaterThanOrEqual(44);
   await link.tap();
 
-  await expect(page).toHaveURL(/#\/trace\/journey-elijah\?play=1&stop=4$/);
+  await expect(page).toHaveURL(/#\/trace\/journey-elijah\?stop=4$/);
   await expect(page.getByRole('link', { name: /Elijah — drought, Carmel, and Horeb/ })).toBeVisible();
   await expect(page.getByText('Stop 5 of 10')).toBeVisible();
   await expect(page.getByText("Paul's First Missionary Journey")).toHaveCount(0);

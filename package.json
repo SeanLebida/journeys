@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Cited offline atlas of the biblical historical record: patriarchs, Old Testament battles, the birth and ministry of Jesus, and the apostles.",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "vite",
     "build": "npm run build:content && tsc --noEmit && vite build",

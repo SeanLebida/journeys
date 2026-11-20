@@ -5,6 +5,7 @@ import './i18n';
 import './styles/global.css';
 import { router } from './routes';
 import { isNative } from './platform/bridge';
+import { installStaleChunkReload } from './platform/staleChunk';
 import { initContentVersion } from './content/contentUpdate';
 import { installNotificationTapHandler } from './platform/backgroundDownload';
 
@@ -20,6 +21,8 @@ if (!isNative()) {
     .catch(() => {
       /* SW unsupported; app still works online */
     });
+  // Cached shells can point at JS chunks removed by a later deploy. Reload once.
+  installStaleChunkReload();
 }
 
 const rootEl = document.getElementById('root');

@@ -33,4 +33,11 @@ describe('HomeView', () => {
     expect(screen.getByText('Not specialist-signed')).toBeInTheDocument();
     expect(screen.getByText(/not yet signed them off/i)).toBeInTheDocument();
   });
+
+  it('offers the app stores and the Journeys website on the web build', () => {
+    renderHome();
+    expect(screen.getByRole('heading', { name: 'Get the app' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Download on the App Store' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Privacy policy' })).toHaveAttribute('href', 'https://journeys.authentic.how/privacy/');
+  });
 });
