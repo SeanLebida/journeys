@@ -71,6 +71,7 @@ Copy this skeleton to start a new entry:
 ## Index
 
 - [2026-11-20-trace-sheet-map-padding](2026-11-20-trace-sheet-map-padding.md) — Opening Trace from Home left the map under the sheet; padding now follows the panel swap. Map source cannot use root-absolute asset URLs.
+- [2026-11-20-github-pages-redirect](2026-11-20-github-pages-redirect.md) — GitHub Pages HTML redirects visitors to journeys.authentic.how.
 - [2026-11-20-commercial-license-and-cla](2026-11-20-commercial-license-and-cla.md) — Commercial license contact, individual CLA, and a pull request checkbox. Supersedes the contribution terms in the split-license entry.
 - [2026-11-20-split-license](2026-11-20-split-license.md) — AGPL-3.0-only for code, CC BY-SA 4.0 for journey content, brand assets reserved.
 - [2026-11-16-stale-chunk-reload](2026-11-16-stale-chunk-reload.md) — Reload once when a cached web shell points at a JS chunk removed by a later deploy.
