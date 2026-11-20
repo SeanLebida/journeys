@@ -17,5 +17,6 @@
 - Do not delete `docs/.nojekyll`. With Jekyll off, Markdown is not turned into extra HTML pages.
 
 ## Verification
-- Chrome-fingerprint GET, redirects followed, on 2026-11-20: homepage 200, privacy 200, about 404, support 404.
-- Local check of the redirect documents, then `npm ci`, `npm run lint`, `npm run typecheck`, `npm test`, and `npm run build`.
+- Chrome-fingerprint GET, redirects followed, on 2026-11-20: homepage 200, `/privacy/` 200 (`/privacy` is 301), `/about/` 404, `/support/` 404, `/routes/` `/timeline/` `/lessons/` 200. Plain `curl -L` from this environment is HTTP 403 (`cf-mitigated: challenge`) for all of those URLs.
+- Served `docs/` locally. `curl` of `/about/` returned the redirect document. Headless Chrome followed the meta refresh from `/support.html` to `journeys.authentic.how/support/`.
+- `npm ci`, then `npm run lint`, `npm run typecheck`, `npm test` (57 files, 375 passed), and `npm run build` all succeeded.
