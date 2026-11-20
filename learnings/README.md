@@ -70,6 +70,7 @@ Copy this skeleton to start a new entry:
 
 ## Index
 
+- [2026-11-20-split-license](2026-11-20-split-license.md) — AGPL-3.0-only for code, CC BY-SA 4.0 for journey content, brand assets reserved.
 - [2026-11-16-stale-chunk-reload](2026-11-16-stale-chunk-reload.md) — Reload once when a cached web shell points at a JS chunk removed by a later deploy.
 - [2026-11-16-0918-asc-listing-urls](2026-11-16-0918-asc-listing-urls.md) — Manual workflow to set App Store privacy, marketing, and support URLs on journeys.authentic.how.
 - [2026-11-16-user-facing-store-notes](2026-11-16-user-facing-store-notes.md) — Play/TestFlight notes come from a user-facing `### Store notes` changelog subsection.
