@@ -11,7 +11,8 @@
 
 <p align="center">
   <a href="https://github.com/SeanLebida/journeys/releases"><img src="https://img.shields.io/badge/version-0.3.14-blue.svg?style=flat-square" alt="Version 0.3.14" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License MIT" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-blue.svg?style=flat-square" alt="Code license AGPL-3.0" /></a>
+  <a href="LICENSE-CONTENT"><img src="https://img.shields.io/badge/content-CC%20BY--SA%204.0-green.svg?style=flat-square" alt="Content license CC BY-SA 4.0" /></a>
   <img src="https://img.shields.io/badge/platforms-Web%20%7C%20iOS%20%7C%20Android-orange.svg?style=flat-square" alt="Platforms" />
   <img src="https://img.shields.io/badge/offline-100%25%20Offline--First-success.svg?style=flat-square" alt="100% Offline" />
   <img src="https://img.shields.io/badge/privacy-Zero%20Telemetry-blueviolet.svg?style=flat-square" alt="Privacy First" />
@@ -132,6 +133,8 @@ Journeys was engineered to work reliably in sanctuaries, classrooms, remote arch
 
 ## Development
 
+Want to help? Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ### Prerequisites
 
 - **Node.js** >= 20.0.0
@@ -246,4 +249,20 @@ The project has achieved milestones **M0–M9** in release **v0.3.14**:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+Three different terms apply.
+
+**Code.** The application source is licensed under the GNU Affero General Public License, version 3 only ([AGPL-3.0-only](LICENSE)). You may use, change, and share the code. If you share a modified version, or if you run a modified version as a network service, you must share the corresponding source under the same license.
+
+### Commercial use
+
+Using this software without the AGPL obligations (for example, without sharing your source) requires a commercial license.
+
+Contact Sean at [auth@authentic.how](mailto:auth@authentic.how).
+
+**Content.** Bible journey data, route data, notes, and written text in the paths listed in [LICENSE-CONTENT](LICENSE-CONTENT) are licensed under [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may copy and adapt that material if you give credit and license your adaptations the same way.
+
+**Branding.** The Journeys name, logo, app icon, and visual design assets are all rights reserved by Sean Lebida. They are not licensed for forks. A fork must rebrand. See [TRADEMARKS.md](TRADEMARKS.md).
+
+Some files keep an upstream license instead. Natural Earth geography is public domain. The West Bank barrier line is OpenStreetMap data. Site photographs keep the license named beside each photo. Public-domain scripture stays public domain. Those exceptions are listed in [LICENSE-CONTENT](LICENSE-CONTENT).
+
+Help is welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [contributor agreement](CLA.md) before you open a pull request.

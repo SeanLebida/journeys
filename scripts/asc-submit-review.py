@@ -133,7 +133,16 @@ def changelog_note():
     m = re.search(r"##\s+\[([^\]]+)\][^\n]*\n([\s\S]*?)(?=\n##\s+\[|$)", text)
     if not m or m.group(1) != VERSION:
         sys.exit(f"The newest CHANGELOG.md entry is not {VERSION}.")
-    return m.group(2).strip()
+    section = m.group(2)
+    store = re.search(r"(?:^|\n)###\s+Store notes[ \t]*\n([\s\S]*?)(?=\n###\s+|\Z)", section)
+    if store and store.group(1).strip():
+        return store.group(1).strip()
+    print(
+        "Warning: the top CHANGELOG section has no ### Store notes subsection. "
+        "Falling back to the full section.",
+        file=sys.stderr,
+    )
+    return section.strip()
 
 
 def main():

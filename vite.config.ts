@@ -19,12 +19,19 @@ export default defineConfig({
       // Bible SQLite DB, and the sql.js wasm. The DB is ~10 MB so the workbox
       // file-size cap is raised accordingly.
       workbox: {
+        // autoUpdate already injects these; keep them explicit so a new SW
+        // activates on this visit instead of waiting for the next reload.
+        skipWaiting: true,
+        clientsClaim: true,
         // `pbf` covers the self-hosted map glyph ranges (~1.9 MB) — without them
         // precached, symbol layers would silently lose their labels offline on
         // web. Native builds bundle them in the app package regardless.
         globPatterns: ['**/*.{js,css,html,wasm,woff2,pbf}', 'dist-content/**/*.{json,sqlite}', 'images/map/hillshade.png'],
         maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         navigateFallback: 'index.html',
+        // Precached index.html must not be used as a stand-in for missing
+        // hashed assets — that is how a stale shell surfaces as a MIME error.
+        navigateFallbackDenylist: [/\/assets\//, /\.(?:js|css|map|wasm|json|sqlite)$/i],
         cleanupOutdatedCaches: true,
         // Site photos (~14 MB total) are cached as they're viewed rather than
         // precached, keeping first install lean while photos the user has seen

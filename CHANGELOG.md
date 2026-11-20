@@ -4,6 +4,12 @@ All notable changes to Journeys are documented in this file.
 
 ## [0.3.30] - 2026-11-13
 
+### Store notes
+
+A Bible chapter that isn't on this device now waits and opens on its own instead of showing an error.
+
+### Details
+
 The proxy keeps a YouVersion response for the lifetime its Cache-Control allows, and a chapter that is not on the device waits instead of showing a status code.
 
 ## [0.3.29] - 2026-11-13
