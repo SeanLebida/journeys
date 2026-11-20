@@ -1,5 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { ASSET_PATHS } from '../platform/assets';
+import { resolveAssetUrl } from '../platform/bridge';
 import { applyMapTone, buildBaseStyle, BASEMAP_LAYERS, IMAGERY_LAYERS } from './style';
 
 /** Fontstacks scripts/build-glyphs.py emits; a style's `text-font` may only use these. */
@@ -11,7 +13,7 @@ describe('buildBaseStyle', () => {
     // Guards the failure mode where the style references an asset path nobody
     // generated — it renders fine online-ish and silently loses labels offline.
     const style = buildBaseStyle('ancient', false);
-    expect(style.glyphs).toBe('/fonts/{fontstack}/{range}.pbf');
+    expect(style.glyphs).toBe(resolveAssetUrl(ASSET_PATHS.glyphs));
     for (const stack of GLYPH_STACKS) {
       const path = `public/fonts/${stack}/0-255.pbf`;
       expect(existsSync(path), path).toBe(true);
@@ -89,7 +91,7 @@ describe('buildBaseStyle', () => {
     const topography = style.sources.topography;
     expect(topography).toMatchObject({
       type: 'image',
-      url: '/images/map/hillshade.png',
+      url: resolveAssetUrl(ASSET_PATHS.hillshade),
       coordinates: [[-12, 48], [55, 48], [55, 22], [-12, 22]],
     });
     const json = JSON.stringify(style);

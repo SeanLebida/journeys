@@ -126,4 +126,38 @@ describe('useMapViewportPadding', () => {
     expect(map.setPadding).toHaveBeenCalledWith({ top: 0, bottom: 100, left: 0, right: 0 });
     expect(map.easeTo).not.toHaveBeenCalled();
   });
+
+  it('setPadding when navigation replaces the mode panel', async () => {
+    document.body.innerHTML = `
+      <div class="app-main">
+        <section class="mode-panel mode-panel--page"></section>
+      </div>`;
+    renderHook(() => useMapViewportPadding(mapRef, true));
+    map.setPadding.mockClear();
+    map.easeTo.mockClear();
+    padding.current = { top: 0, bottom: 480, left: 0, right: 0 };
+    document.querySelector('.app-main')!.innerHTML = '<section class="mode-panel"></section>';
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    expect(map.setPadding).toHaveBeenCalledWith({ top: 0, bottom: 480, left: 0, right: 0 });
+    expect(map.easeTo).not.toHaveBeenCalled();
+    document.body.innerHTML = '';
+  });
+
+  it('ignores sheet-body edits that keep the same panel element', async () => {
+    document.body.innerHTML = `
+      <div class="app-main">
+        <section class="mode-panel"><div class="mode-panel__body"></div></section>
+      </div>`;
+    renderHook(() => useMapViewportPadding(mapRef, true));
+    map.setPadding.mockClear();
+    padding.current = { top: 0, bottom: 480, left: 0, right: 0 };
+    document.querySelector('.mode-panel__body')!.textContent = 'Abraham';
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    expect(map.setPadding).not.toHaveBeenCalled();
+    document.body.innerHTML = '';
+  });
 });
