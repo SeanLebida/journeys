@@ -25,11 +25,12 @@ describe('candidate and proposed-route schema', () => {
     expect(SiteCandidate.safeParse(baseCandidate).success).toBe(true);
   });
 
-  it('accepts id, note, advocates, pinPrecision, groupId and claimStatus', () => {
+  it('accepts id, note, body, advocates, pinPrecision, groupId and claimStatus', () => {
     const r = SiteCandidate.safeParse({
       ...baseCandidate,
       id: 'cand-a',
       note: { en: 'A note.' },
+      body: { en: 'In short. A note.\n\nWhat was found. A detail.' },
       advocates: [{ name: 'A. Scholar', citationIds: ['cit-x'] }],
       pinPrecision: 'region',
       groupId: 'group-a',
@@ -51,6 +52,7 @@ describe('candidate and proposed-route schema', () => {
   it('requires both candidate ids and a source on a proposed route', () => {
     const ok = { id: 'pr', advocate: 'A', crossingCandidateId: 'a', sinaiCandidateId: 'b', note: { en: 'n' }, citationIds: ['c'] };
     expect(ProposedRoute.safeParse(ok).success).toBe(true);
+    expect('leading' in ProposedRoute.shape).toBe(false);
     expect(ProposedRoute.safeParse({ ...ok, sinaiCandidateId: undefined }).success).toBe(false);
     expect(ProposedRoute.safeParse({ ...ok, citationIds: [] }).success).toBe(false);
   });
@@ -141,5 +143,100 @@ describe('candidate gate catches mistakes', () => {
     expect(errs.some((e) => /'g1' has only one member/.test(e))).toBe(true);
     expect(errs.some((e) => /'g2' spans sites/.test(e))).toBe(true);
     expect(errs.some((e) => /duplicate candidate id 'p2'/.test(e))).toBe(true);
+  });
+});
+
+describe('Exodus crossing and Sinai cards', () => {
+  const EM_DASH = '\u2014';
+  const fields = (): string[] => {
+    const out: string[] = [crossing.summary.en, crossing.coordinates.disputes?.en ?? ''];
+    for (const c of [...crossing.candidates!, ...sinai.candidates!]) {
+      if (c.note?.en) out.push(c.note.en);
+      if (c.body?.en) out.push(c.body.en);
+    }
+    const drews = (merge('citations') as { id: string; source?: { en?: string }; note?: { en?: string } }[])
+      .find((c) => c.id === 'cit-drews-han-2010');
+    if (drews?.source?.en) out.push(drews.source.en);
+    if (drews?.note?.en) out.push(drews.note.en);
+    return out;
+  };
+
+  it('puts the crossing In short in summary and the rest in disputes, including how the water part', () => {
+    expect(crossing.summary.en.startsWith('The Bible says God opened Yam Suph')).toBe(true);
+    expect(crossing.summary.en).not.toMatch(/^In short\./);
+    const rest = crossing.coordinates.disputes!.en;
+    expect(rest).toContain('What was found.');
+    expect(rest).toContain('What it might mean.');
+    expect(rest).toContain("What's still uncertain.");
+    expect(rest).toContain('How did the water part?');
+    expect(rest).toContain('The Bible presents this as God\'s miracle.');
+    expect(rest).toContain('not the leading view here');
+    expect(rest).toContain('Drews and Han, 2010');
+    expect(rest).toContain('an ancient lagoon near Tanis');
+    expect(rest).toContain('Sources.');
+  });
+
+  it('gives every crossing and Sinai candidate an In short note and a full body', () => {
+    const ids = [...crossing.candidates!, ...sinai.candidates!].map((c) => c.id);
+    expect(ids.sort()).toEqual([
+      'cand-crossing-ballah',
+      'cand-crossing-great-bitter-lake',
+      'cand-crossing-gulf-of-suez',
+      'cand-crossing-head-of-aqaba',
+      'cand-crossing-lake-timsah',
+      'cand-crossing-nuweiba',
+      'cand-crossing-strait-of-tiran',
+      'cand-sinai-hala-l-badr',
+      'cand-sinai-har-karkom',
+      'cand-sinai-hashem-el-tarif',
+      'cand-sinai-jabal-maqla',
+      'cand-sinai-jebel-al-lawz',
+      'cand-sinai-jebel-baghir',
+      'cand-sinai-jebel-musa',
+      'cand-sinai-jebel-serbal',
+      'cand-sinai-jebel-sin-bishar',
+      'cand-sinai-ras-safsafa',
+    ]);
+    for (const c of [...crossing.candidates!, ...sinai.candidates!]) {
+      expect(c.note?.en, c.id).toBeTruthy();
+      expect(c.note!.en, c.id).not.toMatch(/^In short\./);
+      expect(c.body?.en, c.id).toMatch(/^In short\./);
+      expect(c.body!.en, c.id).toContain(c.note!.en);
+      expect(c.body!.en, c.id).toContain('What was found.');
+      expect(c.body!.en, c.id).toContain('Sources.');
+    }
+  });
+
+  it('does not put an em-dash in the new card strings', () => {
+    const hits = fields().filter((s) => s.includes(EM_DASH));
+    expect(hits, hits.map((s) => s.slice(0, 80)).join('\n')).toEqual([]);
+  });
+
+  it('cites Drews and Han only on the crossing site, tied to the Tanis lagoon', () => {
+    expect(crossing.citations).toContain('cit-drews-han-2010');
+    expect(crossing.coordinates.citations).not.toContain('cit-drews-han-2010');
+    for (const c of [...crossing.candidates!, ...sinai.candidates!]) {
+      expect(c.citations, c.id).not.toContain('cit-drews-han-2010');
+    }
+    const rest = crossing.coordinates.disputes!.en;
+    expect(rest).toContain('Tanis');
+    for (const c of [...crossing.candidates!, ...sinai.candidates!]) {
+      expect(c.body!.en, c.id).not.toContain('Drews and Han');
+    }
+  });
+
+  it('keeps the Nuweiba wheel and remains cards off the candidate body and out of artifacts', () => {
+    const nuweiba = crossing.candidates!.find((c) => c.id === 'cand-crossing-nuweiba')!;
+    expect(nuweiba.body!.en).toContain('claims about chariot parts, are treated in a separate card');
+    expect(nuweiba.body!.en).not.toMatch(/coral-covered/i);
+    expect(nuweiba.body!.en).not.toMatch(/human remains/i);
+    const artifacts = merge('artifacts') as { id: string }[];
+    expect(artifacts.some((a) => /wheel|remains|nuweiba/i.test(a.id))).toBe(false);
+  });
+
+  it('does not mark any proposed route as leading', () => {
+    for (const pr of exodus.proposedRoutes!) {
+      expect(pr, pr.id).not.toHaveProperty('leading');
+    }
   });
 });

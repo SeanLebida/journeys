@@ -60,3 +60,16 @@ describe('SiteCandidates', () => {
     expect(typeof lat).toBe('number');
     expect(typeof lon).toBe('number');
   });
+
+describe('candidate sheet body', () => {
+  it('renders the full crossing card body, not only the short note', () => {
+    const site = sites.find((s) => s.id === 'site-red-sea-crossing')!;
+    const ballah = site.candidates!.find((c) => c.id === 'cand-crossing-ballah')!;
+    expect(ballah.body?.en).toBeTruthy();
+    render(<SiteCandidates site={site} bundle={stub} />);
+    expect(screen.getByText(ballah.body!.en.split('\n\n')[0])).toBeInTheDocument();
+    expect(screen.getByText(/Egyptian texts speak of p3 twfy/)).toBeInTheDocument();
+    // Body replaces the short-note paragraph, so the In short line is not shown twice.
+    expect(screen.getAllByText(/In short\. Some Bible-believing Egyptologists/)).toHaveLength(1);
+  });
+});

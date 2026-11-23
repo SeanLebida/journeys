@@ -60,13 +60,20 @@ export function ClaimMeta({
   );
 }
 
+/** Split a plain-language card or note on blank lines into paragraphs. */
+export function proseParagraphs(text: string): string[] {
+  return text.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
+}
+
 export function DisputeNote({ text }: { text?: string }) {
   const { t } = useTranslation();
   if (!text) return null;
   return (
     <details className="dispute">
       <summary>{t('common.disputes')}</summary>
-      <p>{text}</p>
+      {proseParagraphs(text).map((p) => (
+        <p key={p.slice(0, 48)}>{p}</p>
+      ))}
     </details>
   );
 }
