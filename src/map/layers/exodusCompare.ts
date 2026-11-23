@@ -1,6 +1,7 @@
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { BundleIndex } from '../../content/useBundle';
 import { hasLiveStyle } from '../lifecycle';
+import { BLOCKER_IMAGE, LABEL_VARIABLE_ANCHORS, ensureBlockerImage, labelTone, orderLabelLayers } from './labelCollision';
 import {
   LABEL_FADED_OPACITY,
   type CandidateGroup,
@@ -38,15 +39,9 @@ export const COMPARE_LAYERS = {
   clusterBlockers: 'compare-cluster-blockers',
 } as const;
 
-const BLOCKER_IMAGE = 'compare-pin-blocker';
 const LABEL_FONT = ['Ubuntu Medium'];
 const LABEL_MINZOOM = 5;
-
-export function labelTone(dark: boolean): { color: string; halo: string } {
-  return dark
-    ? { color: '#f3ecd9', halo: 'rgba(13, 15, 18, 0.95)' }
-    : { color: '#221a10', halo: 'rgba(255, 255, 255, 0.95)' };
-}
+export { labelTone };
 
 const SRC = { members: 'compare-members', clusters: 'compare-clusters', lines: 'compare-lines' };
 
@@ -70,6 +65,11 @@ export interface CompareLayerOptions {
   dark: boolean;
   /** Visible text of a cluster's tag, e.g. "2 places". */
   clusterLabel: (g: CandidateGroup) => string;
+  /**
+   * Label anchor preference, first tried first. Trace passes anchors that put
+   * names left of their pin, because its DOM stop badge sits to the right.
+   */
+  anchors?: string[];
 }
 
 export function ensureCompareLayers(
@@ -84,8 +84,7 @@ export function ensureCompareLayers(
   if (!map.getSource(SRC.members)) map.addSource(SRC.members, { type: 'geojson', data: compareMembersFC(cands) });
   if (!map.getSource(SRC.clusters))
     map.addSource(SRC.clusters, { type: 'geojson', data: compareClustersFC(model.groups, opts.clusterLabel) });
-  if (!map.hasImage(BLOCKER_IMAGE))
-    map.addImage(BLOCKER_IMAGE, { width: 16, height: 16, data: new Uint8Array(16 * 16 * 4) });
+  ensureBlockerImage(map);
   if (!map.getSource(SRC.lines))
     map.addSource(SRC.lines, {
       type: 'geojson',
@@ -178,7 +177,7 @@ export function ensureCompareLayers(
     'text-size': 12,
     'text-max-width': 9,
     'text-line-height': 1.15,
-    'text-variable-anchor': ['left', 'right', 'top', 'bottom', 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
+    'text-variable-anchor': opts.anchors ?? LABEL_VARIABLE_ANCHORS,
     'text-justify': 'auto',
     'text-allow-overlap': false,
     'text-ignore-placement': false,
@@ -230,6 +229,7 @@ export function ensureCompareLayers(
       },
     });
   }
+  orderLabelLayers(map);
 }
 
 export function setCompareTone(map: MapLibreMap, dark: boolean): void {
