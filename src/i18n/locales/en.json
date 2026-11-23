@@ -110,7 +110,7 @@
     "claimStatus": {
       "established": "Widely accepted",
       "identification-disputed": "Location debated",
-      "claimed-not-confirmed": "Claimed, not confirmed"
+      "claimed-not-confirmed": "Unconfirmed claim"
     },
     "pinPrecision": {
       "summit": "Pinned on the summit",
