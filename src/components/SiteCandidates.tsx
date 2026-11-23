@@ -46,7 +46,16 @@ export function SiteCandidates({
                   <div className="site-candidates__head">
                     <strong>{label}</strong>
                     <ClaimMeta confidence={c.confidence} />
+                    {c.claimStatus && (
+                      <span className={`claim-status claim-status--${c.claimStatus}`}>
+                        {t(`sourcing.claimStatus.${c.claimStatus}`)}
+                      </span>
+                    )}
                   </div>
+                  {c.note && <p className="site-candidates__note">{c.note.en}</p>}
+                  {c.pinPrecision && (
+                    <p className="site-candidates__precision">{t(`sourcing.pinPrecision.${c.pinPrecision}`)}</p>
+                  )}
                   <p className="site-candidates__coords">{formatCoords(c.lat, c.lon)}</p>
                   {onFocusCandidate && (
                     <button

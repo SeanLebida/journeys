@@ -91,6 +91,31 @@
       "reconstructed-land": "Reconstructed corridor — historically argued, not survey-grade",
       "sea-lane": "Sea lane — sail route reconstructed from ancient notices",
       "schematic": "Schematic connector — no claim of a travelled road"
+    },
+    "compare": {
+      "title": "Whose map?",
+      "intro": "Writers who accept the Exodus as history place the sea crossing and Mount Sinai in different spots. Pick a writer to see their pairing on the map. Listed south to north by crossing point.",
+      "crossing": "Crossing: {{name}}",
+      "sinai": "Mount Sinai: {{name}}",
+      "clear": "Show all maps",
+      "showing": "Showing the map of {{advocate}}",
+      "line": "The line on the map is a straight connector between the two places, not the road this writer describes.",
+      "clusterText": "{{count}} places",
+      "clusterAria": "{{count}} nearby places: {{names}}. Zoom in to see each one.",
+      "and": "and",
+      "others_one": "{{count}} other",
+      "others_other": "{{count}} others",
+      "argued": "Argued by {{names}}"
+    },
+    "claimStatus": {
+      "established": "Widely accepted",
+      "identification-disputed": "Location debated",
+      "claimed-not-confirmed": "Claimed, not yet confirmed"
+    },
+    "pinPrecision": {
+      "summit": "Pin on the summit",
+      "town": "Pin on the nearby town",
+      "region": "General area, not an exact spot"
     }
   },
   "common": {

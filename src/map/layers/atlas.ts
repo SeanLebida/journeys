@@ -2,6 +2,7 @@ import type { Map as MapLibreMap, MapGeoJSONFeature } from 'maplibre-gl';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { BundleIndex } from '../../content/useBundle';
 import { hasLiveStyle } from '../lifecycle';
+import { compareSiteIds } from '../exodusCompare';
 
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
@@ -58,7 +59,10 @@ function computeSiteSpans(bundle: BundleIndex): Map<string, [number, number]> {
 /** Build a points FeatureCollection of all sites, with date span from stops. */
 export function atlasSitesFC(bundle: BundleIndex): FeatureCollection {
   const span = computeSiteSpans(bundle);
-  const features: Feature[] = bundle.sites.map((s) => {
+  // Sites compared on "Whose map?" draw only their rival pins (layers/exodusCompare.ts):
+  // a filled working dot would quietly favour one candidate.
+  const compared = compareSiteIds(bundle);
+  const features: Feature[] = bundle.sites.filter((s) => !compared.has(s.id)).map((s) => {
     const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
     return {
       type: 'Feature',
@@ -83,7 +87,8 @@ export interface AtlasSiteLabel {
  * markers (no glyph/font source is shipped, so labels can't be a symbol layer). */
 export function atlasSiteLabels(bundle: BundleIndex): AtlasSiteLabel[] {
   const span = computeSiteSpans(bundle);
-  return bundle.sites.map((s) => {
+  const compared = compareSiteIds(bundle);
+  return bundle.sites.filter((s) => !compared.has(s.id)).map((s) => {
     const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
     return {
       id: s.id,
@@ -120,6 +125,8 @@ export function atlasCandidatesFC(bundle: BundleIndex): FeatureCollection {
     if (!s.candidates?.length) continue;
     const [ymin, ymax] = span.get(s.id) ?? [-10, 70];
     s.candidates.forEach((c, i) => {
+      // Candidates with a pin precision are drawn by the comparison layers.
+      if (c.id && c.pinPrecision) return;
       features.push({
         type: 'Feature',
         properties: {
