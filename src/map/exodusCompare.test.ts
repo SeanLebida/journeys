@@ -22,7 +22,6 @@ import {
   resolvedRoutes,
   routesForSite,
   selectionFor,
-  shortLabel,
   splitGroupsAt,
   zoomForSeparation,
 } from './exodusCompare';
@@ -50,7 +49,7 @@ describe('Whose map? routes', () => {
     }
   });
 
-  it('orders routes south to north by crossing, with the isthmus lakes after the gulfs', () => {
+  it('orders routes geographically, south to north by crossing point', () => {
     const lats = routes.map((r) => r.crossing.lat);
     expect([...lats].sort((a, b) => a - b)).toEqual(lats);
     const lake = (id: string) => /ballah|bitter-lake|timsah/.test(id);
@@ -70,10 +69,6 @@ describe('Whose map? routes', () => {
     expect([...compareSiteIds(bundle)].sort()).toEqual(['site-mount-sinai', 'site-red-sea-crossing']);
   });
 
-  it('shortens labels at the first spaced dash only', () => {
-    expect(shortLabel('Har Karkom (Negev) — Anati proposal')).toBe('Har Karkom (Negev)');
-    expect(shortLabel('Ballah Lakes (former)')).toBe('Ballah Lakes (former)');
-  });
 });
 
 describe('selection and fade', () => {

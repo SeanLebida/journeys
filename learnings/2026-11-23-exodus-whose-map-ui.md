@@ -8,7 +8,7 @@
 
 ## Why it mattered
 - Sean has not chosen between side by side and a leading view, so nothing is selected by default and no row is marked as recommended.
-- Routes are listed south to north by crossing point, then by advocate. The isthmus-lake (east-wind) crossings therefore sit after the gulf ones, as Sean asked.
+- Routes are listed in geographic order, south to north by crossing point, then by advocate.
 
 ## Gotchas / pitfalls
 - MapLibre 4.7.1 `fitBounds` adds `transform.padding` to the padding you pass. Set the live padding first (`computeMapPadding`), then keep the extra margin small.

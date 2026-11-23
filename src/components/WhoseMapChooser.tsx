@@ -50,8 +50,8 @@ export function WhoseMapChooser({
                 onClick={() => onSelect(on ? null : r.route.id)}
               >
                 <strong className="whose-map__advocate">{summary(r)}</strong>
-                <span className="whose-map__pair">{t('sourcing.compare.crossing', { name: r.crossing.shortLabel })}</span>
-                <span className="whose-map__pair">{t('sourcing.compare.sinai', { name: r.sinai.shortLabel })}</span>
+                <span className="whose-map__pair">{t('sourcing.compare.crossing', { name: r.crossing.label })}</span>
+                <span className="whose-map__pair">{t('sourcing.compare.sinai', { name: r.sinai.label })}</span>
               </button>
             </li>
           );

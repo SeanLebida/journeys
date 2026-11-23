@@ -316,7 +316,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         el.type = 'button';
         const faded = candidateEmphasis(sel, c.id) === 'faded';
         el.className = `site-label site-label--candidate site-label--compare${faded ? ' is-faded' : ''}`;
-        el.textContent = c.shortLabel;
+        el.textContent = c.label;
         el.setAttribute('aria-label', `Rival identification: ${c.label}`);
         el.addEventListener('click', () => {
           setFocus({ lon: c.lon, lat: c.lat });
@@ -337,7 +337,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         'aria-label',
         t('sourcing.compare.clusterAria', {
           count: g.members.length,
-          names: g.members.map((m) => m.shortLabel).join('; '),
+          names: g.members.map((m) => m.label).join('; '),
         }),
       );
       el.addEventListener('click', () =>

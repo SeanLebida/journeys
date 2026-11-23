@@ -22,10 +22,7 @@ export const CLUSTER_SPLIT_PX = 36;
 export interface CompareCandidate {
   id: string;
   siteId: string;
-  /** Full data label. */
   label: string;
-  /** Label up to the first " — " so map tags and chooser rows stay short. */
-  shortLabel: string;
   lat: number;
   lon: number;
   confidence: TSiteCandidate['confidence'];
@@ -40,11 +37,6 @@ export interface ResolvedRoute {
   sinai: CompareCandidate;
 }
 
-export function shortLabel(label: string): string {
-  const i = label.indexOf(' — ');
-  return (i > 0 ? label.slice(0, i) : label).trim();
-}
-
 /** Every candidate drawn by the comparison layers: those with an id and a pin precision. */
 export function compareCandidates(bundle: Pick<BundleIndex, 'sites'>): CompareCandidate[] {
   const out: CompareCandidate[] = [];
@@ -55,7 +47,6 @@ export function compareCandidates(bundle: Pick<BundleIndex, 'sites'>): CompareCa
         id: c.id,
         siteId: s.id,
         label: c.label.en,
-        shortLabel: shortLabel(c.label.en),
         lat: c.lat,
         lon: c.lon,
         confidence: c.confidence,
@@ -74,11 +65,9 @@ export function compareSiteIds(bundle: Pick<BundleIndex, 'sites'>): Set<string> 
 }
 
 /**
- * Every proposed route with both pins resolved, in a fixed neutral order:
+ * Every proposed route with both pins resolved, in a fixed geographic order:
  * crossing point south to north, then advocate A to Z. Nothing is ranked by
- * preference. One effect of the geographic order is that the isthmus-lake
- * crossings (often read as an east-wind crossing) sit after the gulf ones, as
- * Sean asked; none is ever first by default or flagged as recommended.
+ * preference, none is first by default, and none is flagged as recommended.
  */
 export function resolvedRoutes(bundle: Pick<BundleIndex, 'sites' | 'journeys'>): ResolvedRoute[] {
   const byId = new Map(compareCandidates(bundle).map((c) => [c.id, c]));
@@ -243,7 +232,7 @@ export function compareMembersFC(cands: CompareCandidate[]): FeatureCollection {
         properties: {
           id: c.siteId,
           candidateId: c.id,
-          name: c.shortLabel,
+          name: c.label,
           confidence: c.confidence,
           pinPrecision: c.pinPrecision,
           groupId: c.groupId ?? '',

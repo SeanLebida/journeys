@@ -99,7 +99,7 @@
       "sinai": "Mount Sinai: {{name}}",
       "clear": "Show all maps",
       "showing": "Showing the map of {{advocate}}",
-      "line": "The line on the map is a straight connector between the two places, not the road this writer describes.",
+      "line": "The line just links the two places. It isn't the road this writer describes.",
       "clusterText": "{{count}} places",
       "clusterAria": "{{count}} nearby places: {{names}}. Zoom in to see each one.",
       "and": "and",
@@ -110,11 +110,11 @@
     "claimStatus": {
       "established": "Widely accepted",
       "identification-disputed": "Location debated",
-      "claimed-not-confirmed": "Claimed, not yet confirmed"
+      "claimed-not-confirmed": "Claimed, not confirmed"
     },
     "pinPrecision": {
-      "summit": "Pin on the summit",
-      "town": "Pin on the nearby town",
+      "summit": "Pinned on the summit",
+      "town": "Pinned on the nearby town",
       "region": "General area, not an exact spot"
     }
   },
