@@ -22,6 +22,9 @@ import { journeysExtent } from './pickerCamera';
 import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
+import { WhoseMapChooser } from '../../components/WhoseMapChooser';
+import { routesForSite } from '../../map/exodusCompare';
+import { useExodusCompareMap } from '../../map/useExodusCompareMap';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
 import { ERAS } from '../../content/eras';
 import type { BundleIndex } from '../../content/useBundle';
@@ -440,6 +443,18 @@ function StopReader({
       duration: 800,
     });
   };
+  // "Whose map?" on the crossing and Sinai stops: same chooser and map logic
+  // as the Atlas. No route is picked on arrival, and leaving the stop clears it.
+  const compared = site?.candidates?.some((c) => c.id && c.pinPrecision) === true;
+  const [picked, setPicked] = useState<{ siteId: string; routeId: string | null }>({ siteId: stop.siteId, routeId: null });
+  const compareRoute = compared && picked.siteId === stop.siteId ? picked.routeId : null;
+  const compare = useExodusCompareMap({
+    bundle,
+    enabled: compared,
+    activeRoute: compareRoute,
+    showLines: compared,
+    onPickCandidate: (_siteId, lon, lat) => focusCandidate(lat, lon),
+  });
   return (
     <article className="stop-reader">
       <div className="stop-reader__meta">
@@ -488,6 +503,14 @@ function StopReader({
         {stop.disputes && <DisputeNote text={stop.disputes.en} />}
         <Citations ids={stop.citations} bundle={bundle} />
       </ReferenceStack>
+      {site && compared && (
+        <WhoseMapChooser
+          routes={routesForSite(compare.routes, site.id)}
+          selectedId={compareRoute}
+          onSelect={(routeId) => setPicked({ siteId: stop.siteId, routeId })}
+          bundle={bundle}
+        />
+      )}
       {site && <SiteCandidates site={site} bundle={bundle} onFocusCandidate={focusCandidate} />}
       <SiteExtras siteId={stop.siteId} bundle={bundle} />
     </article>

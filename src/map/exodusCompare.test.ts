@@ -11,6 +11,9 @@ import {
   candidateEmphasis,
   candidateGroups,
   clusterFilter,
+  clusterLabelSortKey,
+  compareClustersFC,
+  memberLabelSortKey,
   clusterOpacity,
   compareCandidates,
   compareSiteIds,
@@ -102,6 +105,26 @@ describe('selection and fade', () => {
     const line = lineOpacity(sel) as unknown[];
     expect(line[1]).toEqual(['==', ['get', 'proposedRouteId'], 'pr-wyatt-nuweiba-lawz']);
     expect(line[3]).toBeGreaterThan(0);
+  });
+});
+
+describe('label collision priority', () => {
+  it('gives every name the same priority when nothing is picked', () => {
+    expect(memberLabelSortKey(NO_SELECTION)).toBe(1);
+    expect(clusterLabelSortKey(NO_SELECTION)).toBe(1);
+  });
+
+  it('places the picked route names before any faded name', () => {
+    const sel = selectionFor(routes, 'pr-harel-bitter-sin-bishar');
+    expect(memberLabelSortKey(sel)).toEqual(['case', ['in', ['get', 'candidateId'], ['literal', sel.candidateIds]], 0, 2]);
+    expect(clusterLabelSortKey(sel)).toEqual(['case', ['in', ['get', 'groupId'], ['literal', sel.groupIds]], 0, 2]);
+    expect(sel.groupIds).toEqual(['group-crossing-isthmus-lakes']);
+  });
+
+  it('labels each cluster with the caller text', () => {
+    const fc = compareClustersFC(groups, (g) => `${g.members.length} places`);
+    expect(fc.features).toHaveLength(groups.length);
+    for (const f of fc.features) expect(f.properties?.label).toBe('2 places');
   });
 });
 
