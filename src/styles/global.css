@@ -5144,11 +5144,18 @@ button.tl-jump__link {
   color: var(--text);
 }
 .site-candidates__note,
-.site-candidates__precision {
+.site-candidates__precision,
+.site-candidates__body-text {
   margin: 0.15rem 0 0;
   font-size: 0.8rem;
   line-height: 1.4;
   color: var(--text);
+}
+.site-candidates__card {
+  margin: 0.35rem 0 0;
+}
+.site-candidates__body-text + .site-candidates__body-text {
+  margin-top: 0.45rem;
 }
 .site-candidates__precision {
   font-style: italic;
