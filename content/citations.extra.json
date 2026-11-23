@@ -10258,5 +10258,15 @@
    "en": "OpenBible.info, 'Jebel Hashem el Tarif' (sources listed there: GeoNames, OpenStreetMap and Wikidata)"
   },
   "kind": "gazetteer"
+ },
+ {
+  "id": "cit-rasmussen-niv-atlas-1989",
+  "source": {
+   "en": "C. G. Rasmussen, Zondervan NIV Atlas of the Bible (1989), pp. 88-90"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Named in the research pass as using Har-El's Jebel Sin Bishar identification; not opened in that pass."
+  }
  }
 ]

@@ -803,7 +803,7 @@
      "cit-turpin-sinai-2022"
     ],
     "note": {
-     "en": "Paired with a crossing at the Great Bitter Lake."
+     "en": "Paired with a crossing at the Great Bitter Lake. Har-El proposed it; Franz, Faiman and Rasmussen follow the same pairing."
     },
     "advocates": [
      {
@@ -816,6 +816,18 @@
       "name": "Gordon Franz",
       "citationIds": [
        "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "David Faiman",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "Carl G. Rasmussen",
+      "citationIds": [
+       "cit-rasmussen-niv-atlas-1989"
       ]
      }
     ],
