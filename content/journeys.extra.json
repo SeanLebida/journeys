@@ -99,6 +99,120 @@
    "cit-ot-exodus",
    "cit-ot-exodus-route",
    "cit-ref-sacred-bridge"
+  ],
+  "proposedRoutes": [
+   {
+    "id": "pr-hoffmeier-ballah-safsafa",
+    "advocate": "James K. Hoffmeier",
+    "crossingCandidateId": "cand-crossing-ballah",
+    "sinaiCandidateId": "cand-sinai-ras-safsafa",
+    "note": {
+     "en": "Crossing in the Ballah lake system, then into Sinai and south to the southern mountains, with Ras Safsafa slightly preferred."
+    },
+    "citationIds": [
+     "cit-hoffmeier-ancient-israel-sinai",
+     "cit-hoffmeier-tynbul-2022"
+    ]
+   },
+   {
+    "id": "pr-hoffmeier-ballah-serbal",
+    "advocate": "James K. Hoffmeier",
+    "crossingCandidateId": "cand-crossing-ballah",
+    "sinaiCandidateId": "cand-sinai-jebel-serbal",
+    "note": {
+     "en": "The same Ballah crossing, with Jebel Serbal as the other southern peak he treats as viable."
+    },
+    "citationIds": [
+     "cit-hoffmeier-ancient-israel-sinai"
+    ]
+   },
+   {
+    "id": "pr-wood-ballah-tarif",
+    "advocate": "Bryant G. Wood",
+    "crossingCandidateId": "cand-crossing-ballah",
+    "sinaiCandidateId": "cand-sinai-hashem-el-tarif",
+    "note": {
+     "en": "Follows Hoffmeier on the crossing only, then east on the Trans-Sinai Highway to Hashem el-Tarif."
+    },
+    "citationIds": [
+     "cit-wood-horeb-2008"
+    ]
+   },
+   {
+    "id": "pr-harel-bitter-sin-bishar",
+    "advocate": "Menashe Har-El",
+    "crossingCandidateId": "cand-crossing-great-bitter-lake",
+    "sinaiCandidateId": "cand-sinai-jebel-sin-bishar",
+    "note": {
+     "en": "A short wilderness march from the Great Bitter Lake area to Jebel Sin Bishar in west-central Sinai."
+    },
+    "citationIds": [
+     "cit-franz-sinai-arabia-2000"
+    ]
+   },
+   {
+    "id": "pr-kitchen-bitter-musa",
+    "advocate": "Kenneth A. Kitchen",
+    "crossingCandidateId": "cand-crossing-great-bitter-lake",
+    "sinaiCandidateId": "cand-sinai-jebel-musa",
+    "note": {
+     "en": "Reed-sea crossing on the isthmus, south down Sinai's west coast, then east through the mountains to the Jebel Musa and Ras Safsafa complex."
+    },
+    "citationIds": [
+     "cit-ref-kitchen",
+     "cit-byers-exodus-crossing-2006"
+    ]
+   },
+   {
+    "id": "pr-traditional-suez-musa",
+    "advocate": "Traditional pilgrim reconstruction",
+    "crossingCandidateId": "cand-crossing-gulf-of-suez",
+    "sinaiCandidateId": "cand-sinai-jebel-musa",
+    "note": {
+     "en": "A crossing near the head of the Gulf of Suez, then down the west coast of Sinai to the St Catherine mountains."
+    },
+    "citationIds": [
+     "cit-byers-exodus-crossing-2006"
+    ]
+   },
+   {
+    "id": "pr-wyatt-nuweiba-lawz",
+    "advocate": "Ron Wyatt and Lennart Moller",
+    "crossingCandidateId": "cand-crossing-nuweiba",
+    "sinaiCandidateId": "cand-sinai-jebel-al-lawz",
+    "note": {
+     "en": "Across the Sinai Peninsula to the beach at Nuweiba, across the gulf to the Saudi shore, then inland to the al-Lawz and Maqla area."
+    },
+    "citationIds": [
+     "cit-wyatt-chariot-wheels",
+     "cit-franz-not-lawz-2007"
+    ]
+   },
+   {
+    "id": "pr-cornuke-tiran-lawz",
+    "advocate": "Jim Irwin, Bob Cornuke and Larry Williams",
+    "crossingCandidateId": "cand-crossing-strait-of-tiran",
+    "sinaiCandidateId": "cand-sinai-jebel-al-lawz",
+    "note": {
+     "en": "South along Sinai's east coast to the Strait of Tiran, then into Midian and north to Jebel al-Lawz."
+    },
+    "citationIds": [
+     "cit-franz-not-lawz-2007"
+    ]
+   },
+   {
+    "id": "pr-humphreys-aqaba-badr",
+    "advocate": "Colin Humphreys",
+    "crossingCandidateId": "cand-crossing-head-of-aqaba",
+    "sinaiCandidateId": "cand-sinai-hala-l-badr",
+    "note": {
+     "en": "Across the peninsula to the head of the Gulf of Aqaba, then down the Arabian side and inland to Hala-'l Badr."
+    },
+    "citationIds": [
+     "cit-fritz-lost-sea-2016",
+     "cit-turpin-sinai-2022"
+    ]
+   }
   ]
  },
  {

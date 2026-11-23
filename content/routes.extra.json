@@ -3385,5 +3385,243 @@
   "citations": [
    "cit-route-orbis"
   ]
+ },
+ {
+  "id": "route-pr-hoffmeier-ballah-safsafa",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.3,
+     30.7
+    ],
+    [
+     33.967222,
+     28.555556
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-hoffmeier-ballah-safsafa",
+  "note": {
+   "en": "James K. Hoffmeier's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-hoffmeier-ancient-israel-sinai",
+   "cit-hoffmeier-tynbul-2022"
+  ]
+ },
+ {
+  "id": "route-pr-hoffmeier-ballah-serbal",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.3,
+     30.7
+    ],
+    [
+     33.651667,
+     28.646389
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-hoffmeier-ballah-serbal",
+  "note": {
+   "en": "James K. Hoffmeier's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-hoffmeier-ancient-israel-sinai"
+  ]
+ },
+ {
+  "id": "route-pr-wood-ballah-tarif",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.3,
+     30.7
+    ],
+    [
+     34.633411,
+     29.669217
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-wood-ballah-tarif",
+  "note": {
+   "en": "Bryant G. Wood's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-wood-horeb-2008"
+  ]
+ },
+ {
+  "id": "route-pr-harel-bitter-sin-bishar",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.37461,
+     30.33275
+    ],
+    [
+     32.96119,
+     29.67164
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-harel-bitter-sin-bishar",
+  "note": {
+   "en": "Menashe Har-El's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-franz-sinai-arabia-2000"
+  ]
+ },
+ {
+  "id": "route-pr-kitchen-bitter-musa",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.37461,
+     30.33275
+    ],
+    [
+     33.975,
+     28.5394
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-kitchen-bitter-musa",
+  "note": {
+   "en": "Kenneth A. Kitchen's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-ref-kitchen",
+   "cit-byers-exodus-crossing-2006"
+  ]
+ },
+ {
+  "id": "route-pr-traditional-suez-musa",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     32.52627,
+     29.97371
+    ],
+    [
+     33.975,
+     28.5394
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-traditional-suez-musa",
+  "note": {
+   "en": "Traditional pilgrim reconstruction's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-byers-exodus-crossing-2006"
+  ]
+ },
+ {
+  "id": "route-pr-wyatt-nuweiba-lawz",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     34.6634,
+     29.04681
+    ],
+    [
+     35.3058,
+     28.6542
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-wyatt-nuweiba-lawz",
+  "note": {
+   "en": "Ron Wyatt and Lennart Moller's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-wyatt-chariot-wheels",
+   "cit-franz-not-lawz-2007"
+  ]
+ },
+ {
+  "id": "route-pr-cornuke-tiran-lawz",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     34.47072,
+     28.02358
+    ],
+    [
+     35.3058,
+     28.6542
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-cornuke-tiran-lawz",
+  "note": {
+   "en": "Jim Irwin, Bob Cornuke and Larry Williams's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-franz-not-lawz-2007"
+  ]
+ },
+ {
+  "id": "route-pr-humphreys-aqaba-badr",
+  "journeyId": "journey-exodus",
+  "legs": [
+   [
+    [
+     34.94821,
+     29.55805
+    ],
+    [
+     37.235,
+     27.25
+    ]
+   ]
+  ],
+  "legGrades": [
+   "schematic"
+  ],
+  "proposedRouteId": "pr-humphreys-aqaba-badr",
+  "note": {
+   "en": "Colin Humphreys's pairing. A straight connector between two pins, not the road the advocate describes and not survey-grade."
+  },
+  "citations": [
+   "cit-fritz-lost-sea-2016",
+   "cit-turpin-sinai-2022"
+  ]
  }
 ]

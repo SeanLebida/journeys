@@ -44,6 +44,7 @@ import {
   isTertiaryCitation,
   onlyGenericBackstops,
 } from '../src/content/accuracy';
+import { checkCandidates, checkProposedRoutes } from '../src/content/candidates';
 import { WORLD_BBOX } from '../src/map/graticule';
 import { TRANSLATIONS } from '../src/content/translations';
 import { flattenHelloAo, type HelloAoTranslation, type PlainVerse } from '../src/content/helloao';
@@ -283,6 +284,11 @@ async function main(): Promise<void> {
       err(`site ${s.id}.coordinates: ${conf} needs candidates (≥2) or a disputes note`);
   });
 
+  // 4d-bis. Candidate ids, candidate groups, advocates, and proposed
+  // crossing-to-Sinai routes (ids resolve, lines sit on their pins).
+  checkCandidates(vSites, citIds).forEach(err);
+  checkProposedRoutes(vJourneys, vSites, vRoutes, citIds).forEach(err);
+
   // 4e. Narrative entities with scriptureRefs should cite primary-scripture.
   const requirePrimaryScripture = (refs: string[] | undefined, cites: string[] | undefined, where: string) => {
     if (!refs?.length) return;
@@ -399,6 +405,8 @@ async function main(): Promise<void> {
   vRoutes.forEach((r) => {
     const j = vJourneys.find((x) => x.id === r.journeyId);
     if (!j) return err(`route ${r.id}: unknown journeyId '${r.journeyId}'`);
+    // Proposed crossing-to-Sinai lines join candidate pins, not stops; 6c checks them.
+    if (r.proposedRouteId) return;
     if (r.legs.length !== j.stops.length - 1)
       return err(`route ${r.id}: ${r.legs.length} legs for ${j.stops.length} stops (need ${j.stops.length - 1})`);
     if (r.legGrades && r.legGrades.length !== r.legs.length)

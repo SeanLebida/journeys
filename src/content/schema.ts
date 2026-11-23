@@ -105,23 +105,63 @@ const claimOf = <T extends z.ZodTypeAny>(value: T) =>
 
 const LatLon = z.object({ lat: z.number(), lon: z.number() });
 
+/**
+ * Display label for how settled a claim is. A label only: `confidence` stays
+ * the grade the accuracy gate and QC check, so this is never a fifth grade.
+ * `claimed-not-confirmed` is for claims with no published dig or lab test.
+ */
+export const ClaimStatus = z.enum(['established', 'identification-disputed', 'claimed-not-confirmed']);
+/** How exact a pin is: a summit, a town, or a whole region (basin, strait, gulf head). */
+export const PinPrecision = z.enum(['summit', 'town', 'region']);
+
+/** A named person who argues for a candidate, with the sources that show it. */
+export const Advocate = z.object({
+  name: z.string().min(1),
+  citationIds: z.array(z.string()).min(1),
+});
+
+/**
+ * A rival identification for a site. `id`, `note`, `advocates`,
+ * `pinPrecision`, `groupId` and `claimStatus` are optional so older content
+ * and older OTA bundles still validate. `groupId` clusters neighbouring peaks
+ * that advocates often treat as one place (e.g. Jebel al-Lawz and Jabal Maqla).
+ */
+export const SiteCandidate = z.object({
+  id: z.string().min(1).optional(),
+  label: LocalizedText,
+  lat: z.number(),
+  lon: z.number(),
+  confidence: Confidence,
+  citations: z.array(z.string()),
+  note: LocalizedText.optional(),
+  advocates: z.array(Advocate).optional(),
+  pinPrecision: PinPrecision.optional(),
+  groupId: z.string().min(1).optional(),
+  claimStatus: ClaimStatus.optional(),
+});
+
+/**
+ * One advocate's pairing of a sea-crossing candidate with a Mount Sinai
+ * candidate, on a journey. Both ids are `SiteCandidate.id`s. One crossing can
+ * pair with several Sinai candidates, so this is a list on the journey. The
+ * map line for an entry is the `RoutePath` whose `proposedRouteId` is its id.
+ */
+export const ProposedRoute = z.object({
+  id: z.string().min(1),
+  advocate: z.string().min(1),
+  crossingCandidateId: z.string().min(1),
+  sinaiCandidateId: z.string().min(1),
+  note: LocalizedText,
+  citationIds: z.array(z.string()).min(1),
+});
+
 export const Site = z.object({
   id: z.string().min(1),
   ancientName: LocalizedText,
   modernName: LocalizedText.optional(),
   modernLocation: LocalizedText,
   coordinates: claimOf(LatLon),
-  candidates: z
-    .array(
-      z.object({
-        label: LocalizedText,
-        lat: z.number(),
-        lon: z.number(),
-        confidence: Confidence,
-        citations: z.array(z.string()),
-      }),
-    )
-    .optional(),
+  candidates: z.array(SiteCandidate).optional(),
   /** Pleiades gazetteer place id (https://pleiades.stoa.org/places/<id>). */
   pleiadesId: z.string().optional(),
   /** Digital Atlas of the Roman Empire place id, when distinct from Pleiades. */
@@ -149,6 +189,13 @@ export const RoutePath = z.object({
    * connectors — drives map stroke style and the trace-panel caveat.
    */
   legGrades: z.array(GeometryGrade).optional(),
+  /**
+   * Set when this path draws one `Journey.proposedRoutes` entry (a rival
+   * crossing-to-Sinai reconstruction) instead of the journey's own stop-to-stop
+   * trace. Such paths have a single leg between two candidate pins, are not
+   * matched to stops, and are never returned as the journey's trace route.
+   */
+  proposedRouteId: z.string().min(1).optional(),
   note: LocalizedText.optional(),
   citations: z.array(z.string()),
 });
@@ -163,6 +210,8 @@ export const Journey = z.object({
   color: z.string().optional(), // route line color (styling, not a fact)
   stops: z.array(z.string()), // ordered Stop.id[]
   citations: z.array(z.string()),
+  /** Rival crossing-to-Sinai reconstructions, one per advocate pairing. */
+  proposedRoutes: z.array(ProposedRoute).optional(),
 });
 
 export const Stop = z.object({
@@ -234,7 +283,8 @@ export const Artifact = z.object({
   confidence: Confidence,
   reviewStatus: ReviewStatus,
   disputes: LocalizedText.optional(),
-  citations: z.array(z.string()),
+  citations: z.array(z.string()),  /** Display label only; `confidence` stays the checked grade. */
+  claimStatus: ClaimStatus.optional(),
 });
 
 /**
@@ -478,3 +528,7 @@ export type TLesson = z.infer<typeof Lesson>;
 export type TQuiz = z.infer<typeof Quiz>;
 export type TQuizQuestion = z.infer<typeof QuizQuestion>;
 export type TBundle = z.infer<typeof Bundle>;
+export type TSiteCandidate = z.infer<typeof SiteCandidate>;
+export type TProposedRoute = z.infer<typeof ProposedRoute>;
+export type TClaimStatus = z.infer<typeof ClaimStatus>;
+export type TPinPrecision = z.infer<typeof PinPrecision>;
