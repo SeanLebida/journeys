@@ -2,6 +2,7 @@ import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { BundleIndex } from '../../content/useBundle';
 import { hasLiveStyle } from '../lifecycle';
 import {
+  LABEL_FADED_OPACITY,
   type CandidateGroup,
   type ResolvedRoute,
   type Selection,
@@ -11,9 +12,11 @@ import {
   compareClustersFC,
   compareLinesFC,
   compareMembersFC,
+  clusterLabelSortKey,
   lineOpacity,
   lineWidth,
   memberFilter,
+  memberLabelSortKey,
   memberOpacity,
 } from '../exodusCompare';
 
@@ -27,7 +30,23 @@ export const COMPARE_LAYERS = {
   /** Invisible 22px-radius hit discs so every pin is a 44x44 tap target. */
   hit: 'compare-candidate-hit',
   clusterHit: 'compare-cluster-hit',
+  /** Names as a symbol layer so MapLibre's collision keeps them from overlapping. */
+  labels: 'compare-candidate-labels',
+  clusterLabels: 'compare-cluster-labels',
+  /** Invisible icons on every pin: labels collide with them, so no name covers a pin. */
+  pinBlockers: 'compare-pin-blockers',
+  clusterBlockers: 'compare-cluster-blockers',
 } as const;
+
+const BLOCKER_IMAGE = 'compare-pin-blocker';
+const LABEL_FONT = ['Ubuntu Medium'];
+const LABEL_MINZOOM = 5;
+
+export function labelTone(dark: boolean): { color: string; halo: string } {
+  return dark
+    ? { color: '#f3ecd9', halo: 'rgba(13, 15, 18, 0.95)' }
+    : { color: '#221a10', halo: 'rgba(255, 255, 255, 0.95)' };
+}
 
 const SRC = { members: 'compare-members', clusters: 'compare-clusters', lines: 'compare-lines' };
 
@@ -47,11 +66,26 @@ export interface CompareModel {
   groups: CandidateGroup[];
 }
 
-export function ensureCompareLayers(map: MapLibreMap, bundle: BundleIndex, model: CompareModel, beforeId?: string): void {
+export interface CompareLayerOptions {
+  dark: boolean;
+  /** Visible text of a cluster's tag, e.g. "2 places". */
+  clusterLabel: (g: CandidateGroup) => string;
+}
+
+export function ensureCompareLayers(
+  map: MapLibreMap,
+  bundle: BundleIndex,
+  model: CompareModel,
+  opts: CompareLayerOptions,
+  beforeId?: string,
+): void {
   if (map.getLayer(COMPARE_LAYERS.pins)) return;
   const cands = compareCandidates(bundle);
   if (!map.getSource(SRC.members)) map.addSource(SRC.members, { type: 'geojson', data: compareMembersFC(cands) });
-  if (!map.getSource(SRC.clusters)) map.addSource(SRC.clusters, { type: 'geojson', data: compareClustersFC(model.groups) });
+  if (!map.getSource(SRC.clusters))
+    map.addSource(SRC.clusters, { type: 'geojson', data: compareClustersFC(model.groups, opts.clusterLabel) });
+  if (!map.hasImage(BLOCKER_IMAGE))
+    map.addImage(BLOCKER_IMAGE, { width: 16, height: 16, data: new Uint8Array(16 * 16 * 4) });
   if (!map.getSource(SRC.lines))
     map.addSource(SRC.lines, {
       type: 'geojson',
@@ -138,10 +172,90 @@ export function ensureCompareLayers(map: MapLibreMap, bundle: BundleIndex, model
     source: SRC.clusters,
     paint: { 'circle-radius': 22, 'circle-color': '#000000', 'circle-opacity': 0.01 },
   });
+  const tone = labelTone(opts.dark);
+  const labelLayout = {
+    'text-font': LABEL_FONT,
+    'text-size': 12,
+    'text-max-width': 9,
+    'text-line-height': 1.15,
+    'text-variable-anchor': ['left', 'right', 'top', 'bottom', 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
+    'text-justify': 'auto',
+    'text-allow-overlap': false,
+    'text-ignore-placement': false,
+    'text-padding': 3,
+  };
+  const labelPaint = { 'text-color': tone.color, 'text-halo-color': tone.halo, 'text-halo-width': 1.6 };
+  // Collision is placed top layer first, so the order below is deliberate:
+  // pin blockers (topmost) claim their spots, then cluster tags, then names.
+  add({
+    id: COMPARE_LAYERS.labels,
+    type: 'symbol',
+    source: SRC.members,
+    minzoom: LABEL_MINZOOM,
+    layout: {
+      ...labelLayout,
+      'text-field': ['get', 'name'],
+      'text-radial-offset': ['case', ['==', ['get', 'pinPrecision'], 'region'], 1.5, 1],
+      'symbol-sort-key': 1,
+    } as never,
+    paint: labelPaint,
+  });
+  add({
+    id: COMPARE_LAYERS.clusterLabels,
+    type: 'symbol',
+    source: SRC.clusters,
+    minzoom: LABEL_MINZOOM,
+    layout: {
+      ...labelLayout,
+      'text-font': ['Ubuntu Bold'],
+      'text-field': ['get', 'label'],
+      'text-radial-offset': ['case', ['==', ['get', 'pinPrecision'], 'region'], 1.8, 1.4],
+      'symbol-sort-key': 1,
+    } as never,
+    paint: labelPaint,
+  });
+  for (const [id, source, size] of [
+    [COMPARE_LAYERS.clusterBlockers, SRC.clusters, 1.6],
+    [COMPARE_LAYERS.pinBlockers, SRC.members, 1],
+  ] as const) {
+    add({
+      id,
+      type: 'symbol',
+      source,
+      layout: {
+        'icon-image': BLOCKER_IMAGE,
+        'icon-size': size,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': false,
+      },
+    });
+  }
 }
 
-const MEMBER_LAYERS = [COMPARE_LAYERS.areas, COMPARE_LAYERS.pins, COMPARE_LAYERS.hit];
-const CLUSTER_LAYERS = [COMPARE_LAYERS.clusterAreas, COMPARE_LAYERS.clusterOuter, COMPARE_LAYERS.clusterInner, COMPARE_LAYERS.clusterHit];
+export function setCompareTone(map: MapLibreMap, dark: boolean): void {
+  const tone = labelTone(dark);
+  for (const id of [COMPARE_LAYERS.labels, COMPARE_LAYERS.clusterLabels]) {
+    if (!map.getLayer(id)) continue;
+    map.setPaintProperty(id, 'text-color', tone.color);
+    map.setPaintProperty(id, 'text-halo-color', tone.halo);
+  }
+}
+
+const MEMBER_LAYERS = [
+  COMPARE_LAYERS.areas,
+  COMPARE_LAYERS.pins,
+  COMPARE_LAYERS.hit,
+  COMPARE_LAYERS.labels,
+  COMPARE_LAYERS.pinBlockers,
+];
+const CLUSTER_LAYERS = [
+  COMPARE_LAYERS.clusterAreas,
+  COMPARE_LAYERS.clusterOuter,
+  COMPARE_LAYERS.clusterInner,
+  COMPARE_LAYERS.clusterHit,
+  COMPARE_LAYERS.clusterLabels,
+  COMPARE_LAYERS.clusterBlockers,
+];
 
 /** Show grouped pins as one cluster below their split zoom, apart above it. */
 export function applyCompareSplit(map: MapLibreMap, split: string[], groups: CandidateGroup[]): void {
@@ -173,6 +287,10 @@ export function applyCompareSelection(map: MapLibreMap, sel: Selection, showLine
   for (const id of [COMPARE_LAYERS.clusterOuter, COMPARE_LAYERS.clusterInner])
     map.setPaintProperty(id, 'circle-stroke-opacity', clusterOpacity(sel, PIN_OPACITY) as never);
   map.setPaintProperty(COMPARE_LAYERS.clusterAreas, 'circle-opacity', clusterOpacity(sel, AREA_OPACITY) as never);
+  map.setPaintProperty(COMPARE_LAYERS.labels, 'text-opacity', memberOpacity(sel, 1, LABEL_FADED_OPACITY) as never);
+  map.setPaintProperty(COMPARE_LAYERS.clusterLabels, 'text-opacity', clusterOpacity(sel, 1, LABEL_FADED_OPACITY) as never);
+  map.setLayoutProperty(COMPARE_LAYERS.labels, 'symbol-sort-key', memberLabelSortKey(sel) as never);
+  map.setLayoutProperty(COMPARE_LAYERS.clusterLabels, 'symbol-sort-key', clusterLabelSortKey(sel) as never);
   map.setPaintProperty(COMPARE_LAYERS.lines, 'line-opacity', lineOpacity(sel) as never);
   map.setPaintProperty(COMPARE_LAYERS.lines, 'line-width', lineWidth(sel) as never);
   map.setLayoutProperty(COMPARE_LAYERS.lines, 'visibility', showLines ? 'visible' : 'none');

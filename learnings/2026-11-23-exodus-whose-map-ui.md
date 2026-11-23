@@ -18,3 +18,8 @@
 
 ## Verification
 - `npm run lint`, `npm run typecheck`, `npx vitest run` (62 files, 410 tests). Playwright, dark scheme, at 412x760, 360x640 and desktop.
+
+## Follow-up: collision labels and Trace (fd/exodus-compare-2)
+- Candidate names and cluster tags are now MapLibre symbol layers (Ubuntu glyphs), so collision drops a label rather than letting it overlap another. Invisible icon "blockers" on every pin sit above the labels, so a name never covers a pin. `symbol-sort-key` puts the picked route's names first.
+- `useExodusCompareMap` holds the map side for both Atlas and Trace. Trace keeps `isStyleLoaded()` false while it rewrites its route, so the hook keeps retrying on `idle` instead of waiting once for `load`.
+- The floating layer control is not part of the camera padding, so route framing adds its height to the top padding.

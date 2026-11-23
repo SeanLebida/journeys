@@ -5153,10 +5153,3 @@ button.tl-jump__link {
 .site-candidates__precision {
   font-style: italic;
 }
-.site-label--compare.is-faded {
-  opacity: 0.5;
-}
-.site-label--cluster {
-  font-style: normal;
-  font-weight: 700;
-}

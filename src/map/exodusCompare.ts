@@ -127,15 +127,18 @@ export function groupEmphasis(sel: Selection, groupId: string): Emphasis {
 type Expr = unknown[] | number;
 
 /** Opacity for member pins and areas: `full` for all when idle, else highlight vs fade. */
-export function memberOpacity(sel: Selection, full: number): Expr {
+export function memberOpacity(sel: Selection, full: number, fade = FADED_OPACITY): Expr {
   if (!sel.routeId) return full;
-  return ['case', ['in', ['get', 'candidateId'], ['literal', sel.candidateIds]], full, full * FADED_OPACITY];
+  return ['case', ['in', ['get', 'candidateId'], ['literal', sel.candidateIds]], full, full * fade];
 }
 
-export function clusterOpacity(sel: Selection, full: number): Expr {
+export function clusterOpacity(sel: Selection, full: number, fade = FADED_OPACITY): Expr {
   if (!sel.routeId) return full;
-  return ['case', ['in', ['get', 'groupId'], ['literal', sel.groupIds]], full, full * FADED_OPACITY];
+  return ['case', ['in', ['get', 'groupId'], ['literal', sel.groupIds]], full, full * fade];
 }
+
+/** Faded names stay readable enough to find; pins and lines fade further. */
+export const LABEL_FADED_OPACITY = 0.5;
 
 export function lineOpacity(sel: Selection): Expr {
   if (!sel.routeId) return LINE_IDLE_OPACITY;
@@ -145,6 +148,21 @@ export function lineOpacity(sel: Selection): Expr {
 export function lineWidth(sel: Selection): Expr {
   if (!sel.routeId) return 2.5;
   return ['case', ['==', ['get', 'proposedRouteId'], sel.routeId], 4, 2];
+}
+
+/**
+ * Placement priority for map labels (lower is placed first). With a route
+ * picked, its two names claim their spots before any faded name, so a
+ * collision drops a faded label, never the picked one. Pins are never hidden.
+ */
+export function memberLabelSortKey(sel: Selection): Expr {
+  if (!sel.routeId) return 1;
+  return ['case', ['in', ['get', 'candidateId'], ['literal', sel.candidateIds]], 0, 2];
+}
+
+export function clusterLabelSortKey(sel: Selection): Expr {
+  if (!sel.routeId) return 1;
+  return ['case', ['in', ['get', 'groupId'], ['literal', sel.groupIds]], 0, 2];
 }
 
 // ---- Clusters ---------------------------------------------------------------
@@ -243,7 +261,10 @@ export function compareMembersFC(cands: CompareCandidate[]): FeatureCollection {
   };
 }
 
-export function compareClustersFC(groups: CandidateGroup[]): FeatureCollection {
+export function compareClustersFC(
+  groups: CandidateGroup[],
+  labelFor: (g: CandidateGroup) => string = (g) => String(g.members.length),
+): FeatureCollection {
   return {
     type: 'FeatureCollection',
     features: groups.map(
@@ -253,6 +274,7 @@ export function compareClustersFC(groups: CandidateGroup[]): FeatureCollection {
           id: g.members[0].siteId,
           groupId: g.groupId,
           count: g.members.length,
+          label: labelFor(g),
           pinPrecision: g.pinPrecision,
           splitZoom: g.splitZoom,
           confidence: g.members[0].confidence,
@@ -325,4 +347,24 @@ export function advocateSummary(names: string[], othersWord: (n: number) => stri
 export function advocateList(names: string[], and = 'and'): string {
   if (names.length <= 2) return names.join(` ${and} `);
   return `${names.slice(0, -1).join(', ')} ${and} ${names[names.length - 1]}`;
+}
+
+// ---- Model ------------------------------------------------------------------
+
+export interface CompareModelData {
+  cands: CompareCandidate[];
+  siteIds: Set<string>;
+  routes: ResolvedRoute[];
+  groups: CandidateGroup[];
+}
+
+/** Everything the "Whose map?" map and chooser need, built once per bundle. */
+export function compareModel(bundle: Pick<BundleIndex, 'sites' | 'journeys'>): CompareModelData {
+  const cands = compareCandidates(bundle);
+  return {
+    cands,
+    siteIds: new Set(cands.map((c) => c.siteId)),
+    routes: resolvedRoutes(bundle),
+    groups: candidateGroups(cands),
+  };
 }
