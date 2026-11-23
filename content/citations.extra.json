@@ -10268,5 +10268,15 @@
   "note": {
    "en": "Named in the research pass as using Har-El's Jebel Sin Bishar identification; not opened in that pass."
   }
+ },
+ {
+  "id": "cit-drews-han-2010",
+  "source": {
+   "en": "Drews and Han, 'Dynamics of Wind Setdown at Suez and the Eastern Nile Delta,' PLoS ONE (2010)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Models an ancient lagoon near Tanis, in the northeastern Nile Delta."
+  }
  }
 ]

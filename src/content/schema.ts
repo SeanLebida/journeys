@@ -121,7 +121,7 @@ export const Advocate = z.object({
 });
 
 /**
- * A rival identification for a site. `id`, `note`, `advocates`,
+ * A rival identification for a site. `id`, `note`, `body`, `advocates`,
  * `pinPrecision`, `groupId` and `claimStatus` are optional so older content
  * and older OTA bundles still validate. `groupId` clusters neighbouring peaks
  * that advocates often treat as one place (e.g. Jebel al-Lawz and Jabal Maqla).
@@ -134,6 +134,13 @@ export const SiteCandidate = z.object({
   confidence: Confidence,
   citations: z.array(z.string()),
   note: LocalizedText.optional(),
+  /**
+   * Full plain-language sheet text for this candidate. Paragraphs are separated
+   * by a blank line ("\n\n"); each starts with its section label, e.g.
+   * "In short.", "What was found.", "What it might mean.", "What's still uncertain.".
+   * Optional so older content and older OTA bundles still validate.
+   */
+  body: LocalizedText.optional(),
   advocates: z.array(Advocate).optional(),
   pinPrecision: PinPrecision.optional(),
   groupId: z.string().min(1).optional(),

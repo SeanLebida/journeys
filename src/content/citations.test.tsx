@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { ClaimMeta, ReviewBadge } from './citations';
+import { ClaimMeta, DisputeNote, ReviewBadge, proseParagraphs } from './citations';
 
 describe('review honesty', () => {
   it('labels self-reviewed claims as such, not as approved', () => {
@@ -93,5 +93,22 @@ describe('sortCitationsForDisplay', () => {
       'g',
       'w',
     ]);
+  });
+});
+
+describe('prose paragraphs', () => {
+  it('splits a card on blank lines', () => {
+    expect(proseParagraphs('In short. One.\n\nWhat was found. Two.')).toEqual([
+      'In short. One.',
+      'What was found. Two.',
+    ]);
+  });
+
+  it('renders each dispute paragraph, including how the water part', () => {
+    render(
+      <DisputeNote text={"What was found. A lake.\n\nHow did the water part? The Bible presents this as God's miracle."} />,
+    );
+    expect(screen.getByText('What was found. A lake.')).toBeInTheDocument();
+    expect(screen.getByText(/The Bible presents this as God's miracle/)).toBeInTheDocument();
   });
 });
