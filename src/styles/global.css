@@ -5153,3 +5153,17 @@ button.tl-jump__link {
 .site-candidates__precision {
   font-style: italic;
 }
+
+/* Atlas site names draw as a MapLibre symbol layer (collision-aware). The DOM
+   tag stays for keyboard and screen-reader users only: invisible and
+   click-through until it takes keyboard focus. */
+/* MapLibre writes an inline opacity on every marker, so hide by clipping. */
+.site-label.site-label--kbd {
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+.site-label.site-label--kbd:focus-visible {
+  clip-path: none;
+  pointer-events: auto;
+  color: var(--text);
+}

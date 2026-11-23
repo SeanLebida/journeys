@@ -30,6 +30,7 @@ export function useExodusCompareMap({
   activeRoute,
   showLines,
   onPickCandidate,
+  labelAnchors,
 }: {
   bundle: BundleIndex;
   /** Draw the comparison layers at all. */
@@ -40,6 +41,8 @@ export function useExodusCompareMap({
   activeRoute: string | null;
   showLines: boolean;
   onPickCandidate?: (siteId: string, lon: number, lat: number) => void;
+  /** Label anchor preference (see CompareLayerOptions.anchors). */
+  labelAnchors?: string[];
 }): CompareModelData {
   const { mapRef, ready } = useMap();
   const { t } = useTranslation();
@@ -58,6 +61,7 @@ export function useExodusCompareMap({
       ensureCompareLayers(map, bundle, compare, {
         dark,
         clusterLabel: (g) => t('sourcing.compare.clusterText', { count: g.members.length }),
+        anchors: labelAnchors,
       });
       const next = splitGroupsAt(compare.groups, map.getZoom());
       applyCompareSplit(map, next, compare.groups);

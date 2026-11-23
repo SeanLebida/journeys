@@ -3,10 +3,17 @@ import type { Feature, FeatureCollection } from 'geojson';
 import type { BundleIndex } from '../../content/useBundle';
 import { hasLiveStyle } from '../lifecycle';
 import { compareSiteIds } from '../exodusCompare';
+import { BLOCKER_IMAGE, LABEL_VARIABLE_ANCHORS, ensureBlockerImage, labelTone, orderLabelLayers } from './labelCollision';
 
 export const ATLAS_LAYERS = {
   sites: 'atlas-sites-circle',
   candidates: 'atlas-sites-candidates',
+  /** Site names as a symbol layer, in the shared collision system (labelCollision.ts). */
+  siteLabels: 'atlas-sites-labels',
+  /** Invisible icons on site dots so no name covers a dot. */
+  siteBlockers: 'atlas-sites-blockers',
+  /** Invisible 22px-radius discs: a 44x44 tap target on every site dot. */
+  siteHit: 'atlas-sites-hit',
   routes: 'atlas-routes-line',
   routesReconstructed: 'atlas-routes-line-reconstructed',
   routesSea: 'atlas-routes-line-sea',
@@ -280,7 +287,10 @@ export function atlasRoutesFC(bundle: BundleIndex): FeatureCollection {
   return { type: 'FeatureCollection', features };
 }
 
-export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
+/** Names hide below this zoom unless the reader turned labels always on (MapProvider). */
+export const SITE_LABEL_MINZOOM = 6;
+
+export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex, opts: { dark: boolean } = { dark: true }): void {
   if (map.getLayer(ATLAS_LAYERS.sites)) return;
   if (!map.getSource(SRC.routes)) map.addSource(SRC.routes, { type: 'geojson', data: atlasRoutesFC(bundle) });
   if (!map.getSource(SRC.sites)) map.addSource(SRC.sites, { type: 'geojson', data: atlasSitesFC(bundle) });
@@ -361,6 +371,54 @@ export function ensureAtlasLayers(map: MapLibreMap, bundle: BundleIndex): void {
       'circle-stroke-color': '#ffffff',
     },
   });
+  map.addLayer({
+    id: ATLAS_LAYERS.siteHit,
+    type: 'circle',
+    source: SRC.sites,
+    paint: { 'circle-radius': 22, 'circle-color': '#000000', 'circle-opacity': 0.01 },
+  });
+  ensureBlockerImage(map);
+  const tone = labelTone(opts.dark);
+  map.addLayer({
+    id: ATLAS_LAYERS.siteLabels,
+    type: 'symbol',
+    source: SRC.sites,
+    minzoom: SITE_LABEL_MINZOOM,
+    layout: {
+      'text-field': ['get', 'name'],
+      'text-font': ['Ubuntu Bold'],
+      'text-size': 13,
+      'text-max-width': 10,
+      'text-line-height': 1.15,
+      'text-variable-anchor': LABEL_VARIABLE_ANCHORS,
+      'text-radial-offset': 0.8,
+      'text-justify': 'auto',
+      'text-allow-overlap': false,
+      'text-ignore-placement': false,
+      'text-padding': 3,
+    } as never,
+    paint: { 'text-color': tone.color, 'text-halo-color': tone.halo, 'text-halo-width': 1.8 },
+  });
+  map.addLayer({
+    id: ATLAS_LAYERS.siteBlockers,
+    type: 'symbol',
+    source: SRC.sites,
+    layout: { 'icon-image': BLOCKER_IMAGE, 'icon-size': 0.9, 'icon-allow-overlap': true, 'icon-ignore-placement': false },
+  });
+  orderLabelLayers(map);
+}
+
+export function setAtlasLabelTone(map: MapLibreMap, dark: boolean): void {
+  if (!map.getLayer(ATLAS_LAYERS.siteLabels)) return;
+  const tone = labelTone(dark);
+  map.setPaintProperty(ATLAS_LAYERS.siteLabels, 'text-color', tone.color);
+  map.setPaintProperty(ATLAS_LAYERS.siteLabels, 'text-halo-color', tone.halo);
+}
+
+/** `labelsAlwaysOn` lifts the zoom gate, matching the DOM labels' rule. */
+export function setAtlasLabelZoom(map: MapLibreMap, labelsAlwaysOn: boolean): void {
+  if (!map.getLayer(ATLAS_LAYERS.siteLabels)) return;
+  map.setLayerZoomRange(ATLAS_LAYERS.siteLabels, labelsAlwaysOn ? 0 : SITE_LABEL_MINZOOM, 24);
 }
 
 /** Emphasize one battle's area sweep (pass null to clear). */
@@ -409,7 +467,15 @@ export function setAtlasFilter(map: MapLibreMap, minYear: number, maxYear: numbe
     ['<=', ['get', 'ymin'], maxYear],
     ['in', ['get', 'confidence'], ['literal', confidences]],
   ] as never;
-  for (const id of [ATLAS_LAYERS.sites, ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine]) {
+  for (const id of [
+    ATLAS_LAYERS.sites,
+    ATLAS_LAYERS.siteLabels,
+    ATLAS_LAYERS.siteBlockers,
+    ATLAS_LAYERS.siteHit,
+    ATLAS_LAYERS.battles,
+    ATLAS_LAYERS.battleAreas,
+    ATLAS_LAYERS.battleAreasLine,
+  ]) {
     if (map.getLayer(id)) map.setFilter(id, filter);
   }
   // Candidates follow the parent site's visibility, not their own confidence,

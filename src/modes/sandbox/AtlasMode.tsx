@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TraceJourneyLink } from '../map-trace/TraceJourneyLink';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,8 @@ import {
   ensureAtlasLayers,
   removeAtlasLayers,
   setAtlasFilter,
+  setAtlasLabelTone,
+  setAtlasLabelZoom,
   setLayerVisible,
   setSelectedBattleArea,
   siteIdFromFeature,
@@ -29,6 +31,8 @@ import { BattleCard, SiteExtras } from '../../components/SiteExtras';
 import { WhoseMapChooser } from '../../components/WhoseMapChooser';
 import { routesForSite } from '../../map/exodusCompare';
 import { useExodusCompareMap } from '../../map/useExodusCompareMap';
+import { useResolvedDark } from '../../state/theme';
+import { useMapLayersStore } from '../../state/useMapLayersStore';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 // Span the whole biblical timeline: Creation (4004 BC) through the
@@ -64,6 +68,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const [maxYear, setMaxYear] = useState(YEAR_MAX);
   const [selected, setSelected] = useState<string | null>(null);
   const [selectedBattle, setSelectedBattle] = useState<string | null>(null);
+  const dark = useResolvedDark();
+  const darkRef = useRef(dark);
+  darkRef.current = dark;
+  const labelsAlwaysOn = useMapLayersStore((st) => st.labelsAlwaysOn);
   // When the reader clicked a rival pin, fly there instead of the working pin.
   const [focus, setFocus] = useState<{ lon: number; lat: number } | null>(null);
   // "Whose map?": no route is picked by default, so every candidate draws equally.
@@ -97,9 +105,23 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const add = () => ensureAtlasLayers(map, bundle);
+    const add = () => {
+      ensureAtlasLayers(map, bundle, { dark: darkRef.current });
+      setAtlasLabelZoom(map, useMapLayersStore.getState().labelsAlwaysOn);
+    };
+    // A one-shot 'load' wait misses when the map already loaded and another
+    // layer's setData has made isStyleLoaded() false; retry on idle instead.
+    const onIdle = () => {
+      if (map.getLayer(ATLAS_LAYERS.sites)) return void map.off('idle', onIdle);
+      try {
+        add();
+        map.off('idle', onIdle);
+      } catch {
+        /* style not ready yet; next idle */
+      }
+    };
     if (map.isStyleLoaded()) add();
-    else map.once('load', add);
+    else map.on('idle', onIdle);
 
     const onClick = (e: MapLayerMouseEvent) => {
       const feat = e.features?.[0];
@@ -118,28 +140,37 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     };
     const onEnter = () => (map.getCanvas().style.cursor = 'pointer');
     const onLeave = () => (map.getCanvas().style.cursor = '');
-    map.on('click', ATLAS_LAYERS.sites, onClick);
-    map.on('click', ATLAS_LAYERS.candidates, onClick);
-    map.on('mouseenter', ATLAS_LAYERS.sites, onEnter);
-    map.on('mouseenter', ATLAS_LAYERS.candidates, onEnter);
-    map.on('mouseleave', ATLAS_LAYERS.sites, onLeave);
-    map.on('mouseleave', ATLAS_LAYERS.candidates, onLeave);
+    // The dot, its 44px hit disc and its name all open the place.
+    const tappable = [ATLAS_LAYERS.siteHit, ATLAS_LAYERS.siteLabels, ATLAS_LAYERS.candidates];
+    for (const id of tappable) {
+      map.on('click', id, onClick);
+      map.on('mouseenter', id, onEnter);
+      map.on('mouseleave', id, onLeave);
+    }
     return () => {
-      map.off('click', ATLAS_LAYERS.sites, onClick);
-      map.off('click', ATLAS_LAYERS.candidates, onClick);
-      map.off('mouseenter', ATLAS_LAYERS.sites, onEnter);
-      map.off('mouseenter', ATLAS_LAYERS.candidates, onEnter);
-      map.off('mouseleave', ATLAS_LAYERS.sites, onLeave);
-      map.off('mouseleave', ATLAS_LAYERS.candidates, onLeave);
+      map.off('idle', onIdle);
+      for (const id of tappable) {
+        map.off('click', id, onClick);
+        map.off('mouseenter', id, onEnter);
+        map.off('mouseleave', id, onLeave);
+      }
       removeAtlasLayers(map);
     };
   }, [mapRef, ready, bundle]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    setAtlasLabelTone(map, dark);
+    setAtlasLabelZoom(map, labelsAlwaysOn);
+  }, [mapRef, ready, dark, labelsAlwaysOn]);
 
   // Reflect UI state onto the map.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !map.getLayer(ATLAS_LAYERS.sites)) return;
-    setLayerVisible(map, ATLAS_LAYERS.sites, showSites);
+    for (const id of [ATLAS_LAYERS.sites, ATLAS_LAYERS.siteLabels, ATLAS_LAYERS.siteBlockers, ATLAS_LAYERS.siteHit])
+      setLayerVisible(map, id, showSites);
     setLayerVisible(map, ATLAS_LAYERS.candidates, showSites);
     for (const id of ROUTE_LAYER_IDS) setLayerVisible(map, id, showRoutes);
     for (const id of [ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine, ATLAS_LAYERS.battleAreaSelected])
@@ -177,8 +208,10 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     return () => markers.forEach((m) => m.remove());
   }, [mapRef, ready, bundle, showBattles, conf, maxYear]);
 
-  // Name label next to every visible dot — no glyph/font source is shipped,
-  // so labels are DOM markers (mirrors the circle layer's own filter).
+  // Visible names are the `atlas-sites-labels` symbol layer, so MapLibre's
+  // collision keeps them off each other and off the "Whose map?" names. These
+  // DOM buttons stay only for keyboard and screen-reader users: invisible and
+  // click-through until focused (mirrors the circle layer's own filter).
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready || !showSites) return;
@@ -187,7 +220,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       .map((s) => {
         const el = document.createElement('button');
         el.type = 'button';
-        el.className = 'site-label';
+        el.className = 'site-label site-label--kbd';
         el.textContent = s.name;
         el.setAttribute('aria-label', `Show details for ${s.name}`);
         el.addEventListener('click', () => {

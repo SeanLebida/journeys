@@ -23,8 +23,9 @@ import { SitePhoto, SiteThumb } from '../../components/SitePhoto';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
 import { WhoseMapChooser } from '../../components/WhoseMapChooser';
-import { routesForSite } from '../../map/exodusCompare';
+import { compareSiteIds, routesForSite } from '../../map/exodusCompare';
 import { useExodusCompareMap } from '../../map/useExodusCompareMap';
+import { TRACE_LABEL_ANCHORS } from '../../map/layers/labelCollision';
 import { SiteExtras, VideoEmbed } from '../../components/SiteExtras';
 import { ERAS } from '../../content/eras';
 import type { BundleIndex } from '../../content/useBundle';
@@ -198,7 +199,15 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
   );
 
   useRouteAnimation(path, journey?.color ?? '#c75b39', traceStops, stopIds);
-  useStopLabels(stopCoords, fractions, names, stopIds, journey?.color ?? '#c75b39');
+  const ringStops = useMemo(() => {
+    const compared = compareSiteIds(bundle);
+    const out = new Set<number>();
+    stops.forEach((s, i) => {
+      if (compared.has(s.siteId)) out.add(i);
+    });
+    return out;
+  }, [bundle, stops]);
+  useStopLabels(stopCoords, fractions, names, stopIds, journey?.color ?? '#c75b39', ringStops);
 
   if (!journey) return <JourneyPicker bundle={bundle} />;
 
@@ -252,7 +261,18 @@ function JourneyTrace({ bundle, journeyId }: { bundle: BundleIndex; journeyId: s
 }
 
 /** Name label at every stop on the traced route; clicking one jumps straight to it. */
-function useStopLabels(coords: LngLat[], fractions: number[], names: string[], stopIds: string[], color: string): void {
+/** Badge gap for stops whose site draws "Whose map?" rival rings (outer ring radius 12px). */
+const BADGE_OFFSET = 7;
+const BADGE_OFFSET_CLEAR_OF_RINGS = 18;
+
+function useStopLabels(
+  coords: LngLat[],
+  fractions: number[],
+  names: string[],
+  stopIds: string[],
+  color: string,
+  ringStops: ReadonlySet<number>,
+): void {
   const { mapRef, ready } = useMap();
   const setProgress = useJourneyStore((s) => s.setProgress);
   const setCurrentStopIdx = useJourneyStore((s) => s.setCurrentStopIdx);
@@ -278,7 +298,8 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
         setProgress(fractions[i] ?? 0);
       });
       elementsRef.current.push(el);
-      return new maplibregl.Marker({ element: el, anchor: 'left', offset: [7, 0] }).setLngLat([lon, lat]).addTo(map);
+      const dx = ringStops.has(i) ? BADGE_OFFSET_CLEAR_OF_RINGS : BADGE_OFFSET;
+      return new maplibregl.Marker({ element: el, anchor: 'left', offset: [dx, 0] }).setLngLat([lon, lat]).addTo(map);
     });
 
     // Sequentially reveal waypoint name labels as the journey progresses, or show all if labelsAlwaysOn is true
@@ -313,7 +334,7 @@ function useStopLabels(coords: LngLat[], fractions: number[], names: string[], s
       markers.forEach((m) => m.remove());
       elementsRef.current = [];
     };
-  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, setCurrentStopIdx, color, activeStopId, labelsAlwaysOn, elementsRef]);
+  }, [mapRef, ready, coords, fractions, names, stopIds, setProgress, setCurrentStopIdx, color, activeStopId, labelsAlwaysOn, elementsRef, ringStops]);
 
   // Update active class, styles, and visibility when activeStopId or labelsAlwaysOn changes
   useEffect(() => {
@@ -454,6 +475,7 @@ function StopReader({
     activeRoute: compareRoute,
     showLines: compared,
     onPickCandidate: (_siteId, lon, lat) => focusCandidate(lat, lon),
+    labelAnchors: TRACE_LABEL_ANCHORS,
   });
   return (
     <article className="stop-reader">

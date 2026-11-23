@@ -23,3 +23,8 @@
 - Candidate names and cluster tags are now MapLibre symbol layers (Ubuntu glyphs), so collision drops a label rather than letting it overlap another. Invisible icon "blockers" on every pin sit above the labels, so a name never covers a pin. `symbol-sort-key` puts the picked route's names first.
 - `useExodusCompareMap` holds the map side for both Atlas and Trace. Trace keeps `isStyleLoaded()` false while it rewrites its route, so the hook keeps retrying on `idle` instead of waiting once for `load`.
 - The floating layer control is not part of the camera padding, so route framing adds its height to the top padding.
+
+## Follow-up: one label system (fd/exodus-labels)
+- Atlas site names are now the `atlas-sites-labels` symbol layer, in the same collision system as the "Whose map?" names. `layers/labelCollision.ts` owns the stacking order: blockers on top, then compare names, then site names. MapLibre places the top layer first, so picked-route names win. The DOM site tags stay for keyboard users, clipped until focused. MapLibre writes an inline opacity on markers, so hiding them with opacity does not work.
+- Atlas layer setup used a one-shot `once('load')`. Once the compare hook had added sources first, `isStyleLoaded()` was false and 'load' never fired again, so site dots could go missing. Both now retry on `idle`.
+- In Trace, compare names anchor to the left of their pin, and stop badges on compared sites sit 18px out, clear of the 12px cluster ring.
