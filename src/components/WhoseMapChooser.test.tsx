@@ -36,6 +36,11 @@ describe('WhoseMapChooser', () => {
     expect(document.body.textContent).not.toMatch(/—/);
   });
 
+  it('names a many-advocate route by its first advocate and a count', () => {
+    render(<Harness />);
+    expect(screen.getByRole('button', { name: /Menashe Har-El and 3 others/ })).toHaveTextContent('Jebel Sin Bishar');
+  });
+
   it('picks one route, then clears back to all', async () => {
     const user = userEvent.setup();
     render(<Harness />);
