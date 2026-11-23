@@ -429,17 +429,21 @@
     "cit-ref-kitchen"
    ],
    "disputes": {
-    "en": "Exodus 14-15 calls the sea Yam Suph, often translated Red Sea. Writers who accept the crossing as history place it at the Ballah Lakes, the Bitter Lakes and Lake Timsah, the northern Gulf of Suez, or in the Gulf of Aqaba. No excavation has located the crossing. The main pin marks the Bitter Lakes region used by the app's traditional route."
+    "en": "What was found. No one has found a signed monument that says \"this is the crossing.\" What we have are the place names in Exodus, the way the same Hebrew name is used later for the Gulf of Aqaba, Egyptian names for reedy lakes on Egypt's eastern border, and several carefully argued maps.\n\nWhat it might mean. If the name means a reedy lake on the border, the crossing may have been close to Egypt, in the Ballah or Bitter Lakes region, and Mount Sinai would then lie in the Sinai Peninsula. If the name here is the same sea Solomon later used at Elath, the crossing may have been in the Gulf of Aqaba, and Mount Sinai would then lie farther east, in Midian. Both of those readings come from people who are trying to follow the text, not to erase it.\n\nWhat's still uncertain. The exact body of water. The app shows the main proposals on the map and does not pretend to have settled them.\n\nHow did the water part? Exodus 14:21 says the Lord drove the sea back with a strong east wind all night. The Bible presents this as God's miracle. Some scientists have also built computer models of how a strong, steady wind can push back shallow water. One well-known study (Drews and Han, 2010) modeled an ancient lagoon near Tanis, in the northeastern Nile Delta. That is one way of picturing it, not the leading view here, and it does not prove where the crossing was. God is not limited to what a model can show.\n\nSources. Exodus 14-15; 1 Kings 9:26; Hoffmeier, Ancient Israel in Sinai (2005) and Tyndale Bulletin (2022); Kitchen, On the Reliability of the Old Testament (2003); Byers, Bible and Spade (2006); Fritz, The Lost Sea of the Exodus (2016); Franz, ABR (2000, 2007); Drews and Han, \"Dynamics of Wind Setdown at Suez and the Eastern Nile Delta,\" PLoS ONE (2010)."
    }
   },
   "summary": {
-   "en": "Where Israel crossed the sea in Exodus 14-15. The location is disputed, so each proposed crossing is shown with who argues for it."
+   "en": "The Bible says God opened Yam Suph, the \"Sea of Reeds,\" so Israel could walk through, and that the water came back over Egypt's chariots. Followers of Jesus and Jewish and Christian scholars who believe that this really happened still disagree about which sea it was."
   },
   "citations": [
    "cit-byers-exodus-crossing-2006",
    "cit-hoffmeier-ancient-israel-sinai",
    "cit-ref-kitchen",
-   "cit-franz-sinai-arabia-2000"
+   "cit-franz-sinai-arabia-2000",
+   "cit-hoffmeier-tynbul-2022",
+   "cit-fritz-lost-sea-2016",
+   "cit-franz-not-lawz-2007",
+   "cit-drews-han-2010"
   ],
   "candidates": [
    {
@@ -456,7 +460,7 @@
      "cit-byers-exodus-crossing-2006"
     ],
     "note": {
-     "en": "A former lake system that ran about 20 km south from Qantara to just north of Ismailia. Regional pin, not a crossing spot."
+     "en": "Some Bible-believing Egyptologists think Israel crossed a large reedy lake that once lay on Egypt's eastern border, in a place now called the Ballah Lakes."
     },
     "advocates": [
      {
@@ -480,7 +484,10 @@
      }
     ],
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Some Bible-believing Egyptologists think Israel crossed a large reedy lake that once lay on Egypt's eastern border, in a place now called the Ballah Lakes.\n\nWhat was found. Egyptian texts speak of p3 twfy, a papyrus marsh in this frontier. The Hebrew word suph is likely related to that Egyptian word for reed. Digs and soil studies in North Sinai show that a real lake, fed by a branch of the Nile, once lay here, with forts nearby. No one has found the crossing itself.\n\nWhat it might mean. This would put the miracle close to Egypt, after Israel turned back as Exodus 14 says, and it would keep the next long walk inside the Sinai Peninsula.\n\nWhat's still uncertain. Whether this lake is the Yam Suph of Exodus 14, or only one reedy body of water in a region that had several.\n\nSources. Hoffmeier 2005 and 2022; Byers 2006; Wood 2008 (he uses this crossing, then a different mountain)."
+    }
    },
    {
     "id": "cand-crossing-great-bitter-lake",
@@ -497,7 +504,7 @@
      "cit-ref-kitchen"
     ],
     "note": {
-     "en": "The ancient basin, not the modern canal-era lake. Regional pin."
+     "en": "Other careful writers place the crossing in the \"bitter lakes\" basin on the same isthmus, a little south of the Ballah system, near today's Great Bitter Lake or Lake Timsah."
     },
     "advocates": [
      {
@@ -516,7 +523,10 @@
     ],
     "pinPrecision": "region",
     "groupId": "group-crossing-isthmus-lakes",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Other careful writers place the crossing in the \"bitter lakes\" basin on the same isthmus, a little south of the Ballah system, near today's Great Bitter Lake or Lake Timsah.\n\nWhat was found. A long salt basin on the land bridge between Egypt and Sinai, already known to the Egyptians. The wide water you see there now was reshaped when the Suez Canal was opened in 1869, so the modern lake is not a photograph of the ancient shore.\n\nWhat it might mean. Like the Ballah proposal, this keeps Israel close to Egypt at the sea and usually pairs with a Sinai in the peninsula (for Har-El, a nearby mountain called Sin Bishar; for Kitchen, the southern mountains).\n\nWhat's still uncertain. Exactly which basin held water in Moses' day, and how deep it was.\n\nSources. Kitchen 2003; Har-El 1983, as discussed by Franz 2000; GeoNames for the modern pins; histories of the canal-era lake."
+    }
    },
    {
     "id": "cand-crossing-lake-timsah",
@@ -531,11 +541,14 @@
      "cit-byers-exodus-crossing-2006"
     ],
     "note": {
-     "en": "A neighbouring isthmus lake, grouped with the Great Bitter Lake. Regional pin."
+     "en": "Other careful writers place the crossing in the \"bitter lakes\" basin on the same isthmus, a little south of the Ballah system, near today's Great Bitter Lake or Lake Timsah."
     },
     "pinPrecision": "region",
     "groupId": "group-crossing-isthmus-lakes",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Other careful writers place the crossing in the \"bitter lakes\" basin on the same isthmus, a little south of the Ballah system, near today's Great Bitter Lake or Lake Timsah.\n\nWhat was found. A long salt basin on the land bridge between Egypt and Sinai, already known to the Egyptians. The wide water you see there now was reshaped when the Suez Canal was opened in 1869, so the modern lake is not a photograph of the ancient shore.\n\nWhat it might mean. Like the Ballah proposal, this keeps Israel close to Egypt at the sea and usually pairs with a Sinai in the peninsula (for Har-El, a nearby mountain called Sin Bishar; for Kitchen, the southern mountains).\n\nWhat's still uncertain. Exactly which basin held water in Moses' day, and how deep it was.\n\nSources. Kitchen 2003; Har-El 1983, as discussed by Franz 2000; GeoNames for the modern pins; histories of the canal-era lake."
+    }
    },
    {
     "id": "cand-crossing-gulf-of-suez",
@@ -550,10 +563,13 @@
      "cit-byers-exodus-crossing-2006"
     ],
     "note": {
-     "en": "The older traditional view on many maps. The pin is the city at the head of the gulf, not a crossing spot."
+     "en": "Because later Bibles say \"Red Sea,\" many older maps put the crossing at the top of the Gulf of Suez."
     },
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Because later Bibles say \"Red Sea,\" many older maps put the crossing at the top of the Gulf of Suez.\n\nWhat was found. A real gulf. The older maps. Recent work on the Exodus place names has not given this shore strong support.\n\nWhat it might mean. It would still keep Sinai in the southern peninsula, along the old pilgrim road down the west coast to St Catherine's.\n\nWhat's still uncertain. Whether this was ever more than a later reading of the words \"Red Sea.\"\n\nSources. Byers 2006; the app's own current Exodus route note."
+    }
    },
    {
     "id": "cand-crossing-nuweiba",
@@ -571,7 +587,7 @@
      "cit-wyatt-chariot-wheels"
     ],
     "note": {
-     "en": "No published excavation or lab test confirms finds here. Regional pin on the town and beach."
+     "en": "Some explorers and a geographer who believe the Exodus was real argue that Israel crossed the Gulf of Aqaba at the beach of Nuweiba, on a long underwater slope, and then entered Midian."
     },
     "advocates": [
      {
@@ -595,7 +611,10 @@
      }
     ],
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Some explorers and a geographer who believe the Exodus was real argue that Israel crossed the Gulf of Aqaba at the beach of Nuweiba, on a long underwater slope, and then entered Midian.\n\nWhat was found. A wide beach and a seafloor that goes down about 850 meters (nearly 2,800 feet) before it rises toward Saudi Arabia. That is not a shallow land bridge. Pictures of coral shapes, and claims about chariot parts, are treated in a separate card.\n\nWhat it might mean. If this is the right sea, Mount Sinai would lie east of the gulf, and the walk from the Nile would have been much longer than the isthmus maps allow.\n\nWhat's still uncertain. Whether the Bible's Yam Suph in Exodus 14 is this deep gulf or the reedy lakes near Egypt. Christian researchers who believe the crossing happened are on both sides of that question.\n\nSources. Fritz 2016; Wyatt Archaeological Research (as a claim); Franz 2007 (critique, including the depth and the travel time)."
+    }
    },
    {
     "id": "cand-crossing-strait-of-tiran",
@@ -610,7 +629,7 @@
      "cit-franz-not-lawz-2007"
     ],
     "note": {
-     "en": "No published excavation of Exodus remains here. Regional pin."
+     "en": "A second Gulf of Aqaba proposal puts the crossing at the Strait of Tiran, at the mouth of the gulf, and then still looks for Sinai at Jebel al-Lawz."
     },
     "advocates": [
      {
@@ -633,7 +652,10 @@
      }
     ],
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. A second Gulf of Aqaba proposal puts the crossing at the Strait of Tiran, at the mouth of the gulf, and then still looks for Sinai at Jebel al-Lawz.\n\nWhat was found. A real strait between Sinai and Tiran Island. No published excavation has produced Exodus remains there.\n\nWhat it might mean. Like Nuweiba, this is a \"sea in the east, mountain in Midian\" map, but it uses a different crossing point.\n\nWhat's still uncertain. The same big question as Nuweiba: whether Exodus 14 is about this gulf at all.\n\nSources. Franz 2007, describing the Irwin, Cornuke, and Williams group; Blum 1998 as a popular account of that search."
+    }
    },
    {
     "id": "cand-crossing-head-of-aqaba",
@@ -649,7 +671,7 @@
      "cit-turpin-sinai-2022"
     ],
     "note": {
-     "en": "A regional pin for the head of the gulf, placed on Eilat. It is not a lane between Eilat and Aqaba."
+     "en": "Colin Humphreys, a Christian scientist, argued that Israel crossed near the north end of the Gulf of Aqaba, where reeds still grow at freshwater springs, and then walked south into Midian."
     },
     "advocates": [
      {
@@ -661,7 +683,10 @@
      }
     ],
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Colin Humphreys, a Christian scientist, argued that Israel crossed near the north end of the Gulf of Aqaba, where reeds still grow at freshwater springs, and then walked south into Midian.\n\nWhat was found. A real gulf head between modern Eilat and Aqaba, with springs and reeds reported there. No excavated crossing lane.\n\nWhat it might mean. This pairing is meant to go with a volcanic mountain farther south in Arabia, Hala-'l Badr, not with Jebel al-Lawz.\n\nWhat's still uncertain. Whether the crossing was here, and whether Sinai was a volcano (many conservative readers treat the fire on the mountain as God's own appearing, not as an eruption).\n\nSources. Humphreys 2003; Turpin 2022 (summary and critique); Fritz's essay on the volcano theory."
+    }
    }
   ]
  },
@@ -714,7 +739,7 @@
     ],
     "id": "cand-sinai-jebel-musa",
     "note": {
-     "en": "The traditional peak, with Ras Safsafa beside it above the er-Raha plain."
+     "en": "For many centuries, Christian pilgrims have honored Jebel Musa, the \"Mountain of Moses,\" in southern Sinai, where St Catherine's Monastery stands. Some Bible scholars who work in this same area prefer the nearby peak Ras Safsafa, because a wide plain lies at its foot."
     },
     "advocates": [
      {
@@ -726,7 +751,10 @@
     ],
     "pinPrecision": "summit",
     "groupId": "group-sinai-musa-safsafa",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. For many centuries, Christian pilgrims have honored Jebel Musa, the \"Mountain of Moses,\" in southern Sinai, where St Catherine's Monastery stands. Some Bible scholars who work in this same area prefer the nearby peak Ras Safsafa, because a wide plain lies at its foot.\n\nWhat was found. A monastery with a very long memory, pilgrimage paths, and the er-Raha plain below Ras Safsafa. No ancient sign that says \"this is Mount Sinai.\"\n\nWhat it might mean. Kenneth Kitchen and James Hoffmeier, both of whom defend the Exodus as history, think the right region is this southern cluster of mountains. Kitchen says we cannot be certain of the exact peak, but he finds the Musa / Safsafa pair a better place for a great camp than Jebel Serbal.\n\nWhat's still uncertain. The exact summit. Other faithful researchers look farther north in the peninsula, or east in Midian.\n\nSources. Kitchen 2003, pp. 269-270, 274, as quoted; Hoffmeier 2005, as reported in reviews; Shanks / Ngo on the later tradition; GeoNames 351820; OpenBible.info for Ras Safsafa."
+    }
    },
    {
     "id": "cand-sinai-ras-safsafa",
@@ -742,7 +770,7 @@
      "cit-ref-kitchen"
     ],
     "note": {
-     "en": "Just northwest of Jebel Musa, above the er-Raha plain. Shown in one cluster with Jebel Musa."
+     "en": "For many centuries, Christian pilgrims have honored Jebel Musa, the \"Mountain of Moses,\" in southern Sinai, where St Catherine's Monastery stands. Some Bible scholars who work in this same area prefer the nearby peak Ras Safsafa, because a wide plain lies at its foot."
     },
     "advocates": [
      {
@@ -760,7 +788,10 @@
     ],
     "pinPrecision": "summit",
     "groupId": "group-sinai-musa-safsafa",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. For many centuries, Christian pilgrims have honored Jebel Musa, the \"Mountain of Moses,\" in southern Sinai, where St Catherine's Monastery stands. Some Bible scholars who work in this same area prefer the nearby peak Ras Safsafa, because a wide plain lies at its foot.\n\nWhat was found. A monastery with a very long memory, pilgrimage paths, and the er-Raha plain below Ras Safsafa. No ancient sign that says \"this is Mount Sinai.\"\n\nWhat it might mean. Kenneth Kitchen and James Hoffmeier, both of whom defend the Exodus as history, think the right region is this southern cluster of mountains. Kitchen says we cannot be certain of the exact peak, but he finds the Musa / Safsafa pair a better place for a great camp than Jebel Serbal.\n\nWhat's still uncertain. The exact summit. Other faithful researchers look farther north in the peninsula, or east in Midian.\n\nSources. Kitchen 2003, pp. 269-270, 274, as quoted; Hoffmeier 2005, as reported in reviews; Shanks / Ngo on the later tradition; GeoNames 351820; OpenBible.info for Ras Safsafa."
+    }
    },
    {
     "id": "cand-sinai-jebel-serbal",
@@ -776,7 +807,7 @@
      "cit-ref-kitchen"
     ],
     "note": {
-     "en": "A southern Sinai rival near the oasis of Wadi Feiran."
+     "en": "Jebel Serbal is another high mountain in southern Sinai, above the oasis of Wadi Feiran. Some early Christian memory, and some later scholars, have pointed here instead of Jebel Musa."
     },
     "advocates": [
      {
@@ -787,7 +818,10 @@
      }
     ],
     "pinPrecision": "summit",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Jebel Serbal is another high mountain in southern Sinai, above the oasis of Wadi Feiran. Some early Christian memory, and some later scholars, have pointed here instead of Jebel Musa.\n\nWhat was found. A steep, striking mountain beside a major oasis. Kitchen notes that the open ground in the wadi is a long way from the peaks, which would make a hard walk for Moses in the story of going up and down the mountain.\n\nWhat it might mean. It stays in the same southern region Hoffmeier and Kitchen favor, as a rival peak, not as a different country.\n\nWhat's still uncertain. Whether this, rather than Musa or Safsafa, is the summit.\n\nSources. Kitchen 2003: 269-270, as quoted; Hoffmeier 2005, as reported; OpenBible.info / GeoNames listings for the pin."
+    }
    },
    {
     "id": "cand-sinai-jebel-sin-bishar",
@@ -803,7 +837,7 @@
      "cit-turpin-sinai-2022"
     ],
     "note": {
-     "en": "Paired with a crossing at the Great Bitter Lake. Har-El proposed it; Franz, Faiman and Rasmussen follow the same pairing."
+     "en": "The Israeli geographer Menashe Har-El, and later Gordon Franz, argued that Mount Sinai is Jebel Sin Bishar in west-central Sinai, not far from Egypt."
     },
     "advocates": [
      {
@@ -832,7 +866,10 @@
      }
     ],
     "pinPrecision": "summit",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. The Israeli geographer Menashe Har-El, and later Gordon Franz, argued that Mount Sinai is Jebel Sin Bishar in west-central Sinai, not far from Egypt.\n\nWhat was found. A mountain that stands out from its surroundings without being a giant. Har-El reported graves, pottery, and piles of stones at the base. This research pass did not independently re-check those field details in a later excavation report.\n\nWhat it might mean. Franz thinks this peak can fit an 11-day walk to Kadesh at Ain el-Qudeirat, and that it keeps Sinai in the peninsula, which he argues is where Paul's \"Arabia\" also reached. It is often paired with a crossing at the Bitter Lakes.\n\nWhat's still uncertain. Other conservative scholars want a mountain farther south (Hoffmeier, Kitchen) or farther east, still in the peninsula but closer to Midian (Wood). The name \"Sin\" in the mountain is suggestive, not a proof.\n\nSources. Har-El 1983; Franz 2000 and 2013; Rasmussen 1989; GeoNames 347908."
+    }
    },
    {
     "id": "cand-sinai-hashem-el-tarif",
@@ -847,7 +884,7 @@
      "cit-wood-horeb-2008"
     ],
     "note": {
-     "en": "On the Trans-Sinai Highway, about 22 miles west-northwest of the head of the Gulf of Aqaba."
+     "en": "Bryant Wood and a team from the Associates for Biblical Research visited Gebel Khashm et-Tarif in 2007 and argued that it fits the Bible's clues for Sinai better than the other proposals."
     },
     "advocates": [
      {
@@ -858,7 +895,10 @@
      }
     ],
     "pinPrecision": "summit",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Bryant Wood and a team from the Associates for Biblical Research visited Gebel Khashm et-Tarif in 2007 and argued that it fits the Bible's clues for Sinai better than the other proposals.\n\nWhat was found. A mountain about 22 miles west-northwest of the north end of the Gulf of Aqaba, with a wide plain, burial cairns on top, and stone structures and animal figures around the base. This was a survey visit, not a long city dig.\n\nWhat it might mean. Wood pairs this peak with a Ballah Lakes crossing, then a walk east across the peninsula on an old central highway. He thinks Moses could have grazed flocks here, met Aaron here, and then reached Kadesh in 11 days.\n\nWhat's still uncertain. Those \"fits\" depend on how one maps the highway, the Wilderness of Paran, and Mount Seir. Other faithful maps still point south or east.\n\nSources. Wood, ABR, 17 Nov 2008 and 4 Apr 2008; Avner 1984, as cited by Wood for the desert figures; OpenBible.info pin 29.669217, 34.633411."
+    }
    },
    {
     "label": {
@@ -875,7 +915,7 @@
     ],
     "id": "cand-sinai-har-karkom",
     "note": {
-     "en": "A real Bronze Age holy mountain. Anati finds no occupation in the usual Exodus centuries and dates the Exodus earlier."
+     "en": "Emmanuel Anati, who surveyed this ridge in the Negev for many years, believes it is the holy mountain behind the Sinai story. He found a real ancient worship site. The dates of that site are much earlier than the Exodus dates used by most conservative scholars."
     },
     "advocates": [
      {
@@ -886,7 +926,10 @@
      }
     ],
     "pinPrecision": "summit",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Emmanuel Anati, who surveyed this ridge in the Negev for many years, believes it is the holy mountain behind the Sinai story. He found a real ancient worship site. The dates of that site are much earlier than the Exodus dates used by most conservative scholars.\n\nWhat was found. A plateau with pillars, stone circles, altars, and a very large number of rock drawings, used in a big way in the fourth and third millennia BC. Anati himself says the mountain was empty in the 13th century BC, and for centuries before and after.\n\nWhat it might mean. This may have been a desert holy mountain for a very long time. Anati thinks the biblical writers were remembering this place, and he moves the Exodus many centuries earlier so the dates will fit. Scholars who keep a 15th- or 13th-century Exodus cannot follow him there, even when they respect his survey.\n\nWhat's still uncertain. Whether this ridge is Sinai at all. A holy mountain is not the same thing as the mountain of the law in Moses' lifetime.\n\nSources. Anati 2003; Shanks, reported in BAR / Bible History Daily; GeoNames 294586."
+    }
    },
    {
     "label": {
@@ -903,7 +946,7 @@
     ],
     "id": "cand-sinai-jebel-al-lawz",
     "note": {
-     "en": "The taller 'almond mountain'. Jabal Maqla, about 7 km south, is the dark peak in most photos; the two are often treated as one."
+     "en": "Since the 1980s, popular books and films have said Mount Sinai is in northwest Saudi Arabia, at Jebel al-Lawz or at the darker neighboring peak, Jabal Maqla, the \"Burnt Mountain.\" Christian archaeologists who also believe the Exodus have examined those claims and have not found them convincing."
     },
     "advocates": [
      {
@@ -934,7 +977,10 @@
     ],
     "pinPrecision": "summit",
     "groupId": "group-sinai-lawz-maqla",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Since the 1980s, popular books and films have said Mount Sinai is in northwest Saudi Arabia, at Jebel al-Lawz or at the darker neighboring peak, Jabal Maqla, the \"Burnt Mountain.\" Christian archaeologists who also believe the Exodus have examined those claims and have not found them convincing.\n\nWhat was found. Two real mountains, about seven kilometers apart. Visitors have photographed a black rock cap, rock drawings of cattle, stone rows, a split rock, and a \"cave of Moses\" near al-Bad'. There has been no published, licensed excavation that shows these features belong to Moses' time. Gordon Franz concluded that the cattle drawings are much older than Moses, that the cave was cut much later, and that the stone \"altar\" and columns are Nabatean, from many centuries after the Exodus.\n\nWhat it might mean. The proposal tries to honor texts that connect Moses with Midian and Paul with \"Arabia.\" Franz and Hoffmeier reply that Midian is where Moses lived as a shepherd, but that the Bible does not say the mountain itself stood in Midian, and that in Paul's day \"Arabia\" included the Sinai Peninsula.\n\nWhat's still uncertain. Access is limited, so a full modern excavation has not settled the surface claims. Even so, the published geographical and archaeological case for this being Sinai has not been made, in the judgment of the conservative scholars who have written it up most carefully.\n\nSources. Franz, ABR 2000, 2007, and 2013; Hoffmeier 2005, as quoted; Kitchen 2003: 274, as quoted; GeoNames 104399 (Maqla); the app's existing Lawz pin."
+    }
    },
    {
     "id": "cand-sinai-jabal-maqla",
@@ -950,7 +996,7 @@
      "cit-wyatt-chariot-wheels"
     ],
     "note": {
-     "en": "About 7 km south of Jebel al-Lawz. Shown in one cluster with it."
+     "en": "Since the 1980s, popular books and films have said Mount Sinai is in northwest Saudi Arabia, at Jebel al-Lawz or at the darker neighboring peak, Jabal Maqla, the \"Burnt Mountain.\" Christian archaeologists who also believe the Exodus have examined those claims and have not found them convincing."
     },
     "advocates": [
      {
@@ -969,7 +1015,10 @@
     ],
     "pinPrecision": "summit",
     "groupId": "group-sinai-lawz-maqla",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Since the 1980s, popular books and films have said Mount Sinai is in northwest Saudi Arabia, at Jebel al-Lawz or at the darker neighboring peak, Jabal Maqla, the \"Burnt Mountain.\" Christian archaeologists who also believe the Exodus have examined those claims and have not found them convincing.\n\nWhat was found. Two real mountains, about seven kilometers apart. Visitors have photographed a black rock cap, rock drawings of cattle, stone rows, a split rock, and a \"cave of Moses\" near al-Bad'. There has been no published, licensed excavation that shows these features belong to Moses' time. Gordon Franz concluded that the cattle drawings are much older than Moses, that the cave was cut much later, and that the stone \"altar\" and columns are Nabatean, from many centuries after the Exodus.\n\nWhat it might mean. The proposal tries to honor texts that connect Moses with Midian and Paul with \"Arabia.\" Franz and Hoffmeier reply that Midian is where Moses lived as a shepherd, but that the Bible does not say the mountain itself stood in Midian, and that in Paul's day \"Arabia\" included the Sinai Peninsula.\n\nWhat's still uncertain. Access is limited, so a full modern excavation has not settled the surface claims. Even so, the published geographical and archaeological case for this being Sinai has not been made, in the judgment of the conservative scholars who have written it up most carefully.\n\nSources. Franz, ABR 2000, 2007, and 2013; Hoffmeier 2005, as quoted; Kitchen 2003: 274, as quoted; GeoNames 104399 (Maqla); the app's existing Lawz pin."
+    }
    },
    {
     "id": "cand-sinai-hala-l-badr",
@@ -985,7 +1034,7 @@
      "cit-turpin-sinai-2022"
     ],
     "note": {
-     "en": "A volcanic cone. Paired with a crossing at the head of the Gulf of Aqaba."
+     "en": "Colin Humphreys argued that the fire, cloud, and shaking at Sinai sound like a volcano, and he pointed to Hala-'l Badr, a volcanic cone in northwest Saudi Arabia, in the land of Midian."
     },
     "advocates": [
      {
@@ -997,7 +1046,10 @@
      }
     ],
     "pinPrecision": "region",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Colin Humphreys argued that the fire, cloud, and shaking at Sinai sound like a volcano, and he pointed to Hala-'l Badr, a volcanic cone in northwest Saudi Arabia, in the land of Midian.\n\nWhat was found. A real volcano. Some later writers have described nearby desert structures and inscriptions, but no dig has identified the cone as Mount Sinai.\n\nWhat it might mean. If one reads Exodus 19 as a volcanic eruption, a mountain in Midian becomes attractive. Many conservative readers instead read that chapter as God himself appearing in fire, which would not require a volcano and would not force the mountain out of the peninsula.\n\nWhat's still uncertain. The reading of the fire, the travel times, and the crossing Humphreys pairs with it (the head of the Gulf of Aqaba).\n\nSources. Humphreys 2003; Turpin 2022; Fritz's critique of the volcano route; Wikipedia \"Hala-'l Badr\" for the pin 27.25, 37.235 (do not use the unrelated GeoNames \"Jabal al Badr\" in Riyadh)."
+    }
    },
    {
     "id": "cand-sinai-jebel-baghir",
@@ -1012,7 +1064,7 @@
      "cit-beke-sinai-arabia-1878"
     ],
     "note": {
-     "en": "Reached by Charles Beke in 1874, northeast of the head of the Gulf of Aqaba."
+     "en": "Long before the modern Saudi videos, a 19th-century explorer named Charles Beke argued that Sinai stood in Arabia. In 1874 he visited Jebel Baghir, also called the \"Mountain of Light,\" just northeast of the head of the Gulf of Aqaba."
     },
     "advocates": [
      {
@@ -1023,7 +1075,10 @@
      }
     ],
     "pinPrecision": "summit",
-    "claimStatus": "identification-disputed"
+    "claimStatus": "identification-disputed",
+    "body": {
+     "en": "In short. Long before the modern Saudi videos, a 19th-century explorer named Charles Beke argued that Sinai stood in Arabia. In 1874 he visited Jebel Baghir, also called the \"Mountain of Light,\" just northeast of the head of the Gulf of Aqaba.\n\nWhat was found. A travel account, not a modern excavation. Beke even gave up an earlier idea that the mountain had to be a volcano after he saw the place.\n\nWhat it might mean. The \"Sinai in Arabia\" idea is older than Ron Wyatt, and it has been discussed and tested for a long time.\n\nWhat's still uncertain. There is still no archaeological proof that this ridge is Sinai.\n\nSources. Beke 1878; Franz 2000 (on the older Midian proposals); GeoNames 250814."
+    }
    }
   ]
  },

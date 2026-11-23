@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Citations, ClaimMeta, ReferenceStack } from '../content/citations';
+import { Citations, ClaimMeta, ReferenceStack, proseParagraphs } from '../content/citations';
 import type { TSite } from '../content/schema';
 import type { BundleIndex } from '../content/useBundle';
 
@@ -52,7 +52,15 @@ export function SiteCandidates({
                       </span>
                     )}
                   </div>
-                  {c.note && <p className="site-candidates__note">{c.note.en}</p>}
+                  {c.body ? (
+                    <div className="site-candidates__card">
+                      {proseParagraphs(c.body.en).map((p) => (
+                        <p key={p.slice(0, 48)} className="site-candidates__body-text">{p}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    c.note && <p className="site-candidates__note">{c.note.en}</p>
+                  )}
                   {c.pinPrecision && (
                     <p className="site-candidates__precision">{t(`sourcing.pinPrecision.${c.pinPrecision}`)}</p>
                   )}
