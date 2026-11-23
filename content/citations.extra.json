@@ -10060,5 +10060,213 @@
   "note": {
    "en": "Public-domain biblical text (KJV/ASV) bundled in-app; primary narrative source for the claim."
   }
+ },
+ {
+  "id": "cit-hoffmeier-ancient-israel-sinai",
+  "source": {
+   "en": "J. K. Hoffmeier, 'Ancient Israel in Sinai' (Oxford, 2005)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Cited as summarized in G. Byers (Bible and Spade, 2006) and in published reviews; not re-read cover to cover in this research pass."
+  }
+ },
+ {
+  "id": "cit-hoffmeier-tynbul-2022",
+  "source": {
+   "en": "J. K. Hoffmeier, 'The Hebrew Exodus from and Jeremiah's Eisodus into Egypt...', Tyndale Bulletin (2022)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-byers-exodus-crossing-2006",
+  "source": {
+   "en": "G. Byers, 'New Evidence from Egypt on the Location of the Exodus Sea Crossing: Part I', Bible and Spade (Winter 2006); Associates for Biblical Research, 19 Aug 2008"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-franz-sinai-arabia-2000",
+  "source": {
+   "en": "G. Franz, 'Is Mount Sinai in Saudi Arabia?', Bible and Spade 13.4 (2000): 101-113 (Associates for Biblical Research)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-franz-not-lawz-2007",
+  "source": {
+   "en": "G. Franz, 'Mount Sinai is NOT Jebel al-Lawz in Saudi Arabia', Associates for Biblical Research, 3 Oct 2007 (ETS/NEAS, 2001)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wood-horeb-2008",
+  "source": {
+   "en": "B. G. Wood, 'What Do Mt. Horeb, The Mountain of God, Mt. Paran and Mt. Seir Have to Do with Mt. Sinai?', Associates for Biblical Research, 17 Nov 2008"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-fritz-lost-sea-2016",
+  "source": {
+   "en": "G. A. Fritz, 'The Lost Sea of the Exodus', 2nd ed. (2016), from a 2006 PhD dissertation"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-wyatt-chariot-wheels",
+  "source": {
+   "en": "Wyatt Archaeological Research, 'Chariot Wheels in the Red Sea' and 'Significance of the Wheels'"
+  },
+  "kind": "tertiary-popular",
+  "note": {
+   "en": "The claimants' own account. No published excavation or lab report."
+  }
+ },
+ {
+  "id": "cit-anati-where-sinai-2003",
+  "source": {
+   "en": "E. Anati, 'Where Is Mount Sinai?', The Bible and Interpretation (Oct 2003)"
+  },
+  "kind": "secondary-scholarly"
+ },
+ {
+  "id": "cit-ngo-shanks-sinai-2025",
+  "source": {
+   "en": "R. Ngo, 'Searching for Biblical Mt. Sinai', Bible History Daily (11 Mar 2025), reporting H. Shanks, Biblical Archaeology Review (Mar/Apr 2014)"
+  },
+  "kind": "tertiary-popular"
+ },
+ {
+  "id": "cit-turpin-sinai-2022",
+  "source": {
+   "en": "S. Turpin, 'Searching for Sinai', Answers in Genesis (9 Nov 2022)"
+  },
+  "kind": "tertiary-popular"
+ },
+ {
+  "id": "cit-beke-sinai-arabia-1878",
+  "source": {
+   "en": "C. T. Beke, 'The late Dr. Charles Beke's discoveries of Sinai in Arabia and of Midian' (1878)"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Named in the research pass as the report of Beke's 1874 journey; not opened in that pass."
+  }
+ },
+ {
+  "id": "cit-wiki-hala-l-badr",
+  "source": {
+   "en": "Wikipedia, 'Hala-'l Badr' (locator for the volcano's coordinates)"
+  },
+  "kind": "tertiary-popular"
+ },
+ {
+  "id": "cit-geonames-351820",
+  "source": {
+   "en": "GeoNames record 351820 (Jabal Musa)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-347908",
+  "source": {
+   "en": "GeoNames record 347908 (Jabal Sinn Bishr)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-104399",
+  "source": {
+   "en": "GeoNames record 104399 (Jabal Maqla)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-294586",
+  "source": {
+   "en": "GeoNames record 294586 (Har Karkom)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-250814",
+  "source": {
+   "en": "GeoNames record 250814 (Jabal Ahmad al Baqir)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-350893",
+  "source": {
+   "en": "GeoNames record 350893 (Nuweiba)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-101359",
+  "source": {
+   "en": "GeoNames record 101359 (Strait of Tiran)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-347281",
+  "source": {
+   "en": "GeoNames record 347281 (Lake Timsah)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-351834",
+  "source": {
+   "en": "GeoNames record 351834 (Great Bitter Lake)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-359796",
+  "source": {
+   "en": "GeoNames record 359796 (Suez)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-geonames-295277",
+  "source": {
+   "en": "GeoNames record 295277 (Eilat)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-openbible-ras-es-safsafeh",
+  "source": {
+   "en": "OpenBible.info, 'Ras es Safsafeh' (sources listed there: OpenStreetMap and Wikidata)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-openbible-jebel-serbal",
+  "source": {
+   "en": "OpenBible.info, 'Jebel Serbal' (sources listed there: GeoNames, OpenStreetMap and Wikidata)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-openbible-jebel-hashem-el-tarif",
+  "source": {
+   "en": "OpenBible.info, 'Jebel Hashem el Tarif' (sources listed there: GeoNames, OpenStreetMap and Wikidata)"
+  },
+  "kind": "gazetteer"
+ },
+ {
+  "id": "cit-rasmussen-niv-atlas-1989",
+  "source": {
+   "en": "C. G. Rasmussen, Zondervan NIV Atlas of the Bible (1989), pp. 88-90"
+  },
+  "kind": "secondary-scholarly",
+  "note": {
+   "en": "Named in the research pass as using Har-El's Jebel Sin Bishar identification; not opened in that pass."
+  }
  }
 ]

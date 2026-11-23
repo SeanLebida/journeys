@@ -31,9 +31,12 @@ export interface BundleIndex extends TBundle {
   videosForJourney: (journeyId: string) => TVideo[];
   /** Historical route geometry (per-leg polylines) for a journey, if authored. */
   routeForJourney: (journeyId: string) => TRoutePath | undefined;
+  /** The map line for one `Journey.proposedRoutes` entry. */
+  routeForProposedRoute: (proposedRouteId: string) => TRoutePath | undefined;
 }
 
-function index(b: TBundle): BundleIndex {
+/** Builds the lookup index over a bundle. Exported for tests. */
+export function index(b: TBundle): BundleIndex {
   const m = <T extends { id: string }>(arr: T[]) => new Map(arr.map((x) => [x.id, x]));
   const sites = m(b.sites);
   const stops = m(b.stops);
@@ -67,7 +70,9 @@ function index(b: TBundle): BundleIndex {
     battlesForSite: (siteId) => (b.battles ?? []).filter((x) => x.siteId === siteId),
     videosForSite: (siteId) => (b.videos ?? []).filter((v) => v.siteId === siteId),
     videosForJourney: (journeyId) => (b.videos ?? []).filter((v) => v.journeyId === journeyId),
-    routeForJourney: (journeyId) => (b.routes ?? []).find((r) => r.journeyId === journeyId),
+    // Proposed crossing-to-Sinai lines share the journey id but are not its trace.
+    routeForJourney: (journeyId) => (b.routes ?? []).find((r) => r.journeyId === journeyId && !r.proposedRouteId),
+    routeForProposedRoute: (proposedRouteId) => (b.routes ?? []).find((r) => r.proposedRouteId === proposedRouteId),
   };
 }
 

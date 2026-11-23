@@ -224,7 +224,9 @@ describe('content integrity (committed source)', () => {
       return site ? [site.coordinates.value.lon, site.coordinates.value.lat] : undefined;
     };
     const bad: string[] = [];
-    (routes as { id: string; journeyId: string; legs: LngLat[][] }[]).forEach((r) => {
+    (routes as { id: string; journeyId: string; legs: LngLat[][]; proposedRouteId?: string }[]).forEach((r) => {
+      // Proposed crossing-to-Sinai lines join candidate pins; checked in exodus-candidates.test.ts.
+      if (r.proposedRouteId) return;
       const j = journeyById.get(r.journeyId);
       if (!j) {
         bad.push(`${r.id}: unknown journey ${r.journeyId}`);

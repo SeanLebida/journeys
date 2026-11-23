@@ -409,6 +409,263 @@
   "pleiadesId": "905314398"
  },
  {
+  "id": "site-red-sea-crossing",
+  "ancientName": {
+   "en": "Yam Suph, the sea crossing"
+  },
+  "modernLocation": {
+   "en": "Proposed crossing points from Egypt's eastern frontier lakes to the Gulf of Aqaba (location disputed)"
+  },
+  "coordinates": {
+   "value": {
+    "lat": 30.33275,
+    "lon": 32.37461
+   },
+   "confidence": "disputed",
+   "reviewStatus": "draft",
+   "citations": [
+    "cit-geonames-351834",
+    "cit-byers-exodus-crossing-2006",
+    "cit-ref-kitchen"
+   ],
+   "disputes": {
+    "en": "Exodus 14-15 calls the sea Yam Suph, often translated Red Sea. Writers who accept the crossing as history place it at the Ballah Lakes, the Bitter Lakes and Lake Timsah, the northern Gulf of Suez, or in the Gulf of Aqaba. No excavation has located the crossing. The main pin marks the Bitter Lakes region used by the app's traditional route."
+   }
+  },
+  "summary": {
+   "en": "Where Israel crossed the sea in Exodus 14-15. The location is disputed, so each proposed crossing is shown with who argues for it."
+  },
+  "citations": [
+   "cit-byers-exodus-crossing-2006",
+   "cit-hoffmeier-ancient-israel-sinai",
+   "cit-ref-kitchen",
+   "cit-franz-sinai-arabia-2000"
+  ],
+  "candidates": [
+   {
+    "id": "cand-crossing-ballah",
+    "label": {
+     "en": "Ballah Lakes (former), Egypt's eastern frontier"
+    },
+    "lat": 30.7,
+    "lon": 32.3,
+    "confidence": "medium",
+    "citations": [
+     "cit-hoffmeier-tynbul-2022",
+     "cit-hoffmeier-ancient-israel-sinai",
+     "cit-byers-exodus-crossing-2006"
+    ],
+    "note": {
+     "en": "A former lake system that ran about 20 km south from Qantara to just north of Ismailia. Regional pin, not a crossing spot."
+    },
+    "advocates": [
+     {
+      "name": "James K. Hoffmeier",
+      "citationIds": [
+       "cit-hoffmeier-ancient-israel-sinai",
+       "cit-hoffmeier-tynbul-2022"
+      ]
+     },
+     {
+      "name": "Gary Byers",
+      "citationIds": [
+       "cit-byers-exodus-crossing-2006"
+      ]
+     },
+     {
+      "name": "Bryant G. Wood",
+      "citationIds": [
+       "cit-wood-horeb-2008"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-great-bitter-lake",
+    "label": {
+     "en": "Great Bitter Lake, Suez isthmus"
+    },
+    "lat": 30.33275,
+    "lon": 32.37461,
+    "confidence": "medium",
+    "citations": [
+     "cit-geonames-351834",
+     "cit-byers-exodus-crossing-2006",
+     "cit-franz-sinai-arabia-2000",
+     "cit-ref-kitchen"
+    ],
+    "note": {
+     "en": "The ancient basin, not the modern canal-era lake. Regional pin."
+    },
+    "advocates": [
+     {
+      "name": "Kenneth A. Kitchen",
+      "citationIds": [
+       "cit-ref-kitchen",
+       "cit-byers-exodus-crossing-2006"
+      ]
+     },
+     {
+      "name": "Menashe Har-El",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "groupId": "group-crossing-isthmus-lakes",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-lake-timsah",
+    "label": {
+     "en": "Lake Timsah, Suez isthmus"
+    },
+    "lat": 30.57857,
+    "lon": 32.28684,
+    "confidence": "medium",
+    "citations": [
+     "cit-geonames-347281",
+     "cit-byers-exodus-crossing-2006"
+    ],
+    "note": {
+     "en": "A neighbouring isthmus lake, grouped with the Great Bitter Lake. Regional pin."
+    },
+    "pinPrecision": "region",
+    "groupId": "group-crossing-isthmus-lakes",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-gulf-of-suez",
+    "label": {
+     "en": "Northern Gulf of Suez, near Suez"
+    },
+    "lat": 29.97371,
+    "lon": 32.52627,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-359796",
+     "cit-byers-exodus-crossing-2006"
+    ],
+    "note": {
+     "en": "The older traditional view on many maps. The pin is the city at the head of the gulf, not a crossing spot."
+    },
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-nuweiba",
+    "label": {
+     "en": "Nuweiba beach, Gulf of Aqaba"
+    },
+    "lat": 29.04681,
+    "lon": 34.6634,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-350893",
+     "cit-franz-sinai-arabia-2000",
+     "cit-franz-not-lawz-2007",
+     "cit-fritz-lost-sea-2016",
+     "cit-wyatt-chariot-wheels"
+    ],
+    "note": {
+     "en": "No published excavation or lab test confirms finds here. Regional pin on the town and beach."
+    },
+    "advocates": [
+     {
+      "name": "Ron Wyatt",
+      "citationIds": [
+       "cit-wyatt-chariot-wheels",
+       "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "Lennart Moller",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Glen A. Fritz",
+      "citationIds": [
+       "cit-fritz-lost-sea-2016"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-strait-of-tiran",
+    "label": {
+     "en": "Strait of Tiran, mouth of the Gulf of Aqaba"
+    },
+    "lat": 28.02358,
+    "lon": 34.47072,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-101359",
+     "cit-franz-not-lawz-2007"
+    ],
+    "note": {
+     "en": "No published excavation of Exodus remains here. Regional pin."
+    },
+    "advocates": [
+     {
+      "name": "Jim Irwin",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Bob Cornuke",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Larry Williams",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-crossing-head-of-aqaba",
+    "label": {
+     "en": "Head of the Gulf of Aqaba, near Eilat and Aqaba"
+    },
+    "lat": 29.55805,
+    "lon": 34.94821,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-295277",
+     "cit-fritz-lost-sea-2016",
+     "cit-turpin-sinai-2022"
+    ],
+    "note": {
+     "en": "A regional pin for the head of the gulf, placed on Eilat. It is not a lane between Eilat and Aqaba."
+    },
+    "advocates": [
+     {
+      "name": "Colin Humphreys",
+      "citationIds": [
+       "cit-fritz-lost-sea-2016",
+       "cit-turpin-sinai-2022"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   }
+  ]
+ },
+ {
   "id": "site-mount-sinai",
   "ancientName": {
    "en": "Mount Sinai (Horeb)"
@@ -451,8 +708,185 @@
     "confidence": "legendary",
     "citations": [
      "cit-ot-mount-sinai",
-     "cit-ref-sacred-bridge"
-    ]
+     "cit-ref-sacred-bridge",
+     "cit-geonames-351820",
+     "cit-ngo-shanks-sinai-2025"
+    ],
+    "id": "cand-sinai-jebel-musa",
+    "note": {
+     "en": "The traditional peak, with Ras Safsafa beside it above the er-Raha plain."
+    },
+    "advocates": [
+     {
+      "name": "Kenneth A. Kitchen",
+      "citationIds": [
+       "cit-ref-kitchen"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "groupId": "group-sinai-musa-safsafa",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-ras-safsafa",
+    "label": {
+     "en": "Ras Safsafa (Willow Peak), beside Jebel Musa"
+    },
+    "lat": 28.555556,
+    "lon": 33.967222,
+    "confidence": "disputed",
+    "citations": [
+     "cit-openbible-ras-es-safsafeh",
+     "cit-hoffmeier-ancient-israel-sinai",
+     "cit-ref-kitchen"
+    ],
+    "note": {
+     "en": "Just northwest of Jebel Musa, above the er-Raha plain. Shown in one cluster with Jebel Musa."
+    },
+    "advocates": [
+     {
+      "name": "James K. Hoffmeier",
+      "citationIds": [
+       "cit-hoffmeier-ancient-israel-sinai"
+      ]
+     },
+     {
+      "name": "Kenneth A. Kitchen",
+      "citationIds": [
+       "cit-ref-kitchen"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "groupId": "group-sinai-musa-safsafa",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-jebel-serbal",
+    "label": {
+     "en": "Jebel Serbal, above Wadi Feiran"
+    },
+    "lat": 28.646389,
+    "lon": 33.651667,
+    "confidence": "disputed",
+    "citations": [
+     "cit-openbible-jebel-serbal",
+     "cit-hoffmeier-ancient-israel-sinai",
+     "cit-ref-kitchen"
+    ],
+    "note": {
+     "en": "A southern Sinai rival near the oasis of Wadi Feiran."
+    },
+    "advocates": [
+     {
+      "name": "James K. Hoffmeier",
+      "citationIds": [
+       "cit-hoffmeier-ancient-israel-sinai"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-jebel-sin-bishar",
+    "label": {
+     "en": "Jebel Sin Bishar, west-central Sinai"
+    },
+    "lat": 29.67164,
+    "lon": 32.96119,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-347908",
+     "cit-franz-sinai-arabia-2000",
+     "cit-turpin-sinai-2022"
+    ],
+    "note": {
+     "en": "Paired with a crossing at the Great Bitter Lake. Har-El proposed it; Franz, Faiman and Rasmussen follow the same pairing."
+    },
+    "advocates": [
+     {
+      "name": "Menashe Har-El",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "Gordon Franz",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "David Faiman",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000"
+      ]
+     },
+     {
+      "name": "Carl G. Rasmussen",
+      "citationIds": [
+       "cit-rasmussen-niv-atlas-1989"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-hashem-el-tarif",
+    "label": {
+     "en": "Hashem el-Tarif (Gebel Khashm et-Tarif), eastern Sinai"
+    },
+    "lat": 29.669217,
+    "lon": 34.633411,
+    "confidence": "disputed",
+    "citations": [
+     "cit-openbible-jebel-hashem-el-tarif",
+     "cit-wood-horeb-2008"
+    ],
+    "note": {
+     "en": "On the Trans-Sinai Highway, about 22 miles west-northwest of the head of the Gulf of Aqaba."
+    },
+    "advocates": [
+     {
+      "name": "Bryant G. Wood",
+      "citationIds": [
+       "cit-wood-horeb-2008"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "label": {
+     "en": "Har Karkom (Negev) — Anati proposal"
+    },
+    "lat": 30.28616,
+    "lon": 34.74478,
+    "confidence": "disputed",
+    "citations": [
+     "cit-ot-mount-sinai",
+     "cit-ref-sacred-bridge",
+     "cit-geonames-294586",
+     "cit-anati-where-sinai-2003"
+    ],
+    "id": "cand-sinai-har-karkom",
+    "note": {
+     "en": "A real Bronze Age holy mountain. Anati finds no occupation in the usual Exodus centuries and dates the Exodus earlier."
+    },
+    "advocates": [
+     {
+      "name": "Emmanuel Anati",
+      "citationIds": [
+       "cit-anati-where-sinai-2003"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "claimStatus": "identification-disputed"
    },
    {
     "label": {
@@ -463,20 +897,133 @@
     "confidence": "disputed",
     "citations": [
      "cit-ot-mount-sinai",
-     "cit-ref-sacred-bridge"
-    ]
+     "cit-ref-sacred-bridge",
+     "cit-franz-sinai-arabia-2000",
+     "cit-franz-not-lawz-2007"
+    ],
+    "id": "cand-sinai-jebel-al-lawz",
+    "note": {
+     "en": "The taller 'almond mountain'. Jabal Maqla, about 7 km south, is the dark peak in most photos; the two are often treated as one."
+    },
+    "advocates": [
+     {
+      "name": "Ron Wyatt",
+      "citationIds": [
+       "cit-franz-sinai-arabia-2000",
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Lennart Moller",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Bob Cornuke",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Larry Williams",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "groupId": "group-sinai-lawz-maqla",
+    "claimStatus": "identification-disputed"
    },
    {
+    "id": "cand-sinai-jabal-maqla",
     "label": {
-     "en": "Har Karkom (Negev) — Anati proposal"
+     "en": "Jabal Maqla ('Burnt Mountain'), NW Arabia"
     },
-    "lat": 30.311,
-    "lon": 34.743,
+    "lat": 28.59674,
+    "lon": 35.33549,
     "confidence": "disputed",
     "citations": [
-     "cit-ot-mount-sinai",
-     "cit-ref-sacred-bridge"
-    ]
+     "cit-geonames-104399",
+     "cit-franz-not-lawz-2007",
+     "cit-wyatt-chariot-wheels"
+    ],
+    "note": {
+     "en": "About 7 km south of Jebel al-Lawz. Shown in one cluster with it."
+    },
+    "advocates": [
+     {
+      "name": "Ron Wyatt",
+      "citationIds": [
+       "cit-wyatt-chariot-wheels",
+       "cit-franz-not-lawz-2007"
+      ]
+     },
+     {
+      "name": "Lennart Moller",
+      "citationIds": [
+       "cit-franz-not-lawz-2007"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "groupId": "group-sinai-lawz-maqla",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-hala-l-badr",
+    "label": {
+     "en": "Hala-'l Badr (Hallat al-Badr), NW Arabia"
+    },
+    "lat": 27.25,
+    "lon": 37.235,
+    "confidence": "disputed",
+    "citations": [
+     "cit-wiki-hala-l-badr",
+     "cit-fritz-lost-sea-2016",
+     "cit-turpin-sinai-2022"
+    ],
+    "note": {
+     "en": "A volcanic cone. Paired with a crossing at the head of the Gulf of Aqaba."
+    },
+    "advocates": [
+     {
+      "name": "Colin Humphreys",
+      "citationIds": [
+       "cit-fritz-lost-sea-2016",
+       "cit-turpin-sinai-2022"
+      ]
+     }
+    ],
+    "pinPrecision": "region",
+    "claimStatus": "identification-disputed"
+   },
+   {
+    "id": "cand-sinai-jebel-baghir",
+    "label": {
+     "en": "Jebel Baghir (Jebel en-Nur), Jordan"
+    },
+    "lat": 29.59911,
+    "lon": 35.14342,
+    "confidence": "disputed",
+    "citations": [
+     "cit-geonames-250814",
+     "cit-beke-sinai-arabia-1878"
+    ],
+    "note": {
+     "en": "Reached by Charles Beke in 1874, northeast of the head of the Gulf of Aqaba."
+    },
+    "advocates": [
+     {
+      "name": "Charles T. Beke",
+      "citationIds": [
+       "cit-beke-sinai-arabia-1878"
+      ]
+     }
+    ],
+    "pinPrecision": "summit",
+    "claimStatus": "identification-disputed"
    }
   ]
  },
