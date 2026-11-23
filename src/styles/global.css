@@ -2577,7 +2577,6 @@ a {
 .site-photo__credit {
   display: block;
   font-size: 0.7rem;
-  opacity: 0.85;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

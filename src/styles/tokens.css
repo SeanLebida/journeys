@@ -28,7 +28,9 @@
   --surface: var(--parchment-50);
   --surface-raised: #ffffff;
   --text: #221a10;
-  --text-muted: #5b5040;
+  /* AAA (7:1+) on every surface it sits on, including its own 14% chip tint;
+     tests/unit/contrast-tokens.test.ts guards it. */
+  --text-muted: #473e32;
   --border: var(--parchment-300);
   --accent: var(--terracotta);
   --accent-contrast: #ffffff;
@@ -98,7 +100,7 @@
   --surface: var(--ink-800);
   --surface-raised: var(--ink-700);
   --text: #f3ecd9;
-  --text-muted: #b3a992;
+  --text-muted: #cdc6b7;
   --border: #2e2c27;
   --link: #e39a5c;
   --c-high: #6fb7b0;
@@ -120,7 +122,7 @@
     --surface: var(--ink-800);
     --surface-raised: var(--ink-700);
     --text: #f3ecd9;
-    --text-muted: #b3a992;
+    --text-muted: #cdc6b7;
     --border: #2e2c27;
     --link: #e39a5c;
     --c-high: #6fb7b0;
