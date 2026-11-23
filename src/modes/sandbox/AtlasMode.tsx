@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TraceJourneyLink } from '../map-trace/TraceJourneyLink';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import { useMap } from '../../map/MapProvider';
 import { MapLayerControl } from '../../map/MapLayerControl';
 import {
   ATLAS_LAYERS,
+  ROUTE_GRADE_STYLE,
   ROUTE_LAYER_IDS,
   atlasBattleLabels,
   atlasCandidateLabels,
@@ -26,6 +27,29 @@ import { PlaceFrame } from '../../components/PlaceFrame';
 import { SiteViews } from '../../components/SiteViews';
 import { SiteCandidates } from '../../components/SiteCandidates';
 import { BattleCard, SiteExtras } from '../../components/SiteExtras';
+import { WhoseMapChooser } from '../../components/WhoseMapChooser';
+import {
+  FADED_OPACITY,
+  candidateEmphasis,
+  candidateGroups,
+  compareCandidates,
+  groupEmphasis,
+  memberVisible,
+  resolvedRoutes,
+  routeBounds,
+  routesForSite,
+  selectionFor,
+  splitGroupsAt,
+} from '../../map/exodusCompare';
+import {
+  COMPARE_LAYERS,
+  applyCompareSelection,
+  applyCompareSplit,
+  ensureCompareLayers,
+  removeCompareLayers,
+  setCompareVisible,
+} from '../../map/layers/exodusCompare';
+import { computeMapPadding, paddingsEqual } from '../../map/viewportPadding';
 
 const CONFIDENCES = ['high', 'medium', 'legendary', 'disputed'];
 // Span the whole biblical timeline: Creation (4004 BC) through the
@@ -63,6 +87,20 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   const [selectedBattle, setSelectedBattle] = useState<string | null>(null);
   // When the reader clicked a rival pin, fly there instead of the working pin.
   const [focus, setFocus] = useState<{ lon: number; lat: number } | null>(null);
+  // "Whose map?": no route is picked by default, so every candidate draws equally.
+  const [compareRoute, setCompareRoute] = useState<string | null>(null);
+  const compare = useMemo(() => {
+    const cands = compareCandidates(bundle);
+    return {
+      cands,
+      siteIds: new Set(cands.map((c) => c.siteId)),
+      routes: resolvedRoutes(bundle),
+      groups: candidateGroups(cands),
+    };
+  }, [bundle]);
+  const [split, setSplit] = useState<string[]>([]);
+  const compareOpen = selected !== null && compare.siteIds.has(selected);
+  const activeRoute = compareOpen ? compareRoute : null;
 
   // `/atlas?site=…` is how the timeline and the Bible reader hand a place over
   // to the map. Unknown ids are ignored rather than blanking the panel.
@@ -78,7 +116,13 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !ready) return;
-    const add = () => ensureAtlasLayers(map, bundle);
+    const add = () => {
+      ensureAtlasLayers(map, bundle);
+      ensureCompareLayers(map, bundle, compare);
+      const next = splitGroupsAt(compare.groups, map.getZoom());
+      applyCompareSplit(map, next, compare.groups);
+      setSplit(next);
+    };
     if (map.isStyleLoaded()) add();
     else map.once('load', add);
 
@@ -97,6 +141,22 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         setSelectedBattle(null);
       }
     };
+    const onCluster = (e: MapLayerMouseEvent) => {
+      const gid = e.features?.[0]?.properties?.groupId as string | undefined;
+      const g = compare.groups.find((x) => x.groupId === gid);
+      if (!g) return;
+      // Zoom just past the split so the grouped places draw apart.
+      map.easeTo({ center: [g.lon, g.lat], zoom: Math.max(map.getZoom(), g.splitZoom + 0.5), duration: 600 });
+    };
+    const onZoom = () => {
+      const next = splitGroupsAt(compare.groups, map.getZoom());
+      setSplit((cur) => (cur.join('|') === next.join('|') ? cur : next));
+    };
+    map.on('zoom', onZoom);
+    map.on('click', COMPARE_LAYERS.hit, onClick);
+    map.on('click', COMPARE_LAYERS.clusterHit, onCluster);
+    map.on('mouseenter', COMPARE_LAYERS.hit, () => (map.getCanvas().style.cursor = 'pointer'));
+    map.on('mouseenter', COMPARE_LAYERS.clusterHit, () => (map.getCanvas().style.cursor = 'pointer'));
     const onEnter = () => (map.getCanvas().style.cursor = 'pointer');
     const onLeave = () => (map.getCanvas().style.cursor = '');
     map.on('click', ATLAS_LAYERS.sites, onClick);
@@ -112,9 +172,47 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       map.off('mouseenter', ATLAS_LAYERS.candidates, onEnter);
       map.off('mouseleave', ATLAS_LAYERS.sites, onLeave);
       map.off('mouseleave', ATLAS_LAYERS.candidates, onLeave);
+      map.off('zoom', onZoom);
+      map.off('click', COMPARE_LAYERS.hit, onClick);
+      map.off('click', COMPARE_LAYERS.clusterHit, onCluster);
+      removeCompareLayers(map);
       removeAtlasLayers(map);
     };
-  }, [mapRef, ready, bundle]);
+  }, [mapRef, ready, bundle, compare]);
+
+  // Grouped candidates: one cluster below their split zoom, apart above it.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready) return;
+    applyCompareSplit(map, split, compare.groups);
+  }, [mapRef, ready, split, compare]);
+
+  // Picked route: its two pins and line stay bright, everything else fades.
+  // Proposed lines only draw while a compared site's sheet is open.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !map.getLayer(ATLAS_LAYERS.sites)) return;
+    const sel = selectionFor(compare.routes, activeRoute);
+    applyCompareSelection(map, sel, compareOpen && showSites);
+    for (const st of ROUTE_GRADE_STYLE)
+      if (map.getLayer(st.layer))
+        map.setPaintProperty(st.layer, 'line-opacity', sel.routeId ? st.opacity * FADED_OPACITY : st.opacity);
+  }, [mapRef, ready, compare, activeRoute, compareOpen, showSites]);
+
+  // Frame the picked pairing in the uncovered part of the map. MapLibre adds
+  // transform.padding to fitBounds' own padding, so set the live padding first
+  // (a jumpTo, before the ease starts) and keep the extra margin small.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !activeRoute) return;
+    const r = compare.routes.find((x) => x.route.id === activeRoute);
+    if (!r) return;
+    const pad = computeMapPadding();
+    const cur = map.getPadding();
+    if (!paddingsEqual(pad, { top: cur.top, bottom: cur.bottom, left: cur.left, right: cur.right })) map.setPadding(pad);
+    const [w, so, e, n] = routeBounds(r);
+    map.fitBounds([[w, so], [e, n]], { padding: 32, maxZoom: 7, duration: 700 });
+  }, [mapRef, ready, activeRoute, compare]);
 
   // Reflect UI state onto the map.
   useEffect(() => {
@@ -122,6 +220,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     if (!map || !map.getLayer(ATLAS_LAYERS.sites)) return;
     setLayerVisible(map, ATLAS_LAYERS.sites, showSites);
     setLayerVisible(map, ATLAS_LAYERS.candidates, showSites);
+    setCompareVisible(map, showSites);
     for (const id of ROUTE_LAYER_IDS) setLayerVisible(map, id, showRoutes);
     for (const id of [ATLAS_LAYERS.battles, ATLAS_LAYERS.battleAreas, ATLAS_LAYERS.battleAreasLine, ATLAS_LAYERS.battleAreaSelected])
       setLayerVisible(map, id, showBattles);
@@ -185,7 +284,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
   // extra labels for identifications the reader has not asked about.
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !ready || !showSites || !selected) return;
+    if (!map || !ready || !showSites || !selected || compare.siteIds.has(selected)) return;
     const markers = atlasCandidateLabels(bundle, selected)
       .filter((c) => c.ymax >= YEAR_MIN && c.ymin <= maxYear && conf.includes(c.parentConfidence))
       .map((c) => {
@@ -202,7 +301,52 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         return labelledMarker(el, { element: el, anchor: 'left', offset: [10, 0] }, [c.lon, c.lat], map);
       });
     return () => markers.forEach((m) => m.remove());
-  }, [mapRef, ready, bundle, showSites, conf, maxYear, selected]);
+  }, [mapRef, ready, bundle, showSites, conf, maxYear, selected, compare]);
+
+  // Compared candidates always carry their names (they have no working dot),
+  // with a cluster tag in place of grouped names until the group splits.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !ready || !showSites) return;
+    const sel = selectionFor(compare.routes, activeRoute);
+    const markers = compare.cands
+      .filter((c) => memberVisible(c, split, compare.groups))
+      .map((c) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        const faded = candidateEmphasis(sel, c.id) === 'faded';
+        el.className = `site-label site-label--candidate site-label--compare${faded ? ' is-faded' : ''}`;
+        el.textContent = c.label;
+        el.setAttribute('aria-label', `Rival identification: ${c.label}`);
+        el.addEventListener('click', () => {
+          setFocus({ lon: c.lon, lat: c.lat });
+          setSelected(c.siteId);
+          setSelectedBattle(null);
+        });
+        const offset: [number, number] = c.pinPrecision === 'region' ? [14, 0] : [10, 0];
+        return labelledMarker(el, { element: el, anchor: 'left', offset }, [c.lon, c.lat], map);
+      });
+    for (const g of compare.groups) {
+      if (split.includes(g.groupId)) continue;
+      const el = document.createElement('button');
+      el.type = 'button';
+      const faded = groupEmphasis(sel, g.groupId) === 'faded';
+      el.className = `site-label site-label--candidate site-label--compare site-label--cluster${faded ? ' is-faded' : ''}`;
+      el.textContent = t('sourcing.compare.clusterText', { count: g.members.length });
+      el.setAttribute(
+        'aria-label',
+        t('sourcing.compare.clusterAria', {
+          count: g.members.length,
+          names: g.members.map((m) => m.label).join('; '),
+        }),
+      );
+      el.addEventListener('click', () =>
+        map.easeTo({ center: [g.lon, g.lat], zoom: Math.max(map.getZoom(), g.splitZoom + 0.5), duration: 600 }),
+      );
+      markers.push(labelledMarker(el, { element: el, anchor: 'left', offset: [16, 0] }, [g.lon, g.lat], map));
+    }
+    return () => markers.forEach((m) => m.remove());
+  }, [mapRef, ready, showSites, compare, split, activeRoute, t]);
 
   // A collapsed sheet would hide the details just opened; lift it to half so
   // the place reads at once and the map stays in view above it.
@@ -219,6 +363,21 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
     const siteId = selected ?? (selectedBattle ? bundle.battle(selectedBattle)?.siteId : undefined);
     if (!siteId) return;
     const site = bundle.site(siteId);
+    // A compared site has no single working pin: frame all of its candidates
+    // so opening the sheet does not quietly centre one of them.
+    const rivals = compare.cands.filter((c) => c.siteId === siteId);
+    if (site && !focus && rivals.length > 1) {
+      const lons = rivals.map((c) => c.lon);
+      const lats = rivals.map((c) => c.lat);
+      map.fitBounds(
+        [
+          [Math.min(...lons), Math.min(...lats)],
+          [Math.max(...lons), Math.max(...lats)],
+        ],
+        { padding: 32, maxZoom: 7, duration: 800 },
+      );
+      return;
+    }
     if (site) {
       const lon = focus?.lon ?? site.coordinates.value.lon;
       const lat = focus?.lat ?? site.coordinates.value.lat;
@@ -228,7 +387,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
         duration: 800,
       });
     }
-  }, [mapRef, ready, selected, selectedBattle, bundle, focus]);
+  }, [mapRef, ready, selected, selectedBattle, bundle, focus, compare]);
 
   const site = selected ? bundle.site(selected) : undefined;
   const stopsHere = selected ? bundle.stopsForSite(selected) : [];
@@ -240,6 +399,7 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
       ? `Details: ${battle.title.en}`
       : undefined;
   const closeDetails = () => {
+    setCompareRoute(null);
     setSelected(null);
     setSelectedBattle(null);
     setFocus(null);
@@ -327,6 +487,14 @@ function Atlas({ bundle }: { bundle: BundleIndex }) {
             <DisputeNote text={site.coordinates.disputes?.en} />
             <Citations ids={[...new Set([...site.citations, ...site.coordinates.citations])]} bundle={bundle} />
           </ReferenceStack>
+          {compare.siteIds.has(site.id) && (
+            <WhoseMapChooser
+              routes={routesForSite(compare.routes, site.id)}
+              selectedId={compareRoute}
+              onSelect={setCompareRoute}
+              bundle={bundle}
+            />
+          )}
           <SiteCandidates
             site={site}
             bundle={bundle}

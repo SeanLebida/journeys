@@ -5037,3 +5037,126 @@ button.tl-jump__link {
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
+/* ---- "Whose map?" chooser (Red Sea crossing / Mount Sinai sheets) ----
+   Every row is a 44px+ target that wraps instead of truncating, so a long
+   advocate list or candidate name never pushes the sheet sideways at 360px.
+   Text uses --text (AAA on both themes). Rows are never faded: the fade
+   lives on the map, so every row keeps 7:1 text. */
+.whose-map {
+  margin: var(--space-apart) 0 0;
+  padding: var(--card-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-raised);
+}
+.whose-map__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.whose-map h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.whose-map__intro,
+.whose-map__line,
+.whose-map__showing,
+.whose-map__argued {
+  margin: 0.35rem 0 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.whose-map__showing {
+  font-weight: 700;
+}
+.whose-map__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+.whose-map__option,
+.whose-map__clear {
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.whose-map__option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.whose-map__advocate {
+  font-size: 0.88rem;
+}
+.whose-map__pair {
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.whose-map__option.is-on {
+  border: 2px solid var(--accent);
+  padding: calc(0.5rem - 1px) calc(0.7rem - 1px);
+}
+.whose-map__option:hover,
+.whose-map__option:focus-visible,
+.whose-map__clear:hover,
+.whose-map__clear:focus-visible {
+  border-color: var(--accent);
+  opacity: 1;
+}
+.whose-map__clear {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.whose-map__detail {
+  margin-top: 0.6rem;
+}
+.whose-map__detail .claim-prose {
+  margin: 0 0 0.4rem;
+}
+/* claimStatus: a small plain-language label next to the QC confidence chip. */
+.claim-status {
+  display: inline-block;
+  padding: 0.05rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.site-candidates__note,
+.site-candidates__precision {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.site-candidates__precision {
+  font-style: italic;
+}
+.site-label--compare.is-faded {
+  opacity: 0.5;
+}
+.site-label--cluster {
+  font-style: normal;
+  font-weight: 700;
+}

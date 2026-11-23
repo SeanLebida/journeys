@@ -18,7 +18,11 @@ describe('atlas candidate features', () => {
     const fc = atlasCandidatesFC(stub);
     const withRivals = sites.filter((s) => (s.candidates?.length ?? 0) > 0);
     expect(withRivals.length).toBeGreaterThanOrEqual(2);
-    const expected = withRivals.reduce((n, s) => n + (s.candidates?.length ?? 0), 0);
+    // Candidates with an id and a pin precision draw on the "Whose map?" layers instead.
+    const expected = withRivals.reduce(
+      (n, s) => n + (s.candidates?.filter((c) => !(c.id && c.pinPrecision)).length ?? 0),
+      0,
+    );
     expect(fc.features).toHaveLength(expected);
     for (const f of fc.features) {
       expect(f.geometry.type).toBe('Point');
